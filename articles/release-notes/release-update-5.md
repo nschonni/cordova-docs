@@ -14,15 +14,14 @@
 
 #**Update 5 - Visual Studio Tools for Apache Cordova**
 This document covers what's new within this update.
-Version Number
+Version Number: 14.0.51123.1
 
 ## Setup Instructions
 The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates,
 however from this update we are offering also a standalone installer that you can find here:
 
-```
-TODO. Include downloads link
-```
+[Download Update 5 Link](http://go.microsoft.com/fwlink/?LinkId=715516) 
+
 Please note that this installer will require you to have already installed a previously version of VS TACO.
 
 ##New Features:
@@ -40,19 +39,18 @@ In the case where the plugin have been added without saving it to the config.xml
 ###Use the global Cordova version
 You can specify the version of cordova you want to use from the platform section in the Config.Xml, 
 and now you can use the global installed version. (This will include the proper Node version)
-This feature will allow a better integration with CLI workflows, specially in environments where there is VS like MAC and Linux.
+This feature will allow a better integration with CLI workflows, specially in environments where there is no Visual Studio IDE like Mac OS and Linux.
 
 ###Use MSBuild to build from command line
-In case you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013
-
-+++++++ >>>> TODO.. Review http://taco.visualstudio.com/en-us/docs/tfs2013/
+In case you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013 or any other Build Server.
 
 ###iOS build updates
-We added support for iOS 6s simulator, and improved the incremental build feature
+We added support for iOS 6s simulator, and improved the incremental build feature. (You will need to update the [remotebuild tools](http://taco.tools) to version 1.0.2 or greater.
 
 ##Bugs Solved
  
 ###Deploy to Ripple should error if VS is running as admin
+We fixed a bug that did not allow to run the Ripple emulator if you started VS with admin privileges.
  
 ###Dev14_RTM feed does not set correct Android SDK 23 regkey
 Expanding support for Android SDK 23
@@ -61,6 +59,7 @@ Expanding support for Android SDK 23
 There are some scenarios where a custom Java SDK is needed, like using a x64 version of it. Now the JAVA_HOME variable is used by VS.
  
 ###Plugins install errors cause inconsistencies in Plugins window
+
  
 ###MySQL breaks cordova
  
