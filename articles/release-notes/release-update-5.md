@@ -2,7 +2,7 @@
   description="Release notes for Update 5 of Visual Studio 2015 Tools for Apache Cordova"
   services=""
   documentationCenter=""
-  authors="ridomin" />
+  authors="rido-min" />
   <tags
      ms.service="na"
      ms.devlang="javascript"
@@ -39,7 +39,7 @@ Moreover, when plugins are added without updating the config.xml file, VS now re
 
 To address product breaks because of mismatches in NodeJS versioning, we created a global installed version of Cordova, which includes proper Node versioning. 
 
-![Global Cordova Version](/articles/media/release-notes/global-cdva-version.png)
+![Global Cordova Version](media/release-update-5/global-cdva-version.png)
 
 Additionally, you can directly specify the version of Cordova you want to use from the platform section in the config.xml.
 
@@ -72,7 +72,7 @@ Previously, JAVA_HOME still shows the VS installed location (ex. C:\Program File
 
 Previously, some errors thrown in the output window still resulted in users being notified that plugins were successfully installed. (For example, when installing cordova-plugin-whitelist from git on CLI version to 4.3.3.)
 
-![plugin install error](/articles/media/release-notes/plugin-error.png)
+![plugin install error](media/release-update-5/plugin-error.png)
 
 ### Cordova projects now build successfully with the developer community server edition of MySQL.
 
@@ -96,7 +96,7 @@ Previously, the installed plugins view adds a new instance of the same plugin in
 
 There are known issues with Cordova and the latest versions of Node.JS. For example, using Cordova 5.3.3 or below with Node.js 5.0.0 causes a build fail. 
 
-To learn more about what versions of Cordova are compatible with Node.JS, find [more information here.](http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-not-executing-when-using-cordova-with-nodejs-500-and-cordova-533-and-belowstrong)
+To learn more about what versions of Cordova are compatible with Node.JS, find [more information here.](../known-issues/known-issues-general#strongbuild-not-executing-when-using-cordova-with-nodejs-500-and-cordova-533-and-belowstrong)
 
 ### Mismatched plugins warning
 

@@ -22,7 +22,7 @@ For any significant changes made to an existing article, please note that we are
 
 To edit documentation for errors or with updates to any known issues or tips and workarounds, follow the steps below:  
 
-1)	[Submit a pull request](https://help.github.com/articles/using-pull-requests/) (PR) to our articles repo at [/Microsoft/cordova-docs](github.com/Microsoft/cordova-docs).
+1)	[Submit a pull request](https://help.github.com/articles/using-pull-requests/) (PR) to our articles repo at [/Microsoft/cordova-docs](https://github.com/Microsoft/cordova-docs).
 
 > **Note:**  All current articles are being published from within the "articles" folder. The top level folders are deprecated articles. Moreover, they will not update with your changes, as per exclude.gitignore.
 
