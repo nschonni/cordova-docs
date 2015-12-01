@@ -14,68 +14,88 @@
 
 #**Update 5 - Visual Studio Tools for Apache Cordova**
 This document covers what's new within this update.
-Version Number: 14.0.51123.1
+Version Number
 
 ## Setup Instructions
 The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates,
 however from this update we are offering also a standalone installer that you can find here:
 
-[Download Update 5 Link](http://go.microsoft.com/fwlink/?LinkId=715516) 
-
+```
+TODO. Include downloads link
+```
 Please note that this installer will require you to have already installed a previously version of VS TACO.
 
-##New Features:
+## New Features:
 
-The main focus of this release is to improve our CLI interop story, this means that all the operations you do from the command line will be respected by the IDE and in the same way the operations you perform using the IDE will be recognized by CLI tools.
+The main focus of this release was improving our CLI interop story.  That means operations performed from the command line will be respected by the VS IDE. In the same way, operations you perform using the IDE will be recognized by CLI tools.
 
-To be able to implement this interoperability story we added the next features
+### Plugin installations from either Visual Studio or the command line will be respected by the other. 
 
-###Find installed plugins from plugins folder and config.xml
+We now use the default  '&lt;plugin /&gt;' element so other command line tools know how to look for plugins. Previously, we were storing plugins added in VS using the '&lt;vs:plugin /&gt;' syntax in the config.xml file. 
 
-Previously, we were storing plugins added with VS using the '&lt;vs:plugin /&gt;' syntax in the config.xml file, now we are using the default  '&lt;plugin /&gt;' element so other command line tools know how to look for plugins.
+Moreover, when plugins are added without updating the config.xml file, VS now reads the plugins folder to mark those plugins as installed. 
 
-In the case where the plugin have been added without saving it to the config.xml file, we will read the plugins folder and mark those as installed.
+### A "global" Cordova version
 
-###Use the global Cordova version
-You can specify the version of cordova you want to use from the platform section in the Config.Xml, 
-and now you can use the global installed version. (This will include the proper Node version)
-This feature will allow a better integration with CLI workflows, specially in environments where there is no Visual Studio IDE like Mac OS and Linux.
+To address product breaks because of mismatches in NodeJS versioning, we created a global installed version of Cordova, which includes proper Node versioning. 
+
+Additionally, you can directly specify the version of Cordova you want to use from the platform section in the config.xml.
+
+### Improve iOS incremental build file change detection by switching to timestamp comparison
+
+Visual Studio tracks the modified date of each file to incorporate changes made from the CLI when VS is closed.
 
 ###Use MSBuild to build from command line
-In case you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013 or any other Build Server.
+
+In cases when you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013
+
++++++++ >>>> TODO.. Review http://taco.visualstudio.com/en-us/docs/tfs2013/
 
 ###iOS build updates
-We added support for iOS 6s simulator, and improved the incremental build feature. (You will need to update the [remotebuild tools](http://taco.tools) to version 1.0.2 or greater.
+We added support for iOS 6s simulator, and improved the incremental build feature.
 
 ##Bugs Solved
- 
-###Deploy to Ripple should error if VS is running as admin
-We fixed a bug that did not allow to run the Ripple emulator if you started VS with admin privileges.
- 
-###Dev14_RTM feed does not set correct Android SDK 23 regkey
-Expanding support for Android SDK 23
- 
-###System JAVA_HOME not respected by Visual Studio
-There are some scenarios where a custom Java SDK is needed, like using a x64 version of it. Now the JAVA_HOME variable is used by VS.
- 
-###Plugins install errors cause inconsistencies in Plugins window
 
+### Ripple no longer breaks if you are running Visual Studio as admin.
+
+A security problem arose when Ripple tried to connect to server process when the user was on admin privledges. 
  
-###MySQL breaks cordova
+### Installing Android_SDK23 now causes it to be marked as installed
+
+When installing Visual Studio Dev14 RTM, you could opt to also install the Android SDK 23, but it would not be marked as installed in Visual Studio.
+
+### System settings JAVA_HOME are now respected by Visual Studio
+
+Previously, JAVA_HOME still shows the VS installed location (ex. C:\Program Files (x86)\Java\jdk1.7.0_55). Now, unchecking "JAVA_HOME" and clicking "Restore Defaults" in Tools > Options > Tools for Apache Cordova > Environment Variable Overrides will restore custom JAVA_HOME.
  
-###Better error messages for iOS remotebuilds 
- 
+### Fixed scenario when error in plugin installation still yields a success error message.
+
+Previously, some errors thrown in the output window still resulted in users being notified that plugins were successfully installed. (For example, when installing cordova-plugin-whitelist from git on CLI version to 4.3.3.)
+
+### Cordova projects now build successfully with the developer community server edition of MySQL.
+
+Previously, adding MySQL to a Cordova project caused unsuccessful builds.
+
+### Timeout message when debugging remote iOS devices now mentions enabling the web inspector. 
+
+Visual Studio Cordova projects commonly time out when debugging iOS apps on a device although the app works well on the simulator. This is because most users forget to enable the web inspector on their device.
+
+### Building a Cordova project does now trigger the before_build hook
+
+In previous versions, our build uses prepared and compiled instead of calling build, which ended up skipping the before_build hook. Now our code manually triggers that hook.
+
+### Failed plugins do not generate new instances of the same plugin with each install.
+
+Previously, the installed plugins view adds a new instance of the same plugin in the Installed list for every failed attempt to add the plugin.
 
 ##Known Issues
 
-**Node.JS 5.0 build fail**
+### Node.JS 5.0 build fail
 
 There are known issues with Cordova and the latest versions of Node.JS. For example, using Cordova 5.3.3 or below with Node.js 5.0.0 causes a build fail. 
 
 To learn more about what versions of Cordova are compatible with Node.JS, find [more information here.](http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-not-executing-when-using-cordova-with-nodejs-500-and-cordova-533-and-belowstrong)
 
-
-
-**Mismatched plugins warning**
+### Mismatched plugins warning
 
 A warning banner pops up on Visual Studio when users add the latest version of plugins to a previous version of Cordova. We recommend you always update to the lastest version of Cordova to reduce the risk of build errors. 
