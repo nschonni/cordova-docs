@@ -13,7 +13,7 @@
      ms.author="rmpablos"/>
 
 #**Update 5 - Visual Studio Tools for Apache Cordova**
-This document covers what's new within this update, we refer to it as Update 5 and has the version number: 14.0.51123.1
+Update 5 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.51123.1.
 
 ## Setup Instructions
 The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates,
@@ -27,7 +27,7 @@ Please note that this installer will require you to have already installed a pre
 
 The main focus of this release was improving our CLI interop story.  That means operations performed from the command line will be respected by the VS IDE. In the same way, operations you perform using the IDE will be recognized by CLI tools.
 
->Although at the time of writing this document the cordova latest version is 5.4.1, we still use 5.3.3 as a default platform for new projects.
+> **NOTE:** The latest version of Cordova runtime is 5.4.1, but Update 5 will still use 5.3.3 as a default platform for new projects.
 
 ### Plugin installations from either Visual Studio or the command line will be respected by the other. 
 
