@@ -16,15 +16,15 @@
 
 # Change the CLI version of your Visual Studio Tools for Apache Cordova project
 
- Visual Studio uses the Cordova Command-Line Interface (CLI) to build your project and start platform emulators.
+Visual Studio uses the Cordova Command-Line Interface (CLI) to build your project and start platform emulators.
 
- Over time, Apache Cordova releases new versions of the CLI that include bug fixes and other improvements. You can update your project to use these new versions as they are released.
+Over time, Apache Cordova releases new versions of the CLI that include bug fixes and other improvements. You can update your project to use these new versions as they are released.
 
- This topic helps you understand the impact of making that change, how you can do that safely.
+This topic helps you understand the impact of making that change, how you can do that safely.
 
 ## Find the CLI version number of your project
 
- The CLI version number appears in the **Platforms** page of the configuration designer.
+The CLI version number appears in the **Platforms** page of the configuration designer.
 
 ![CLI version](media/change-cli-version/cli-version.png)
 
@@ -101,7 +101,7 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 3. In the configuration designer, choose the **Platforms** tab, and then, in the **Cordova CLI** drop-down list, choose the version of the Cordova CLI that you want to use.
 
-   ![CLI version](media/change-cli-version/config-designer.png)
+    ![CLI version](media/change-cli-version/config-designer.png)
 
 4. In Visual Studio, choose **Build**->**Rebuild Solution**.
 
@@ -111,14 +111,14 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 6. Remove all plugins from your project.
 
-   To remove core plugins, see [Remove a plugin](./develop-apps/manage-plugins.md#Adding).
+    To remove core plugins, see [Remove a plugin](./develop-apps/manage-plugins.md#Adding).
 
-   To remove other third-party plugins, see [Remove a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
+    To remove other third-party plugins, see [Remove a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
 
 7. Add plugins back to your project.
 
-   If you updated your project to use the most recent version of the CLI, then add the most recent version of each plugin to your project. If you updated your project to use an older version of the CLI, then add older versions of each plugin to your project.
+    If you updated your project to use the most recent version of the CLI, then add the most recent version of each plugin to your project. If you updated your project to use an older version of the CLI, then add older versions of each plugin to your project.
 
-   To add core plugins, see [Add a plugin](./develop-apps/manage-plugins.md#Adding).
+    To add core plugins, see [Add a plugin](./develop-apps/manage-plugins.md#Adding).
 
-   To add other third-part plugins, see [Add a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
+    To add other third-part plugins, see [Add a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
