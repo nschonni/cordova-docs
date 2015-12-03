@@ -34,15 +34,17 @@ Let's take a quick look at how this change can impact plugins. This will help yo
 
 ## The impact on plugins
 
-Plugin authors test their plugins against a specific version of each Cordova platform. For example, to ensure that the plugin works on an Android mobile device, the author tests and validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform. The Apache Cordova CLI does something very similar. It's tied or *pinned* to a specific version of each Cordova platform as well.
+Plugins are tested against a specific version of each Cordova platform. For example, to ensure that the plugin works on an Android mobile device, the author tests and validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
 
-When you first create a project, the CLI that is used by your project and any plugins that you add to your project are tied to the same version of each Cordova platform.
+The Apache Cordova CLI does something very similar. It's also tied or *pinned* to a specific version of each Cordova platform. When you first create a project, your CLI and the plugins that you add to your project are tied to the same versions.
 
-If you update the CLI version of your project, that CLI can be tied to a newer version of each Cordova platform, but your plugins or still tied to an older version of each platform. This is not always a problem, but if a newer version of a Cordova platform introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
+If you update your CLI, that CLI tied to a newer version of each Cordova platform while your plugins remain tied to a previous version of each Cordova platform.
 
-You might encounter the opposite problem, if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but plugins that you add to your project might be tied to newer version of each platform.  
+This is not always a problem, but if a new version introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
 
-This table presents each option, its impact, and what you can do to increase the likelihood that your plugins will function correctly.
+You might encounter the opposite problem, if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but plugins that you add to your project might be tied to newer version of each Cordova platform.  
+
+Have a quick look at this table. It presents each action, its impact, and what you can do to increase the likelihood that your plugins will function correctly after you've taken that action.
 
 <style>
     table, th, td {
@@ -65,7 +67,7 @@ This table presents each option, its impact, and what you can do to increase the
         <tr>
             <td>Use the most recent version of the CLI</td>
             <td style="text-align:left">Plugins that exist in your project before you update the CLI version might not work as expected if they are tied to an older version of each Cordova platform.</td>
-            <td style="text-align:left">Remove those plugins from your project. <br><br>Then, add the most recent version of those plugins to your project.</td>
+            <td style="text-align:left">Remove those plugins from your project.  Then, add the most recent version of those plugins to your project.</td>
         </tr>
         <tr>
             <td>Continue using the same version of the CLI</td>
@@ -89,13 +91,13 @@ This table presents each option, its impact, and what you can do to increase the
 
     ![CLI version](media/change-cli-version/platforms.png)
 
-    Most likely, you have not made direct edits to this folder. Editing files in those folders is an advanced task and you'd have to make those edits outside of Visual Studio.
+    Most likely, you have not made direct edits to this folder. Editing these files is an advanced task and you'd have to make those edits outside of Visual Studio.  
 
-2. In **Solution Explorer**, double-click the **config.xml** file.
+    If you did not directly edit these files outside of Visual Studio, you can move to the next step.
+
+2. In **Solution Explorer**, double-click the **config.xml** file to open the configuration designer.
 
     ![CLI version](media/change-cli-version/config-xml.png)
-
-   This opens the configuration designer.
 
 3. In the configuration designer, choose the **Platforms** tab, and then, in the **Cordova CLI** drop-down list, choose the version of the Cordova CLI that you want to use.
 
