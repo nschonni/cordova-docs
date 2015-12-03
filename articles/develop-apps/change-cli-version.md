@@ -28,7 +28,7 @@ The CLI version number appears in the **Platforms** page of the configuration de
 
 ![CLI version](media/change-cli-version/cli-version.png)
 
-When you first create your project, Visual Studio uses the most recent *major* version of the CLI, but over time, this version number becomes outdated. If you want to use a more recent version of the CLI, you have to make this change manually.
+When you first create your project, Visual Studio uses the most recent *major* version of the CLI. This version number becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
 Let's take a quick look at how this change can impact plugins. This will help you decide if you want to make the change, and how to do it safely.
 
@@ -38,11 +38,11 @@ Plugins are tested against a specific version of each Cordova platform. For exam
 
 The Apache Cordova CLI does something very similar. It's also tied or *pinned* to a specific version of each Cordova platform. When you first create a project, your CLI and the plugins that you add to your project are tied to the same versions.
 
-If you update your CLI, that CLI tied to a newer version of each Cordova platform while your plugins remain tied to a previous version of each Cordova platform.
+If you update your CLI, it's tied to a newer version of each Cordova platform while your plugins remain tied to a previous version of each Cordova platform.
 
 This is not always a problem, but if a new version introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
 
-You might encounter the opposite problem, if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but plugins that you add to your project might be tied to newer version of each Cordova platform.  
+You might encounter the opposite problem if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but plugins that you add to your project might be tied to newer version of each Cordova platform.  
 
 Have a quick look at this table. It presents each action, its impact, and what you can do to increase the likelihood that your plugins will function correctly after you've taken that action.
 
@@ -109,16 +109,10 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 5. Add back any manual tweaks to files in platform subfolders.
 
-6. Remove all plugins from your project.
+6. Remove all plugins from your project and then add them back.
 
-    To remove core plugins, see [Remove a plugin](./develop-apps/manage-plugins.md#Adding).
+    If your using the most recent CLI version, then add the most recent version of each plugin. If you're using an older CLI version, then add an older versions of each plugin.
 
-    To remove other third-party plugins, see [Remove a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
+    To add and remove core plugins, see [Add or remove a plugin](./develop-apps/manage-plugins.md#Adding).
 
-7. Add plugins back to your project.
-
-    If you updated your project to use the most recent version of the CLI, then add the most recent version of each plugin to your project. If you updated your project to use an older version of the CLI, then add older versions of each plugin to your project.
-
-    To add core plugins, see [Add a plugin](./develop-apps/manage-plugins.md#Adding).
-
-    To add other third-part plugins, see [Add a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
+    To add and remove other third-party plugins, see [Add or remove a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).

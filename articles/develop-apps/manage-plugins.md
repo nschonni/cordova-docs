@@ -24,17 +24,17 @@ To see the core plugins available in the configuration designer, see [List of av
 
 
 
-## <a id="Adding"></a>Add a plugin
+## <a id="Adding"></a>Add or remove a plugin
 
-You can add a core Cordova plugin, or a custom plugin, by using Visual Studio. You can also reference additional plugins from the Cordova registry by editing config.xml. 
+You can add a core Cordova plugin, or a custom plugin, by using Visual Studio. You can also reference additional plugins from the Cordova registry by editing config.xml.
 
 When you build your solution, the plugin is installed from the Cordova registry.
 
-### To add a plugin in the Visual Studio configuration designer
+### To add or remove a plugin in the Visual Studio configuration designer
 
 1. In **Solution Explorer**, open the shortcut menu for the config.xml file, and then choose **Open** or **View Designer**.
 
-2. In the configuration designer, choose the **Plugins** tab. 
+2. In the configuration designer, choose the **Plugins** tab.
 3. Select the type of plugin that you want to enable in your app (either Core or Custom). (See the [List of available plugins](#List).)
 
    * To add a core plugin, select the plugin and choose the **Add** button.
@@ -44,20 +44,22 @@ When you build your solution, the plugin is installed from the Cordova registry.
         ![Adding a plugin](media/manage-plugins/IC795804.png)
 
    * To add a custom plugin, specify either Local or Git as the source, and then provide the location by browsing or specifying a Git repository, as indicated.
-          
+
         The following illustration shows how to add a custom plugin from a Git repository in the configuration designer.
 
-        For example, here is the repository for PushPlugin: [https://github.com/phonegap-build/PushPlugin.git](https://github.com/phonegap-build/PushPlugin.git). 
+        For example, here is the repository for PushPlugin: [https://github.com/phonegap-build/PushPlugin.git](https://github.com/phonegap-build/PushPlugin.git).
 
         ![Cordova_Plugin_Custom](media/manage-plugins/IC795805.png)
- 
+
 When you add the plugin, Visual Studio also makes changes to your config.xml file. For more information about editing config.xml, see the [Cordova config.xml documentation](http://go.microsoft.com/fwlink/p/?LinkID=510632).
 
 When you add a custom plugin, Visual Studio also adds the plugin folder and file structure to the project in the plugins folder. The important plugin files include: **plugin.xml**, the plugin’s **src** folder and **www** folder.
 
-To remove a plugin, find the plugin in the configuration designer and choose the **Remove** button.
+To remove a plugin, open the **Installed** page, choose the plugin, and then choose the **Remove** button.
 
-If you experience any errors adding a plugin, see these [tips and workarounds](./tips-and-workarounds/tips-and-workarounds-general-readme.md).
+![Removing a plugin](media/manage-plugins/remove-plugins.png)
+
+If you experience any errors when you add remove a plugin, see these [tips and workarounds](./tips-and-workarounds/tips-and-workarounds-general-readme.md).
 
 To write code for a particular plugin, see the [Plugin APIs](http://cordova.apache.org/docs/en/4.0.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs).
 
@@ -79,17 +81,21 @@ Occasionally you might need to install a specific version of a Cordova plugin th
 
 3. Add the following element to config.xml under the root widget element:
 
-        <vs:plugin name="org.apache.cordova.pluginname" version="0.1.1" />
+        <vs:plugin name="org-apache-cordova-pluginname" version="0.1.1" />
 
-4. Replace ```org.apache.cordova.pluginname``` with the correct ID, and replace ```0.1.1``` with the correct version. The plugin will be installed the next time that you build the app.
+4. Replace ```org-apache-cordova-pluginname``` with the correct ID, and replace ```0.1.1``` with the correct version. The plugin will be installed the next time that you build the app.
 
 You can add plugins using a Git URI or the local filesystem by using the **Custom** tab of the **Plugins** section in the config.xml designer. Using a Git URI can cause you to get a “dev” version of a plugin. See [these instructions](./tips-and-workarounds/tips-and-workarounds-general-readme.md) if you want to use a specific version of a GitHub sourced plugin.
+
+### To remove the plugin
+
+1. In the config.xml file, delete the widget element that represents the plugin that you want to remove.
 
 ## <a id="Configuring"></a>Configuring plugin parameters
 
 When you are adding a plugin using the configuration designer, you can also specify plugin parameters in the UI. However, when adding a plugin not present in the configuration designer (by editing config.xml), you can also specify parameters by using some additional XML elements. For example, to configure the Facebook plugin, you can edit the following parameters in config.xml.
 
-    <vs:plugin name="com.phonegap.plugins.facebookconnect" version="0.8.1">
+    <vs:plugin name="com-phonegap-plugins-facebookconnect" version="0.8.1">
           <param name="APP_ID" value="12345678" />
           <param name="APP_NAME" value="My Facebook App" />
     </vs:plugin>
@@ -130,7 +136,7 @@ The following plugins are available using the Config Designer:
 
 * **Device** ([org.apache.cordova.device](http://plugins.cordova.io/#/package/org.apache.cordova.device)) Provides access to information about the hardware and software of the device. For example, this could be the model number or platform of the device.
 
-* **Dialogs / Notifications** ([org.apache.cordova.dialogs](http://plugins.cordova.io/#/package/org.apache.cordova.dialogs)) Enables your app to display dialog boxes. 
+* **Dialogs / Notifications** ([org.apache.cordova.dialogs](http://plugins.cordova.io/#/package/org.apache.cordova.dialogs)) Enables your app to display dialog boxes.
 
 * **File System** ([org.apache.cordova.file](http://plugins.cordova.io/#/package/org.apache.cordova.file)) Enables your app to read, write, and navigate through the file system of the device.
 
