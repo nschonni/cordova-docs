@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Not sure yet | Cordova"
-   description="description"
+   pageTitle="Change the CLI version of your Visual Studio Tools for Apache Cordova project | Cordova"
+   description="Change the CLI version of your Visual Studio Tools for Apache Cordova project"
    services="na"
    documentationCenter=""
    authors="normesta"
@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="12/01/2015"
+   ms.date="12/03/2015"
    ms.author="normesta"/>
 
 # Change the CLI version of your Visual Studio Tools for Apache Cordova project
