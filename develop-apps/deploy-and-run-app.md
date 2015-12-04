@@ -16,4 +16,4 @@
 
 # Deploy and run your app built with Visual Studio Tools for Apache Cordova
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/deploy-and-run-app.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/deploy-and-run-app.md).

@@ -6,4 +6,4 @@
 
 #**VS Debugger Known Issues and Limitations**
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/known-issues/known-issues-debugger.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/known-issues/known-issues-debugger.md).

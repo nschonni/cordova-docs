@@ -16,4 +16,4 @@
 
 # Migrate a Visual Studio 2013 project to Visual Studio 2015
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/migrate-to-vs2015.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/migrate-to-vs2015.md).

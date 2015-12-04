@@ -6,4 +6,4 @@
 
 # Use TypeScript in a Cordova project
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/tutorial-typescript.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/tutorial-typescript.md).

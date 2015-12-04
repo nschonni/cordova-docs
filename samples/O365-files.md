@@ -16,4 +16,4 @@
 
 #Cordova sample app with O365 Discovery Service and the Files API
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/samples/O365-files.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/samples/O365-files.md).

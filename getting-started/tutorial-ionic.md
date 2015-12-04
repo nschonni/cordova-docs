@@ -7,4 +7,4 @@
 
 # Get started with Ionic apps in Visual Studio
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/tutorial-ionic.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/tutorial-ionic.md).

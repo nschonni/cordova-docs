@@ -13,14 +13,12 @@
      ms.author="clantz"/>
 
 # Use the Visual Studio Tools for Apache Cordova with the Jenkins CI system
-This tutorial is part of a [series of tutorials](./tutorial-team-build-readme.md) on building Visual Studio 2015 Tools for Apache Cordova projects in a Team / CI environment.
-
 ## Background
 [Jenkins](http://go.microsoft.com/fwlink/?LinkID=613695) is a hugely popular CI server with a large install base so using it to build your Cordova project may be the way to go if you already have it installed and running in your environment. Fortunatley Tools for Apache Cordova is designed to work with a number of different team build systems since the projects it creates are standard [Apache Cordova Command Line interface](http://go.microsoft.com/fwlink/?LinkID=533773) (CLI) projects.
 
 [Gulp](http://go.microsoft.com/fwlink/?LinkID=533803) is an increasingly popular JavaScript based task runner with a large number of [useful plugins](http://go.microsoft.com/fwlink/?LinkID=533790) designed to automate common “tasks” for everything from compilation, to packaging, deployment, or simply copying files around. Both Gulp and Cordova CLI are Node.js based which makes the two highly complementary technologies. For these reasons, this tutorial will focus on the use Gulp rather than MSBuild as the primary build language for Cordova apps when using Jenkins.
 
->**Troubleshooting Tip**: Be aware that we recommend against adding the "platforms" folder or the following json files in the "plugins" folder into source control: android.json, ios.json, remote_ios.json, windows.json, and wp8.json. See "What to Add to Source Control" in the [general team build tutorial](./general.md#whattoadd) for additional details.
+>**Troubleshooting Tip**: Be aware that we recommend against adding the "platforms" folder or the following json files in the "plugins" folder into source control: android.json, ios.json, remote_ios.json, windows.json, and wp8.json. See "What to Add to Source Control" in the [general CI guide](./general.md#whattoadd) for additional details.
 
 ## Initial Setup
 Since the build process we will describe here is not directly dependent on MSBuild or Visual Studio, you have two options for installing pre-requisites on Windows:
@@ -286,7 +284,7 @@ The OSX version of the build is similar but adds one additional requirement: Unl
 	**Trouble Shooting Tip:** See ["Troubleshooting Tips for Building on OSX" in the general CI tutorial](./general.md#osxgotcha) for tips on resolving common build errors that can occur when building Cordova projects on that operating system.
 
 ## More Information
-* [Learn about other Team Build / CI options](./tutorial-team-build-readme.md)
+* [Learn about other CI options](./tutorial-team-build-readme.md)
 * [Read tutorials and learn about tips, tricks, and known issues](../cordova-docs-readme.md)
 * [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
 * [Follow us on Twitter](https://twitter.com/VSCordovaTools)

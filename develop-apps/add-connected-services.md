@@ -16,4 +16,4 @@
 
 # Add connected services to your Apache Cordova app
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/add-connected-services.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/add-connected-services.md).

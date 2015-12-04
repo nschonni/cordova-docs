@@ -16,4 +16,4 @@
 
 # Create your first app by using Visual Studio Tools for Apache Cordova
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/create-first-app-using-vs-tools-apache-cordova.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/create-first-app-using-vs-tools-apache-cordova.md).

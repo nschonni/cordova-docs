@@ -17,4 +17,4 @@
 
 # Run the Android emulator on OSX when using Windows in Parallels
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/debug-and-test/run-android-emulator-on-osx-using-parallels.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/debug-and-test/run-android-emulator-on-osx-using-parallels.md).

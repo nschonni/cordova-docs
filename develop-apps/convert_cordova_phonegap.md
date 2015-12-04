@@ -16,4 +16,4 @@
 
 # Convert a Cordova project to a PhoneGap project
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/convert_cordova_phonegap.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/convert_cordova_phonegap.md).

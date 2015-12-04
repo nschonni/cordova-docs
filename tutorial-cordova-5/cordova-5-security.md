@@ -7,4 +7,4 @@
 #An introduction to Cordova 5 security
 
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tutorial-cordova-5/cordova-5-security.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tutorial-cordova-5/cordova-5-security.md).

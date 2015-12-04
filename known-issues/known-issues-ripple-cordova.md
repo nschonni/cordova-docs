@@ -6,4 +6,4 @@
 
 #**Known Issues - Apache Cordova and Apache Ripple**
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/known-issues/known-issues-ripple-cordova.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/known-issues/known-issues-ripple-cordova.md).

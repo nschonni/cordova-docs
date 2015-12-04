@@ -16,4 +16,4 @@
 
 # Build and simulate a Cordova iOS app in the cloud
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/build_ios_cloud.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/build_ios_cloud.md).

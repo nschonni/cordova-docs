@@ -6,4 +6,4 @@
 
 #**Known Issues - Android**
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/known-issues/known-issues-android.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/known-issues/known-issues-android.md).

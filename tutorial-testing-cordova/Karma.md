@@ -6,4 +6,4 @@
 
 #Test Apache Cordova apps with Karma and Jasmine
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tutorial-testing-cordova/Karma.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tutorial-testing-cordova/Karma.md).

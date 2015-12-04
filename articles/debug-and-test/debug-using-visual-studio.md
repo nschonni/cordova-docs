@@ -15,7 +15,112 @@
    ms.author="clantz"/>
 # Debug your app built with Visual Studio Tools for Apache Cordova
 
-Visual Studio brings a seamless and common tooling experience for developing Cordova apps across app types and device platforms. However, in this early release, not all device platforms support all Visual Studio debugger and diagnostic capabilities, as shown in the following table.
+Visual Studio brings a seamless and common tooling experience for developing Cordova apps across app types and device platforms. When developing Apache Cordova apps, you can use diagnostic tools such as the Visual Studio debugger, the DOM Explorer, and the JavaScript Console to fix problems in your apps. For platform-specific differences in the debugger experience, see [Debugging features by platform](#Debugging features by platform).
+
+This article matches the steps of the Cordova [Video tutorial](http://go.microsoft.com/fwlink/p/?LinkID=534729) on debugging. The steps match video content that follows the introduction of the tools and features (approximately four minutes from the start).  If you want steps to debug for a particular platform, see [Debugging features by platform](#Debugging features by platform).
+
+### Use the diagnostic tools
+
+To use Visual Studio to debug your Cordova apps, you must:
+
+1.  [Install Visual Studio 2015](http://go.microsoft.com/fwlink/p/?LinkId=397606) with Visual Studio Tools for Apache Cordova.
+
+2.  If you want to follow the steps in this tutorial, download the [AngularJS ToDoList sample](http://go.microsoft.com/fwlink/?LinkID=398516), unzip it, and open the solution (.sln file) in Visual Studio.
+
+    You don't need the AngularJS sample to debug, of course, but we are using it in the first example.
+
+### To use the diagnostic tools
+
+1.  With the AngularJS ToDoList sample app open in Visual Studio, choose Android in the **Solution Platforms** list.
+
+2.  Choose **Ripple Nexus (Galaxy)** as a debug target.
+
+3.  Press F5 to start the debugger.
+
+4.  When the ToDoList app loads in Ripple, add another task item to verify that the app is working correctly.
+
+5.  In controllers.js, add a breakpoint to `var text = $scope.newToDoText;` in the `addToDo` function by clicking in the gray left margin.
+
+	```javascript
+$scope.addToDo = function () {
+    var text = $scope.newToDoText;
+    if (!text) {
+    return;
+};
+```
+
+    With the breakpoint added, the editor looks like this.
+
+    ![Setting a breakpoint](media/debug-using-visual-studio/video-debug-breakpoint.png)
+
+6. In the running app, add another ToDoList task item.
+
+    Now, when you enter the item, the debugger breaks into your code.
+
+    ![Stepping over code](media/debug-using-visual-studio/video-debug-hit-breakpoint.png)
+
+    From here, you can:
+
+    *   Mouse over variables to see their current value (see preceding illustration).
+
+    *   Press F10 to step over code, allowing you to check updated values.
+
+    *   Open the shortcut menu for a selected variable and choose **Add Watch**.
+
+        The selected variable appears in the Watch window, giving you a great way view multiple variables and their values while they change as you step through code.
+
+        ![Using the Watch Window](media/debug-using-visual-studio/video-debug-add-watch.png)
+    *   Use the Locals and Call Stack windows to find more information about the state of the app while you debug.
+
+7. While your app is running, select the [DOM Explorer](https://msdn.microsoft.com/library/hh441474.aspx) tab.
+
+    On the left of the DOM Explorer, you have a view of the live DOM.
+
+    If your app is running and you can't see the DOM Explorer, choose **Debug**, **Windows**, **DOM Explorer**, and then choose the start page of your app.
+
+8. In DOM Explorer, choose the **Select Element** button and select something, like a list item, in the Ripple emulator.
+
+    ![Selecting an element from DOM Explorer](media/debug-using-visual-studio/video-debug-select-element.png)
+
+    When you select the element, the corresponding element is highlighted in the DOM Explorer.
+
+    On the right, you have the CSS property values for the currently selected element.
+
+    *   The Styles tab shows the CSS styles associated with the element with styles organized by CSS selector name.
+
+    *   The Computed tab shows real-time CSS style property values for the element.
+
+    *   The Layout tab shows the box model for the element.
+
+    You can make changes to your UI right here in DOM Explorer (in the live DOM view, Styles, and Layout tabs), and see the changes immediately reflected in your running app. This makes the UI easier to debug.
+
+    For example, you could edit the font size for a list item (an **input** element) in the Styles tab.
+
+    ![Editings a value in the Styles tab](media/debug-using-visual-studio/video-debug-dom-ex.png)
+
+9.  Select an element such as the location under a ToDo list item (an **h3** element) and edit the value.
+
+    Your changes will appear in the app in the Ripple emulator.
+
+    Another critical tool to help debug Cordova apps is the JavaScript Console. You can also use the JavaScript Console window to read errors and messages sent from your running app, and also to evaluate lines of JavaScript code that run within the current script context.
+10. Look at the output in the JavaScript Console window to view messages.
+
+	>**Note**: For a list of commands such as `console.log`, see [JavaScript Console commands](https://msdn.microsoft.com/library/hh696634.aspx)
+
+11.  To evaluate JavaScript, type JavaScript code in the input box. For example, type "document." and you will see IntelliSense information for the document object for the current HTML page displayed in Ripple (Chrome).
+
+    ![Using the JavaScript Console](media/debug-using-visual-studio/video-debug-js-console.png)
+
+    You can run code by pressing Enter (single-line mode) or by choosing the green arrow button (multi-line mode).
+
+12.  Press Enter to see the value of the document object in the console window.
+
+	>**Tip**: Set breakpoints in your code to get your app into the desired state, and then use the JavaScript Console to check variables and evaluate code.
+
+
+## Debugging features by platform
+
+Visual Studio debugger and diagnostic capabilities and their plaform-specific differences, are shown in the following table.
 
 <style>
     table, th, td {
@@ -71,17 +176,17 @@ Visual Studio brings a seamless and common tooling experience for developing Cor
 
 >**Note**: If you are using Windows 7, you can develop apps for Android and iOS, but not for Windows or Windows Phone. To run the app on Windows Server 2012 R2, you must enable the **Desktop Experience** option.
 
-In this article:
+In this section:
 
-[Debug Android and iOS in Apache Ripple](#DbgRipple)
+* [Debug Android and iOS in Apache Ripple](#DbgRipple)
 
-[Debug Android on the emulator or a device](#DbgAndroid)
+* [Debug Android on the emulator or a device](#DbgAndroid)
 
-[Debug iOS on the emulator or a device](#DbgIOS)
+* [Debug iOS on the emulator or a device](#DbgIOS)
 
-[Debug Windows and Windows Phone](#DbgWindows)
+* [Debug Windows and Windows Phone](#DbgWindows)
 
->**Caution**: For a video and accompanying tutorial that shows you how to debug using the Visual Studio debugger, DOM Explorer, and the JavaScript Console, see [Video Walkthrough: Debug using Visual Studio Diagnostic Tools for Cordova](../video/debug-using-vs-diagnostic-tools.md)
+>**Tip**: For a video and accompanying tutorial that shows you how to debug using the Visual Studio debugger, DOM Explorer, and the JavaScript Console, see [Video Walkthrough: Debug using Visual Studio Diagnostic Tools for Cordova](../video/debug-using-vs-diagnostic-tools.md)
 
 You can attach the Visual Studio debugger to an app that’s running in the Apache Ripple emulator.
 

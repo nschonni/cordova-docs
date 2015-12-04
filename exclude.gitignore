@@ -1,0 +1,16 @@
+# exclude top level folders--they're deprecated
+
+/debug-and-test
+/develop-apps
+/getting-started
+/known-issues
+/package-and-publish
+/samples
+/tips-and-workarounds
+/tutorial-cordova-5
+/tutorial-gulp
+/tutorial-package-publish
+/tutorial-plugin
+/tutorial-team-build
+/tutorial-testing-cordova
+/video

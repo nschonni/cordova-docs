@@ -6,4 +6,4 @@
 
 #**Known Issues - Visual Studio 2015**
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/known-issues/known-issues-vs2015.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/known-issues/known-issues-vs2015.md).

@@ -16,4 +16,4 @@
 
 # Access a native Cordova project
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/access-native-cordova-project.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/access-native-cordova-project.md).

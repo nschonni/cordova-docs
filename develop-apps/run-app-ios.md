@@ -16,4 +16,4 @@
 
 # Run your Apache Cordova app on iOS
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/run-app-ios.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/run-app-ios.md).

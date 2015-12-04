@@ -100,43 +100,39 @@ If you need to set this environment variable manually, see [Override system envi
 
          * Google APIs (ARM System Image)
 
-      * If you want to use Cordova 5.0.0 or later:
+         * If you want to use Cordova 5.0.0 or later:
 
-         * Android 5.1.x (API level 22) with the following packages:
+           * Android 5.1.x (API level 22) with the following packages: SDK platform
 
-          SDK platform
+           The following illustration shows the minimum required packages in the Android SDK Manager.
 
-          If you want to use the Google Android Emulator to emulate a 5.1.x device:
+           ![Cordova_SDK_Android_Packages](media/configure-vs-tools-apache-cordova/IC795810.png)
 
-          * ARM EABI v7a System Image
+           Set the ADT_HOME environment variable to the SDK installation location.
 
-          * Intel x86 Atom System Image
+           Add this to the system path: %ADT_HOME%\tools;%ADT_HOME%\platform-tools
 
-          * Google APIs (x86 System Image)
+           If you need to set this environment variable manually, see [Override system environment variables](#env-var).
 
-          * Google APIs (ARM System Image)
+          >**Tip:** If you install the Android SDK to its default location on Windows, it gets installed to C:\Program Files (x86)\Android\android-sdk.
 
-     The following illustration shows the minimum required packages in the Android SDK Manager.
+* If you want to use the Google Android Emulator to emulate a 5.1.x device:
 
-     ![Cordova_SDK_Android_Packages](media/configure-vs-tools-apache-cordova/IC795810.png)
+  * ARM EABI v7a System Image
 
-     Set the ADT_HOME environment variable to the SDK installation location.
+  * Intel x86 Atom System Image
 
-     Add this to the system path: %ADT_HOME%\tools;%ADT_HOME%\platform-tools
+  * Google APIs (x86 System Image)
 
-     If you need to set this environment variable manually, see [Override system environment variables](#env-var).
+  * Google APIs (ARM System Image)
 
-    >**Tip:**
-If you install the Android SDK to its default location on Windows, it gets installed to C:\Program Files (x86)\Android\android-sdk.
+  * Apple iTunes ([x86](http://go.microsoft.com/fwlink/?LinkID=397715), [x64](http://go.microsoft.com/fwlink/?LinkID=397313))
 
-   * Apple iTunes ([x86](http://go.microsoft.com/fwlink/?LinkID=397715), [x64](http://go.microsoft.com/fwlink/?LinkID=397313))
+  * WebSocket4Net (required if you’re developing your app on Windows 7)
 
-   * WebSocket4Net (required if you’re developing your app on Windows 7)
-
-       1. Download WebSocket4Net(0.9).Binaries.zip from [CodePlex](http://go.microsoft.com/fwlink/?LinkID=403031).
-       2. Unzip the binaries and then unblock net45\Release\WebSocket4Net.dll
-To unblock the DLL, open the file Properties for the DLL and choose Unblock in the General tab (at the bottom of the dialog box).
-       3. After you unblock the DLL, copy net45\Release\WebSocket4Net.dll into the %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\WebClient\Diagnostics\ToolWindows folder on your computer.
+    1. Download WebSocket4Net(0.9).Binaries.zip from [CodePlex](http://go.microsoft.com/fwlink/?LinkID=403031).
+    2. Unzip the binaries and then unblock net45\Release\WebSocket4Net.dll. To unblock the DLL, open the file Properties for the DLL and choose Unblock in the General tab (at the bottom of the dialog box).
+    3. After you unblock the DLL, copy net45\Release\WebSocket4Net.dll into the %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\WebClient\Diagnostics\ToolWindows folder on your computer.
 
 ##<a name="env-var"></a>Override system environment variables
 
@@ -168,8 +164,8 @@ Visual Studio uses these environment variables when building and running your ap
 
     * To reset an environment variable to its default value, clear its check box or choose **Reset to Default**.
 
-3. Choose **OK** to save your changes and close the dialog box.
-![Environment variables, warning message](media/configure-vs-tools-apache-cordova/IC752249.png)
+3. Choose the **OK** button to save your changes and close the dialog box.
+![Environment variables, warning message](media/configure-vs-tools-apache-cordova/options-dialog.png)
 
 ##<a name="IosPin"></a>Generate a new security PIN
 

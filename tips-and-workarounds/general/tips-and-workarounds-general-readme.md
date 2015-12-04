@@ -6,4 +6,4 @@
 
 #General Cordova tips and workarounds
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tips-and-workarounds/general/tips-and-workarounds-general-readme.md).

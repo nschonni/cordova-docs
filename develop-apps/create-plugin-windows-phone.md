@@ -16,4 +16,4 @@
 
 # Create a Cordova plugin for Windows and Windows Phone
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/create-plugin-windows-phone.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/create-plugin-windows-phone.md).

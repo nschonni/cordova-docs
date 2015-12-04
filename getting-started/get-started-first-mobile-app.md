@@ -14,8 +14,6 @@
    ms.date="09/10/2015"
    ms.author="normesta"/>
 
-# **NOTE:** This article is depreciated. Current articles can be found in the [Articles folder](/articles/).
-
 # Get started with Visual Studio Tools for Apache Cordova
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/get-started-first-mobile-app.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/get-started-first-mobile-app.md).

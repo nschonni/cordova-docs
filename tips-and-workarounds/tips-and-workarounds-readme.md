@@ -6,4 +6,4 @@
 
 # Visual Studio Tools for Apache Cordova tips & workarounds
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tips-and-workarounds/tips-and-workarounds-readme.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tips-and-workarounds/tips-and-workarounds-readme.md).

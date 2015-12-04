@@ -22,7 +22,9 @@
 
 To follow these steps, you must:
 
-1. [Install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794) with Visual Studio Tools for Apache Cordova.
+1. [Install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
+
+    When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
 
 2. Make sure your Visual Studio setup is correct by creating and running the default Blank App template.
 
@@ -51,41 +53,42 @@ To follow these steps, you must:
     ionic start ionicMySideMenu sidemenu
     ```
 
-  Ionic creates the project in your current folder.
+    Ionic creates the project in your current folder.
 
 4. Use the same command to install more templates, such as:
 
     ```
-    ionic start ionicMyView view
     ionic start ionicMyTabs tabs
-    ionic start ionicMySlide slide
+    ionic start ionicMySlide blank
     ```
+>**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015 (recommended), see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015.
 
 ## Modify the project to work with VS <a name="configTemplates"></a>
 
 For each of the Ionic starter app templates that you installed and want to run, do this:
 
-1. In Windows, open the folder where you created the Blank App project (which you named "blank" in the previous steps).
-2. Copy blank.jsproj and taco.json from this folder to the Ionic starter template folder (for example, ionicMySideMenu).
+1. In Visual Studio, choose **File**, **New**, **Project From Existing Code**.
+2. In the wizard, choose **Apache Cordova** as the project type that you'd like to create, and then choose **Next**.
 
-    ![Modify the project](media/tutorial-ionic/ionic-folder-structure.png)
+    ![Create a project from existing code](media/tutorial-ionic/ionic-create-wizard.png)
 
-    >**Note**: You may want to rename blank.jsproj to ionicMySideMenu.jsproj (or to the name of your starter template project).
+3. For the **Project file location**, browse to the root folder of the Ionic project and select it.
 
-3. In the Ionic starter template folder, open the .jsproj file. It will open in Visual Studio 2015.
-  Wait for Bower/NPM updates to the project to finish, if necessary.
+    ![Select the source project](media/tutorial-ionic/ionic-create-specify-root.png)
 
-4. Save the project to create a Visual Studio solution File (.sln).
+4. Type a name for your new project and select **Finish**.
+
+    Visual Studio creates the new project. Wait for Bower/NPM updates to the project to finish, if necessary.
 
 ## Get your app running on Android <a name="configAndroid"></a>
 
 1. If you want to use the Ionic CLI to add the Android platform, use this command in the command line:
 
     ```
-    ionic platform add Android
+    ionic platform add android
     ```
 
-  Or, you can add the platform by building in VS (choose **Build** > **Build Solution**).
+    Or, you can add the platform by building in VS (choose **Build** > **Build Solution**).
 
 2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as Ripple (Chrome required) or the **VS Emulator 5" KitKat (4.4)** (Hyper-V required).
 
@@ -95,7 +98,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     ![App running in the emulator](media/tutorial-ionic/ionic-sidemenu.png)
 
-  >**Note**: If you have previously run the VS Emulator for Android and you have errors, try deleting the emulator VM instance in Hyper-V Manager. Otherwise, if you have errors see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282(v=vs.140).aspx).
+  >**Note**: If you have previously run the VS Emulator for Android and you have errors, try deleting the emulator VM instance in Hyper-V Manager. Otherwise, if you have errors see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
 ## Get your app running on iOS <a name="configiOS"></a>
 
@@ -105,11 +108,11 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
 ## Get your app running on Windows 10
 
-To target Windows 10 in the app, you need to:
+To target Windows 10 in your app, you need to:
 
 1. Use the Visual Studio install program to install the **Universal Windows App Development Tools** (optional software).
 
-2. In the Platforms tab of the configuration designer, enter 5.1.1 as the Cordova version.
+2. In the Platforms tab of the configuration designer, enter 5.3.1 (or 5.1.1) as the Cordova version.
 
 3. Choose **Build Solution** from the **Build** menu.
 
@@ -123,7 +126,7 @@ To target Windows 10 in the app, you need to:
 
 1. Open the folder for the Blank App project created in Visual Studio and copy the merges folder (and its contents) to your Ionic project. Copy the folder under the top level folder (for example, under ionicMySideMenu folder).
 
-  When you complete the next few steps, you will resolve errors loading partial pages by using the winstore-jscompat.js shim.
+    When you complete the next few steps, you will resolve errors loading partial pages by using the winstore-jscompat.js shim.
 
 2. In the Ionic project, create a **scripts** folder under www, and copy platformOverrides.js from the Blank App project's `www\scripts` folder to the new scripts folder.
 
@@ -139,7 +142,7 @@ To target Windows 10 in the app, you need to:
 
 4. Select **Windows** or **Windows Phone (Universal)** as a debug target (Solution Platforms list).
 
-  * For Windows, choose **Local Machine** as the deployment target.
+  * For Windows, choose **Local Machine** as the deployment target (if you are running on Windows 8.1).
 
   * For Windows Phone 8.1, choose one of the Emulator 8.1 options.
 
@@ -147,7 +150,7 @@ To target Windows 10 in the app, you need to:
 
     > **Note**: If you see the TypeScript error or the Keyboard plugin error, see the previous steps for Android to resolve.
 
-## Errors in the Ionic starter apps?
+## Common issues and workarounds
 
 A few errors are fairly common in the starter templates when debugging in Visual Studio.
 
@@ -169,9 +172,9 @@ Add the following git URL and rebuld.
 https://github.com/driftyco/ionic-plugins-keyboard.git
 ```
 
-You can add plugins in the configuration designer so that Visual Studio can recognize the plugin and add the reference to config.xml.
+If you add the plugins using the configuration designer, Visual Studio can recognize the plugin and add the plugin reference to config.xml.
 
-> **Note**: Some APIs used in the templates for this plugin are iOS only, like `hideKeyboardAccessoryBar`.
+> **Note**: Some APIs used in the templates for the Keyboard plugin are iOS only, like `hideKeyboardAccessoryBar`.
 
 ### TypeScript errors?
 
@@ -191,9 +194,9 @@ When debugging on a Windows 8.1 dev machine, you may get a WWAHost runtime error
 
 ### Partial pages don't load?
 
-Also, when you are using the AngularJS routing module (Ionic starter templates often use this module), you may need to include a call to `aHrefSanitizationWhitelist`.
+When you are using the AngularJS routing module (Ionic starter templates often use this module), you may need to include a call to `aHrefSanitizationWhitelist`.
 
-If you see this dialog box, you have likely run into this issue.
+If you see the dialog box shown here, you have likely run into this issue.
 
 ![partial pages don't load](media/tutorial-ionic/ionic-error-partial-pages.png)
 
@@ -204,21 +207,22 @@ $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?
 
 $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|ms-appx|ms-appx-web|x-wmapp0):|data:image\//);
 ```
-If you use the preceding code, then update the following line of code with a reference to the $compileProvider.
-
-This line:
+If you use the preceding code, then add a reference to $compileProvider in the following line of code.
 
 ```
 .config(function ($stateProvider, $urlRouterProvider) {
   ```
-needs to be changed to this:
+
+so that it looks like this:
 
 ```
 .config(function ($compileProvider, $stateProvider, $urlRouterProvider) {
   ```
 
-### Unhandled exception running on Windows 8.1?
+### Unhandled exception running on Windows?
 
 If you see the following unhandled exception when targeting Win/WinPhone 8.1, follow the [earlier steps](#configWindows) to call platformOverrides.js to fix this issue.
 
 ![unhandled exception](media/tutorial-ionic/ionic-unhandled-exception.png)
+
+If you see the same error when targeting Windows 10, make sure you set **Windows 10.0** as the target in the Windows tab of the configuation designer.

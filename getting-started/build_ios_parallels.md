@@ -16,4 +16,4 @@
 
 #Build a Cordova app for iOS by using Parallels
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/build_ios_parallels.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/build_ios_parallels.md).

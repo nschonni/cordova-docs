@@ -16,4 +16,4 @@
 
 # Run your Apache Cordova app on Android
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/run-app-apache.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/run-app-apache.md).

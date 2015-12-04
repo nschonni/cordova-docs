@@ -16,4 +16,4 @@
 
 # Application Lifecycle Management (ALM) with Apache Cordova Apps
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/develop-apps/alm-cordova.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/develop-apps/alm-cordova.md).

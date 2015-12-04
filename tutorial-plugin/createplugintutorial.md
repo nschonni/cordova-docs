@@ -6,4 +6,4 @@
 
 # Build your first Cordova plugin
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tutorial-plugin/createplugintutorial.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tutorial-plugin/createplugintutorial.md).

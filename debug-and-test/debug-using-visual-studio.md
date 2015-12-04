@@ -17,4 +17,4 @@
 
 # Debug your app built with Visual Studio Tools for Apache Cordova
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/debug-and-test/debug-using-visual-studio.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/debug-and-test/debug-using-visual-studio.md).

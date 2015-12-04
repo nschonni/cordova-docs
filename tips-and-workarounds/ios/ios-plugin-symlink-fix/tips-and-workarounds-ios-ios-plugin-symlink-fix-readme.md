@@ -6,4 +6,4 @@
 
 #Cordova plugin Symlink fix for iOS plugins with custom frameworks
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tips-and-workarounds/ios/ios-plugin-symlink-fix/tips-and-workarounds-ios-ios-plugin-symlink-fix-readme.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tips-and-workarounds/ios/ios-plugin-symlink-fix/tips-and-workarounds-ios-ios-plugin-symlink-fix-readme.md).

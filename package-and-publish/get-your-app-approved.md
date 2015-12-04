@@ -17,4 +17,4 @@
 # Get your Apache Cordova app approved by the app stores
 
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/package-and-publish/get-your-app-approved.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/package-and-publish/get-your-app-approved.md).

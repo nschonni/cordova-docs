@@ -6,5 +6,5 @@
 
   #Workaround for Missing Execute Bit for Builds on OSX After Checking in Platforms Folder from Windows
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tips-and-workarounds/ios/osx-set-execute/tips-and-workarounds-ios-osx-set-execute-readme.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tips-and-workarounds/ios/osx-set-execute/tips-and-workarounds-ios-osx-set-execute-readme.md).
 

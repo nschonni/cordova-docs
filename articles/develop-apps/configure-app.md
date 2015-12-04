@@ -11,54 +11,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="09/10/2015"
+   ms.date="11/12/2015"
    ms.author="normesta"/>
-# Configure your app built with Visual Studio Tools for Apache Cordova
 
-A config.xml file included in each project provides most of your app configuration such as the app’s display name and start page. From **Solution Explorer**, you can double-click this file to open it in the configuration designer, a Visual Studio interface for the file.
+# Add platform-specific content to your Cordova project
 
-Alternatively, you can select **View Code** from the context menu to edit the file directly. For more information about this file, see [config.xml file](http://go.microsoft.com/fwlink/p/?LinkID=510632) in the Apache Cordova documentation.
+Tailor your app to specific platforms with images, functions, styles, and configuration files.  
 
->**Caution:**
-If you edit the config.xml file directly, make sure that your XML elements and attributes are valid. Invalid content in the XML file will result in errors when you build the app.
+## <a id="VisualAssets"></a>Add platform-specific visual assets
 
-## <a id="ConfigCLI"></a>Configure the Cordova CLI version
+Add visual assets such as icons and splash screens for specific device resolutions and platforms to the **res** folder.
 
-You can use the configuration designer to change the CLI version used in your project. To change the version, choose the **Platforms** tab and enter one of the following:
+* The **res\icons\platform** subfolder contains the app icons for each platform.
 
-* Cordova CLI version (for example, 4.3.0).
+* The **res\screens\platform** subfolder contains splash screens for each platform.
 
-* Git repository (for example, https://github.com/apache/cordova-cli.git) Alternatively, you can change the Cordova CLI version by editing the taco.json file in your project root.
+The file name of each resource provides some information about the asset. For example, the **screen-ldpi-portrait.png** file in the **res\icons\screens\android** folder represents a splash screen for a low-resolution screen (ldpi, or 426x320) for an Android device in portrait orientation.
 
-  >**Caution:**
-Changing the Cordova CLI version may impact your application code. Platforms will be removed and then re-added to use the CLI pinned versions.
-
-![Configuring the CLI version](media/configure-app/IC795807.png)
-
-## <a id="ConfigWindows"></a>Configure the Windows target version
-
-You can change the targeted version of Windows in the configuration designer, under the Windows tab (Windows Target Version).
-
-![Cordova_Config_Windows](media/configure-app/IC795808.png)
-
-The options that appear in Windows Target Version depend on which SDK is installed. If you install the Windows 8.0 or Windows 10 SDKs, the corresponding version will appear as an option that you can select. When you change the Windows target version, the following line is modified in your config.xml file:
-
-    <preference name="windows-target-version" value="8.1" />
-
-## <a id="VisualAssets"></a>Platform-specific visual assets
-
-You can use the res folder in your project to specify visual assets such as icons and splash screens based on device resolution and platform. If you don’t see this folder in your project, you can recreate it manually in **Solution Explorer**.
-
-* res\icons\platform contains the app icons for each platform.
-
-* res\screens\platform contains splash screens for each platform.
-
-    >**Caution:**
-Visual Studio 2015 now uses the and config.xml elements to set the location of these files. If you are using a config.xml file from an earlier version, you will need to add these elements to your config.xml file. To do this, simply create a new project from the Blank template, choose View Code from the shortcut menu for the config.xml file in each project, and then copy the required elements from the Blank project to your project.
-
-The file name of each resource provides some information about the asset. For example, the screen-ldpi-portrait.png file in the res\icons\screens\android folder represents a splash screen for a low-resolution screen (ldpi, or 426x320) for an Android device in portrait orientation.
-
-The following table provides the complete list of splash screens and icons that are required if you need to support specific devices and screen resolutions. For additional information about these assets, see Icons and Splash Screens in the Apache Cordova documentation.
+This table shows the complete list of splash screens and icons that you'll need if you want to support specific devices and screen resolutions. To read more about these assets, see [Icons and Splash Screens](https://cordova.apache.org/docs/en/5.4.0/config_ref/images.html) in the Apache Cordova documentation.
 
 <style>
     table, th, td {
@@ -306,32 +276,30 @@ The following table provides the complete list of splash screens and icons that 
     </tbody>
  </table>
 
-Android supports a scalable type of image called a NinePatch that can be used as your splashscreen.
+Android supports a scalable type of image called a *NinePatch* and you can use it as your splashscreen.
 
-To use a NinePatch splashscreen image on Android
+To use a NinePatch splashscreen image on Android:
 
-1. Change the following line in config.xml:
-
-       <preference name="SplashScreen" value="screen" />
-to
-
-       <preference name="SplashScreen" value="splash" />
+1. In the **config.xml** file, change ```<preference name="SplashScreen" value="screen" />``` to ```<preference name="SplashScreen" value="splash" />```
 
 2. Place the NinePatch image in the following location: res\native\android\res\drawable-nodpi\splash.9.png
-When you build, the image will be copied to the required output folder.
 
-## <a id="Content"></a>Platform-specific content
+   When you build your app, the image gets copied to the right output folder.
 
-You can include platform-specific HTML, CSS, and JavaScript files in the merges folder in your project. The files you add to this folder either add content to a platform-specific build of your app, or override non-platform-specific content that uses the same file name. For more information about using the merges folder, see the section “Using merges to customize each platform” in the [Apache Cordova documentation](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html).
+## <a id="Content"></a>Add platform-specific content
 
-If you don’t see the merges folder for your project in **Solution Explorer**, open the shortcut menu for the project in **Solution Explorer**, choose *Add*, and then choose *Add Platform Specific Code* to add the folder.
+You can include platform-specific HTML, CSS, and JavaScript files to the **merges** folder of your project. The files you add to this folder do one of two things. They add content to a platform-specific build of your app, or, they override non-platform-specific content that uses the same file name.
 
-## <a id="Configuration"></a>Platform-specific configuration files
+For more information about using the **merges** folder, see [Using merges to customize each platform](https://cordova.apache.org/docs/en/edge/guide/cli/#link-9) in the Apache Cordova documentation.
 
-You can use the res/native folder in your project to inject content into the native project generated by Cordova when you build your app. This can be useful when you need to configure your app to support something Cordova itself does not expose. (Plugins that you add to your project will also automatically modify the custom version of these configuration files.)
+If you don’t see the **merges** folder of your project in **Solution Explorer**, open the shortcut menu for the project in **Solution Explorer**, choose *Add*, and then choose *Add Platform Specific Code* to add the folder.
 
->**Caution:**
-We recommend avoiding adding platform-specific configuration files when possible.
+## <a id="Configuration"></a>Add platform-specific configuration files
+
+You can use the **res/native** folder in your project to inject content into the native project that is generated by Cordova when you build your app. This can be useful when you need to configure your app to support something Cordova itself does not expose. (Plugins that you add to your project will also automatically modify the custom version of these configuration files.)
+
+>**Note:**
+We recommend that you avoid adding platform-specific configuration files when possible.
 
 The following table provides specific information for each platform.
 
@@ -345,15 +313,15 @@ The following table provides specific information for each platform.
     <tbody>
         <tr>
             <td>Android</td>
-            <td style="text-align:left">Place the custom <a href="http://developer.android.com/guide/topics/manifest/manifest-intro.html">AndroidManifest.xml</a> file in the res/native/android folder to configure settings such as custom intents. Use the generated version of the file in the platforms/android folder after building a Debug configuration of the project for Android.</td>
+            <td style="text-align:left">Place the custom <a href="http://developer.android.com/guide/topics/manifest/manifest-intro.html">AndroidManifest.xml</a> file in the res/native/android folder to configure settings such as custom intents. <br><br>Use the generated version of the file in the platforms/android folder after building a Debug configuration of the project for Android.></td>
         </tr>
         <tr>
             <td>iOS</td>
-            <td style="text-align:left">Place a custom <a href="http://go.microsoft.com/fwlink/?LinkID=532829">build-debug.xcconfig</a> or <a href="http://go.microsoft.com/fwlink/?LinkID=532830">build-release.xcconfig</a> file in res/native/ios/cordova to override signing identities and other <a href="http://go.microsoft.com/fwlink/?LinkID=532831">build settings</a> for these configurations. Place a custom <a href="http://go.microsoft.com/fwlink/?LinkID=532832">Info.plist</a> file in the res/native/ios/config.xml display name folder to override settings like splashscreens or icons. The Info.plist filename must be renamed as follows: config.xml display name-Info.plist to update <a href="http://go.microsoft.com/fwlink/?LinkID=532834">iOS framework keys</a>. You can find a sample version of these and other files in the <a href="http://go.microsoft.com/fwlink/?LinkID=532835">cordova-ios</a> GitHub repository, or when using the remote agent under the ~/remote-builds/build number/cordovaApp folder on your Mac.</td>
+            <td style="text-align:left">Place a custom <a href="http://go.microsoft.com/fwlink/?LinkID=532829">build-debug.xcconfig</a> or <a href="http://go.microsoft.com/fwlink/?LinkID=532830">build-release.xcconfig</a> file in res/native/ios/cordova to override signing identities and other <a href="http://go.microsoft.com/fwlink/?LinkID=532831">build settings</a> for these configurations. <br><br>Place a custom <a href="http://go.microsoft.com/fwlink/?LinkID=532832">Info.plist</a> file in the res/native/ios/config.xml display name folder to override settings like splashscreens or icons. <br>The Info.plist filename must be renamed as follows: config.xml display name-Info.plist to update <a href="http://go.microsoft.com/fwlink/?LinkID=532834">iOS framework keys</a>. You can find a sample version of these and other files in the <a href="http://go.microsoft.com/fwlink/?LinkID=532835">cordova-ios</a> GitHub repository, or when using the remote agent under the ~/remote-builds/build number/cordovaApp folder on your Mac.</td>
         </tr>
         <tr>
             <td>Windows</td>
-            <td style="text-align:left">Place the custom package.windows80.appxmanifest (Windows 8.0), package.windows.appxmanifest (Windows 8.1), or package.phone.appxmanifestfile (Windows Phone 8.1) in the res/native/windows folder to override various configuration settings. Use the generated version of the file in the platforms/windows folder after building a Debug configuration of the project for Windows or Windows Phone (Universal).</td>
+            <td style="text-align:left">Place the custom package.windows80.appxmanifest (Windows 8.0), package.windows.appxmanifest (Windows 8.1), or package.phone.appxmanifestfile (Windows Phone 8.1) in the res/native/windows folder to override various configuration settings. <br><br>Use the generated version of the file in the platforms/windows folder after building a Debug configuration of the project for Windows or Windows Phone (Universal).</td>
         </tr>
         <tr>
             <td>Windows Phone 8</td>
@@ -364,15 +332,3 @@ The following table provides specific information for each platform.
 
 
 ![Download the tools](media/configure-app/IC795792.png) [Get the Visual Studio Tools for Apache Cordova](http://aka.ms/mchm38) or [learn more](https://www.visualstudio.com/cordova-vs.aspx)
-
-## See Also
-
-**Concepts**
-
-[Manage Plugins for Apps Built with Visual Studio Tools for Apache Cordova](https://msdn.microsoft.com/en-us/library/dn757051.aspx)  
-[Package Your App Built with Visual Studio Tools for Apache Cordova](https://msdn.microsoft.com/en-us/library/dn757048.aspx)  
-[Get Started with Visual Studio Tools for Apache Cordova](https://msdn.microsoft.com/en-us/library/dn771545.aspx)
-
-**Other Resources**
-
-[FAQ](http://go.microsoft.com/fwlink/p/?linkid=398476)

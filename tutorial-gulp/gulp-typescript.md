@@ -7,4 +7,4 @@
 #Compile TypeScript by using Gulp
 
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/tutorial-gulp/gulp-typescript.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/tutorial-gulp/gulp-typescript.md).

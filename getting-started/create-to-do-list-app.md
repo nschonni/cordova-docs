@@ -16,4 +16,4 @@
 
 # Create the ToDoList sample app
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/create-to-do-list-app.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/create-to-do-list-app.md).

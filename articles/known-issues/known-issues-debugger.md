@@ -23,6 +23,9 @@ There is currently no Visual Studio debugger support for Windows Phone 8. Develo
 
 Due to a race condition, the VS debugger will not consistently stop at breakpoints that occur prior to the first page load in Ripple or Android emulators or devices. This can be problematic when attempting to debug code tied to page "load" or "device ready" events on the very first page of your app. However, these breakpoints will be hit after refreshing the browser (Ripple) or executing `window.location.reload()` from the JavaScript Console.
 
+##**Debugger will not start**
+If, after upgrading Visual Studio, you see the error message, "The debugger cannot continue running the process. Unable to start debugging.", a library may have been corrupted. Try the following workaround. Close all VS instances, then go to %appdata%\username\Local\Microsoft\Phone Tools, and rename the CoreCon folder to another name such as CoreCon2. Then try restarting your app in VS.
+
 ##**DOM explorer shows Ripple HTML in addition to app HTML**
 
 When debugging an application deployed to the Ripple emulator, the JavaScript Console's default execution target is the Ripple top-level, instead of the application frame. To switch to the execution target of the user’s application, change the execution target of the JavaScript Console to the "frame: &lt;application html page&gt;" target using the target selector in the upper right of the JavaScript Console window.
@@ -51,7 +54,7 @@ You cannot use the VS debugger for apps deployed to Android emulators or devices
 ##When using the jsHybugger plugin for debugging Android < 4.4
 
 **Limitations:** The following limitations exist when using the VS debugger with jsHybugger:
-  
+
   * There is no support for Source Maps.
   * While using the DOM explorer with jsHybugger, there is no support for:
     * Deleting CSS properties.

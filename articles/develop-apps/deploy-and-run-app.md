@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Deploy and run your app built with Visual Studio Tools for Apache Cordova | Cordova"
+   pageTitle="Under the hood: building Cordova apps | Cordova"
    description="description"
    services="na"
    documentationCenter=""
@@ -13,31 +13,7 @@
    ms.workload="na"
    ms.date="09/10/2015"
    ms.author="mikejo"/>
-# Deploy and run your app built with Visual Studio Tools for Apache Cordova
-
-Visual Studio can build, deploy, and run your Apache Cordova app on any platform: browser, Android, iOS, Windows, and Windows Phone. This article will help you:
-
-* Choose your target platform in Visual Studio
-
-* Understand how Visual Studio builds your app for each platform.
-
-## Choose your target platform in Visual Studio
-
-When you want to run your Cordova app from Visual Studio, you must first select your target platform. The first time you try to do this after installing Visual Studio Tools for Apache Cordova, you might need to make the Solution Platforms list visible.
-
-### To select your target platform
-
-* In Visual Studio, choose a platform from the Solution Platforms list. In the following example, we show Android selected.
-
-  ![Select Android as your deployment target](media/deploy-and-run-app/IC793844.png)
-
-  If the Solution Platforms list isn’t showing, choose **Solution Platforms** from the **Add/Remove Buttons** list to display it.
-
-  ![Selecting a platform for deployment](media/deploy-and-run-app/IC793845.png)
-
-For all other steps required to run your app, see the platform-specific topics for Android, iOS, Windows, and Windows Phone.
-
-## How the Cordova build process works in Visual Studio
+# Under the hood: building Cordova apps
 
 The Cordova Command Line Interface (CLI) does most of the heavy lifting for Visual Studio when you build and run a Cordova app. To make the process of installing and managing Cordova native code plugins easy, the CLI uses plugman, another command line tool. The CLI requires a specific folder structure, shown here. Most of this folder structure is mirrored by Visual Studio.
 

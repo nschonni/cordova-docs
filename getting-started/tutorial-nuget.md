@@ -6,4 +6,4 @@
 
 # Add packages to your Cordova project with the Nuget Package Manager
 
-> **NOTE:** This article is depreciated. The new article can be found [here](/articles/getting-started/tutorial-nuget.md).
+> **NOTE:** This article is deprecated. The new article can be found [here](/articles/getting-started/tutorial-nuget.md).
