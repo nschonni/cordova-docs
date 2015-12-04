@@ -50,7 +50,7 @@ Gulp itself doesn't do much without plugins to control individual tasks. For thi
 
 To add a plugin, first add a reference to package.json (the ~ before a version number means "at least this version"):
 
-    ```json	
+```json	
     {
       "devDependencies": {
      	"gulp": "latest",
@@ -58,7 +58,7 @@ To add a plugin, first add a reference to package.json (the ~ before a version n
 		"gulp-concat": "~2.6.0"
        }
     }
-    ```
+```
 
 Then install those dependencies from either the command line or Visual Studio:
 
@@ -296,7 +296,7 @@ If you're using TypeScript in your Cordova app project, you can use the [gulp-ty
 
 The following gulpfile.js loads the plugin and runs a task to compile all Typescript (***.ts**) files found in the project's *scripts* folder, saving the results in a single file **www/scripts/appBundle.js***:
 
-    ```javascript
+```javascript
       var ts = require("gulp-typescript");
 
       gulp.task("scripts", function () {
@@ -312,11 +312,11 @@ The following gulpfile.js loads the plugin and runs a task to compile all Typesc
     		}))
     		.pipe(gulp.dest("www/scripts"));
     });
-     ```    
+```    
 
 The options given directly to the *ts* call above can alternately be saved in a **tsconfig.json** file (as done in the Visual Studio templates), in which case you can use the following gulpfile.js:
 
-    ```javascript
+```javascript
     var ts = require("gulp-typescript"),
         fs = require("fs"),
         tsconfigPath = "scripts/tsconfig.json";
@@ -330,20 +330,20 @@ The options given directly to the *ts* call above can alternately be saved in a 
         }
     });
 
-    ```
+```
 
 To point to multiple locations for TypeScript files in your project, create an array as follows:
 
-    ```
+```
 	   gulp.src(["scripts/**/*.ts","www/typescript/**/*.ts"])
-    ```
+```
 
 Finally, to compile TypeScript first as part of a build task, add a reference to the scripts task:
 
-    ```javascript
+```javascript
         gulp.task("build", ["scripts"], function () {
         ...
-    ```
+```
 
 The **samples/gulp** folder in the [taco-team-build repository](http://go.microsoft.com/fwlink/?LinkID=533736) contains sample **gulpfile.js** and **package.json** files that are already configured to include TypeScript.
 
