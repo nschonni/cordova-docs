@@ -16,9 +16,9 @@
 
 # Change the CLI version of your Visual Studio Tools for Apache Cordova project
 
-You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements but they can also cause problems for plugins.
+You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins.
 
-This topic helps you decide whether to update your project's CLI and how to do it safely.
+This topic helps you decide whether to update the CLI version and how to do it safely.
 
 ## Find the CLI version number of your project
 
@@ -36,7 +36,7 @@ The Apache Cordova CLI does something very similar. It's also tied or *pinned* t
 
 If you update your CLI, it's tied to a newer version of each Cordova platform while your plugins remain tied to a previous version of each Cordova platform.
 
-This is not always a problem, but if a new version introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
+This isn't always a problem, but if a new version introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
 
 You might encounter the opposite problem if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but any new plugin that you add to your project might be tied to newer version of each Cordova platform.  
 
@@ -64,13 +64,13 @@ Have a quick look at this table. It presents each action, its impact, and what y
     <tbody>
         <tr>
             <td>Use the most recent version of the CLI</td>
-            <td style="text-align:left">Existing plugins might not work as expected if they are tied to an older version of each Cordova platform.</td>
+            <td style="text-align:left">Existing plugins might not work as expected if they're tied to an older version of each Cordova platform.</td>
             <td style="text-align:left">Remove those plugins from your project.  Then, add the most recent version of those plugins to your project.</td>
         </tr>
         <tr>
             <td>Continue using the same version of the CLI</td>
             <td style="text-align:left">New plugins might not work as expected unless you explicitly add an older version of the plugin. </td>
-            <td style="text-align:left">If no breaking changes were introduced in newer versions of each Cordova platform then plugins might work as expected.<br><br>If you encounter unexpected behaviors in code that use those plugins, just add older versions of plugins to your project. </td>
+            <td style="text-align:left">If no breaking changes were introduced in newer versions of each Cordova platform then plugins might work as expected.<br><br>If things don't quite work right in code that use those plugins, just add older versions of plugins to your project. </td>
         </tr>
         <tr>
             <td>Use an older version of the CLI</td>
@@ -85,13 +85,13 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 1. First, back up any file that you directly modified in the **platforms** folder of your project.    Visual studio will remove the **platform** folder and any file inside of it when you build your project.
 
-    Most likely, you have not made direct edits to this folder. Editing these files is an advanced task and you'd have to make those edits outside of Visual Studio.
+    Most likely, you haven't made direct edits to this folder. Editing these files is an advanced task and you'd have to make those edits outside of Visual Studio.
 
     The following image shows this folder.
 
     ![CLI version](media/change-cli-version/platforms.png)
 
-    If you did not directly edit these files outside of Visual Studio, you can move to the next step.
+    If you didn't directly edit these files outside of Visual Studio, you can move to the next step.
 
 2. In **Solution Explorer**, double-click the **config.xml** file to open the configuration designer.
 
@@ -111,6 +111,6 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
     To add and remove core plugins, see [Add or remove a plugin](./develop-apps/manage-plugins.md#Adding).
 
-    To add and remove other third-party plugins, see [Add or remove a plugin that is not present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
+    To add and remove other third-party plugins, see [Add or remove a plugin that isn't present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
 
     >**Note**: If your using the most recent CLI version, then add the most recent version of each plugin. If you're using an older CLI version, then add an older versions of each plugin.
