@@ -30,7 +30,7 @@ The CLI version number appears in the **Platforms** page of the configuration de
 
 Or you can find it in the ```taco.json``` file at the root of your project.
 
-When you create a project, Visual Studio uses the a specific version of the Cordova CLI but this version number becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
+When you create a project, Visual Studio uses a specific version of the Cordova CLI (at this time ```5.3.3```) but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
 ## Understand the impact on plugins
 
@@ -90,8 +90,8 @@ Have a quick look at this table. It presents each action, its impact, and what y
 Current version of Visual Studio does not allows you to add a plugin specific version, and it will always add the latest one.
 
 To install an specific version you have two different options
-- Install from the cordova command line using the command ```cordova install plugin@verion --save```
-- Modify the version in the config.xml file, delete the plugin folder, and build it again, so VS will download the appropiate version.   
+- Install from the cordova command line using the command ```cordova pugin add plugin-name@version --save```
+- Update the  ```config.xml``` file, locate the ```plugin``` element and update the version number. Delete the plugin folder, and build it again, so VS will download the appropiate version. You can check the ```plugin.xml``` file in the plugin folder to check that the version has been updated.   
 
 ## How to update the CLI version of your project
 
