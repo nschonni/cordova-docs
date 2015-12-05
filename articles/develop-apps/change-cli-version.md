@@ -90,7 +90,7 @@ Have a quick look at this table. It presents each action, its impact, and what y
 Current version of Visual Studio does not allows you to add a plugin specific version, and it will always add the latest one.
 
 To install an specific version you have two different options
-- Install from the cordova command line using the command ```cordova pugin add plugin-name@version --save```
+- Install from the cordova command line using the command ```cordova plugin add plugin-name@version --save```
 - Update the  ```config.xml``` file, locate the ```plugin``` element and update the version number. Delete the plugin folder, and build it again, so VS will download the appropiate version. You can check the ```plugin.xml``` file in the plugin folder to check that the version has been updated.   
 
 ## How to update the CLI version of your project
