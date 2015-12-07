@@ -22,60 +22,65 @@ You enable plugins by using the Cordova config.xml file. Visual Studio provides 
 >**Note:**
 To see the core plugins available in the configuration designer, see [List of available plugins](#List). For more information on plugins, see the [Cordova config.xml documentation](http://go.microsoft.com/fwlink/p/?LinkID=510632).
 
+## <a id="Adding"></a>Add a core plugin
 
-
-## <a id="Adding"></a>Add or remove a plugin
-
-You can add a core Cordova plugin, or a custom plugin, by using Visual Studio. You can also reference additional plugins from the Cordova registry by editing config.xml.
-
-When you build your solution, the plugin is installed from the Cordova registry.
-
-### To add or remove a plugin in the Visual Studio configuration designer
+You can add a core Cordova plugin by using Visual Studio. When you build your solution, the plugin is installed from the Cordova registry.
 
 1. In **Solution Explorer**, open the shortcut menu for the config.xml file, and then choose **Open** or **View Designer**.
 
-2. In the configuration designer, choose the **Plugins** tab.
-3. Select the type of plugin that you want to enable in your app (either Core or Custom). (See the [List of available plugins](#List).)
+2. In the configuration designer, choose the **Plugins** tab, and then choose the **Core** page.
 
-   * To add a core plugin, select the plugin and choose the **Add** button.
+3. Select a plugin, and then choose the **Add** button.
 
-        The following illustration shows selection of a core plugin in the configuration designer.
+   ![Adding a plugin](media/manage-plugins/IC795804.png)
 
-        ![Adding a plugin](media/manage-plugins/IC795804.png)
+    When you add the plugin, Visual Studio adds an element to your **config.xml** file.
 
-   * To add a custom plugin, specify either Local or Git as the source, and then provide the location by browsing or specifying a Git repository, as indicated.
+    To write code for a particular plugin, see the [Plugin APIs](http://cordova.apache.org/docs/en/4.0.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs).
 
-        The following illustration shows how to add a custom plugin from a Git repository in the configuration designer.
+## <a id="Custom"></a>Add a custom plugin
 
-        For example, here is the repository for PushPlugin: [https://github.com/phonegap-build/PushPlugin.git](https://github.com/phonegap-build/PushPlugin.git).
+1. In **Solution Explorer**, open the shortcut menu for the config.xml file, and then choose **Open** or **View Designer**.
 
-        ![Cordova_Plugin_Custom](media/manage-plugins/IC795805.png)
+2. In the configuration designer, choose the **Plugins** tab, and then choose the **Custom** page.
 
-When you add the plugin, Visual Studio also makes changes to your config.xml file. For more information about editing config.xml, see the [Cordova config.xml documentation](http://go.microsoft.com/fwlink/p/?LinkID=510632).
+3. Specify either **Local** or **Git** as the source, and then provide the location by browsing or specifying a Git repository.
 
-When you add a custom plugin, Visual Studio also adds the plugin folder and file structure to the project in the plugins folder. The important plugin files include: **plugin.xml**, the plugin’s **src** folder and **www** folder.
+    ![Cordova_Plugin_Custom](media/manage-plugins/IC795805.png)
 
-To remove a plugin, open the **Installed** page, choose the plugin, and then choose the **Remove** button.
+     Visual Studio adds a plugin folder for that custom plugin. The important plugin files include: **plugin.xml**, the plugin’s **src** folder and **www** folder.
 
-![Removing a plugin](media/manage-plugins/remove-plugins.png)
+## <a id="removing"></a>Remove a plugin
 
-If you experience any errors when you add remove a plugin, see these [tips and workarounds](./tips-and-workarounds/tips-and-workarounds-general-readme.md).
+1. In **Solution Explorer**, open the shortcut menu for the config.xml file, and then choose **Open** or **View Designer**.
 
-To write code for a particular plugin, see the [Plugin APIs](http://cordova.apache.org/docs/en/4.0.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs).
+2. In the configuration designer, choose the **Plugins** tab, and then choose the **Installed** page.
 
-## <a id="Updating"></a>Update a plugin
+3. Choose a plugin, and then choose the **Remove** button.
 
-Use the configuration designer to update a plugin to a newer version. The configuration designer always adds the most recent version of a plugin to your project when it is installed. To update, simply remove the plugin and add it again. The [Cordova plugins registry](http://plugins.cordova.io) provides information about different plugin versions.
+    ![Removing a plugin](media/manage-plugins/remove-plugins.png)
 
+    If you experience any errors when you add remove a plugin, see these [tips and workarounds](./tips-and-workarounds/tips-and-workarounds-general-readme.md).
 
+## <a id="Updating"></a>Update a plugin to use the latest version
+
+Use the configuration designer to update a plugin to a newer version. The configuration designer always adds the most recent version of a plugin to your project when it is installed.
+
+To update, simply [remove the plugin](#remove) and then [Add it again](#Adding).
+
+The [Cordova plugins registry](http://plugins.cordova.io) provides information about different plugin versions.
+
+## <a id="Older"></a>Update a plugin to use an older version
+
+[Remove the plugin](#remove), and then add the appropriate version of the plugin by directly editing **Config.xml** file of your project. See the next section for guidance on how to add it.
+
+The [Cordova plugins registry](http://plugins.cordova.io) provides information about different plugin versions.
 
 ## <a id="AddOther"></a>Add a plugin that is not present in the configuration designer
 
 Occasionally you might need to install a specific version of a Cordova plugin that is not listed in the configuration designer. If this plugin is available in plugins.cordova.io when using any version of Cordova, or in npm when using Cordova 5.0.0+, you can add the following element to config.xml and the plugin will be installed on when you next build your project:
 
-### To add the plugin
-
-1. If any of plugins you intend to install were already added to your project (particularly with an older ID), remove them using the **Installed** tab of the **Plugins** section of the configuration designer.
+1. If any of plugins you intend to install were already added to your project (particularly with an older ID), [Remove them](#remove).
 
 2. In **Solution Explorer**, open the shortcut menu for config.xml and choose **View Code**.
 
@@ -87,13 +92,9 @@ Occasionally you might need to install a specific version of a Cordova plugin th
 
 You can add plugins using a Git URI or the local filesystem by using the **Custom** tab of the **Plugins** section in the config.xml designer. Using a Git URI can cause you to get a “dev” version of a plugin. See [these instructions](./tips-and-workarounds/tips-and-workarounds-general-readme.md) if you want to use a specific version of a GitHub sourced plugin.
 
-### To remove the plugin
+## <a id="Configuring"></a>Configure plugin parameters
 
-1. In the config.xml file, delete the widget element that represents the plugin that you want to remove.
-
-## <a id="Configuring"></a>Configuring plugin parameters
-
-When you are adding a plugin using the configuration designer, you can also specify plugin parameters in the UI. However, when adding a plugin not present in the configuration designer (by editing config.xml), you can also specify parameters by using some additional XML elements. For example, to configure the Facebook plugin, you can edit the following parameters in config.xml.
+Specify parameters by adding some additional XML elements in the **Config.xml** file of your project. For example, to configure the Facebook plugin, you can edit the following parameters in **config.xml**.
 
     <vs:plugin name="com-phonegap-plugins-facebookconnect" version="0.8.1">
           <param name="APP_ID" value="12345678" />
@@ -108,7 +109,7 @@ This has the same result as running the following command from the command line 
 >**Important:**
 Cordova 4.3.1 and previous versions have a set of known issues that can prevent plugins with parameters from working properly. We recommend using Cordova 5.1.1 or later when using plugins that require parameters.
 
-## <a id="Custom"></a>Extending a custom plugin
+## <a id="Custom"></a>Extend a custom plugin
 
 At times, the custom plugins in the Cordova registry might not meet all your app requirements, and you might want to extend a plugin or create your own plugin. For example, if you need to offload computationally expensive functions to native code, expose new device capabilities to your app, or apply a fix to an existing plugin that you would prefer not to release publicly, you might want to extend or create a plugin. You can find more information about creating your own plugins in the [plugin development guide](http://go.microsoft.com/fwlink/p/?LinkID=510633) in the Cordova documentation.
 
