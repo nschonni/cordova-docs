@@ -66,13 +66,13 @@ You can add a core Cordova plugin by using Visual Studio. When you build your so
 
 Use the configuration designer to update a plugin to a newer version. The configuration designer always adds the most recent version of a plugin to your project when it is installed.
 
-To update, simply [remove the plugin](#remove) and then [Add it again](#Adding).
+To update, simply [remove the plugin](#removing) and then [Add it again](#Adding).
 
 The [Cordova plugins registry](http://plugins.cordova.io) provides information about different plugin versions.
 
 ## <a id="Older"></a>Update a plugin to use an older version
 
-[Remove the plugin](#remove), and then add the appropriate version of the plugin by directly editing **Config.xml** file of your project. See the next section for guidance on how to add it.
+[Remove the plugin](#removing), and then add the appropriate version of the plugin by directly editing **Config.xml** file of your project. See the next section for guidance on how to add it.
 
 The [Cordova plugins registry](http://plugins.cordova.io) provides information about different plugin versions.
 
