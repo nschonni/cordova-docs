@@ -2,32 +2,32 @@
   description="Release notes for Update 5 of Visual Studio 2015 Tools for Apache Cordova"
   services=""
   documentationCenter=""
-  authors="Linda" />
+  authors="rido-min" />
   <tags
      ms.service="na"
      ms.devlang="javascript"
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="11/23/2015"
-     ms.author="lizhong"/>
+     ms.date="12/14/2015"
+     ms.author="rmpablos"/>
 
 #**Update 5 - Visual Studio Tools for Apache Cordova**
-This document covers what's new within this update.
-Version Number
+Update 5 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.51123.1.
 
 ## Setup Instructions
 The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates,
 however from this update we are offering also a standalone installer that you can find here:
 
-```
-TODO. Include downloads link
-```
+[Visual Studio Tools for Apache Cordova Update 5 Download](http://go.microsoft.com/fwlink/?LinkId=715516)
+
 Please note that this installer will require you to have already installed a previously version of VS TACO.
 
 ## New Features:
 
 The main focus of this release was improving our CLI interop story.  That means operations performed from the command line will be respected by the VS IDE. In the same way, operations you perform using the IDE will be recognized by CLI tools.
+
+> **NOTE:** The latest version of Cordova runtime is 5.4.1, but Update 5 will still use 5.3.3 as a default platform for new projects.
 
 ### Plugin installations from either Visual Studio or the command line will be respected by the other. 
 
@@ -39,6 +39,8 @@ Moreover, when plugins are added without updating the config.xml file, VS now re
 
 To address product breaks because of mismatches in NodeJS versioning, we created a global installed version of Cordova, which includes proper Node versioning. 
 
+![Global Cordova Version](media/release-update-5/global-cdva-version.png)
+
 Additionally, you can directly specify the version of Cordova you want to use from the platform section in the config.xml.
 
 ### Improve iOS incremental build file change detection by switching to timestamp comparison
@@ -47,12 +49,10 @@ Visual Studio tracks the modified date of each file to incorporate changes made 
 
 ###Use MSBuild to build from command line
 
-In cases when you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013
-
-+++++++ >>>> TODO.. Review http://taco.visualstudio.com/en-us/docs/tfs2013/
+In cases when you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013 or any other build system.
 
 ###iOS build updates
-We added support for iOS 6s simulator, and improved the incremental build feature.
+We added support for iOS 6s simulator, and improved the incremental build feature. (You might need to update your [remotebuild tools](http://taco.tools) to get the latest ios-sym version that support iOS 6s.)
 
 ##Bugs Solved
 
@@ -71,6 +71,8 @@ Previously, JAVA_HOME still shows the VS installed location (ex. C:\Program File
 ### Fixed scenario when error in plugin installation still yields a success error message.
 
 Previously, some errors thrown in the output window still resulted in users being notified that plugins were successfully installed. (For example, when installing cordova-plugin-whitelist from git on CLI version to 4.3.3.)
+
+![plugin install error](media/release-update-5/plugin-error.png)
 
 ### Cordova projects now build successfully with the developer community server edition of MySQL.
 
@@ -94,7 +96,7 @@ Previously, the installed plugins view adds a new instance of the same plugin in
 
 There are known issues with Cordova and the latest versions of Node.JS. For example, using Cordova 5.3.3 or below with Node.js 5.0.0 causes a build fail. 
 
-To learn more about what versions of Cordova are compatible with Node.JS, find [more information here.](http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-not-executing-when-using-cordova-with-nodejs-500-and-cordova-533-and-belowstrong)
+To learn more about what versions of Cordova are compatible with Node.JS, find [more information here.](../known-issues/known-issues-general#strongbuild-not-executing-when-using-cordova-with-nodejs-500-and-cordova-533-and-belowstrong)
 
 ### Mismatched plugins warning
 
