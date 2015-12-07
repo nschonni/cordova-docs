@@ -111,12 +111,8 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 5. Add back any manual tweaks to files in platform subfolders.
 
-6. Remove all plugins from your project and then add them back.
+6. Update your plugins by removing them and then adding them back to your project.
 
-    To remove plugins, see [Remove a plugin](./develop-apps/manage-plugins.md#removing).
+    * If you chose to use the most recent version of the CLI, see [Update a plugin to use the most recent version](./develop-apps/manage-plugins.md#Updating).
 
-    To add core plugins, see [Add a core plugin](./develop-apps/manage-plugins.md#Adding).
-
-    To add other third-party plugins, see [Add or remove a plugin that isn't present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
-
-    >**Note**: If your using the most recent CLI version, then add the most recent version of each plugin. If you're using an older CLI version, then add an older versions of each plugin.
+    * If you chose to use an older version of the CLI version, see [Update a plugin to use an older version](./develop-apps/manage-plugins.md#Older).
