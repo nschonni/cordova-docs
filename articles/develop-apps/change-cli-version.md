@@ -113,7 +113,7 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 6. Remove all plugins from your project and then add them back.
 
-    To remove plugins, see [Remove a plugin](./develop-apps/manage-plugins.md#remove).
+    To remove plugins, see [Remove a plugin](./develop-apps/manage-plugins.md#removing).
 
     To add core plugins, see [Add a core plugin](./develop-apps/manage-plugins.md#Adding).
 
