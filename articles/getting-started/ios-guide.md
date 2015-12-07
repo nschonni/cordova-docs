@@ -107,7 +107,7 @@ To start the remote agent in secure mode, type this command.
 
    Visual Studio connects to the remote agent. If you don't receive any errors, you've successfully connected.
 
-### <a id="errors">Troubleshooting: Let's fix it
+### Troubleshooting: Let's fix it
 
 [Did you receive an error that relates to your certificate?](#certificates)
 
@@ -142,7 +142,7 @@ We'll test on an emulator, test on a device connected to your mac, and test on a
 
    When the build is complete, your app will appear in the iPhone 5 simulator on your Mac.
 
-#### <a id="errors">Troubleshooting: Let's fix it
+#### Troubleshooting: Let's fix it
 
    [Did you receive an error that relates to your certificate?](#certificates)
 
@@ -201,7 +201,7 @@ These steps came from here - http://stackoverflow.com/questions/4952820/test-ios
 
 use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
 
-#### <a id="errors">Troubleshooting: Let's fix it
+#### Troubleshooting: Let's fix it
 
 Put the XCode 7 issue here.
 

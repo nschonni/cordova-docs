@@ -16,7 +16,7 @@
 
 # Change the CLI version of your Visual Studio Tools for Apache Cordova project
 
->NOTE: This article aplies to Visual Studio 2015 Tools for Apache Cordova **Update 5**
+>NOTE: This article applies to Visual Studio 2015 Tools for Apache Cordova **Update 5**
 
 You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins that have not been updated to that version.
 
@@ -28,7 +28,7 @@ The CLI version number appears in the **Platforms** page of the configuration de
 
 ![CLI version](media/change-cli-version/cli-version.png)
 
-Or you can find it in the ```taco.json``` file at the root of your project.
+You can also find it in the ```taco.json``` file at the root of your project.
 
 When you create a project, Visual Studio uses a specific version of the Cordova CLI (at this time ```5.3.3```) but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
@@ -42,7 +42,7 @@ If you update your CLI, it's tied to a newer version of each Cordova platform wh
 
 This isn't always a problem, but if a new version introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
 
-You might encounter the opposite problem if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but any new plugin that you add to your project (since VS will use the newer version) might be tied to newer version of each Cordova platform, making your app to does not work as expected.  
+You might encounter the opposite problem if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but any new plugin that you add to your project might not. That's because when you add a plugin, Visual Studio uses the most recent version of it and that plugin could be tied to newer version of each Cordova platform.
 
 Have a quick look at this table. It presents each action, its impact, and what you can do to increase the likelihood that your plugins will work properly.
 
@@ -84,14 +84,6 @@ Have a quick look at this table. It presents each action, its impact, and what y
         </tr>
     </tbody>
 </table>
-
-##How to add a plugin specific version
-
-Current version of Visual Studio does not allows you to add a plugin specific version, and it will always add the latest one.
-
-To install an specific version you have two different options
-- Install from the cordova command line using the command ```cordova plugin add plugin-name@version --save```
-- Update the  ```config.xml``` file, locate the ```plugin``` element and update the version number. Delete the plugin folder, and build it again, so VS will download the appropiate version. You can check the ```plugin.xml``` file in the plugin folder to check that the version has been updated.   
 
 ## How to update the CLI version of your project
 
