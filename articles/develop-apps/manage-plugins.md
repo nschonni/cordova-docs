@@ -32,7 +32,7 @@ You can add a core Cordova plugin by using Visual Studio. When you build your so
 
 3. Select a plugin, and then choose the **Add** button.
 
-   ![Adding a plugin](media/manage-plugins/IC795804.png)
+    ![Adding a plugin](media/manage-plugins/IC795804.png)
 
     When you add the plugin, Visual Studio adds an element to your **config.xml** file.
 
