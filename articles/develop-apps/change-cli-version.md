@@ -30,13 +30,13 @@ The CLI version number appears in the **Platforms** page of the configuration de
 
 You can also find it in the ```taco.json``` file at the root of your project.
 
-When you create a project, Visual Studio uses a specific version of the Cordova CLI (at this time ```5.3.3```) but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
+When you create a project, Visual Studio uses a specific version of the Cordova CLI, but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
 ## Understand the impact on plugins
 
-Plugins are tested against a specific version of each Cordova platform. For example, to ensure that a plugin works on an Android mobile device, the author validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
+Plugins are tested against a specific version of each Cordova platform. For example, to ensure that a plugin works on a mobile device that runs on the most recent version of the Android 6.0 "Marshmallow" operating system, the author validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
 
-The Apache Cordova CLI does something very similar. It's also tied or *pinned* to a specific version of each Cordova platform. When you first create a project, your CLI and the plugins that you add to your project are tied to the same versions.
+The Apache Cordova CLI does something very similar. It's also tied or *pinned* to a specific version of each Cordova platform. When you first create a project, your CLI and the plugins that you add to your project are tied to the same platform versions.
 
 If you update your CLI, it's tied to a newer version of each Cordova platform while your plugins remain tied to a previous version of each Cordova platform.
 
