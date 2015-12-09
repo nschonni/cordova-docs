@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="11/19/2015"
+   ms.date="12/08/2015"
    ms.author="normesta"/>
 
 # Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project
@@ -22,7 +22,7 @@ In this guide, we'll help you get everything setup right so that you can build, 
 
 Let's help you set things up.
 
-## Install a few things onto your Mac
+## Install a few things on your Mac
 
 1. Install [Node.js](http://nodejs.org/).
 
@@ -51,7 +51,7 @@ Let's help you set things up.
 
    This installs the *remote agent*. It's a secure build server that you run on your mac. You'll connect to it from your Windows computer so that you can build, run, and debug iOS apps in Visual Studio.
 
-## <a id="remoteAgent"></a>Start the remote agent on your mac
+## <a id="remoteAgent"></a>Start the remote agent on your Mac
 
 Put the information that you got from Chuck here. If you choose to use secure mode, you'll get a pin that you'll use in Visual Studio.
 
@@ -148,7 +148,7 @@ Explain the differences between using your free Apple ID and using the developer
 You can connect a device to your mac or connect one to your Windows machine.
 In both cases, you'll need a provisioning profile. That's just information that describes your app. You can either create this profile on the developer site or have XCode create it for you.
 
-### Set up provisioning profile by using your free Apple ID
+### Create a provisioning profile by using your free Apple ID
 
 With XCode 7, you can use a free Apple ID to debug on a device. You'll need Xcode 7 for this. It creates a free provisioning profile for you so that you don't have to get a developer account to debug devices. There are limitations. For example, you won't be able to submit this app to the store until you get a developer account and use that profile. However, if you jsut want to iteratively develop and debug without the hastle of the store. Link to those limitations here - [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
 
@@ -211,13 +211,14 @@ Did something not behave as expected? See these more detailed articles on the Ap
 * [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1)
 
 
-### Set up a provisioning profile by using an Apple Developer account
+### Create a provisioning profile by using an Apple Developer account
 
 use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
 
 ## Run your app on a device
 
 ### Connect the device to a Mac
+
 
 #### On your Mac
 
@@ -228,6 +229,7 @@ use this link for downloading accounts in XCode - https://developer.apple.com/li
 3. Make sure that the remote agent is running.
 
     See [Start the remote agent on your mac](#remoteAgent).
+
 
 #### On your Windows computer
 
