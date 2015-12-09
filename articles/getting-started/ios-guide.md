@@ -57,7 +57,9 @@ You can start the remote agent in secure mode or without secure mode.
 
 ### Option 1: Start the remote agent (secure mode)
 
-This is the safest mode. Visual Studio uses SSL certificates to securely transfer build payloads to the remote agent. This mode protects your intellectual property from being intercepted because your build payload is encrypted. It also reduces the likelihood that outsiders will use the open port of your remote agent to run malicious code. When you start the agent in secure mode, you'll get a PIN. The only way to establish a connection with the remote host is by using that PIN.  
+This is the safest mode. Visual Studio uses SSL certificates to securely transfer build payloads to the remote agent.
+
+This mode protects your intellectual property from being intercepted because your build payload is encrypted. It also reduces the likelihood that outsiders will use the open port of your remote agent to run malicious code. When you start the agent in secure mode, you'll get a PIN. The only way to establish a connection with the remote host is by using that PIN.  
 
 To start the remote agent in secure mode, type this command.
 
@@ -73,9 +75,13 @@ You'll use those pieces of information in the next section. In fact, you'll want
 
 ### Option 2: Start the remote agent (without secure mode)
 
-This is the easiest yet riskiest way to start the remote agent. Visual Studio uses simple HTTP connections to transfer build payloads. Often times when folks have trouble connecting Visual Studio to their remote agent, they'll start their remote agent without secure mode and the connection issue disappears.
+This is the easiest yet riskiest way to start the remote agent. Visual Studio uses simple HTTP connections to transfer build payloads.
 
-Start the remote agent without secure mode only if you are comfortable with the trade-offs between risk and convenience. For example, if your Mac is publically accessible over the internet and has access to sensitive materials, you'll probably want to run your remote agent in secure mode. If your mac is accessible only to you, it's easier and less error prone to run your remote agent without secure mode.  
+Often times when folks have trouble connecting Visual Studio to their remote agent, they'll start their remote agent without secure mode and the connection issue disappears.
+
+Start the remote agent without secure mode only if you are comfortable with the trade-offs between risk and convenience.
+
+For example, if your Mac is publically accessible over the internet and has access to sensitive materials, you'll probably want to run your remote agent in secure mode. If your mac is accessible only to you, it's easier and less error prone to run your remote agent without secure mode.  
 
 To start the remote agent **without** secure mode, type this command
 
@@ -149,11 +155,50 @@ You'll use those pieces of information in the next section.
 
 ## Create a provisioning profile
 
-You'll need a *provisioning profile* to run your app on a device.
+You'll need a *provisioning profile* to run your app on a device. Create one by using an Apple Developer account. You can also create one with your free Apple ID but there are limitations. See [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
 
-If you use Xcode 7, you can get a provisioning profile by using your free Apple ID. That way you can build, run, and debug your app on a device with the least amount of hassle. That said, there are limitations. To learn about them, see [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1). Also, you'll have to connect your device to a Mac. You can't connect a device directly to a Windows computer.
+### Create a provisioning profile by using an Apple Developer account
 
-If you want the most flexible type of provisioning profile, you'll want to create it by using an Apple Developer account.
+* An [iOS provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW61) that you [download ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW26) in Xcode.
+
+* A signing identity that you [configure ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW4) in Xcode.
+
+use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
+
+1. Enroll in the [Apple Developer Program](https://developer.apple.com/programs/enroll/).
+
+2. On your Mac, open Safari, and log into the Apple Developer [Member Center](https://developer.apple.com/membercenter/index.action).
+
+#### Create an App ID
+You don't have to create an explicit AppID to build and test your app. We'll create a wildcard app ID.
+
+1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Identifiers](https://developer.apple.com/account/ios/identifiers/bundle/bundleList.action) link.
+
+   Look at the list of iOS App IDs. If Xcode generated a wilcard App ID for you, then you can skip this section and go straight to the Create a provisioning profile section below.
+   You'll know that it's a wild card app ID if the term "wild card" appears in the name of the App ID or if an ```*``` symbol appears as the ID.
+
+2. If you don't have a wild card App ID, choose the Add button to create one.
+
+3. In the **Registering an App ID** page, choose the **Wildcard App ID** option and place a ```*``` in  the **Bundle ID** field.
+
+  -image goes here.
+
+4. Add any other required information to the page, and then choose the **Continue** button.
+
+5. In the **Confirm your App ID** page, choose the **Submit** button.
+
+   The **Registration complete** page appears.
+
+#### Create a provisioning profile.
+3. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
+
+4. In the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) page, choose the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) link.
+
+5. In the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page, choose the Add button.
+
+   - image goes here.
+
+6. In the **Add iOS Provisioning Profile** page, choose the **iOS App Development** option, and then choose the **Continue** button.
 
 ### Create a provisioning profile by using your free Apple ID
 
@@ -212,10 +257,6 @@ Did something not behave as expected? See these more detailed articles on the Ap
 * [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1)
 
 
-### Create a provisioning profile by using an Apple Developer account
-
-use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
-
 ## Run your app on a device
 
 ### Connect the device to a Mac
@@ -263,6 +304,8 @@ use this link for downloading accounts in XCode - https://developer.apple.com/li
 ### Connect the device to a Windows computer
 
 Put Leo's cool stuff in here.
+
+If you plan to build, run, and debug your iOS app on a device that you connect to a Windows computer, you'll have to create a provisioning profile by using an Apple Developer account.
 
 * [Apple iTunes](http://www.apple.com/itunes/).
 
@@ -365,14 +408,6 @@ Please reach out to us [here](http://stackoverflow.com/questions/tagged/visual-s
 ##### Install these things on your Mac
 
 
-
-
-
-* An active [Apple Developer Program](https://developer.apple.com/programs/enroll/).
-
-* An [iOS provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW61) that you [download ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW26) in Xcode.
-
-* A signing identity that you [configure ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW4) in Xcode.
 
 ##### Configure npm package cache permissions
 
