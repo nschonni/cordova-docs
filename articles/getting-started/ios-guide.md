@@ -159,13 +159,35 @@ You'll need a *provisioning profile* to run your app on a device. Create one by 
 
 ### Create a provisioning profile by using an Apple Developer account
 
-**Step 1: Enroll in the Apple Developer program**
+First, enroll in the Apple Developer Program. Then, create an App ID, request a certificate, and register your device.
+
+You'll use that information to create a provisioning profile. Let's go through each step in this process.
+
+**Enroll in the Apple Developer program**
 
 See [Apple Developer Program](https://developer.apple.com/programs/enroll/).
 
+**Request a certificate**
 
-**Step 2: Create an App ID**
+1. Connect your device to your Mac. Make sure that  your device is turned on.
 
+2. Start Xcode.
+
+3. In Xcode, add your Apple ID (if you haven't done so already).
+
+    See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
+
+4. In the menu bar, choose **Xcode**->**Preferences**.
+
+5. In the **Accounts** page, choose the **View Details** button.
+
+5. In the account details page, choose the **Create** button next to the **iOS Development** signing identity.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/create-cert.png)
+
+6. Choose the **Done** button to close the account details page.
+
+**Create an App ID**
 
 You don't have to create an explicit App ID to build and test your app. We'll create a wildcard App ID.
 
@@ -191,8 +213,23 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
 
     The **Registration complete** page appears.
 
+**Register your device**
 
-**Step 3: Create a provisioning profile**
+1. In the **Certificates, Identifiers & Profiles** page, choose the **All** link that is located under the **Devices** heading.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/devices.png)
+
+2. Choose the Add button.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/add-device.png)
+
+3. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose teh **Continue** button.
+
+    *UDID* stands for Unique Device Identifier. It's a 40-character string uniquely identifies your device. You can find it by using ITunes. See [How to obtain the identifier Number (UDID) for an iPhone, iPod, or iPad](http://www.wikihow.com/Obtain-the-Identifier-Number-(UDID)-for-an-iPhone,-iPod-or-iPad).
+
+4. In the **Review and register** page, choose the **Register** button.
+
+**Create a provisioning profile**
 
 
 1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
@@ -207,14 +244,39 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
 
     ![Cordova_iOS_Install_Agent](media/ios-guide/add-developer-profile.png)
 
+5. In the **Select App ID** page, choose the wildcard App ID that you just created, and then choose the **Continue** button.
 
-* An [iOS provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW61) that you [download ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW26) in Xcode.
+    ![Cordova_iOS_Install_Agent](media/ios-guide/choose-app-id.png)
 
-* A signing identity that you [configure ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW4) in Xcode.
+6. In the **Select certificates** page, select the checkbox next to the certificate that you created earlier, and then choose the **Continue** button.
 
-use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
+    ![Cordova_iOS_Install_Agent](media/ios-guide/choose-cert.png)
+
+7. In the **Select devices** page, select the checkbox next to the device that you registered earlier, and then choose the **Continue** button.
+
+8. In the **Name this profile and generate** page, name your profile, and then choose the **Generate** button.
+
+9. In the **Your provisioning profile is ready** page, choose the **Download** button.
+
+10. Open Xcode.
+
+11. In Xcode, add your Apple ID (if you haven't done so already).
+
+    See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
+
+12. In the menu bar, choose **Xcode**->**Preferences**.
+
+13. In the **Accounts** page, choose the **View Details** button.
+
+14. In the account details page, choose the **Download** button next to the **MyProfile** signing identity.
+
+     ![Cordova_iOS_Install_Agent](media/ios-guide/download-profile.png)
+
+15. Choose the **Done** button to close the account details page.
 
 ### Create a provisioning profile by using your free Apple ID
+
+First, take some time to [review the limitations](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1) of this type of provisioning profile. If you're comfortable with those limitations, let's get started!
 
 1. Start Xcode 7.
 
