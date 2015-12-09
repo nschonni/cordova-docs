@@ -159,46 +159,60 @@ You'll need a *provisioning profile* to run your app on a device. Create one by 
 
 ### Create a provisioning profile by using an Apple Developer account
 
+#### Enroll in the Apple Developer program
+
+See [Apple Developer Program](https://developer.apple.com/programs/enroll/).
+
+
+#### Create an App ID
+
+
+You don't have to create an explicit App ID to build and test your app. We'll create a wildcard App ID.
+
+1. On your Mac, open Safari, and log into the Apple Developer [Member Center](https://developer.apple.com/membercenter/index.action).
+
+2. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Identifiers](https://developer.apple.com/account/ios/identifiers/bundle/bundleList.action) link.
+
+    Take a look at the list of App ID's. If a ```*``` appears in the ID field of any of them, then you already have a wildcard App ID. Sometimes Xcode generates this for you. Otherwise, proceed to the next step.
+
+3. If you don't have a wildcard App ID, choose the Add button to create one.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/add-wildcard.png)
+
+    The [Registering an App ID](https://developer.apple.com/account/ios/identifiers/bundle/bundleCreate.action) page appears.
+
+4. Choose the **Wildcard App ID** option and place a ```*``` in  the **Bundle ID** field.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/wildcard-asterix.png)
+
+5. Add any other required information to the page, and then choose the **Continue** button.
+
+6. In the **Confirm your App ID** page, choose the **Submit** button.
+
+    The **Registration complete** page appears.
+
+
+#### Create a provisioning profile
+
+
+1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
+
+2. In the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) page, choose the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) link.
+
+3. In the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page, choose the Add button.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/new-profile.png)
+
+4. In the [What type of provisioning profile do you need?](https://developer.apple.com/account/ios/profile/profileCreate.action)A page, choose the **iOS App Development** option, and then choose the **Continue** button.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/add-developer-profile.png)
+
+
 * An [iOS provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW61) that you [download ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW26) in Xcode.
 
 * A signing identity that you [configure ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW4) in Xcode.
 
 use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
-
-1. Enroll in the [Apple Developer Program](https://developer.apple.com/programs/enroll/).
-
-2. On your Mac, open Safari, and log into the Apple Developer [Member Center](https://developer.apple.com/membercenter/index.action).
-
-#### Create an App ID
-You don't have to create an explicit AppID to build and test your app. We'll create a wildcard app ID.
-
-1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Identifiers](https://developer.apple.com/account/ios/identifiers/bundle/bundleList.action) link.
-
-   Look at the list of iOS App IDs. If Xcode generated a wilcard App ID for you, then you can skip this section and go straight to the Create a provisioning profile section below.
-   You'll know that it's a wild card app ID if the term "wild card" appears in the name of the App ID or if an ```*``` symbol appears as the ID.
-
-2. If you don't have a wild card App ID, choose the Add button to create one.
-
-3. In the **Registering an App ID** page, choose the **Wildcard App ID** option and place a ```*``` in  the **Bundle ID** field.
-
-  -image goes here.
-
-4. Add any other required information to the page, and then choose the **Continue** button.
-
-5. In the **Confirm your App ID** page, choose the **Submit** button.
-
-   The **Registration complete** page appears.
-
-#### Create a provisioning profile.
-3. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
-
-4. In the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) page, choose the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) link.
-
-5. In the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page, choose the Add button.
-
-   - image goes here.
-
-6. In the **Add iOS Provisioning Profile** page, choose the **iOS App Development** option, and then choose the **Continue** button.
 
 ### Create a provisioning profile by using your free Apple ID
 
