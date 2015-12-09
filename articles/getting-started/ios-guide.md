@@ -141,7 +141,7 @@ You'll use those pieces of information in the next section.
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-## Set up a provisioning profile
+## Create a provisioning profile
 
 Explain the differences between using your free Apple ID and using the developer account. Link to relevant info.
 
@@ -217,8 +217,9 @@ use this link for downloading accounts in XCode - https://developer.apple.com/li
 
 ## Run your app on a device
 
+### Connect the device to a Mac
 
-### On your Mac
+#### On your Mac
 
 1. Connect a device (if you haven't done so already).
 
@@ -228,7 +229,7 @@ use this link for downloading accounts in XCode - https://developer.apple.com/li
 
     See [Start the remote agent on your mac](#remoteAgent).
 
-### On your Windows computer
+#### On your Windows computer
 
 1. In Visual Studio, open the project for your app.
 
@@ -256,7 +257,7 @@ use this link for downloading accounts in XCode - https://developer.apple.com/li
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-## Connect the device to a Windows computer
+### Connect the device to a Windows computer
 
 Put Leo's cool stuff in here.
 
@@ -274,7 +275,7 @@ Put Leo's cool stuff in here.
 
 If build hangs or does not execute - make sure that your node.js version and Cordova version are compatable. Here is link to the known issues article - http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-hangs-or-does-not-execute-when-building-for-ios-with-cordova-lt-533-and-nodejs-400strong and a link to the stack article - http://stackoverflow.com/questions/33791687/ios-remote-build-fails-in-visual-studio-taco
 
-## Stop the remote agent
+## Stop the remote agent on your Mac
 
 In the Terminal app on your Mac, press Ctrl+C.
 
@@ -352,9 +353,9 @@ Please reach out to us [here](http://stackoverflow.com/questions/tagged/visual-s
 
 [Go back up](#errors)
 
-## Not sure I need bucket
+##### Not sure I need bucket
 
-# Install these things on your Mac
+##### Install these things on your Mac
 
 
 
@@ -368,7 +369,7 @@ You'll also need these things.
 
 * A signing identity that you [configure ](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW4) in Xcode.
 
-### Configure npm package cache permissions
+##### Configure npm package cache permissions
 
 If you have an older version of Node.js and npm, type this command:
 
@@ -382,14 +383,14 @@ If you pass this don't worry, you can reinstall the command-line tools by doing 
 
 To install these, open a Terminal app on your Mac, and type this command: ```xcode-select -–install```.
 
-### An error occurs when you attempt to use local or remote device build
+#### An error occurs when you attempt to use local or remote device build
 
 Make sure you have XCode 7 installed. This prevents you from having to use a provisioning profile and apple developer account to build and debug your apps.
 
-### Explore configuration files - show how to save the settings, about the default settings, and some of the other commands that you can use
+#### Explore configuration files - show how to save the settings, about the default settings, and some of the other commands that you can use
 
 
-### We were unable to find the app your trying to debug. Check that the device is connected, awake, and unlocked. Also, make sure it has a Web Inspector enabled.
+#### We were unable to find the app your trying to debug. Check that the device is connected, awake, and unlocked. Also, make sure it has a Web Inspector enabled.
 
 Reset the settings on your iPAD or device. This fixes it. Show screenshots of the reset setting.
 
