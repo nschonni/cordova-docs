@@ -159,12 +159,12 @@ You'll need a *provisioning profile* to run your app on a device. Create one by 
 
 ### Create a provisioning profile by using an Apple Developer account
 
-#### Enroll in the Apple Developer program
+#### Step 1: Enroll in the Apple Developer program
 
 See [Apple Developer Program](https://developer.apple.com/programs/enroll/).
 
 
-#### Create an App ID
+#### Step 2: Create an App ID 
 
 
 You don't have to create an explicit App ID to build and test your app. We'll create a wildcard App ID.
@@ -192,7 +192,7 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
     The **Registration complete** page appears.
 
 
-#### Create a provisioning profile
+#### Step 3: Create a provisioning profile
 
 
 1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
