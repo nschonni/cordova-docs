@@ -44,7 +44,7 @@ Let's help you set things up.
     This installs the Xcode command-line tools.
 
 4. In the Terminal app, type this command.
- 
+
     ```
      sudo npm install -g remotebuild
     ```
@@ -141,15 +141,14 @@ You'll use those pieces of information in the next section.
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-## Run your app on a device
-You can connect a device to your mac or connect one to your Windows machine.
-In both cases, you'll need a provisioning profile. That's just information that describes your app. You can either create this profile on the developer site or have XCode create it for you.
-
-### Set up a provisioning profile
+## Set up a provisioning profile
 
 Explain the differences between using your free Apple ID and using the developer account. Link to relevant info.
 
-#### Set up provisioning profile by using your free Apple ID
+You can connect a device to your mac or connect one to your Windows machine.
+In both cases, you'll need a provisioning profile. That's just information that describes your app. You can either create this profile on the developer site or have XCode create it for you.
+
+### Set up provisioning profile by using your free Apple ID
 
 With XCode 7, you can use a free Apple ID to debug on a device. You'll need Xcode 7 for this. It creates a free provisioning profile for you so that you don't have to get a developer account to debug devices. There are limitations. For example, you won't be able to submit this app to the store until you get a developer account and use that profile. However, if you jsut want to iteratively develop and debug without the hastle of the store. Link to those limitations here - [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
 
@@ -199,7 +198,7 @@ Doesn't matter what template you choose. This is just for creating a provisionin
 
     Running your project, ensures that your provisioning profile works. Xcode installs your blank pp to the device and then starts it.
 
-##### Troubleshooting: Let's fix it
+#### Troubleshooting: Let's fix it
 
 Did something not behave as expected? See these more detailed articles on the Apple Developer website. Please let us know if we are missing an important step.
 
@@ -212,11 +211,12 @@ Did something not behave as expected? See these more detailed articles on the Ap
 * [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1)
 
 
-#### Set up a provisioning profile by using an Apple Developer account
+### Set up a provisioning profile by using an Apple Developer account
 
 use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
 
-## Connect the device to a Mac
+## Run your app on a device
+
 
 ### On your Mac
 
