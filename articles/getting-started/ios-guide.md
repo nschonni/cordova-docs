@@ -22,7 +22,7 @@ In this guide, we'll help you get everything setup right so that you can build, 
 
 Let's help you set things up.
 
-## Install a few things on your Mac
+## Install a few things onto your Mac
 
 1. Install [Node.js](http://nodejs.org/).
 
@@ -53,9 +53,11 @@ Let's help you set things up.
 
 ## <a id="remoteAgent"></a>Start the remote agent on your Mac
 
-Put the information that you got from Chuck here. If you choose to use secure mode, you'll get a pin that you'll use in Visual Studio.
+You can start the remote agent in secure mode or without secure mode.
 
 ### Option 1: Start the remote agent (secure mode)
+
+This is the safest mode. Visual Studio uses SSL certificates to securely transfer build payloads to the remote agent. This mode protects your intellectual property from being intercepted because your build payload is encrypted. It also reduces the likelihood that outsiders will use the open port of your remote agent to run malicious code. When you start the agent in secure mode, you'll get a PIN. The only way to establish a connection with the remote host is by using that PIN.  
 
 To start the remote agent in secure mode, type this command.
 
@@ -70,6 +72,10 @@ The agent installs [Homebrew](http://brew.sh/), and then starts. The host name, 
 You'll use those pieces of information in the next section. In fact, you'll want to do that part fairly soon because the security pin is active for only 10 minutes.
 
 ### Option 2: Start the remote agent (without secure mode)
+
+This is the easiest yet riskiest way to start the remote agent. Visual Studio uses simple HTTP connections to transfer build payloads. Often times when folks have trouble connecting Visual Studio to their remote agent, they'll start their remote agent without secure mode and the connection issue disappears.
+
+Start the remote agent without secure mode only if you are comfortable with the trade-offs between risk and convenience. For example, if your Mac is publically accessible over the internet and has access to sensitive materials, you'll probably want to run your remote agent in secure mode. If your mac is accessible only to you, it's easier and less error prone to run your remote agent without secure mode.  
 
 To start the remote agent **without** secure mode, type this command
 
@@ -143,18 +149,13 @@ You'll use those pieces of information in the next section.
 
 ## Create a provisioning profile
 
-Explain the differences between using your free Apple ID and using the developer account. Link to relevant info.
+You'll need a *provisioning profile* to run your app on a device.
 
-You can connect a device to your mac or connect one to your Windows machine.
-In both cases, you'll need a provisioning profile. That's just information that describes your app. You can either create this profile on the developer site or have XCode create it for you.
+If you use Xcode 7, you can get a provisioning profile by using your free Apple ID. That way you can build, run, and debug your app on a device with the least amount of hassle. That said, there are limitations. To learn about them, see [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1). Also, you'll have to connect your device to a Mac. You can't connect a device directly to a Windows computer.
+
+If you want the most flexible type of provisioning profile, you'll want to create it by using an Apple Developer account.
 
 ### Create a provisioning profile by using your free Apple ID
-
-With XCode 7, you can use a free Apple ID to debug on a device. You'll need Xcode 7 for this. It creates a free provisioning profile for you so that you don't have to get a developer account to debug devices. There are limitations. For example, you won't be able to submit this app to the store until you get a developer account and use that profile. However, if you jsut want to iteratively develop and debug without the hastle of the store. Link to those limitations here - [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
-
-This whole thing only works for devices that are connected to your Mac.
-
-Doesn't matter what template you choose. This is just for creating a provisioning profile.
 
 1. Start Xcode 7.
 
@@ -196,7 +197,7 @@ Doesn't matter what template you choose. This is just for creating a provisionin
 
     ![Cordova_iOS_Install_Agent](media/ios-guide/run-button.png)
 
-    Running your project, ensures that your provisioning profile works. Xcode installs your blank pp to the device and then starts it.
+    Running your project, ensures that your provisioning profile works. Xcode installs your blank app to the device and then starts it.
 
 #### Troubleshooting: Let's fix it
 
@@ -262,6 +263,10 @@ use this link for downloading accounts in XCode - https://developer.apple.com/li
 ### Connect the device to a Windows computer
 
 Put Leo's cool stuff in here.
+
+* [Apple iTunes](http://www.apple.com/itunes/).
+
+You'll also need these things.
 
 ### Troubleshooting: Let's fix it
 
@@ -361,9 +366,7 @@ Please reach out to us [here](http://stackoverflow.com/questions/tagged/visual-s
 
 
 
-* [Apple iTunes](http://www.apple.com/itunes/).
 
-You'll also need these things.
 
 * An active [Apple Developer Program](https://developer.apple.com/programs/enroll/).
 
@@ -390,10 +393,3 @@ To install these, open a Terminal app on your Mac, and type this command: ```xco
 Make sure you have XCode 7 installed. This prevents you from having to use a provisioning profile and apple developer account to build and debug your apps.
 
 #### Explore configuration files - show how to save the settings, about the default settings, and some of the other commands that you can use
-
-
-#### We were unable to find the app your trying to debug. Check that the device is connected, awake, and unlocked. Also, make sure it has a Web Inspector enabled.
-
-Reset the settings on your iPAD or device. This fixes it. Show screenshots of the reset setting.
-
-Enable Web inspector in your safari settings
