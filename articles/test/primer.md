@@ -20,7 +20,7 @@ The following figure illustrates how app testing (left) is different from unit t
 
 ![App testing vs. unit testing](media/primer/01-app-unit-testing.png)
  
->Be mindful! The diagram above shows how unit tests are run in an environment that’s different from the actual mobile platform. This means two things. First, there are be small behavioral differences between the runtimes. Second, platform APIs will not be available in the test environment. How, then, do you effectively test code that calls those platform APIs? We’ll come back to this subject later in “Handling platform features and calls to plugins.”
+>Be mindful! The diagram above shows how unit tests are run in an environment that’s different from the actual mobile platform. This means two things. First, there are be small behavioral differences between the runtimes. Second, platform APIs will not be available in the test environment. How, then, do you effectively test code that calls those platform APIs? See the topic, $[Using mocks for platform APIs, plugins, and other external dependencies](mocks.md).
 
 Consider a simple calculator app. To test its adding function, a *UI test script* effectively presses the *2*, *+*, *3*, and *=* buttons in the app’s UI, then checks that the output control in the UI displays the number *5* as illustrated below:
 
