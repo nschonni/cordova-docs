@@ -157,11 +157,25 @@ You'll use those pieces of information in the next section.
 
 You'll need a *provisioning profile* to run your app on a device. Create one by using an Apple Developer account. You can also create one with your free Apple ID but there are limitations. See [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
 
-### Create a provisioning profile by using an Apple Developer account
+### <a id="use-developer-account"></a>Option 1: Use an Apple Developer account
 
-First, enroll in the Apple Developer Program. Then, create an App ID, request a certificate, and register your device.
+This type of provisioning profile gives you the most flexibility. For this option, we'll do these things:
 
-You'll use that information to create a provisioning profile. Let's go through each step in this process.
+* Enroll in the Apple Developer program
+
+* Request a certificate
+
+* Create an App ID
+
+* Register your device
+
+* Create a provisioning profile
+
+* Download the provisioning profile in Xcode
+
+* Install the provisioning profile to your device
+
+ Let's go through each step in this process.
 
 **Enroll in the Apple Developer program**
 
@@ -225,9 +239,11 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
 
 3. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose teh **Continue** button.
 
-    *UDID* stands for Unique Device Identifier. It's a 40-character string uniquely identifies your device. You can find it by using ITunes. See [How to obtain the identifier Number (UDID) for an iPhone, iPod, or iPad](http://www.wikihow.com/Obtain-the-Identifier-Number-(UDID)-for-an-iPhone,-iPod-or-iPad).
+    *UDID* stands for Unique Device Identifier. It's a 40-character string uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
 
 4. In the **Review and register** page, choose the **Register** button.
+
+More info - [Registering Devices Using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW10)
 
 **Create a provisioning profile**
 
@@ -258,23 +274,49 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
 
 9. In the **Your provisioning profile is ready** page, choose the **Download** button.
 
-10. Open Xcode.
+More info - [Creating provisioning profiles using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW24)
 
-11. In Xcode, add your Apple ID (if you haven't done so already).
+**Download the provisioning profile in Xcode**
+
+1. Open Xcode.
+
+2. In Xcode, add your Apple ID (if you haven't done so already).
 
     See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
 
-12. In the menu bar, choose **Xcode**->**Preferences**.
+3. In the menu bar, choose **Xcode**->**Preferences**.
 
-13. In the **Accounts** page, choose the **View Details** button.
+4. In the **Accounts** page, choose the **View Details** button.
 
-14. In the account details page, choose the **Download** button next to the **MyProfile** signing identity.
+5. In the account details page, choose the **Download** button next to the **MyProfile** signing identity.
 
      ![Cordova_iOS_Install_Agent](media/ios-guide/download-profile.png)
 
-15. Choose the **Done** button to close the account details page.
+6. Choose the **Done** button to close the account details page.
 
-### Create a provisioning profile by using your free Apple ID
+**Install the provisioning profile to your device**
+
+1. Connect your device to your Mac. Make sure that  your device is turned on.
+
+2. In the menu bar, choose **Window**->**Devices**.
+
+3. In the **Devices** pane, select your device.
+
+    ![xCode Devices](media/ios-guide/xcode-devices.png)
+
+4. At the bottom of the **Devices** pane, choose the settings icon, and then choose the **Show Provisioning Profiles**.
+
+    ![Provisioning Profiles on Device](media/ios-guide/choose-profiles.png)
+
+5. In the **Provisioning profiles installed on ..** dialog box, choose the ```+``` icon.
+
+    ![Add Provisioning Profile](media/ios-guide/add-profile.png)
+
+6. Navigate the location where you downloaded your provisioning profile, choose the file, and then choose the **Install** button.
+
+7. In the In the **Provisioning profiles installed on ..** dialog box, choose the **Done** button.
+
+### Option 2: Use your free Apple ID
 
 First, take some time to [review the limitations](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1) of this type of provisioning profile. If you're comfortable with those limitations, let's get started!
 
@@ -379,11 +421,36 @@ Did something not behave as expected? See these more detailed articles on the Ap
 
 ### Connect the device to a Windows computer
 
-Put Leo's cool stuff in here.
+To do this, you'll need a provisioning profile that you create by using an Apple Developer Account. If haven't yet done this, see [Option 1: Use an Apple Developer Account](#use-developer-account). That section of content also shows you how to install the provisioning profile to your device. That is also very important.
 
-If you plan to build, run, and debug your iOS app on a device that you connect to a Windows computer, you'll have to create a provisioning profile by using an Apple Developer account.
+#### On your Mac
 
-* [Apple iTunes](http://www.apple.com/itunes/).
+1. Make sure that the remote agent is running.
+
+    See [Start the remote agent on your mac](#remoteAgent).
+
+#### On your Windows computer
+
+1. Install [Apple iTunes](http://www.apple.com/itunes/).
+
+2. Connect your device. Make sure that your device is turned on.
+
+    Apple iTunes automatically starts.
+
+3. In Visual Studio, open the project for your app.
+
+4. On the Standard toolbar, choose the **iOS** platform.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-platform.png)
+    
+5. Choose **Local Device**.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/local-device.png)
+
+6. Press the F5 key to start your app.
+
+    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, your app appears on the device that is connected to your Windows computer.
+
 
 You'll also need these things.
 
