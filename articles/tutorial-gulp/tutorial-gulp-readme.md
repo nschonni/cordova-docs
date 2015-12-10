@@ -132,7 +132,7 @@ By default, bindings in the Task Runner Explorer work only inside of Visual Stud
 gulp combine-and-uglify
 ```
 
-That said, it is possible to assign bindings in Visual Studio and have them apply to builds  initiated from the command line or in a continuous tntegration environment. This is done with a [Cordova hook](http://go.microsoft.com/fwlink/?LinkID=533744) as described in [these directions to add a pre-built Cordova hook to your project](hook-task-runner-binding/tutorial-gulp-hook-task-runner-binding-readme.md). You can modify this example to meet your needs.
+That said, it is possible to assign bindings in Visual Studio and have them apply to builds  initiated from the command line or in a continuous tntegration environment. This is done with a [Cordova hook](http://go.microsoft.com/fwlink/?LinkID=533744) as described in [this GitHub repo to add a pre-built Cordova hook to your project](https://github.com/Microsoft/cordova-docs/tree/master/articles/tutorial-gulp/hook-task-runner-binding). You can modify this example to meet your needs.
 
 
 ## <a name="build"></a>Use gulp to build an app
@@ -202,6 +202,7 @@ var gulp = require("gulp"),
 If you're creating an automated build script, you can find a more complete list of considerations by reviewing [Get started with Continuous Integration](./tutorial-team-build/tutorial-team-build-readme.md).
 
 
+<a name="tacoteambuild"></a>
 ### Use the taco-team-build module with gulp
 
 The [taco-team-build helper module](http://go.microsoft.com/fwlink/?LinkID=533736) assists with builds using gulp and alleviates various [common problems](./tutorial-team-build/tutorial-team-build-readme.md) when building a Cordova project from the command line, especially in a team or CI environment. It can be used with any number of build systems including Jake, Grunt, gulp, and even from the command line. It also helps you use gulp to build for multiple platforms, as described in the next section. 
@@ -365,7 +366,11 @@ A team build / continuous integration environment means having a dedicated build
 
 The build server must, of course, have all the dependencies installed, such as SDKs, for your target platforms. See the “Installing Dependencies” section of the [Comperhensive CI tutorial](./tutorial-team-build/general.md) for details.
 
-However you arrange your build tasks, though, it's a simple matter to configure to server to use gulp. First, run these two commands at a command prompt:
+However you arrange your build tasks, though, it's a simple matter to configure to server to use gulp. 
+
+First, follow the instructions on using [taco-team-build](#tacoteambuild) above.
+
+Second, run these two commands at a command prompt:
 
 ```
 npm install

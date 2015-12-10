@@ -9,7 +9,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="12/1/2015"
+     ms.date="12/14/2015"
      ms.author="rmpablos"/>
 
 #**Update 5 - Visual Studio Tools for Apache Cordova**
