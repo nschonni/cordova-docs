@@ -6,7 +6,7 @@
 
 #Basic unit testing in action with QUnit and Karma
 
-Let’s now follow a piece of code and an associated unit test through the process. For this exercise, create a project folder with two subfolders, ```js``` and ```test```, where we’ll save the files involved.
+Following on the [Primer](unit-test-01-primer.md) and [Unit testing environments](unit-test-02-environments.md), Let’s now follow a piece of code and an associated unit test through the process. For this exercise, create a folder with two subfolders, ```js``` and ```test```, where we’ll save the files involved.
 
 ##The unit
 First, the unit is a simple function to convert a piece of JSON with one set of properties into an object with different properties. Save this code to ```js/normalize.js```:
@@ -30,7 +30,7 @@ function normalizeData(jsonIn) {
 
 Understand that this code is strictly part of the app’s functionality: it has nothing whatsoever to do with our choice of test framework or test runner. It’s also intentionally faulty so that we can learn about writing tests as we challenge the assumptions it makes about the JSON input.
 
->Note: although it’s tempting to give an example unit that just involves simple math or a string operation, that sort of code usually comes from a library that is already thoroughly tested. You need only write unit tests for your own code, not library code.
+>**Note:** although it’s tempting to give an example unit that just involves simple math or a string operation, that sort of code usually comes from a library that should already be thoroughly tested. You need write unit tests for only your own code, not library code.
 
 ##The unit test
 Next, each **unit test** is a piece of code that validates the unit by:
@@ -67,10 +67,22 @@ With the unit and unit test in hand, we now need a test runner that knows how to
 1.	Make sure you have Node.js installed. This will already be the case if you’ve installed the Visual Studio Tools for Apache Cordova, otherwise visit [https://nodejs.org](https://nodejs.org).  
 2.	Open a command prompt and navigate to the folder you created for this exercise.
 3.	Run the following commands:
-| Command | Purpose |
-| ```npm install --save-dev qunitjs``` | Installs QUnit |
-| ```npm install --save-dev karma``` | Installs Karma |
-| ```npm install --save-dev karma-qunit karma-<browser>-launcher``` | Installs Karma dependencies; replace ```<browser>``` with whatever you have installed, e.g. ```chrome```, ```firefox```, ```ie```. |
+
+<table>
+
+<tr>
+<td>Command</td><td>Purpose</td>
+</tr>
+<tr>
+<td>```npm install --save-dev qunitjs```</td><td>Installs QUnit</td>
+</tr>
+<tr>
+<td>```npm install --save-dev karma```</td><td>Installs Karma</td>
+</tr>
+<tr>
+<td>```npm install --save-dev karma-qunit karma-<browser>-launcher```</td><td>Installs Karma dependencies; replace ```&lt;browser&gt;``` with whatever you have installed, e.g. ```chrome```, ```firefox```, ```ie```.</td>
+</tr>
+</table>
 
 4.	Create a configuration file for Karma using its built-in utility. On the command line, go to the folder for this exercise and run ```karma init```. This will ask you a series of questions:
 	1.	For the framework, press Tab until you see ```QUnit```
@@ -92,4 +104,4 @@ You’ll see the browser—a suitable JavaScript runtime—launch to run the tes
 At this point we have all the mechanics in place to run QUnit unit tests with the Karma test runner from the command line. The ```karma``` command above can be easily run from within a longer build process defined with task runners like Grunt and Gulp, including a build process for a Cordova app.
 
 ##Command-line test runners in Visual Studio
-Visual Studio can integrate a command-line test runner like Karma using its Task Runner Explorer and a task runner such as Gulp. This will bring Karma’s output into the IDE. For a tutorial, see $[Test Apache Cordova apps with Karma and Jasmine](../tutorial-testing-cordova/Karma.md). 
+Visual Studio can integrate a command-line test runner like Karma using its Task Runner Explorer and a task runner such as Gulp. This will bring Karma’s output into the IDE. For a tutorial, see [Test Apache Cordova apps with Karma and Jasmine](../tutorial-testing-cordova/karma.md). 

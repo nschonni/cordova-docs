@@ -8,7 +8,7 @@
 #Using the Chutzpah test runner with a Cordova App project
 For this section you’ll need to have the Visual Studio Tools for Apache Cordova installed. If necessary, restart Visual Studio’s installer, press **Modify**, check the box for **Cross-Platform Mobile Development > HTML/JavaScript (Apache Cordova)**, and press **Update**.
 
-Now create a new project and pull in the unit and unit test code from the [Basic Testing topic](./basic-testing.md):
+Now create a new project and pull in the unit and unit test code from the [Basic Testing topic](unit-test-03-basic-testing.md):
 
 1.	Create a new app project through **File > New Project**, selecting **JavaScript > Apache Cordova Apps > Blank App**.
 2.	Create a folder named ```test``` in the project (right click > Add > New folder) and import ```normalize_tests.js``` file (right click on test > Add > Existing Item).
@@ -44,6 +44,6 @@ Now select **Test > Windows > Test Explorer** and you’ll see the available tes
  
 ![Test results in Visual Studio](media/chutzpah/03-results1.png)
 
-This verifies that you have the mechanics of using Chutzpah working within Visual Studio. You can read more about using Chutzpah along with other test frameworks like Jasmine and Mocha in the tutorial [Test Apache Cordova apps with Chutzpah](../tutorial-testing-cordova/Chutzpah.md).
+This verifies that you have the mechanics of using Chutzpah working within Visual Studio. You can read more about using Chutzpah along with other test frameworks like Jasmine and Mocha in the tutorial [Test Apache Cordova apps with Chutzpah](../tutorial-testing-cordova/chutzpah.md).
 
 >**Is the app itself running?** Although Visual Studio builds the Cordova app project prior to running unit tests through Chutzpah, the app isn’t actually part of running the tests. Chutzpah invisibly loads JavaScript files from their locations in the project folder into PhantomJS and executes them there. Any app package that’s being built isn’t involved in the process.

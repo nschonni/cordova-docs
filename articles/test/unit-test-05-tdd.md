@@ -5,7 +5,7 @@
   authors="Kraig Brockschmidt" />
 
 #Improving the unit tests: an introduction to test-driven development
-The previous topics verified the mechanics of identifying and running a single test. It should be obvious, however, that the normalizeData function and the one test we’ve written are woefully inadequate:
+The previous topics in this section verified the mechanics of identifying and running a single test. It should be obvious, however, that the ```normalizeData``` function and the one test we’ve written are woefully inadequate:
 
 - ```normalizeData``` will fail if we give it bad JSON (such that ```JSON.parse``` fails) or any number of variations that don’t contain both ```Name``` and ```PersonalIdentifier``` properties (such that dereferencing either property fails).
 
@@ -14,20 +14,24 @@ The previous topics verified the mechanics of identifying and running a single t
 Clearly we have more work to do. In fact, let’s go back to having no tests and only the definition of an otherwise empty ```normalizeData``` function:
 
 ```javascript
-/** @description Converts JSON data that may contain Name and PersonalIdentifier properties to an object with name and id properties.
+/** @description Converts JSON data that may contain Name and PersonalIdentifier 
+ *    properties to an object with the properties name (string) and id (positive 
+ *    integer up to 9999999999.
  * @param {string} jsonIn The JSON data to normalize.
- * @return {object} An object with name and id properties, both as strings, defaulting to "default" and 0, or null if the JSON is null or invalid.
+ * @return {object} An object with name (string) and id (integer) properties,
+ *    defaulting to "default" and 0, or null if the JSON is null or invalid.
  */
-
 function normalizeData(jsonIn) {
 }
 ```
 
 The question is, what should we work on first? Write the code for ```normalizeData```, or write tests?
 
+##Test-driven development
+
 Developers who narrowly define their role as “writing code” will probably jump right into ```normalizeData``` and make it handle different kinds of data that might get thrown at it. After a time, they’ll likely write a few tests. In the process, they’ll see that some of those tests still fail because there are certain code cases that ```normalizeData``` doesn’t handle properly. So they’ll improve ```normalizeData``` to handle those cases, then write a few more tests, which might reveal additional issues in the unit code. This puts one into a pattern of bouncing back and forth between thinking about coding and thinking about data for test cases, which can result in missed test cases and faulty code.
 
-More experienced developers, on the other hand, know that their job is really about “efficient production of robust software” and that this means testing is just as important as coding, if not more so. Development, in short, is about a whole lot more than just coding! They will have learned, in fact, that thinking through variations of good and bad *data* is a different mental process than thinking about how to handle those variations *in code*. Thinking about test cases means asking, “How do I challenge the unit under test to fail?” whereas the process of coding asks “How do I write this code unit to work properly?”
+More experienced developers who understand, on the other hand, that their job is really about “efficient production of robust software,” understand testing is just as important as coding, if not more so. Development, in short, is about a whole lot more than just coding! They will have learned, in fact, that thinking through variations of good and bad *data* is a different mental process than thinking about how to handle those variations *in code*. Thinking about test cases means asking, “How do I challenge the unit under test to fail?” whereas the process of coding asks “How do I write this code unit to work properly?”
 
 As a result, experienced developers find that it can be much more efficient and productive to *start* by thinking through test cases/input variations by themselves, including boundary and edge cases, because as you identify each set of inputs it’s quite easy to additional variations. Once all those input cases clearly identified, it’s then very easy to turn a list of inputs into unit tests. Once that work is done, you can shift your focus entirely to writing the code without having to wonder (or worry!) whether you’re really handling all the possible inputs.
 
@@ -312,4 +316,4 @@ Why is that? Select the test and the pane below the list will show the reason:
 
 This says that the actual value is ```undefined```. Hmmm. How did that happen? We know that ```data.Name``` was good from prior test runs, thus ```.substring(0, 255)``` should be valid. What’s going on?
 
-If you find yourself asking these questions, the right answer is to step through that unit test in the debugger, as described in [Debugging unit tests](./debug.md). 
+If you find yourself asking these questions, the right answer is to step through that unit test in the debugger, as described in [Debugging unit tests](unit-test-06-debug.md). 
