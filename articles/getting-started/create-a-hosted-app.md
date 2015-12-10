@@ -104,7 +104,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 1. In Solution Explorer, right-click config.xml in the CordovaHostedApp project and choose **View Code**.
 
-2. Add the following entry after the first set of `<allow-intent.../>` tags (before the <platform> sections).
+2. Add the following entry after the first set of `<allow-intent.../>` tags (before the `<platform>` sections).
 
     ```
     <allow-navigation href="https://cordovahostedweb-starter.azurewebsites.net" />
@@ -325,6 +325,7 @@ To save time and steps, instead of republishing the ASP.NET project to a new Azu
         ```
 
     In the CordovaHostedWeb project:
+
     * In Views/Cordova/index.cshtml, you already modified the CSP `<meta>` element with the new URL, so you don’t need to change it.
 
 4. Press F5.
@@ -333,7 +334,7 @@ To save time and steps, instead of republishing the ASP.NET project to a new Azu
 
     ![Redirect page](media/create-a-hosted-app/hosted-app-redirect.png)
 
-    > **Note**: On Ripple, the redirection is only partially supported. If you see an error message, close it to see the redirection page of the hosted app.
+    > **Note**: On Ripple, the redirection is only partially supported. If you see an error message, close the message to see the redirection page of the hosted app.
 
     Next, you want to fix up this page so that you can access the device camera and take a picture.
 
@@ -443,6 +444,7 @@ To save time and steps, instead of republishing the CordovaHostedWeb project to 
         ```
 
     In the CordovaHostedWeb project:
+
     * In Views/Cordova/index.cshtml, update the CSP <meta> element with the new URL.
 
 2. Choose your preferred emulator to run the app.
