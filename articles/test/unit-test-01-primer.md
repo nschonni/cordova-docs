@@ -5,10 +5,11 @@
   authors="Kraig Brockschmidt" />
 
 #A primer on unit testing and continuous integration
-Chances are you’ve heard about unit testing, but you might not be clear on what it is, exactly. Let’s make sure, then, that you have a complete understanding of the nature of unit testing and the terminology often used in its context.
+Great apps—like great artists, actors, and athletes—are great performers. To validate and continually improve their performances, human beings undergo extensive training, practice, rehearsals, and after-the-fact reviews. In software development we achieve the same ends through many levels of rigorous testing across the entire application lifecycle.
+
+Chances are you’ve heard about unit testing, but you might not be clear on what it is, exactly. This primer, then, provides a background understanding of the nature of unit testing and the terminology often used in its context.
 
 ##Difference between unit testing and other types of testing
-Great apps—like great artists, actors, and athletes—are great performers. To validate and continually improve their performances, human beings undergo extensive training, practice, rehearsals, and after-the-fact reviews. In software development we achieve the same ends through many levels of rigorous testing across the entire application lifecycle.
 
 Most forms of testing, such as functional testing, UI/acceptance testing, performance profiling, integration testing, security testing, usability testing, and so forth, all work with an app that’s been built and deployed to emulators or test devices. Testing then happens through the app’s user interface, which can be done manually or through scripts and other automation tools. Such testing, which has no knowledge of the app’s code, is referred to as “black box” testing.
 
@@ -20,7 +21,7 @@ The following figure illustrates how app testing (left) is different from unit t
 
 ![App testing vs. unit testing](media/primer/01-app-unit-testing.png)
  
->Be mindful! The diagram above shows how unit tests are run in an environment that’s different from the actual mobile platform. This means two things. First, there are be small behavioral differences between the runtimes. Second, platform APIs will not be available in the test environment. How, then, do you effectively test code that calls those platform APIs? See the topic, $[Using mocks for platform APIs, plugins, and other external dependencies](mocks.md).
+>**Be mindful!** The diagram above shows how unit tests are run in an environment that’s different from the actual mobile platform. This means two things. First, there are be small behavioral differences between the runtimes. Second, platform APIs will not be available in the test environment. How, then, do you effectively test code that calls those platform APIs? See the topic, [Using mocks for platform APIs, plugins, and other external dependencies](unit-test-07-mocks.md).
 
 Consider a simple calculator app. To test its adding function, a *UI test script* effectively presses the *2*, *+*, *3*, and *=* buttons in the app’s UI, then checks that the output control in the UI displays the number *5* as illustrated below:
 
@@ -34,7 +35,7 @@ Somewhere under the covers, of course, the app will have some kind of addition f
 	}
 ```
  
->Note: you wouldn't likely have such a trivial addition function in a real app, of course, because the + operator has been thoroughly tested by the authors of the runtime and wouldn’t need to be unit-tested further. Later on we’ll use a more realistic example; for now, this function suffices to explain the fundamentals.
+>**Note:** you wouldn't likely have such a trivial addition function in a real app, of course, because the + operator has been thoroughly tested by the authors of the runtime and wouldn’t need to be unit-tested further. Later on we’ll use a more realistic example; for now, this function suffices to explain the fundamentals.
 
 A unit test, then, is a *separate* piece of code that makes a direct call to this function, passing values like 2 and 3 as parameters and checking that the return value is 5. A typical unit test might look like this, where it has a name and a description of what’s being tested, which is essential for reporting:
 

@@ -8,7 +8,7 @@
 
 Unit testing executes code in a runtime that’s separate from the runtime in which the app will eventually run on a mobile platform. Unit testing thus happens without deploying the code to an emulator or device that’s running the platform operating system.
 
-> Note: It is certainly possible, of course, to include your unit test code with a build of the app that’s deployed to a mobile platform, and to execute the tests on that platform directly. This is a good test to run at some point, in fact, but not as part of a build or continuous integration process.
+> **Note:** It is certainly possible, of course, to include your unit test code with a build of the app that’s deployed to a mobile platform, and to execute the tests on that platform directly. This is a good test to run at some point, in fact, but not as part of a build or continuous integration process.
 
 As a result, platform APIs are not available during unit testing, and any calls made to them—such as those that happen within a Cordova plugin—will fail. The same is also true of other external dependencies that the unit testing runtime doesn’t have access to, such as external databases and web services, and even the ability to authenticate with those resources.
 
@@ -55,7 +55,7 @@ Still, when executing ```consolidateUserRecord``` in a unit testing runtime, we 
 - The production database isn’t available.
 - External web requests will fail.
 
-> Note: we don’t in fact want to make external web requests from a unit test in the first place because ultimately we want to run unit tests as part of a continuous integration build. Unit tests should run quickly and not depend on connectivity, nor should we break the build because of a network timeout. Again, these are matters for integration testing.
+> **Note: **we don’t in fact want to make external web requests from a unit test in the first place because ultimately we want to run unit tests as part of a continuous integration build. Unit tests should run quickly and not depend on connectivity, nor should we break the build because of a network timeout. Again, these are matters for integration testing.
 
 How, then, can we run this code at all? The answer is simple: we fake it, which means creating stubs—or mocks, as they’re commonly called—that intercept calls to external dependencies to mimic the data they return.
 
@@ -64,9 +64,9 @@ It won’t take long for you to realize that mocks must isolate and intercept al
 There are several ways this can happen:
 
 1.	A Cordova plugin might provide for mocks directly, because the plugin after all is entirely aware of any platform APIs it using. This is especially helpful with plugins that use third party external dependencies like databases as opposed to standard platform APIs.
-2.	Some JavaScript libraries may already have mocking built in, or there exists a compatible framework for that purpose. For example, mockjax intercepts jQuery ```$.getJSON``` calls to return test data instead of hitting a real service. (For an example, see $[http://www.telerik.com/blogs/using-qunit-to-unit-test-phonegap-cordova-applications](http://www.telerik.com/blogs/using-qunit-to-unit-test-phonegap-cordova-applications).)
-3.	The Cordova Mocks extension for Chrome injects mock data for nine of the most common Cordova plugins when using Chrome as the unit testing runtime. The extension, in other words, provides mocking at the runtime level.
-4.	Use plugins through a wrapping layer that provides for mocking intercepts. ngCordova is an example of this, adding more than 70 AngularJS extensions on top of the Cordova API. This has the advantage over #3 above of being runtime-independent. 
+2.	Some JavaScript libraries may already have mocking built in, or there exists a compatible framework for that purpose. For example, mockjax intercepts jQuery ```$.getJSON``` calls to return test data instead of hitting a real service. (For an example, see [http://www.telerik.com/blogs/using-qunit-to-unit-test-phonegap-cordova-applications](http://www.telerik.com/blogs/using-qunit-to-unit-test-phonegap-cordova-applications).)
+3.	The [Cordova Mocks extension for Chrome](https://chrome.google.com/webstore/detail/cordova-mocks/iigcccneenmnplhhfhaeahiofeeeifpn) injects mock data for nine of the most common Cordova plugins when using Chrome as the unit testing runtime. The extension, in other words, provides mocking at the runtime level.
+4.	Use plugins through a wrapping layer that provides for mocking intercepts. [ngCordova](http://ngcordova.com/) is an example of this, adding more than 70 AngularJS extensions on top of the Cordova API. This has the advantage over #3 above of being runtime-independent. 
 
 To return now to our example of ```consolidateUserRecord```, here’s how we’d address the expected failures during unit testing:
 
