@@ -105,7 +105,7 @@ To start the remote agent in secure mode, type this command.
 
 5. Choose the **OK** button to close this dialog box.
 
-   Visual Studio connects to the remote agent. If you don't receive any errors, you've successfully connected. If you do receive an error, continue to the next section and let's try a few things.
+   Visual Studio connects to the remote agent. If you don't receive any errors, you've successfully connected.
 
 ### <a id="errors">Troubleshooting: Let's fix it
 
@@ -123,16 +123,103 @@ To start the remote agent in secure mode, type this command.
 
 If your coming to this topic after having building your app for a while. Start testing with a brand new blank app to make sure baseline scenarios work. If they do. It's possible that your app contains sizable plugins or some other aspect that is causing issues.
 
-In this section we'll test a number of scnearios just to make sure your environment is setup right.
+In this section we'll test a number of scenarios just to make sure your environment is setup right.
 We'll test on an emulator, test on a device connected to your mac, and test on a device connected to your windows machine.
 
-### Try an emulator
+### Use an iOS simulator
 
-### Try a device connected to your mac
+1. On the Standard toolbar, choose the **iOS** platform.
 
-Connect to mac. With XCode 7, you should be able to do this without a developer account and provisioning profile.
+    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-platform.png)
 
-### Try a device connected to your Windows computer
+2. Choose **iPhone 5** simulator.
+
+    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-simulator.png)
+
+3. Press the F5 key to start the app.
+
+   As your app builds, you'll see messages appear in the Terminal app on your mac. This means that Visual Studio has successfully connected to the remote agent and is using that agent to build and deploy your app to the mac.
+
+   When the build is complete, your app will appear in the iPhone 5 simulator on your Mac.
+
+#### <a id="errors">Troubleshooting: Let's fix it
+
+   [Did you receive an error that relates to your certificate?](#certificates)
+
+   [Is the host name of your Mac not resolving?](#hostname)
+
+   [Have you been told that your security PIN invalid or has expired?](#securitypin)
+
+   [Have you been told to verify that your server is running in secure mode?](#securemode)
+
+   [Are you experiencing a symptom that does not appear in this list?](#stack)
+
+### Use a device
+You can connect a device to your mac or connect one to your Windows machine.
+In both cases, you'll need a provisioning profile. That's just information that describes your app. You can either create this profile on the developer site or have XCode create it for you.
+
+### Use a device connected to your mac
+
+#### Without having to get a developer account
+
+
+With XCode 7, you can use a free Apple ID to debug on a device. You'll need Xcode 7 for this. It creates a free provisioning profile for you so that you don't have to get a developer account to debug devices. There are limitations. For example, you won't be able to submit this app to the store until you get a developer account and use that profile. However, if you jsut want to iteratively develop and debug without the hastle of the store. Link to those limitations here - [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
+
+1. Start Xcode 7.
+
+2. In Xcode, add your Apple ID to your xCode **Accounts**.
+
+   See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
+
+
+2.In the project navigator, select the project and your target to display the project editor.
+
+
+3.Click General and choose your name from the Team pop-up menu.
+
+
+4.Connect the device to your Mac and choose your device from the Scheme toolbar menu.
+
+
+5.Below the Team pop-up menu, click Fix Issue.
+
+Xcode creates a free provisioning profile for you and the warning text under the Team pop-up menu disappears.
+
+6.Click the Run button.
+
+Xcode installs the app on the device before launching the app.
+
+Close the project. You're not going to use it.
+
+Web inspector must be enabled in the Safari settings!!!
+
+
+These steps came from here - http://stackoverflow.com/questions/4952820/test-ios-app-on-device-without-apple-developer-program-or-jailbreak/4952845#4952845
+
+
+#### By using a Developer account
+
+use this link for downloading accounts in XCode - https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/obtain_certificates_and_provisioning_profiles.html#//apple_ref/doc/uid/TP40013306-CH19-SW1
+
+#### <a id="errors">Troubleshooting: Let's fix it
+
+Put the XCode 7 issue here.
+
+Put the issue that you have to reset your settings
+
+Put the issue of you have to enable web inspector in safari.
+
+   [Did you receive an error that relates to your certificate?](#certificates)
+
+   [Is the host name of your Mac not resolving?](#hostname)
+
+   [Have you been told that your security PIN invalid or has expired?](#securitypin)
+
+   [Have you been told to verify that your server is running in secure mode?](#securemode)
+
+   [Are you experiencing a symptom that does not appear in this list?](#stack)
+
+### Use a device connected to your Windows computer
 
 Put Leo's cool stuff in here.
 
@@ -269,3 +356,16 @@ Newer versions of Node.js and npm will automatically configure the permissions o
 If you pass this don't worry, you can reinstall the command-line tools by doing this:
 
 To install these, open a Terminal app on your Mac, and type this command: ```xcode-select -–install```.
+
+### An error occurs when you attempt to use local or remote device build
+
+Make sure you have XCode 7 installed. This prevents you from having to use a provisioning profile and apple developer account to build and debug your apps.
+
+### Explore configuration files - show how to save the settings, about the default settings, and some of the other commands that you can use
+
+
+### We were unable to find the app your trying to debug. Check that the device is connected, awake, and unlocked. Also, make sure it has a Web Inspector enabled.
+
+Reset the settings on your iPAD or device. This fixes it. Show screenshots of the reset setting.
+
+Enable Web inspector in your safari settings
