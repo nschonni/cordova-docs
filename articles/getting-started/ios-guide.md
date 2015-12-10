@@ -201,6 +201,8 @@ See [Apple Developer Program](https://developer.apple.com/programs/enroll/).
 
 6. Choose the **Done** button to close the account details page.
 
+Need more detail? See [Creating Signing Identities](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW6).
+
 **Create an App ID**
 
 You don't have to create an explicit App ID to build and test your app. We'll create a wildcard App ID.
@@ -227,6 +229,8 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
 
     The **Registration complete** page appears.
 
+Need more detail? see [Registering App IDs](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW991).
+
 **Register your device**
 
 1. In the **Certificates, Identifiers & Profiles** page, choose the **All** link that is located under the **Devices** heading.
@@ -239,14 +243,13 @@ You don't have to create an explicit App ID to build and test your app. We'll cr
 
 3. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose teh **Continue** button.
 
-    *UDID* stands for Unique Device Identifier. It's a 40-character string uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
+     *UDID* stands for Unique Device Identifier. It's a 40-character string uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
 
 4. In the **Review and register** page, choose the **Register** button.
 
-More info - [Registering Devices Using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW10)
+Need more detail? See [Registering Devices Using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW10)
 
 **Create a provisioning profile**
-
 
 1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
 
@@ -274,7 +277,7 @@ More info - [Registering Devices Using Member Center](https://developer.apple.co
 
 9. In the **Your provisioning profile is ready** page, choose the **Download** button.
 
-More info - [Creating provisioning profiles using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW24)
+Need more detail? See [Creating provisioning profiles using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW24)
 
 **Download the provisioning profile in Xcode**
 
@@ -362,23 +365,15 @@ First, take some time to [review the limitations](https://developer.apple.com/li
 
     Running your project, ensures that your provisioning profile works. Xcode installs your blank app to the device and then starts it.
 
-#### Troubleshooting: Let's fix it
+Need more detail? See any of these supportive articles on the Apple developer website:
 
-Did something not behave as expected? See these more detailed articles on the Apple Developer website. Please let us know if we are missing an important step.
+#### More information
 
-* [Creating a project in Xcode 7](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/Setup/Setup.html#//apple_ref/doc/uid/TP40013839-CH41-SW1)
-
-* [Adding your Apple ID](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/AddingYourAccounttoXcode/AddingYourAccounttoXcode.html#//apple_ref/doc/uid/TP40013839-CH40-SW1)
-
-* [Creating a team provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html#//apple_ref/doc/uid/TP40013839-CH33-SW4).
-
-* [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1)
-
+Did something not behave as expected? See these more detailed articles on the Apple Developer website: [Creating a project in Xcode 7](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/Setup/Setup.html#//apple_ref/doc/uid/TP40013839-CH41-SW1), [Creating a team provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html#//apple_ref/doc/uid/TP40013839-CH33-SW4), and [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1).
 
 ## Run your app on a device
 
 ### Connect the device to a Mac
-
 
 #### On your Mac
 
@@ -389,7 +384,6 @@ Did something not behave as expected? See these more detailed articles on the Ap
 3. Make sure that the remote agent is running.
 
     See [Start the remote agent on your mac](#remoteAgent).
-
 
 #### On your Windows computer
 
@@ -419,6 +413,12 @@ Did something not behave as expected? See these more detailed articles on the Ap
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
+[If you have this <issue goes here> where you have to install Xcode](#install-xcode)
+
+[If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
+
+[Build hangs](#build-hangs)
+
 ### Connect the device to a Windows computer
 
 To do this, you'll need a provisioning profile that you create by using an Apple Developer Account. If haven't yet done this, see [Option 1: Use an Apple Developer Account](#use-developer-account). That section of content also shows you how to install the provisioning profile to your device. That is also very important.
@@ -442,7 +442,7 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 4. On the Standard toolbar, choose the **iOS** platform.
 
     ![Cordova_iOS_Install_Agent](media/ios-guide/ios-platform.png)
-    
+
 5. Choose **Local Device**.
 
     ![Cordova_iOS_Install_Agent](media/ios-guide/local-device.png)
@@ -451,22 +451,23 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, your app appears on the device that is connected to your Windows computer.
 
-
-You'll also need these things.
-
 ### Troubleshooting: Let's fix it
 
-- Check to see that you have XCode installed. If you accepted the blah prompt, you'll install the command-line tools but not XCode. Go to blah and install it. Then, open XCode to accept the license agreement and restart remoteBuild.
+[You've been told that we were unable to find the app you're trying to debug](#safari)
 
-- If you install XCode from this prompt. exit remoteBuild, open XCode and accept the license agreement. Then restart remotebuild.
+[Did you receive an error that relates to your certificate?](#certificates)
 
-- Your computer went to sleep and the network that your PC has connected to is different than your corporate network. Change the preferred networks
+[Is the host name of your Mac not resolving?](#hostname)
 
-- Still not working? Let us know? add a DISCUSS comment below.
+[Have you been told that your security PIN invalid or has expired?](#securitypin)
 
-- Ensure that you are targetting a version of Cordova that is supported by remoteBuild. The earliest version you can use is 4.3. Open your Config.xml and make sure that your CLI version is higher. Link folks to the CLI upgrade topic that I plan to write so that they can evaluate the risks. Link to stack question where I learned about this - http://stackoverflow.com/questions/33844896/vs-2015-tools-for-apache-cordova-ios-remote-build-not-using-buildserver
+[Are you experiencing a symptom that does not appear in this list?](#stack)
 
-If build hangs or does not execute - make sure that your node.js version and Cordova version are compatable. Here is link to the known issues article - http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-hangs-or-does-not-execute-when-building-for-ios-with-cordova-lt-533-and-nodejs-400strong and a link to the stack article - http://stackoverflow.com/questions/33791687/ios-remote-build-fails-in-visual-studio-taco
+[If you have this <issue goes here> where you have to install Xcode](#install-xcode)
+
+[If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
+
+[Build hangs](#build-hangs)
 
 ## Stop the remote agent on your Mac
 
@@ -474,7 +475,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 ## Troubleshooting: Let's fix it
 
-### <a id="certificate">Did you receive an error that relates to your certificate?
+### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
 This can happen when Visual Studio has trouble finding your Mac on the network.
 
@@ -498,7 +499,7 @@ If you've resolved this problem another way, please share it in a comment.
 
 [Go back up](#errors)
 
-### <a id="hostname">Is the host name of your Mac not resolving?
+### <a id="hostname"></a>Is the host name of your Mac not resolving?
 
 First, make sure that the **Host** name in Visual Studio matches computer name in the in the **Sharing** settings of your Mac.
 
@@ -514,7 +515,7 @@ If you've resolved this problem another way, please share it in a comment.
 
 [Go back up](#errors)
 
-### <a id="securitypin">Have you been told that your security PIN is invalid or has expired?
+### <a id="securitypin"></a>Have you been told that your security PIN is invalid or has expired?
 
 This can happen the first time you set things up. When you first start the remote agent, your security PIN is good for only 10 minutes. then it expires. Just generate a new one.
 
@@ -532,7 +533,7 @@ If you've resolved this problem another way, please share it in a comment.
 
 [Go back up](#errors)
 
-### <a id="safari"> You've been told that we were unable to find the app you're trying to debug
+### <a id="safari"></a>You've been told that we were unable to find the app you're trying to debug
 
 On your device, open the Safari settings and enable the **Web Inspector** setting.
 
@@ -540,19 +541,29 @@ See [Safari iOS](https://developer.apple.com/library/mac/documentation/AppleAppl
 
 If this doesn't work, reset the settings on your ios device - show screenshot of that setting. Then, enable the Web Inspector setting.
 
-### <a id="stack">Are you experiencing a symptom that does not appear in this list?
+### <a id="install-xcode"></a>If you have this <issue goes here> where you have to install Xcode
+
+- Check to see that you have XCode installed. If you accepted the blah prompt, you'll install the command-line tools but not XCode. Go to blah and install it. Then, open XCode to accept the license agreement and restart remoteBuild.
+
+- If you install XCode from this prompt. exit remoteBuild, open XCode and accept the license agreement. Then restart remotebuild.
+
+### <a id="compatible-versions"></a>If you have this <issue goes here> where you have an incompatible version of the CLI
+
+- Ensure that you are targetting a version of Cordova that is supported by remoteBuild. The earliest version you can use is 4.3. Open your Config.xml and make sure that your CLI version is higher. Link folks to the CLI upgrade topic that I plan to write so that they can evaluate the risks. Link to stack question where I learned about this - http://stackoverflow.com/questions/33844896/vs-2015-tools-for-apache-cordova-ios-remote-build-not-using-buildserver
+
+### <a id="build-hangs"></a>Build hangs
+
+If build hangs or does not execute - make sure that your node.js version and Cordova version are compatable. Here is link to the known issues article - http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-hangs-or-does-not-execute-when-building-for-ios-with-cordova-lt-533-and-nodejs-400strong and a link to the stack article - http://stackoverflow.com/questions/33791687/ios-remote-build-fails-in-visual-studio-taco
+
+If you're connecting directly to a windows computer, make sure that you have the provisioning profile installed to your device.
+
+### <a id="stack"></a>Are you experiencing a symptom that does not appear in this list?
 
 Please reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
 
 [Go back up](#errors)
 
-##### Not sure I need bucket
-
-##### Install these things on your Mac
-
-
-
-##### Configure npm package cache permissions
+##### Configure npm package cache permissions - what would happen to cause this
 
 If you have an older version of Node.js and npm, type this command:
 
@@ -565,9 +576,3 @@ Newer versions of Node.js and npm will automatically configure the permissions o
 If you pass this don't worry, you can reinstall the command-line tools by doing this:
 
 To install these, open a Terminal app on your Mac, and type this command: ```xcode-select -–install```.
-
-#### An error occurs when you attempt to use local or remote device build
-
-Make sure you have XCode 7 installed. This prevents you from having to use a provisioning profile and apple developer account to build and debug your apps.
-
-#### Explore configuration files - show how to save the settings, about the default settings, and some of the other commands that you can use
