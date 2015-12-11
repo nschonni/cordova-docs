@@ -28,11 +28,11 @@ In general, when migrating a Web site, several approaches will work. Here are a 
 
 * Move your front end code (or your View) from your Web site to a new Cordova app.
 
-    This can be a good option especially if your web site does not implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported on Cordova. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual tasks involved are pretty specific to the implementation of the Web site, so we will not be looking at this option in this article. For other resources and options, see [What's Next?](#next).
+    This can be a good option especially if your web site does not implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported on Cordova. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual steps involved are pretty specific to each Web site, so we will not be looking at this option in this article. For other resources and options, see [What's Next?](#next).
 
 In this tutorial, we will get you started with Cordova by building a hosted app from an ASP.NET Web site. This mobile client app works on Android, iOS, and Windows 10.
 
-Here is a quick look at the architecture of a hosted app showing the server on the left and the Cordova client app on the right. cordova.js gives access to the device APIs (Cordova plugins). In this architecture, you can code against device APIs in your app code on the server, using generic JavaScript plugin interfaces, which call native code that runs on the device.
+Here is a quick look at the architecture of a hosted app showing the server on the left and the Cordova client app on the right. cordova.js gives access to the device APIs (Cordova plugins). In this architecture, you can code against device APIs in the app code on the server, using generic JavaScript plugin interfaces, which call native code that runs on the device.
 
 ![Hosted app architecture](media/create-a-hosted-app/hosted-app-architecture.png)
 
@@ -66,7 +66,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 3. For the project name, type "CordovaHostedApp", or something similar, and choose **OK**.
 
-    Visual Studio creates the Cordova project and adds it to the starter solution. The project appears in Solution Explorer.
+    Visual Studio creates the Cordova mobile app project and adds it to the starter solution. The project appears in Solution Explorer.
 
 3. In Solution Explorer, right-click the new Cordova project and choose **Set as Startup Project**.
 
@@ -179,7 +179,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     The most important thing here is that you create the anchor link that is used in the redirect script you created in the previous step.
 
-4. In index.html, replace the default [Content-Security-Policy](http://taco.visualstudio.com/en-us/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following `<meta>` element.
+4. In index.html, replace the default [Content-Security-Policy](http://taco.visualstudio.com/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following `<meta>` element.
 
     ```
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb-starter.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
@@ -491,7 +491,7 @@ You may want to investigate options to find an approach that works best for you.
 
 * **Explore other architectures that may be used for hosted apps**
 
-    * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and higher performance in a hosted app.
+    * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and high performance in a hosted app.
 
 ## Appendix: Publish the Web site
 
