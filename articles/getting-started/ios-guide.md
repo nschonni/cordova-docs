@@ -562,5 +562,3 @@ Try these things:
 [Go back up](#errors)
 
 >! Troubleshooting
-
->![Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
