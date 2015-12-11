@@ -179,7 +179,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     The most important thing here is that you create the anchor link that is used in the redirect script you created in the previous step.
 
-4. In index.html, replace the default [Content-Security-Policy](http://taco.visualstudio.com/en-us/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following `<meta>` element.
+4. In index.html, replace the default [Content-Security-Policy](http://taco.visualstudio.com/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following `<meta>` element.
 
     ```
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb-starter.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
