@@ -491,7 +491,7 @@ You may want to investigate options to find an approach that works best for you.
 
 * **Explore other architectures that may be used for hosted apps**
 
-    * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and higher performance in a hosted app.
+    * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and high performance in a hosted app.
 
 ## Appendix: Publish the Web site
 
