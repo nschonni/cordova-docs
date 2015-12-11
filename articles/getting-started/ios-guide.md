@@ -22,19 +22,21 @@ In this guide, we'll help you get everything setup right so that you can build, 
 
 Let's help you set things up.
 
-## Install a few things onto your Mac
+## First, install a few things onto your Mac
 
 1. Install [Node.js](http://nodejs.org/).
+
+   Node version is important here. Why didn't this break for me?
 
 2. Install [Xcode](https://developer.apple.com/xcode/download/).
 
 3. In the **Launchpad**, open **Xcode**.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/xcode-icon.png)
+    ![XCode icon](media/ios-guide/xcode-icon.png)
 
 4. Accept the license agreement and then close Xcode.
 
-    This seems like a strange step, but our tools depend on Xcode and it won't run until you this license.
+    This seems like a strange step, but our tools depend on Xcode and it won't run until you accept this license.
 
 4. Open a Terminal app, and type this command.
 
@@ -59,7 +61,7 @@ You can start the remote agent in secure mode or without secure mode.
 
 This is the safest mode. Visual Studio uses SSL certificates to securely transfer build payloads to the remote agent.
 
-This mode protects your intellectual property from being intercepted because your build payload is encrypted. It also reduces the likelihood that outsiders will use the open port of your remote agent to run malicious code. When you start the agent in secure mode, you'll get a PIN. The only way to establish a connection with the remote host is by using that PIN.  
+Your build payload is encrypted and that protects your intellectual property from being intercepted. When you start the agent in secure mode, you'll get a security PIN. You can't connect to the remote agent without it. That prevents outsiders from using the open port of your remote agent to run malicious code.
 
 To start the remote agent in secure mode, type this command.
 
@@ -69,7 +71,7 @@ To start the remote agent in secure mode, type this command.
 
 The agent installs [Homebrew](http://brew.sh/), and then starts. The host name, port number, and security pin appear in the Terminal app.  
 
-![Cordova_iOS_Install_Agent](media/ios-guide/IC816236.png)
+![Remote Agent Output](media/ios-guide/IC816236.png)
 
 You'll use those pieces of information in the next section. In fact, you'll want to do that part fairly soon because the security pin is active for only 10 minutes.
 
@@ -77,7 +79,7 @@ You'll use those pieces of information in the next section. In fact, you'll want
 
 This is the easiest yet riskiest way to start the remote agent. Visual Studio uses simple HTTP connections to transfer build payloads.
 
-Often times when folks have trouble connecting Visual Studio to their remote agent, they'll start their remote agent without secure mode and the connection issue disappears.
+Often times when folks have trouble connecting to their remote agent, they'll start it without secure mode and the connection issue disappears.
 
 Start the remote agent without secure mode only if you are comfortable with the trade-offs between risk and convenience.
 
@@ -101,17 +103,17 @@ You'll use those pieces of information in the next section.
 
 4. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **Remote Agent Configuration**.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/options-dialog.png)
+    ![Remote Agent Configuration Options](media/ios-guide/options-dialog.png)
 
 5. Add the host name and port number to the appropriate fields in this dialog box.
 
-6. If your using secure mode, set the **Secure mode** field to **True**, and then add the security pin.
+6. If you're using secure mode, set the **Secure mode** field to **True**, and then add the security pin.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/secure-mode.png)
+    ![Settings for secure mode](media/ios-guide/secure-mode.png)
 
-    If your not using secure mode, set the **Secure mode** filed to **False**, and then leave the **Security PIN** field blank.
+    If you're not using secure mode, set the **Secure mode** filed to **False**, and then leave the **Security PIN** field blank.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/non-secure-mode.png)
+    ![Settings for non-secure mode](media/ios-guide/non-secure-mode.png)
 
 5. Choose the **OK** button to close this dialog box.
 
@@ -131,15 +133,15 @@ You'll use those pieces of information in the next section.
 
 1. On the Standard toolbar, choose the **iOS** platform.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-platform.png)
+    ![Platform selector](media/ios-guide/ios-platform.png)
 
 2. Choose **iPhone 5** simulator.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-simulator.png)
+    ![Target selector](media/ios-guide/ios-simulator.png)
 
 3. Press the F5 key to start the app.
 
-    As your app builds, you'll see messages appear in the Terminal app on your mac. This means that Visual Studio has successfully connected to the remote agent and is using that agent to build and deploy your app to the mac.
+    As your app builds, messages appear in the Terminal app. This means that Visual Studio has connected to the remote agent and is using that agent to build and deploy your app to the mac.
 
     When the build is complete, your app will appear in the iPhone 5 simulator on your Mac.
 
@@ -173,7 +175,7 @@ This type of provisioning profile gives you the most flexibility. For this optio
 
 * Download the provisioning profile in Xcode
 
-* Install the provisioning profile to your device
+* Install the provisioning profile onto your device
 
  Let's go through each step in this process.
 
@@ -187,7 +189,7 @@ See [Apple Developer Program](https://developer.apple.com/programs/enroll/).
 
 2. Start Xcode.
 
-3. In Xcode, add your Apple ID (if you haven't done so already).
+3. In Xcode, add your Apple ID.
 
     See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
 
@@ -197,7 +199,7 @@ See [Apple Developer Program](https://developer.apple.com/programs/enroll/).
 
 5. In the account details page, choose the **Create** button next to the **iOS Development** signing identity.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/create-cert.png)
+    ![Create button](media/ios-guide/create-cert.png)
 
 6. Choose the **Done** button to close the account details page.
 
@@ -205,25 +207,25 @@ Need more detail? See [Creating Signing Identities](https://developer.apple.com/
 
 **Create an App ID**
 
-You don't have to create an explicit App ID to build and test your app. We'll create a wildcard App ID.
+We'll use a *wildcard App ID* because it's the most flexible. You can use one for multiple apps. You need an explicit App ID (*an App ID that you can use with only one app*) only if you decide to enable certain services in your provisioning profile.
 
 1. On your Mac, open Safari, and log into the Apple Developer [Member Center](https://developer.apple.com/membercenter/index.action).
 
 2. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Identifiers](https://developer.apple.com/account/ios/identifiers/bundle/bundleList.action) link.
 
-    Take a look at the list of App ID's. If a ```*``` appears in the ID field of any of them, then you already have a wildcard App ID. Sometimes Xcode generates this for you. Otherwise, proceed to the next step.
+    Sometimes Xcode generates a wildcard App ID for you. Take a look at the list of App ID's. If any of these have a ```*``` in the **ID** field, then you have a wildcard App ID. If not, proceed to the next step.
 
-3. If you don't have a wildcard App ID, choose the Add button to create one.
+3. If you don't have a wildcard App ID, choose the **+** button to create one.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/add-wildcard.png)
+    ![+ button](media/ios-guide/add-wildcard.png)
 
     The [Registering an App ID](https://developer.apple.com/account/ios/identifiers/bundle/bundleCreate.action) page appears.
 
-4. Choose the **Wildcard App ID** option and place a ```*``` in  the **Bundle ID** field.
+4. Choose the **Wildcard App ID** option and then place a ```*``` in  the **Bundle ID** field.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/wildcard-asterix.png)
+    ![Wildcard ID option](media/ios-guide/wildcard-asterix.png)
 
-5. Add any other required information to the page, and then choose the **Continue** button.
+5. Fill in the rest of the fields on that page, and then choose the **Continue** button.
 
 6. In the **Confirm your App ID** page, choose the **Submit** button.
 
@@ -235,15 +237,15 @@ Need more detail? see [Registering App IDs](https://developer.apple.com/library/
 
 1. In the **Certificates, Identifiers & Profiles** page, choose the **All** link that is located under the **Devices** heading.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/devices.png)
+    ![All Devices](media/ios-guide/devices.png)
 
-2. Choose the Add button.
+2. Choose the **+** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/add-device.png)
+    ![Add button](media/ios-guide/add-device.png)
 
-3. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose teh **Continue** button.
+3. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose the **Continue** button.
 
-     *UDID* stands for Unique Device Identifier. It's a 40-character string uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
+     *UDID* stands for Unique Device Identifier. It's a 40-character string that uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
 
 4. In the **Review and register** page, choose the **Register** button.
 
@@ -255,21 +257,21 @@ Need more detail? See [Registering Devices Using Member Center](https://develope
 
 2. In the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) page, choose the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) link.
 
-3. In the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page, choose the Add button.
+3. In the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page, choose the **+** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/new-profile.png)
+    ![Add button](media/ios-guide/new-profile.png)
 
-4. In the [What type of provisioning profile do you need?](https://developer.apple.com/account/ios/profile/profileCreate.action)A page, choose the **iOS App Development** option, and then choose the **Continue** button.
+4. In the [What type of provisioning profile do you need?](https://developer.apple.com/account/ios/profile/profileCreate.action) page, choose the **iOS App Development** option, and then choose the **Continue** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/add-developer-profile.png)
+    ![iOS App Development option](media/ios-guide/add-developer-profile.png)
 
 5. In the **Select App ID** page, choose the wildcard App ID that you just created, and then choose the **Continue** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/choose-app-id.png)
+    ![App ID popup menu](media/ios-guide/choose-app-id.png)
 
 6. In the **Select certificates** page, select the checkbox next to the certificate that you created earlier, and then choose the **Continue** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/choose-cert.png)
+    ![Certificates](media/ios-guide/choose-cert.png)
 
 7. In the **Select devices** page, select the checkbox next to the device that you registered earlier, and then choose the **Continue** button.
 
@@ -283,19 +285,15 @@ Need more detail? See [Creating provisioning profiles using Member Center](https
 
 1. Open Xcode.
 
-2. In Xcode, add your Apple ID (if you haven't done so already).
+2. In the menu bar, choose **Xcode**->**Preferences**.
 
-    See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
+3. In the **Accounts** page, choose the **View Details** button.
 
-3. In the menu bar, choose **Xcode**->**Preferences**.
+4. In the account details page, choose the **Download** button next to your provisioning profile's signing identity.
 
-4. In the **Accounts** page, choose the **View Details** button.
+     ![Download button](media/ios-guide/download-profile.png)
 
-5. In the account details page, choose the **Download** button next to the **MyProfile** signing identity.
-
-     ![Cordova_iOS_Install_Agent](media/ios-guide/download-profile.png)
-
-6. Choose the **Done** button to close the account details page.
+5. Choose the **Done** button to close the account details page.
 
 **Install the provisioning profile to your device**
 
@@ -311,13 +309,15 @@ Need more detail? See [Creating provisioning profiles using Member Center](https
 
     ![Provisioning Profiles on Device](media/ios-guide/choose-profiles.png)
 
-5. In the **Provisioning profiles installed on ..** dialog box, choose the ```+``` icon.
+5. In the **Provisioning profiles installed on ..** dialog box, choose the **+** icon.
 
     ![Add Provisioning Profile](media/ios-guide/add-profile.png)
 
 6. Navigate the location where you downloaded your provisioning profile, choose the file, and then choose the **Install** button.
 
 7. In the In the **Provisioning profiles installed on ..** dialog box, choose the **Done** button.
+
+    Proceed to the [Run your app on a device](#run-on-device) section.
 
 ### Option 2: Use your free Apple ID
 
@@ -331,13 +331,13 @@ First, take some time to [review the limitations](https://developer.apple.com/li
 
 3. In Xcode 7, choose **File**->**New**->**Project**.
 
-4. In the **Choose a template for your new project** dialog box, choose the iOS Application category of templates, choose any template, and then choose the **Next** button.
+4. In the **Choose a template for your new project** dialog box, in the **iOS** group, choose the **Application** category, choose any template, and then choose the **Next** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/new-project.png)
+    ![Xcode IOS Application templates](media/ios-guide/new-project.png)
 
 5. Name your product, organization, and identifier anything you want, and then choose the **Next** button.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/project-settings.png)
+    ![Project settings](media/ios-guide/project-settings.png)
 
 6. Choose a location to save your project, and then choose the **Create** button.
 
@@ -345,13 +345,13 @@ First, take some time to [review the limitations](https://developer.apple.com/li
 
 7. In the **Team** pop-up menu, choose your Apple ID.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/project-properties.png)
+    ![Team popup menu](media/ios-guide/project-properties.png)
 
 8. Connect your device to your Mac. Make sure that  your device is turned on.
 
 9. In the **Scheme** pop-up menu, choose your device.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/device-choose.png)
+    ![Device in the Scheme pop-up menu](media/ios-guide/device-choose.png)
 
     If the device has the message **version lower than deployment target**, you can either update the operating system of your device or choose a version of iOS from the **Deployment Target** pop-up menu that matches the operating system version of your device.
 
@@ -361,23 +361,25 @@ First, take some time to [review the limitations](https://developer.apple.com/li
 
 11. Choose the **Run** button to run your project.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/run-button.png)
+    ![Run button](media/ios-guide/run-button.png)
 
     Running your project, ensures that your provisioning profile works. Xcode installs your blank app to the device and then starts it.
 
-Need more detail? See any of these supportive articles on the Apple developer website:
+Need more detail? See any of these articles on the Apple Developer website:
 
-#### More information
+* [Creating a project in Xcode 7](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/Setup/Setup.html#//apple_ref/doc/uid/TP40013839-CH41-SW1)
 
-Did something not behave as expected? See these more detailed articles on the Apple Developer website: [Creating a project in Xcode 7](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/Setup/Setup.html#//apple_ref/doc/uid/TP40013839-CH41-SW1), [Creating a team provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html#//apple_ref/doc/uid/TP40013839-CH33-SW4), and [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1).
+* [Creating a team provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html#//apple_ref/doc/uid/TP40013839-CH33-SW4)
 
-## Run your app on a device
+* [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1).
+
+## <a id="run-on-device"></a>Run your app on a device
 
 ### Connect the device to a Mac
 
 #### On your Mac
 
-1. Connect a device (if you haven't done so already).
+1. Connect your device.
 
 2. Make sure that your device is turned on.
 
@@ -391,11 +393,11 @@ Did something not behave as expected? See these more detailed articles on the Ap
 
 2. On the Standard toolbar, choose the **iOS** platform.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-platform.png)
+    ![Platform selector](media/ios-guide/ios-platform.png)
 
 3. Choose **Remote Device**.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/remote-device.png)
+    ![Target selector](media/ios-guide/remote-device.png)
 
 4. Press the F5 key to start your app.
 
@@ -433,7 +435,9 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 1. Install [Apple iTunes](http://www.apple.com/itunes/).
 
-2. Connect your device. Make sure that your device is turned on.
+2. Connect your device.
+
+3. Make sure that your device is turned on.
 
     Apple iTunes automatically starts.
 
@@ -441,11 +445,11 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 4. On the Standard toolbar, choose the **iOS** platform.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/ios-platform.png)
+    ![Platform selector](media/ios-guide/ios-platform.png)
 
 5. Choose **Local Device**.
 
-    ![Cordova_iOS_Install_Agent](media/ios-guide/local-device.png)
+    ![Target selector](media/ios-guide/local-device.png)
 
 6. Press the F5 key to start your app.
 
@@ -487,7 +491,7 @@ This can happen sometimes when your company has more than one Wi-Fi network.  Wh
 
 This image shows a preferred order of Wi-Fi networks.
 
-![Cordova_iOS_Install_Agent](media/ios-guide/preferred-network.png)
+![WIFI preferred networks](media/ios-guide/preferred-network.png)
 
 The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will to it.
 
@@ -503,7 +507,7 @@ If you've resolved this problem another way, please share it in a comment.
 
 First, make sure that the **Host** name in Visual Studio matches computer name in the in the **Sharing** settings of your Mac.
 
-![Cordova_iOS_Install_Agent](media/ios-guide/host-name.png)
+![Host Name](media/ios-guide/host-name.png)
 
 Alternatively, you can set the **Host** name in Visual Studio to the IP address that appears in the **Network** settings of your Mac.
 
