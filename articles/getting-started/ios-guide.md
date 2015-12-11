@@ -562,11 +562,5 @@ Try these things:
 [Go back up](#errors)
 
 >! Troubleshooting
-df
-df
-[Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
-df
-[Did you receive an error that relates to your certificate?](#certificates)
-[Is the host name of your Mac not resolving?](#hostname)
-[Have you been told that your security PIN invalid or has expired?](#securitypin)
-[Are you experiencing a symptom that does not appear in this list?](#stack)
+
+>![Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
