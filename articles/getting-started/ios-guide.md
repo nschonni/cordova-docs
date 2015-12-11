@@ -417,8 +417,6 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
 
-[Build hangs](#build-hangs)
-
 ### Connect the device to a Windows computer
 
 To do this, you'll need a provisioning profile that you create by using an Apple Developer Account. If haven't yet done this, see [Option 1: Use an Apple Developer Account](#use-developer-account). That section of content also shows you how to install the provisioning profile to your device. That is also very important.
@@ -470,8 +468,6 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 [If you have this <issue goes here> where you have to install Xcode](#install-xcode)
 
 [If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
-
-[Build hangs](#build-hangs)
 
 ## Stop the remote agent on your Mac
 
@@ -545,9 +541,13 @@ See [Safari iOS](https://developer.apple.com/library/mac/documentation/AppleAppl
 
 If this doesn't work, reset the settings on your iOS device - show screenshot of that setting. Then, enable the Web Inspector setting.
 
+[Go back up](#errors)
+
 ### <a id="install-xcode"></a>Did you receive an error that tells you that a tool requires Xcode?
 
-Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed on your Mac. Then, open Xcode and accept the license agreement. This is important. If you don't accept the license agreement, you'll keep getting build errors.
+Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed on your Mac. Then, open Xcode and accept the license agreement. This is important. If you don't accept the license agreement, you'll keep getting build errors.  
+
+[Go back up](#errors)
 
 ### <a id="stack"></a>Are you experiencing a symptom that does not appear in this list?
 
@@ -560,3 +560,13 @@ Try these things:
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
 
 [Go back up](#errors)
+
+>! Troubleshooting
+df
+df
+[Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
+df
+[Did you receive an error that relates to your certificate?](#certificates)
+[Is the host name of your Mac not resolving?](#hostname)
+[Have you been told that your security PIN invalid or has expired?](#securitypin)
+[Are you experiencing a symptom that does not appear in this list?](#stack)
