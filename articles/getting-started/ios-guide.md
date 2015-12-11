@@ -26,8 +26,6 @@ Let's help you set things up.
 
 1. Install [Node.js](http://nodejs.org/).
 
-   Node version is important here. Why didn't this break for me?
-
 2. Install [Xcode](https://developer.apple.com/xcode/download/).
 
 3. In the **Launchpad**, open **Xcode**.
@@ -146,6 +144,8 @@ You'll use those pieces of information in the next section.
     When the build is complete, your app will appear in the iPhone 5 simulator on your Mac.
 
 ### Troubleshooting: Let's fix it
+
+[Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
 
 [Did you receive an error that relates to your certificate?](#certificates)
 
@@ -415,8 +415,6 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-[If you have this <issue goes here> where you have to install Xcode](#install-xcode)
-
 [If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
 
 [Build hangs](#build-hangs)
@@ -453,7 +451,9 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 6. Press the F5 key to start your app.
 
-    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, your app appears on the device that is connected to your Windows computer.
+    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, Apple iTunes starts and the iOS app is added to your library.
+
+7. In Apple iTunes, install the app on the connected device.
 
 ### Troubleshooting: Let's fix it
 
@@ -543,40 +543,20 @@ On your device, open the Safari settings and enable the **Web Inspector** settin
 
 See [Safari iOS](https://developer.apple.com/library/mac/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW8).
 
-If this doesn't work, reset the settings on your ios device - show screenshot of that setting. Then, enable the Web Inspector setting.
+If this doesn't work, reset the settings on your iOS device - show screenshot of that setting. Then, enable the Web Inspector setting.
 
-### <a id="install-xcode"></a>If you have this <issue goes here> where you have to install Xcode
+### <a id="install-xcode"></a>Did you receive an error that tells you that a tool requires Xcode?
 
-- Check to see that you have XCode installed. If you accepted the blah prompt, you'll install the command-line tools but not XCode. Go to blah and install it. Then, open XCode to accept the license agreement and restart remoteBuild.
-
-- If you install XCode from this prompt. exit remoteBuild, open XCode and accept the license agreement. Then restart remotebuild.
-
-### <a id="compatible-versions"></a>If you have this <issue goes here> where you have an incompatible version of the CLI
-
-- Ensure that you are targetting a version of Cordova that is supported by remoteBuild. The earliest version you can use is 4.3. Open your Config.xml and make sure that your CLI version is higher. Link folks to the CLI upgrade topic that I plan to write so that they can evaluate the risks. Link to stack question where I learned about this - http://stackoverflow.com/questions/33844896/vs-2015-tools-for-apache-cordova-ios-remote-build-not-using-buildserver
-
-### <a id="build-hangs"></a>Build hangs
-
-If build hangs or does not execute - make sure that your node.js version and Cordova version are compatable. Here is link to the known issues article - http://taco.visualstudio.com/en-us/docs/known-issues-general/#strongbuild-hangs-or-does-not-execute-when-building-for-ios-with-cordova-lt-533-and-nodejs-400strong and a link to the stack article - http://stackoverflow.com/questions/33791687/ios-remote-build-fails-in-visual-studio-taco
-
-If you're connecting directly to a windows computer, make sure that you have the provisioning profile installed to your device.
+Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed on your Mac. Then, open Xcode and accept the license agreement. This is important. If you don't accept the license agreement, you'll keep getting build errors.
 
 ### <a id="stack"></a>Are you experiencing a symptom that does not appear in this list?
 
-Please reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
+Try these things:
+
+* Review [iOS and OSX Tips and Workarounds](./tips-and-workarounds/ios/tips-and-workarounds-ios-readme.md).
+
+* Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
+
+* Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
 
 [Go back up](#errors)
-
-##### Configure npm package cache permissions - what would happen to cause this
-
-If you have an older version of Node.js and npm, type this command:
-
-```
-sudo chown -R `whoami` ~/.npm
-```
-
-Newer versions of Node.js and npm will automatically configure the permissions of the npm package cache in your home directory.
-
-If you pass this don't worry, you can reinstall the command-line tools by doing this:
-
-To install these, open a Terminal app on your Mac, and type this command: ```xcode-select -–install```.
