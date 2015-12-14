@@ -76,9 +76,9 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     * If you are running Windows 10, you can also run against Windows Phone 10 emulator or your Windows 10 device. If your device has a webcam, you can use it later in the tutorial!
 
-    * If you are running Windows 7 or later, run against the Ripple Simulator (install Chrome now if you don't have it). For the final section in this tutorial, you will need to configure a [full-featured emulator](http://taco.visualstudio.com/en-us/docs/run-app-apache/), such as the Google Android Emulator or GenyMotion, or you can run against an actual device. (Ripple does not support the Camera plugin.)
+    * If you are running Windows 7 or later, run against the Ripple Simulator (install Chrome now if you don't have it). Later in the tutorial, you will need to configure a full-featured emulator, such as the Google Android Emulator or GenyMotion, or you can run against an actual device if you have one available. (Ripple does not support the Camera plugin.)
 
-    > **Note**: You can run the app on iOS, but setup requires additional steps and either a Mac or cloud-based Mac service. See [Install Tools for iOS](http://taco.visualstudio.com/en-us/docs/install-vs-tools-apache-cordova/#ios).
+    > **Note**: You can run the app on iOS, but setup requires additional steps and either a Mac or cloud-based Mac service and we will not be showing those steps in the tutorial. For more info, see [Install Tools for iOS](http://taco.visualstudio.com/en-us/docs/install-vs-tools-apache-cordova/#ios).
 
 5. Now, select a preferred emulator in Visual Studio.
 
