@@ -109,7 +109,7 @@ You'll use those pieces of information in the next section.
 
     ![Settings for secure mode](media/ios-guide/secure-mode.png)
 
-    If you're not using secure mode, set the **Secure mode** filed to **False**, and then leave the **Security PIN** field blank.
+    If you're not using secure mode, set the **Secure mode** field to **False**, and then leave the **Security PIN** field blank.
 
     ![Settings for non-secure mode](media/ios-guide/non-secure-mode.png)
 
@@ -123,7 +123,7 @@ You'll use those pieces of information in the next section.
 
 [Is the host name of your Mac not resolving?](#hostname)
 
-[Have you been told that your security PIN invalid or has expired?](#securitypin)
+[Have you been told that your security PIN is invalid or has expired?](#securitypin)
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
@@ -415,8 +415,6 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-[If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
-
 ### Connect the device to a Windows computer
 
 To do this, you'll need a provisioning profile that you create by using an Apple Developer Account. If haven't yet done this, see [Option 1: Use an Apple Developer Account](#use-developer-account). That section of content also shows you how to install the provisioning profile to your device. That is also very important.
@@ -467,8 +465,6 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 [If you have this <issue goes here> where you have to install Xcode](#install-xcode)
 
-[If you have this <issue goes here> where you have an incompatible version of the CLI](#compatible-versions)
-
 ## Stop the remote agent on your Mac
 
 In the Terminal app on your Mac, press Ctrl+C.
@@ -489,7 +485,7 @@ This image shows a preferred order of Wi-Fi networks.
 
 ![WIFI preferred networks](media/ios-guide/preferred-network.png)
 
-The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will to it.
+The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will use that network.
 
 The network that is used by your Windows Computer should appear first in this list. Otherwise, you'll experience these issues intermittently.
 
@@ -497,23 +493,17 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
-[Go back up](#errors)
-
 ### <a id="hostname"></a>Is the host name of your Mac not resolving?
 
 First, make sure that the **Host** name in Visual Studio matches computer name in the in the **Sharing** settings of your Mac.
 
-![Host Name](media/ios-guide/host-name.png)
-
 Alternatively, you can set the **Host** name in Visual Studio to the IP address that appears in the **Network** settings of your Mac.
 
--- show image here - need to get that from work.
+![IP Address](media/ios-guide/ip-address.png)
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
 If you've resolved this problem another way, please share it in a comment.
-
-[Go back up](#errors)
 
 ### <a id="securitypin"></a>Have you been told that your security PIN is invalid or has expired?
 
@@ -531,23 +521,25 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
-[Go back up](#errors)
-
 ### <a id="safari"></a>You've been told that we were unable to find the app you're trying to debug
 
 On your device, open the Safari settings and enable the **Web Inspector** setting.
 
 See [Safari iOS](https://developer.apple.com/library/mac/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW8).
 
-If this doesn't work, reset the settings on your iOS device - show screenshot of that setting. Then, enable the Web Inspector setting.
+If this doesn't work, reset the settings on your iOS device.
 
-[Go back up](#errors)
+Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
+
+If you've resolved this problem another way, please share it in a comment.
 
 ### <a id="install-xcode"></a>Did you receive an error that tells you that a tool requires Xcode?
 
 Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed on your Mac. Then, open Xcode and accept the license agreement. This is important. If you don't accept the license agreement, you'll keep getting build errors.  
 
-[Go back up](#errors)
+Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
+
+If you've resolved this problem another way, please share it in a comment.
 
 ### <a id="stack"></a>Are you experiencing a symptom that does not appear in this list?
 
@@ -558,7 +550,3 @@ Try these things:
 * Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
 
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
-
-[Go back up](#errors)
-
->! Troubleshooting
