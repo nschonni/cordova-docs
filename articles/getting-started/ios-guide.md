@@ -24,7 +24,17 @@ Let's help you set things up.
 
 ## First, install a few things onto your Mac
 
-1. Install [Node.js](http://nodejs.org/).
+1. Install version ```0.12.7``` of [Node.js](http://nodejs.org/).
+
+   This version of node.js is compatible with all versions of Cordova. To find it, open [Node.js](http://nodejs.org/) and choose the **Other Downloads** link.
+
+   ![Other Downloads link](media/ios-guide/node-versions.png)
+
+   Choose the ```../``` link.
+
+   ![Other versions link](media/ios-guide/other-versions-list.png)
+
+   In the list of folders, you'll find the **v0.12.7** folder. That folder contains the ```.pkg``` file that you need.
 
 2. Install [Xcode](https://developer.apple.com/xcode/download/).
 
@@ -152,6 +162,10 @@ You'll use those pieces of information in the next section.
 [Is the host name of your Mac not resolving?](#hostname)
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
+
+[Did you receive an error that like this one: - Command failed with exit code ENOENT?](#ENOENT)
+
+[Did you receive any other type of build error](#cli)
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
@@ -413,6 +427,8 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
+[Did you receive any other type of build error](#cli)
+
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
 ### Connect the device to a Windows computer
@@ -461,15 +477,35 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
+[Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
+
+[Did you receive any other type of build error](#cli)
+
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-[If you have this <issue goes here> where you have to install Xcode](#install-xcode)
 
 ## Stop the remote agent on your Mac
 
 In the Terminal app on your Mac, press Ctrl+C.
 
-## Troubleshooting: Let's fix it
+## <a id="errors"></a>Troubleshooting: Let's fix it
+
+[You've been told that we were unable to find the app you're trying to debug](#safari)
+
+[Did you receive an error that relates to your certificate?](#certificates)
+
+[Is the host name of your Mac not resolving?](#hostname)
+
+[Have you been told that your security PIN invalid or has expired?](#securitypin)
+
+[Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
+
+[Did you receive any other type of build error](#cli)
+
+[Did you receive an error that like this one: - Command failed with exit code ENOENT?](#ENOENT)
+
+[Are you experiencing a symptom that does not appear in this list?](#stack)
+
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
@@ -493,6 +529,8 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
+[Go back up](#errors)
+
 ### <a id="hostname"></a>Is the host name of your Mac not resolving?
 
 First, make sure that the **Host** name in Visual Studio matches computer name in the in the **Sharing** settings of your Mac.
@@ -504,6 +542,8 @@ Alternatively, you can set the **Host** name in Visual Studio to the IP address 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
 If you've resolved this problem another way, please share it in a comment.
+
+[Go back up](#errors)
 
 ### <a id="securitypin"></a>Have you been told that your security PIN is invalid or has expired?
 
@@ -521,6 +561,8 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
+[Go back up](#errors)
+
 ### <a id="safari"></a>You've been told that we were unable to find the app you're trying to debug
 
 On your device, open the Safari settings and enable the **Web Inspector** setting.
@@ -533,6 +575,8 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
+[Go back up](#errors)
+
 ### <a id="install-xcode"></a>Did you receive an error that tells you that a tool requires Xcode?
 
 Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed on your Mac. Then, open Xcode and accept the license agreement. This is important. If you don't accept the license agreement, you'll keep getting build errors.  
@@ -540,6 +584,30 @@ Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
 If you've resolved this problem another way, please share it in a comment.
+
+[Go back up](#errors)
+
+### <a id="ENOENT"></a>Did you receive an error that like this one: - Command failed with exit code ENOENT?
+
+This can happen if your project uses a version of the Cordova Command Line Interface (CLI) that is lower than ```4.3```.
+
+To fix this problem, update the [CLI version of your project](http://taco.visualstudio.com/en-us/docs/change-cli-version/#how-to-update-the-cli-version-of-your-project).
+
+Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
+
+If you've resolved this problem another way, please share it in a comment.
+
+[Go back up](#errors)
+
+### <a id="cli"</a>Did you receive any other type of build error
+
+Put CLI compat description here with link to relevant topic.
+
+Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
+
+If you've resolved this problem another way, please share it in a comment.
+
+[Go back up](#errors)
 
 ### <a id="stack"></a>Are you experiencing a symptom that does not appear in this list?
 
@@ -550,3 +618,5 @@ Try these things:
 * Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
 
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
+
+[Go back up](#errors)
