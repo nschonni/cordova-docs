@@ -26,15 +26,15 @@ Let's help you set things up.
 
 1. Install version ```0.12.7``` of [Node.js](http://nodejs.org/).
 
-   This version of node.js is compatible with all versions of Cordova. To find it, open [Node.js](http://nodejs.org/) and choose the **Other Downloads** link.
+    This version of node.js is compatible with all versions of Cordova. To find it, open [Node.js](http://nodejs.org/) and choose the **Other Downloads** link.
 
-   ![Other Downloads link](media/ios-guide/node-versions.png)
+    ![Other Downloads link](media/ios-guide/node-versions.png)
 
-   Choose the ```../``` link.
+    Choose the ```../``` link.
 
-   ![Other versions link](media/ios-guide/other-versions-list.png)
+    ![Other versions link](media/ios-guide/other-versions-list.png)
 
-   In the list of folders, you'll find the **v0.12.7** folder. That folder contains the ```.pkg``` file that you need.
+    In the list of folders, you'll find the **v0.12.7** folder. That folder contains the ```.pkg``` file that you need.
 
 2. Install [Xcode](https://developer.apple.com/xcode/download/).
 
@@ -59,7 +59,7 @@ Let's help you set things up.
      sudo npm install -g remotebuild
     ```
 
-   This installs the *remote agent*. It's a secure build server that you run on your mac. You'll connect to it from your Windows computer so that you can build, run, and debug iOS apps in Visual Studio.
+    This installs the *remote agent*. It's a secure build server that you run on your mac. You'll connect to it from your Windows computer so that you can build, run, and debug iOS apps in Visual Studio.
 
 ## <a id="remoteAgent"></a>Start the remote agent on your Mac
 
@@ -466,23 +466,6 @@ To do this, you'll need a provisioning profile that you create by using an Apple
     Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, Apple iTunes starts and the iOS app is added to your library.
 
 7. In Apple iTunes, install the app on the connected device.
-
-### Troubleshooting: Let's fix it
-
-[You've been told that we were unable to find the app you're trying to debug](#safari)
-
-[Did you receive an error that relates to your certificate?](#certificates)
-
-[Is the host name of your Mac not resolving?](#hostname)
-
-[Have you been told that your security PIN invalid or has expired?](#securitypin)
-
-[Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
-
-[Did you receive any other type of build error](#cli)
-
-[Are you experiencing a symptom that does not appear in this list?](#stack)
-
 
 ## Stop the remote agent on your Mac
 
