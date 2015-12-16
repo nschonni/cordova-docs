@@ -24,17 +24,11 @@ Let's help you set things up.
 
 ## First, install a few things onto your Mac
 
-1. Install version ```0.12.7``` of [Node.js](http://nodejs.org/).
+1. Install version ```0.12.9``` of [Node.js](http://nodejs.org/).
 
-    This version of node.js is compatible with all versions of Cordova. To find it, open [Node.js](http://nodejs.org/) and choose the **Other Downloads** link.
+    This version of node.js is compatible with all versions of Cordova. If you have trouble finding it on the [Node.js](http://nodejs.org/) website, see [Install the most compatible version of Node.js (0.12.x)](./develop-apps/change-node-version.md#install-the-most-compatible-version-of-nodejs-012x).
 
-    ![Other Downloads link](media/ios-guide/node-versions.png)
-
-    Choose the ```../``` link.
-
-    ![Other versions link](media/ios-guide/other-versions-list.png)
-
-    In the list of folders, you'll find the **v0.12.7** folder. That folder contains the ```.pkg``` file that you need.
+    That said, you can use Node.js version ```4x``` or ```5x``` as long as your project uses Cordova CLI version ```5.4.1``` or later.
 
 2. Install [Xcode](https://developer.apple.com/xcode/download/).
 
@@ -59,7 +53,7 @@ Let's help you set things up.
      sudo npm install -g remotebuild
     ```
 
-    This installs the *remote agent*. It's a secure build server that you run on your mac. You'll connect to it from your Windows computer so that you can build, run, and debug iOS apps in Visual Studio.
+    This installs the *remote agent*. It's a secure build server that you run on your Mac. You'll connect to it from your Windows computer so that you can build, run, and debug iOS apps in Visual Studio.
 
 ## <a id="remoteAgent"></a>Start the remote agent on your Mac
 
@@ -91,7 +85,7 @@ Often times when folks have trouble connecting to their remote agent, they'll st
 
 Start the remote agent without secure mode only if you are comfortable with the trade-offs between risk and convenience.
 
-For example, if your Mac is publically accessible over the internet and has access to sensitive materials, you'll probably want to run your remote agent in secure mode. If your mac is accessible only to you, it's easier and less error prone to run your remote agent without secure mode.  
+For example, if your Mac is publically accessible over the internet and has access to sensitive materials, you'll probably want to run your remote agent in secure mode. If you don't, anyone could build an app against your remote agent, and that app could run malicious code. That said, if your Mac is accessible to only you, it's easier and less error prone to run your remote agent without secure mode.  
 
 To start the remote agent **without** secure mode, type this command
 
@@ -149,7 +143,7 @@ You'll use those pieces of information in the next section.
 
 3. Press the F5 key to start the app.
 
-    As your app builds, messages appear in the Terminal app. This means that Visual Studio has connected to the remote agent and is using that agent to build and deploy your app to the mac.
+    As your app builds, messages appear in the Terminal app. This means that Visual Studio has connected to the remote agent and is using that agent to build and deploy your app to the Mac.
 
     When the build is complete, your app will appear in the iPhone 5 simulator on your Mac.
 
@@ -415,7 +409,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 4. Press the F5 key to start your app.
 
-    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, your app appears on the device that is connected to your mac.
+    Visual Studio builds your app by connecting to the remote agent on your Mac. When the build is complete, your app appears on the device that is connected to your Mac.
 
 ### Troubleshooting: Let's fix it
 
@@ -494,7 +488,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 This can happen when Visual Studio has trouble finding your Mac on the network.
 
-On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
+On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
 If you don't receive any return messages in the **Command Prompt** window, your Mac and your Windows computer might be connected to different networks.
 

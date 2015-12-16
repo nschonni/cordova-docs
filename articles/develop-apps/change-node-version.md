@@ -18,11 +18,11 @@
 
 Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks.  
 
-New versions of Node.js include bug fixes and other improvements. Before you install one, make sure that it's compatible with the version of Cordova Command Line Interface (CLI) that your project uses. This topic helps you do that.
+New versions of Node.js can include bug fixes and other improvements, but before you install one, make sure that it's compatible with the version of Cordova Command Line Interface (CLI) that your project uses. This topic helps you do that.
 
 ## Find out which version of Node.js is installed
 
-If you're unsure what version of Node.js you have installed, do these things.
+If you're not sure which version of Node.js you've installed, do these things.
 
 1. Open a Terminal (on a Mac) or open a Command Prompt (on a Windows computer).
 
