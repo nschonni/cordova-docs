@@ -14,4 +14,4 @@
    ms.date="12/14/2015"
    ms.author="normesta"/>
 
-> **NOTE:** This article is deprecated. You can find the new version it [here](get-started-first-mobile-app.md).
+> **NOTE:** This article is deprecated. You can find the new version of it [here](get-started-first-mobile-app.md).
