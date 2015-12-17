@@ -26,7 +26,7 @@ If you're not sure which version of Node.js you've installed, do these things.
 
 1. Open a Terminal (on a Mac) or open a Command Prompt (on a Windows computer).
 
-2. Run this command: ```node.js -v```
+2. Run this command: ```node -v```
 
    The Node.js version appears.
 
