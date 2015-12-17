@@ -20,15 +20,15 @@ Web developers can use Cordova to leverage existing web assets, get a web-based 
 
 In general, when migrating a Web site, several approaches will work. Here are a few of them.
 
+* Move your front end code (or your View) from your Web site to a new Cordova app.
+
+    This can be a good option especially if your web site does *not* implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported in the client-side code on Cordova. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual steps involved are pretty specific to each Web site, so we will not be looking at this option in this article. For other resources and options, see [What's Next?](#next).
+
 * Create a hosted app.
 
     For this scenario, you use a thin Cordova client (think of it as a web browser embedded in a native app) that automatically redirects to your Web site. For sites using ASP.NET and other server-side technologies, this is the fastest way to get up and running, and is a good way to get your app into one of the app stores quickly while learning Cordova. The full app experience will require an Internet connection, but you can also do a few things to handle offline scenarios. This approach will be much more effective if your Web site uses [responsive design](http://alistapart.com/article/responsive-web-design) techniques to adjust layout to match the device screen size.
 
     One advantage of using a hosted app is that you can make changes to the app on your server, and you only need to republish to the app store if you have changes to your device plugins.
-
-* Move your front end code (or your View) from your Web site to a new Cordova app.
-
-    This can be a good option especially if your web site does not implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported on Cordova. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual steps involved are pretty specific to each Web site, so we will not be looking at this option in this article. For other resources and options, see [What's Next?](#next).
 
 In this tutorial, we will get you started with Cordova by building a hosted app from an ASP.NET Web site. This mobile client app works on Android, iOS, and Windows 10.
 
