@@ -106,11 +106,11 @@ If you prefer to install them manually, see [install the dependencies manually](
 
    ![Updates dialog box](media/install-vs-tools-apache-cordova/updates.png)
 
-## Install tools for iOS <a name="ios"></a>
+### Install tools for iOS <a name="ios"></a>
 
 See [Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project](ios-guide.md).
 
-## Did something go wrong with your installation? <a name="AdditionalTasks">
+### Did something go wrong with your installation? <a name="AdditionalTasks">
 
 Perhaps you're running Visual Studio behind a proxy or you have multiple versions of a third-party components installed on your computer, and you need to take a closer look at the environment variables to see what path is being used for these components.
 
