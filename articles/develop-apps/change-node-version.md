@@ -32,9 +32,9 @@ If you're not sure which version of Node.js you've installed, do these things.
 
 ## Install a newer version of Node.js
 
-To use Node.js version ```4.x```, make sure that your project uses Cordova CLI version ```5.3.3```.
+To use Node.js version ```4.x```, make sure that your project uses Cordova CLI version ```5.3.3``` or later.
 
-To use Node.js version ```5.x```, make sure that your project uses Cordova CLI version ```5.4.1```.
+To use Node.js version ```5.x```, make sure that your project uses Cordova CLI version ```5.4.1``` or later.
 
 See [Change your project's CLI version](change-cli-version.md).
 
@@ -44,7 +44,7 @@ Unless you have a specific reason to use a newer versions of Node.js, use versio
 
 ## Install the most compatible version of Node.js (0.12.x)
 
-If you've already installed a newer version of Node.js, and you don't want to use version ```5.3.3``` or ```5.4.1``` of the Cordova CLI, just install version ```0.12.x``` of Node.js. Then, you can use whatever version of the Cordova CLI that you want.
+If you don't want to use version ```5.3.3``` or later of the Cordova CLI, install version ```0.12.x``` of Node.js. Then, you can use whatever version of the Cordova CLI that you want.
 
 1. In your browser, open the [Node.js](http://nodejs.org/) page and choose the **Other Downloads** link.
 
