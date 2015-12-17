@@ -98,7 +98,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     ![App running in the emulator](media/tutorial-ionic/ionic-sidemenu.png)
 
-  >**Note**: If you have previously run the VS Emulator for Android and you have errors, try deleting the emulator VM instance in Hyper-V Manager. Otherwise, if you have any trouble see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
+  >**Note**: If you have previously run the VS Emulator for Android and the app won't load, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
 ## Get your app running on iOS <a name="configiOS"></a>
 
