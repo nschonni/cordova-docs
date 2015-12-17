@@ -148,7 +148,7 @@ Before you change your project's CLI version. Plan to use a compatible version o
 
 7. Open a Terminal (on a Mac) or open a Command Prompt (on a Windows computer).
 
-8. Run this command: ```node.js -v```
+8. Run this command: ```node -v```
 
     The Node.js version appears.
 
