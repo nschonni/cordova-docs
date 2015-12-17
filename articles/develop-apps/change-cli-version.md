@@ -32,7 +32,7 @@ You can also find it in the ```taco.json``` file at the root of your project.
 
 When you create a project, Visual Studio uses a specific version of the Cordova CLI, but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
-## Step 3: Consider how this change will impact plugins
+## Step 2: Consider how this change will impact plugins
 
 Plugins are tested against a specific version of each Cordova platform. For example, to ensure that a plugin works on a mobile device that runs on the most recent version of the Android 6.0 "Marshmallow" operating system, the author validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
 
@@ -100,16 +100,16 @@ Before you change your project's CLI version. Plan to use a compatible version o
     </thead>
     <tbody>
         <tr>
-            <td>```5.4.1``` and later</td>
-            <td style="text-align:left">```5.x```, ```4.x```, or ```0.12.x```</td>
+            <td><strong>5.4.1</strong> and later</td>
+            <td style="text-align:left"><strong>5.x</strong>, <strong>4.x</strong>, or <strong>0.12.x</strong></td>
         </tr>
         <tr>
-            <td>```5.3.3``` and later</td>
-            <td style="text-align:left">```4.x```, or ```0.12.x```</td>
+            <td><strong>5.3.3</strong> and later</td>
+            <td style="text-align:left"><strong>4.x</strong>, or <strong>0.12.x</strong></td>
         </tr>
         <tr>
-            <td>Earlier than ```5.3.3```</td>
-            <td style="text-align:left">```0.12.x```</td>
+            <td>Earlier than <strong>5.3.3</strong></td>
+            <td style="text-align:left"><strong>0.12.x</strong></td>
         </tr>
     </tbody>
 </table>
@@ -150,6 +150,6 @@ Before you change your project's CLI version. Plan to use a compatible version o
 
 8. Run this command: ```node.js -v```
 
-   The Node.js version appears.
+    The Node.js version appears.
 
-   Make sure that you have a compatible version of node.js installed on your computer or Mac by reviewing the table above in [Step 3: Consider how this change will impact Node.js](#node-compat).
+    Make sure that you have a compatible version of node.js installed on your computer or Mac by reviewing the table above in [Step 3: Consider how this change will impact Node.js](#node-compat).
