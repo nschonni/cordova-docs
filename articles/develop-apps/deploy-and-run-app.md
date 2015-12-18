@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Under the hood: building Cordova apps | Cordova"
+   pageTitle="Cordova build process in Visual Studio | Cordova"
    description="description"
    services="na"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.workload="na"
    ms.date="09/10/2015"
    ms.author="mikejo"/>
-# Under the hood: building Cordova apps
+# Cordova build process in Visual Studio
 
 The Cordova Command Line Interface (CLI) does most of the heavy lifting for Visual Studio when you build and run a Cordova app. To make the process of installing and managing Cordova native code plugins easy, the CLI uses plugman, another command line tool. The CLI requires a specific folder structure, shown here. Most of this folder structure is mirrored by Visual Studio.
 
