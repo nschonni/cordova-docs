@@ -327,7 +327,7 @@ Need more detail? See [Creating provisioning profiles using Member Center](https
 
     Proceed to the [Run your app on a device](#run-on-device) section.
 
-### Option 2: Use your free Apple ID
+### <a id="apple-id"></a>Option 2: Use your free Apple ID
 
 First, take some time to [review the limitations](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1) of this type of provisioning profile. If you're comfortable with those limitations, let's get started!
 
@@ -415,6 +415,8 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [You've been told that we were unable to find the app you're trying to debug](#safari)
 
+[You've been told that no provisioning profiles were found](#no-provision)
+
 [Did you receive an error that relates to your certificate?](#certificates)
 
 [Is the host name of your Mac not resolving?](#hostname)
@@ -476,6 +478,8 @@ In the Terminal app on your Mac, press Ctrl+C.
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
+
+[You've been told that no provisioning profiles were found](#no-provision)
 
 [Did you receive any other type of build error](#cli)
 
@@ -575,6 +579,14 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 If you've resolved this problem another way, please share it in a comment.
 
 [Go back up](#errors)
+
+### <a id="no-provision"</a>You've been told that no provisioning profiles were found
+
+Most likely, Xcode hasn't yet registered your device or requested your development certificate. You can make these things happen by creating a project in Xcode, and then choosing the **Fix Issue** button in the general settings page of your new project.
+
+For steps, see the [Option 2: Use your free Apple ID](#apple-id) section of this topic.
+
+>**Important**: At step 7, in the team pop-up menu, make sure to choose your team or individual name that is associated with your provisioning profile. Choose your Apple ID only if you chose to use your free Apple ID to create the provisioning profile.
 
 ### <a id="cli"</a>Did you receive any other type of build error
 

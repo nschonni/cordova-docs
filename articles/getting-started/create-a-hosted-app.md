@@ -30,7 +30,7 @@ In general, when migrating a Web site, several approaches will work. Here are a 
 
     One advantage of using a hosted app is that you can make changes to the app on your server, and you only need to republish to the app store if you have changes to your device plugins.
 
-In this tutorial, we will get you started with Cordova by building a hosted app that runs on a web site. For the host, the sample uses an ASP.NET web site running on Azure (the Cordova aspects are not dependent on ASP.NET). The Cordova client app works on Android, iOS, and Windows 10.
+In this tutorial, we will get you started with Cordova by building a hosted app. For the hosted content, the sample uses an ASP.NET web site running on Azure (the Cordova features in the sample are not dependent on ASP.NET). The Cordova mobile client app works on Android, iOS, and Windows 10.
 
 Here is a quick look at the architecture of a hosted app showing the server on the left and the Cordova client app on the right. cordova.js gives access to the device APIs (Cordova plugins). In this architecture, you can write server-side code using generic JavaScript plugin interfaces that call native code running on the device.
 
@@ -72,7 +72,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 3. In Solution Explorer, right-click the new Cordova project and choose **Set as Startup Project**.
 
-4. Before you run the app, first identify one or more emulators for initial testing of the Hosted App sample based on your dev environment.
+4. Before you run the app, first identify one or more emulators or devices for initial testing of the Hosted App sample based on your dev environment.
 
     * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx), you can plan to test on the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
 
@@ -80,15 +80,17 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     * If you are running Windows 7 or later, plan to run on the [Ripple Simulator](../develop-apps/run-app-ripple-simulator.md). (install Chrome now if you don't have it). Later in the tutorial, you will need to configure a full-featured emulator, such as the Google Android Emulator or GenyMotion, or you can run against an actual device if you have one available. (Ripple does not support the Camera plugin.)
 
-    > **Note**: You can run the app on iOS, but setup requires additional steps and either a Mac or cloud-based Mac service and we will not be showing those steps in the tutorial. For more info, see [Install Tools for iOS](ios-guide.md).
+    > **Note**: You can run the app on iOS, but setup requires additional steps and either a Mac or cloud-based Mac service and we will not be showing those steps in the tutorial. For more info, see the [iOS Guide](ios-guide.md).
 
 5. Now, select a preferred emulator in Visual Studio.
 
-     Choose a platform to run against from the Solution Platforms list in the debug toolbar. If you are running on Windows 10, choose **Windows - Any CPU** as the target, and then choose **Local Machine** from the device list on the right.
+     Choose a platform to run against from the Solution Platforms list in the debug toolbar at the top of Visual Studio.
 
      If you can run on the VS Emulator for Android on Windows 10, choose **Android**, then **VS Emulator 5" Lollipop (5.0) XXHDPI Phone** from the device list.
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-select-android.png)
+
+    If you are running on Windows 10, choose **Windows - Any CPU** as the target, and then choose **Local Machine** from the device list on the right.
 
     If you are running initially on Ripple, choose **Android,** then **Ripple - Nexus (Galaxy)** from the device list. See the illustration below.
 
@@ -120,9 +122,9 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 3. If you will be testing on Windows 10, right-click config.xml in Solution Explorer and choose **View Designer**.
 
-    Choose Windows 10 in the **Windows Target Version**. If you are not testing on Windows 10, you can skip this step.
+    Choose Windows 10 in the **Windows Target Version**. If you are *not* testing on Windows 10, you can skip this step and continue with the next step.
 
-2. Open index.js in the www\scripts folder and replace all the default code with the following code.
+2. Open index.js in the www\scripts folder, remove all the default code, and replace it with the following code.
 
     ```
     var app = {
@@ -198,7 +200,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     ```
-    These elements provide viewport attributes and a few other features.
+    These elements provide viewport attributes to manage the screen display, and a few other platform attributes to improve the user experience for mobile devices that connect to the site.
 
 6. Press F5 to start the app.
 
@@ -230,7 +232,7 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     > **Note**: To save steps later, we’re using a new URL: https://cordovahostedweb-redirect.azurewebsites.net
 
-2. In the CordovaHostedWeb (ASP.NET) project, right-click the Controllers folder and choose **Add**, **Existing item**, go to the Controllers folder, and add the file called cordovaController.cs to the project.
+2. In the CordovaHostedWeb (ASP.NET) project, right-click the Controllers folder and choose **Add**, **Existing item**, use Windows Explorer go to the Controllers folder, and then add the existing file called cordovaController.cs to the project.
 
     This file contains the following code.
 
@@ -271,7 +273,7 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     This code redirects the site to the Cordova-specific Index.cshtml when the client app passes a querystring that includes the setPlatformCookie function call along with the platform ID. You already specified this URL in the client app's redirect script (index.js).
 
-5. In the CordovaHostedWeb (ASP.NET) project, right-click the Views/Cordova folder and choose **Add**, **Existing item**, go to the Views/Cordova folder, and add the file called Index.cshtml to the project.
+5. In the CordovaHostedWeb (ASP.NET) project, right-click the Views/Cordova folder and choose **Add**, **Existing item**, use Windows Explorer to go to the Views/Cordova folder, and then add the file called Index.cshtml to the project.
 
     This page contains the following code.
 
@@ -312,6 +314,12 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     Finally, this page also loads the app.js script. You will use this file later to add the server-side Camera plugin code. This code calls native code that runs on the device. (You don't need to worry about that yet.)
 
+6. Optionally, if you want to fix up the styling in the client page that appears before the hosted app loads, copy the CSS from the completed sample here:
+
+    [https://raw.githubusercontent.com/ridomin/CdvaHWA/master/CordovaHostedApp/www/css/index.css](https://raw.githubusercontent.com/ridomin/CdvaHWA/master/CordovaHostedApp/www/css/index.css)
+
+    to index.css in the www/css folder.
+
 ## Connect to the hosted app from your device.
 
 To save time and steps, instead of republishing the ASP.NET project to a new Azure Web App URL, you will connect to a version of the project with the changes already in place. (If you want info on how to republish to a new URL, see the Appendix in this article.)
@@ -338,7 +346,7 @@ To save time and steps, instead of republishing the ASP.NET project to a new Azu
 
     ![Redirect page](media/create-a-hosted-app/hosted-app-redirect.png)
 
-    > **Note**: On Ripple, the redirection is only partially supported. If you see an error message, close the message to see the redirection page of the hosted app.
+    > **Note**: On Ripple, the redirection is only partially supported. If you see popup, close the message to see the redirection page of the hosted app.
 
     Next, you want to fix up this page so that you can access the device camera and take a picture.
 
