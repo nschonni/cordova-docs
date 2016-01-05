@@ -16,33 +16,33 @@
 
 # Change the CLI version of your Visual Studio Tools for Apache Cordova project
 
->NOTE: This article aplies to Visual Studio 2015 Tools for Apache Cordova **Update 5**
+>NOTE: This article applies to Visual Studio 2015 Tools for Apache Cordova **Update 5**
 
-You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins that have not been updated to that version.
+You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins and the version of Node.js that you have installed on your computer or Mac.
 
 This topic helps you decide whether to update the CLI version and how to do it safely.
 
-## Find the CLI version number of your project
+## Step 1: Find the CLI version number of your project
 
 The CLI version number appears in the **Platforms** page of the configuration designer.
 
 ![CLI version](media/change-cli-version/cli-version.png)
 
-Or you can find it in the ```taco.json``` file at the root of your project.
+You can also find it in the ```taco.json``` file at the root of your project.
 
-When you create a project, Visual Studio uses a specific version of the Cordova CLI (at this time ```5.3.3```) but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
+When you create a project, Visual Studio uses a specific version of the Cordova CLI, but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
-## Understand the impact on plugins
+## Step 2: Consider how this change will impact plugins
 
-Plugins are tested against a specific version of each Cordova platform. For example, to ensure that a plugin works on an Android mobile device, the author validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
+Plugins are tested against a specific version of each Cordova platform. For example, to ensure that a plugin works on a mobile device that runs on the most recent version of the Android 6.0 "Marshmallow" operating system, the author validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
 
-The Apache Cordova CLI does something very similar. It's also tied or *pinned* to a specific version of each Cordova platform. When you first create a project, your CLI and the plugins that you add to your project are tied to the same versions.
+The Apache Cordova CLI does something very similar. It's also tied or *pinned* to a specific version of each Cordova platform. When you first create a project, your CLI and the plugins that you add to your project are tied to the same platform versions.
 
 If you update your CLI, it's tied to a newer version of each Cordova platform while your plugins remain tied to a previous version of each Cordova platform.
 
 This isn't always a problem, but if a new version introduces a breaking change, you might encounter errors when you build your project or attempt to run code that uses the plugin.
 
-You might encounter the opposite problem if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but any new plugin that you add to your project (since VS will use the newer version) might be tied to newer version of each Cordova platform, making your app to does not work as expected.  
+You might encounter the opposite problem if you don't update the CLI version of your project. Plugins that already exist in your project work fine, but any new plugin that you add to your project might not. That's because when you add a plugin, Visual Studio uses the most recent version of it and that plugin could be tied to newer version of each Cordova platform.
 
 Have a quick look at this table. It presents each action, its impact, and what you can do to increase the likelihood that your plugins will work properly.
 
@@ -85,15 +85,36 @@ Have a quick look at this table. It presents each action, its impact, and what y
     </tbody>
 </table>
 
-##How to add a plugin specific version
+## <a id="node-compat"></a>Step 3: Consider how this change will impact Node.js
 
-Current version of Visual Studio does not allows you to add a plugin specific version, and it will always add the latest one.
+Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks. You installed it when you first setup the tools for Apache Cordova.
 
-To install an specific version you have two different options
-- Install from the cordova command line using the command ```cordova plugin add plugin-name@version --save```
-- Update the  ```config.xml``` file, locate the ```plugin``` element and update the version number. Delete the plugin folder, and build it again, so VS will download the appropiate version. You can check the ```plugin.xml``` file in the plugin folder to check that the version has been updated.   
+Before you change your project's CLI version. Plan to use a compatible version of Node.js. This table shows what versions you'll need. You'll still encounter the occasional bug, but by using these combinations, you'll receive the fewest numbers of them.
 
-## How to update the CLI version of your project
+<table>
+    <thead>
+        <tr>
+            <th>CLI version</th>
+            <th style="text-align:left">Node.js version</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>5.4.1</strong> and later</td>
+            <td style="text-align:left"><strong>5.x</strong>, <strong>4.x</strong>, or <strong>0.12.x</strong></td>
+        </tr>
+        <tr>
+            <td><strong>5.3.3</strong> and later</td>
+            <td style="text-align:left"><strong>4.x</strong>, or <strong>0.12.x</strong></td>
+        </tr>
+        <tr>
+            <td>Earlier than <strong>5.3.3</strong></td>
+            <td style="text-align:left"><strong>0.12.x</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+## Step 4: Proceed with changing the CLI version of your project
 
 1. First, back up any file that you directly modified in the **platforms** folder of your project.    Visual studio will remove the **platform** folder and any file inside of it when you build your project.
 
@@ -119,10 +140,16 @@ To install an specific version you have two different options
 
 5. Add back any manual tweaks to files in platform subfolders.
 
-6. Remove all plugins from your project and then add them back.
+6. Update your plugins by removing them and then adding them back to your project.
 
-    To add and remove core plugins, see [Add or remove a plugin](./develop-apps/manage-plugins.md#Adding).
+    * If you chose to use the most recent version of the CLI, see [Update a plugin to use the most recent version](./develop-apps/manage-plugins.md#Updating).
 
-    To add and remove other third-party plugins, see [Add or remove a plugin that isn't present in the configuration designer](./develop-apps/manage-plugins.md#AddOther).
+    * If you chose to use an older version of the CLI version, see [Update a plugin to use an older version](./develop-apps/manage-plugins.md#Older).
 
-    >**Note**: If your using the most recent CLI version, then add the most recent version of each plugin. If you're using an older CLI version, then add an older versions of each plugin.
+7. Open a Terminal (on a Mac) or open a Command Prompt (on a Windows computer).
+
+8. Run this command: ```node -v```
+
+    The Node.js version appears.
+
+    Make sure that you have a compatible version of node.js installed on your computer or Mac by reviewing the table above in [Step 3: Consider how this change will impact Node.js](#node-compat).

@@ -36,13 +36,13 @@ In this example we'll start a gulp task in Visual Studio whenever a project is b
 
 2. Create a **[package.json](http://go.microsoft.com/fwlink/?LinkID=533781)** file in your project root if it doesn't exist. In this file, reference the version of gulp you want to use:
 
-    ```json
-    {
-      "devDependencies": {
-     	"gulp": "latest"
-       }
-    }
-    ```
+	```json
+	{
+	  "devDependencies": {
+	 	"gulp": "latest"
+	   }
+	}
+	```
 
 ### <a Name="install-plugins"></a>Install gulp plugins
 
@@ -51,13 +51,13 @@ Gulp itself doesn't do much without plugins to control individual tasks. For thi
 To add a plugin, first add a reference to package.json (the ~ before a version number means "at least this version"):
 
 ```json	
-    {
-      "devDependencies": {
-     	"gulp": "latest",
-		"gulp-uglify": "~1.5.1",
-		"gulp-concat": "~2.6.0"
-       }
-    }
+{
+  "devDependencies": {
+ 	"gulp": "latest",
+	"gulp-uglify": "~1.5.1",
+	"gulp-concat": "~2.6.0"
+   }
+}
 ```
 
 Then install those dependencies from either the command line or Visual Studio:
@@ -76,12 +76,12 @@ With gulp and the necessary plugins installed, we can now define a task to run g
 
 1. Create a **gulpfile.js** file in the project root and add a task. Each task is a call to *gulp.task* with a name and a callback that carries out the task: 
     
-    ```javascript
-    var gulp = require("gulp");  // Instruct Node.js to load gulp
- 
-    gulp.task("combine-and-uglify", function() {
- 	   // Code to execute for this task
-    });
+	```javascript
+	var gulp = require("gulp");  // Instruct Node.js to load gulp
+	
+	gulp.task("combine-and-uglify", function() {
+		   // Code to execute for this task
+	});
     ```
 
 	> **Note**: do not use spaces in the name of the task, otherwise it won't run and you'll likely be very confused. The reason for this is that each name is passed to gulp as a command-line argument where spaces cause the one name to be interpreted as separate name arguments.
@@ -132,7 +132,7 @@ By default, bindings in the Task Runner Explorer work only inside of Visual Stud
 gulp combine-and-uglify
 ```
 
-That said, it is possible to assign bindings in Visual Studio and have them apply to builds  initiated from the command line or in a continuous tntegration environment. This is done with a [Cordova hook](http://go.microsoft.com/fwlink/?LinkID=533744) as described in [these directions to add a pre-built Cordova hook to your project](hook-task-runner-binding/tutorial-gulp-hook-task-runner-binding-readme.md). You can modify this example to meet your needs.
+That said, it is possible to assign bindings in Visual Studio and have them apply to builds  initiated from the command line or in a continuous tntegration environment. This is done with a [Cordova hook](http://go.microsoft.com/fwlink/?LinkID=533744) as described in [this GitHub repo to add a pre-built Cordova hook to your project](https://github.com/Microsoft/cordova-docs/tree/master/articles/tutorial-gulp/hook-task-runner-binding). You can modify this example to meet your needs.
 
 
 ## <a name="build"></a>Use gulp to build an app
@@ -144,7 +144,7 @@ The Cordova CLI internally uses a node module called **cordova-lib**, which enca
 
 The following **gulpfile.js**, when placed in the root of a Cordova project for **Cordova 5.3.3 and below**, builds a release version of the app for Android:
 
-```typescript
+```javascript
 var gulp = require("gulp"),
     cordova = require("cordova-lib").cordova;
 
@@ -158,7 +158,7 @@ gulp.task("default", function (callback) {
 
 For **Cordova 5.4.0 and up** the syntax is slightly different.
 
-```typescript
+```javascript
 var gulp = require("gulp"),
     cordova = require("cordova-lib").cordova;
 
@@ -202,6 +202,7 @@ var gulp = require("gulp"),
 If you're creating an automated build script, you can find a more complete list of considerations by reviewing [Get started with Continuous Integration](./tutorial-team-build/tutorial-team-build-readme.md).
 
 
+<a name="tacoteambuild"></a>
 ### Use the taco-team-build module with gulp
 
 The [taco-team-build helper module](http://go.microsoft.com/fwlink/?LinkID=533736) assists with builds using gulp and alleviates various [common problems](./tutorial-team-build/tutorial-team-build-readme.md) when building a Cordova project from the command line, especially in a team or CI environment. It can be used with any number of build systems including Jake, Grunt, gulp, and even from the command line. It also helps you use gulp to build for multiple platforms, as described in the next section. 
@@ -219,7 +220,7 @@ The taco-team-build repository includes sample gulpfile.js and package.json file
         }
     ```
 
-     If you want to be able to modify the taco-team-build module instead of using the Github version, remove the dependency in the file above, copy **taco-team-build.js** from GitHub to your project root, and require ```./taco-team-build``` gulpfile.js below.
+    If you want to be able to modify the taco-team-build module instead of using the Github version, remove the dependency in the file above, copy **taco-team-build.js** from GitHub to your project root, and require ```./taco-team-build``` gulpfile.js below.
 
 - **gulpfile.js**
 
@@ -296,53 +297,52 @@ If you're using TypeScript in your Cordova app project, you can use the [gulp-ty
 
 The following gulpfile.js loads the plugin and runs a task to compile all Typescript (***.ts**) files found in the project's *scripts* folder, saving the results in a single file **www/scripts/appBundle.js***:
 
-```javascript
-      var ts = require("gulp-typescript");
+```typescript
+  var ts = require("gulp-typescript");
 
-      gulp.task("scripts", function () {
-        // Compile TypeScript code
-        gulp.src("scripts/**/*.ts")
-        	.pipe(ts({
-            	noImplicitAny: false,
-                noEmitOnError: true,
-                removeComments: false,
-            	sourceMap: true,
-                out: "appBundle.js",
-                target: "es5"
-    		}))
-    		.pipe(gulp.dest("www/scripts"));
-    });
+  gulp.task("scripts", function () {
+    // Compile TypeScript code
+    gulp.src("scripts/**/*.ts")
+    	.pipe(ts({
+        	noImplicitAny: false,
+            noEmitOnError: true,
+            removeComments: false,
+        	sourceMap: true,
+            out: "appBundle.js",
+            target: "es5"
+		}))
+		.pipe(gulp.dest("www/scripts"));
+});
 ```    
 
 The options given directly to the *ts* call above can alternately be saved in a **tsconfig.json** file (as done in the Visual Studio templates), in which case you can use the following gulpfile.js:
 
 ```javascript
-    var ts = require("gulp-typescript"),
-        fs = require("fs"),
-        tsconfigPath = "scripts/tsconfig.json";
+var ts = require("gulp-typescript"),
+    fs = require("fs"),
+    tsconfigPath = "scripts/tsconfig.json";
 
-    gulp.task("scripts", function () {
-        // Compile TypeScript code
-        if (fs.existsSync(tsconfigPath)) {
-            gulp.src("scripts/**/*.ts")
-                .pipe(ts(ts.createProject(tsconfigPath)))
-                .pipe(gulp.dest("www/scripts"));
-        }
-    });
-
+gulp.task("scripts", function () {
+    // Compile TypeScript code
+    if (fs.existsSync(tsconfigPath)) {
+        gulp.src("scripts/**/*.ts")
+            .pipe(ts(ts.createProject(tsconfigPath)))
+            .pipe(gulp.dest("www/scripts"));
+    }
+});
 ```
 
 To point to multiple locations for TypeScript files in your project, create an array as follows:
 
-```
-	   gulp.src(["scripts/**/*.ts","www/typescript/**/*.ts"])
+```javascript
+   gulp.src(["scripts/**/*.ts","www/typescript/**/*.ts"])
 ```
 
 Finally, to compile TypeScript first as part of a build task, add a reference to the scripts task:
 
 ```javascript
-        gulp.task("build", ["scripts"], function () {
-        ...
+    gulp.task("build", ["scripts"], function () {
+    ...
 ```
 
 The **samples/gulp** folder in the [taco-team-build repository](http://go.microsoft.com/fwlink/?LinkID=533736) contains sample **gulpfile.js** and **package.json** files that are already configured to include TypeScript.
@@ -366,7 +366,11 @@ A team build / continuous integration environment means having a dedicated build
 
 The build server must, of course, have all the dependencies installed, such as SDKs, for your target platforms. See the “Installing Dependencies” section of the [Comperhensive CI tutorial](./tutorial-team-build/general.md) for details.
 
-However you arrange your build tasks, though, it's a simple matter to configure to server to use gulp. First, run these two commands at a command prompt:
+However you arrange your build tasks, though, it's a simple matter to configure to server to use gulp. 
+
+First, follow the instructions on using [taco-team-build](#tacoteambuild) above.
+
+Second, run these two commands at a command prompt:
 
 ```
 npm install

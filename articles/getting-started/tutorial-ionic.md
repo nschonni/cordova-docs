@@ -26,11 +26,11 @@ To follow these steps, you must:
 
     When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
 
-2. Make sure your Visual Studio setup is correct by creating and running the default Blank App template.
+2. To run a quick test of your setup, verify that you can run the default Blank App template.
 
     * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
 
-    * Choose **Windows**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Configure the Tools] (configure-vs-tools-apache-cordova.md).  
+    * Choose **Windows**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Configure the Tools](configure-vs-tools-apache-cordova.md).  
 
 3. [Install the Ionic CLI](http://ionicframework.com/docs/cli/install.html).
 
@@ -59,7 +59,7 @@ To follow these steps, you must:
 
     ```
     ionic start ionicMyTabs tabs
-    ionic start ionicMySlide blank
+    ionic start ionicMyBlank blank
     ```
 >**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015 (recommended), see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015.
 
@@ -78,7 +78,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
 4. Type a name for your new project and select **Finish**.
 
-    Visual Studio creates the new project. Wait for Bower/NPM updates to the project to finish, if necessary.
+    Visual Studio adds a few new files to the project. Wait for Bower/NPM updates to the project to finish, if necessary.
 
 ## Get your app running on Android <a name="configAndroid"></a>
 
@@ -98,7 +98,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     ![App running in the emulator](media/tutorial-ionic/ionic-sidemenu.png)
 
-  >**Note**: If you have previously run the VS Emulator for Android and you have errors, try deleting the emulator VM instance in Hyper-V Manager. Otherwise, if you have errors see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
+  >**Note**: If you have previously run the VS Emulator for Android and the app won't load, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
 ## Get your app running on iOS <a name="configiOS"></a>
 
@@ -149,6 +149,12 @@ To target Windows 10 in your app, you need to:
 5. Press F5 to start debugging.
 
     > **Note**: If you see the TypeScript error or the Keyboard plugin error, see the previous steps for Android to resolve.
+
+## What's Next?
+
+You can use Visual Studio's build and [debug tools](../debug-and-test/debug-using-visual-studio.md), use the configuration manager to easily [add device plugins](../develop-apps/manage-plugins.md) to your app to get up and running quick. To learn more about Ionic, see the Ionic framework docs.
+
+![Add plugins](media/tutorial-ionic/ionic-add-plugin.png)
 
 ## Common issues and workarounds
 
