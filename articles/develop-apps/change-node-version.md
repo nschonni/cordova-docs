@@ -50,17 +50,19 @@ If you don't want to use version ```5.3.3``` or later of the Cordova CLI, instal
 
     ![Other Downloads link](media/change-node-version/node-versions.png)
 
-2. Choose the ```../``` link.
+2. In the **Downloads** page, choose the **All download options** link.
+
+3. Choose the ```../``` link.
 
     ![Other versions link](media/change-node-version/other-versions-list.png)
 
-3. In the index of folders, open the folder for the most recent minor version of the the **v0.12.x**.
+4. In the index of folders, open the folder for the most recent minor version of the the **v0.12.x**.
 
     The following image shows that the most recent minor version is **v0.12.9**
 
     ![Other versions link](media/change-node-version/supported-version.png)
 
-4. Choose the right installer file.
+5. Choose the right installer file.
 
     * If you are installing this onto a Windows computer, run the file that has the ```.msi``` extension.
 
