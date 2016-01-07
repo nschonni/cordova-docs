@@ -20,19 +20,19 @@ Web developers can use Cordova to leverage existing web assets, get a web-based 
 
 In general, when migrating a Web site, several approaches will work. Here are a few of them.
 
+* Move your front end code (or your View) from your Web site to a new Cordova app.
+
+    This can be a good option especially if your web site does *not* implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported in the client-side code of a Cordova app. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual steps involved are pretty specific to each Web site, so we will not be looking at this option in this article. For more detailed info on these options, see [What's Next?](#next). For a more general tutorial, see the [Beginner's Guide](get-started-first-mobile-app.md).
+
 * Create a hosted app.
 
     For this scenario, you use a thin Cordova client (think of it as a web browser embedded in a native app) that automatically redirects to your Web site. For sites using ASP.NET and other server-side technologies, this is the fastest way to get up and running, and is a good way to get your app into one of the app stores quickly while learning Cordova. The full app experience will require an Internet connection, but you can also do a few things to handle offline scenarios. This approach will be much more effective if your Web site uses [responsive design](http://alistapart.com/article/responsive-web-design) techniques to adjust layout to match the device screen size.
 
     One advantage of using a hosted app is that you can make changes to the app on your server, and you only need to republish to the app store if you have changes to your device plugins.
 
-* Move your front end code (or your View) from your Web site to a new Cordova app.
+In this tutorial, we will get you started with Cordova by building a hosted app. For the hosted content, the sample uses an ASP.NET web site running on Azure (the Cordova features in the sample are not dependent on ASP.NET). The Cordova mobile client app works on Android, iOS, and Windows 10.
 
-    This can be a good option especially if your web site does not implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported on Cordova. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual tasks involved are pretty specific to the implementation of the Web site, so we will not be looking at this option in this article. For other resources and options, see [What's Next?](#next).
-
-In this tutorial, we will get you started with Cordova by building a hosted app from an ASP.NET Web site. This mobile client app works on Android, iOS, and Windows 10.
-
-Here is a quick look at the architecture of a hosted app showing the server on the left and the Cordova client app on the right. cordova.js gives access to the device APIs (Cordova plugins). In this architecture, you can code against device APIs in your app code on the server, using generic JavaScript plugin interfaces, which call native code that runs on the device.
+Here is a quick look at the architecture of a hosted app showing the server on the left and the Cordova client app on the right. cordova.js gives access to the device APIs (Cordova plugins). In this architecture, you can write server-side code using generic JavaScript plugin interfaces that call native code running on the device.
 
 ![Hosted app architecture](media/create-a-hosted-app/hosted-app-architecture.png)
 
@@ -46,6 +46,8 @@ Here is a quick look at the architecture of a hosted app showing the server on t
 
     To perform the steps in the tutorial, [get the starter solution here](https://github.com/Mikejo5000/CdvaHWA-starter). Download it and unzip. We will use this sample to show you how to create a hosted app.
 
+    ![Download the zip](media/create-a-hosted-app/hosted-app-download-zip.png)
+
     If you don't want to perform the actual steps, but just want to run the finished sample app, get the completed sample [here](https://github.com/ridomin/CdvaHWA). You can read through the steps to find out more about the code, but the steps will be finished already.
 
 3. Extract the downloaded files.
@@ -54,7 +56,7 @@ Here is a quick look at the architecture of a hosted app showing the server on t
 
 ## Add a Cordova project to the solution
 
-The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project) that you will use in the hosted app. You will add a Cordova client app to this solution and call it CordovaHostedApp.
+The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project) that you will use in the hosted app. You will add a Cordova client app to this solution and call it CordovaHostedApp-Client.
 
 1. In Visual Studio's Solution Explorer, right-click the solution and choose **Add**, **New Project**. (Make sure you right-click the solution and not the CordovaHostedWeb project!)
 
@@ -64,31 +66,33 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     ![Find the Blank App Template](media/create-a-hosted-app/hosted-app-cordova-project.png)
 
-3. For the project name, type "CordovaHostedApp", or something similar, and choose **OK**.
+3. For the project name, type "CordovaHostedApp-Client", or something similar, and choose **OK**.
 
-    Visual Studio creates the Cordova project and adds it to the starter solution. The project appears in Solution Explorer.
+    Visual Studio creates the Cordova mobile app project and adds it to the starter solution. The project appears in Solution Explorer.
 
 3. In Solution Explorer, right-click the new Cordova project and choose **Set as Startup Project**.
 
-4. Identify one or more emulators for initial testing of the Hosted App sample based on your dev environment.
+4. Before you run the app, first identify one or more emulators or devices for initial testing of the Hosted App sample based on your dev environment.
 
-    * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx), we recommend testing against the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
+    * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx), you can plan to test on the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
 
-    * If you are running Windows 10, you can also run against Windows Phone 10 emulator or your Windows 10 device. If your device has a webcam, you can use it later in the tutorial!
+    * If you are running Windows 10, you can plan to test on the Windows Phone 10 emulator or your Windows 10 device. If your device has a webcam, you can use it later in the tutorial!
 
-    * If you are running Windows 7 or later, run against the Ripple Simulator (install Chrome now if you don't have it). For the final section in this tutorial, you will need to configure a [full-featured emulator](http://taco.visualstudio.com/en-us/docs/run-app-apache/), such as the Google Android Emulator or GenyMotion, or you can run against an actual device. (Ripple does not support the Camera plugin.)
+    * If you are running Windows 7 or later, plan to run on the [Ripple Simulator](../develop-apps/run-app-ripple-simulator.md). (install Chrome now if you don't have it). Later in the tutorial, you will need to configure a full-featured emulator, such as the Google Android Emulator or GenyMotion, or you can run against an actual device if you have one available. (Ripple does not support the Camera plugin.)
 
-    > **Note**: You can run the app on iOS, but setup requires additional steps and either a Mac or cloud-based Mac service. See [Install Tools for iOS](http://taco.visualstudio.com/en-us/docs/install-vs-tools-apache-cordova/#ios).
+    > **Note**: You can run the app on iOS, but setup requires additional steps and either a Mac or cloud-based Mac service and we will not be showing those steps in the tutorial. For more info, see the [iOS Guide](ios-guide.md).
 
 5. Now, select a preferred emulator in Visual Studio.
 
-     Choose a platform to run against from the Solution Platforms list in the debug toolbar. If you are running on Windows 10, choose **Windows - Any CPU** as the target, and then choose **Local Machine** from the device list on the right.
+     Choose a platform to run against from the Solution Platforms list in the debug toolbar at the top of Visual Studio.
 
-     If you can run on the VS Emulator for Android on Windows 10, choose **Android**, then **VS Emulator 5" Lollipop (5.0) XXHDPI Phone**.
+     If you can run on the VS Emulator for Android on Windows 10, choose **Android**, then **VS Emulator 5" Lollipop (5.0) XXHDPI Phone** from the device list.
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-select-android.png)
 
-    If you are running initially on Ripple, choose **Android,** then **Ripple - Nexus (Galaxy)**. See the illustration below.
+    If you are running on Windows 10, choose **Windows - Any CPU** as the target, and then choose **Local Machine** from the device list on the right.
+
+    If you are running initially on Ripple, choose **Android,** then **Ripple - Nexus (Galaxy)** from the device list. See the illustration below.
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-select-ripple.png)  
 
@@ -96,13 +100,15 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
      When the app loads, it displays a "Hello, your application is ready" message.
 
-     The app that loads at this point is a standard Cordova app running in a native WebView.
+    ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-run-blank.png)
+
+     The app that loads at this point is a standard Cordova client app running in a native WebView. Next, we will add code to turn this into a hosted app that runs on a server.
 
 8. Press Shift + F5 to stop debugging.
 
 ## Change the Cordova project to a hosted app
 
-1. In Solution Explorer, right-click config.xml in the CordovaHostedApp project and choose **View Code**.
+1. In Solution Explorer, right-click config.xml in the CordovaHostedApp-Client project and choose **View Code**.
 
 2. Add the following entry after the first set of `<allow-intent.../>` tags (before the `<platform>` sections).
 
@@ -116,9 +122,9 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 3. If you will be testing on Windows 10, right-click config.xml in Solution Explorer and choose **View Designer**.
 
-    Choose Windows 10 in the **Windows Target Version**.
+    Choose Windows 10 in the **Windows Target Version**. If you are *not* testing on Windows 10, you can skip this step and continue with the next step.
 
-2. Open index.js in the www\scripts folder and replace all the default code with the following code.
+2. Open index.js in the www\scripts folder, remove all the default code, and replace it with the following code.
 
     ```
     var app = {
@@ -179,7 +185,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     The most important thing here is that you create the anchor link that is used in the redirect script you created in the previous step.
 
-4. In index.html, replace the default [Content-Security-Policy](http://taco.visualstudio.com/en-us/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following `<meta>` element.
+4. In index.html, replace the default [Content-Security-Policy](http://taco.visualstudio.com/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following `<meta>` element.
 
     ```
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb-starter.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
@@ -194,7 +200,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     ```
-    These elements provide viewport attributes and a few other features.
+    These elements provide viewport attributes to manage the screen display, and a few other platform attributes to improve the user experience for mobile devices that connect to the site.
 
 6. Press F5 to start the app.
 
@@ -214,7 +220,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 Now, you will update the web site to display a mobile-specific page if the site detects a Cordova app. In this app, you will add this code so that users running the Cordova hosted app can access device features such as the camera, while visitors using a browser will get the default home page.
 
-1. Open index.js in the CordovaHostedApp project and update the targetUrl variable.
+1. Open index.js in the CordovaHostedApp-Client project and update the targetUrl variable.
 
     This line of code should look like this now.
 
@@ -226,7 +232,7 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     > **Note**: To save steps later, we’re using a new URL: https://cordovahostedweb-redirect.azurewebsites.net
 
-2. In the CordovaHostedWeb (ASP.NET) project, right-click the Controllers folder and choose **Add**, **Existing item**, go to the Controllers folder, and add the file called cordovaController.cs to the project.
+2. In the CordovaHostedWeb (ASP.NET) project, right-click the Controllers folder and choose **Add**, **Existing item**, use Windows Explorer go to the Controllers folder, and then add the existing file called cordovaController.cs to the project.
 
     This file contains the following code.
 
@@ -267,7 +273,7 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     This code redirects the site to the Cordova-specific Index.cshtml when the client app passes a querystring that includes the setPlatformCookie function call along with the platform ID. You already specified this URL in the client app's redirect script (index.js).
 
-5. In the CordovaHostedWeb (ASP.NET) project, right-click the Views/Cordova folder and choose **Add**, **Existing item**, go to the Views/Cordova folder, and add the file called Index.cshtml to the project.
+5. In the CordovaHostedWeb (ASP.NET) project, right-click the Views/Cordova folder and choose **Add**, **Existing item**, use Windows Explorer to go to the Views/Cordova folder, and then add the file called Index.cshtml to the project.
 
     This page contains the following code.
 
@@ -308,13 +314,19 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     Finally, this page also loads the app.js script. You will use this file later to add the server-side Camera plugin code. This code calls native code that runs on the device. (You don't need to worry about that yet.)
 
+6. Optionally, if you want to fix up the styling in the client page that appears before the hosted app loads, copy the CSS from the completed sample here:
+
+    [https://raw.githubusercontent.com/ridomin/CdvaHWA/master/CordovaHostedApp/www/css/index.css](https://raw.githubusercontent.com/ridomin/CdvaHWA/master/CordovaHostedApp/www/css/index.css)
+
+    to index.css in the www/css folder.
+
 ## Connect to the hosted app from your device.
 
 To save time and steps, instead of republishing the ASP.NET project to a new Azure Web App URL, you will connect to a version of the project with the changes already in place. (If you want info on how to republish to a new URL, see the Appendix in this article.)
 
 1. Update the URL references in both projects to point to the new site. Specifically, update these references:
 
-    In the CordovaHostedApp project:
+    In the CordovaHostedApp-Client project:
     * In config.xml, update the `<allow-navigation>` element with the new URL:
         https://cordovahostedweb-redirect.azurewebsites.net/
     * In index.html, update the CSP `<meta>` element with the same URL.
@@ -334,7 +346,7 @@ To save time and steps, instead of republishing the ASP.NET project to a new Azu
 
     ![Redirect page](media/create-a-hosted-app/hosted-app-redirect.png)
 
-    > **Note**: On Ripple, the redirection is only partially supported. If you see an error message, close the message to see the redirection page of the hosted app.
+    > **Note**: On Ripple, the redirection is only partially supported. If you see popup, close the message to see the redirection page of the hosted app.
 
     Next, you want to fix up this page so that you can access the device camera and take a picture.
 
@@ -356,13 +368,13 @@ Cordova plugins will give you device access to things like the camera and file s
 
 ## Take a quick look at the plugin files in the ASP.NET project.
 
-For the web site to run plugin code, cordova.js and the JavaScript plugin code need to be copied from the CordovaHostedApp project to the CordovaHostedWeb project. To save steps in this tutorial, we already copied the plugin files over. Take a look at the files under the cordovadist folder in CordovaHostedWeb.
+For the web site to run plugin code, cordova.js and the JavaScript plugin code need to be copied from the CordovaHostedApp-Client project to the CordovaHostedWeb project. To save steps in this tutorial, we already copied the plugin files over. Take a look at the files under the cordovadist folder in CordovaHostedWeb.
 
 ![Plugin files in the ASP.NET project](media/create-a-hosted-app/hosted-app-cordova-plugin-files.png)
 
-You can find these files in the \platforms folder after building your CordovaHostedApp project for a particular platform like Android. For example, the Android files are in \platforms\android\assets\www.
+You can find these files in the \platforms folder after building your CordovaHostedApp-Client project for a particular platform like Android. For example, the Android files are in \platforms\android\assets\www.
 
-The CordovaHostedWeb project uses ImportCordovaAssets.proj to automatically copy these files from the CordovaHostedApp project into the CordovaHostedWeb project. You can use the .proj file in your own hosted app, but we won't be looking at it now.
+The CordovaHostedWeb project uses ImportCordovaAssets.proj to automatically copy these files from the CordovaHostedApp-Client project into the CordovaHostedWeb project. You can use the .proj file in your own hosted app, but we won't be looking at it now.
 
 ## Configure the Web site to run the Camera plugin code
 
@@ -433,7 +445,7 @@ To save time and steps, instead of republishing the CordovaHostedWeb project to 
 
 1. Update the URL references in both projects to point to the new site. Specifically, update these references:
 
-    In the CordovaHostedApp project:
+    In the CordovaHostedApp-Client project:
     * In config.xml, update the `<allow-navigation>` element with the new URL:
         https://cordovahostedweb.azurewebsites.net/
     * In index.html, update the CSP `<meta>` element with the same URL.
@@ -463,6 +475,8 @@ To save time and steps, instead of republishing the CordovaHostedWeb project to 
 
     You can click the round button at the bottom to take a picture on the device (Android shown).
 
+    Congratulations! You are now running native code on the device from a web site!
+
 ## What's Next? <a id="next" />
 
 You may want to investigate options to find an approach that works best for you. Maybe a Hosted App design will help you get an app into the app store quickly, but you may decide to go another route as well. Here are some options for moving forward.
@@ -491,7 +505,7 @@ You may want to investigate options to find an approach that works best for you.
 
 * **Explore other architectures that may be used for hosted apps**
 
-    * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and higher performance in a hosted app.
+    * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and high performance in a hosted app.
 
 ## Appendix: Publish the Web site
 
@@ -533,6 +547,6 @@ This section includes information on how to republish the CordovaHostedWeb ASP.N
 
     The ASP.NET MVC web site will open in your browser.
 
-    To connect to the republished site from your cient app, you will first need to update the CordovaHostedApp project with the copied URL. See earlier tasks to do this.
+    To connect to the republished site from your cient app, you will first need to update the CordovaHostedApp-Client project with the copied URL. See earlier tasks to do this.
 
     You will also need to updated the CSP `<meta>` element in the CordovaHostedWeb project with the new URL and republish.

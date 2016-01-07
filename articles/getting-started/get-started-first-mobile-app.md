@@ -679,9 +679,9 @@ see [Debugger Basics](https://msdn.microsoft.com/library/k0k771bt.aspx).
 
 Search online. They're everywhere! Here's a couple of them: [AngularJS](https://angularjs.org/), and [ionic](http://ionicframework.com/).
 
-**Get a mac and run your app in an iOS emulator**
+**Get a Mac and then run your app in an iOS emulator, or on an iOS device**
 
-see [Install the tools for iOS](install-vs-tools-apache-cordova.md#ios).
+See [Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project](ios-guide.md).
 
 **Tack on an Azure backend - it's free to try**
 

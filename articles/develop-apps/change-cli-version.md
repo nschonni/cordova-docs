@@ -18,11 +18,11 @@
 
 >NOTE: This article applies to Visual Studio 2015 Tools for Apache Cordova **Update 5**
 
-You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins that have not been updated to that version.
+You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins and the version of Node.js that you have installed on your computer or Mac.
 
 This topic helps you decide whether to update the CLI version and how to do it safely.
 
-## Find the CLI version number of your project
+## Step 1: Find the CLI version number of your project
 
 The CLI version number appears in the **Platforms** page of the configuration designer.
 
@@ -32,7 +32,7 @@ You can also find it in the ```taco.json``` file at the root of your project.
 
 When you create a project, Visual Studio uses a specific version of the Cordova CLI, but this version  becomes outdated over time. If you want to use a more recent version of the CLI, you have to make this change manually.
 
-## Understand the impact on plugins
+## Step 2: Consider how this change will impact plugins
 
 Plugins are tested against a specific version of each Cordova platform. For example, to ensure that a plugin works on a mobile device that runs on the most recent version of the Android 6.0 "Marshmallow" operating system, the author validates the plugin against the *cordova-android 5.0.0* platform. In a sense, it's tied to that version of the Android platform.
 
@@ -85,7 +85,36 @@ Have a quick look at this table. It presents each action, its impact, and what y
     </tbody>
 </table>
 
-## How to update the CLI version of your project
+## <a id="node-compat"></a>Step 3: Consider how this change will impact Node.js
+
+Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks. You installed it when you first setup the tools for Apache Cordova.
+
+Before you change your project's CLI version. Plan to use a compatible version of Node.js. This table shows what versions you'll need. You'll still encounter the occasional bug, but by using these combinations, you'll receive the fewest numbers of them.
+
+<table>
+    <thead>
+        <tr>
+            <th>CLI version</th>
+            <th style="text-align:left">Node.js version</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>5.4.1</strong> and later</td>
+            <td style="text-align:left"><strong>5.x</strong>, <strong>4.x</strong>, or <strong>0.12.x</strong></td>
+        </tr>
+        <tr>
+            <td><strong>5.3.3</strong> and later</td>
+            <td style="text-align:left"><strong>4.x</strong>, or <strong>0.12.x</strong></td>
+        </tr>
+        <tr>
+            <td>Earlier than <strong>5.3.3</strong></td>
+            <td style="text-align:left"><strong>0.12.x</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+## Step 4: Proceed with changing the CLI version of your project
 
 1. First, back up any file that you directly modified in the **platforms** folder of your project.    Visual studio will remove the **platform** folder and any file inside of it when you build your project.
 
@@ -116,3 +145,11 @@ Have a quick look at this table. It presents each action, its impact, and what y
     * If you chose to use the most recent version of the CLI, see [Update a plugin to use the most recent version](./develop-apps/manage-plugins.md#Updating).
 
     * If you chose to use an older version of the CLI version, see [Update a plugin to use an older version](./develop-apps/manage-plugins.md#Older).
+
+7. Open a Terminal (on a Mac) or open a Command Prompt (on a Windows computer).
+
+8. Run this command: ```node -v```
+
+    The Node.js version appears.
+
+    Make sure that you have a compatible version of node.js installed on your computer or Mac by reviewing the table above in [Step 3: Consider how this change will impact Node.js](#node-compat).
