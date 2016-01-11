@@ -43,7 +43,7 @@ When you share your project files, another developer only needs to use the follo
 
 `bower update`
 
-You can search for packages directly from the [Bower website](http://stackoverflow.com/questions/1880321/why-does-the-260-character-path-length-limit-exist-in-windows) or from the command line:
+You can search for packages directly from the [Bower website](http://bower.io/) or from the command line:
 
 `bower search <packageName>`
 
