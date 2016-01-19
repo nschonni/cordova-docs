@@ -20,7 +20,7 @@ This repository contains a set tips and workarounds for [Apache Cordova](http://
 ##Categories
 1. [General](general/tips-and-workarounds-general-readme.md)
 1. [Android](android/tips-and-workarounds-android-readme.md)
-1. [iOS and OSX](ios/tips-and-workarounds-android-readme.md)
+1. [iOS and OSX](ios/tips-and-workarounds-ios-readme.md)
 1. Windows
 1. Windows Phone 8 (Silverlight)
 
