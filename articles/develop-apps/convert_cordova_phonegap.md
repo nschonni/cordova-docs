@@ -97,7 +97,7 @@ Here is the most simplistic way of using a versioned plugin:
 
     <plugin name="com.phonegap.plugins.example" spec="2.2.1" />
 
-Since Visual Studio puts a "version" field which is depracated for PhoneGap build, we need to edit the config.xml entries as below. In the example project we're using, we use two plugins and two corresponding lines in config.xml:
+Since Visual Studio puts a "version" field that is depracated for PhoneGap build, we need to edit the config.xml entries as below. In the example project we're using, we use two plugins and two corresponding lines in config.xml:
 
     <plugin name="org.apache.cordova.device-motion" version="0.2.10" />
     <plugin name="org.apache.cordova.camera" version="0.3.2" />
