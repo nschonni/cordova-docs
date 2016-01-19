@@ -63,14 +63,10 @@ The default icon must be named icon.png and must reside in the root of your appl
 
 If you want specific icons for the Android platform, the following entries show an example of how to update config.xml based on the contents of your res\icons\android folder in the PhoneGap Build project you previously created.
 
-    <icon gap:platform="android" gap:qualifier="ldpi"
-        src=" res/icons/android/icon-36-ldpi.png" />
-    <icon gap:platform="android" gap:qualifier="mdpi"
-        src=" res/icons/android/icon-48-mdpi.png" />
-    <icon gap:platform="android" gap:qualifier="hdpi"
-        src=" res/icons/android/icon-72-hdpi.png" />
-    <icon gap:platform="android" gap:qualifier="xhdpi"
-        src=" res/icons/android/icon-96-xhdpi.png" />
+    <icon src="res/icons/android/icon-36-ldpi.png" density="ldpi" />
+    <icon src="res/icons/android/icon-48-mdpi.png" density="mdpi" />
+    <icon src="res/icons/android/icon-72-hdpi.png" density="hdpi" />
+    <icon src="res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
 
 For more information on specifying icon elements in config.xml, read this [article](http://docs.build.phonegap.com/en_US/configuring_icons_and_splash.md.html#Icons%20and%20Splash%20Screens).
 
@@ -79,26 +75,18 @@ You can have zero or more splash screen elements present in config.xml. The spla
 
 The default splash screen must be named splash.png and must reside in the root of your application folder:
 
-    <gap:splash src="splash.png" />
+    <splash src="splash.png" />
 
 If you want specific splash-screens for the Android platform, the following entries show an example of how to update config.xml based on the contents of your res\screens\android folder in the PhoneGap Build project.
 
-    <gap:splash gap:platform="android" gap:qualifier="port-ldpi"
-        src=" res/screens/android/screen-ldpi-portrait.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-mdpi"
-        src=" res/screens/android/screen-mdpi-portrait.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-hdpi"
-        src=" res/screens/android/screen-hdpi-portrait.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi"
-        src=" res/screens/android/screen-xhdpi-portrait.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-ldpi"
-        src=" res/screens/android/screen-ldpi-landscape.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-mdpi"
-        src=" res/screens/android/screen-mdpi-landscape.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-hdpi"
-        src=" res/screens/android/screen-hdpi-landscape.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-xhdpi"
-        src=" res/screens/android/screen-xhdpi-landscape.png" />
+    <splash src="res/screens/android/screen-hdpi-landscape.png" density="land-hdpi" />
+    <splash src="res/screens/android/screen-ldpi-landscape.png" density="land-ldpi" />
+    <splash src="res/screens/android/screen-mdpi-landscape.png" density="land-mdpi" />
+    <splash src="res/screens/android/screen-xhdpi-landscape.png" density="land-xhdpi" />
+    <splash src="res/screens/android/screen-hdpi-portrait.png" density="port-hdpi" />
+    <splash src="res/screens/android/screen-ldpi-portrait.png" density="port-ldpi" />
+    <splash src="res/screens/android/screen-mdpi-portrait.png" density="port-mdpi" />
+    <splash src="res/screens/android/screen-xhdpi-portrait.png" density="port-xhdpi" />
 
 For more information on specifying splash screen elements in config.xml, see this [article](http://docs.build.phonegap.com/en_US/configuring_icons_and_splash.md.html#Icons%20and%20Splash%20Screens).
 
@@ -107,17 +95,17 @@ To extend access to native platform features exposed by the PhoneGap native-app 
 
 Here is the most simplistic way of using a versioned plugin:
 
-    <gap:plugin name="com.phonegap.plugins.example" version="2.2.1" />
+    <plugin name="com.phonegap.plugins.example" spec="2.2.1" />
 
-Because Visual Studio emits the **vs:plugin** element into config.xml for each plugin you have added, you will need to replace these elements with **gap:plugin** elements. In the example project we're using, we use two plugins and two corresponding lines in config.xml:
+Since Visual Studio puts a "version" field which is depracated for PhoneGap build, we need to edit the config.xml entries as below. In the example project we're using, we use two plugins and two corresponding lines in config.xml:
 
-    <vs:plugin name="org.apache.cordova.device-motion" version="0.2.10" />
-    <vs:plugin name="org.apache.cordova.camera" version="0.3.2" />
+    <plugin name="org.apache.cordova.device-motion" version="0.2.10" />
+    <plugin name="org.apache.cordova.camera" version="0.3.2" />
 
 In the PhoneGap Build project, these lines must be changed to:
 
-    <gap:plugin name="org.apache.cordova.device-motion" version="0.2.10" />
-      <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
+    <gap:plugin name="org.apache.cordova.device-motion" spec="0.2.10" />
+    <gap:plugin name="org.apache.cordova.camera" spec="0.3.2" />
 
 For more information on modifying plugins, see this [article](http://docs.build.phonegap.com/en_US/configuring_plugins.md.html#Plugins).
 
