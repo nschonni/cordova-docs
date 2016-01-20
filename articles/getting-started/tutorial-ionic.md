@@ -37,6 +37,7 @@ To follow these steps, you must:
     ```
     npm install -g ionic
     ```
+    >**Note** If you are want to use Ionic 2 instead (alph release), see [Get started with Ionic 2 apps in Visual Studio](tutorial-ionic2.md).
 
 ## Get the Ionic starter app templates <a name="getTemplates"></a>
 
@@ -63,7 +64,7 @@ To follow these steps, you must:
     ```
 >**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015 (recommended), see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015.
 
-## Modify the project to work with VS <a name="configTemplates"></a>
+## Import the project into VS <a name="configTemplates"></a>
 
 For each of the Ionic starter app templates that you installed and want to run, do this:
 
@@ -98,7 +99,17 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     ![App running in the emulator](media/tutorial-ionic/ionic-sidemenu.png)
 
-  >**Note**: If you have previously run the VS Emulator for Android and the app won't load, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
+### Troubleshooting: Let's fix it
+
+[Keyboard plugin not found?](#keyboard)
+
+[TypeScript errors?](#typescript)
+
+[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Other issues?](#other)
 
 ## Get your app running on iOS <a name="configiOS"></a>
 
@@ -121,6 +132,22 @@ To target Windows 10 in your app, you need to:
 5. Choose a Windows 10 deployment target, such as **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
 
 6. Press F5 to run your app.
+
+### Troubleshooting: Let's fix it
+
+[Keyboard plugin not found?](#keyboard)
+
+[TypeScript errors?](#typescript)
+
+[Partial pages don't load](#partialpages)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Certificate error on Windows](#certificate)
+
+[Unhandled exception running on Windows?](#unhandled)
+
+[Other issues?](#other)
 
 ## Get your app running on Windows 8 or 8.1 <a name="configWindows"></a>
 
@@ -148,7 +175,23 @@ To target Windows 10 in your app, you need to:
 
 5. Press F5 to start debugging.
 
-    > **Note**: If you see the TypeScript error or the Keyboard plugin error, see the previous steps for Android to resolve.
+### Troubleshooting: Let's fix it
+
+[Keyboard plugin not found?](#keyboard)
+
+[TypeScript errors?](#typescript)
+
+[Partial pages don't load](#partialpages)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Certificate error on Windows](#certificate)
+
+[WWAHost runtime error?](#wwahost)
+
+[Unhandled exception running on Windows?](#unhandled)
+
+[Other issues?](#other)
 
 ## What's Next?
 
@@ -156,11 +199,11 @@ You can use Visual Studio's build and [debug tools](../debug-and-test/debug-usin
 
 ![Add plugins](media/tutorial-ionic/ionic-add-plugin.png)
 
-## Common issues and workarounds
+## Troubleshooting: Let's fix it
 
 A few errors are fairly common in the starter templates when debugging in Visual Studio.
 
-### Keyboard plugin not found?
+### <a id="keyboard"></a> Keyboard plugin not found?
 
 In some of the Ionic starter app templates, you may get an error on this line of code.
 
@@ -182,7 +225,7 @@ If you add the plugins using the configuration designer, Visual Studio can recog
 
 > **Note**: Some APIs used in the templates for the Keyboard plugin are iOS only, like `hideKeyboardAccessoryBar`.
 
-### TypeScript errors?
+### <a id="typescript"></a>TypeScript errors?
 
 In some of the Ionic starter app templates, you may also need to remove the TypeScript file, angular-ui-router.d.ts, for the angular-ui-router module, or you may see this error.
 
@@ -190,7 +233,7 @@ In some of the Ionic starter app templates, you may also need to remove the Type
 
 > **Note** If you are using TypeScript, you need to get updated d.ts files or an updated version of the template to support the routing module.
 
-### WWAHost runtime error? <a name="win10tips"></a>
+### <a id="wwahost"></a>WWAHost runtime error?
 
 When debugging on a Windows 8.1 dev machine, you may get a WWAHost runtime error when navigating between pages in Ionic apps. You can work around this by:
 
@@ -198,7 +241,7 @@ When debugging on a Windows 8.1 dev machine, you may get a WWAHost runtime error
 
 * Upgrading to Windows 10 on your dev machine (issue is fixed in Win10).
 
-### Partial pages don't load?
+### <a id="partialpages"></a>Partial pages don't load?
 
 When you are using the AngularJS routing module (Ionic starter templates often use this module), you may need to include a call to `aHrefSanitizationWhitelist`.
 
@@ -225,10 +268,44 @@ so that it looks like this:
 .config(function ($compileProvider, $stateProvider, $urlRouterProvider) {
   ```
 
-### Unhandled exception running on Windows?
+### <a id="unhandled"></a>Unhandled exception running on Windows?
 
 If you see the following unhandled exception when targeting Win/WinPhone 8.1, follow the [earlier steps](#configWindows) to call platformOverrides.js to fix this issue.
 
 ![unhandled exception](media/tutorial-ionic/ionic-unhandled-exception.png)
 
 If you see the same error when targeting Windows 10, make sure you set **Windows 10.0** as the target in the Windows tab of the configuation designer.
+
+### <a id="csp"></a> Error saying that the Content Security Policy is missing?
+
+Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following <meta> element:
+
+    ```
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    ```
+
+### <a id="certificate"></a> Certificate error on Windows?
+
+Make sure your credentials are up to date. Check for any notifications or warning icons in the upper right of Visual Studio.
+
+![Update your credentials](media/tutorial-ionic/ionic-windows-credentials.png)
+
+You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow instructions.
+
+### <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
+
+The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
+
+If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
+
+### <a id="other"></a> Other issues?
+
+If you have errors running the Blank App template (rather than just the Ionic starter apps), try these steps.
+
+1. In Visual Studio, go to **Tools**, **Options**, **Tools for Apache Cordova** and run the Dependency Checker.
+
+    If the Dependency Checker finds any issues for a platform that you're targeting, you will need to fix them. If you need to install the Android SDK, use the [Android SDK Manager](http://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#ThirdParty) to install API19 and API22.
+
+2. If you see an error message in the Output window in Visual Studio, use any links provided to try to resolve the issue.
+
+3. If that doesn't resolve issues, follow instructions to [clear the Cordova cache](http://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac). Otherwise, see [Known Issues](http://taco.visualstudio.com/en-us/docs/known-issues-general/) or post questions on [StackOverflow](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
