@@ -42,12 +42,12 @@ To follow these steps, you must:
 
 ## Troubleshooting: Let's fix it
 
-Errors running the Blank App in Visual Studio?
+[Errors running the Blank App in Visual Studio?](#other)
 
 ## Get the Ionic 2 tutorial template <a name="getTemplates"></a>
 
 1. Make sure you installed the Ionic 2 CLI, then open a command line.
-2. Go to the directory where you want to install the Ionic starter app, such as the Documents folder.
+2. Go to the directory where you want to install the Ionic starter app, such as a folder in the Documents folder.
 
     ```
     C:\\Users\<username>\Documents\myIonic2App>
@@ -83,7 +83,7 @@ Errors running the Blank App in Visual Studio?
     ionic run android
     ```
 
-    This will install the required platform dependencies for Ionic 2 apps. (If you already have an Android emulator running, the app should also load on the emulator at this point. But otherwise, we will try to run on the emulator later.)
+    This will install the required Android platform dependencies for Ionic 2 apps. (If you already have an Android emulator running, the app should also load on the emulator at this point. But otherwise, we will try to run on the emulator later.)
 
     You can run the same command for iOS (`ionic run ios`), but to work in Visual Studio on Windows you will need to also [install the remote agent](ios-guide.md). We are not covering those tasks here.
 
@@ -113,11 +113,13 @@ For the Ionic 2 tutorial app, do this:
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
+    This Content-Security-Policy will satisfy Cordova 5 security requirements.
+
 2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as Ripple (Chrome required) or the **VS Emulator 5.1" Lollipop (5.1.1) XXHDPI Phone** (Hyper-V required).
 
     ![Run the app](media/tutorial-ionic2/ionic-f5.png)
 
-    If you do no have Hyper-V, you can choose the Google emulator (not very fast) or set up the GenyMotion emulator. For more info, see [this article](../develop-apps/run-app-apache.md).
+    If you do not have Hyper-V, you can choose the Google emulator (not very fast), set up the GenyMotion emulator, or use a device. For more info, see [this article](../develop-apps/run-app-apache.md).
 
 2. Press F5, and the app should load correctly.
 
@@ -125,13 +127,19 @@ For the Ionic 2 tutorial app, do this:
 
 ## Troubleshooting: Let's fix it
 
-See a blank screen when you run the app?
-Don't see any Android 5.1 emulators in Visual Studio?
-Visual Studio Emulator for Android won't run?
-App is not working right on Android 4.4?
-Want to target ES6?
-Error saying that a Content Security Policy is missing?
-Other issues?
+[See a blank screen when you run the app?](#blank)
+
+[Don't see any Android 5.1 emulators in Visual Studio?](#missingEmu)
+
+[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
+
+[App is not working right on Android 4.4?](#android44)
+
+[Want to target ES6?](#es6)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Other issues?](#other)
 
 ## Get your app running on iOS from Visual Studio <a name="configiOS"></a>
 
@@ -149,20 +157,25 @@ Other issues?
 
     This installs required platform dependencies for Windows 10.
 
-4. In Visual Studio, open the configuration designer (config.xml), choose Windows, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
+4. In Visual Studio, right-click config.xml and choose **View Designer** to open the configuration designer.
 
-5. Choose a Windows 10 deployment target, such as **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+5. In the configuration designer (config.xml), choose **Windows**, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
 
-6. Press F5 to run your app.
+6. Choose a **Windows-Any CPU** as a platform, and a Windows 10 deployment target such as **Window **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+
+7. Press F5 to run your app.
 
 ## Troubleshooting: Let's fix it
 
-See a blank screen when you run the app?
-Certificate error on Windows?
-Error saying that a Content Security Policy is missing?
-Other issues?
+[See a blank screen when you run the app?](#blank)
 
-## See a blank screen when you run the app?
+[Certificate error on Windows?](#certificate)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Other issues?](#other)
+
+## <a id="blank"></a>See a blank screen when you run the app?
 
 If you get a blank screen, you may also see a ERR_FILE_NOT_FOUND error in the Output window. If you see this issue, try these steps:
 
@@ -184,21 +197,23 @@ If you get a blank screen, you may also see a ERR_FILE_NOT_FOUND error in the Ou
 
 4. Press F5 to retry running your app.
 
-## Don't see any Android 5.1 emulators in Visual Studio?
+## <a id="missingEmu"></a> Don't see any Android 5.1 emulators in Visual Studio?
 
 The current version of the Ionic 2 tutorial app works best on Android 5.1 and later versions. If you installed the Visual Studio Emulator for Android, but don't see any 5.1 emulators, follow these steps.
 
 1. Choose **Tools**, **Visual Studio Emulator for Android**.
 
+    ![Configuring the VS Android Emulator](media/tutorial-ionic2/ionic2-android-emu-tools.png)
+
 2. If you see a message to install emulator updates, install them.
 
 3. If you don't have any device profiles for Android 5.1 installed, use the Device Profiles page to install the updates.
 
-## Visual Studio Emulator for Android won't run?
+## <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
 
 The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info on resolving issues, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
 
-## App is not working right on Android 4.4?
+## <a id="android44"></a> App is not working right on Android 4.4?
 
 The current version of the Ionic 2 tutorial app works best on Android 5.1 and later versions. You can try to include the Crosswalk plugin using the configuration designer, which may provide better support for Android 4.4.
 
@@ -206,7 +221,7 @@ The current version of the Ionic 2 tutorial app works best on Android 5.1 and la
 
 2. Choose the Crosswalk Webview and choose **Add**.
 
-## Error saying that the Content Security Policy is missing?
+## <a id="csp"></a> Error saying that the Content Security Policy is missing?
 
 Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following <meta> element:
 
@@ -214,19 +229,19 @@ Visual Studio will use the Cordova Whitelist plugin by default, so you need to u
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-## Want to target ES6?
+## <a id="es6"></a> Want to target ES6?
 
 Ionic 2 supports ES6 but the app targets ES5 by default. You can change the default target to ES6 by opening the tsconfig.json file and changing the target attribute to es6 instead of es5.
 
-## Certificate error on Windows?
+## <a id="certificate"></a> Certificate error on Windows?
 
 Make sure your credentials are up to date. Check for any notifications or warning icons in the upper right of Visual Studio.
 
-    ![Update your credentials](media/tutorial-ionic2/ionic-windows-credentials.png)
+![Update your credentials](media/tutorial-ionic2/ionic-windows-credentials.png)
 
-You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please follow instructions.
+You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow instructions.
 
-## Other issues?
+## <a id="other"></a> Other issues?
 
 If you have errors running the Blank App template (rather than just the Ionic 2 tutorial template), try this.
 
@@ -236,4 +251,4 @@ If you have errors running the Blank App template (rather than just the Ionic 2 
 
 2. If you see an error message in the Output window in Visual Studio, use any links provided to try to resolve the issue.
 
-3. If that doesn't resolve issues, follow instructions to [clear the Cordova cache](http://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac). Otherwise, see Known Issues or post questions on StackOverflow.
+3. If that doesn't resolve issues, follow instructions to [clear the Cordova cache](http://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac). Otherwise, see [Known Issues](http://taco.visualstudio.com/en-us/docs/known-issues-general/) or post questions on [StackOverflow](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
