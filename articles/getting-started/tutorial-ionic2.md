@@ -40,7 +40,7 @@ To follow these steps, you must:
 
     * Choose **Android**, **Ripple - Nexus (Galaxy)** (Chrome required) and press F5 to run the app (make sure the default blank app loads correctly). If any issues occur, use the error information and any links provided to resolve issues. Also, see the Troubleshooting tips in this article and in [Configure the Tools](configure-vs-tools-apache-cordova.md).
 
-## Troubleshooting: Let's fix it
+### Troubleshooting: Let's fix it
 
 [Errors running the Blank App in Visual Studio?](#other)
 
@@ -125,7 +125,7 @@ For the Ionic 2 tutorial app, do this:
 
     ![App running in the emulator](media/tutorial-ionic2/ionic2-android-lollipop.png)
 
-## Troubleshooting: Let's fix it
+### Troubleshooting: Let's fix it
 
 [See a blank screen when you run the app?](#blank)
 
@@ -175,7 +175,7 @@ For the Ionic 2 tutorial app, do this:
 
 [Other issues?](#other)
 
-## <a id="blank"></a>See a blank screen when you run the app?
+### <a id="blank"></a>See a blank screen when you run the app?
 
 If you get a blank screen, you may also see a ERR_FILE_NOT_FOUND error in the Output window. If you see this issue, try these steps:
 
@@ -197,7 +197,7 @@ If you get a blank screen, you may also see a ERR_FILE_NOT_FOUND error in the Ou
 
 4. Press F5 to retry running your app.
 
-## <a id="missingEmu"></a> Don't see any Android 5.1 emulators in Visual Studio?
+### <a id="missingEmu"></a> Don't see any Android 5.1 emulators in Visual Studio?
 
 The current version of the Ionic 2 tutorial app works best on Android 5.1 and later versions. If you installed the Visual Studio Emulator for Android, but don't see any 5.1 emulators, follow these steps.
 
@@ -209,11 +209,11 @@ The current version of the Ionic 2 tutorial app works best on Android 5.1 and la
 
 3. If you don't have any device profiles for Android 5.1 installed, use the Device Profiles page to install the updates.
 
-## <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
+### <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
 
 The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info on resolving issues, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
 
-## <a id="android44"></a> App is not working right on Android 4.4?
+### <a id="android44"></a> App is not working right on Android 4.4?
 
 The current version of the Ionic 2 tutorial app works best on Android 5.1 and later versions. You can try to include the Crosswalk plugin using the configuration designer, which may provide better support for Android 4.4.
 
@@ -221,7 +221,7 @@ The current version of the Ionic 2 tutorial app works best on Android 5.1 and la
 
 2. Choose the Crosswalk Webview and choose **Add**.
 
-## <a id="csp"></a> Error saying that the Content Security Policy is missing?
+### <a id="csp"></a> Error saying that the Content Security Policy is missing?
 
 Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following <meta> element:
 
@@ -229,11 +229,11 @@ Visual Studio will use the Cordova Whitelist plugin by default, so you need to u
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-## <a id="es6"></a> Want to target ES6?
+### <a id="es6"></a> Want to target ES6?
 
 Ionic 2 supports ES6 but the app targets ES5 by default. You can change the default target to ES6 by opening the tsconfig.json file and changing the target attribute to es6 instead of es5.
 
-## <a id="certificate"></a> Certificate error on Windows?
+### <a id="certificate"></a> Certificate error on Windows?
 
 Make sure your credentials are up to date. Check for any notifications or warning icons in the upper right of Visual Studio.
 
@@ -241,7 +241,7 @@ Make sure your credentials are up to date. Check for any notifications or warnin
 
 You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow instructions.
 
-## <a id="other"></a> Other issues?
+### <a id="other"></a> Other issues?
 
 If you have errors running the Blank App template (rather than just the Ionic 2 tutorial template), try this.
 
