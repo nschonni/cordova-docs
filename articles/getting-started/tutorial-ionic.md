@@ -37,6 +37,7 @@ To follow these steps, you must:
     ```
     npm install -g ionic
     ```
+    >**Note** If you are want to use Ionic 2 instead (alph release), see [Get started with Ionic 2 apps in Visual Studio](tutorial-ionic2.md).
 
 ## Get the Ionic starter app templates <a name="getTemplates"></a>
 
