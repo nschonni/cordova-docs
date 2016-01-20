@@ -157,3 +157,13 @@ This is likely because the iOS device being used has a resolution higher than th
 ##**Plugin native code still present after removing plugin after incremental iOS build**
 
 If a plugin is added to your project, built for iOS, and then removed from the project, the plugin will still be included in the iOS build until you clean or build for another platform. As a workaround, clean or rebuild from Visual Studio instead of using build/debug.
+
+##**Failed to launch application on iOS remote build machine**
+There are ocassions when you would see following output in the Visual Studio error pane:
+  ~~~~~~~~~~~~~~~~~~~~~~~~
+  Starting launch process C:\Program Files (x86)\nodejs\node.exe "C:\Users\user\AppData\Roaming\npm\node_modules\vs-tac\remoteDevice.js" --platform ios --action launch --path "C:\Projects\PhoneApp\bld\ios\Debug\buildInfo.json" --serverUrl http://mac:3000/cordova --language en-NZ --loglevel warn  --cliVersion 5.4.0
+  Timed out connecting debugger to remote Apache Cordova app. See Output window for JavaScript console output.
+  Unable to find the app to debug. Check that the device is awake and unlocked.
+  ~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ This occurs if the app id in the widget element of config.xml (e.g. io.cordova.helloworld) has any unusual characters in it, or contain the substring '.app' and is limitation of the iOS platform. Please modify the application id not to contain .app in the value.

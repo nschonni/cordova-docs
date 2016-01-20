@@ -104,8 +104,8 @@ Since Visual Studio puts a "version" field that is depracated for PhoneGap build
 
 In the PhoneGap Build project, these lines must be changed to:
 
-    <gap:plugin name="org.apache.cordova.device-motion" spec="0.2.10" />
-    <gap:plugin name="org.apache.cordova.camera" spec="0.3.2" />
+    <plugin name="org.apache.cordova.device-motion" spec="0.2.10" />
+    <plugin name="org.apache.cordova.camera" spec="0.3.2" />
 
 For more information on modifying plugins, see this [article](http://docs.build.phonegap.com/en_US/configuring_plugins.md.html#Plugins).
 
