@@ -211,7 +211,9 @@ The current version of the Ionic 2 tutorial app works best on Android 5.1 and la
 
 ### <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
 
-The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info on resolving issues, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
+The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
+
+If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
 ### <a id="android44"></a> App is not working right on Android 4.4?
 
@@ -243,7 +245,7 @@ You may need to re-enter your credentials. If the notifications indicate that yo
 
 ### <a id="other"></a> Other issues?
 
-If you have errors running the Blank App template (rather than just the Ionic 2 tutorial template), try this.
+If you have errors running the Blank App template (rather than just the Ionic 2 tutorial template), try these steps.
 
 1. In Visual Studio, go to **Tools**, **Options**, **Tools for Apache Cordova** and run the Dependency Checker.
 
