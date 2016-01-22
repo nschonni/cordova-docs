@@ -16,7 +16,7 @@
 # Get started with Ionic 2 in Visual Studio
 [Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 and the Ionic CLI to easily create and debug cross-platform apps.
 
->**Note**: Ionic 2 is an alpha release and the Ionic 2 CLI is beta. We do not recommend that you use Ionic 2 for production apps.
+>**Caution**: Ionic 2 is an alpha release and the Ionic 2 CLI is beta. We do not recommend that you use Ionic 2 for production apps, but we are including this article to help developers test Ionic 2 in Visual Studio.
 
 ## Set up your machine for Ionic with VS <a name="getStarted"></a>
 
@@ -56,18 +56,20 @@ To follow these steps, you must:
 3. In the command line, type
 
     ```
-    ionic start myIonic2App tutorial --v2
+    ionic start myIonic2App --v2
     ```
 
     or, for the TypeScript version:
 
     ```
-    ionic start myIonic2App tutorial --v2 --ts
+    ionic start myIonic2App --v2 --ts
     ```    
 
     Either command will install Ionic 2 and the required npm modules, including the Angular 2 module (there is no need to install this separately).
 
     Ionic creates the project in your current folder. Most of the Ionic 1 templates such as sidemenu and tabs are not available yet for Ionic 2, but if you need to use one you could read about [migrating](http://ionicframework.com/docs/v2/getting-started/migration/) Ionic 1 apps.
+
+    >**Note** You can run these commands to get the tutorial app instead: `ionic start myIonic2App tutorial --v2` or `ionic start myIonic2App tutorial --v2 --ts`. However, the tutorial app currently throws a runtime error when navigating pages.
 
 4. In the command line, type
 
@@ -114,6 +116,10 @@ For the Ionic 2 tutorial app, do this:
     ```
 
     This Content-Security-Policy will satisfy Cordova 5 security requirements.
+
+2. Open the tsconfig.json file and change the target from the default value of "ES5" to "es6".
+
+    Currently, targeting es6 and Android 5.1 provides the best experience for the Ionic 2 template apps.
 
 2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as Ripple (Chrome required) or the **VS Emulator 5.1" Lollipop (5.1.1) XXHDPI Phone** (Hyper-V required).
 
@@ -175,6 +181,10 @@ For the Ionic 2 tutorial app, do this:
 
 [Other issues?](#other)
 
+## Developing your Ionic 2 app
+
+When you run the ionic serve command, the CLI uses ionic.config.js to copy files from the app folder to www/build. If you want to avoid re-running ionic serve each time you build the app from Visual Studio, we currently recommend that you change the "build" folder reference in ionic.config.js to "temp" or some other name. This way you can run the app from Visual Studio after making changes in the www/build folder. You may later need to migrate these changes back to the app folder. We are working on a fix for this issue.
+
 ### <a id="blank"></a>See a blank screen when you run the app?
 
 If you get a blank screen, you may also see a ERR_FILE_NOT_FOUND error in the Output window. If you see this issue, try these steps:
@@ -231,9 +241,9 @@ Visual Studio will use the Cordova Whitelist plugin by default, so you need to u
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-### <a id="es6"></a> Want to target ES6?
+### <a id="es6"></a> App behavior doesn't look right on Android 5.1?
 
-Ionic 2 supports ES6 but the app targets ES5 by default. You can change the default target to ES6 by opening the tsconfig.json file and changing the target attribute to es6 instead of es5.
+Ionic 2 supports ES6 but the app targets ES5 by default. You can change the default target to ES6 by opening the tsconfig.json file and changing the target attribute to "es6" (the current default value is "ES5").
 
 ### <a id="certificate"></a> Certificate error on Windows?
 
