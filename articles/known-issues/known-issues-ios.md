@@ -157,3 +157,10 @@ This is likely because the iOS device being used has a resolution higher than th
 ##**Plugin native code still present after removing plugin after incremental iOS build**
 
 If a plugin is added to your project, built for iOS, and then removed from the project, the plugin will still be included in the iOS build until you clean or build for another platform. As a workaround, clean or rebuild from Visual Studio instead of using build/debug.
+
+##**Failed to launch application on iOS remote build machine**
+Sometimes, you would see following output in the Visual Studio error pane:
+
+    Http 404: Unable to launch app
+     
+ In some cases, this *may* occur if the app id in the widget element of config.xml (e.g. io.cordova.helloworld) has any non-ascii characters in it, or contains the substring '.app'. This is a known imitation of the iOS platform. To resolve this issue, you should modify the application id not to contain .app in the value or have ascii characters as the app id.
