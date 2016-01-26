@@ -17,4 +17,5 @@
 # Azure Connected Services
 
 Here is a test potato.
+
 ![A test potato](media/sample-article/testpotato.jpeg)
