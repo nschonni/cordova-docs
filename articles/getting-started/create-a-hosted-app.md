@@ -14,7 +14,7 @@
    ms.date="12/19/2015"
    ms.author="mikejo"/>
 
-# Create a hosted app using Apache Cordova
+# Create a hosted web app using Apache Cordova
 
 Web developers can use Cordova to leverage existing web assets, get a web-based app uploaded to an app store, and get access to device features like the camera. In this topic, we want to show you a fast way to turn a Web site into a mobile app using Apache Cordova.
 
@@ -24,7 +24,7 @@ In general, when migrating a Web site, several approaches will work. Here are a 
 
     This can be a good option especially if your web site does *not* implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported in the client-side code of a Cordova app. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual steps involved are pretty specific to each Web site, so we will not be looking at this option in this article. For more detailed info on these options, see [What's Next?](#next). For a more general tutorial, see the [Beginner's Guide](get-started-first-mobile-app.md).
 
-* Create a hosted app.
+* Create a hosted web app.
 
     For this scenario, you use a thin Cordova client (think of it as a web browser embedded in a native app) that automatically redirects to your Web site. For sites using ASP.NET and other server-side technologies, this is the fastest way to get up and running, and is a good way to get your app into one of the app stores quickly while learning Cordova. The full app experience will require an Internet connection, but you can also do a few things to handle offline scenarios. This approach will be much more effective if your Web site uses [responsive design](http://alistapart.com/article/responsive-web-design) techniques to adjust layout to match the device screen size.
 
@@ -106,7 +106,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 8. Press Shift + F5 to stop debugging.
 
-## Change the Cordova project to a hosted app
+## Change the Cordova project to a hosted web app
 
 1. In Solution Explorer, right-click config.xml in the CordovaHostedApp-Client project and choose **View Code**.
 
@@ -320,7 +320,7 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     to index.css in the www/css folder.
 
-## Connect to the hosted app from your device.
+## Connect to the hosted web app from your device.
 
 To save time and steps, instead of republishing the ASP.NET project to a new Azure Web App URL, you will connect to a version of the project with the changes already in place. (If you want info on how to republish to a new URL, see the Appendix in this article.)
 
