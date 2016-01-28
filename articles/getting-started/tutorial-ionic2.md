@@ -71,7 +71,9 @@ To follow these steps, you must:
 
     >**Note** You can run these commands to get the tutorial app instead: `ionic start myIonic2App tutorial --v2` or `ionic start myIonic2App tutorial --v2 --ts`. However, the tutorial app currently throws a runtime error when navigating pages.
 
-4. In the command line, type
+4. In the command line, switch to the new directory that Ionic created for the app.
+
+5. In the command line, type
 
     ```
     ionic serve
@@ -79,7 +81,7 @@ To follow these steps, you must:
 
     This runs the app in your browser. You may be prompted to select an address, like localhost, before the app loads. You can use the browser for testing, but you will want to run on an emulator or device before long! Keep reading...
 
-5. In the command line, type
+6. In the command line, type
 
     ```
     ionic run android
@@ -163,13 +165,13 @@ For the Ionic 2 tutorial app, do this:
 
     This installs required platform dependencies for Windows 10.
 
-4. In Visual Studio, right-click config.xml and choose **View Designer** to open the configuration designer.
+2. In Visual Studio, right-click config.xml and choose **View Designer** to open the configuration designer.
 
-5. In the configuration designer (config.xml), choose **Windows**, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
+3. In the configuration designer (config.xml), choose **Windows**, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
 
-6. Choose a **Windows-Any CPU** as a platform, and a Windows 10 deployment target such as **Window **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+4. Choose a **Windows-Any CPU** as a platform, and a Windows 10 deployment target such as **Window **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
 
-7. Press F5 to run your app.
+5. Press F5 to run your app.
 
 ## Troubleshooting: Let's fix it
 
