@@ -454,13 +454,13 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 5. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
 
-   ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
+    ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
 
 6. Add the path to the device support files that are located on your remote Mac.
 
     >**Note**: Do this only if you want to debug your app. You don't have to do this if just want to run your app on the device without debugging it.
 
-   ![Path to device files](media/ios-guide/local-debugging.png)
+    ![Path to device files](media/ios-guide/local-debugging.png)
 
 7. Choose the **OK** button to close this dialog box.
 
