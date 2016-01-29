@@ -44,7 +44,7 @@ To follow these steps, you must:
 2. Go to the directory where you want to install the Ionic starter app templates, such as the Documents folder.
 
     ```
-    C:\\Users\<username>\Documents\ionicMySideMenu>
+    C:\\Users\<username>\Documents>
     ```
 
 3. In the command line, type
@@ -122,7 +122,7 @@ To target Windows 10 in your app, you need to:
 
 1. Use the Visual Studio install program to install the **Universal Windows App Development Tools** (optional software).
 
-2. In the Platforms tab of the configuration designer, enter 5.3.1 (or 5.1.1) as the Cordova version.
+2. In the Platforms tab of the configuration designer, enter 5.4.1 (or 5.3.3) as the Cordova version.
 
 3. Choose **Build Solution** from the **Build** menu.
 
@@ -202,9 +202,9 @@ You can use Visual Studio's build and [debug tools](../debug-and-test/debug-usin
 
 A few errors are fairly common in the starter templates when debugging in Visual Studio.
 
-### <a id="keyboard"></a> Keyboard plugin not found?
+### <a id="keyboard"></a> Keyboard or StatusBar plugin not found?
 
-In some of the Ionic starter app templates, you may get an error on this line of code.
+If you're running in Ripple using some of the Ionic starter app templates, you may get an error on Keyboard or StatusBar plugin code running in app.js, such as the following code.
 
 ```
 if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -212,15 +212,7 @@ if (window.cordova && window.cordova.plugins.Keyboard) {
 }
 ```
 
-To fix, open the Plugins tab of the configuation designer, and choose Custom, and then Git repository.
-
-Add the following git URL and rebuld.
-
-```
-https://github.com/driftyco/ionic-plugins-keyboard.git
-```
-
-If you add the plugins using the configuration designer, Visual Studio can recognize the plugin and add the plugin reference to config.xml.
+Ripple does not support custom plugins like the Keyboard plugin. We recommend you run on other devices such as the Android emulator. For more info and workarounds for Ripple, see [this post](https://github.com/driftyco/ionic-plugin-keyboard/issues/18).
 
 > **Note**: Some APIs used in the templates for the Keyboard plugin are iOS only, like `hideKeyboardAccessoryBar`.
 
