@@ -100,7 +100,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
 ### Troubleshooting: Let's fix it
 
-[Keyboard plugin not found?](#keyboard)
+[Keyboard or StatusBar plugin not found?](#keyboard)
 
 [TypeScript errors?](#typescript)
 
@@ -134,7 +134,7 @@ To target Windows 10 in your app, you need to:
 
 ### Troubleshooting: Let's fix it
 
-[Keyboard plugin not found?](#keyboard)
+[Keyboard or StatusBar plugin not found?](#keyboard)
 
 [TypeScript errors?](#typescript)
 
@@ -176,7 +176,7 @@ To target Windows 10 in your app, you need to:
 
 ### Troubleshooting: Let's fix it
 
-[Keyboard plugin not found?](#keyboard)
+[Keyboard or StatusBar plugin not found?](#keyboard)
 
 [TypeScript errors?](#typescript)
 
