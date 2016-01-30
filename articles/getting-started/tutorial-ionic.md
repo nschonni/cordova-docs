@@ -61,7 +61,7 @@ To follow these steps, you must:
     ionic start ionicMyTabs tabs
     ionic start ionicMyBlank blank
     ```
->**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015 (recommended), see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015.
+>**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015, see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015, which is highly recommended.
 
 ## Import the project into VS <a name="configTemplates"></a>
 
@@ -120,17 +120,27 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
 To target Windows 10 in your app, you need to:
 
-1. Use the Visual Studio install program to install the **Universal Windows App Development Tools** (optional software).
+1. If it's not already installed, use the Visual Studio install program to install the **Universal Windows App Development Tools** (optional software).
 
 2. In the Platforms tab of the configuration designer, enter 5.4.1 (or 5.3.3) as the Cordova version.
 
 3. Choose **Build Solution** from the **Build** menu.
 
-4. In the configuration designer, choose Windows, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
+4. Open index.html and add the following '<meta>' element.
 
-5. Choose a Windows 10 deployment target, such as **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+    ```
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    ```
 
-6. Press F5 to run your app.
+    This will fulfill Apache Cordova 5 [security requirements](../tutorial-cordova-5/cordova-5-security.md).
+
+5. In the configuration designer, choose Windows, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
+
+6. Choose **Windows-Any CPU** from the Solution Platforms list.
+
+7. Choose a Windows 10 deployment target, such as **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+
+8. Press F5 to run your app.
 
 ### Troubleshooting: Let's fix it
 
@@ -212,7 +222,7 @@ if (window.cordova && window.cordova.plugins.Keyboard) {
 }
 ```
 
-Ripple does not support custom plugins like the Keyboard plugin. We recommend you run on other devices such as the Android emulator. For more info and workarounds for Ripple, see [this post](https://github.com/driftyco/ionic-plugin-keyboard/issues/18).
+Ripple does not support custom plugins like the Keyboard plugin. We recommend you run on other devices such as the Visual Studio Emulator for Android or the GenyMotion emulator. For more info related to this Ripple issue, see [this post](https://github.com/driftyco/ionic-plugin-keyboard/issues/18).
 
 > **Note**: Some APIs used in the templates for the Keyboard plugin are iOS only, like `hideKeyboardAccessoryBar`.
 
