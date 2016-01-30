@@ -438,7 +438,11 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 1. Make sure that the remote agent is running.
 
-    See [Start the remote agent on your mac](#remoteAgent).
+    See [Start the remote agent on your Mac](#remoteAgent).
+
+2. If you want to debug your app, share the device support folder. You'll find it here: ```Macintosh HD/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport```.
+
+    For guidance, see [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
 
 #### On your Windows computer
 
@@ -476,9 +480,7 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 11. Press the F5 key to start your app.
 
-    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, Apple iTunes starts and the iOS app is added to your library.
-
-12. In Apple iTunes, install the app on the connected device.
+    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, the app appears on your device.
 
 
 ## Stop the remote agent on your Mac
@@ -504,6 +506,8 @@ In the Terminal app on your Mac, press Ctrl+C.
 [Did you receive an error that like this one: - Command failed with exit code ENOENT?](#ENOENT)
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
+
+[You try to run your app on a device that is connected to your Windows computer but the project can't find it](#timeout)
 
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
@@ -625,5 +629,13 @@ Try these things:
 * Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
 
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
+
+[Go back up](#errors)
+
+### <a id="timeout"></a>You try to run your app on a device that is connected to your Windows computer but the project can't find it
+
+It's possible that the **ios-webkit-debug-proxy.exe** and **idevicedebugserverproxy.exe** processes were started in a previous attempt to run this project.
+
+On your Windows computer, open the **Task Manager** and then choose the **Proceses** tab. If those processes appear in the list, right-click them, and then click **End Process**.
 
 [Go back up](#errors)
