@@ -526,31 +526,31 @@ Most likely you'll want your app to do more than just show web pages on a mobile
 5. Replace the ```onSuccess``` callback function with this complete function
 
     ```javascript
-		   var onSuccess = function (position) {
+		 var onSuccess = function (position) {
 
-		   var latitude = position.coords.latitude;
-		   var longitude = position.coords.longitude;
+		 var latitude = position.coords.latitude;
+		 var longitude = position.coords.longitude;
 
 		   // Get zipCode by using latitude and longitude.
 
-       var queryString = "http://gws2.maps.yahoo.com/findlocation?   pf=1&locale=en_US&offset=15&flags=&q=" + latitude + "%2c" + longitude + "&gflags=R&start=0&format=json";
+         var queryString = "http://gws2.maps.yahoo.com/findlocation?   pf=1&locale=en_US&offset=15&flags=&q=" + latitude + "%2c" + longitude + "&gflags=R&start=0&format=json";
 
-		   $.getJSON(queryString, function (results) {
+		  $.getJSON(queryString, function (results) {
 
-		      if (results.Found > 0) {
+		     if (results.Found > 0) {
 
-		          // Put the zip code into the input box for the user.
-		          var zipCode = results.Result.uzip
-		          $('#input-box').val(zipCode);
+		        // Put the zip code into the input box for the user.
+		        var zipCode = results.Result.uzip
+		        $('#input-box').val(zipCode);
 
-              $('#description').text("Get the Weather");
-              $('#get-weather').prop("disabled", false);
+                $('#description').text("Get the Weather");
+                $('#get-weather').prop("disabled", false);
 
-		       }
+		      }
 
 		   });
 
-		   }
+		 }
 
     ```
 
