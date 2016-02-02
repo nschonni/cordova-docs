@@ -157,7 +157,7 @@ First, we'll add the [JQuery](https://jquery.com/) NuGet package to your project
 3. Add this script reference to the ```<body>``` tag of your [index.html](#tour-project) file:
 
    ```html
-  <script src="scripts/jquery-2.1.4.min.js"></script>
+  <script src="scripts/jquery-2.2.0.min.js">
    ```
 
 ### Design a page
