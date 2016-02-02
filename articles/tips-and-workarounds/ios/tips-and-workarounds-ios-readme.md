@@ -21,7 +21,7 @@ There are a small number of Cordova plugins that contain "custom framework" file
 
 To install it:
 
-1. Download [this hook-symlink-fix.js](../tips-and-workarounds/ios/hook-symlink-fix.js) file and drop it a **hooks** folder in your project root.
+1. Download [this hook-symlink-fix.js](ios-plugin-symlink-fix/hook-symlink-fix.js) file and drop it a **hooks** folder in your project root.
 2. Update config.xml with the following (using right-click->**View Code**):
 
   ```
@@ -45,7 +45,7 @@ sudo chown -R `whoami` ~/.npm
 
 ### Permission errors when building or executing a cordova command (plugin add) on OSX after checking in or copying the "platforms" folder from Windows
 
-If you are seeing errors that are originating from files in your project's "platforms" folder when building either Android or iOS on OSX, the root cause may be that you checked in shell scripts under the "platforms/android/cordova", "platforms/ios/cordova", "platforms/windows/cordova", or "platforms/wp8/cordova" folders from Windows. 
+If you are seeing errors that are originating from files in your project's "platforms" folder when building either Android or iOS on OSX, the root cause may be that you checked in shell scripts under the "platforms/android/cordova", "platforms/ios/cordova", "platforms/windows/cordova", or "platforms/wp8/cordova" folders from Windows.
 
 This is because the NTFS file system has no concept of an "execute bit" that is required to run these from OSX. (The contents of the platforms folder is generally not intended for check-in, and by default, they are excluded from Cordova projects in Visual Studio as a result.)
 
