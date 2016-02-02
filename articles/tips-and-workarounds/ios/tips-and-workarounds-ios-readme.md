@@ -21,7 +21,7 @@ There are a small number of Cordova plugins that contain "custom framework" file
 
 To install it:
 
-1. Download [this hook-symlink-fix.js](ios-plugin-symlink-fix/hook-symlink-fix.js) file and drop it a **hooks** folder in your project root.
+1. Download [this hook-symlink-fix.js](../tips-and-workarounds/ios/ios-plugin-symlink-fix/hook-symlink-fix.js) file and drop it a **hooks** folder in your project root.
 2. Update config.xml with the following (using right-click->**View Code**):
 
   ```
