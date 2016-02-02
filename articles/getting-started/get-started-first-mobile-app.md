@@ -336,21 +336,21 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
 		<script src="scripts/index.js"></script>
 	```
 
-6. Add ```https://query.yahooapis.com``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>``` of the page. It looks like this:
+6. Add ```https://query.yahooapis.com``` and ```http://gws2.maps.yahoo.com``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>``` of the page. It looks like this:
 
     ```html
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
     https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-    Add ```https://query.yahooapis.com``` just after ```https://ssl.gstatic.com``` in that line. When you're done, your CSP will look like this:
+    Add ```https://query.yahooapis.com``` and ```http://gws2.maps.yahoo.com``` just after ```https://ssl.gstatic.com``` in that line. When you're done, your CSP will look like this:
 
     ```html
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
     https://ssl.gstatic.com https://query.yahooapis.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-    By adding ```https://query.yahooapis.com``` to your CSP, you're giving this page permission to get content from the Yahoo weather service.
+    By adding ```https://query.yahooapis.com``` and ```http://gws2.maps.yahoo.com``` to your CSP, you're giving this page permission to get content from the Yahoo weather service and map service.
 
 ## Run your app in an Emulator
 
@@ -533,16 +533,15 @@ Most likely you'll want your app to do more than just show web pages on a mobile
 
 		   // Get zipCode by using latitude and longitude.
 
-		   var queryString = "https://query.yahooapis.com/v1/public/yql?q=" +
-		      "select%20*%20from%20geo.placefinder%20where%20text%3D%22" + latitude +
-		      "%2C" + longitude + "%22%20and%20gflags%3D%22R%22" + "&format=json";
+       var queryString = "http://gws2.maps.yahoo.com/findlocation?pf=1&locale=en_US&offset=15&flags=&q="
+                         + latitude + "%2c" + longitude + "&gflags=R&start=0&format=json";
 
 		   $.getJSON(queryString, function (results) {
 
-		      if (results.query.count > 0) {
+		      if (results.Found > 0) {
 
 		          // Put the zip code into the input box for the user.
-		          var zipCode = results.query.results.Result.uzip
+		          var zipCode = results.Result.uzip
 		          $('#input-box').val(zipCode);
 
               $('#description').text("Get the Weather");
@@ -554,10 +553,6 @@ Most likely you'll want your app to do more than just show web pages on a mobile
 
 		   }
 
-		   function onError(error) {
-		    console.log('code: ' + error.code + '\n' +
-		      'message: ' + error.message + '\n');
-		   }
     ```
 
 5. Open the **index.js** file, and add the following code to the ``onDeviceReady`` function.
