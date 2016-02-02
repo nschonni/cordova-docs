@@ -533,7 +533,7 @@ Most likely you'll want your app to do more than just show web pages on a mobile
 
 		   // Get zipCode by using latitude and longitude.
 
-         var queryString = "http://gws2.maps.yahoo.com/findlocation?   pf=1&locale=en_US&offset=15&flags=&q=" + latitude + "%2c" + longitude + "&gflags=R&start=0&format=json";
+          var queryString = "http://gws2.maps.yahoo.com/findlocation?pf=1&locale=en_US&offset=15&flags=&q=" + latitude + "%2c" + longitude + "&gflags=R&start=0&format=json";
 
 		  $.getJSON(queryString, function (results) {
 
