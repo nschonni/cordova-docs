@@ -151,7 +151,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
   The Ionic starter app should run correctly on iOS when the remotebuild agent is running on a Mac, and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
 
-## Get your app running on Windows 10
+## Get your app running on Windows 10 <a name="configWin10"></a>
 
 If your are running Visual Studio on a Windows 10 machine, you can target Windows 10. To target Windows 10 in your app, you need to:
 
@@ -300,7 +300,14 @@ If you want to use TypeScript with Ionic, do the following.
 
 11. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
 
-12. Select a target device such as Android and press F5 to run the app.
+12. Choose a deployment target like **Android** or **Windows-Any CPU** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
+
+    [Get your app running on Android](#configAndroid)
+    [Get your app running on iOS](#configiOS)
+    [Get your app running on  on Windows 10](#configWin10)
+    [Get your app running on Windows 8.1](#configWindows)
+
+13. Press F5 to run the app.
 
     ![Run the app](media/tutorial-ionic/ionic-f5.png)
 
