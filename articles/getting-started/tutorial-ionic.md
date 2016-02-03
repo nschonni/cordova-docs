@@ -69,7 +69,7 @@ To follow these steps, you must:
     ```
     This will help make sure that your config.xml has the correct plugin versions when your import into Visual Studio.
 
->**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015, see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015, which is highly recommended.
+>**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015, see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015, which is strongly recommended.
 
 ## Import the project into VS <a name="configTemplates"></a>
 
@@ -105,7 +105,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     `hideKeyboardAccessoryBar` is iOS-only, so this code change will fix that issue.
 
-2. Open www/index.html and add the following '<meta>' element.
+2. Open www/index.html and add the following `<meta>` element right after the `<head>` block starts.
 
     ```
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
@@ -171,7 +171,7 @@ To target Windows 10 in your app, you need to:
 
 [TypeScript errors?](#typescript)
 
-[Partial pages don't load](#partialpages)
+[Get a message telling you to install a new app?](#partialpages)
 
 [Certificate error on Windows](#certificate)
 
@@ -213,7 +213,7 @@ To target Windows 10 in your app, you need to:
 
 [TypeScript errors?](#typescript)
 
-[Partial pages don't load](#partialpages)
+[Get a message telling you to install a new app?](#partialpages)
 
 [Certificate error on Windows](#certificate)
 
@@ -346,9 +346,9 @@ When debugging on a Windows 8.1 dev machine, you may get a WWAHost runtime error
 
 * Upgrading to Windows 10 on your dev machine (the platform issue is fixed in Windows 10).
 
-### <a id="partialpages"></a>Partial pages don't load?
+### <a id="partialpages"></a>Get a message telling you to install a new app?
 
-When you are using the AngularJS routing module (Ionic starter templates often use this module) on Windows, you may need to include a call to `aHrefSanitizationWhitelist`.
+When you are using the AngularJS routing module (Ionic starter templates often use this module) on Windows, you may need to include a call to `aHrefSanitizationWhitelist`. This will correct errors that occur when loading partial pages.
 
 If you see the dialog box shown here, you have likely run into this issue.
 
@@ -387,7 +387,7 @@ If you see this error when targeting Windows 10, make sure you set **Windows 10.
 
 ### <a id="csp"></a> Error saying that the Content Security Policy is missing?
 
-Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following <meta> element:
+Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following `<meta>` element:
 
     ```
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
