@@ -90,7 +90,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-select-android.png)
 
-    If you are running on Windows 10, choose **Windows - Any CPU** as the target, and then choose **Local Machine** from the device list on the right.
+    If you are running on Windows 10, choose **Windows - x64** or **Windows - x86** as the target, and then choose **Local Machine** from the device list on the right.
 
     If you are running initially on Ripple, choose **Android,** then **Ripple - Nexus (Galaxy)** from the device list. See the illustration below.
 
