@@ -153,7 +153,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
 ## Get your app running on Windows 10
 
-To target Windows 10 in your app, you need to:
+If your are running Visual Studio on a Windows 10 machine, you can target Windows 10. To target Windows 10 in your app, you need to:
 
 1. If it's not already installed, use the Visual Studio install program to install the **Universal Windows App Development Tools** (optional software).
 
@@ -332,7 +332,7 @@ For more info related to this Ripple issue, see [this post](https://github.com/d
 
 ### <a id="typescript"></a>TypeScript errors?
 
-In some of the Ionic starter app templates, you may also need to remove the TypeScript file, angular-ui-router.d.ts, for the angular-ui-router module, or you may see this error.
+When using JavaScript in some of the Ionic starter app templates, you may need to remove the TypeScript file, angular-ui-router.d.ts, for the angular-ui-router module, or you may see this error.
 
 ![TypeScript error](media/tutorial-ionic/ionic-typescript-errors.png)
 
