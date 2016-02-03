@@ -30,7 +30,7 @@ To follow these steps, you must:
 
     * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
 
-    * Choose **Windows**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
+    * Choose **Windows-x86**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
 
 3. [Install the Ionic CLI](http://ionicframework.com/docs/cli/install.html).
 
@@ -161,7 +161,7 @@ If your are running Visual Studio on a Windows 10 machine, you can target Window
 
 3. Open the configuration designer (config.xml) in Visual Studio, choose Windows, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
 
-4. Choose **Windows-Any CPU** from the Solution Platforms list.
+4. Choose **Windows-x64** or **Windows-x86** from the Solution Platforms list.
 
 5. Choose a Windows 10 deployment target, such as **Local Machine** or **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
 
@@ -199,7 +199,7 @@ If your are running Visual Studio on a Windows 10 machine, you can target Window
 
     >**Note**: If you use the js folder instead of scripts, the folder and path will need to be updated in several other files.
 
-4. Select **Windows** or **Windows Phone (Universal)** as a debug target (Solution Platforms list).
+4. Select **Windows-Any CPU** or **Windows Phone (Universal)** as a debug target (Solution Platforms list).
 
   * For Windows, choose **Local Machine** as the deployment target (if you are running on Windows 8.1).
 
