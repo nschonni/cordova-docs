@@ -74,7 +74,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 4. Before you run the app, first identify one or more emulators or devices for initial testing of the Hosted App sample based on your dev environment.
 
-    * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx), you can plan to test on the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
+    * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx) (no VM support), you can plan to test on the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
 
     * If you are running Windows 10, you can plan to test on the Windows Phone 10 emulator or your Windows 10 device. If your device has a webcam, you can use it later in the tutorial!
 
@@ -98,7 +98,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 7. Press F5 to start the app.
 
-     When the app loads, it displays a "Hello, your application is ready" message.
+     When the app loads, it displays a "Hello, your application is ready" message. (The first build always takes longer.)
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-run-blank.png)
 
@@ -215,6 +215,8 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
     Here is what the app looks like running on Windows 10.
 
     ![Run the Hosted Web App](media/create-a-hosted-app/hosted-app-windows.png)
+
+    >**Note**: The complete sample has CSS code to make the splash page that you first see look really good. We will skip that for now.
 
 ## Provide a mobile-specific page for the web site
 
