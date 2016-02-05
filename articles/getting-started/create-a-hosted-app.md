@@ -531,11 +531,11 @@ If you see the error shown below, you may be trying to run on a version of Windo
 
 ![App Hangs on error](media/create-a-hosted-app/hosted-app-win81-error.png)
 
-## App hangs on message saying that the URL is trying to launch another app <a name="errorUrl"></a>
+### App hangs on message saying that the URL is trying to launch another app <a name="errorUrl"></a>
 
 If you see the error shown below, you may be trying to run on a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
 
-## CSS is not getting applied to the Splash screen that appears briefly <a name="splash"></a>
+### CSS is not getting applied to the Splash screen that appears briefly <a name="splash"></a>
 
 You can get the CSS to create a nice Splash screen from the [complete sample](https://github.com/ridomin/CdvaHWA). Copy the CSS code from [here](https://github.com/ridomin/CdvaHWA/blob/master/CordovaHostedApp/www/css/index.css) into your project's www/css folder.
 
