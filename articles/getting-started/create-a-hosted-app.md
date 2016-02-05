@@ -218,6 +218,14 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     >**Note**: The complete sample has CSS code to make the splash page that you first see look really good. We will skip that for now.
 
+### Troubleshooting: Let's fix it
+
+[App hangs on "Verifying Connectivity" message](#errorVerifying)
+
+[App hangs on message saying that the URL is trying to launch another app](#errorUrl)
+
+[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
+
 ## Provide a mobile-specific page for the web site
 
 Now, you will update the web site to display a mobile-specific page if the site detects a Cordova app. In this app, you will add this code so that users running the Cordova hosted app can access device features such as the camera, while visitors using a browser will get the default home page.
@@ -351,6 +359,10 @@ To save time and steps, instead of republishing the ASP.NET project to a new Azu
     > **Note**: On Ripple, the redirection is only partially supported. If you see popup, close the message to see the redirection page of the hosted app.
 
     Next, you want to fix up this page so that you can access the device camera and take a picture.
+
+### Troubleshooting: Let's fix it
+
+[CSS is not getting applied to the Splash screen that appears briefly](#splash)
 
 ## Add plugins to your project
 
@@ -508,6 +520,30 @@ You may want to investigate options to find an approach that works best for you.
 * **Explore other architectures that may be used for hosted apps**
 
     * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and high performance in a hosted app.
+
+## Troubleshooting: Let's fix it
+
+If you run into errors getting the hosted web app running, check this section
+
+### App hangs on "Verifying Connectivity" message <a name="errorVerifying"></a>
+
+If you see the error shown below, you may be trying to run on a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
+
+![App Hangs on error](media/create-a-hosted-app/hosted-app-win81-error.png)
+
+## App hangs on message saying that the URL is trying to launch another app <a name="errorUrl"></a>
+
+If you see the error shown below, you may be trying to run on a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
+
+## CSS is not getting applied to the Splash screen that appears briefly <a name="splash"></a>
+
+You can get the CSS to create a nice Splash screen from the [complete sample](https://github.com/ridomin/CdvaHWA). Copy the CSS code from [here](https://github.com/ridomin/CdvaHWA/blob/master/CordovaHostedApp/www/css/index.css) into your project's www/css folder.
+
+### <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
+
+The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
+
+If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
 ## Appendix: Publish the Web site
 
