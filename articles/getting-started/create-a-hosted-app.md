@@ -527,13 +527,13 @@ If you run into errors getting the hosted web app running, check this section
 
 ### App hangs on "Verifying Connectivity" message <a name="errorVerifying"></a>
 
-If you see the error shown below, you may be trying to run on a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
+If you see the error shown below, you may be trying to target a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
 
 ![App Hangs on error](media/create-a-hosted-app/hosted-app-win81-error.png)
 
 ### App hangs on message saying that the URL is trying to launch another app <a name="errorUrl"></a>
 
-If you see the error shown below, you may be trying to run on a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
+If you see the error shown below, you may be trying to target a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
 
 ### CSS is not getting applied to the Splash screen that appears briefly <a name="splash"></a>
 
