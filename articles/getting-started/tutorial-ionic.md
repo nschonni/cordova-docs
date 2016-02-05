@@ -127,7 +127,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     ![Run the app](media/tutorial-ionic/ionic-f5.png)
 
-    You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#Keyboard).
+    You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#keyboard).
 
 3. Press F5, and the app should load correctly.
 
