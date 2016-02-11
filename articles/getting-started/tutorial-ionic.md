@@ -300,14 +300,14 @@ If you want to use TypeScript with Ionic, do the following.
 
 11. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
 
-12. Choose a deployment target like **Android** or **Windows-Any CPU** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
+12. Choose a deployment target like **Android** or **Windows-x86** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
 
     [Get your app running on Android](#configAndroid)
 
     [Get your app running on iOS](#configiOS)
 
     [Get your app running on  on Windows 10](#configWin10)
-    
+
     [Get your app running on Windows 8.1](#configWindows)
 
 13. Press F5 to run the app.
