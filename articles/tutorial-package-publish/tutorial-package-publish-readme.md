@@ -9,8 +9,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="11/13/2015"
-     ms.author="Subhag.Oak"/>
+     ms.date="02/17/2016"
+     ms.author="normesta"/>
 
 # Package your Cordova app so that you can publish it
 
@@ -18,9 +18,7 @@ Create a package for each platform that you want to target. Then you can publish
 
 ## Package the Android version of your app
 
-![android-icon](media/tutorial-package-publish-readme/android-icon.png) 
-
-To create a package, do these things:
+**In this section:**
 
 * Modify the general settings of your app.
 
@@ -197,9 +195,7 @@ Then, see [Upload an app](https://support.google.com/googleplay/android-develope
 
 ## Package the iOS version of your app
 
-![ios-icon](media/tutorial-package-publish-readme/ios-icon.png)
-
-To create a package, do these things:
+**In this section:**
 
 * Request a distribution certificate.
 
@@ -345,13 +341,21 @@ If your app isn't accepted by the store, review these articles by Apple:
 
 ## Package the Windows version of your app
 
-![windows-icon](media/tutorial-package-publish-readme/windows-icon.png) 
-
 First, decide which platforms and device families you want to make your app available to. You can make your app available to Windows Phones, desktop PCs, and tablets.
 
 It doesn't matter which version of Windows the app targets. The Windows store accepts all of them. That said, the operating system of a device or PC only runs apps that target the same version of that operating system or an earlier version.
 
 To learn more about Windows package and Windows device compatibility, see [OS versions and package distribution](https://msdn.microsoft.com/library/windows/apps/mt188601.aspx#os).
+
+**In this section:**
+
+* First, set some general properties.
+
+* Make your app available to Windows Phones.
+
+* Make your app available to Windows desktop PCs or tablets.
+
+* Install your app on a device or publish it to the store.
 
 ### First, set some general properties
 
@@ -393,11 +397,8 @@ Which version of Windows does your app target? Choose a section:
 
 5. Find your packaging files in the ```AppPackages``` folder in the root of your project.
 
-6. Decide what to do with your package.
 
-    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
-
-    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
+6. [Install your Windows app onto a device or publish it to the store](#publish-windows).
 
 #### <a id="windows-81"></a>Your app targets Windows 8.1
 
@@ -419,11 +420,7 @@ Which version of Windows does your app target? Choose a section:
 
 5. Find your packaging files in the ```AppPackages``` folder in the root of your project.
 
-6. Decide what to do with your package.
-
-    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
-
-    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
+6. [Install your Windows app onto a device or publish it to the store](#publish-windows).
 
 #### <a id="windows-8"></a>Your app targets Windows Phone 8
 
@@ -439,14 +436,9 @@ Which version of Windows does your app target? Choose a section:
 
 4. Find your packaging files in the ```bin\WindowsPhone8\Release``` folder in the root of your project.
 
-5. Decide what to do with your package.
-
-    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
-
-    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
+5. [Install your Windows app onto a device or publish it to the store](#publish-windows). 
 
 ### Make your app available to Windows desktop PCs or tablets
-
 
 1. In the Standard Toolbar, choose **Windows-AnyCPU**.
 
@@ -466,8 +458,9 @@ Which version of Windows does your app target? Choose a section:
 
 5. Find your packaging files in the ```AppPackages``` folder in the root of your project.
 
-6. Decide what to do with your package.
 
-    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
+### <a id="publish-windows"></a>Install your Windows app onto a device or publish it to the store
 
-    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
+To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
+
+To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
