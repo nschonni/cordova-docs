@@ -2,7 +2,7 @@
   description="Package your Cordova app so that you can publish it"
   services=""
   documentationCenter=""
-  authors="subhagpo" />
+  authors="normesta" />
   <tags
      ms.service="na"
      ms.devlang="javascript"
