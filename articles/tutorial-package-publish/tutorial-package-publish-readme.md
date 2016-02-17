@@ -16,46 +16,58 @@
 
 Create a package for each platform that you want to target. Then you can publish each package to a store.
 
-## <a id="General"></a>First, configure the general settings of your app package
+## ![android-icon](media/tutorial-package-publish-readme/android-icon.png) Package the Android version of your app
 
-Provide details such as the package ID and version number of your app by using the *configuration designer*. To open it, double-click the **config.xml** file.
+To create a package, we'll do these four things:
 
-![Important settings in the Config Designer](media/tutorial-package-publish-readme/package-config-designer.png)
+* Modify the general settings of your app.
 
-You'll need to configure these settings
+* Generate a private key.
 
-*   **Display Name**, which specifies the name of the application that appears in an app store.
+* Refer to that key in a configuration file.
 
-    > **Note**: The Windows Store display name and package ID are specified in a different way. See the  [Package and sign a Windows 8, Windows 8.1, and Windows Phone 8.1 app](#Windows) section later in this article.
+* Create the package.
 
-*   **Package Id**, which specifies a unique string that identifies your app on each platform (except Windows 8) when you publish your app to a store.
+### Step 1: Modify the general settings of your app
 
-*   **Version**, which specifies your app’s version number.  Some app stores may have independent versioning that is assigned when the app is published. However, for platforms like iOS, you should keep this number in sync with the version you configure in iTunes Connect.
+The general settings of your app appear in the **Common** page of the configuration designer.
 
-*   **Domain Access**, which specifies the set of domains your app can access content from. During development, we recommend using the default value, ```*```, which provides access to all content. However, before releasing your app, use this setting to restrict your app to specific domains required by your app. (Windows 8 doesn’t currently use this configuration setting.)
+![configuration-settings-android](media/tutorial-package-publish-readme/configuration-settings-android.png)
 
-For information about preferences you can manually set in config.xml, see [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409) in the Apache Cordova documentation.
+* The **Display Name** is the name that appears in the app store.
 
-## Package the Android version of your app
+* The **Package Name** is a string that uniquely identifies your app.
 
-Sign your app, build it, and then publish it.
+   Choose a naming scheme that reduces the chance of a name conflict.
 
-### Sign your app
+* The **Domain Access** collection lists the domains that your app needs to access.
+
+   For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
+
+The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409).
+
+### Step 2: Generate a private key
 
 To sign your app, create a *keystore*. A keystore is a binary file that contains a set of private keys. Here's how you create one.
 
-1. Open a **Command Prompt** in administrator mode.
+1. Open a Command Prompt in administrator mode.
 
-2. Change directories to the **%JAVA_HOME%\bin** folder (For example: C:\Program Files (x86)\Java\jdk1.7.0_55\bin).
+2. In the Command Prompt, change directories to the ```%JAVA_HOME%\bin``` folder.
 
-3. Run the following command.
+   (For example: ```C:\Program Files (x86)\Java\jdk1.7.0_55\bin```).
+
+  >**Note**: These examples use names such as ```my-release-key.keystore``` for the keystore name, ```johnS``` as an alias name, and ```pwd123``` as a password. These are examples only. As you run these commands, replace these with strings that make sense to you.
+
+3. In the Command Prompt, run the following command with a keystore name and private key alias that makes sense to you.
 
     ```
     keytool -genkey -v -keystore c:\my-release-key.keystore -alias johnS
     -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    You'll be asked to provide a password for the keystore and private key, and to provide the *Distinguished Name* fields for your key.  the following series of responses gives you an idea of the kinds of information you'll provide for each prompt.
+    You'll be asked to provide a password and the *Distinguished Name* fields for your key.  
+
+    This series of responses gives you an idea of the kinds of information you'll provide for each prompt. Like in the previous command, respond to each prompt with information that makes sense for your app.
 
     ```
     Enter keystore password: pwd123
@@ -77,7 +89,7 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
 
     ```
 
-    After you provide this information, you'll see output like the following.
+    After you provide this information, output like this appears in the Command Prompt.
 
     ```
     Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA)
@@ -88,17 +100,31 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
         (RETURN if same as keystore password):
     ```
 
-    The SDK then generates the keystore as a file named **my-release-key.keystore** and places that file in the *C:\* drive. The keystore contains a single key, valid for 10000 days.
+    The Android SDK generates the keystore as a file named **my-release-key.keystore** and places that file in the *C:\* drive. The keystore contains a single key, valid for 10000 days.
 
-    This process is documented more thoroughly in the Android developer content: [Signing your applications](http://developer.android.com/tools/publishing/app-signing.html).
+    If you want more detail about this process, see the Android developer documentation here: [Signing your applications](http://developer.android.com/tools/publishing/app-signing.html).
 
-### Create a signed package for projects that use Cordova CLI versions less than 5.0
+### Step 3: Refer to that key in a configuration file
 
-1. In **Solution Explorer**, open the **res\native\android** folder and find the **ant.properties** file.
+First, identify which version of the Cordova CLI that your project uses. That determines which configuration file you use to refer to your key.
+
+#### Find the CLI version of your project
+
+The CLI version number appears in the **Platforms** page of the configuration designer.
+
+![CLI version](media/tutorial-package-publish-readme/cli-version.png)
+
+You can also find it in the ```taco.json``` file at the root of your project.
+
+#### If your Cordova CLI version is lower than 5.0, use these steps
+
+1. In **Solution Explorer**, expand the project folder. Then expand **res**->**native**->**android** and choose the **ant.properties** file.
 
     ![Android: Build assets](media/tutorial-package-publish-readme/android_assets.png)
 
-2. In the **ant.properties** file, add the information from your keystore.
+    The **ant.properties** file opens in the code editor.
+
+2. In the **ant.properties** file, add the information that describes your key.
 
     ```
     key.store=c:\\my-release-key.keystore
@@ -107,201 +133,330 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
     key.alias.password= pwd123
     ```
 
-### Create a signed package for projects that use Cordova CLI versions greater than 5.0
+    >**Important**: Don't surround these values with quotation marks (For example: "pwd123"). This can cause build errors.
 
-1. In **Solution Explorer**, find the **build.json** file in the root of your project.
+#### If your Cordova CLI version is greater than 5.0, use these steps
+
+1. In **Solution Explorer**, expand the project folder, and then choose the **build.json** file.
 
     ![Android: Build assets](media/tutorial-package-publish-readme/android_assets_cordova5.png)
 
-2. In the **build.json** file, add the information from your keystore.
+    The **build.json** file appears in the code editor.
+
+2. In the **build.json** file, add the information that describes your key.
 
     ```
     {
      "android": {
          "release": {
              "keystore":"c:\\my-release-key.keystore",
-         "storePassword":"pwd123",
-         "alias":"johnS",
-       "password":"pwd123",
-               "keystoreType":"",
+             "storePassword":"pwd123",
+             "alias":"johnS",
+             "password":"pwd123",
+             "keystoreType":"",
            }
        }
     }
    ```
 
-3. Build your app for the release configuration.
+### Step 4: Create the package
 
-    To publish your app, see [Publish your app](./package-and-publish/publish-app-built-with-visual-studio.md).
+1. On the Standard toolbar, choose the **Android** platform.
 
-## Package the iOS version of your app
+    ![Platform selector](media/tutorial-package-publish-readme/android-platform.png)
 
-To distribute your app for testing or submit it to the store, you'll need to configure your mac with proper certificates and provisioning profiles.
+2. Choose one of the Android emulators.
 
-A distribution certificate identifies your team or organization in a distribution provisioning profile and allows you to submit your app to the store.
+    ![Target selector](media/tutorial-package-publish-readme/android-emulator.png).
 
-You'll also have to build your app and generate a signed IPA package.
+    >**Important**: Don't choose any of the Ripple simulators. Choose only an Android emulator or the Device.
 
-A signed package lets users trust that your app was created by a source known to Apple and that the app hasn’t been tampered with.
+3. Choose the **Release** build configuration.
 
-### Generate a distribution certificate:
-1. In a browser, go to [Apple Dev Portal](https://developer.apple.com).
+    ![Release Build Configuration](media/tutorial-package-publish-readme/release-configuration-android.png)
 
-2. Choose **Member Center** and login with your developer account credentials.
+4. On the **Build** menu, choose **Build Solution**.
 
-3. Choose **Certificates, Identifiers & Profiles**.
+   This builds a file with an .apk file extension. That is the file that you'll upload to the store.
 
-    ![ios: CertSection](media/tutorial-package-publish-readme/ios-CertSection.png)
+   You can find that file in the ```bin/Android/Release/``` folder of your project.
 
-4. Choose **Certificates**, click the “+” sign to create a new Certificate & choose the App Store and Ad Hoc radio button.
+   It's the file that *does not* contain the word ```unaligned``` in the file name.
 
-    ![ios: Dev Cert](media/tutorial-package-publish-readme/ios-CertDis.png)
+   ![apk file location](media/tutorial-package-publish-readme/location-of-apk-file.png)
 
-5. Scroll to the bottom of the page and choose **Continue**.
+### Submit your app to the store
 
-6. The next screen explains the process of creating a **Certificate Signing Request (CSR)**. Click **Continue** at the bottom of the page.
+You can publish your app to Google Play.
 
-    ![ios: CSR](media/tutorial-package-publish-readme/ios-csr.png)
+To prepare for the big day, review [Essentials for a Successful App](http://developer.android.com/distribute/essentials/index.html).
 
-    > **Note:** For more detailed information, see [Detailed steps to generate the Certificate Signing Request (CSR)](#detailed).
+Then, see [Upload an app](https://support.google.com/googleplay/android-developer/answer/113469?hl=en) to make your app avaialable to the world.
 
-7. Navigate to the CSR file & choose that file.
+## ![ios-icon](media/tutorial-package-publish-readme/ios-icon.png) Package the iOS version of your app
 
-    ![ios: Using CSR](media/tutorial-package-publish-readme/ios-choosecsr.png)
+To create a package, we'll do these five things:
 
-8. Choose **Generate**. Once you refresh your browser, you can download the developer certificate by choosing **Download**.
+* Request a *distribution* certificate.
 
-    The certificate will download into your **downloads** folder & double-clicking this will install this file into Keychain.  This is what the Development Certificate looks like in Keychain Access.
+* Create a *distribution* provisioning profile.
 
-    ![ios: Using CSR](media/tutorial-package-publish-readme/ios-disCertLoc.png)
+* Download the *distribution* provisioning profile in Xcode.
 
-#### <a id="detailed"></a>Detailed steps to generate the Certificate Signing Request (CSR) [step 6, above]:
+* Modify the general settings of your app.
 
-In order for you to generate a certificate you must request a certificate using keychain access.
+* Create the package.
 
-1. Launch **Keychain Access**. Keychain Access is located in Macintosh HD/Applications/Utilities.
+### Step 1: Request a distribution certificate
 
-    ![ios: KeyChain](media/tutorial-package-publish-readme/ios-keyChain.png)
+A distribution certificate identifies your team or organization.
 
-2. Once Keychain Access is launched, choose **Keychain Access**, **Certificate Assistant**, **Request a Certificate from a Certificate Authority**.
+1. Start Xcode.
 
-    ![ios: Request CSR](media/tutorial-package-publish-readme/ios-reqcsr.png)
+    If you haven't installed Xcode, see the [First, install a few things onto your Mac](./getting-started/ios-guide.md#use-developer-account) section of the [iOS setup guide]().
 
-3. Enter your Apple Developer Account email address, Common Name (your name),CA (Certificate Assistant) [optional] & Choose: Request is **Saved to disk**.
+2. In Xcode, add your Apple ID (If you haven't done so already).
 
-    ![ios: Request CSR Information](media/tutorial-package-publish-readme/ios-csrInfo.png)
+    See [Adding an Apple ID to Your Accounts](https://developer.apple.com/library/ios/recipes/xcode_help-accounts_preferences/articles/add_appleid.html).
 
-4. Choose **Continue**, save the file to your hard drive and choose **Done**.
+4. In the menu bar, choose **Xcode**->**Preferences**.
 
-    Now you can go back to the distribution certificate section still active in your browser [step 7, above] and choose **Choose File**.
+5. In the **Accounts** page, choose the **View Details** button.
 
-    ![ios: Using CSR](media/tutorial-package-publish-readme/ios-usecsr.png)
+5. In the account details page, choose the **Create** button next to the **iOS Distribution** *signing identity*.
 
-### Generate a distribution provisioning profile:
+    ![Create button](media/tutorial-package-publish-readme/create-ios-distribution-provisioning-profile.png)
 
-1. In a browser, go to [Apple Dev Portal](https://developer.apple.com).
+    Looking for more information about signing identities? See [Creating Signing Identities](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW6) (Optional reading).
 
-2. Choose **Member Center** and login with your developer account credentials.
+6. Choose the **Done** button to close the account details page.
 
-3. Choose **Certificates, Identifiers & Profiles**.
 
-    ![ios: CertSection](media/tutorial-package-publish-readme/ios-CertSection.png)
+### Step 2: Create a distribution provisioning profile
 
-4. Choose **Provisioning**, click the “+” sign to add a new provisioning profile & choose **App Store** as shown in the figure below and choose **Continue**.
+A distribution provisioning profile lets you submit your app to the store.
 
-    ![ios: Distribution profile](media/tutorial-package-publish-readme/ios-proDis.png)
+1. On the [Member Center](https://developer.apple.com/membercenter/index.action) page, choose the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) link.
 
-5. Select the correct App ID and choose **Continue**.
+2. In the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/overview.action) page, choose the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) link.
 
-    ![ios: Distribution profile, Selecting App Id](media/tutorial-package-publish-readme/ios-proappid.png)
+3. In the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page, choose the **+** button.
 
-6. Select the certificates you wish to include in this provisioning profile. Choose **Continue** after you have selected the certificates.
+    ![Add button](media/tutorial-package-publish-readme/new-profile.png)
 
-    ![ios: Distribution profile, Choosing certificates](media/tutorial-package-publish-readme/ios-proCertChoice.png)
+4. In the [What type of provisioning profile do you need?](https://developer.apple.com/account/ios/profile/profileCreate.action) page, choose the **App Store** option, and then choose the **Continue** button.
 
-7. Name the profile and choose “Generate” and download the provisioning profile.
+    ![App Store Provisioning Profile](media/tutorial-package-publish-readme/app-store-provisioning-profile.png)
 
-    ![ios: Distribution profile, Naming the profile](media/tutorial-package-publish-readme/ios-proNaming.png)
+5. In the **Select App ID** page, choose the App ID of your app, and then choose the **Continue** button.
 
-8. Double-click that file to install it and then add it to the **Code signing section of *Build Settings* for Xcode**.
+    ![App ID popup menu](media/tutorial-package-publish-readme/app-id.png)
 
-    ![ios: XCode, build settings](media/tutorial-package-publish-readme/ios-xcodeBuildSettings.png)
+6. In the **Select certificates** page, select the distribution certificate that you created earlier in Xcode, and then choose the **Continue** button.
 
-9. Add the provisioning profile:
+    ![Certificates](media/tutorial-package-publish-readme/distribution-certificate.png)
 
-    ![ios: XCode, build settings](media/tutorial-package-publish-readme/ios-xcodepro.png)
+8. In the **Name this profile and generate** page, name your profile, and then choose the **Generate** button.
 
-10. Add the distribution certificate:
+9. In the **Your provisioning profile is ready** page, choose the **Download** button.
 
-    ![ios: XCode, build settings](media/tutorial-package-publish-readme/ios-xcodecer.png)
+Need more detail? See [Creating provisioning profiles using Member Center](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW24)
 
-    > **Note:** While creating the developer provisioning profile [after step 6], you will have to select the devices you wish to include in this provisioning profile. To install an app signed with this profile on a device, the device must be included.
+### Step 3: Download the distribution provisioning profile
 
-    ![ios: Developer profile, Choosing devices](media/tutorial-package-publish-readme/ios-proDev.png)
+1. Open Xcode.
 
-    Once you have installed the distribution certificates and the matching provisioning profiles in XCode’s build settings on the remotebuild agent, you are now ready to build a release package for iOS from VS.
+2. In the menu bar, choose **Xcode**->**Preferences**.
 
-    > **Note**: A signing identity is valid if the provisioning profile identifier matches the package ID specified in the Visual Studio configuration designer. For example, a provisioning profile of `com.msft.multidevice.*` matches a package ID of <span class="code">com.msft.multidevice.someName</span>. In many cases, you can use a wildcard provisioning profile that matches all package IDs, in which case validity isn’t a concern.
+3. In the **Accounts** page, choose the **View Details** button.
 
-11. On your host Windows machine, in Visual Studio, change the platform to **iOS**, build configuration to **Release** and target to **Remote (or Local) Device**, as shown below:
+4. In the account details page, choose the **Download** button next to your provisioning profile's signing identity.
 
-    ![ios: Debug targer](media/tutorial-package-publish-readme/ios-vsrel.png)
+    ![Download button](media/tutorial-package-publish-readme/download-distribution-profile.png)
 
-    This starts a build on the remotebuild agent and uses the distribution certificate and the matching provisioning profile to build a release signed iPhone Application package (.ipa) which is then available at *projectroot*\bin\iOS\Release** folder on the host machine after the build completes.
+5. Choose the **Done** button to close the account details page.
 
-    Once you've built your iPhone Application (.ipa) file, you'll need to fill out the required forms on the iTunes Connect site to submit the app to Apple. In filling out the information, be as transparent as possible to Apple, including any demo accounts that might be needed to run your app. Because the Apple reviewers must be able to verify your app, providing the information required ahead of time will help your app get through the review process more quickly. Note that Apple's policy stipulates that your app's keywords cannot contain your app name.
+### Step 4: Modify the general settings of your app
 
-### Submit your application to the store
+The general settings of your app appear in the **Common** page of the configuration designer.
 
-1. Navigate to the iTunes Connect area of the [iOS Dev Center](http://developer.apple.com/devcenter/ios/).
+![configuration-settings-android](media/tutorial-package-publish-readme/configuration-settings-android.png)
 
-2. Go to the **Manage Your Apps** page and then click **Add New App**.
+* The **Display Name** is the name that appears in the app store.
 
-3. Fill out the forms describing your company and application.
+* The **Package Name** is a string that uniquely identifies your app.
 
-4. On the appropriate form, upload the 512 × 512 pixel icon and your application screenshots.
+   This identifier has to match the identifier of your distribution provisioning profile.
 
-5. Save the app description.
+     ![Package Name in Visual Studio](media/tutorial-package-publish-readme/package-name-in-visual-studio.png)
 
-6. Back on the **Manage Your Apps** page, select the app description you just created and click the **Ready to Upload Binary** button.
+     You can find the indentier of your profile by choosing your distribution profile in the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page of the Apple developer [Member Center](https://developer.apple.com/membercenter/index.action).
 
-7. Fill out the Export compliance form.
+     ![Identifier of distribution profile](media/tutorial-package-publish-readme/distribution-profile-identifier.png).
 
-    Your app should now be in a *Waiting for upload* state. Complete the rest of the process with the Application Loader utility.  
+* The **Domain Access** collection lists the domains that your app needs to access.
 
-    > **Note:** The Application Loader utility is available only for Mac OS X 10.5.3 or later. In Windows, you can run Mac OS X inside a virtual machine.
+   For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
 
-8. Unzip the app IPA file (change the extension to .zip).
+The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409).
 
-9. Locate the APP file within the Payload folder and compress the APP file to create a new ZIP archive.
 
-10. Use the Application Loader to upload the compressed APP file to iTunes Connect.
+### Step 5: Create the package
 
-    The Manage Your Apps page of iTunes Connect should now list an updated status for your application. See the [iTunes Connect Developer Guide](http://itunesconnect.apple.com/docs/iTunesConnect_DeveloperGuide.pdf), available from the iTunes Connect website, for information about the application statuses.
+Build your app to generate the package that you will submit to the store.
 
-## Package the Windows version of your app
+1. On your Mac, make sure that the remote agent is running.
 
-1. In the Solution Platforms dropdown list, choose the platform you want to target.
+    See [Start the remote agent on your mac](./getting-started/ios-guide#remoteAgent).
 
-    ![Windows: Debug targets](media/tutorial-package-publish-readme/windows_target.png)
+2. In Visual Studio, open the project for your app.
 
-2. Choose **Project**->**Store**->**Create App Packages** to start the packaging wizard.
+3. On the Standard toolbar, choose the **iOS** platform.
+
+    ![Platform selector](media/tutorial-package-publish-readme/ios-platform.png)
+
+4. Choose **Remote Device**.
+
+    ![Target selector](media/tutorial-package-publish-readme/remote-device.png).
+
+5. Choose the **Release** build configuration.
+
+    ![Release Build Configuration](media/tutorial-package-publish-readme/release-configuration.png)
+
+6. On the **Build** menu, choose **Build Solution**.
+
+   This starts a build on the remotebuild agent and uses the distribution certificate and the matching provisioning profile to build a release signed iOS Application Archive (.ipa) file.
+
+   You can find that file in the ```bin/iOS/Release``` folder of your project.
+
+### Submit your app to the store
+
+See [Managing Your App in iTunes Connect](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/UsingiTunesConnect/UsingiTunesConnect.html#//apple_ref/doc/uid/TP40012582-CH22-SW7) on the Apple Developer website.
+
+If your app isn't accepted by the store, review these articles by Apple:
+* [Common App Rejections](https://developer.apple.com/app-store/review/rejections/)
+
+* [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+
+## ![windows-icon](media/tutorial-package-publish-readme/windows-icon.png) Package the Windows version of your app
+
+First, decide which platforms and device families you want to make your app available to. You can make it available to Windows Phones, desktop PCs, and tablets.
+
+It doesn't matter which version of Windows the app targets. The Windows store accepts all of them. That said, the operating system of a device or PC only runs apps that target the same version of that operating system or an earlier version.
+
+To learn more about Windows package and Windows device compatibility, see [OS versions and package distribution](https://msdn.microsoft.com/library/windows/apps/mt188601.aspx#os).
+
+### First, set some general properties
+
+In the **Windows** page of the configuration designer, provide the **Display Name**, the **Package Name**, and the **Version** number of your app.
+
+![Configuration Settings Windows Platform](media/tutorial-package-publish-readme/configuration-settings-windows.png)
+
+* The **Display Name** is the name that appears in the app store.
+
+* The **Package Name** is a string that uniquely identifies your app.
+
+   Choose a naming scheme that reduces the chance of a name conflict.
+
+### Make your app available to Windows Phones
+
+Choose a subsection below depending on whether your app targets Windows 10, Windows 8.1, or Windows Phone 8.
+
+#### Your app targets Windows 10
+
+1. In the Standard Toolbar, choose **Windows-ARM**.
+
+    ![Windows ARM](media/tutorial-package-publish-readme/windows-arm-platform.png)
+
+2. In the **Windows** page of the configuration designer, choose **Windows 10** from the **Windows Target Version** dropdown list.
+
+    ![Configuration Settings Windows Platform](media/tutorial-package-publish-readme/configuration-settings-windows-10.png).
+
+3. Choose **Project**->**Store**->**Create App Packages** to start the packaging wizard.
 
     ![Windows: Create Appx Packages](media/tutorial-package-publish-readme/windows_createPackage.png)
 
-3. Complete the wizard. It will build a release version of the package and generate a Package.StoreAssociation.xml file in the **res\native\windows** folder:
+4. Complete the wizard.
 
-    ![Windows: Resources](media/tutorial-package-publish-readme/windows_assets.png)
+    For step-by-step guidance, see [Create an app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#create_package)
 
-    Visual Studio creates a test certificate under the **res\native\windows** folder when the project you create the project, but you can also use an existing certificate to sign your package by replacing the default certificate with yours.
+5. Find your packaging files in the ```AppPackages``` folder in the root of your project.
 
-    The final APPX resides in the *<ProjectRoot>*\AppPackages folder.
+6. Decide what to do with your package.
 
-### <a id="WindowsPhone"></a>Package a Windows Phone 8 version of your app
+    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
 
-Windows Phone 8 apps are automatically packaged and don’t have to be signed at build time. Therefore, if you choose that platform, the **Create App Packages** option will be disabled.
+    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
 
-You can submit the generated XAP file to the store as described in [Submit your app](https://msdn.microsoft.com/library/windowsphone/help/jj206724.aspx) in the Windows Dev Center.
+#### Your app targets Windows 8.1
 
-> **Note**: If you configure Windows Phone 8.1 as the build target, the generated package is an APPX. For more information, see the preceding section.
+1. In the Standard Toolbar, choose **Windows Phone (Universal)**.
 
-If you need to change the default language in a Windows Phone 8 package, locate the WMAppManifest.xml file in bld/Debug/platforms/wp8, modify the `<DefaultLanguage code="en-US" xmlns="" />` tag, and include the file into your Visual Studio project in the following folder: /res/native/wp8/Properties. In this way, you can include the custom XML file in your generated project.
+    ![Windows ARM](media/tutorial-package-publish-readme/windows-universal-platform.png)
+
+2. In the **Windows** page of the configuration designer, choose **Windows 10** from the **Windows Target Version** dropdown list.
+
+    ![Configuration Settings Windows Platform](media/tutorial-package-publish-readme/configuration-settings-windows-8.png).
+
+3. Choose **Project**->**Store**->**Create App Packages** to start the packaging wizard.
+
+    ![Windows: Create Appx Packages](media/tutorial-package-publish-readme/windows_createPackage.png)
+
+4. Complete the wizard.
+
+    For step-by-step guidance, see [Create an app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#create_package)
+
+5. Find your packaging files in the ```AppPackages``` folder in the root of your project.
+
+6. Decide what to do with your package.
+
+    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
+
+    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
+
+#### Your app targets Windows Phone 8
+
+1. In the Standard Toolbar, choose the **Release** configuration.
+
+    ![Windows Release configuration](media/tutorial-package-publish-readme/release-configuration-windows.png)
+
+2. Choose **Windows Phone 8**.
+
+    ![Windows ARM](media/tutorial-package-publish-readme/windows-8-platform.png)
+
+3. Choose **Build**->**Build Solution** to build your package.
+
+4. Find your packaging files in the ```bin\WindowsPhone8\Release``` folder in the root of your project.
+
+5. Decide what to do with your package.
+
+    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
+
+    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
+
+### Make your app available to Windows desktop PCs or tablets
+
+
+1. In the Standard Toolbar, choose **Windows-AnyCPU**.
+
+    ![Windows AnyCPU](media/tutorial-package-publish-readme/windows-any-platform.png)
+
+2. In the **Windows** page of the configuration designer, choose **Windows 10** or **Windows 8.1** from the **Windows Target Version** dropdown list.
+
+    ![Configuration Settings Windows Platform](media/tutorial-package-publish-readme/configuration-settings-windows-either.png).
+
+3. Choose **Project**->**Store**->**Create App Packages** to start the packaging wizard.
+
+    ![Windows: Create Appx Packages](media/tutorial-package-publish-readme/windows_createPackage.png)
+
+4. Complete the wizard and in the wizard choose which platforms you want to make your app available to.
+
+    For step-by-step guidance, see [Create an app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#create_package)
+
+5. Find your packaging files in the ```AppPackages``` folder in the root of your project.
+
+6. Decide what to do with your package.
+
+    To publish your app to the store, see [Publish Windows apps](https://dev.windows.com/en-us/publish).
+
+    To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).

@@ -22,7 +22,7 @@ In this guide, we'll help you get everything setup right so that you can build, 
 
 Let's help you set things up.
 
-## First, install a few things onto your Mac
+## <a id="install"></a> First, install a few things onto your Mac
 
 1. Install version ```0.12.9``` of [Node.js](http://nodejs.org/).
 
