@@ -38,11 +38,11 @@ The general settings of your app appear in the **Common** page of the configurat
 
 * The **Package Name** is a string that uniquely identifies your app.
 
-   Choose a naming scheme that reduces the chance of a name conflict.
+    Choose a naming scheme that reduces the chance of a name conflict.
 
 * The **Domain Access** collection lists the domains that your app needs to access.
 
-   For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
+    For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
 
 The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409).
 
@@ -54,9 +54,9 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
 
 2. In the Command Prompt, change directories to the ```%JAVA_HOME%\bin``` folder.
 
-   (For example: ```C:\Program Files (x86)\Java\jdk1.7.0_55\bin```).
+    (For example: ```C:\Program Files (x86)\Java\jdk1.7.0_55\bin```).
 
-  >**Note**: These examples use names such as ```my-release-key.keystore``` for the keystore name, ```johnS``` as an alias name, and ```pwd123``` as a password. These are examples only. As you run these commands, replace these with strings that make sense to you.
+    >**Note**: These examples use names such as ```my-release-key.keystore``` for the keystore name, ```johnS``` as an alias name, and ```pwd123``` as a password. These are examples only. As you run these commands, replace these with strings that make sense to you.
 
 3. In the Command Prompt, run the following command with a keystore name and private key alias that makes sense to you.
 
@@ -177,13 +177,13 @@ You can also find it in the ```taco.json``` file at the root of your project.
 
 4. On the **Build** menu, choose **Build Solution**.
 
-   This builds a file with an .apk file extension. That is the file that you'll upload to the store.
+    This builds a file with an .apk file extension. That is the file that you'll upload to the store.
 
-   You can find that file in the ```bin/Android/Release/``` folder of your project.
+    You can find that file in the ```bin/Android/Release/``` folder of your project.
 
-   It's the file that *does not* contain the word ```unaligned``` in the file name.
+    It's the file that *does not* contain the word ```unaligned``` in the file name.
 
-   ![apk file location](media/tutorial-package-publish-readme/location-of-apk-file.png)
+    ![apk file location](media/tutorial-package-publish-readme/location-of-apk-file.png)
 
 ### Submit your app to the store
 
@@ -296,7 +296,7 @@ The general settings of your app appear in the **Common** page of the configurat
 
 * The **Domain Access** collection lists the domains that your app needs to access.
 
-   For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
+    For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
 
 The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409).
 
@@ -325,9 +325,9 @@ Build your app to generate the package that you will submit to the store.
 
 6. On the **Build** menu, choose **Build Solution**.
 
-   This starts a build on the remotebuild agent and uses the distribution certificate and the matching provisioning profile to build a release signed iOS Application Archive (.ipa) file.
+    This starts a build on the remotebuild agent and uses the distribution certificate and the matching provisioning profile to build a release signed iOS Application Archive (.ipa) file.
 
-   You can find that file in the ```bin/iOS/Release``` folder of your project.
+    You can find that file in the ```bin/iOS/Release``` folder of your project.
 
 ### Submit your app to the store
 
@@ -356,7 +356,7 @@ In the **Windows** page of the configuration designer, provide the **Display Nam
 
 * The **Package Name** is a string that uniquely identifies your app.
 
-   Choose a naming scheme that reduces the chance of a name conflict.
+    Choose a naming scheme that reduces the chance of a name conflict.
 
 ### Make your app available to Windows Phones
 
