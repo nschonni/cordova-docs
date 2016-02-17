@@ -16,9 +16,11 @@
 
 Create a package for each platform that you want to target. Then you can publish each package to a store.
 
-## ![android-icon](media/tutorial-package-publish-readme/android-icon.png) Package the Android version of your app
+## Package the Android version of your app
 
-To create a package, we'll do these four things:
+![android-icon](media/tutorial-package-publish-readme/android-icon.png) 
+
+To create a package, do these things:
 
 * Modify the general settings of your app.
 
@@ -56,16 +58,16 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
 
     (For example: ```C:\Program Files (x86)\Java\jdk1.7.0_55\bin```).
 
-    >**Note**: These examples use names such as ```my-release-key.keystore``` for the keystore name, ```johnS``` as an alias name, and ```pwd123``` as a password. These are examples only. As you run these commands, replace these with strings that make sense to you.
-
-3. In the Command Prompt, run the following command with a keystore name and private key alias that makes sense to you.
+3. In the Command Prompt, run the following command.  
 
     ```
     keytool -genkey -v -keystore c:\my-release-key.keystore -alias johnS
     -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    You'll be asked to provide a password and the *Distinguished Name* fields for your key.  
+    Replace ```my-release-key.keystore``` and ```johnS``` with names that make sense to you. 
+
+4. You'll be asked to provide a password and the *Distinguished Name* fields for your key.  
 
     This series of responses gives you an idea of the kinds of information you'll provide for each prompt. Like in the previous command, respond to each prompt with information that makes sense for your app.
 
@@ -100,11 +102,11 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
         (RETURN if same as keystore password):
     ```
 
-    The Android SDK generates the keystore as a file named **my-release-key.keystore** and places that file in the *C:\* drive. The keystore contains a single key, valid for 10000 days.
+    The Android SDK generates the keystore as a file named **my-release-key.keystore** and places that file in the C:\ drive. The keystore contains a single key, valid for 10000 days.
 
     If you want more detail about this process, see the Android developer documentation here: [Signing your applications](http://developer.android.com/tools/publishing/app-signing.html).
 
-### Step 3: Refer to that key in a configuration file
+### Step 3: Refer to the private key in a configuration file
 
 First, identify which version of the Cordova CLI that your project uses. That determines which configuration file you use to refer to your key.
 
@@ -193,15 +195,17 @@ To prepare for the big day, review [Essentials for a Successful App](http://deve
 
 Then, see [Upload an app](https://support.google.com/googleplay/android-developer/answer/113469?hl=en) to make your app avaialable to the world.
 
-## ![ios-icon](media/tutorial-package-publish-readme/ios-icon.png) Package the iOS version of your app
+## Package the iOS version of your app
 
-To create a package, we'll do these five things:
+![ios-icon](media/tutorial-package-publish-readme/ios-icon.png)
 
-* Request a *distribution* certificate.
+To create a package, do these things:
 
-* Create a *distribution* provisioning profile.
+* Request a distribution certificate.
 
-* Download the *distribution* provisioning profile in Xcode.
+* Create a distribution provisioning profile.
+
+* Download the distribution provisioning profile in Xcode.
 
 * Modify the general settings of your app.
 
@@ -286,13 +290,13 @@ The general settings of your app appear in the **Common** page of the configurat
 
 * The **Package Name** is a string that uniquely identifies your app.
 
-   This identifier has to match the identifier of your distribution provisioning profile.
+    This identifier has to match the identifier of your distribution provisioning profile.
 
-     ![Package Name in Visual Studio](media/tutorial-package-publish-readme/package-name-in-visual-studio.png)
+    ![Package Name in Visual Studio](media/tutorial-package-publish-readme/package-name-in-visual-studio.png)
 
-     You can find the indentier of your profile by choosing your distribution profile in the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page of the Apple developer [Member Center](https://developer.apple.com/membercenter/index.action).
+    You can find the indentier of your profile by choosing your distribution profile in the [Provisioning Profiles](https://developer.apple.com/account/ios/profile/profileLanding.action) page of the Apple developer [Member Center](https://developer.apple.com/membercenter/index.action).
 
-     ![Identifier of distribution profile](media/tutorial-package-publish-readme/distribution-profile-identifier.png).
+    ![Identifier of distribution profile](media/tutorial-package-publish-readme/distribution-profile-identifier.png).
 
 * The **Domain Access** collection lists the domains that your app needs to access.
 
@@ -334,13 +338,16 @@ Build your app to generate the package that you will submit to the store.
 See [Managing Your App in iTunes Connect](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/UsingiTunesConnect/UsingiTunesConnect.html#//apple_ref/doc/uid/TP40012582-CH22-SW7) on the Apple Developer website.
 
 If your app isn't accepted by the store, review these articles by Apple:
+
 * [Common App Rejections](https://developer.apple.com/app-store/review/rejections/)
 
 * [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
 
-## ![windows-icon](media/tutorial-package-publish-readme/windows-icon.png) Package the Windows version of your app
+## Package the Windows version of your app
 
-First, decide which platforms and device families you want to make your app available to. You can make it available to Windows Phones, desktop PCs, and tablets.
+![windows-icon](media/tutorial-package-publish-readme/windows-icon.png) 
+
+First, decide which platforms and device families you want to make your app available to. You can make your app available to Windows Phones, desktop PCs, and tablets.
 
 It doesn't matter which version of Windows the app targets. The Windows store accepts all of them. That said, the operating system of a device or PC only runs apps that target the same version of that operating system or an earlier version.
 
@@ -360,9 +367,13 @@ In the **Windows** page of the configuration designer, provide the **Display Nam
 
 ### Make your app available to Windows Phones
 
-Choose a subsection below depending on whether your app targets Windows 10, Windows 8.1, or Windows Phone 8.
+Which version of Windows does your app target? Choose a section:
 
-#### Your app targets Windows 10
+* [Your app targets Windows 10](#windows-10).
+* [Your app targets Windows 8.1](#windows-81).
+* [Your app targets Windows 8](#windows-8).
+
+#### <a id="windows-10"></a>Your app targets Windows 10
 
 1. In the Standard Toolbar, choose **Windows-ARM**.
 
@@ -388,7 +399,7 @@ Choose a subsection below depending on whether your app targets Windows 10, Wind
 
     To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
 
-#### Your app targets Windows 8.1
+#### <a id="windows-81"></a>Your app targets Windows 8.1
 
 1. In the Standard Toolbar, choose **Windows Phone (Universal)**.
 
@@ -414,7 +425,7 @@ Choose a subsection below depending on whether your app targets Windows 10, Wind
 
     To install your app directly onto a device [Sideload your app package](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/mt627715.aspx#sideload_package).
 
-#### Your app targets Windows Phone 8
+#### <a id="windows-8"></a>Your app targets Windows Phone 8
 
 1. In the Standard Toolbar, choose the **Release** configuration.
 
