@@ -55,14 +55,14 @@ To follow these steps, you must:
 
     Ionic creates the project in your current folder.
 
-4. Use the same command to install more templates, such as:
+4. Option: Use this command to install more templates, such as:
 
     ```
     ionic start ionicMyTabs tabs
     ionic start ionicMyBlank blank
     ```
 
-5. In the command line, type the following command.
+5. Navigate to the root of your project folder, and type the following command into the command prompt.
 
     ```
     cordova plugins --save
