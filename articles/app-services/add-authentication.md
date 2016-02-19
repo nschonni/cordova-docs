@@ -24,6 +24,7 @@ the other approach uses Azure Mobile App SDK which again is a Cordova plugin.
 - [Part 1 Active Directory Authentication using ADAL Cordova plugin](#Part-1)
 - [Part 2 Active Directory Authentication using Azure Mobile App SDK](#Part-2)
 
+<a id="Part-1"></a>
 ## Part 1 Active Directory Authentication using ADAL Cordova plugin
 
 ### Overview
@@ -128,6 +129,7 @@ tokens silently and from the token cache at:
 https://github.com/AzureAD/azure-activedirectory-library-for-cordova/blob/master/sample/js/index.js
 
 
+<a id="Part-2"></a>
 ## Part 2 Active Directory Authentication using Azure Mobile App SDK
 
 Please refer to the following links to learn how to use Azure Mobile App SDK to 
