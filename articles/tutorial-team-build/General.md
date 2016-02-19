@@ -35,7 +35,7 @@ On the surface, this seems like all files in a given Cordova project should be a
 * The following folders should be excluded:
 	- platforms
 	- bld
-    - bin
+	- bin
 	- .vs
 * The following files should be excluded:
 	- plugins/android.json
@@ -47,7 +47,7 @@ On the surface, this seems like all files in a given Cordova project should be a
 	- *.suo
 	- *.jsproj.user
 
-**Troubleshooting Tip:** Adding plugins/android.json, plugins/ios.json, plugins/remote_ios.json, plugins/windows.json, or plugins/wp8.json adding these files to source control can result in a build that **appears to succeed but is missing plugin native code.** They should only be included if the "platforms" folder is also checked in which is not recommended. Simply remove these files from source control to resolve the issue. Note that you **can** add "plugins/fetch.json" to source control along with the rest of the contents of the plugins folder. See [our Issues, Tips, and Workarounds documentation](../tips-and-workarounds/tips-and-workarounds-readme.md) for additional tips on addressing common build issues.
+**Troubleshooting Tip:** Adding plugins/android.json, plugins/ios.json, plugins/remote_ios.json, plugins/windows.json, or plugins/wp8.json adding these files to source control can result in a build that **appears to succeed but is missing plugin native code.** They should only be included if the "platforms" folder is also checked in. Simply remove these files from source control to resolve the issue. Note that you **can** add "plugins/fetch.json" to source control along with the rest of the contents of the plugins folder. See [our Issues, Tips, and Workarounds documentation](../tips-and-workarounds/tips-and-workarounds-readme.md) for additional tips on addressing common build issues.
 
 <a name="depends"></a>
 ##Installing Dependencies
@@ -112,7 +112,7 @@ JAVA_OPTS="-Dhttps.proxyHost=<host> -Dhttps.proxyPort=<port> -Dhttp.proxyHost=<h
 Finally, if you see the error "**TypeError: Request path contains unescaped characters**" when building or installing a plugin you may need to either upgrade to a recent version of Node just (like Node 4 if your Cordova version allows it) or downgrade [Node.js 0.10.29](http://nodejs.org/dist/v0.10.29/). See [tips and workarounds](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md#cordovaproxy) for additional details.
 
 <a name="osxgotcha"></a>
-## OSX Gotchas: Troubleshooting Tips for Building on a Mac
+## iOS/OSX Gotchas: Troubleshooting Tips for Building on a Mac
 There are a few relativley common issues when building a Cordova app on OSX related to permissions that are worth noting.
 
 1.  **You are seeing permission errors from "npm":** If you are seeing permission errors from "npm," you may be running into a situation where the build agent user's cache folder (~/.npm) is inaccessible. Generally this occurs if the folder or some of its contents was created while running as an administrator (sudo). Fortunately this is easy to resolve:
@@ -154,7 +154,9 @@ You should not run into this situation if you are using the [Visual Studio Team 
    1.  Don't check in the contents of the "platforms" folder into source control. This is by far the path of least resistance. The Gulp build script can add them at the time you build.
 	
    2.  If you absolutely must check in the contents of the platforms folder from Windows, you can craft a shell script to set the execute bits on these files and include it as a part of your build process. There is a [Cordova hook based version of this script](../tips-and-workarounds/ios/osx-set-execute/tips-and-workarounds-ios-osx-set-execute-readme.md) available in the tips and workarounds section.
-	
+
+4. **Signing suddenly stopped working for iOS on Feb 14th, 2016.** Apple's WWDR certificate expired on Feb 14th and as a result you may experience signing failures if you have not updated the cert and **removed the old one**. Follow the steps outlined by Apple under [What should I do if Xcode doesn’t recognize my distribution certificate?](https://developer.apple.com/support/certificates/expiration/) to resolve the problem. Note that this also affects development certs despite the title.
+
 <a name="basic"></a>
 ##Behind the Scenes: Basic Workflow
 In general, we reccomend following one of the tutorials above. Each build server technology is a bit different and in this article we will focus on the general steps required to build a Cordova app regardless of technology using the Cordova Command Line Interface.
@@ -172,7 +174,7 @@ The basic flow for building a Cordova app is simple on the surface:
 3.  Build the project using the "cordova build" command:
 
 	```
-    cordova build android --release
+    	cordova build android --release
 	```
 
 The Cordova CLI is node.js based, so these exact same steps can be run from Windows or an OSX machine or from a cloud hosted VM like [MacInCloud](http://go.microsoft.com/fwlink/?LinkID=533746). See the [Cordova CLI documentation](http://go.microsoft.com/fwlink/?LinkID=533773) for additional details.
@@ -213,14 +215,14 @@ The Cordova CLI is a standard Node.js npm package and thus can be installed eith
 Installing and using the correct version of the Cordova CLI at the project level is simple thanks to something called [package.json](http://go.microsoft.com/fwlink/?LinkID=533781). Here is the general approach:
 
 1.  Create a package.json file in the root of your Cordova project.
-2.  Add the following json to the file where "4.3.0" is the version of the Cordova CLI you intend to use:
+2.  Add the following json to the file where "6.0.0" is the version of the Cordova CLI you intend to use:
 
 	```
-    {
-    	"devDependencies": {
-    		"cordova": "4.3.0"
-	    }
-    }
+    	{
+    		"devDependencies": {
+    			"cordova": "6.0.0"
+	    	}
+	}
 	```
 
 3.  Check this into source control with your project.
@@ -228,7 +230,7 @@ Installing and using the correct version of the Cordova CLI at the project level
 4.  Configure your build system to run the following command as its first task. This will then install the correct version of the CLI in a new "node\_modules" folder under your project.
 
 	```
-    npm install
+	npm install
 	```
 
 5.  When executing a Cordova CLI command for your build task, you can then use the following commands:
@@ -248,7 +250,7 @@ Installing and using the correct version of the Cordova CLI at the project level
     Ex:
 
 	```
-    ./node_modules/cordova/bin/cordova platform add android
+	./node_modules/cordova/bin/cordova platform add android
 	```
 
 The downside of this method is that you will end up installing the Cordova CLI each time you execute a "clean" build which will slow down your build times particularly on Windows as the CLI consists of around 25mb of small files.
@@ -322,6 +324,7 @@ However, there are a couple of common problems when executing this command that 
 1. **Platform Download Messages Result in Build Failures.** Where things can get a bit tricky is that Node.js emits warnings to "Standard Error."  The issue is that "platform add" command can result in warnings being reported when the CLI is downloading a version of a given Cordova platform for the first time. This is not an error, but some build systems will assume anything sent to standard error means a build failure occurred.
 
     Many CI systems provide a "continue on error" option that you can select to get around this particular problem or you can pipe standard error to standard out if you'd prefer.
+    
 	```
 	cordova platform add ios 2>&1
 	```
