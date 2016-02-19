@@ -130,6 +130,14 @@ There are a few relativley common issues when building a Cordova app on OSX rela
         sudo chown -R `whoami` ~/.npm
         ```
 
+2.  **You checked in the "hooks" folder from Windows and are seeing "spawn EACCES" errors:** If you encounter a "spawn EACCES" error when building on a Mac or Linux, be sure all files in the hooks folder to have an "execute bit" set as this a requirement for Cordova. To resolve, add an execute bit to the files in source control or execute a set of chmod commands as a part of your build script.  Ex:
+
+	```
+	chmod +x <file name goes here>
+	```
+
+This is commonly seen with **Ionic** due to the hook in hooks/after_prepare.
+        
 3.  **You checked in the "platforms" folder from Windows and are seeing permission errors:** 
 You should not run into this situation if you are using the [Visual Studio Team Services Extension for Cordova](http://go.microsoft.com/fwlink/?LinkID=691188), but if you are seeing errors that are originating from files in your project's "platforms" folder, the root cause may be that you checked in shell scripts under the "platforms/android/cordova" or "platforms/ios/cordova" folders from Windows. This is because the NTFS file system has no concept of an "execute bit" that is required to run these from OSX. (The contents of the platforms is generally not intended for checked in and by default are excluded from Cordova projects in Visual Studio as a result.)
 
@@ -147,7 +155,6 @@ You should not run into this situation if you are using the [Visual Studio Team 
 	
    2.  If you absolutely must check in the contents of the platforms folder from Windows, you can craft a shell script to set the execute bits on these files and include it as a part of your build process. There is a [Cordova hook based version of this script](../tips-and-workarounds/ios/osx-set-execute/tips-and-workarounds-ios-osx-set-execute-readme.md) available in the tips and workarounds section.
 	
-
 <a name="basic"></a>
 ##Behind the Scenes: Basic Workflow
 In general, we reccomend following one of the tutorials above. Each build server technology is a bit different and in this article we will focus on the general steps required to build a Cordova app regardless of technology using the Cordova Command Line Interface.
