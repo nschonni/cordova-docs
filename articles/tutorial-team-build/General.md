@@ -136,7 +136,7 @@ There are a few relativley common issues when building a Cordova app on OSX rela
 	chmod +x <file name goes here>
 	```
 
-This is commonly seen with **Ionic** due to the hook in hooks/after_prepare.
+	This is commonly seen with **Ionic** due to the hook in hooks/after_prepare.
         
 3.  **You checked in the "platforms" folder from Windows and are seeing permission errors:** 
 You should not run into this situation if you are using the [Visual Studio Team Services Extension for Cordova](http://go.microsoft.com/fwlink/?LinkID=691188), but if you are seeing errors that are originating from files in your project's "platforms" folder, the root cause may be that you checked in shell scripts under the "platforms/android/cordova" or "platforms/ios/cordova" folders from Windows. This is because the NTFS file system has no concept of an "execute bit" that is required to run these from OSX. (The contents of the platforms is generally not intended for checked in and by default are excluded from Cordova projects in Visual Studio as a result.)
