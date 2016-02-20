@@ -43,7 +43,7 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 In the editor, open or create a JavaScript file, and add the following code that defines the `MobileServiceClient` variable, and supply the application URL and application key from the mobile service in the `MobileServiceClient` constructor, in that order.
 
 ```javascript
-	var client = new WindowsAzure.MobileServiceClient('AppUrl);
+	var client = new WindowsAzure.MobileServiceClient('AppUrl');
 ```
 You must replace the placeholder `AppUrl` with the application URL of your 
 mobile app, which you obtain from the [Azure portal](http://portal.azure.com/).
@@ -206,21 +206,7 @@ The `lookup` function takes only the `id` value, and returns the object from the
 	})
 ```
 
-##<a name="odata-query"></a>Execute an OData query operation
-
-Mobile Services uses the OData query URI conventions for composing and executing REST queries.  Not all OData queries can be composed by using the built-in query functions, especially complex filter operations like searching for a substring in a property. For these kinds of complex queries, you can pass any valid OData query option string to the `read` function, as follows:
-
-```javascript
-	function refreshTodoItems() {
-	    todoItemTable.read("$filter=substringof('search_text',text)").then(function(items) {
-	        var itemElements = $.map(items, createUiForTodoItem);
-	        $("#todo-items").empty().append(itemElements);
-	        $("#no-items").toggle(items.length === 0);
-	    }, handleError);
-	}
-```
-
-##<a name="inserting"></a>How to: Insert data into a mobile service
+##How to: Insert data
 
 The following code illustrates how to insert new rows into a table. The client requests that a row of data be inserted by sending a POST request to the mobile service. The request body contains the data to be inserted, as a JSON object.
 
@@ -244,7 +230,7 @@ This inserts data from the supplied JSON object into the table. You can also spe
 	});
 ```
 
-##<a name="modifying"></a>How to: Modify data in a mobile service
+##How to: Modify data
 
 The following code illustrates how to update data in a table. The client requests that a row of data be updated by sending a PATCH request to the mobile service. The request body contains the specific fields to be updated, as a JSON object. It updates an existing item in the table `todoItemTable`.
 
@@ -270,7 +256,7 @@ You can also specify a callback function to be invoked when the update is comple
 	});
 ```
 
-##<a name="deleting"></a>How to: Delete data in a mobile service
+##</a>How to: Delete data
 
 The following code illustrates how to delete data from a table. The client requests that a row of data be deleted by sending a DELETE request to the mobile service. It deletes an existing item in the table todoItemTable.
 
@@ -293,34 +279,7 @@ You can also specify a callback function to be invoked when the delete is comple
 	   alert("Error: " + err);
 	});
 ```
-
-##<a name="binding"></a>How to: Display data in the user interface
-
-This section shows how to display returned data objects using UI elements. To query items in `todoItemTable` and display it in a very simple list, you can run the following example code. No selection, filtering or sorting of any kind is done.
-
-```javascript
-	var query = todoItemTable;
-
-	query.read().then(function (todoItems) {
-	   // The space specified by 'placeToInsert' is an unordered list element <ul> ... </ul>
-	   var listOfItems = document.getElementById('placeToInsert');
-	   for (var i = 0; i < todoItems.length; i++) {
-	      var li = document.createElement('li');
-	      var div = document.createElement('div');
-	      div.innerText = todoItems[i].text;
-	      li.appendChild(div);
-	      listOfItems.appendChild(li);
-	   }
-	}).read().done(function (results) {
-	   alert(JSON.stringify(results));
-	}, function (err) {
-	   alert("Error: " + err);
-	});
-```
-
-In a Windows Store app, the results of a query can be used to create a [WinJS.Binding.List] object, which can be bound as the data source for a [ListView] object. For more information, see [Data binding (Windows Store apps using JavaScript and HTML)].
-
-##<a name="custom-api"></a>How to: Call a custom API
+##How to: Call a custom API
 
 A custom API enables you to define custom endpoints that expose server functionality that does not map to an insert, update, delete, or read operation. By using a custom API, you can have more control over messaging, including reading and setting HTTP message headers and defining a message body format other than JSON. For an example of how to create a custom API in your mobile service, see [How to: define a custom API endpoint](mobile-services-dotnet-backend-define-custom-api.md).
 
