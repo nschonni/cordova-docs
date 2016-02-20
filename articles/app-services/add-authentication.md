@@ -1,9 +1,9 @@
 <properties
-   pageTitle="[title] | Cordova"
-   description="description"
+   pageTitle="Add Authentication to your Cordova app | Cordova"
+   description="Add Authentication to your Cordova app"
    services="na"
    documentationCenter=""
-   authors="[github name]"
+   authors="sureshja"
    tags=""/>
 <tags
    ms.service="na"
@@ -13,7 +13,6 @@
    ms.workload="na"
    ms.date="01/26/2016"
    ms.author="sureshja"/>
-   
 
 #Add Authentication to your Cordova app
 

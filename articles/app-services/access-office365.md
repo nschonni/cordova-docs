@@ -1,4 +1,20 @@
-#Getting Started with Office 365 (Cordova Projects)
+<properties
+   pageTitle="Connect to Office 365 using ADAL Cordova Plugin | Cordova"
+   description="Connect to Office 365 using ADAL Cordova Plugin"
+   services="na"
+   documentationCenter=""
+   authors="sureshja"
+   tags=""/>
+<tags
+   ms.service="na"
+   ms.devlang="javascript"
+   ms.topic="article"
+   ms.tgt_pltfrm="mobile-multiple"
+   ms.workload="na"
+   ms.date="01/26/2016"
+   ms.author="sureshja"/>
+   
+#Connect to Office 365 using ADAL Cordova Plugin
 
 ##What Happened
 
