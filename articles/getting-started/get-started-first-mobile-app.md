@@ -98,7 +98,7 @@ The same file-level merging also works for CSS, images and anything else.
 2. Stop the app.
 
     There are many options for running your apps built using Visual Studio Tools for Apache Cordova. From Visual Studio, you can run and debug Android, iOS and Windows apps on the emulators and devices, including the Apache Ripple simulator and the Visual Studio Emulators. An emulator gives you a bit more of a realistic device experience. Find more information in the following links:
-    - [Android](/articles/develop-apps/run-app-apache/)
+    - [Android](/articles/develop-apps/run-app-apache.md)
     - [iOS](/articles/develop-apps/run-app-ios.md)
     - [Windows](/articles/develop-apps/run-app-windows.md)
     - [Windows Phone](/articles/develop-apps/run-app-windows-phone.md)
