@@ -16,7 +16,7 @@
 
 # Get started with Visual Studio Tools for Apache Cordova
 
-[Apache Cordova](https://cordova.apache.org/) is an open-source mobile application development framework that enables developers to build cross-platform applications for mobile devices using standard web technologies such as HTML5, CSS3, and JavaScript, instead of using each mobile platforms' native development language. Resulting applications are hybrid, execuing within wrappers targeted to each platform, and relying on standards-compliant API bindings to access each device's sensors, data, and network status.
+[Apache Cordova](https://cordova.apache.org/) is an open-source mobile application development framework that enables developers to build cross-platform applications for mobile devices using standard web technologies such as HTML5, CSS3, and JavaScript, instead of using each mobile platforms' native development language. Resulting applications are hybrid, executing within wrappers targeted to each platform, and relying on standards-compliant API bindings to access each device's sensors, data, and network status.
 
 You can use Visual Studio Tools for Apache Cordova to build apps that run on iOS, Android, and Windows devices and share nearly 100% of your code ([learn more](https://www.visualstudio.com/explore/cordova-vs)).
 
@@ -129,15 +129,15 @@ Apps can be as complicated or as simple as you want them to be. The goal of this
 
 ### Add References
 
-First, you'll add the [JQuery](https://jquery.com/) and [JQuery mobile](https://jquerymobile.com/) libraries to the project.
+First, you'll add the [JQuery](https://jquery.com/) and [JQuery Mobile](https://jquerymobile.com/) libraries to the project.
 
-> **Note:**  JQuery, it's a just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events. JQuery mobile is included because it provides a quick way of styling the application without having to do custom CSS work.
+If you're not familiar with _JQuery_, it's a just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for. _JQuery Mobile_ is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. In this tutorial is included because it provides a quick way of styling the application without having to do custom CSS work.
 
-1.  Download the JQuery latest compressed version from [here](https://jquery.com/download/) and move the library JS file to the **scripts** subfolder of your **www** folder
+1.  Download the _JQuery_ latest compressed version from [here](https://jquery.com/download/) and move the library JS file to the **scripts** subfolder of your **www** folder
 
     ![Adding JQuery](media/get-started-first-mobile-app/add-jquery.png)
 
-2.  Download the JQuery mobile latest zipped version from [here](https://jquerymobile.com/download/) and extract the following files:
+2.  Download the _JQuery mobile_ latest zipped version from [here](https://jquerymobile.com/download/) and extract the following files:
     
     - jquery.mobile-1.4.5.min.js to the **scripts** subfolder of your **www** folder
     
@@ -164,7 +164,7 @@ First, you'll add the [JQuery](https://jquery.com/) and [JQuery mobile](https://
 
 > **Note:** You can change the app's default file in the **Start Page** setting of the [config.xml file using the configuration designer](#settings).
 
-1. Open the **index.css** file and replace its content with the following css rules
+1. Open the **index.css** file and replace its content with the following css rules:
 
     ```css
     .not-displayed {
@@ -255,7 +255,7 @@ First, you'll add the [JQuery](https://jquery.com/) and [JQuery mobile](https://
     $('#get-weather-btn').click(WeatherApp.getWeather);
 	```
 
-    This code refers to the ID of the 'Get Wheater' button on the HTML page and it's used to handle the `click` event by passing in the name of a function (_getWeather_). That function will be added shortly.
+    This code refers to the ID of the 'Get Weather' button on the HTML page and it's used to handle the `click` event by passing in the name of a function (_getWeather_). That function will be added shortly.
 
 #### A quick look at index.js
 This is a good time to quickly look at the ```index.js``` file. This file loads when the user runs the app.  Why? Because the ```index.html``` page contains this reference to it:
@@ -410,19 +410,19 @@ Let's run the app, but this time let's use an emulator.
 
 ## <a id="find-fix"></a>Find and fix problems
 
-One of the biggest benefits of using Visual Studio is that you can take advantage of all its powerfull debugging features while running your Cordova application in any of the modes that Visual Studio Tools for Apache Cordova provides, including debugging an application running on a remote device.
+One of the biggest benefits of using Visual Studio is that you can take advantage of all its powerful debugging features while running your Cordova application in any of the modes that Visual Studio Tools for Apache Cordova provides, including debugging an application running on a remote device.
 
 Among the available debugging features are:
 
-- **Setting breakpoints and condittional breakpoints**: Breakpoints can be set on any line of executable code (including the JavaScript code), and all the available tools to look the state of the Apache Cordova application, including variable values and call stack (among others), can be used. 
+- **Setting breakpoints and conditional breakpoints**: Breakpoints can be set on any line of executable code (including the JavaScript code), and all the available tools to look the state of the Apache Cordova application, including variable values and call stack (among others), can be used. 
 
  ![Execution Break](media/get-started-first-mobile-app/breakpoint-2.png)
 
 - **Using the JavaScript console**: This console appears when your Cordova app is started, or can be displayed by selecting **Debug** -> **Windows** -> **JavaScript Console** in the Visual Studio menu. It's a common practice to add code that logs messages and then view those messages in the console, using the JavaScript `console.log` method. This console can also be used to execute any JavaScript function while the application is running. [Learn more about the JavaScript Console](https://developers.google.com/web/tools/javascript/console/).
 
-- **Using the Document Object Model (DOM) Explorer**: Usefull to find and fix layout issues in your pages by examining their structure as they render and tweak them while the app is running. It can be displayed by choosing **Debug** -> **Windows** -> **DOM Explorer** in the Visual Studio menu while the app is running. [Learn more about the DOM Explorer](https://msdn.microsoft.com/library/dn255008.aspx).
+- **Using the Document Object Model (DOM) Explorer**: Useful to find and fix layout issues in your pages by examining their structure as they render and tweak them while the app is running. It can be displayed by choosing **Debug** -> **Windows** -> **DOM Explorer** in the Visual Studio menu while the app is running. [Learn more about the DOM Explorer](https://msdn.microsoft.com/library/dn255008.aspx).
  
- ![Edit page title](media/get-started-first-mobile-app/dom.png)
+ ![Edit page title](media/get-started-first-mobile-app/DOM.png)
  
 ## <a id="capability"></a>Access a device capability
 
@@ -628,11 +628,11 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
     }
     ````
     
-    Again, this is a simple example of what can be achieved using the **merge** folder. A more effective approach would be using a separate css file for platform-especific styles.
+    Again, this is a simple example of what can be achieved using the **merge** folder. A more effective approach would be using a separate css file for platform-specific styles.
 
 6. Run your app in the Apache Ripple Simulator.
 
-    The app header has a green background because the **index.css** file in the **android** folder replaces the **index.css** file in the **www** folder for the Android version of your app.
+    The app header has a blue background because the **index.css** file in the **android** folder replaces the **index.css** file in the **www** folder for the Android version of your app.
 
     ![Project template locations](media/get-started-first-mobile-app/tailor-css.png)
 
@@ -641,7 +641,7 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
 
 Congratulations on building your first cross-platform mobile app. Although this topic gets you started, there’s so much more to learn.
 
-Here are a few ideas about what you can explore next on your journey to build mobile apps with HTML and Javascript and Visual Studio.
+Here are a few ideas about what you can explore next on your journey to build mobile apps with HTML and JavaScript and Visual Studio.
 
 **Explore the plug-in registry**
 
