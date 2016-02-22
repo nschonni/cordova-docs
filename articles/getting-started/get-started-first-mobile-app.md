@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="2/22/2016"
+   ms.date="02/22/2016"
    ms.author="normesta"/>
 
 # Get started with Visual Studio Tools for Apache Cordova
