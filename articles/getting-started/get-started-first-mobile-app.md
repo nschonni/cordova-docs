@@ -264,7 +264,7 @@ This is a good time to quickly look at the ```index.js``` file. This file loads 
 <script src="scripts/index.js"></script>
 ```
 
-You'll notice a few things about the ```index.js``` file. First, all the code in that file is enclosed within an *anonymous self-invoking function* (or _Immediately Invoked Function Expression_, or _[IIFE](https://developer.mozilla.org/es/docs/Glossary/IIFE)_). This is a fancy way of saying that this function executes automatically when the file loads.
+You'll notice a few things about the ```index.js``` file. First, all the code in that file is enclosed within an *anonymous self-invoking function* (or _Immediately Invoked Function Expression_, or _[IIFE](https://developer.mozilla.org/docs/Glossary/IIFE)_). This is a fancy way of saying that this function executes automatically when the file loads.
 
 ```javascript      
 (function () {
