@@ -220,7 +220,7 @@ To use the Crosswalk WebView plugin from Visual Studio, follow these steps:
 
 2. Select **Crosswalk WebView** and click **Add**.
 
-    ![Add Crosswalk Plugin](media/tutorial-cordova-5-readme/cordova-5-1.png)
+    ![Add Crosswalk Plugin](media/tutorial-cordova-5-readme/cordova-crosswalk.png)
 
 The next time you build, your app will be running in the Crosswalk WebView. Note that the first build for Android in particular will take a bit given the plugin does some dynamic acquisition.
 

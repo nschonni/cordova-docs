@@ -174,7 +174,7 @@ The basic flow for building a Cordova app is simple on the surface:
 3.  Build the project using the "cordova build" command:
 
 	```
-    	cordova build android --release
+    cordova build android --release
 	```
 
 The Cordova CLI is node.js based, so these exact same steps can be run from Windows or an OSX machine or from a cloud hosted VM like [MacInCloud](http://go.microsoft.com/fwlink/?LinkID=533746). See the [Cordova CLI documentation](http://go.microsoft.com/fwlink/?LinkID=533773) for additional details.

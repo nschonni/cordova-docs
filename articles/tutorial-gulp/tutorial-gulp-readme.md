@@ -39,7 +39,7 @@ In this example we'll start a gulp task in Visual Studio whenever a project is b
 	```json
 	{
 	  "devDependencies": {
-	 	"gulp": "latest"
+	 	"gulp": "^3.9.1"
 	   }
 	}
 	```
@@ -182,7 +182,7 @@ To see this example in action, first ensure that you've installed gulp as descri
 ```json
 {
     "devDependencies": {
-        "gulp": "latest",
+        "gulp": "^3.9.1",
         "cordova-lib": "5.3.3"
     }
 }
@@ -212,15 +212,15 @@ The taco-team-build repository includes sample gulpfile.js and package.json file
 - **package.json**  
     
     ```json
-        {
-            "devDependencies": {
-	            "gulp": "latest",
-	            "taco-team-build": "latest"
-            }
+    {
+        "devDependencies": {
+            "gulp": "^3.9.1",
+            "taco-team-build": "^0.2.2"
         }
+    }
     ```
 
-    If you want to be able to modify the taco-team-build module instead of using the Github version, remove the dependency in the file above, copy **taco-team-build.js** from GitHub to your project root, and require ```./taco-team-build``` gulpfile.js below.
+    If you want to be able to modify the taco-team-build module instead of using the Github version, remove the dependency in the file above, copy **taco-team-build.js** from GitHub to your project root, and require ```taco-team-build``` gulpfile.js below.
 
 - **gulpfile.js**
 
@@ -229,8 +229,7 @@ The taco-team-build repository includes sample gulpfile.js and package.json file
     cordovaBuild = require("taco-team-build");
 
     gulp.task("default", function () {
-       return cordovaBuild.buildProject("android", ["--release", "--gradleArg=--no-daemon"])
-           .then(function() { return cordovaBuild.packageProject("android"); });
+       return cordovaBuild.buildProject("android", ["--release", "--gradleArg=--no-daemon"]);
     });
     ```
 
@@ -242,66 +241,88 @@ When you run this task (either from the command line or Visual Studio's Task Run
 
       >**Note**: You can also set this location programmatically using the module's *configure* method.
 
-   3. Downloads and installs the correct version of cordova-lib if a matching version isn't already present in the cache.
+   3. Downloads and installs the correct version of Cordova if a matching version isn't already present in the cache.
 
-   4. Adds the [Cordova CI Support Plugin](http://go.microsoft.com/fwlink/?LinkID=533753) to the project if needed.
+   4. Fixes missing execute bits for files in the hooks or platforms folder when running on OSX or Linux.
+
+   5. Adds the [Cordova CI Support Plugin](http://go.microsoft.com/fwlink/?LinkID=533753) to the project if needed.
 
 
-Within the callback function given to gulp.task function, *cordovaBuild.buildProject* does the asynchronous build step, installing the specified platform ("android" in this case) if necessary. *buildProject* returns a promise to which we then chain the call the *cordovaBuild.packageProject* that asynchronously performs the packaging step.
+Within the callback function given to gulp.task function, *cordovaBuild.buildProject* does the asynchronous build step, installing the specified platform ("android" in this case) if necessary. *buildProject* returns a promise to which we then chain other build steps like copying the result of the build.
 
 
 ### Create a gulp script that builds for multiple platforms 
 
-It's very helpful, especially in a team environment, to automate building your project for all target platforms. The gulpfile.js script below provides this flexibility. It builds Android, Windows, Windows Phone 8 targets when run on a Windows build machine, and builds the iOS target when run on an OS X build machine. 
+It's very helpful, especially in a CI environment, to automate building your project for all target platforms. The gulpfile.js script below provides this flexibility. It builds Android, Windows, Windows Phone 8 targets when run on a Windows build machine, and builds the iOS target when run on an OS X build machine. A more complete version of this script can be found in the **samples/gulp** folder in the [taco-team-build repository](http://go.microsoft.com/fwlink/?LinkID=533736).
 
 ```javascript
 var gulp = require("gulp"),
-	cordovaBuild = require("taco-team-build");
+    fs = require("fs"),
+    es = require('event-stream'),
+    cordovaBuild = require("taco-team-build");
 
-var winPlatforms = ["android", "windows", "wp8"],
-	osxPlatforms = ["ios"],
-	buildArgs = {
-        // --gradleArg=-no-daemon is best for automated builds to
-        // to avoid the appearance of hangs.
-		android: ["--release", "--device", "--gradleArg=-no-daemon"],
-		ios: ["--release", "--device"],
-		windows: ["--release", "--device"],
-		wp8: ["--release", "--device"]
-	}
+// Setup platforms to build that are supported on current hardware
+var winPlatforms = ["android", "windows"],
+    linuxPlatforms = ["android"],
+    osxPlatforms = ["ios"],
+    platformsToBuild = process.platform === "darwin" ? osxPlatforms :                   
+                       (process.platform === "linux" ? linuxPlatforms : winPlatforms),   
 
-// "Darwin" is the platform name returned for OS X.
-var platformsToBuild = process.platform == "darwin" ? osxPlatforms : winPlatforms;
+    // Build config to use for build - Use Pascal case to match paths set by VS
+    buildConfig = "Release",
 
-gulp.task("default", ["package"], function () {
-	// Copy results to bin folder
-	gulp.src("platforms/android/ant-build/*.apk").pipe(gulp.dest("bin/release/android"));
-	gulp.src("platforms/android/bin/*.apk").pipe(gulp.dest("bin/release/android"));
-	gulp.src("platforms/windows/AppPackages/**/*").pipe(gulp.dest("bin/release/windows/AppPackages"));
-	gulp.src("platforms/wp8/bin/Release/*.xap").pipe(gulp.dest("bin/release/wp8"));
-	gulp.src("platforms/ios/build/device/*.ipa").pipe(gulp.dest("bin/release/ios"));
-});
+    // Arguments for build by platform. Warning: Omit the extra "--" when referencing platform
+    // specific options (Ex:"-- --gradleArg" is "--gradleArg").
+    buildArgs = {
+        android: ["--" + buildConfig.toLocaleLowerCase(),"--device","--gradleArg=--no-daemon"],                
+        ios: ["--" + buildConfig.toLocaleLowerCase(), "--device"],                                             
+        windows: ["--" + buildConfig.toLocaleLowerCase(), "--device"]                                          
+    },                                                                              
 
-gulp.task("build", function () {
-	return cordovaBuild.buildProject(platformsToBuild, buildArgs);
-});
+    // Paths used by build
+    paths = {
+       apk:["./platforms/android/ant-build/*.apk", 
+            "./platforms/android/bin/*.apk", 
+            "./platforms/android/build/outputs/apk/*.apk"],
+       binApk: "./bin/Android/" + buildConfig,
+       ipa: ["./platforms/ios/build/device/*.ipa",
+             "./platforms/ios/build/device/*.app.dSYM"],
+       binIpa: "./bin/iOS/" + buildConfig,
+       appx: "./platforms/windows/AppPackages/**/*",
+       binAppx: "./bin/Windows/" + buildConfig
+    };                                                  
 
-gulp.task("package", ["build"], function () {
-	return cordovaBuild.packageProject(platformsToBuild);
+// Set the default to the build task
+gulp.task("default", ["build"]);
+
+// Executes taks specified in winPlatforms, linuxPlatforms, or osxPlatforms based on
+// the hardware Gulp is running on which are then placed in platformsToBuild
+gulp.task("build", function() {
+    return cordovaBuild.buildProject(platformsToBuild, buildArgs)
+        .then(function() {    
+            // ** NOTE: Package not required in recent versions of Cordova
+            return cordovaBuild.packageProject(platformsToBuild)
+                .then(function() {             
+                    return es.concat(
+                            gulp.src(paths.apk).pipe(gulp.dest(paths.binApk)),
+                            gulp.src(paths.ipa).pipe(gulp.dest(paths.binIpa)),
+                            gulp.src(paths.appx).pipe(gulp.dest(paths.binAppx)));            
+                });
+        });
 });
 ```
 
 ### <a name="ts"></a>Build a Typescript project
 
 If you're using TypeScript in your Cordova app project, you can use the [gulp-typescript](http://go.microsoft.com/fwlink/?LinkID=533748) plugin to compile TypeScript as part of an automated build. Refer back to the [Install plugins](#install-plugins) section for the ways to do this; 
-```"gulp-typescript": "latest"``` is the dependency that should be listed in package.json.
+```"gulp-typescript": "^2.11.0"``` is the dependency that should be listed in package.json.
 
 The following gulpfile.js loads the plugin and runs a task to compile all Typescript (***.ts**) files found in the project's *scripts* folder, saving the results in a single file **www/scripts/appBundle.js***:
 
-```typescript
-  var ts = require("gulp-typescript");
+```javascript
+var ts = require("gulp-typescript");
 
-  gulp.task("scripts", function () {
-    // Compile TypeScript code
+gulp.task("scripts", function () {
     gulp.src("scripts/**/*.ts")
     	.pipe(ts({
         	noImplicitAny: false,
@@ -319,30 +340,26 @@ The options given directly to the *ts* call above can alternately be saved in a 
 
 ```javascript
 var ts = require("gulp-typescript"),
-    fs = require("fs"),
     tsconfigPath = "scripts/tsconfig.json";
 
 gulp.task("scripts", function () {
-    // Compile TypeScript code
-    if (fs.existsSync(tsconfigPath)) {
-        gulp.src("scripts/**/*.ts")
-            .pipe(ts(ts.createProject(tsconfigPath)))
-            .pipe(gulp.dest("www/scripts"));
-    }
+    gulp.src("scripts/**/*.ts")
+        .pipe(ts(ts.createProject(tsconfigPath)))
+        .pipe(gulp.dest("www/scripts"));
 });
 ```
 
 To point to multiple locations for TypeScript files in your project, create an array as follows:
 
 ```javascript
-   gulp.src(["scripts/**/*.ts","www/typescript/**/*.ts"])
+gulp.src(["scripts/**/*.ts","www/typescript/**/*.ts"])
 ```
 
 Finally, to compile TypeScript first as part of a build task, add a reference to the scripts task:
 
 ```javascript
-    gulp.task("build", ["scripts"], function () {
-    ...
+gulp.task("build", ["scripts"], function () {
+...
 ```
 
 The **samples/gulp** folder in the [taco-team-build repository](http://go.microsoft.com/fwlink/?LinkID=533736) contains sample **gulpfile.js** and **package.json** files that are already configured to include TypeScript.
@@ -352,17 +369,17 @@ The **samples/gulp** folder in the [taco-team-build repository](http://go.micros
 Gulp's *watch* task is a highly useful feature that listens for changes in the file system for your project and automatically start tasks in response. For example, the following task in gulpfile.js will recompile TypeScript code when changes occur:
 
 ```javascript
-   gulp.task("watch", ["scripts"], function () {
-       gulp.watch("scripts/**/*.ts", ["scripts"]);
-   });
+gulp.task("watch", ["scripts"], function () {
+    gulp.watch("scripts/**/*.ts", ["scripts"]);
+});
 ```
 
 You'll need to run this task first to start the watching, so either use ```gulp watch``` from the command line or run the task from Visual Studio in the Task Runner Explorer.
 
 
-## <a name="ci"></a>Use gulp in a team build / continuous integration environment
+## <a name="ci"></a>Use Gulp in a continuous integration (CI) environment
 
-A team build / continuous integration environment means having a dedicated build server that handles requests from everyone in your team, and perhaps also runs builds automatically whenever code is committed to your repository (continuous integration).
+A continuous integration environment means having a dedicated build server that handles requests from everyone in your team, and perhaps also runs builds automatically whenever code is committed to your repository.
 
 The build server must, of course, have all the dependencies installed, such as SDKs, for your target platforms. See the “Installing Dependencies” section of the [Comperhensive CI tutorial](./tutorial-team-build/general.md) for details.
 
@@ -377,4 +394,12 @@ npm install
 ./node_modules/.bin/gulp
 ```
 
-Then set the **CORDOVA_CACHE** environment variable to the location on your build server where it should cache multiple versions of cordova-lib and Cordova platforms. See the [Jenkins tutorial](./tutorial-team-build/jenkins.md) for a specific example.
+Then set the **CORDOVA_CACHE** environment variable to the location on your build server where it should cache multiple versions of Cordova and Cordova platforms. See the [Jenkins tutorial](./tutorial-team-build/jenkins.md) for a specific example. 
+
+Note that when building iOS, you may need to unlock the login keychain before building when using a non-intractive build agent (which is common for Jenkins, for example.)  You'll need to extend your script as follows if you run into this problem:
+
+```
+security unlock-keychain -p $KEYCHAIN_PWD $HOME/Library/Keychains/login.keychain 
+```
+
+...where KEYCHAIN_PWD is an environment variable with the login keychain password for the user running the build. In almost all cases this is the same as the actual password used to login to the machine so be sure to take advantage of any secure environment variable capabilities your CI system may have. 
