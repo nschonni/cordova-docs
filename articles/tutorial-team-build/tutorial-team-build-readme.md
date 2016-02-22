@@ -27,14 +27,14 @@ To get going quickly, follow these steps:
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
     {
       "devDependencies": {
-        "gulp": "latest",
-        "gulp-typescript": "latest",
-        "taco-team-build": "latest"
+        "gulp": "^3.9.1",
+        "gulp-typescript": "^2.11.0",
+        "taco-team-build": "^0.2.2"
       }
     }
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-3. **Add a gulpfile to your project:** Add [this Gulp file](http://go.microsoft.com/fwlink/?LinkID=691922) to the root of your project
+3. **Add a gulpfile to your project:** Add [this Gulp file](http://go.microsoft.com/fwlink/?LinkID=691922) to the root of your project.
 
 	![gulpfile.js in project](media/tutorial-team-build-readme/quick-1.png)
 
@@ -55,7 +55,7 @@ To get going quickly, follow these steps:
     Gulp will now build Android, Windows, and Windows Phone 8 versions of your project when run from Windows and iOS when run from OSX. You can change this behavior by updating the following lines in gulpfile.js.
 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
-    var winPlatforms = ["android", "windows", "wp8"],
+    var winPlatforms = ["android", "windows"],
         osxPlatforms = ["ios"],
         ...
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
