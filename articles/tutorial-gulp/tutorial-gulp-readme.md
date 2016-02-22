@@ -53,9 +53,9 @@ To add a plugin, first add a reference to package.json (the ~ before a version n
 ```json	
 {
   "devDependencies": {
- 	"gulp": "latest",
-	"gulp-uglify": "~1.5.1",
-	"gulp-concat": "~2.6.0"
+ 	"gulp": "^3.9.1",
+	"gulp-uglify": "^1.5.1",
+	"gulp-concat": "^2.6.0"
    }
 }
 ```
