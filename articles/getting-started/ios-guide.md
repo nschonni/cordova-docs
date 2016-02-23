@@ -124,7 +124,7 @@ You'll use those pieces of information in the next section.
 
 ### Troubleshooting: Let's fix it
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -152,7 +152,7 @@ You'll use those pieces of information in the next section.
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -418,7 +418,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [You've been told that no provisioning profiles were found](#no-provision)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -491,7 +491,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [You've been told that we were unable to find the app you're trying to debug](#safari)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -512,7 +512,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
-This can happen when Visual Studio has trouble finding your Mac on the network.
+This can happen when Visual Studio has trouble finding your Mac on the network or if host name or IP address of your Mac changed.
 
 On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
@@ -527,6 +527,22 @@ This image shows a preferred order of Wi-Fi networks.
 The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will use that network.
 
 The network that is used by your Windows Computer should appear first in this list. Otherwise, you'll experience these issues intermittently.
+
+If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed. When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
+
+Try this. Stop the remote agent on your Mac. Then, in a Terminal, run this command:
+
+```
+remotebuild certificates reset
+```
+
+Then, run this command:
+
+```
+remotebuild certificates generate
+```
+
+Start the remote agent and try connecting to it from Visual Studio again.
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
