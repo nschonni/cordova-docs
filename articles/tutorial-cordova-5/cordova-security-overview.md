@@ -25,6 +25,7 @@ While always a good reccomendaiton, staying up to date with Cordova versions is 
 1. **The Crosswalk Webview** - The Android platform in Cordova 5 and up (cordova-android 4.0.0+) introduced the ability to support "pluggable webviews" where the app itself contains a consistant webview implementation rather than the default browser on the device. Originally concieved as a way to get more consistant benhavior on Android, one implementation is the [Crosswalk Webview](https://crosswalk-project.org/) which adds an up to date version of the Chromium webview to the project. For security, this means you get access to important security features like the Content Security Policy and Web Crypto on Android as far back as Android 4.0. Further, these devices will also get WebView related security patches not present in the OS itself. 
 2. **Content Security Policy (CSP) Support**: Android with Crosswalk, iOS, and Windows 10 all support adding a Content Security Policy to your app and this represents an important security tool to take advantage of for any app. A strict policy can eliminate security attack vectors at the underlying webview/browser level. 
 3. **Windows 10 Support w/CSP and "Local Mode" Support:** Windows 10 features a more nuanced view of security than Windows/Phone 8.1 did with significant improvements in compatiblity between Android and iOS by default. In addition to CSP support, Windows 10 supports something called "local mode" that adds OS level security measures and allows additional native Windows 10 features to be used from within your Cordova app. These restrictions are more permissive and nuanced than those that were present in Windows 8.1 and but are off by default in Cordova apps to avoid cross-platform compatibility issues.
+3. **The Intune App SDK:** [Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) has [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) capabilities that enable you to enforce app level security policies even when not using Intune to manage devices. Better yet, a Cordova plugin that is a part of Intune's App SDK enables more nuanced control that is typically availalbe from other MAM solutions.
 
 ###Use Crosswalk and Cordova 5+
 As outlined above, Cordova 5 and the Crosswalk WebView can sigificantly improve the security of your app on Android particularly given the device fragmentation issues that exist today. Simply adding "cordova-plugin-crosswalk-webview" to your project when using Cordova 5+ enables these features. To add it to your project:
@@ -97,7 +98,7 @@ The WindowsDefaultUriPrefix preference flips Cordova into "local mode" instead o
 **See the [Cordova Windows 10 platform documentation](http://cordova.apache.org/docs/en/latest/guide/platforms/win8/win10-support.html)** for additional details on the difference along with the additional capabilities that are enabled when submitting to the public Windows Store.
 
 ###Use the Intune App SDK
-[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and mobile device management (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data, disabling cut-copy-paste, and more. As a result it fundamentally improves the security of Cordova as an overall platform.
+[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and mobile device management (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data, disabling cut-copy-paste, and more. A Cordova plugin for Android and iOS that is a part of Intune's App SDK enables more nuanced control that is typically availalbe from other MAM solutions. As a result it fundamentally improves the security of Cordova as an overall platform.
 
 For Android and iOS, Intune's MAM features are enabled via an SDK that includes a cordova plugin. To install it, follow these steps:
 
@@ -145,25 +146,25 @@ In addition to the above base capabilities there are a number of community plugi
 </thead><tbody>
 <tr>
 <td align="left">Token / Secret Storage</td>
-<td align="left"><strong>[cordova-plugin-secure-storage](https://www.npmjs.com/package/cordova-plugin-secure-storage)</strong></td>
+<td align="left"><strong><a href="https://www.npmjs.com/package/cordova-plugin-secure-storage">cordova-plugin-secure-storage</a></strong></td>
 <td align="left">The plugin allows your application to securely store secrets such as auth tokens in native secure key/token stores.</td>
 <td align="left">Android, iOS</td>
 </tr>
 <tr>
 <td align="left">File Encryption</td>
-<td align="left"><strong>[cordova-safe](https://www.npmjs.com/package/cordova-safe)</strong></td>
+<td align="left"><strong><a href="https://www.npmjs.com/package/cordova-safe">cordova-safe</a></strong></td>
 <td align="left">This plugin provides a streamlined interface for encrypting files using underlying native APIs.</td>
 <td align="left">Android, iOS</td>
 </tr>
 <tr>
 <td align="left">Encrypted Database</td>
-<td align="left"><strong>[cordova-sqlite-storage](https://github.com/litehelpers/Cordova-sqlcipher-adapter)</strong> + Web Crypto</td>
+<td align="left"><strong><a href="https://github.com/litehelpers/Cordova-sqlcipher-adapter">cordova-sqlite-storage</a></strong> + Web Crypto</td>
 <td align="left">WebSQL is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a the database. This plugin uses the same API to store data in a SQLite database without storage limits among other features.</td>
 <td align="left">Android, iOS, Windows / Phone 8.1, Windows 10 (??? - no Win 10 today)</td>
 </tr>
 <tr>
 <td align="left">Encrypted Database</td>
-<td align="left"><strong>[cordova-sqlcyper-adapter](https://github.com/litehelpers/Cordova-sqlcipher-adapter)</strong></td>
+<td align="left"><strong><a href="https://github.com/litehelpers/Cordova-sqlcipher-adapter">cordova-sqlcyper-adapter</a></strong></td>
 <td align="left">An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database.</td>
 <td align="left">Android, iOS, Windows / Phone 8.1, Windows 10 (??? - no Win 10 today)</td>
 </tr>
