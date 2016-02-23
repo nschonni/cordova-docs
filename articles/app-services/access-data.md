@@ -34,11 +34,18 @@ a database and create todoitem table by following the [quick start](https://azur
 ##How to: Create the Mobile App client
 
 To start with you need to add [Mobile App plugin](https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps) 
-to your project. If you are using Cordova CLI, you can add the Azure Mobile App as follows
+to your project. 
+
+If you are using Cordova CLI, you can add the Azure Mobile App as follows
 
 ```
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
+
+If you are using VS, you can add the Azure Mobile App plugin through the config designer. 
+To open the config designer you can open config.xml found in the project root.
+
+![Installing Azure Mobile App](./media/custom-plugin-install-ama.png) 
  
 In the editor, open or create a JavaScript file, and add the following code that defines the `MobileServiceClient` variable, and supply the application URL and application key from the mobile service in the `MobileServiceClient` constructor, in that order.
 
