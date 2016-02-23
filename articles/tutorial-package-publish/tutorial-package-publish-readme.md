@@ -12,7 +12,7 @@
      ms.date="02/17/2016"
      ms.author="normesta"/>
 
-# Package your Cordova app so that you can publish it
+# Package your Cordova app so that you can publish it to a store
 
 Create a package for each platform that you want to target. Then you can publish each package to a store.
 
@@ -63,7 +63,7 @@ To sign your app, create a *keystore*. A keystore is a binary file that contains
     -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    Replace ```my-release-key.keystore``` and ```johnS``` with names that make sense to you. 
+    Replace ```my-release-key.keystore``` and ```johnS``` with names that make sense to you.
 
 4. You'll be asked to provide a password and the *Distinguished Name* fields for your key.  
 
@@ -436,7 +436,7 @@ Which version of Windows does your app target? Choose a section:
 
 4. Find your packaging files in the ```bin\WindowsPhone8\Release``` folder in the root of your project.
 
-5. [Install your Windows app onto a device or publish it to the store](#publish-windows). 
+5. [Install your Windows app onto a device or publish it to the store](#publish-windows).
 
 ### Make your app available to Windows desktop PCs or tablets
 
