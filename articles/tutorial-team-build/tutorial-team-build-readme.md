@@ -4,13 +4,15 @@
   documentationCenter=""
   authors="Chuxel" />
 
-# Get Started with Continous Integration (CI)
+# Get started with continous integration (CI)
 With the release of Visual Studio 2015, you now have a number of options for how you can integrate Cordova apps with your favorite team / continuous integration (CI) server thanks to the fact that projects created in Visual Studio are standard [Apache Cordova Command Line Interface](http://go.microsoft.com/fwlink/?LinkID=533773) (CLI) projects.
 
-##Visual Studio Team Services and Team Foundation Services 2015 Quick Start
-Visual Studio Team Services (formerly Visual Studio Online) and Team Foundation Services (TFS) 2015 can take advantage of a pre-built Cordova tasks that add additional features to streamline setup like managaging certificates for iOS! Simply install the **[Visual Studio Team Services Extension for Cordova](http://go.microsoft.com/fwlink/?LinkID=691188)** and add a Cordova Build task to your build definition. See the quick start on the [extension](http://go.microsoft.com/fwlink/?LinkID=691188) page along with the detailed [Build Apache Cordova apps with Visual Studio Team Services or Team Foundation Services 2015](http://go.microsoft.com/fwlink/?LinkID=691186) tutorial.
+##Visual Studio Team Services and Team Foundation Services 2015 quick start
+Visual Studio Team Services (formerly Visual Studio Online) and Team Foundation Services (TFS) 2015 can take advantage of a pre-built Cordova tasks that add additional features to streamline setup like managaging certificates for iOS! Simply install the **[Visual Studio Team Services Extension for Cordova](http://go.microsoft.com/fwlink/?LinkID=691188)** and add a Cordova Build task to your build definition. 
 
-##Gulp Build Quick Start
+See the quick start on the [extension](http://go.microsoft.com/fwlink/?LinkID=691188) page along with the detailed [Build Apache Cordova apps with Visual Studio Team Services or Team Foundation Services 2015](http://go.microsoft.com/fwlink/?LinkID=691186) tutorial.
+
+##Gulp build quick start
 If you would prefer not to use the extension or are not using VS Team Services or TFS, you can get your project running in nearly any CI system quickly using the [taco-team-build node module](http://go.microsoft.com/fwlink/?LinkID=533736) and Gulp. Note that the method described here can be used with Jenkins, as an alternative for VS Team Services or TFS 2015, and others but will **not** work with TFS 2013. See [Tutorials on Specific CI Systems](#ci) for details.
 
 To get going quickly, follow these steps:
@@ -52,7 +54,7 @@ To get going quickly, follow these steps:
     ./node_modules/.bin/gulp
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Gulp will now build Android, Windows, and Windows Phone 8 versions of your project when run from Windows and iOS when run from OSX. You can change this behavior by updating the following lines in gulpfile.js.
+    Gulp will now build Android and Windows versions of your project when run from Windows and iOS when run from OSX. You can change this behavior by updating the following lines in gulpfile.js.
 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
     var winPlatforms = ["android", "windows"],
@@ -68,7 +70,7 @@ To get going quickly, follow these steps:
 
 That's it!
 
-##Tutorials on Specific CI Systems
+##Tutorials on specific CI systems
 <a name="ci"></a>
 For additional detail on configuring specific build systems, see the following detailed tutorials:
 
