@@ -1,5 +1,5 @@
 <properties pageTitle="Package your Cordova app so that you can publish it"
-  description="Package your Cordova app so that you can publish it"
+  description="Helps you create a iOS, Android, and Windows package for a store"
   services=""
   documentationCenter=""
   authors="normesta" />
