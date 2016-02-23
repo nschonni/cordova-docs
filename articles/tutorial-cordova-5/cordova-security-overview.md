@@ -122,7 +122,7 @@ iOS supports crypto.subtle with a webkit prefix IE 11 and up also support web cr
 In general, this is your best starting point. If for some reason you cannot use Crosswalk (say due to the size of the apk it creates) or are looking for more holistic solutions, there are community plugins and other solutions that can help.
 
 ###Use the Intune App SDK to force encryption
-As mentioned above,[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and mobile device management (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. See above for details on installing hte plugin.
+As mentioned above,[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and mobile device management (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. See above for details on installing the plugin.
 
 ###Consider community plugins
 In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits.
@@ -171,12 +171,53 @@ In addition to the above base capabilities there are a number of community plugi
 </tbody></table>
 
 ##Authentication/Authorization
+A suprisingly hard yet critical task for application security is authenticating and authorizing users to access your app and any secured local or remote data. We'll cover two Microsoft solutions and mention a few 3rd party options.
+
+###Azure App Service Auth and Azure Mobile Apps
+[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is a suite of services designed to help you build great web and mobile apps. Cordova can directly benifit from these same features and also has the added benifit of being JavaScript based and therefore can easily take advantage of the JSON based service APIs that are being introduced even when a client library is not directly available. [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) are mobile integrated client apps that take advantage of features within the broader Azure App Service.
+
+A core first step in accessing all of these great services, however, is authorizing users both to access the app for the app to then access data in the cloud. Fortunatley, the Cordova plugin for Azure Mobile Apps has an authentication interface currently supports authenticating against Azure Active Directory, Facebook, Google, Twitter, and Microsoft accounts. You can also expect additional features and additional provider options in the future.
+
+You can take advantage of these  features by installing the Azure Mobile Apps Cordova plugin.
+
+1. In Visual Studio, simply click "Add" on the **Azure Mobile Apps** plugin in the **config.xml designer.**
+2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
+    ```
+    cordova plugin add cordova-plugin-ms-azure-mobile-apps
+    ```
+
+From here you can lock down data or other services you have in Azure using the .NET or Node.js server SDKs. All of the Azure App Service uses Azure Authorization on the server which means you'll be able to quickly connect to custom [App Service "API Apps" as well](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/).
+
+See the **[Azure Mobile Apps authentication documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)** for additional details on setup.
+
+
+###Active Directory Authentication Library for Cordova
+
+###JavaScript & 3rd Party Options
+ng-cordova-auth - be sure to securely store auth tokens
+
+3rd parties like Auth0 provide cordova plugins
 
 ##Secure Data in Motion
 
+SSL good. Use cordova-http plugin for cert pinning given not available in webview?
+
+Pass auth tokens, not user name pwd. Azure App Service can simplify for you.
+
 ##Prevent/Detect Issues
 
+1. Use a source code scanning solution - provide examples (HP Fortify, SonarQube)
+2. Intune for MAM/MDM
+3. Server side threat detection - Azure products like Trend Micro Azure Deep Security
+4. Threat detection? (Eg Adallom for custom apps, Lookout technologies)
+5. Governance? (eg Adallom for custom apps)
+
 ##Quickly Remediate
+
+###CodePush
+
+###Intune MDM
 
 ## More Information
 * [Read more about Apache Cordova 5](./tutorial-cordova-5-readme.md)
