@@ -139,7 +139,9 @@ That said, it is possible to assign bindings in Visual Studio and have them appl
 
 Because it can run on Windows or OSX, gulp provides a unified cross-platform build language for automating and testing builds in a team / continuous integration (CI) environment such as Jenkins or Team Foundation Server 2015. You might also prefer to use a gulp-based workflow rather than the Cordova CLI itself.
 
-### Use Cordova-lib with gulp
+### Behind the scenes: Use cordova-lib with gulp
+For a quick start, we recommend using the [taco-team-build helper module](http://go.microsoft.com/fwlink/?LinkID=533736) described below. In this section we will outline how this node module uses Cordova internally and how you can use Cordova directly from gulp if you would prefer.
+
 The Cordova CLI internally uses a node module called **cordova-lib**, which encapsulates all of the CLI's core functionality in a series of JavaScript APIs. Cordova-lib is simultaneously released with the Cordova CLI as an npm package and can be used directly from a gulp script.
 
 The following **gulpfile.js**, when placed in the root of a Cordova project for **Cordova 5.3.3 and below**, builds a release version of the app for Android:
@@ -207,7 +209,7 @@ If you're creating an automated build script, you can find a more complete list 
 
 The [taco-team-build helper module](http://go.microsoft.com/fwlink/?LinkID=533736) assists with builds using gulp and alleviates various [common problems](./tutorial-team-build/tutorial-team-build-readme.md) when building a Cordova project from the command line, especially in a team or CI environment. It can be used with any number of build systems including Jake, Grunt, gulp, and even from the command line. It also helps you use gulp to build for multiple platforms, as described in the next section. 
 
-The taco-team-build repository includes sample gulpfile.js and package.json files, along with documentation. To get started, place the contents of the **samples/gulp** folder from the taco-team-build repository in your project root. Alternately, create package.json and gulpfile.js files in your root as follows:   
+The taco-team-build repository includes sample gulpfile.js and package.json files, along with documentation. To get started, place the contents of the **samples/gulp** folder from the [taco-team-build repository](http://go.microsoft.com/fwlink/?LinkID=533736) in your project root. Alternately, create package.json and gulpfile.js files in your root as follows:   
 
 - **package.json**  
     
@@ -220,7 +222,7 @@ The taco-team-build repository includes sample gulpfile.js and package.json file
     }
     ```
 
-    If you want to be able to modify the taco-team-build module instead of using the Github version, remove the dependency in the file above, copy **taco-team-build.js** from GitHub to your project root, and require ```taco-team-build``` gulpfile.js below.
+    If you want to be able to modify the taco-team-build module instead of using the Github version, remove the dependency in the file above, copy **taco-team-build.js** and the **lib** folder from GitHub to your project root, and require ```./taco-team-build.js``` in the gulpfile.js below.
 
 - **gulpfile.js**
 
@@ -271,10 +273,12 @@ var winPlatforms = ["android", "windows"],
     // Build config to use for build - Use Pascal case to match paths set by VS
     buildConfig = "Release",
 
-    // Arguments for build by platform. Warning: Omit the extra "--" when referencing platform
-    // specific options (Ex:"-- --gradleArg" is "--gradleArg").
+    // Arguments for build by platform. Warning: Omit the 
+    // extra "--" when referencing platform specific options 
+    // (Ex:"-- --gradleArg" is "--gradleArg").
     buildArgs = {
-        android: ["--" + buildConfig.toLocaleLowerCase(),"--device","--gradleArg=--no-daemon"],                
+        android: ["--" + buildConfig.toLocaleLowerCase(),"--device",
+                  "--gradleArg=--no-daemon"],                
         ios: ["--" + buildConfig.toLocaleLowerCase(), "--device"],                                             
         windows: ["--" + buildConfig.toLocaleLowerCase(), "--device"]                                          
     },                                                                              
@@ -377,7 +381,7 @@ gulp.task("watch", ["scripts"], function () {
 You'll need to run this task first to start the watching, so either use ```gulp watch``` from the command line or run the task from Visual Studio in the Task Runner Explorer.
 
 
-## <a name="ci"></a>Use Gulp in a continuous integration (CI) environment
+## <a name="ci"></a>Use gulp in a continuous integration (CI) environment
 
 A continuous integration environment means having a dedicated build server that handles requests from everyone in your team, and perhaps also runs builds automatically whenever code is committed to your repository.
 
