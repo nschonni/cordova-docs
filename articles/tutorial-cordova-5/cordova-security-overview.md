@@ -13,7 +13,7 @@ For the most part you should apply the same [best practices to your code as you 
 In brief, here are the general reccomendations we will cover in more detail.
 
 1. **Cordova platform and app security:** Use up to date versions of Cordova and its plugins, use the Crosswalk plugin for Android, set a strict Content Security Policy and tightly manage your whitelists, enable "local mode" for Windows 10, use the Microsoft Intune App SDK to lock down device features when feasible.
-2. **Local Storage:** Encrypt secure data using Web Crypto not a JavaScript based security implementation, avoid storing unencrypted secrets/tokens in local storage or files, use the Microsoft Intune App SDK to secure data when feasible, consider security related community plugins for secnarios where these do not fulfill your needs.
+2. **Locally Stored Data:** Encrypt secure data using Web Crypto not a JavaScript based security implementation, avoid storing unencrypted secrets/tokens in local storage or files, use the Microsoft Intune App SDK to secure data when feasible, consider security related community plugins for secnarios where these do not fulfill your needs.
 3. **Authentication/Authorization:** Use the ADAL plugin when authenticating against Active Directory, use Azure App Service for social authentication, avoid storing unencrypted secrets/tokens in local storage or files, use the Intune App SDK to force authentication via a policy when appropriate, consider community plugins where these do not fulfill your needs.
 4. **Secure Data in Motion:** Always use SSL, pass your client authentication token in all calls and validate on the server, use Azure App Service to accellerate this process, consider the cordova-http plugin if certificate pinning is required.
 5. **Prevent/Detect Issues:** Store remote data in a secure environment like Azure, consider products like Trend Micro Azure Deep Security, implement a MDM solution like Intune, consider Intune MAM for policy driven control at the app level along with jailbreak detection, malware dection, and more even when using another MDM solution, use a source code scanning product.
@@ -25,7 +25,8 @@ While always a good reccomendaiton, staying up to date with Cordova versions is 
 1. **The Crosswalk Webview** - The Android platform in Cordova 5 and up (cordova-android 4.0.0+) introduced the ability to support "pluggable webviews" where the app itself contains a consistant webview implementation rather than the default browser on the device. Originally concieved as a way to get more consistant benhavior on Android, one implementation is the [Crosswalk Webview](https://crosswalk-project.org/) which adds an up to date version of the Chromium webview to the project. For security, this means you get access to important security features like the Content Security Policy and Web Crypto on Android as far back as Android 4.0. Further, these devices will also get WebView related security patches not present in the OS itself. 
 2. **Content Security Policy (CSP) Support**: Android with Crosswalk, iOS, and Windows 10 all support adding a Content Security Policy to your app and this represents an important security tool to take advantage of for any app. A strict policy can eliminate security attack vectors at the underlying webview/browser level. 
 3. **Windows 10 Support w/CSP and "Local Mode" Support:** Windows 10 features a more nuanced view of security than Windows/Phone 8.1 did with significant improvements in compatiblity between Android and iOS by default. In addition to CSP support, Windows 10 supports something called "local mode" that adds OS level security measures and allows additional native Windows 10 features to be used from within your Cordova app. These restrictions are more permissive and nuanced than those that were present in Windows 8.1 and but are off by default in Cordova apps to avoid cross-platform compatibility issues.
-3. **The Intune App SDK:** [Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) has [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) capabilities that enable you to enforce app level security policies even when not using Intune to manage devices. Better yet, a Cordova plugin that is a part of Intune's App SDK enables more nuanced control that is typically availalbe from other MAM solutions.
+
+Read on for some additional guidence and reccomendations and see the **[Apache Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html)** on Apache's site for additional tips.
 
 ###Use Crosswalk and Cordova 5+
 As outlined above, Cordova 5 and the Crosswalk WebView can sigificantly improve the security of your app on Android particularly given the device fragmentation issues that exist today. Simply adding "cordova-plugin-crosswalk-webview" to your project when using Cordova 5+ enables these features. To add it to your project:
@@ -81,10 +82,20 @@ In general it is best to trim access down to only those URIs you actually need t
 
 Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements.  
 
-**See [Cordova 5 Security](./cordova-5-security.md)** for additional details.
+###When in doubt, InAppBrowser
+If you must include content from an external source that you do not have complete and total control over, **use the InAppBrowser plugin** and host the content there. This plugin places content in a separate webview without access to Cordova interfaces and therefore significantly reduces the risk to your app and its data. It's easy to setup and replaces **window.open** with a secure implementaiton.
+
+1. In Visual Studio, simply click "Add" on the **InAppBrowser** plugin in the **config.xml designer.**
+2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
+    ```
+    cordova plugin add cordova-plugin-inappbrowser
+    ```
 
 ###Use "Local Mode" for Windows 10
 Windows 10 support in the Cordova Windows platform improves resolves many of the differences that existed between the Windows platform and Android and iOS.  In addition, it includes a "local mode" only allows navigation to pages hosed within the app, disables inline script, and only allows JavaScript and CSS references from within the app. The end result is a significant reduction in cross-site scripting risks since this is enforced at a platform level.
+
+One often missed feature that the Windows platform for Cordova has is the ability to call **any** JavaScript enabled [Windows API](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx) from your Cordova app **without a plugin**. Many plugins for the Windows platforms are simple JavaScript adapters to conform to the plugin interface spec, so putting the app in "local mode" means that you'll usually being platform level Windows vetted APIs in a secure environment. 
 
 Enabling it is simple. Edit config.xml either in your favorite text editor like VS Code or by right-clicking and selecting View Source in Visual Studio and add the following elements:
 
@@ -111,8 +122,10 @@ For Android and iOS, Intune's MAM features are enabled via an SDK that includes 
 
 **TODO: GET REAL PLUGIN ID**
 
-##Local Storage
-Storing data locally is relnativley straight forward with Cordova but securing it can be a bit more difficult. Note that generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/). Here are some recccomendations that can thankfully help for Cordova apps.
+See **[LINK TO DOCUMENTAITON GOES HERE]()** for more details on configuring Intune's MAM capabilities.
+
+##Securing Locally Stored Data
+Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted (unless you are using a product that forces this to happen automatically). Here are some recccomendations that can thankfully help encrypt sensative data in Cordova apps. 
 
 ###Encrypt data using Web Crypto via Crosswalk and a shim
 The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically "crypto.subtle" has [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) mentioned above brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. 
@@ -170,15 +183,20 @@ In addition to the above base capabilities there are a number of community plugi
 </tr>
 </tbody></table>
 
+###Consider native Windows APIs for Windows
+As mentioned above, one often missed feature that the Windows platform for Cordova has is the ability to call **any** JavaScript enabled [Windows API](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx) from your Cordova app **without a plugin**. Many plugins for the Windows platforms are simple JavaScript adapters to conform to the plugin interface spec. 
+
+This includes all features contained within the **Windows.Security** and **Windows.Security.Cryptography** namespaces! However, be aware that there may be some variations between Windows 10 and Windows 8.1 APIs depending on which OS you are targeting. See **[Windows API documentation](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx)** for additional details and specifics.
+
 ##Authentication/Authorization
 A suprisingly hard yet critical task for application security is authenticating and authorizing users to access your app and any secured local or remote data. We'll cover two Microsoft solutions and mention a few 3rd party options.
 
 ###Azure App Service Auth and Azure Mobile Apps
 [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is a suite of services designed to help you build great web and mobile apps. Cordova can directly benifit from these same features and also has the added benifit of being JavaScript based and therefore can easily take advantage of the JSON based service APIs that are being introduced even when a client library is not directly available. [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) are mobile integrated client apps that take advantage of features within the broader Azure App Service.
 
-A core first step in accessing all of these great services, however, is authorizing users both to access the app for the app to then access data in the cloud. Fortunatley, the Cordova plugin for Azure Mobile Apps has an authentication interface currently supports authenticating against Azure Active Directory, Facebook, Google, Twitter, and Microsoft accounts. You can also expect additional features and additional provider options in the future.
+A core first step in accessing all of these great services, however, is authorizing users both to access the app for the app to then access data in the cloud. Fortunatley, the Cordova plugin for Azure Mobile Apps has an unified authentication interface that currently supports authenticating against Azure Active Directory, Facebook, Google, Twitter, and Microsoft accounts. The unified interface means that you're abstracted from down-stream changes and can expect additional provider options and features in the future to streamline things even more.
 
-You can take advantage of these  features by installing the Azure Mobile Apps Cordova plugin.
+You can take advantage of these features by installing the Azure Mobile Apps Cordova plugin.
 
 1. In Visual Studio, simply click "Add" on the **Azure Mobile Apps** plugin in the **config.xml designer.**
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
@@ -191,21 +209,32 @@ From here you can lock down data or other services you have in Azure using the .
 
 See the **[Azure Mobile Apps authentication documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)** for additional details on setup.
 
-
 ###Active Directory Authentication Library for Cordova
+Active Directory (AD) provides an industry leading identity server both in the cloud and on-premises through Azure Active Directory (AAD) and Active Directory Federation Services (ADFS). You can securely authenticate, authorize, access information in AD, and take advantage of device level single sign on and multi-factor authentication (MFA) capabilities storage through the powerful Active Directory Authentication Library (ADAL) available for all major native and cross-platform mobile and server side technologies. For Cordova this functionality is provided via the ADAL plugin which can be used both with AAD and on-premisis ADFS v3 and up. It users the Android, iOS, and .NET native libraries under the covers and therefore persists auth tokens in a secure cache that you can then query to pass to down stream services.
+
+Adding the plugin is easy.
+
+1. In Visual Studio, simply click "Add" on the **ADAL for Cordova** plugin in the **config.xml designer.**
+2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
+    ```
+    cordova plugin add cordova-plugin-ms-adal
+    ```
+   
+See the **[Active Directory Quick Start for Cordova](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/)** for additional details on setup.
 
 ###JavaScript & 3rd Party Options
-ng-cordova-auth - be sure to securely store auth tokens
+If neither of the above options meet your needs, there are a number of 3rd party solutions that may be of use. First note that many Single Sign-On (SSO) solutions including [Auth0](https://auth0.com/) actually provide Cordova plugins. If you already have a SSO providor, be sure to check with them to see what best practices they provide for Cordova apps.
 
-3rd parties like Auth0 provide cordova plugins
+Cordova also can take advantage of pure JavaScript based solutions to authenticate against Oauth providers like [ng-cordova-oauth](https://github.com/nraboy/ng-cordova-oauth) thanks to the InAppBrowser plugin. See [this article](http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html) for details on the general approach these JavaScript based solutions take along with information on rolling your own if you so chose. However, in general we reccomend using SSO providor Cordova plugins, the ADAL plugin, or Azure when security is of paramount concern.
 
-##Secure Data in Motion
+##Secure Data in Motion [Not authored yet]
 
 SSL good. Use cordova-http plugin for cert pinning given not available in webview?
 
 Pass auth tokens, not user name pwd. Azure App Service can simplify for you.
 
-##Prevent/Detect Issues
+##Prevent/Detect Issues [Not authored yet]
 
 1. Use a source code scanning solution - provide examples (HP Fortify, SonarQube)
 2. Intune for MAM/MDM
@@ -213,11 +242,13 @@ Pass auth tokens, not user name pwd. Azure App Service can simplify for you.
 4. Threat detection? (Eg Adallom for custom apps, Lookout technologies)
 5. Governance? (eg Adallom for custom apps)
 
-##Quickly Remediate
-
+##Quickly Remediate [Not authored yet]
+ 
 ###CodePush
+Out of band updates via Code Push mean faster remediation of security flaws when found - no 10 day turnaround for iOS.
 
-###Intune MDM
+###Intune or a MDM solution
+Using MDM can help you get updates to your enterprise users faster.
 
 ## More Information
 * [Read more about Apache Cordova 5](./tutorial-cordova-5-readme.md)
