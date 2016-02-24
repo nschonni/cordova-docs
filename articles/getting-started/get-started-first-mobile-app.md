@@ -487,6 +487,7 @@ Follow these instructions to add a plug-in that gives you access to the device's
 
     var onGetLocationError = function (error) {
         $('#error-msg').text('Error getting location. Leaving zip code field blank');
+        $('#get-weather-btn').prop('disabled', false);
     }
     ```
 
