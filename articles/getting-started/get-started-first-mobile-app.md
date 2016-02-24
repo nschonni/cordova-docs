@@ -452,7 +452,6 @@ Follow these instructions to add a plug-in that gives you access to the device's
 
 	 ```javascript
     ns.getLocation = function () {
-        $('#app-title').text("Android Weather");
         navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, { enableHighAccuracy: true });
 
         $('#error-msg').show();
