@@ -92,7 +92,7 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
   You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](ios-guide.md).
 
-  The Ionic starter app should run correctly on iOS when the remotebuild agent is running on a Mac, and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
+  The Ionic starter templates should run correctly on iOS when the remotebuild agent is running on a Mac (or a service like MacInCloud), and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
 
 ## Get your app running on Windows <a name="configWin10"></a>
 
@@ -202,7 +202,7 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
 ## Manually import an Ionic project into Visual Studio <a name="manualImport"></a>
 
-If you have an existing Ionic project or want to run one of the other Ionic sample apps that aren't available in Visual Studio, you can also manually import an Ionic project.
+If you have an existing Ionic project or want to run one of the other Ionic sample apps that aren't available in Visual Studio, you can manually import an Ionic project instead of using the Visual Studio Ionic templates.
 
 ### Set up your machine for Ionic with VS <a name="getStarted"></a>
 
