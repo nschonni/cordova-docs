@@ -213,7 +213,7 @@ If you're not familiar with _JQuery_, it's a just a JavaScript library that make
     ```html
     <div data-role="page" id="weather-page">
 
-        <div data-role="header">
+        <div data-role="header" class="header">
             <h1 id="app-title">Weather App</h1>
             <a href="/" class="ui-btn ui-btn-left ui-btn-corner-all ui-icon-home ui-btn-icon-notext" rel="external">Home</a>
         </div>
@@ -549,7 +549,7 @@ This is where the **merges** folder becomes useful. We touched on that folder ea
 
     The app now has the title **Android Weather** because the **index.js** file in the **android** folder replaces the **index.js** file in the **www** folder for the Android version of your app.
 
-    ![Platform-Specific Javascript File](media/get-started-first-mobile-app/tailor-js.png)
+    ![Tailor the behavior](media/get-started-first-mobile-app/tailor-js.png)
 
     Making a copy of a file this large to change one line of code is an extreme example, but you can begin to imagine the possibilities, and you can always refactor your code in ways that leverage the **merges** folder more efficiently.
 
@@ -634,7 +634,7 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
 
     The app header has a blue background because the **index.css** file in the **android** folder replaces the **index.css** file in the **www** folder for the Android version of your app.
 
-    ![Project template locations](media/get-started-first-mobile-app/tailor-css.png)
+    ![Tailor the appearance](media/get-started-first-mobile-app/tailor-css.png)
 
 
 ## <a id="next-steps"></a>Next steps
