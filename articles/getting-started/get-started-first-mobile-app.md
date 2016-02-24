@@ -141,9 +141,9 @@ If you're not familiar with _JQuery_, it's a just a JavaScript library that make
     
     - jquery.mobile-1.4.5.min.js to the **scripts** subfolder of your **www** folder
     
-    - jquery.mobile-1.4.5.min .css to the **css** subfolder of your **www** folder
+    - jquery.mobile-1.4.5.min.css to the **css** subfolder of your **www** folder
     
-    ![Adding JQuery](media/get-started-first-mobile-app/add-jquery-mobile.png)
+    ![Adding JQuery Mobile](media/get-started-first-mobile-app/add-jquery-mobile.png)
 
 3.  Add this script reference to the `<body>` tag of your [index.html](#tour-project) file (at the bottom of the body section, where the other JavaScript references are located):
 
@@ -362,7 +362,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     When you're done, your script reference should look something like the following.
 
 	```html   
-    <script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="scripts/jquery-2.2.0.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>
