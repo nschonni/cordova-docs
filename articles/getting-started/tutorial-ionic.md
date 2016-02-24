@@ -14,7 +14,7 @@
      ms.author="mikejo"/>
 
 # Get started with Ionic apps in Visual Studio
-[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 and the Ionic CLI to easily create and debug cross-platform apps.
+[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps.
 
 ## Get the Ionic templates! <a name="getTemplates"></a>
 
@@ -34,11 +34,11 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
     When you are asked for permission to install the templates, give your permission.
 
-6. Close and re-open Visual Studio.
+6. After Visual Studio creates the project, close and re-open Visual Studio.
 
 7. Choose **File**, **New**, then **Project**.
 
-8. Now, when you **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
+8. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
 
     ![Choosing a template](media/tutorial-ionic/ionic-installed-templates.png)
 
@@ -54,7 +54,7 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
 ## Get your app running on Android <a name="configAndroid"></a>
 
-1. Add the platform by building in VS (choose **Build** > **Build Solution**).
+1. Add the Android platform by **Android** as a debug target (Solution Platforms list), and then choosing **Build**, then **Build Solution**.
 
 2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Emulator (slow to load initially).
 
@@ -110,11 +110,11 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
 ## Use TypeScript in an Ionic app <a name="useTypeScript"></a>
 
-If you want to use TypeScript with Ionic, do the following.
+You can use TypeScript in an Ionic app (even though the starter templates are not currently available in TypeScript). Take the following steps.
 
 1. First, [install the Ionic starter templates](#getTemplates) and create a project using one of them.
 
-  Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual SStudio](#manualImport).
+  Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual Studio](#manualImport).
 
 3. Add a tsconfig.json file to the root of your project and paste the following content into the file.
 
