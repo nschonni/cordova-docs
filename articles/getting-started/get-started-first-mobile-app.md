@@ -16,8 +16,6 @@
 
 # Get started with Visual Studio Tools for Apache Cordova
 
-[Apache Cordova](https://cordova.apache.org/) is an open-source mobile application development framework that enables developers to build cross-platform applications for mobile devices using standard web technologies such as HTML5, CSS3, and JavaScript, instead of using each mobile platforms' native development language. Resulting applications are hybrid, executing within wrappers targeted to each platform, and relying on standards-compliant API bindings to access each device's sensors, data, and network status.
-
 You can use Visual Studio Tools for Apache Cordova to build apps that run on iOS, Android, and Windows devices and share nearly 100% of your code ([learn more](https://www.visualstudio.com/explore/cordova-vs)).
 
 In this guide, we'll give you a tour of what you can do with these tools. Along the way, you'll build a basic app that looks like this.
@@ -46,40 +44,57 @@ If you're ready to go, let's start.
 
 ## <a id="tour-project"></a>Quick tour of the project
 
-The Apache Cordova Blank app template includes a project structure containing a set of folders and files, detailed below.
+There's a lot of files in your project so don't worry too much about understanding them all right away. Peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
 
-- Root configuration files: 
+### Configuration files
 
-    ![root files](media/get-started-first-mobile-app/root-files.png)
+![root files](media/get-started-first-mobile-app/root-files.png)
 
-    - **bowser.json** file: Used by Visual Studio to manage the [Bower](http://bower.io/) packages dependencies of your app. For more information on adding packages to your Cordova project with the Bower Package Manager check [this article](tutorial-using-bower.md).
+#### bowser.json
 
-    - **build.json** file: Contains parameters used to build a signed Android package. Application packaging is beyond the scope of this document, find more information about packaging your Cordova apps [here](/articles/tutorial-package-publish/tutorial-package-publish-readme.md).
+Use this file to manage the [Bower](http://bower.io/) packages dependencies of your app. Bower is a package manager. We won't use it in this guide, but you can learn more about it [here](tutorial-using-bower.md).
 
-    - **config.xml** file:  Contains the settings of your app. In the [Find app settings](#settings) section it will be explained in further detail. 
+#### build.json
 
-    - **taco.json** file: Used to define which version of the [Cordova CLI](https://cordova.apache.org/docs/en/4.0.0/guide/cli/) Visual Studio should use to build the project with. This configuration can also be set in the **Platforms** page of the [Configuration designer](#settings) 
- 
-- **www** folder: Is where HTML, JavaScript, style sheets, and any images you want to use are located. It already contains some files, so this app can be run right out of the box. You can modify these files or add more as you build your app.
+This file contains parameters that Visual Studio uses to build a signed Android package. We won't create one in this guide, but you can learn more about it [here](/articles/tutorial-package-publish/tutorial-package-publish-readme.md).
 
-    ![www folder](media/get-started-first-mobile-app/www.png)
+#### config.xml
 
-- **merges** folder: Is where HTML, JavaScript, and style sheet files that apply to **specific platforms** are located. The Visual Studio Tools for Apache Cordova template already includes support for Android, iOS, Windows and Windows Phone. 
+Contains the settings of your app. We'll change the settings in this file later in this guide.
 
-    ![merges folder](media/get-started-first-mobile-app/merges.png)
+#### taco.json
 
+Defines which version of the [Cordova CLI](https://cordova.apache.org/docs/en/4.0.0/guide/cli/) Visual Studio will use to build the project.
 
-- **res** folder: Is where icons, splash screens, signing certificates and any other platform-specific files are located.
+### Folders
 
-    ![res folder](media/get-started-first-mobile-app/res-folder.png)
+#### www
 
-At build time, all files and folders under merges/_platform_ are copied into the final folder structure, overwriting any files with the same names in the root project. 
+This folder contains the HTML, JavaScript, style sheets, and images that you want to use in your app.
 
-For example, scripts/platformOverrides.js is replaced by merges/android/scripts/platformoverrides.js on Android. This is how you can incorporate platform-specific code, if needed.
+![www folder](media/get-started-first-mobile-app/www.png)
+
+It already contains some files, so this app can be run right out of the box. You can modify these files or add more as you build your app.
+
+#### merges
+
+This folder contains the HTML, JavaScript, and style sheet files that apply to **specific platforms**.
+
+![merges folder](media/get-started-first-mobile-app/merges.png)
+
+When you build your app, all files and folders in the merges/_platform_ are copied into the final folder structure, overwriting any files with the same names in the root project.
+
+For example, the ```scripts/platformOverrides.js``` file is replaced by the ```merges/android/scripts/platformoverrides.js``` file on Android. This is how you can incorporate platform-specific code.
 
 ![root files](media/get-started-first-mobile-app/platform-overrides.png)
 
-The same file-level merging also works for CSS, images and anything else. 
+Use this same approach to merge CSS, images and anything else.
+
+#### res
+
+This folder contains icons, splash screens, signing certificates and any other platform-specific files.
+
+![res folder](media/get-started-first-mobile-app/res-folder.png)
 
 ## <a id="run"></a>Run your app
 
@@ -92,17 +107,15 @@ The same file-level merging also works for CSS, images and anything else.
     ![Ripple Emulator](media/get-started-first-mobile-app/blank-app.png)
 
     [Apache Ripple](/articles/develop-apps/run-app-ripple-simulator.md) is a free mobile simulator. If you haven’t used it before, try a few things while you have it open. For example, change the device orientation or the platform and see how your app appears. Apache Ripple is probably the easiest way to see the effect of your changes as you develop.
-    
+
     ![Change Device Orientation](media/get-started-first-mobile-app/change-device-orientation.png)
 
-2. Stop the app.
+2. Stop the app. You'll find the button to stop it in the Standard Toolbar.
 
-    There are many options for running your apps built using Visual Studio Tools for Apache Cordova. From Visual Studio, you can run and debug Android, iOS and Windows apps on the emulators and devices, including the Apache Ripple simulator and the Visual Studio Emulators. An emulator gives you a bit more of a realistic device experience. Find more information in the following links:
-    - [Android](/articles/develop-apps/run-app-apache.md)
-    - [iOS](/articles/develop-apps/run-app-ios.md)
-    - [Windows](/articles/develop-apps/run-app-windows.md)
-    - [Windows Phone](/articles/develop-apps/run-app-windows-phone.md)
-    
+   ![Stop Debugging button](media/get-started-first-mobile-app/stop-debugger.png)
+
+    You can also run your app in Android, iOS, and Windows device emulators. An emulator gives you a bit more of a realistic device experience.
+
     To see them all, choose any platform from the platform list on the Standard toolbar.
 
     ![Platform](media/get-started-first-mobile-app/platform-selector.png)
@@ -111,15 +124,17 @@ The same file-level merging also works for CSS, images and anything else.
 
     ![Emulators](media/get-started-first-mobile-app/emulators.png)
 
-    Run your app in any of them if you want, but don't use any of the iOS emulators yet because you will need a Mac. If you don't have a Mac, you can use the Ripple simulators for testing your app on iOS.
+    Run your app in any of these emulators if you want, but don't use any of the iOS emulators yet because you need a Mac to use them, and setting up the connection between Visual Studio and the Mac is a little advanced for this guide.
 
-    > **Note:** Setting up the connection between Visual Studio and the Mac is a little advanced for this guide. [This article](ios-guide.md) provides some guidance for doing that.
+    For now, you can use the Ripple simulators for testing your app on iOS. After you complete this guide, see [This article](ios-guide.md) for guidance on how to run your app in an iOS emulator or device.
 
 ## <a id="settings"></a>Find app settings
 
-Many aspects of a Cordova app's behavior can be controlled with the global configuration file, **config.xml**. This XML file is used to specify core Cordova API features, plugins, and platform-specific settings.
+To give your app a name, increment the version number, and control other aspects of your app's behavior, modify the global configuration file, **config.xml**.
 
-Visual Studio provides a Designer to change the configuration of the app, so you don't need to edit XML directly unless you want to.
+You can modify it by using a designer, so you don't need to edit the XML directly unless you want to.
+
+To open the designer, double click the **config.xml** file in your project.
 
 ![Configuration Designer](media/get-started-first-mobile-app/settings.png)
 
@@ -127,32 +142,59 @@ Visual Studio provides a Designer to change the configuration of the app, so you
 
 Apps can be as complicated or as simple as you want them to be. The goal of this section is to build a very basic single page app that shows the weather conditions of any area in the United States.
 
-### Add References
+### Add packages
 
-First, you'll add the [JQuery](https://jquery.com/) and [JQuery Mobile](https://jquerymobile.com/) libraries to the project.
+First, you'll add the [JQuery](https://jquery.com/) and [JQuery Mobile](https://jquerymobile.com/) NuGet packages to your project.
 
-If you're not familiar with _JQuery_, it's a just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for. _JQuery Mobile_ is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. In this tutorial is included because it provides a quick way of styling the application without having to do custom CSS work.
+If you're not familiar with JQuery, it's a just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for.
 
-1.  Download the _JQuery_ latest compressed version from [here](https://jquery.com/download/) and move the library JS file to the **scripts** subfolder of your **www** folder
+JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. It'll give In this a quick way to style the application without having to do custom CSS work.
 
-    ![Adding JQuery](media/get-started-first-mobile-app/add-jquery.png)
+As you build other apps, you can use any JavaScript framework or no framework at all. The choice is yours.
 
-2.  Download the _JQuery mobile_ latest zipped version from [here](https://jquerymobile.com/download/) and extract the following files:
-    
-    - jquery.mobile-1.4.5.min.js to the **scripts** subfolder of your **www** folder
-    
-    - jquery.mobile-1.4.5.min.css to the **css** subfolder of your **www** folder
-    
-    ![Adding JQuery Mobile](media/get-started-first-mobile-app/add-jquery-mobile.png)
+1. Choose **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**, and add the **jQuery** NuGet package to your solution.
 
-3.  Add this script reference to the `<body>` tag of your [index.html](#tour-project) file (at the bottom of the body section, where the other JavaScript references are located):
+    ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery.png)
+
+    >**Note**: Because versions constantly change, the next few images will use ```x.x.x``` in place of version numbers.
+
+2. Add the **jQuery.Mobile** NuGet package to your solution.
+
+    ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery.png)
+
+     NuGet adds files to the **Scripts** folder of your project, but that's not really where we need them so we'll have to fix that.
+
+3. Drag those files to **scripts** subfolder of your **www** folder
+
+    ![Drag Files](media/get-started-first-mobile-app/drag-files-to-scripts.png)
+
+    Now they're in the correct location. But we still have a little work to do here. Nuget also adds CSS files to the **Content** folder so we'll have to fix that too.
+
+4. Drag the CSS files to **css** subfolder of your **www** folder.
+
+    ![Drag Files](media/get-started-first-mobile-app/drag-files-to-css.png)    
+
+3. Add this script reference to the `<body>` tag of your [index.html](#tour-project) file (at the bottom of the body section, where the other JavaScript references are located):
 
     ```html
-    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script src="scripts/jquery-x.x.x.min.js"></script>
+    <script src="scripts/jquery.mobile-x.x.x.min.js"></script>
+    ```
+
+    Replace the ```x.x.x``` in these filenames with the versions that you've downloaded. For example, if you downloaded jQuery version ```2.2.1```, and jQuery mobile version ```1.4.5```, your references would look like this:
+
+    ```html
+    <script src="scripts/jquery-2.2.1.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
     ```
 
 4.  Add this style reference to the `<head>` tag of your [index.html](#tour-project) file, above the existing **index.css** reference:
+
+    ```html
+    <link rel="stylesheet" href="css/jquery.mobile-x.x.x.min.css" />
+    ```
+
+    As you did in the previous example, replace ```x.x.x.``` with the version of JQuery mobile that you downloaded. If you downloaded jQuery mobile version ```1.4.5```, your reference would look like this:
 
     ```html
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
@@ -160,9 +202,7 @@ If you're not familiar with _JQuery_, it's a just a JavaScript library that make
 
 ### Design a page
 
-**index.html** is the first page that appears when users run your app. So we'll add our HTML to that file. 
-
-> **Note:** You can change the app's default file in the **Start Page** setting of the [config.xml file using the configuration designer](#settings).
+**index.html** is the first page that appears when users run your app. So we'll add our HTML to that file. Of course, this the default setting and you can change that at any time in the [configuration designer](#settings).
 
 1. Open the **index.css** file and replace its content with the following css rules:
 
@@ -255,7 +295,7 @@ If you're not familiar with _JQuery_, it's a just a JavaScript library that make
     $('#get-weather-btn').click(WeatherApp.getWeather);
 	```
 
-    This code refers to the ID of the 'Get Weather' button on the HTML page and it's used to handle the `click` event by passing in the name of a function (_getWeather_). That function will be added shortly.
+    This code refers to the ID of the 'Get Weather' button on the HTML page and handles the `click` event by passing in the name of a function (_getWeather_).  You'll add that function shortly.
 
 #### A quick look at index.js
 This is a good time to quickly look at the ```index.js``` file. This file loads when the user runs the app.  Why? Because the ```index.html``` page contains this reference to it:
@@ -345,7 +385,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
 
             return false;
         }
-        
+
     })($, WeatherApp, navigator);
 	```
 
@@ -370,7 +410,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     <script src="scripts/weather.js"></script>
 	```
 
-6. Add ```https://query.yahooapis.com```, ```http://gws2.maps.yahoo.com``` and ```http://l.yimg.com``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>``` used to declare approved origins of content that browsers should be allowed to load on your website. It looks like this:
+6. Add ```https://query.yahooapis.com```, ```http://gws2.maps.yahoo.com``` and ```http://l.yimg.com``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>```. Use it to declare approved origins of content that browsers should be allowed to load on your website. It looks like this:
 
     ```html
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
@@ -383,7 +423,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
     https://ssl.gstatic.com https://query.yahooapis.com http://gws2.maps.yahoo.com http://l.yimg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
-    
+
     > **Note:** Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. For more information visit http://content-security-policy.com/
 
 ## Run your app in an Emulator
@@ -395,7 +435,7 @@ Let's run the app, but this time let's use an emulator.
     ![Android Emulator](media/get-started-first-mobile-app/android-emulator.png)
 
     > **Note:** According to your PC configuration some warnings or errors may appear, like firewall alerts or message indicating that the emulator must run in elevated mode. If you receive the following error, try killing the Android Debug Bridge process (adb.exe):
-    
+
     > ![Android Emulator Error](media/get-started-first-mobile-app/android-emulator-error.png)
 
 2. In the Android emulator, type a valid United States zip code into the edit box (for example: 98052), and then press the **Get Weather** button.
@@ -404,47 +444,57 @@ Let's run the app, but this time let's use an emulator.
 
     ![Weather App](media/get-started-first-mobile-app/weather-app-overview.png)
 
-    What's great here is that this app is completely cross platform. If you have a little extra time, run this app in a Windows Phone emulator. For instructions on how to do this see [this article](https://msdn.microsoft.com/library/windows/apps/xaml/mt188754.aspx)
+    What's great here is that this app is completely cross platform. If you have a little extra time, run this app in a Windows Phone emulator.
 
     > **Note:** You should test your app on as many physical devices (running on as many Operating System versions) as you can. Emulators and Simulators can behave different than a real device on certain circumstances and respond at different speeds. For example, an app may work in the simulator without a problem, but it may fail on a real device, or it can run faster on the device compared with an emulator. More information [here](https://cordova.apache.org/docs/en/4.0.0/guide/next/#testing-on-a-simulator-vs.-on-a-real-device).
 
 ## <a id="find-fix"></a>Find and fix problems
 
-One of the biggest benefits of using Visual Studio is that you can take advantage of all its powerful debugging features while running your Cordova application in any of the modes that Visual Studio Tools for Apache Cordova provides, including debugging an application running on a remote device.
+A big benefit of Visual Studio is its powerful debugger. If you're already familiar with it, you can skip this section. If you're not, let's take a quick tour of some things that you can do.
 
-Among the available debugging features are:
+### Set breakpoints and conditional breakpoints
 
-- **Setting breakpoints and conditional breakpoints**: Breakpoints can be set on any line of executable code (including the JavaScript code), and all the available tools to look the state of the Apache Cordova application, including variable values and call stack (among others), can be used. 
+You can set a breakpoint on any line of executable code (including the JavaScript code). Look at the state of the Apache Cordova application, monitor variable values, and review call stacks.
 
  ![Execution Break](media/get-started-first-mobile-app/breakpoint-2.png)
 
-- **Using the JavaScript console**: This console appears when your Cordova app is started, or can be displayed by selecting **Debug** -> **Windows** -> **JavaScript Console** in the Visual Studio menu. It's a common practice to add code that logs messages and then view those messages in the console, using the JavaScript `console.log` method. This console can also be used to execute any JavaScript function while the application is running. [Learn more about the JavaScript Console](https://developers.google.com/web/tools/javascript/console/).
+### Use the JavaScript Console
 
-- **Using the Document Object Model (DOM) Explorer**: Useful to find and fix layout issues in your pages by examining their structure as they render and tweak them while the app is running. It can be displayed by choosing **Debug** -> **Windows** -> **DOM Explorer** in the Visual Studio menu while the app is running. [Learn more about the DOM Explorer](https://msdn.microsoft.com/library/dn255008.aspx).
- 
+This console appears when your Cordova app starts. If it doesn't, it's easy enough to open. Just choose **Debug** -> **Windows** -> **JavaScript Console**.
+
+You can use the `console.log` method to log messages and then view those messages in the console. You can also use the console to execute any JavaScript function while the application is running. [Learn more about the JavaScript Console](https://developers.google.com/web/tools/javascript/console/).
+
+### use the Document Object Model (DOM) Explorer
+
+Use the DOM Explorer to find and fix layout issues in your pages. Examine the structure of your pages as they render and then tweak them while the app is running.
+
+To open the DOM Explorer, choose **Debug** -> **Windows** -> **DOM Explorer** while the app is running. [Learn more about the DOM Explorer](https://msdn.microsoft.com/library/dn255008.aspx).
+
  ![Edit page title](media/get-started-first-mobile-app/DOM.png)
- 
+
 ## <a id="capability"></a>Access a device capability
 
 Most likely you'll want your app to do more than just show web pages on a mobile device. You might want your app to store files, receive push notifications, or capture images by using the device's camera. This is where a **plugin** becomes handy. Apache Cordova uses plugins to provide access to native device capabilities that aren’t available to simple web apps.
 
-Some of the more commonly used plug-ins can be found in the **Core** page of the app's **[configuration designer](#settings)**.
+You can find some of the more commonly used plug-ins in the **Core** page of the app's [configuration designer](#settings).
 
 ![Configuration Designer](media/get-started-first-mobile-app/core-plugins.png)
 
-[Cordova plugins registry](http://cordova.apache.org/plugins/) offers hundreds of other plugins. To add them, you'll have to edit the config.xml file directly. To do so, follow the instructions [here](/articles/develop-apps/manage-plugins.md/#AddOther).
+[Cordova plugins registry](http://cordova.apache.org/plugins/) offers hundreds of other plugins. To add them, you'll have to edit the config.xml file directly. You can find guidance about how to do that  [here](/articles/develop-apps/manage-plugins.md/#AddOther).
 
 Use the **Custom** page to add plugins that don't appear in the [Cordova plugins registry](http://cordova.apache.org/plugins/). These could be plugins that you or a colleague create for some specific purpose and then save to your local drive or to a GitHub repository.  [This document](/articles/develop-apps/manage-plugins.md/#Custom) explains how to add a custom plugin.
 
-Follow these instructions to add a plug-in that gives you access to the device's geolocation system. That way, you can get the weather of a user's current location.
+Let's add a plug-in that gives us access to the device's geolocation system. That way, we can get the weather of a user's current location.
 
 1. Open the [configuration designer](#settings), and choose the **Plugins** tab.
 
-2. Choose the **Geolocation** plugin, and then choose the **Add** button. This adds the plug-in to your project.
+2. Choose the **Geolocation** plugin, and then choose the **Add** button.
 
     ![Geolocation plugin](media/get-started-first-mobile-app/add-geolocation.png)
-    
-    > **Note:** For instructions on how to use it, read the **Readme.md** file located in the selected plugin folder under the project's **plugins** folder as shown in this image.
+
+    This adds the plug-in to your project but you still have to know how to consume it in your app. To do that, open the **Readme.md** file. You'll find it in the **plugins** folder as shown in this image.
+
+    ![Readme File](media/get-started-first-mobile-app/plug-in-readme.png)
 
     Let's add some code that consumes this plugin.
 
@@ -490,7 +540,7 @@ Follow these instructions to add a plug-in that gives you access to the device's
     }
     ```
 
-    This code uses the device's geolocation capability to get the latitude and longitude of the device's location. With that data it gets a zip code for that location and then populate the input box with that zip code:
+    This code uses the device's geolocation capability to get the latitude and longitude of the device's location. It then uses the latitude and longitude to get a zip code for that location and then populate the input box of your app with that zip code.
 
 4.  Open the **index.js** file, and add the following code to the `onDeviceReady` function.
 
@@ -505,7 +555,7 @@ Follow these instructions to add a plug-in that gives you access to the device's
 		// Handle the Cordova pause and resume events
 		document.addEventListener( 'pause', onPause.bind( this ), false );
 		document.addEventListener('resume', onResume.bind(this), false);
-        
+
         $('#get-weather').click(WeatherApp.getWeather);
         WeatherApp.getLocation();
 	};
@@ -516,7 +566,7 @@ Follow these instructions to add a plug-in that gives you access to the device's
     When your app starts, the label *Determining your current location ...* appears. After a brief period of time, the input box shows the zip code of your current location.
 
     > **Note**: If you use the Apache Ripple emulator, you’ll have to configure it with your location.
-    
+
     > ![Change Apache Ripple emulator location](media/get-started-first-mobile-app/change-ripple-location.png)
 
 ## <a id="tailor"></a>Tailor the app to a platform
@@ -616,9 +666,9 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
         text-shadow: 0 1px 0 #005599;
     }
 	```
-    
+
     Note that the styles defined are identical to the **www** version of the _index.css_ file, with the exception of these element:
-    
+
     ````css
     .ui-bar-inherit.ui-header.header {
         background-color: #3388cc;
@@ -627,8 +677,8 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
         text-shadow: 0 1px 0 #005599;
     }
     ````
-    
-    Again, this is a simple example of what can be achieved using the **merge** folder. A more effective approach would be using a separate css file for platform-specific styles.
+
+    This is a simple example of what you can do by using the **merge** folder. A more effective approach would be to use a separate css file for platform-specific styles.
 
 6. Run your app in the Apache Ripple Simulator.
 
