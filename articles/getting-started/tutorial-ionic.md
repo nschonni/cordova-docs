@@ -68,9 +68,11 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
 1. Add the Android platform by **Android** as a debug target (Solution Platforms list), and then choosing **Build**, then **Build Solution**.
 
-2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Emulator (slow to load initially).
+2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Android Emulator (slow to load initially).
 
     ![Run the app](media/tutorial-ionic/ionic-f5.png)
+
+    You can configure a Google Android emulator in [AVD Manager](../develop-apps/run-app-apache.md).
 
     You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#keyboard).
 
@@ -126,7 +128,7 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
 1. First, [install the Ionic starter templates](#getTemplates) and create a project using one of them.
 
-  Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual Studio](#manualImport).
+    Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual Studio](#manualImport).
 
 3. Add a tsconfig.json file to the root of your project and paste the following content into the file.
 
@@ -214,7 +216,7 @@ If you have an existing Ionic project or want to run one of the other Ionic samp
 
     * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
 
-    * Choose **Windows-x86**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
+    * Choose **Windows-x86**, **Local Machine** (requires Windows 8.1 or Windows 10) and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
 
 3. [Install the Ionic CLI](http://ionicframework.com/docs/cli/install.html).
 
