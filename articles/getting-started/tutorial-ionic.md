@@ -64,6 +64,8 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
     Visual Studio creates the Ionic project.
 
+13. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
+
 ## Get your app running on Android <a name="configAndroid"></a>
 
 1. Add the Android platform by **Android** as a debug target (Solution Platforms list), and then choosing **Build**, then **Build Solution**.
