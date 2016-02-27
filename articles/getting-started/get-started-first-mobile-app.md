@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="02/22/2016"
+   ms.date="02/28/2016"
    ms.author="normesta"/>
 
 # Get started with Visual Studio Tools for Apache Cordova
@@ -44,29 +44,49 @@ If you're ready to go, let's start.
 
 ## <a id="tour-project"></a>Quick tour of the project
 
-There's a lot of files in your project so don't worry too much about understanding them all right away. Peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
+There's a lot of files in your project so don't worry too much about understanding them all right away. You can peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
 
-### Configuration files
+### The configuration files of your project
+
+You'll find these files in the root of your project.
 
 ![root files](media/get-started-first-mobile-app/root-files.png)
 
-#### bowser.json
+This table gives you the basic idea of how you might use each one.
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
+<table>
+<tbody><tr>
+  <th>
+    <p><strong>File</strong></p>
+  </th>
+  <th>
+    <p><strong>Why is it in your project?</strong></p>
+  </th>
+</tr>
+ <tr>
+   <td><strong>bowser.json</strong></td><td>This file manages the [Bower](http://bower.io/) packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it [here](tutorial-using-bower.md).</td>
+ </tr>
+ <tr>
+   <td><strong>build.json</strong></td><td>This file contains parameters that Visual Studio uses to build a signed Android package. <br><br>We won't create one in this guide, but you can learn more about it [here](/articles/tutorial-package-publish/tutorial-package-publish-readme.md).</td>
+ </tr>
+ <tr>
+   <td><strong>config.xml</strong></td><td>Contains the settings of your app. <br><br>We'll change these settings later in this guide.</td>
+ </tr>
+ <tr>
+   <td><strong>taco.json</strong></td><td>Defines which version of the [Cordova CLI](https://cordova.apache.org/docs/en/4.0.0/guide/cli/) Visual Studio uses to build the project.</td>
+ </tr>
 
-Use this file to manage the [Bower](http://bower.io/) packages dependencies of your app. Bower is a package manager. We won't use it in this guide, but you can learn more about it [here](tutorial-using-bower.md).
+</table>
 
-#### build.json
-
-This file contains parameters that Visual Studio uses to build a signed Android package. We won't create one in this guide, but you can learn more about it [here](/articles/tutorial-package-publish/tutorial-package-publish-readme.md).
-
-#### config.xml
-
-Contains the settings of your app. We'll change the settings in this file later in this guide.
-
-#### taco.json
-
-Defines which version of the [Cordova CLI](https://cordova.apache.org/docs/en/4.0.0/guide/cli/) Visual Studio will use to build the project.
-
-### Folders
+### The folders of your project
 
 #### www
 
@@ -126,7 +146,7 @@ This folder contains icons, splash screens, signing certificates and any other p
 
     Run your app in any of these emulators if you want, but don't use any of the iOS emulators yet because you need a Mac to use them, and setting up the connection between Visual Studio and the Mac is a little advanced for this guide.
 
-    For now, you can use the Ripple simulators for testing your app on iOS. After you complete this guide, see [This article](ios-guide.md) for guidance on how to run your app in an iOS emulator or device.
+    If you want to run your app on iOS, you can use the Ripple simulators. After you complete this guide, see [This article](ios-guide.md) for guidance on how to run your app in an iOS emulator or device.
 
 ## <a id="settings"></a>Find app settings
 
@@ -148,9 +168,7 @@ First, you'll add the [JQuery](https://jquery.com/) and [JQuery Mobile](https://
 
 If you're not familiar with JQuery, it's a just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for.
 
-JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. It'll give In this a quick way to style the application without having to do custom CSS work.
-
-As you build other apps, you can use any JavaScript framework or no framework at all. The choice is yours.
+JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. It'll give us a quick way to style the application without having to do custom CSS work.
 
 1. Choose **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**, and add the **jQuery** NuGet package to your solution.
 
@@ -424,7 +442,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     https://ssl.gstatic.com https://query.yahooapis.com http://gws2.maps.yahoo.com http://l.yimg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-    > **Note:** Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. For more information visit http://content-security-policy.com/
+    > **Note:** Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. You can read more about it here: http://content-security-policy.com/
 
 ## Run your app in an Emulator
 
