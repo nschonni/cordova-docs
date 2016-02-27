@@ -72,16 +72,16 @@ This table gives you the basic idea of how you might use each one.
   </th>
 </tr>
  <tr>
-   <td><strong>bowser.json</strong></td><td>This file manages the [Bower](http://bower.io/) packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it [here](tutorial-using-bower.md).</td>
+   <td><strong>bowser.json</strong></td><td>This file manages the <a href="http://bower.io//">Bower</a> packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-using-bower/">here</a>.</td>
  </tr>
  <tr>
-   <td><strong>build.json</strong></td><td>This file contains parameters that Visual Studio uses to build a signed Android package. <br><br>We won't create one in this guide, but you can learn more about it [here](/articles/tutorial-package-publish/tutorial-package-publish-readme.md).</td>
+   <td><strong>build.json</strong></td><td>This file contains parameters that Visual Studio uses to build a signed Android package. <br><br>We won't create one in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-package-publish-readme/">here</a>.</td>
  </tr>
  <tr>
    <td><strong>config.xml</strong></td><td>Contains the settings of your app. <br><br>We'll change these settings later in this guide.</td>
  </tr>
  <tr>
-   <td><strong>taco.json</strong></td><td>Defines which version of the [Cordova CLI](https://cordova.apache.org/docs/en/4.0.0/guide/cli/) Visual Studio uses to build the project.</td>
+   <td><strong>taco.json</strong></td><td>Defines which version of the <a href="https://cordova.apache.org/docs/en/4.0.0/guide/cli/">Cordova CLI</a> Visual Studio uses to build the project.</td>
  </tr>
 
 </table>
@@ -132,7 +132,7 @@ This folder contains icons, splash screens, signing certificates and any other p
 
 2. Stop the app. You'll find the button to stop it in the Standard Toolbar.
 
-   ![Stop Debugging button](media/get-started-first-mobile-app/stop-debugger.png)
+    ![Stop Debugging button](media/get-started-first-mobile-app/stop-debugger.png)
 
     You can also run your app in Android, iOS, and Windows device emulators. An emulator gives you a bit more of a realistic device experience.
 
