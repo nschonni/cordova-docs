@@ -114,7 +114,7 @@ Bower packages often come with many files you don't need to include as part of y
 
     ```JSON
     {
-      "directory": "/www/lib"
+      "directory": "www/lib"
     }
     ```
 
