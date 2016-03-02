@@ -232,7 +232,7 @@ The next time you build, your app will be running in the Crosswalk WebView. Note
 	```
 
 
-2. If you are using the **Visual Studio Android Emulator** and encounter an **app crash** on startup, you may be experienceing an incompatiblity with a specific version of Crosswalk being added to your project by the plugin and the emulator. Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. See #1 for details.
+2. If you are using the **Visual Studio Android Emulator** and encounter an **app crash** on startup, you may be experiencing an incompatibility with a specific version of Crosswalk being added to your project by the plugin and the emulator. Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. See #1 for details.
 
 4. If you encounter a "Could not create the Java Virtual Machine" error, add the following environment variable to your system and restart VS to bump up Java's heap memory to at least 512M:
 
