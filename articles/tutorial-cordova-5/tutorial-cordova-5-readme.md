@@ -225,15 +225,24 @@ To use the Crosswalk WebView plugin from Visual Studio, follow these steps:
 The next time you build, your app will be running in the Crosswalk WebView. Note that the first build for Android in particular will take a bit given the plugin does some dynamic acquisition.
 
 ###Tips on Using the Crosswalk
-If you are using the standard Android Emulator, be sure to check the **Use Host CPU** option in the AVD that you create, and have up-to-date graphics drivers installed on your system, or the app will crash due to Crosswalk's support of WebGL.
+1. If you run into a problem where the Visual Studio **debugger is not attaching** after adding the Crosswalk plugin, you may be encountering an issue with a recent version of Crosswalk.  Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. Simply add the following to config.xml by right-clicking on the in file in Visual Studio and selecting **View Code**:
 
-![Use Host GPU](media/tutorial-cordova-5-readme/cordova-5-1.png)
+	```
+	<preference name="xwalkVersion" value="org.xwalk:xwalk_core_library:15+" />
+	```
 
-Finally, if you encounter a "Could not create the Java Virtual Machine" error, add the following environment variable to your system and restart VS to bump up Java's heap memory:
 
-```
-_JAVA_OPTIONS=-Xmx512M
-```
+2. If you are using the **Visual Studio Android Emulator** and encounter an **app crash** on startup, you may be experienceing an incompatiblity with a specific version of Crosswalk being added to your project by the plugin and the emulator. Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. See #1 for details.
+
+4. If you encounter a "Could not create the Java Virtual Machine" error, add the following environment variable to your system and restart VS to bump up Java's heap memory to at least 512M:
+
+	```
+	_JAVA_OPTIONS=-Xmx512M
+	```
+5. Finally, if you are using the standard **Google Android Emulator,** and encounter an **app crash** after adding the Crosswalk plugin, be sure to the **Use Host CPU** option is checked in the AVD that you create, and have up-to-date graphics drivers installed on your system, or the app will crash due to Crosswalk's support of WebGL.
+
+	![Use Host GPU](media/tutorial-cordova-5-readme/cordova-5-1.png)
+
 
 <a name="win10"></a>
 ##Windows 10 Support
