@@ -11,9 +11,9 @@ If your a very early adopter, you might not see some of the improvements describ
 
 The Tools for Apache Cordova RTM have been tested with both Cordova 4.3.1 and Cordova 5.1.1 with subsequent updates being tested against more recent versions of Cordova including 6.0.0. 
 
-As the major version number increase implies, [Apache Cordova 5](http://cordova.apache.org/docs/en/5.1.1/index.html) is a departure from 3.x and 4.x versions of Cordova in a number of very important ways. There were a number of issues with Cordova 5.0.0 itself that kept us from recommending its use including an [Android security issue](http://go.microsoft.com/fwlink/?LinkID=617658). As a result, we strongly recommend the use of **Cordova 5.1.1 or higher** with **Visual Studio 2015 RTM** and up.
+As the major version number increase implies, [Apache Cordova 5](http://cordova.apache.org/docs/en/5.1.1/index.html) is a departure from 3.x and 4.x versions of Cordova in a number of very important ways. There were a number of issues with Cordova 5.0.0 itself that kept us from recommending its use including an [Android security issue](http://go.microsoft.com/fwlink/?LinkID=617658).
 
-Cordova 6.0.0 adds in support for **Android Marshmellow** which forced some changes to Cordova itself along with breaking changes in plugins. The latest versions of a number of plugins now require Cordova 6.0.0 (Cordova Android 5.0.0+).
+**Cordova 6.0.0** adds in support for **Android Marshmellow** which forced some changes to Cordova itself along with breaking changes in plugins. The latest versions of a number of plugins now require Cordova 6.0.0 (Cordova Android 5.0.0+). **You should move your projects to Cordova 6.0.0** as soon as is feasible for plugin compatibility and marshmellow support when targeting Android.
 
 You can update your project to use Cordova 5 or 6 by following these steps:
 
@@ -51,8 +51,8 @@ Other components are also versioned independently, but typically you will not be
 
 Note that you can actually add different platform versions to your project for a given CLI version through the use of some XML elements or command line options for edge case scenarios. See the [May 26th, 2015 Android Cordova Platform Security Issue](../tips-and-workarounds/android/security-05-26-2015/tips-and-workarounds-android-security-05-26-2015-readme.md) article for a specific example of how this works.
 
-### Android Plugin Breaking Changes in Plugins Caused by Cordova 6.0.0 / Android 5.0.0
-Android Marshmallow introduced new security features that have resulted in breaking changes to a number of core plugins including:
+### Android Plugin Breaking Changes Caused by Cordova 6.0.0 / Cordova Android 5.0.0
+Android Marshmallow introduced new security features that have resulted in breaking changes to Cordova itself and by extension core plugins including:
 
 - cordova-plugin-camera
 - cordova-plugin-geolocation
