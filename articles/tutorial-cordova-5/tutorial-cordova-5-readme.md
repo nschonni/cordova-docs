@@ -13,7 +13,7 @@ The Tools for Apache Cordova RTM have been tested with both Cordova 4.3.1 and Co
 
 As the major version number increase implies, [Apache Cordova 5](http://cordova.apache.org/docs/en/5.1.1/index.html) is a departure from 3.x and 4.x versions of Cordova in a number of very important ways. There were a number of issues with Cordova 5.0.0 itself that kept us from recommending its use including an [Android security issue](http://go.microsoft.com/fwlink/?LinkID=617658).
 
-**Cordova 6.0.0** adds in support for **Android Marshmellow** which forced some changes to Cordova itself along with breaking changes in plugins. The latest versions of a number of plugins now require Cordova 6.0.0 (Cordova Android 5.0.0+). **You should move your projects to Cordova 6.0.0** as soon as is feasible for plugin compatibility and marshmellow support when targeting Android.
+**Cordova 6.0.0** adds in support for **Android Marshmallow** which forced some changes to Cordova itself along with breaking changes in plugins. The latest versions of a number of plugins now require Cordova 6.0.0 (Cordova Android 5.0.0+). **You should move your projects to Cordova 6.0.0** as soon as is feasible for plugin compatibility and Marshmallow support when targeting Android.
 
 You can update your project to use Cordova 5 or 6 by following these steps:
 
@@ -38,7 +38,7 @@ Understanding these differences can be important when reading blog posts or upda
 
 - **Cordova CLI 5.1.1** is largely equivalent to Cordova 5.1.1 but is specifically referring to the [Cordova CLI npm package](http://go.microsoft.com/fwlink/?LinkID=617660).
 
-- **Platform versions** follow a different numbering scheme. A given Cordova CLI version "pins" a set of platform versions by default because all testing for the release was done using this specific combination of components. The Cordova OSS project does not typically back-test earlier versions of the CLI with newer platforms unless specifically noted in the release notes. You will typically see these platform versions mentioned in a form similar to "Cordova Android 4.0.0". This naming scheme inherits its name from the [cordova-android](http://go.microsoft.com/fwlink/?LinkID=617662) and other similarly named npm packages that are installed when the platform is added to your project. Visual Studio will automatically perfom this "platform add" operation on your behalf but you may notice a version number like this in the Output Window when you build.
+- **Platform versions** follow a different numbering scheme. A given Cordova CLI version "pins" a set of platform versions by default because all testing for the release was done using this specific combination of components. The Cordova OSS project does not typically back-test earlier versions of the CLI with newer platforms unless specifically noted in the release notes. You will typically see these platform versions mentioned in a form similar to "Cordova Android 4.0.0". This naming scheme inherits its name from the [cordova-android](http://go.microsoft.com/fwlink/?LinkID=617662) and other similarly named npm packages that are installed when the platform is added to your project. Visual Studio will automatically perform this "platform add" operation on your behalf but you may notice a version number like this in the Output Window when you build.
 
 	The following Cordova platform are pinned in **Cordova CLI 5.1.1** (or [see here](http://go.microsoft.com/fwlink/?LinkID=617667) for a complete list):
 
@@ -60,7 +60,7 @@ Android Marshmallow introduced new security features that have resulted in break
 - cordova-plugin-file
 - cordova-plugin-media
 
-As a result, in general we reccomend moving to Cordova 6.0.0 or higher when targeting Android with new projects. Installing any of these plugins with an earlier version may result in a message telling you that Cordova Android 5.0.0 or higher is required. Switching to Cordova 6.0.0 will resolve this problem.
+As a result, in general we recommend moving to Cordova 6.0.0 or higher when targeting Android. Installing any of these plugins with an earlier version may result in a message telling you that Cordova Android 5.0.0 or higher is required. Switching to Cordova 6.0.0 will resolve this problem.
 
 If you need to stay on an earlier version of Cordova, you may need to install an earlier version of the plugin from the command line as follows from your project directory:
 
