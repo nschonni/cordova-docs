@@ -17,6 +17,26 @@ This article covers known issues related to Visual Studio Tools for Apache Cordo
 
 > **Tip**: See [Cordova 5.x.x known issues](known-issues-cordova5.md) for details on Android related issues that are specific to Cordova 5.0.0 and up.
 
+##**Plugin installs fail with a message stating Cordova Android 5.0.0 or higher is required**
+Android Marshmallow introduced new security features that have resulted in breaking changes to Cordova itself and by extension core plugins including:
+
+- cordova-plugin-camera
+- cordova-plugin-geolocation
+- cordova-plugin-contacts
+- cordova-plugin-file
+- cordova-plugin-media
+
+As a result, in general we recommend moving to Cordova 6.0.0 or higher when targeting Android. Installing any of these plugins with an earlier version may result in a message telling you that Cordova Android 5.0.0 or higher is required. Switching to Cordova 6.0.0 will resolve this problem.
+
+If you need to stay on an earlier version of Cordova, you may need to install an earlier version of the plugin from the command line as follows from your project directory:
+
+```
+npm install -g cordova@5.4.1
+cordova plugin add cordova-plugin-camera@^1.2.0
+```
+
+...replacing the Cordova version and camera plugin Id with the appropriate one for your use case.
+
 ##**Apps crash in emulators and/or the VS debugger does not attach when using the Crosswalk plugin**
 1. If you run into a problem where the Visual Studio **debugger is not attaching** after adding the Crosswalk plugin, you may be encountering an issue with a recent version of Crosswalk.  Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. Simply add the following to config.xml by right-clicking on the in file in Visual Studio and selecting **View Code**:
 
