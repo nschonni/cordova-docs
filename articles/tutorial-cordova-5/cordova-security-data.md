@@ -4,20 +4,22 @@
   documentationCenter=""
   authors="clantz" />
 
-# Securing Cordova app data at rest and over the wire
-Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions. Like the web, Cordova is a very open platform and as a result it does not force you down a specific path that will always garuntee a secure app but instead provides a set of tools that you can use to lock down your app as appropriate. A forced lockdown approach can block critical scenarios and thus tends to have undesired results. For example, Windows 8.1's platform security features block the use of hosted content. This has been resolved in Windows 10 by instead providing options for locking down your app. Microsoft also has some additional options that you can use to further improve your overall app security beyond the Cordova platform itself. 
+# Secure and encrypt your Cordova app data at rest and over the wire
+Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions. Like the web, Cordova is a very open platform and as a result it does not force you down a specific path that will always garuntee a secure app. Instead provides a set of tools that you can use to lock down your app as appropriate. A forced lockdown approach can block critical scenarios and thus tends to have undesired results. For example, Windows 8.1's platform security features block the use of hosted content. This has been resolved in Windows 10 by instead providing options for locking down your app. Beyond platform features, Microsoft also has some additional options that you can use to further improve your overall app security. 
 
 For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are affored, it is important to limit your risk as much as possible. This document will outline some of the security features that exist in Cordova and related Microsoft products along with some general best practices for improving the overall security of your app beyond what you may typically think about for web apps. 
 
 ##Securing Locally Stored Data
-Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted. Further, features like [Apple's recently much discussed data protection](https://support.apple.com/en-us/HT202064) features are enabled by simply setting a PIN (which products like Intune can force to happen for your app), you may have multi-tenet requirements where data separation is required when multiple users access the same device.
+Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted. Further, features like [Apple's recently much discussed data protection](https://support.apple.com/en-us/HT202064) features are enabled by simply setting a PIN (which products like Intune can force to happen for your app), and you may have multi-tenet requirements where data separation is required when multiple users access the same device.
 
 Here are some recccomendations that can thankfully help encrypt sensative data in Cordova apps. 
 
 ###Encrypt data using Web Crypto via Crosswalk and a shim
-The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically "crypto.subtle" has [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) mentioned above brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. 
+The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) has [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. 
 
-Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, add this to config.xml (Right-Click &gt; View Code in VS):
+Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. 
+
+See [Using the Crosswalk WebView for Android](./cordova-crosswalk.md) for additional details on setup, but note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, add this to config.xml (Right-Click &gt; View Code in VS):
 
 ```
 <plugin name="cordova-plugin-crosswalk-webview" version="1.5.0" />
@@ -28,7 +30,7 @@ iOS supports crypto.subtle with a webkit prefix IE 11 and up also support web cr
 
 In general, this is your best starting point. If for some reason you cannot use Crosswalk or are looking for more holistic solutions, there are community plugins and other solutions that can help.  
 
-Here is a small code sample that demonstrates using the API to encrypt a string:
+Here is a small code sample that demonstrates using the API to encrypt a string on Android, iOS, and Windows after adding the **[cordova-plugin-crosswalk-webview](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview)** plugin to your project and referencing **[webcrypto-shim.js](https://github.com/vibornoff/webcrypto-shim)** and **[promiz.js](https://github.com/Zolmeister/promiz)** in your HTML:
 
 ```
 var stringToEncrypt = "Hey! Encrypt me!"
@@ -135,10 +137,6 @@ As mentioned above, one often missed feature that the Windows platform for Cordo
 
 This includes all features contained within the **Windows.Security** and **Windows.Security.Cryptography** namespaces! However, be aware that there may be some variations between Windows 10 and Windows 8.1 APIs depending on which OS you are targeting.
 
-```
-Code sample goes here
-```
-
  See **[Windows API documentation](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx)** for additional details and specifics.
  
 ##Secure data over the wire
@@ -172,3 +170,9 @@ Finally, avoid self-signed certificates like the plague. They make you vulnerabl
 
 **TODO**
 Intune MDM can force VPN, allowable sites. Some MAM toolkits allow this too.
+
+##Additional Security Topics
+- [Learn about Cordova platform and app security features](./cordova-security-platform.md)
+- [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
+- [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
+- [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
