@@ -1,14 +1,12 @@
-<properties pageTitle="An introduction to Cordova 5 security"
-  description="This is an article on ionic tutorial"
+<properties pageTitle="Cordova whitelist and Content Security Policy guide"
+  description="Cordova whitelist and Content Security Policy guide"
   services=""
   documentationCenter=""
   authors="Chuxel" />
 
-# An introduction to Cordova 5 security
+# Cordova whitelist and Content Security Policy guide
 
-If the default blank template in Visual Studio 2015 does not default to 5.1.1, you should update Tools for Apache Cordova. If you're an early adopter, you might not see some of the improvements described in this document until after you update the tools. You will soon see a notification in the in the  notification center (flag in the upper right) prompting you to update.
-
-One of the more confusing changes about [Apache Cordova 5](http://go.microsoft.com/fwlink/?LinkID=617659) is that the updated version of the Android platform (also called Cordova Android 4.x) and iOS now follow a different, but more powerful security model designed to provide developers with the tools needed to prevent cross-site scripting attacks among other issues. A critical aspect of this security model is that **absolutely no network access of any kind is allowed without the installation of a Cordova plugin**.
+One of the more confusing changes about [Apache Cordova 5](http://go.microsoft.com/fwlink/?LinkID=617659) that have continued on in Cordova 6 is that the updated version of the Android platform and iOS now follow a different, but more powerful security model designed to provide developers with the tools needed to prevent cross-site scripting attacks among other issues. A critical aspect of this security model is that **absolutely no network access of any kind is allowed without the installation of a Cordova plugin**.
 
 ## Cordova Whitelists
 The new [Cordova Whitelist plugin (cordova-plugin-whitelist)](http://go.microsoft.com/fwlink/?LinkID=617668) is the recommended base security plugin to use for managing network security access. Historically there was one **access** element in config.xml used to control all access to network resources. For example, adding the following to config.xml resulted in the app not only being able to make XHR calls, access images, or reference remote scripts but also allowed Cordova to navigate to any URI.

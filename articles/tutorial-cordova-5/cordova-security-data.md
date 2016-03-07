@@ -10,37 +10,39 @@ Security is a very broad topic that covers a number of different aspects of an a
 For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are affored, it is important to limit your risk as much as possible. This document will outline some of the security features that exist in Cordova and related Microsoft products along with some general best practices for improving the overall security of your app beyond what you may typically think about for web apps. 
 
 ##Securing Locally Stored Data
-Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted. Further, features like [Apple's recently much discussed data protection](https://support.apple.com/en-us/HT202064) features are enabled by simply setting a PIN (which products like Intune can force to happen for your app), and you may have multi-tenet requirements where data separation is required when multiple users access the same device.
+Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted. Further, features like [Apple's much discussed data protection](https://support.apple.com/en-us/HT202064) features are enabled by simply setting a PIN (which products like Intune can force to happen for your app), and you may have multi-tenet requirements where data separation is required when multiple users access the same device.
 
 Here are some recccomendations that can thankfully help encrypt sensative data in Cordova apps. 
 
 ###Encrypt data using Web Crypto via Crosswalk and a shim
 The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) has [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. 
 
-Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. 
+#### Crosswalk
+Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. See **[Improving Android browser consistency and features with the Crosswalk WebView](./cordova-crosswalk.md)** for additional details on setup including some important information on **emulator config**. 
 
-See [Using the Crosswalk WebView for Android](./cordova-crosswalk.md) for additional details on setup, but note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, add this to config.xml (Right-Click &gt; View Code in VS):
+Note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, add this to config.xml (Right-Click &gt; View Code in VS):
 
 ```
-<plugin name="cordova-plugin-crosswalk-webview" version="1.5.0" />
 <preference name="xwalkVersion" value="org.xwalk:xwalk_core_library:15+" />
 ```
 
+#### webcrypto-shim
 iOS supports crypto.subtle with a webkit prefix IE 11 and up also support web crypto but with a slightly different syntax. Thankfully, an API shim like [webcrypto-shim](https://github.com/vibornoff/webcrypto-shim) can resolve these differences for you such that the combination of Crosswalk in the shim give you native encrption capabilities.
 
 In general, this is your best starting point. If for some reason you cannot use Crosswalk or are looking for more holistic solutions, there are community plugins and other solutions that can help.  
 
+#### Example
 Here is a small code sample that demonstrates using the API to encrypt a string on Android, iOS, and Windows after adding the **[cordova-plugin-crosswalk-webview](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview)** plugin to your project and referencing **[webcrypto-shim.js](https://github.com/vibornoff/webcrypto-shim)** and **[promiz.js](https://github.com/Zolmeister/promiz)** in your HTML:
 
-```
-var stringToEncrypt = "Hey! Encrypt me!"
+```javascript
+var stringToEncrypt = "Hey! Encrypt me!";
 
 // Setup AES-CBC encryption
 var randomVals = new Uint8Array(16);
 crypto.getRandomValues(randomVals);
 var cryptoSubtleAlgo = { "name": "AES-CBC", "length": 256, "iv": randomVals };
 
-// Generate a key, encrypt, then decrypt
+// Generate a key, encrypt
 crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
     .then(function (key) {
         return crypto.subtle.encrypt(cryptoSubtleAlgo, key, stringToArrayBuffer(stringToEncrypt))
@@ -109,7 +111,7 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Token / Secret Storage</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-plugin-secure-storage">cordova-plugin-secure-storage</a></strong></td>
-<td align="left">The plugin allows your application to securely store secrets such as auth tokens in native secure key/token stores.</td>
+<td align="left">The plugin allows your application to securely store secrets such as auth tokens or encryption keys in native secure key/token stores.</td>
 <td align="left">Android, iOS</td>
 </tr>
 <tr>
@@ -145,31 +147,64 @@ General web best practices apply to Cordova based development including an obvio
 
 A second related, obvious, but often skipped reccomendation is to authenticate and authorize all calls using a user login driven authentication token rather than user name and password or an app-level token. The challenges with user name and password are obvious as the information must be passed in clear text. App level authentication may be acceptible in low security scenarios, but typically you will not want to rely on this approach as changing the app authentication will require an app update to accomplish. [Azure Key Valult](https://azure.microsoft.com/en-us/services/key-vault/) can help with situations where you must use an app or service level authentication token / secret / certificate by hiding these values behind a service that is itself authenticated. That said, in general it is best to keep these types of service calls behind an app specific service layer rather than having an app call them directly.
 
-Mobile Backend as a Service (MBaaS) solutions can help you get up and running quickly with an authenticated service that can resovle the above challenges. [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is specifically designed for this purpose and you can integrate with it easily using the [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) Cordova plugin. See "Azure App Service Auth and Azure Mobile Apps" above for information on adding it to your app. Note that if you would prefer to use the ADAL plugin to authorize users in your app, you still do that too and then pass the token you get from ADAL into the Mobile Apps client. 
+Mobile Backend as a Service (MBaaS) solutions can help you get up and running quickly with an authenticated service that can resovle the above challenges. [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is specifically designed for this purpose and you can integrate with it easily using the [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) Cordova plugin. See [Azure App Service Auth and Azure Mobile Apps](./cordova-security-auth.md) for information on adding it to your app. 
 
+Note that if you would prefer to use the ADAL plugin (or other supported social auth client) to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
 
+```javascript
+var client = WindowsAzure.MobileServicesClient(appUrl);
+
+client.login("aad", {"access_token": tokenFromADAL})
+    .then(function () {
+        // Do something with the client!
+     }, handleError);
 ```
-Code sample goes here
-```
 
-See the **[Azure Mobile Apps documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/)** for additional details. 
+**TODO - Verify is access_token not authenticationToken or something else**
 
+On the server, you can also create create your own custom .NET, Java, or Node.js based services that use [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/). Even if you opt not to use the Mobile Apps client, you simply need to pass the appropriate auth token into the request header when making a web service call. 
+
+See the **[Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/)** and **[Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/)** documentation for additional details. 
 
 ###Certificate Pinning
 Another trick used in high secirty situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, offical certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using - typically only one. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
 
-Cordova and most underlying native webviews unfortunatley do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), but the Telerik Verified **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among othere features. In general it is best to stick with the base XML HTTP Request implementation when making service calls but this plugin can be useful when you are in a particularly high security situation.
+Cordova and most underlying native webviews unfortunatley do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), but the Telerik Verified **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among othere features to **iOS and Android**. In general it is best to stick with the base XML HTTP Request implementation when making service calls but this plugin can be useful when you are in a particularly high security situation. You can use it as follows:
 
+First, get the certificate you want to pin. It should be a DER formatted .cer file.  See [cordova-plugin-http](https://github.com/wymsee/cordova-HTTP) docs for details. Next, place the .cer file either:
+1. The res/native/android/assets and res/native/ios folders when using VS (or after installing the cordova-plugin-vs-taco-support plugin for CLIs)
+2. The root of your www folder (a bit less secure).
+
+Now, add the following to your "deviceready" event handler:
+
+```javascript
+cordovaHTTP.enableSSLPinning(true, 
+    function () {  console.log("Cert pinning enabled!"); }, 
+    function () {  console.error("Cert pinning setup failed!"); });
 ```
-Code sample goes here
+
+You can now easily make web service calls the following to make calls that require a pinned certificate:
+
+```javascript
+cordovaHTTP.get("https://mysecuresite.com/", {}, {}, function (response) {
+    console.log(JSON.stringify(response));
+}, function (response) {
+    console.error(JSON.stringify(response));
+});
 ```
+
 
 Finally, avoid self-signed certificates like the plague. They make you vulnerable to these man-in-the-middle attacks and are not supported out-of-box by Cordova. There are plugins that enable this particular feature, but we strongly reccomend against using them if at all possible.
 
-###Resource Access Controls via MDM and MAM
+###Resource Access Controls via MDM
+When building an internal facing app, Mobile Device Management (MDM) and Mobile Application Managment (MAM) solutions like [Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) can help you restrict access to services and network resources by enforcing data access controls for enrolled devices. Features include:
 
-**TODO**
-Intune MDM can force VPN, allowable sites. Some MAM toolkits allow this too.
+- Allowing you to require VPN or secure Wifi access to connect to key services by helping you [manage device profiles](https://technet.microsoft.com/en-us/library/dn997277.aspx)
+- [Blocking apps from running](https://technet.microsoft.com/en-us/library/mt627829.aspx) on rooted or jailbroken devices 
+
+If you have apps that can access particularly sensative internal data, you will want to consider using a solution line [Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) or Airwatch to manage your devices.
+
+Note that the Intune App SDK mentioned previously can also force authentication at an app level even if the app itself does not require authentication as a part of Intune's Mobile Application Managment (MAM) features. This allows administrators to add an additional validation in place before entering an app that may be accessing data.  In addition, products like [Azure Rights Management](https://products.office.com/en-us/business/microsoft-azure-rights-management) and [Adallom](https://www.adallom.com/) particularly when coupled with [Azure AD Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/) can also be used to ensure that only authorized users can access sensative data.  See [Prevent, detect, and remediate security issues](./cordova-security-detect.md) for more details.
 
 ##Additional Security Topics
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)

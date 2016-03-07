@@ -18,6 +18,8 @@ For the most part you should apply the same [best practices to your code as you 
 5. Governance (eg Adallom for custom apps)
 6. AD identity protection
 
+Products like [Azure Rights Management](https://products.office.com/en-us/business/microsoft-azure-rights-management) and [Adallom](https://www.adallom.com/) particularly when coupled with [Azure AD Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/) can also be used to ensure that only authorized users can access sensative data.
+
 ##Quickly Remediate [Not authored yet]
  
 ###CodePush
