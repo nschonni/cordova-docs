@@ -162,11 +162,12 @@ This includes all features contained within the **Windows.Security** and **Windo
 ###SSL and Auth Tokens
 General web best practices apply to Cordova based development including an obvious but sometimes skipped reccomendation: **Always use SSL**. While this seems obvious for calls you make that contained sensative data, it is also important for **any service call that is authenticated** since you will need to pass authentication information like access tokens across in your calls. This is even more important for Cordova since native authentication [bearer tokens](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html) often last longer than web based ones. In addition, libraries like ADAL support "auto-refresh" of these tokens as user expecations are that you typically log in once for a given app when you first start it up and then very infrequantly thereafter and in some cases the authorization information can be sourced from the OS itself for complete single sign on experience across apps. These differences partly come from the fact that the assumption is that you are presisting auth tokens in a secure way when using native API (or via library like ADAL that does it for you) generally not available to the web.
 
-A second related, obvious, but often skipped reccomendation is to authenticate and authorize all calls using a user login driven authentication token rather than user name and password or an app-level token. The challenges with user name and password are obvious as the information must be passed in clear text. App level authentication may be acceptible in low security scenarios, but typically you will not want to rely on this approach as changing the app authentication will require an app update to accomplish. [Azure Key Valult](https://azure.microsoft.com/en-us/services/key-vault/) can help with situations where you must use an app or service level authentication token / secret / certificate by hiding these values behind a service that is itself authenticated. That said, in general it is best to keep these types of service calls behind an app specific service layer rather than having an app call them directly.
+A second related reccomendation is to authenticate and authorize all calls using a user login driven authentication token rather than user name and password or an app-level token. The challenges with user name and password are obvious as the information must be passed in clear text. App level authentication may be acceptible in low security scenarios, but typically you will not want to rely on this approach as changing the app authentication will require an app update to accomplish. [Azure Key Valult](https://azure.microsoft.com/en-us/services/key-vault/) can help with situations where you must use an app or service level authentication token / secret / certificate by hiding these values behind a service that is itself authenticated. That said, in general it is best to keep these types of service calls behind an app specific service layer rather than having an app call them directly.
 
+####Azure App Service
 Mobile Backend as a Service (MBaaS) solutions can help you get up and running quickly with an authenticated service that can resovle the above challenges. [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is specifically designed for this purpose and you can integrate with it easily using the [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) Cordova plugin. See [Azure App Service Auth and Azure Mobile Apps](./cordova-security-auth.md) for information on adding it to your app. 
 
-Note that if you would prefer to use the ADAL plugin (or other supported social auth client) to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
+Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
 
 ```javascript
 var client = WindowsAzure.MobileServicesClient(appUrl);
@@ -181,7 +182,37 @@ client.login("aad", {"access_token": tokenFromADAL})
 
 On the server, you can also create create your own custom .NET, Java, or Node.js based services that use [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/). Even if you opt not to use the Mobile Apps client, you simply need to pass the appropriate auth token into the request header when making a web service call. 
 
-See the **[Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)**, **[Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/)**, and **[Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/)** documentation for additional details. 
+See the [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md), [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), and [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) documentation for additional details. 
+
+#### Calling REST APIs directly
+Even if you are not using Azure Mobile Apps, Cordova's JavaScript based approach makes calling JSON based REST services easy. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the ADAL Cordova plugin as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). Here's a simplified example:
+
+```javascript
+function get10UsersFromADGraph(adTenantId, accessTokenFromADAL, callback) {
+    var req = new XMLHttpRequest();
+    req.open("GET", "https://graph.windows.net/" + adTenantId + "/users?api-version=2013-11-08&$top=10", true);
+    
+    // Pass in the ADAL token in the request 
+    req.setRequestHeader('Authorization', 'Bearer ' + accessTokenFromADAL);
+
+    req.onload = function(e) {
+        if (e.target.status >= 200 && e.target.status < 300) {
+            // Call callback function with resulting JSON from API
+            callback(JSON.parse(e.target.response));
+            return;
+        } else {
+            console.error("Call failed: " + e.target.response);        
+        }    
+    };
+    req.onerror = function(e) {
+        console.error("Call failed: " + e.error);
+    };
+
+    req.send();
+}
+```
+
+This general approach can be reused across Azure services and O365 services. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passsing to down-stream services. 
 
 ###Certificate Pinning
 Another trick used in high secirty situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, offical certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using - typically only one. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
@@ -209,7 +240,6 @@ cordovaHTTP.get("https://mysecuresite.com/", {}, {}, function (response) {
     console.error(JSON.stringify(response));
 });
 ```
-
 
 Finally, avoid self-signed certificates like the plague. They make you vulnerable to these man-in-the-middle attacks and are not supported out-of-box by Cordova. There are plugins that enable this particular feature, but we strongly reccomend against using them if at all possible.
 
