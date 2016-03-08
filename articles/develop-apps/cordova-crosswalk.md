@@ -24,7 +24,7 @@ To use the Crosswalk WebView plugin from Visual Studio, follow these steps:
 
 2. Select **Crosswalk WebView Engine** and click **Add**.
 
-    ![Add Crosswalk Plugin](media/tutorial-cordova-5-readme/cordova-crosswalk.png)
+    ![Add Crosswalk Plugin](media/cordova-crosswalk/cordova-crosswalk.png)
 
 If you are using VS Code or the command line, you can add the plugin to your project as follows:
 
@@ -70,7 +70,7 @@ Next, uf you are using the **Visual Studio Android Emulator** and encounter an *
 
 Finally, if you are using the standard **Google Android Emulator,** and encounter an **app crash** after adding the Crosswalk plugin, be sure to the **Use Host CPU** option is checked for your emulator in the Android AVD Manager.
 
-![Use Host GPU](media/tutorial-cordova-5-readme/cordova-5-1.png)
+![Use Host GPU](media/cordova-crosswalk/use-host-gpu.png)
 
 You may find a menu option to launch the AVD manager in your start menu.  If not, it is installed in your Program Files (x86) folder by default and can be launched using the following command:
 

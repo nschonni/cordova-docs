@@ -9,6 +9,27 @@ Security is a very broad topic that covers a number of different aspects of an a
 
 For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are affored, it is important to limit your risk as much as possible. This document will outline some of the security features that exist in Cordova and related Microsoft products along with some general best practices for improving the overall security of your app beyond what you may typically think about for web apps. 
 
+## Adding plugins mentioned in this article
+A number of the plugins in this article are not in the Visual Studio config.xml designer. You can add these plugins as follows:
+
+1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URi needs to be used. The plugin will be added on next build.
+    ```
+    <plugin name="cordova-sqlite-storage" spec="~0.8.2" />
+    <plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
+    ```
+    ...or for Cordova < 5.1.1...
+    ```
+    <vs:plugin name="cordova-sqlite-storage" version="0.8.2" />
+    <vs:plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
+    ```
+
+2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
+    ```
+    cordova plugin add cordova-sqlite-storage --save
+    cordova plugin add https://github.com/litehelpers/Cordova-sqlcipher-adapter.git --save
+    ```
+
 ##Securing Locally Stored Data
 Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted. Further, features like [Apple's much discussed data protection](https://support.apple.com/en-us/HT202064) features are enabled by simply setting a PIN (which products like Intune can force to happen for your app), and you may have multi-tenet requirements where data separation is required when multiple users access the same device.
 
@@ -75,16 +96,9 @@ function arrayBufferToString(buff) {
 ###Use the Intune App SDK to force encryption
 As mentioned above,[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application managment](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and mobile device management (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. 
 
-The Intune App SDK has multi-tenet encryption and access capabilities that allow you to go beyond OS level data protection and allows you to ensure data separation when multiple users access the same device. For Android and iOS, Intune's MAM features are enabled via an SDK that includes a cordova plugin. To install it, follow these steps:
+The Intune App SDK has multi-tenet encryption and access capabilities that allow you to go beyond OS level data protection and allows you to ensure data separation when multiple users access the same device. For Android and iOS, Intune's MAM features are enabled via an SDK that includes a cordova plugin. 
 
-1. In Visual Studio, simply click "Add" on the **Intune App SDK** plugin in the **config.xml designer.**
-2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
-
-    ```
-    cordova plugin add cordova-plugin-ms-intune
-    ```
-
-**TODO: GET REAL PLUGIN ID**
+Simply add **[cordova-plugin-ms-intune]()** to your project as described above to get started. **TODO: GET REAL PLUGIN ID**
 
 See **[LINK TO DOCUMENTAITON GOES HERE]()** for more details on configuring Intune's MAM capabilities.
 
@@ -115,22 +129,23 @@ In addition to the above base capabilities there are a number of community plugi
 <td align="left">Android, iOS</td>
 </tr>
 <tr>
-<td align="left">File Encryption</td>
-<td align="left"><strong><a href="https://www.npmjs.com/package/cordova-safe">TBD PLUGIN</a></strong></td>
-<td align="left">This plugin provides a streamlined interface for encrypting files using underlying native APIs.</td>
+<td align="left">Encrypted Database</td>
+<td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqllite-storage">cordova-sqlite-storage</a></strong> + Web Crypto</td>
+<td align="left">WebSQL is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a the database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: 
+<ul>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet).</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features and the ability to step into a support contract. You will need to install this version of the plugin using the **Git URL**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-evfree-ext">cordova-sqlite-evfree-ext</a> - cordova-sqlite-evfree with added Windows 8.1 support (no Windows 10 yet). You will need to install this version of the plugin using the **Git URL**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<ul>
+</td>
+<td align="left">Android, iOS, Windows 8.1 (-ext versions)</td>
+</tr>
+<tr>
+<td align="left">Encrypted Database</td>
+<td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a></strong></td>
+<td align="left">An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the **Git URL**: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</td>
 <td align="left">Android, iOS</td>
-</tr>
-<tr>
-<td align="left">Encrypted Database</td>
-<td align="left"><strong><a href="https://github.com/litehelpers/Cordova-sqlcipher-adapter">cordova-sqlite-storage</a></strong> + Web Crypto</td>
-<td align="left">WebSQL is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a the database. This plugin uses the same API to store data in a SQLite database without storage limits among other features.</td>
-<td align="left">Android, iOS, Windows / Phone 8.1, Windows 10 (**??? - no Win 10 today**)</td>
-</tr>
-<tr>
-<td align="left">Encrypted Database</td>
-<td align="left"><strong><a href="https://github.com/litehelpers/Cordova-sqlcipher-adapter">cordova-sqlcyper-adapter</a></strong></td>
-<td align="left">An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database.</td>
-<td align="left">Android, iOS, Windows / Phone 8.1, Windows 10 (**??? - no Win 10 today**)</td>
 </tr>
 </tbody></table>
 
@@ -164,18 +179,18 @@ client.login("aad", {"access_token": tokenFromADAL})
 
 On the server, you can also create create your own custom .NET, Java, or Node.js based services that use [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/). Even if you opt not to use the Mobile Apps client, you simply need to pass the appropriate auth token into the request header when making a web service call. 
 
-See the **[Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/)** and **[Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/)** documentation for additional details. 
+See the **[Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)**, **[Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/)**, and **[Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/)** documentation for additional details. 
 
 ###Certificate Pinning
 Another trick used in high secirty situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, offical certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using - typically only one. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
 
-Cordova and most underlying native webviews unfortunatley do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), but the Telerik Verified **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among othere features to **iOS and Android**. In general it is best to stick with the base XML HTTP Request implementation when making service calls but this plugin can be useful when you are in a particularly high security situation. You can use it as follows:
+Cordova and most underlying native webviews unfortunatley do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), but the Telerik Verified **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among othere features to **iOS and Android**. In general it is best to stick with the base XML HTTP Request implementation when making service calls but this plugin can be useful when you are in a particularly high security situation. 
 
 First, get the certificate you want to pin. It should be a DER formatted .cer file.  See [cordova-plugin-http](https://github.com/wymsee/cordova-HTTP) docs for details. Next, place the .cer file either:
 1. The res/native/android/assets and res/native/ios folders when using VS (or after installing the cordova-plugin-vs-taco-support plugin for CLIs)
 2. The root of your www folder (a bit less secure).
 
-Now, add the following to your "deviceready" event handler:
+Next, add [cordova-plugin-http](https://www.npmjs.com/package/cordova-plugin-http) to your project as described above and add the following to your "deviceready" event handler:
 
 ```javascript
 cordovaHTTP.enableSSLPinning(true, 

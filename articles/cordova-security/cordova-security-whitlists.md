@@ -50,27 +50,12 @@ There is still some variation in behavior by platform for these whitelist featur
 
     > **Note**: if you would prefer to retain the old behavior of the access element for Android and iOS, you can install [cordova-plugin-legacy-whitelist](http://go.microsoft.com/fwlink/?LinkID=617695) though this is intended only to be used for backwards compatibility and new apps should generally move towards using cordova-plugin-whitelist.
 
-### Automatically Adding the Plugin
-A new feature in Cordova 5.0.0+ allows you specify plugins in config.xml that are then automatically added at build time. This capability can be used with any Cordova plugin and is conceptually similar to the Visual Studio specific "vs:plugin" element. We worked with the community to get it added into the core and over time we will discontinue the use of the "vs" prefix but we have left the feature in place for backwards compatibility (as Cordova 4.3.1 does not have this feature). Near term most VS documentation will recommend the use of "vs:plugin" instead.
-
-Cordova 5.0.0+:
-
-```
-<plugin name="cordova-plugin-whitelist" version="1.0.0" />
-```
-
-VS syntax (works with any Cordova version):
-
-```
-<vs:plugin name="cordova-plugin-whitelist" version="1.0.0" />
-```
-
 Both the default Cordova CLI template and Visual Studio's blank template use this feature to install the Whitelist plugin automatically on first build.
 
 ## The W3C Content Security Policy (CSP)
-A topic of frequent conversation for security focused developers on the web is the [W3C Content Security Policy (CSP)](http://go.microsoft.com/fwlink/?LinkID=617696) feature that is available in Chrome, Safari, and Internet Explorer Edge. CSP support is available natively to Cordova apps targeting iOS, Windows 10 and up, and Android 4.4 and up. However, you can get support back to Android 4.0 by using something called the Crosswalk WebView. See [Using Apache Cordova 5](./tutorial-cordova-5-readme.md#crosswalk) for information adding Crosswalk to your project.
+A topic of frequent conversation for security focused developers on the web is the [W3C Content Security Policy (CSP)](http://go.microsoft.com/fwlink/?LinkID=617696) feature that is available in Chrome, Safari, and Internet Explorer Edge. CSP support is available natively to Cordova apps targeting iOS, Windows 10 and up, and Android 4.4 and up. **However, you can get support back to Android 4.0 by using something called the Crosswalk WebView.** See [Improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.
 
-### The CSP in Cordova 5
+### The CSP in Cordova
 CSP support is a native browser capability that allows you to control exactly what content your app can access and at a very granular level. In fact, when using the CSP, you can generally keep the access origin to "*" as you'll be able to more tightly control security using the policy.
 
 A CSP is applied at a page level through a few different mechanisms, but for Cordova apps you typically use a meta tag. Here is the CSP policy on index.html in the default Cordova CLI project template:
@@ -112,8 +97,8 @@ You can find a [great tutorial on using the CSP in detail here](http://go.micros
 
 	This above CSP policy says that content originating from the same domain ('self'), data URIs (data:), Cordova internal APIs (gap:), https://ssl.gstatic.com, and eval statments are allowed, but all others are denied.
 
-## Migrating an Existing Project
-When you upgrade a project to Cordova 5.0.0+ from Cordova 4.3.1 or below in Visual Studio, you will want to take the following steps to ensure your app functions as you would expect.
+## Updating an existing project
+If you don't use a Visual Studio or Cordova base template or when you upgrade a project to Cordova 5.0.0+ from Cordova 4.3.1 or below in Visual Studio, you will want to take the following steps to ensure your app functions as you would expect.
 
 1. Add the whitelist plugin to your project via config.xml:
 
@@ -123,7 +108,7 @@ When you upgrade a project to Cordova 5.0.0+ from Cordova 4.3.1 or below in Visu
 
 	2. Select **Whitelist** and click **Add**.
 
-		![Add Whitelist Plugin](media/cordova-5-security/cordova-5-7.png)
+		![Add Whitelist Plugin](media/cordova-security-whitelist/add-whitelist-plugin.png)
 
 2. Update config.xml with allow-intent or allow-navigation elements as needed:
 
@@ -164,7 +149,7 @@ When you upgrade a project to Cordova 5.0.0+ from Cordova 4.3.1 or below in Visu
 
 	Start with the most locked down security policy you can, and back away as needed. That way you'll ensure you're using the most secure practices you can from the start.
 
-	To reiterate, **CSP support is only available on Android 4.4+ devices or Android 4.0+ when using Crosswalk.** See [Using Apache Cordova 5](./tutorial-cordova-5-readme.md#crosswalk) for information adding Crosswalk to your project.
+	To reiterate, **CSP support is only available on Android 4.4+ devices or Android 4.0+ when using Crosswalk.** See [Improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.    
 
 ## More Information
 * [Read more about Apache Cordova 5](./tutorial-cordova-5-readme.md)

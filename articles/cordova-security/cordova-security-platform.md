@@ -25,19 +25,16 @@ As outlined above, Cordova 5 and the Crosswalk WebView can sigificantly improve 
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
 
     ```
-    cordova plugin add cordova-plugin-crosswalk-webview
+    cordova plugin add cordova-plugin-crosswalk-webview --save
     ```
 
-There are, however, some nuances to using the Crosswalk webveiw given it does slow down build times and requires GPU accelleration in emulators. 
+There are, however, some nuances to using the Crosswalk webveiw given it does slow down build times and requires GPU accelleration in emulators. See **[Improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md)** for setup details and information on the useful **Shared Mode**.
 
 Note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, simply the following config.xml to force the plugin to use version 15 (Right-Click &gt; View Code in VS):
 
 ```
 <preference name="xwalkVersion" value="org.xwalk:xwalk_core_library:15+" />
 ```
-
-
-See **[Using Apache Cordova 5 & 6](./cordova-5-security.md#crosswalk)** for details.
 
 ##Use a strict content security policy
 By default, simply adding a CSP declaration to an HTML page locks it down very tightly. By default, applying a CSP **disables both eval() and inline script** and only allows access to JavaScript and CSS files from the **same origin as the HTML page**. Typically for Cordova apps this means only **local content** and as a result, CDN hosted content typically cannot be referenced.  Breaking these down in terms of risk:
@@ -54,7 +51,7 @@ The default CSP policy in Visual Studio and Cordova templates is a solid startin
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 ```
 
-**See [Cordova 5 Security](./cordova-5-security.md)** for additional details on configuring a CSP policy to meet your needs.
+See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitelist.md)** for additional details on configuring a CSP policy to meet your needs.
 
 ##Manage your whitelists
 When using Cordova 5+, you will need to install a whitelist plugin to enable access to external network resources on Android and iOS. Windows 10 also supports the elements included in this platform. The new whitelist plugin that is pre-installed in new Cordova projects either created from the CLI or Visual Studio actually introduce three separate elements designed to enable more discrete control that was possible in the past.
@@ -77,7 +74,7 @@ This is a relatively safe starting point. To modify this list you can edit confi
 
 In general it is best to trim access down to only those URIs you actually need to use in your app and you will want to exercise great care when broadening access for your app to only include trusted sources.
 
-Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements. **See [Cordova 5 Security](./cordova-5-security.md)** for additional details.
+Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements. See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitelist.md)** for additional details.
 
 ##When in doubt, InAppBrowser
 If you must include content from an external source that you do not have complete and total control over, **use the InAppBrowser plugin** and host the content there. This plugin places content in a separate webview without access to Cordova interfaces and therefore significantly reduces the risk to your app and its data. It's easy to setup and replaces **window.open** with a secure implementaiton.
@@ -110,11 +107,19 @@ See the **[Cordova Windows 10 platform documentation](http://cordova.apache.org/
 
 For Android and iOS, Intune's MAM features are enabled via an SDK that includes a cordova plugin. To install it, follow these steps:
 
-1. In Visual Studio, simply click "Add" on the **Intune App SDK** plugin in the **config.xml designer.**
+1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following to the file. The plugin will be added on next build.
+    ```
+    <plugin name="cordova-plugin-ms-intune" spec="~1.0.0" />
+    ```
+    ...or for Cordova < 5.1.1...
+    ```
+    <vs:plugin name="cordova-plugin-ms-intune" version="1.0.0" />
+    ```
+
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
 
     ```
-    cordova plugin add cordova-plugin-ms-intune
+    cordova plugin add cordova-plugin-ms-intune --save
     ```
 
 **TODO: GET REAL PLUGIN ID**

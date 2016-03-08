@@ -20,7 +20,7 @@ A core first step in accessing all of these great services, however, is authoriz
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
 
     ```
-    cordova plugin add cordova-plugin-ms-azure-mobile-apps
+    cordova plugin add cordova-plugin-ms-azure-mobile-apps --save
     ```
 
 From here you can lock down data or other services you have in Azure using the .NET or Node.js server SDKs. All of the Azure App Service uses Azure Authorization on the server which means you'll be able to quickly connect to custom [App Service "API Apps" as well](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/).
@@ -36,7 +36,7 @@ Adding the plugin is easy.
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
 
     ```
-    cordova plugin add cordova-plugin-ms-adal
+    cordova plugin add cordova-plugin-ms-adal --save
     ```
    
 See the **[Active Directory Quick Start for Cordova](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/)** for additional details on setup. You can also read [this blog post](http://www.cloudidentity.com/blog/2015/04/06/adal-plugin-for-apache-cordova-deep-dive/) on some of the internals and the advantages it provides over other methods.
