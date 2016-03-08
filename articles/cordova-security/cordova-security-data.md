@@ -12,7 +12,7 @@ For the most part you should apply the same [best practices to your code as you 
 ## Adding plugins mentioned in this article
 A number of the plugins in this article are not in the Visual Studio config.xml designer. You can add these plugins as follows:
 
-1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URi needs to be used. The plugin will be added on next build.
+1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URI needs to be used. The plugin will be added on next build.
     ```
     <plugin name="cordova-sqlite-storage" spec="~0.8.2" />
     <plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
@@ -30,7 +30,7 @@ A number of the plugins in this article are not in the Visual Studio config.xml 
     cordova plugin add https://github.com/litehelpers/Cordova-sqlcipher-adapter.git --save
     ```
 
-##Securing Locally Stored Data
+##Secure locally stored data
 Storing data locally is relativley straight forward with Cordova but securing it can be a bit more difficult. Generally using JavaScript based encryption schemes is a bad practice and [not considered secure](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/) and local and file storage are not encrypted. Further, features like [Apple's much discussed data protection](https://support.apple.com/en-us/HT202064) features are enabled by simply setting a PIN (which products like Intune can force to happen for your app), and you may have multi-tenet requirements where data separation is required when multiple users access the same device.
 
 Here are some recccomendations that can thankfully help encrypt sensative data in Cordova apps. 
@@ -39,7 +39,7 @@ Here are some recccomendations that can thankfully help encrypt sensative data i
 The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) has [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. 
 
 #### Crosswalk
-Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. See **[Improving Android browser consistency and features with the Crosswalk WebView](./cordova-crosswalk.md)** for additional details on setup including some important information on **emulator config**. 
+Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. See **[Improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md)** for additional details on setup including some important information on **emulator config**. 
 
 Note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, add this to config.xml (Right-Click &gt; View Code in VS):
 
@@ -125,7 +125,10 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Token / Secret Storage</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-plugin-secure-storage">cordova-plugin-secure-storage</a></strong></td>
-<td align="left">The plugin allows your application to securely store secrets such as auth tokens or encryption keys in native secure key/token stores.</td>
+<td align="left">The plugin allows your application to securely store secrets such as auth tokens or encryption keys in native secure key/token stores.
+
+Note that a side effect of this plugin (which could be good or bad depending on the situation) is it forces users to set a PIN on Android devices since this is required to enable the generation of cryptographic keys.
+</td>
 <td align="left">Android, iOS</td>
 </tr>
 <tr>
@@ -135,8 +138,8 @@ In addition to the above base capabilities there are a number of community plugi
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet).</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features and the ability to step into a support contract. You will need to install this version of the plugin using the **Git URL**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-evfree-ext">cordova-sqlite-evfree-ext</a> - cordova-sqlite-evfree with added Windows 8.1 support (no Windows 10 yet). You will need to install this version of the plugin using the **Git URL**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features and the ability to step into a support contract. You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-evfree-ext">cordova-sqlite-evfree-ext</a> - cordova-sqlite-evfree with added Windows 8.1 support (no Windows 10 yet). You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
 <ul>
 </td>
 <td align="left">Android, iOS, Windows 8.1 (-ext versions)</td>
@@ -144,7 +147,7 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Encrypted Database</td>
 <td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a></strong></td>
-<td align="left">An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the **Git URL**: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</td>
+<td align="left">An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</td>
 <td align="left">Android, iOS</td>
 </tr>
 </tbody></table>
