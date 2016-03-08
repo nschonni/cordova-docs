@@ -81,13 +81,13 @@ crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
 function stringToArrayBuffer(str) {
     var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
     var bufView = new Uint16Array(buf);
-    for (var i=0, strLen=str.length; i &lt; strLen; i++) {
+    for (var i=0, strLen=str.length; i < strLen; i++) {
         bufView[i] = str.charCodeAt(i);
     }
     return buf;
 };
 
-function arrayBufferToString(buff) {
+function arrayBufferToString(buf) {
     return String.fromCharCode.apply(null, new Uint16Array(buf));
 };
 
@@ -125,16 +125,15 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Token / Secret Storage</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-plugin-secure-storage">cordova-plugin-secure-storage</a></strong></td>
-<td align="left">The plugin allows your application to securely store secrets such as auth tokens or encryption keys in native secure key/token stores.
-
-Note that a side effect of this plugin (which could be good or bad depending on the situation) is it forces users to set a PIN on Android devices since this is required to enable the generation of cryptographic keys.
+<td align="left"><p>The plugin allows your application to securely store secrets such as auth tokens or encryption keys in native secure key/token stores.</p>
+<p>Note that a side effect of this plugin (which could be good or bad depending on the situation) is it forces users to set a PIN on Android devices since this is required to enable the generation of cryptographic keys.</p>
 </td>
 <td align="left">Android, iOS</td>
 </tr>
 <tr>
 <td align="left">Encrypted Database</td>
 <td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqllite-storage">cordova-sqlite-storage</a></strong> + Web Crypto</td>
-<td align="left">WebSQL is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a the database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: 
+<td align="left"><p>WebSQL is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a the database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet).</li>
@@ -147,7 +146,7 @@ Note that a side effect of this plugin (which could be good or bad depending on 
 <tr>
 <td align="left">Encrypted Database</td>
 <td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a></strong></td>
-<td align="left">An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</td>
+<td align="left"<p>An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</p></td>
 <td align="left">Android, iOS</td>
 </tr>
 </tbody></table>
