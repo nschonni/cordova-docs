@@ -140,11 +140,11 @@ If you don't use a Visual Studio or Cordova base template or when you upgrade a 
 3. Due to the significant security benefits associated with using a CSP, we strongly recommend taking the Cordova CLI template's CSP metatag and add it to the header of any page the app will navigate to in your app. Note that **you can use add a CSP meta tag to hosted content too.**
 
 	```
-	      <head>
-	       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-	       <link rel="stylesheet" type="text/css" href="css/index.css">
-	       <title>My Super Cool Cordova App</title>
-	      </head>
+    <head>
+       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+       <link rel="stylesheet" type="text/css" href="css/index.css">
+       <title>My Super Cool Cordova App</title>
+    </head>
 	```
 
 	Start with the most locked down security policy you can, and back away as needed. That way you'll ensure you're using the most secure practices you can from the start.
