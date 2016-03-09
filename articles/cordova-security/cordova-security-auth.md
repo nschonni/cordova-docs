@@ -21,7 +21,7 @@ A core first step in accessing all of these great services, however, is authoriz
     cordova plugin add cordova-plugin-ms-azure-mobile-apps --save
     ```
 
-From here you can lock down data or other services you have in Azure using the .NET or Node.js server SDKs. All of the Azure App Service uses Azure Authorization on the server which means you'll be able to quickly connect to custom [App Service "API Apps" as well](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/).
+ As its name implies, Azure App Service has built-in support for using Azure App Service Auth on the server which means you'll be able to quickly connect to custom [App Service "API Apps" as well](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/). You can lock down data or other services you have in Azure using the .NET or Node.js server SDKs.
 
 See the **[Azure Mobile Apps authentication documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)** and [Secure and encrypt your Cordova app data at rest and over the wire](./cordova-security-data.md) for additional details on token passing.
 
