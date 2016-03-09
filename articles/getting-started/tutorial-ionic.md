@@ -28,15 +28,13 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
     * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".  
     * Choose **Windows-x86**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
 
-2. Install the Ionic templates straight to your machine by downloading and clicking on the [VS Extension for Ionic](https://visualstudiogallery.msdn.microsoft.com/4e44ba8b-a4c8-4106-b70e-00d63241a54a). 
+2. Install the Ionic templates straight to your machine by downloading and clicking on the [VS Extension for Ionic](https://visualstudiogallery.msdn.microsoft.com/4e44ba8b-a4c8-4106-b70e-00d63241a54a). Or, do it in Visual Studio, by selecting **File**, **New**, then **Project**. In the New Project dialog box, select **Online**.
 
-Or, do it in Visual Studio, by selecting **File**, **New**, then **Project**. In the New Project dialog box, select **Online**.
-
-In the search box, type **Ionic**.
+    In the search box, type **Ionic**.
 
     ![Getting the templates](media/tutorial-ionic/ionic-online-templates.png)
 
-Type any name and choose **OK** to install them.
+    Type any name and choose **OK** to install them.
 
     When you are asked for permission to install the templates, give your permission.
 
@@ -44,7 +42,7 @@ Type any name and choose **OK** to install them.
 
     ![Choosing a template](media/tutorial-ionic/ionic-installed-templates.png)
     
-Choose one of the following starter templates for your new project:
+    Choose one of the following starter templates for your new project:
 
     * Ionic Blank App
     * Ionic SideMenu Template
