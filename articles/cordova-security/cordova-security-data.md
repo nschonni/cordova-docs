@@ -212,7 +212,7 @@ function get10UsersFromADGraph(adTenantId, accessTokenFromADAL, callback) {
 }
 ```
 
-This general approach can be reused across Azure services and O365 services. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passsing to down-stream services. 
+This general approach can be reused across Azure services and O365 services. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) service documentation for additional details on token passsing to down-stream services. 
 
 ###Certificate Pinning
 Another trick used in high secirty situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, offical certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using - typically only one. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
