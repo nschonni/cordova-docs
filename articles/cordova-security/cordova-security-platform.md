@@ -124,7 +124,7 @@ For Android and iOS, Intune's MAM features are enabled via an SDK that includes 
 
 **TODO: GET REAL PLUGIN ID**
 
-See **[LINK TO DOCUMENTAITON GOES HERE]()** for more details on configuring Intune's MAM capabilities.
+See **[Getting Started With the Microsoft Intune App SDK](https://msdn.microsoft.com/en-us/library/mt627766.aspx)** for more details on configuring Intune's MAM capabilities.
 
 ##Additional Security Topics
 - [Secure and encrypt your Cordova app data at rest and over the wire](./cordova-security-data.md)

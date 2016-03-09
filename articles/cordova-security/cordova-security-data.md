@@ -100,7 +100,7 @@ The Intune App SDK has multi-tenet encryption and access capabilities that allow
 
 Simply add **[cordova-plugin-ms-intune]()** to your project as described above to get started. **TODO: GET REAL PLUGIN ID**
 
-See **[LINK TO DOCUMENTAITON GOES HERE]()** for more details on configuring Intune's MAM capabilities.
+See **[Getting Started With the Microsoft Intune App SDK](https://msdn.microsoft.com/en-us/library/mt627766.aspx)** for more details on configuring Intune's MAM capabilities.
 
 ###Consider community plugins
 In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits.
@@ -135,10 +135,9 @@ In addition to the above base capabilities there are a number of community plugi
 <td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqllite-storage">cordova-sqlite-storage</a></strong> + Web Crypto</td>
 <td align="left"><p>WebSQL is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a the database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet).</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features and the ability to step into a support contract. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-evfree-ext">cordova-sqlite-evfree-ext</a> - cordova-sqlite-evfree with added Windows 8.1 support (no Windows 10 yet). You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet). MIT licensed.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
 <ul>
 </td>
 <td align="left">Android, iOS, Windows 8.1 (-ext versions)</td>
@@ -220,7 +219,7 @@ Another trick used in high secirty situations is something called [certificate p
 Cordova and most underlying native webviews unfortunatley do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), but the Telerik Verified **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among othere features to **iOS and Android**. In general it is best to stick with the base XML HTTP Request implementation when making service calls but this plugin can be useful when you are in a particularly high security situation. 
 
 First, get the certificate you want to pin. It should be a DER formatted .cer file.  See [cordova-plugin-http](https://github.com/wymsee/cordova-HTTP) docs for details. Next, place the .cer file either:
-1. The res/native/android/assets and res/native/ios folders when using VS (or after installing the cordova-plugin-vs-taco-support plugin for CLIs)
+1. The res/native/android/assets and res/native/ios folders when using VS (or after adding cordova-plugin-vs-taco-support to your project for CLIs)
 2. The root of your www folder (a bit less secure).
 
 Next, add [cordova-plugin-http](https://www.npmjs.com/package/cordova-plugin-http) to your project as described above and add the following to your "deviceready" event handler:

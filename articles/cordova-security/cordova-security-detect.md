@@ -4,10 +4,8 @@
   documentationCenter=""
   authors="clantz" />
 
-# Prevent, detect, and remediate security issues using Intune, Active Directory, Code Push, and Azure
-Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions. Like the web, Cordova is a very open platform and as a result it does not force you down a specific path that will always garuntee a secure app. 
-
-This document will outline some additional tips on ways to detect, prevent, and quickly remediate security issues when they are found. 
+# Prevent, detect, and remediate security issues using Intune, Active Directory, Code Push, and Azure [Incomplete]
+Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions and even the most carefully crafted app can have unexpected security gaps. With that in mind, this document will outline some addition products that can help you detect, prevent, and quickly remediate security issues when they are found. 
 
 ## Prevent and Detect Issues
 Preventing security issues really comes down to following guidence to reduce risk and using tools that help you identify problems before your app has even shipped. For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki) along with taking advantage of [Cordova platform security features](./cordova-security-platform.md), properly [authorizing your users](./cordova-security-auth.md), and taking steps to secure [data you store locally or send to or from services](./cordova-security-data.md). 
@@ -21,17 +19,29 @@ JavaScript code typically makes up the bulk of your app's code and JSHint/JSLint
 
 C#, Objective-C, Java, and C++ code will normally be in plugins or the Cordova implementations for platforms like Android and iOS. You can get the most complete coverage of this type of code and then running a build for the platform in question. A fully formed project is present in the "platforms" folder in the project (ex: platforms/android).
 
-###Detecting Problems
+###Device Compliance, Malware, and Jailbreak Detection witn Intune
+When building an internal facing app, Mobile Device Management (MDM) and Mobile Application Managment (MAM) solutions like [Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) can detect Malware on Android and report jailbroken or rooted devices for iOS and Android. Intune's MAM capabilities can also be used stand alone and complement an existing MDM solution.
 
-2. Intune for MAM/MDM
-3. Server side threat detection - Azure products like Trend Micro Azure Deep Security
-4. Threat detection (Eg Adallom for custom apps, Lookout technologies)
-5. Governance (eg Adallom for custom apps)
-6. AD identity protection
+See the following articles for additional information:
+- [Manage device compliance policies for Microsoft Intune](https://technet.microsoft.com/en-us/library/dn705843.aspx)
+- [Create and deploy mobile app management policies with Microsoft Intune](https://technet.microsoft.com/en-us/library/mt627829.aspx)
+- [Overview of the Microsoft Intune App SDK](https://msdn.microsoft.com/en-us/library/mt627767.aspx)
 
-Products like [Azure Rights Management](https://products.office.com/en-us/business/microsoft-azure-rights-management) and [Adallom](https://www.adallom.com/) particularly when coupled with [Azure AD Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/) can also be used to ensure that only authorized users can access sensative data.
+###Threat Detection
+Even the most careful implementaiton can still have vulnerabilities so another aspect of security is detecting problems. In addition to the features Intune provides, Microsoft has a number of additional products that can help out in this space:
 
-##Quickly Remediate [Not authored yet]
+**[Azure Active Directory Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/)** is an extremely useful service that can help detect anamolous activity against user accounts. When combined with an authentication solution that supports Azure AD like Azure Mobile Apps or the ADAL Cordova plugin and passing the authentication token to any service calls you make for verification on the server side, you will gain insight into potential brute force or compromised logins attacks.
+
+See [Azure Active Directory Identity Protection documentaiton](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/) along with the articles on [authenticating users](./cordova-security-auth.md) and [securing data at rest and over the wire](./cordova-security-data.md) for additional information.
+
+**[Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/)** build's on top of Azure's world class certificatiosn and enables some powerful security features for your Virtual Machines and SQL databases including full support for auditing SQL servers, threat detection, transparent data encryption, and monitoring and notification about reccomented updates.   
+
+**[Microsoft Advanced Threat Analytics](https://www.microsoft.com/en-us/server-cloud/products/advanced-threat-analytics/)** WORDS
+
+**[Adallom](http://www.adallom.com)** WORDS
+
+##Quickly Remediate
+When you do identify a threat or security issue in an app that has been released, fixing it quickly can be critical particularly if you need to adhere to strict compliance rules in a regulated industry. 
  
 ###CodePush
 Out of band updates via Code Push mean faster remediation of security flaws when found - no 10 day turnaround for iOS.
