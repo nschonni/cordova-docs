@@ -137,8 +137,8 @@ In addition to the above base capabilities there are a number of community plugi
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet).</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features and the ability to step into a support contract. You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-evfree-ext">cordova-sqlite-evfree-ext</a> - cordova-sqlite-evfree with added Windows 8.1 support (no Windows 10 yet). You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features and the ability to step into a support contract. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-evfree-ext">cordova-sqlite-evfree-ext</a> - cordova-sqlite-evfree with added Windows 8.1 support (no Windows 10 yet). You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
 <ul>
 </td>
 <td align="left">Android, iOS, Windows 8.1 (-ext versions)</td>
@@ -146,7 +146,7 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Encrypted Database</td>
 <td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a></strong></td>
-<td align="left"<p>An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the **Git URI**: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</p></td>
+<td align="left"<p>An in-development enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</p></td>
 <td align="left">Android, iOS</td>
 </tr>
 </tbody></table>
@@ -160,11 +160,11 @@ This includes all features contained within the **Windows.Security** and **Windo
  
 ##Secure data over the wire
 ###SSL and Auth Tokens
-General web best practices apply to Cordova based development including an obvious but sometimes skipped reccomendation: **Always use SSL**. While this seems obvious for calls you make that contained sensative data, it is also important for **any service call that is authenticated** since you will need to pass authentication information like access tokens across in your calls. This is even more important for Cordova since native authentication [bearer tokens](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html) often last longer than web based ones. In addition, libraries like ADAL support "auto-refresh" of these tokens as user expecations are that you typically log in once for a given app when you first start it up and then very infrequantly thereafter and in some cases the authorization information can be sourced from the OS itself for complete single sign on experience across apps. These differences partly come from the fact that the assumption is that you are presisting auth tokens in a secure way when using native API (or via library like ADAL that does it for you) generally not available to the web.
+General web best practices apply to Cordova based development including an obvious but sometimes skipped reccomendation: **Always use SSL**. While this seems obvious for calls you make that contained sensative data, it is also important for **any service call that is authenticated** since you will need to pass authentication information like access tokens across in your calls. This is even more important for Cordova since native client authentication [bearer tokens](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html) often last longer than web based ones. The core assumption is that you are presisting these auth tokens in a secure way when using native API (or via library like ADAL that does it for you) generally not available to the web.
 
 A second related reccomendation is to authenticate and authorize all calls using a user login driven authentication token rather than user name and password or an app-level token. The challenges with user name and password are obvious as the information must be passed in clear text. App level authentication may be acceptible in low security scenarios, but typically you will not want to rely on this approach as changing the app authentication will require an app update to accomplish. [Azure Key Valult](https://azure.microsoft.com/en-us/services/key-vault/) can help with situations where you must use an app or service level authentication token / secret / certificate by hiding these values behind a service that is itself authenticated. That said, in general it is best to keep these types of service calls behind an app specific service layer rather than having an app call them directly.
 
-####Azure App Service
+#### Use Azure Azure App Service to streamline serivce auth
 Mobile Backend as a Service (MBaaS) solutions can help you get up and running quickly with an authenticated service that can resovle the above challenges. [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is specifically designed for this purpose and you can integrate with it easily using the [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) Cordova plugin. See [Azure App Service Auth and Azure Mobile Apps](./cordova-security-auth.md) for information on adding it to your app. 
 
 Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
@@ -184,7 +184,7 @@ On the server, you can also create create your own custom .NET, Java, or Node.js
 
 See the [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md), [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), and [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) documentation for additional details. 
 
-#### Calling REST APIs directly
+#### Pass auth tokens when using REST APIs directly
 Even if you are not using Azure Mobile Apps, Cordova's JavaScript based approach makes calling JSON based REST services easy. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the ADAL Cordova plugin as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). Here's a simplified example:
 
 ```javascript
