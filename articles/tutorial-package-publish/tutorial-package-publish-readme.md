@@ -153,7 +153,7 @@ You can also find it in the ```taco.json``` file at the root of your project.
              "storePassword":"pwd123",
              "alias":"johnS",
              "password":"pwd123",
-             "keystoreType":"",
+             "keystoreType":""
            }
        }
     }
