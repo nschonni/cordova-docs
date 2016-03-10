@@ -41,9 +41,9 @@ See the **[Active Directory Quick Start for Cordova](https://azure.microsoft.com
 
 While the quick start uses Azure AD, the plugin also works with ADFS v3 and up by simply changing the authority and redirect URIs to the appropriate ones for your ADFS installation.
 
-The Azure Active Directory Quick Start also code that demonstrates calling the [Azure AD Graph REST API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) directly using an AD token from the plugin. This approach can be reused across Azure services and O365 services. See [Secure and encrypt your Cordova app data at rest and over the wire](./cordova-security-data.md) along with documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passsing to down-stream services. 
+The quick start also has code that demonstrates calling the [Azure AD Graph REST API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) directly using an AD token from the plugin. This approach can be reused across Azure services and O365 services. See the article on [securing and encrypting app data at rest and over the wire](./cordova-security-data.md) along with documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passsing to down-stream services.
 
-Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client above for interacting with the server.
+Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client mentioned above for interacting with services where you have enabled Azure AD.
 
 ```javascript
 var client = WindowsAzure.MobileServicesClient(appUrl);
