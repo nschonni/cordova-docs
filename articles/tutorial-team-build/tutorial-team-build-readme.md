@@ -8,7 +8,17 @@
 With the release of Visual Studio 2015, you now have a number of options for how you can integrate Cordova apps with your favorite team / continuous integration (CI) server thanks to the fact that projects created in Visual Studio are standard [Apache Cordova Command Line Interface](http://go.microsoft.com/fwlink/?LinkID=533773) (CLI) projects.
 
 ##Visual Studio Team Services and Team Foundation Services 2015 Quick Start
-Visual Studio Team Services (formerly Visual Studio Online) and Team Foundation Services (TFS) 2015 can take advantage of a pre-built Cordova tasks that add additional features to streamline setup like managaging certificates for iOS! Simply install the **[Visual Studio Team Services Extension for Cordova](http://go.microsoft.com/fwlink/?LinkID=691188)** and add a Cordova Build task to your build definition. See the quick start on the [extension](http://go.microsoft.com/fwlink/?LinkID=691188) page along with the detailed [Build Apache Cordova apps with Visual Studio Team Services or Team Foundation Services 2015](http://go.microsoft.com/fwlink/?LinkID=691186) tutorial.
+Visual Studio Team Services (formerly Visual Studio Online) and Team Foundation Services (TFS) 2015 can take advantage of a pre-built Cordova tasks that add additional features to streamline setup like managaging certificates for iOS! Simply install the **[Visual Studio Team Services Extension for Cordova](http://go.microsoft.com/fwlink/?LinkID=691188)** and add a Cordova Build task to your build definition. 
+
+<table style="width: 100%; border-style: none;"><tr>
+<td style="width: 140px; text-align: center;"><img src="https://raw.githubusercontent.com/Microsoft/vsts-cordova-tasks/master/docs/media/misc/cordova_logo_white_purple.png" /></td>
+<td><strong>Visual Studio Team Services Extension for Cordova</strong><br />
+<i>Streamline CI setup for your Apache Cordova, PhoneGap, Ionic, or Cordova CLI compatible app using a set of useful pre-defined build steps.</i><br />
+<a href="http://go.microsoft.com/fwlink/?LinkID=691188">Install now!</a>
+</td>
+</tr></table>
+
+See the quick start on the [extension](http://go.microsoft.com/fwlink/?LinkID=691188) page along with the detailed [Build Apache Cordova apps with Visual Studio Team Services or Team Foundation Services 2015](http://go.microsoft.com/fwlink/?LinkID=691186) tutorial.
 
 ##Gulp Build Quick Start
 If you would prefer not to use the extension or are not using VS Team Services or TFS, you can get your project running in nearly any CI system quickly using the [taco-team-build node module](http://go.microsoft.com/fwlink/?LinkID=533736) and Gulp. Note that the method described here can be used with Jenkins, as an alternative for VS Team Services or TFS 2015, and others but will **not** work with TFS 2013. See [Tutorials on Specific CI Systems](#ci) for details.

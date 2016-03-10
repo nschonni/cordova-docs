@@ -2,7 +2,7 @@
   description="Use the Visual Studio Tools for Apache Cordova with the Jenkins CI system"
   services=""
   documentationCenter=""
-  authors="Chuxel" />
+  authors="clantz" />
   <tags
      ms.service="na"
      ms.devlang="javascript"

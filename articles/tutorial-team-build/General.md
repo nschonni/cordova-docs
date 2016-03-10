@@ -2,7 +2,7 @@
   description="Comprehensive guide to Continuous Integration with Cordova apps"
   services=""
   documentationCenter=""
-  authors="Chuxel" />
+  authors="clantz" />
   <tags
      ms.service="na"
      ms.devlang="javascript"
