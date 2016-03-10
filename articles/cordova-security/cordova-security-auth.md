@@ -52,6 +52,7 @@ client.login("aad", {"access_token": tokenFromADAL})
     .then(function () {
         // Do something with the client!
      }, handleError);
+```
 
 ##JavaScript & 3rd Party Options
 If neither of the above options meet your needs, there are a number of 3rd party solutions that may be of use. First note that many Single Sign-On (SSO) solutions including [Auth0](https://auth0.com/) actually provide Cordova plugins or explictly support Cordova in their JavaScript client libraries. If you already have a SSO provider, be sure to check with them to see what best practices they provide for Cordova apps.
