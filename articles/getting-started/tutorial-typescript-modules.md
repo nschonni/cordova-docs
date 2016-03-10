@@ -4,10 +4,10 @@
   documentationCenter=""
   authors="jmatthiesen" />
 
-# Structure your TypeScript app
+# Get started with TypeScript modules
 [TypeScript](http://www.typescriptlang.org) is a programming language that is a superset of JavaScript - offering classes, modules, and interfaces. You can use these features while developing your Cordova app and TypeScript will compile into simple JavaScript that will be deployed as part of your app.
 
-When you begin to work on a Cordova app with TypeScript, one of the first decisions to make is how to structure your app. For all but the simplest apps, you will want to use external modules. TypeScript also supports *internal* modules (now called namespaces), but now that many different tools provide TypeScript support, internal modules are becoming obsolete.
+When you begin to work on a Cordova app with TypeScript, one of the first decisions to make is how to structure your app. For most apps, you will want to use external modules. TypeScript also supports *internal* modules (now called namespaces), but now that many different tools provide TypeScript support, internal modules are becoming obsolete.
 
 When you use external modules, you also need to use a module loader. CommonJs and AMD are two of the main specifications for module loaders. CommonJs is EcmaScript 6 compliant. In a Cordova app that uses CommonJs, you also need a bundling tool like Browserify or Webpack. Browserify and Webpack make it possible to use CommonJs in a client-side browser-based scenario (like Cordova). We will provide you with an example using Browserify.
 
@@ -124,6 +124,6 @@ Here are a few issues you may see when working on your own app.
 
 ###<a name="breakpoints"></a>Can't hit breakpoints in your .ts files
 
-Most likely, this is caused by a problem in your sourceMaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps. If you are using Gulp, check the Gulp sample in this article to make sure that sourceMap-related properties are set correctly. Make sure that properties like **extensions**, **loadMaps** and **sourceRoot** are using the specified values. 
+Most likely, this is caused by a problem in your sourceMaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps. If you are using Gulp, check the Gulp sample in this article to make sure that sourceMap-related properties are set correctly. Make sure that properties like **extensions**, **loadMaps** and **sourceRoot** are using the specified values.
 
 ![SourceMaps](media/tutorial-typescript-modules/ts-vs-task-runner.png)
