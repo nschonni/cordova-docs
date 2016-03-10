@@ -15,12 +15,12 @@ The new [Cordova Whitelist plugin (cordova-plugin-whitelist)](http://go.microsof
 <access origin="*" />
 ```
 
-The problem with this model is you might want to be able to make an XHR to a service like Azure Mobile Services without actually allowing your app to navigate to an Azure web page in the same domain. The reason this is a concern is that this remote web page is then given access to all Cordova and plugin APIs. Further, for Android, the access element has been overloaded to control "intents" in the wake of a discovered [security issue in Cordova 3.5.0 and below](http://go.microsoft.com/fwlink/?LinkID=617669) which has led to a syntax that strayed away from the original [W3C Widget spec](http://go.microsoft.com/fwlink/?LinkID=617670) that config.xml's structure is based on. Some restructuring and improvements were therefore appropriate for the Cordova 5.0.0 release.
+The problem with this model is you might want to be able to make an XHR to a service like Azure Mobile Apps without actually allowing your app to navigate to an Azure web page in the same domain. The reason this is a concern is that this remote web page is then given access to all Cordova and plugin APIs. Further, for Android, the access element has been overloaded to control "intents" in the wake of a discovered [security issue in Cordova 3.5.0 and below](http://go.microsoft.com/fwlink/?LinkID=617669) which has led to a syntax that strayed away from the original [W3C Widget spec](http://go.microsoft.com/fwlink/?LinkID=617670) that config.xml's structure is based on. Some restructuring and improvements were therefore appropriate for the Cordova 5.0.0 release.
 
 ### cordova-plugin-whitelist
 As a result, the new whitelist plugin actually introduces three separate elements designed to enable more discrete control. The **access** element returns but only controls where your app can make XHR requests or access other external content from a web page for Android and iOS. It no longer controls whether you can navigate to a different domain. A new **allow-navigation** element has been added that then enables you to specify where the app can navigate instead. Finally, a new **allow-intent** element has been introduced specifically designed to control Android intents.
 
-The base [Cordova CLI](http://aka.ms/cordova-cli) template (via the cordova create command) has a config.xml file in it that is designed to allow the app to make external requests anywhere, allows a specific subset of intents, and prevents the WebView in the Cordova app to navigate anywhere other than local content.
+The base Visual Studio and [Cordova CLI](http://aka.ms/cordova-cli) template (via the cordova create command) has a config.xml file in it that is designed to allow the app to make external requests anywhere, allows a specific subset of intents, and prevents the WebView in the Cordova app to navigate anywhere other than local content.
 
 ```
 <access origin="*" />
@@ -38,22 +38,20 @@ If we wanted to add the ability for the root WebView to navigate to www.microsof
 <allow-navigation href="http://www.microsoft.com" />
 ```
 
-> **Note**: If you simply wanted to display www.microsoft.com without giving it access to Cordova or plugin APIs, you can use the **[InAppBrowser plugin](http://go.microsoft.com/fwlink/?LinkID=617694)** without adding the allow-navigation element to your config.xml file.
+> **Note**: If you simply wanted to display www.microsoft.com without giving it access to Cordova or plugin APIs, you can use the **[InAppBrowser plugin](http://go.microsoft.com/fwlink/?LinkID=617694)** without adding the allow-navigation element to your config.xml file. InAppBrowser allows navigation to any URI and a small subset of intents. It is intended for use in situations where you want to include content from an untrusted source.
 
 There is still some variation in behavior by platform for these whitelist features based on the concerns and capabilities of the underlying native technology.
 
 1. **Android** supports the use of access, allow-navigation, and allow-intent. Intents are an Android specific concept.
-2. **iOS** supports the use of access and allow-navigation.
+2. **iOS** supports the use of access and allow-navigation. As of 6.0.0 (Cordova iOS 4.0.0) it is built into the iOS platform so a plugin is not required. 
 3. **Windows 10** via the Windows platform supports the allow-navigation element exactly like iOS and Android. The access element is also supported but behaves a bit differently in that navigation is allowed to these URIs but Cordova and plugin APIs are disabled thereby reducing risk. In Windows 10, XHR, CSS, and image access rules are intended to be controlled by a Content Security Policy (CSP) via connect-src rather than specific whitelists. We'll cover more details on how to use CSPs later in this document.
 4. **Windows 8.0, 8.1, and Windows Phone 8.1** via the Windows platform does not support navigating to external URIs outside of the InAppBrowser plugin due to fundamental platform limitations. XHR calls are always allowed to any domain.
 5. The **Windows Phone 8 (WP8)** platform still uses the old definition of the access element and does not support allow-navigation or allow-intent.
 
-    > **Note**: if you would prefer to retain the old behavior of the access element for Android and iOS, you can install [cordova-plugin-legacy-whitelist](http://go.microsoft.com/fwlink/?LinkID=617695) though this is intended only to be used for backwards compatibility and new apps should generally move towards using cordova-plugin-whitelist.
-
 Both the default Cordova CLI template and Visual Studio's blank template use this feature to install the Whitelist plugin automatically on first build.
 
 ## The W3C Content Security Policy (CSP)
-A topic of frequent conversation for security focused developers on the web is the [W3C Content Security Policy (CSP)](http://go.microsoft.com/fwlink/?LinkID=617696) feature that is available in Chrome, Safari, and Internet Explorer Edge. CSP support is available natively to Cordova apps targeting iOS, Windows 10 and up, and Android 4.4 and up. **However, you can get support back to Android 4.0 by using something called the Crosswalk WebView.** See [Improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.
+A topic of frequent conversation for security focused developers on the web is the [W3C Content Security Policy (CSP)](http://go.microsoft.com/fwlink/?LinkID=617696) feature that is available in Chrome, Safari, and Internet Explorer Edge. CSP support is available natively to Cordova apps targeting iOS, Windows 10 and up, and Android 4.4 and up. **However, you can get support back to Android 4.0 by using something called the Crosswalk WebView.** See [improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.
 
 ### The CSP in Cordova
 CSP support is a native browser capability that allows you to control exactly what content your app can access and at a very granular level. In fact, when using the CSP, you can generally keep the access origin to "*" as you'll be able to more tightly control security using the policy.
@@ -149,9 +147,4 @@ If you don't use a Visual Studio or Cordova base template or when you upgrade a 
 
 	Start with the most locked down security policy you can, and back away as needed. That way you'll ensure you're using the most secure practices you can from the start.
 
-	To reiterate, **CSP support is only available on Android 4.4+ devices or Android 4.0+ when using Crosswalk.** See [Improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.    
-
-## More Information
-* [Read more about Apache Cordova 5](./tutorial-cordova-5-readme.md)
-* [Read tutorials and learn about tips, tricks, and known issues](./cordova-docs-readme.md)
-* [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
+    > **Note:** To reiterate, **CSP support is only available on Android 4.4+ devices or Android 4.0+ when using Crosswalk.** See [improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.    
