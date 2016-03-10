@@ -39,16 +39,16 @@ The next time you build, your app will be running in the Crosswalk WebView. Note
 Usually you won't need to do any additional configuration when using the Crosswalk webview but the plugin supports a number of different configurable options.  Below are a few of interest, but see the [Cordova Crosswalk WebView Engine plugin documentation](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview/) for additional details and options.
 
 ### Shared Mode
-By default the Crosswalk WebView plugin embeds the webview into your app.  However, one option to consider when using the Crosswalk WebView is what is called [Shared Mode](https://crosswalk-project.org/documentation/shared_mode.html). Shared Mode instead downloads a copy of the Crosswalk WebView on inital startup if it is not already on the device. This method reduces the size of the resulting app by around 20-40MB and Crosswalk is then updated independant of your app. This also sigificantly speeds up build times which is very useful during development. There are some down-sides with this approach as outlined in the [Crosswalk documentation](https://crosswalk-project.org/documentation/shared_mode.html), but you can switch to Shared Mode by adding the following to config.xml (Right-Click > View Code in VS):
+By default the Crosswalk WebView plugin embeds the webview into your app.  However, one option to consider when using the Crosswalk WebView is what is called [Shared Mode](https://crosswalk-project.org/documentation/shared_mode.html). Shared Mode instead downloads a copy of the Crosswalk WebView on initial startup if it is not already on the device. This method reduces the size of the resulting app by around 20-40MB and Crosswalk is then updated independent of your app. This also significantly speeds up build times which is very useful during development. There are some down-sides with this approach as outlined in the [Crosswalk documentation](https://crosswalk-project.org/documentation/shared_mode.html), but you can switch to Shared Mode by adding the following to config.xml (Right-Click > View Code in VS):
 
 ```
 <preference name="xwalkMode" value="shared" />
 ```
 
-Note that shared mode **requires that the device have access access to the Google Play store** and as a result will not work with the VS emulator or base Google Emulator images.
+Note that shared mode **requires that the device have access to the Google Play store** and as a result will not work with the VS emulator or base Google Emulator images.
 
 ### Multi-APK Mode
-An enhancment the Crosswalk plugin has is something called "multi-apk mode" where a separate x86 and ARM versions of your app are generated to keep the size of the app smaller when running in embedded mode. This is not needed in Shared Mode and complicates the store submission process but fortunatley you can disable it by adding the following to config.xml (Right-Click > View Code in VS):
+An enhancement the Crosswalk plugin has is something called "multi-apk mode" where a separate x86 and ARM versions of your app are generated to keep the size of the app smaller when running in embedded mode. This is not needed in Shared Mode and complicates the store submission process but fortunately you can disable it by adding the following to config.xml (Right-Click > View Code in VS):
 
 ```
 <preference name="xwalkMultipleApk" value="false" />
@@ -63,7 +63,7 @@ Crosswalk version 15 is known to work well and you can force this version to be 
 <preference name="xwalkVersion" value="org.xwalk:xwalk_core_library:15+" />
 ```
 
-Note that this prefernce **disables Shared Mode.** Only set it if the one that the plugin defaults to is not working for you.
+Note that this preference **disables Shared Mode.** Only set it if the one that the plugin defaults to is not working for you.
 
 ### Optional: Java Heap Size
 If you encounter a **Could not create the Java Virtual Machine** error, add the following environment variable to your system and restart VS to bump up Java's heap memory to at least 512M:

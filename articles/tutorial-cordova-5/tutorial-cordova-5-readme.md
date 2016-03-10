@@ -302,8 +302,3 @@ Simply updating to Cordova 5.0.0+ will automatically cause Gradle to be used fro
 		... replacing the Cordova version and plugin name for those that apply to your situation. You can also specify a fully qualified Git URI or filesystem path in place of the plugin name.
 
 	2. If you're able to reproduce the problem, you might want to contact the plugin author and let them know about the it. Before doing so, be sure to check for existing open issues as more than likely there's already one on the plugin author's GitHub site that you can use to provide additional information. Mention that you encountered issues when using Tools for Apache Cordova but include the Cordova CLI repro for the plugin author's benefit. See the [tips and workarounds](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md#plugin-troubleshoot) section of our docs for additional troubleshooting tips.
-
-## More Information
-* [Learn about security features in Apache Cordova 5](./cordova-5-security.md)
-* [Read tutorials and learn about tips, tricks, and known issues](../cordova-docs-readme.md)
-* [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
