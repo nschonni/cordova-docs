@@ -7,11 +7,51 @@
 # Get started with TypeScript modules
 [TypeScript](http://www.typescriptlang.org) is a programming language that is a superset of JavaScript - offering classes, modules, and interfaces. You can use these features while developing your Cordova app and TypeScript will compile into simple JavaScript that will be deployed as part of your app.
 
-When you begin to work on a Cordova app with TypeScript, one of the first decisions to make is how to structure your app. For most apps, you will want to use external modules. TypeScript also supports *internal* modules (now called namespaces), but now that many different tools provide TypeScript support, internal modules are becoming obsolete.
+When you begin to work on a Cordova app with TypeScript, one of the first decisions to make is how to structure your app. For most apps, you will want to use modules as a way to organize your app components and gain benefits such as easier maintenance. TypeScript supports both *internal* and *external* modules. Internal modules (now called namespaces) are not used as much now that so many tools provide TypeScript support. We recommend using external modules, which are EcmaScript 6 compliant. For more info, see the [module section](http://www.typescriptlang.org/Handbook#modules) in the TypeScript Handbook.
 
-When you use external modules, you also need to use a module loader. CommonJs and AMD are two of the main specifications for module loaders. CommonJs is EcmaScript 6 compliant. In a Cordova app that uses CommonJs, you also need a bundling tool like Browserify or Webpack. Browserify and Webpack make it possible to use CommonJs in a client-side browser-based scenario (like Cordova). We will provide you with an example using Browserify.
+When you use external modules, you also need to use a module loader. CommonJs and AMD are two of the main specifications for module loaders (there are others, too, like UMD). In a Cordova app that uses CommonJs, you also need a bundling tool like Browserify or Webpack. A bundling tool packages your source code in a single output JavaScript file that can be referenced from your HTML. Browserify and Webpack make it possible to use CommonJs in a client-side browser-based scenario (like Cordova). We will provide you with an example using Browserify. Here is a [good discussion](https://www.ag-grid.com/understanding-packaging-for-javascript-typescript-commonjs-and-everything-else/) of CommonJs and TypeScript.
 
-With AMD, you can use RequireJS as your module loader. It provides asynchronous loading of modules, which can be helpful for some apps. It also allows you to use the .tsconfig file for your compiler without configuring a task runner like Gulp.
+With AMD, you can use RequireJS as your module loader. It provides asynchronous loading of modules, which in some apps can speed up your initial load time. AMD allows you to use the .tsconfig file for your compiler without configuring a task runner like Gulp (so setup may be easier).
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
+<table>
+
+<tbody>
+    <tr>
+        <th><strong>Feature</strong></th>
+        <th><strong>CommonJs</strong></th>
+        <th><strong>AMD</strong></th>
+    </tr>
+    <tr>
+        <td>EcmaScript 6 compliant</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>As-needed asynchronous module loading</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Supports 1:1 mapping of intput/output files</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Command line or task runner (e.g., Gulp) required</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+</tbody>
+</table>
 
 ##<a name="samples"></a>Get the samples!
 
