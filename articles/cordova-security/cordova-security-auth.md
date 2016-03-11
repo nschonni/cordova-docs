@@ -4,7 +4,7 @@
   documentationCenter=""
   authors="clantz" />
 
-# Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova
+# Authenticate users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova
 Security is a very broad topic that covers a number of different aspects of an app's lifecycle. Securing an app often represents a number of tradeoffs and key decisions. For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are affored, it is important to limit your risk as much as possible. 
 
 A critical task for application security is authenticating and authorizing users accessing your app and its associated local or remote data. In this article we'll touch on some options that can help get you get auth up and running.
@@ -73,5 +73,5 @@ Cordova also can take advantage of pure JavaScript based solutions to authentica
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)
 - [Encrypt your local app data](./cordova-security-data.md)
 - [Learn about securely transmitting data](./cordova-security-xmit.md)
-- [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
-- [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
+- [Detect potential security threats](./cordova-security-detect.md)
+- [Quickly remediate security issues](./cordova-security-fix.md)

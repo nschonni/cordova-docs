@@ -110,6 +110,7 @@ Note that the Intune MAM features mentioned previously can also force authentica
 
 ##Additional Security Topics
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)
-- [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
-- [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
-- [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
+- [Encrypt your local app data](./cordova-security-data.md)
+- [Authenticate users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
+- [Detect potential security threats](./cordova-security-detect.md)
+- [Quickly remediate security issues](./cordova-security-fix.md)

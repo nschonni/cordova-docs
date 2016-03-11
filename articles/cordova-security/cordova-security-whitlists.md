@@ -153,5 +153,6 @@ If you don't use a Visual Studio or Cordova base template or when you upgrade a 
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)
 - [Encrypt your local app data](./cordova-security-data.md)
 - [Learn about securely transmitting data](./cordova-security-xmit.md)
-- [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
-- [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
+- [Authenticate users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
+- [Detect potential security threats](./cordova-security-detect.md)
+- [Quickly remediate security issues](./cordova-security-fix.md)
