@@ -10,13 +10,15 @@ Security is a very broad topic that covers a number of different aspects of an a
 For the most part you should apply the same [best practices to your code as you do for web apps](https://code.google.com/archive/p/browsersec/wikis/Main.wiki). However, given the increased capabilities Cordova apps are afforded, it is important to limit your risk as much as possible. This document will outline some of the security features that exist in Cordova and some general best practices for improving the overall security of your app beyond what you may typically think about for web apps. 
 
 ## Update Cordova
-While always a good recommendation, staying up to date with Cordova versions is a best practice as security fixes are included on a regular basis. You should absolutely not use Cordova versions < 4.3.1 as your app will be rejected from Google Play due to a [specific security issue](../tips-and-workarounds/android/security-05-26-2015.md). Further, you should do everything you can to use **Apache Cordova 5 and up** as this version provide some critical capabilities that can improve the overall security of your app. Specifically:
+While always a good recommendation, staying up to date with Cordova versions is a best practice as security fixes are included on a regular basis. You should do everything you can to use **Cordova 5.1.1 or higher** as this version provide some critical capabilities that can improve the overall security of your app. Specifically:
 
-1. **The Crosswalk Webview** - The Android platform in Cordova 5 and up (cordova-android 4.0.0+) introduced the ability to support "pluggable webviews" where the app itself contains a consistent webview implementation rather than the default browser on the device. Originally conceived as a way to get more consistent behavior on Android, one implementation is the [Crosswalk Webview](https://crosswalk-project.org/) which adds an up to date version of the Chromium webview to the project. For security, this means you get access to important security features like the Content Security Policy and Web Crypto on Android as far back as Android 4.0. Further, these devices will also get WebView related security patches not present in the OS itself. 
+1. **The Crosswalk Webview** - The Android platform in Cordova 5 and up (cordova-android 4.0.0+) introduced the ability to use alternate WebView implmentations including the [Crosswalk Webview](https://crosswalk-project.org/). Crosswalk is a patched and feature rich version of Chromium with access to important security features not available versions of Android as recent as [4.3](http://caniuse.com/#search=content%20security%20policy%201.0) and [4.4](http://caniuse.com/#search=web%20cryptography). 
 2. **Content Security Policy (CSP) Support**: Android with Crosswalk, iOS, and Windows 10 all support adding a Content Security Policy to your app and this represents an important security tool to take advantage of for any app. A strict policy can eliminate security attack vectors at the underlying webview/browser level. 
-3. **Windows 10 Support w/CSP and "Local Mode" Support:** Windows 10 features a more nuanced view of security than Windows/Phone 8.1 did with significant improvements in compatibility between Android and iOS by default. In addition to CSP support, Windows 10 supports something called "local mode" that adds OS level security measures and allows additional native Windows 10 features to be used from within your Cordova app. These restrictions are more permissive and nuanced than those that were present in Windows 8.1 and but are off by default in Cordova apps to avoid cross-platform compatibility issues.
+3. **Windows 10 Support w/CSP and "Local Mode":** Windows 10 features a more nuanced view of security than Windows/Phone 8.1 did with significant improvements in compatibility between Android and iOS by default. In addition to CSP support, Windows 10 supports something called "local mode" that adds OS level security measures and allows additional native Windows 10 features to be used from within your Cordova app. 
 
-Read on for some additional guidance and recommendations  and see the **[Apache Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html)** on Apache's site for additional tips.
+You should **absolutely not use Cordova versions < 4.3.1** as your app will be rejected from Google Play due to a [specific security issue](../tips-and-workarounds/android/security-05-26-2015.md).
+
+Read on for some additional guidance and recommendations and see the **[Apache Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html)** on Apache's site for additional tips.
 
 ##Use Crosswalk and Cordova 5+
 As outlined above, Cordova 5 and the Crosswalk WebView can significantly improve the security of your app on Android particularly given the device fragmentation issues that exist today. Simply adding "cordova-plugin-crosswalk-webview" to your project when using Cordova 5+ enables these features. To add it to your project:
@@ -28,7 +30,7 @@ As outlined above, Cordova 5 and the Crosswalk WebView can significantly improve
     cordova plugin add cordova-plugin-crosswalk-webview --save
     ```
 
-There are, however, some nuances to using the Crosswalk webveiw given it does slow down build times and requires GPU acceleration in emulators. See **[improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md)** for setup details and information on the useful **Shared Mode**.
+There are, however, some nuances to using the Crosswalk webveiw given it does slow down build times and **requires GPU acceleration** in emulators. See **[improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md)** for setup details and information on the useful **Shared Mode**.
 
 Note that Crosswalk 14 can cause a crash when using Web Crypto and Crosswalk 16 has caused crashes in certain emulators. Crosswalk 15 appears to be a solid choice. If you run into unexpected crashes or odd behaviors, simply the following config.xml to force the plugin to use version 15 (Right-Click &gt; View Code in VS):
 
@@ -64,7 +66,10 @@ Note that none of these rules apply to images or other static content.
 The default CSP policy in Visual Studio and Cordova templates is a solid starting point. It allows eval(), but keeps the inline script and same origin restrictions in place.
 
 ```
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+<meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; 
+               style-src 'self' 'unsafe-inline'; 
+               media-src *">
 ```
 
 See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitelist.md)** for additional details on configuring a CSP policy to meet your needs.
@@ -125,8 +130,8 @@ The WindowsDefaultUriPrefix preference flips Cordova into "local mode" instead o
 
 See the **[Cordova Windows 10 platform documentation](http://cordova.apache.org/docs/en/latest/guide/platforms/win8/win10-support.html)** for additional details on the difference along with the additional capabilities that are enabled when submitting to the public Windows Store.
 
-##Use the Intune App SDK
-[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application management](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and [mobile device management]((https://en.wikipedia.org/wiki/Mobile_device_management) (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data, disabling cut-copy-paste, and more. A Cordova plugin for Android and iOS that is a part of Intune's App SDK enables more nuanced control that is typically availalbe from other MAM solutions. As a result it fundamentally improves the security of Cordova as an overall platform.
+##Consider Intune MAM features
+[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application management](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and [mobile device management](https://en.wikipedia.org/wiki/Mobile_device_management) (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data, disabling cut-copy-paste, and more. A Cordova plugin for Android and iOS that is a part of Intune's App SDK enables more nuanced control that is typically availalbe from other MAM solutions. As a result it fundamentally improves the security of Cordova as an overall platform.
 
 Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. The app wrapping tool that can be run on any Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK takes this a step farther adds in multi-tenet encryption that goes beyond OS level data protection features and ensures data separation when multiple users access the same device. See [Microsoft Intune documentation](https://technet.microsoft.com/en-us/library/mt631425.aspx) for a comparison of the features provided by the app wrapping tool and the App SDK.
 

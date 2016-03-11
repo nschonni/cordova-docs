@@ -72,7 +72,7 @@ crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
     });
 ```
 
-##Use the Intune MAM to force encryption
+##Consider Intune MAM features to force encryption
 [Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application management](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and [mobile device management](https://en.wikipedia.org/wiki/Mobile_device_management) (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. 
 
 Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. The app wrapping tool that can be run on any Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK takes this a step farther adds in multi-tenet encryption that goes beyond OS level data protection features and ensures data separation when multiple users access the same device. See [Microsoft Intune documentation](https://technet.microsoft.com/en-us/library/mt631425.aspx) for a comparison of the features provided by the app wrapping tool and the App SDK.
