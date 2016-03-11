@@ -71,6 +71,7 @@ Cordova also can take advantage of pure JavaScript based solutions to authentica
 
 ##Additional Security Topics
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)
-- [Secure and encrypt your Cordova app data at rest and over the wire](./cordova-security-data.md)
+- [Encrypt your local app data](./cordova-security-data.md)
+- [Learn about securely transmitting data](./cordova-security-xmit.md)
 - [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
 - [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)

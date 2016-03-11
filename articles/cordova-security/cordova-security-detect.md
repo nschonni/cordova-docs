@@ -63,6 +63,7 @@ See **[deploy and configure apps with Microsoft Intune](https://technet.microsof
 
 ##Additional Security Topics
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)
-- [Secure and encrypt your Cordova app data at rest and over the wire](./cordova-security-data.md)
+- [Encrypt your local app data](./cordova-security-data.md)
+- [Learn about securely transmitting data](./cordova-security-xmit.md)
 - [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
 - [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)

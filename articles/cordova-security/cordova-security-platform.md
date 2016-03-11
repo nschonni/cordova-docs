@@ -114,7 +114,8 @@ Intune provides two solutions for enabling its MAM features for Android and iOS 
 The app wrapping tool is generally available. While the Android and iOS native App SDKs are generally available, the Intune App SDK Cordova plugin that uses them is [currently in beta](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/). If you are interested in the beta plugin, see the **[announcement blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/)** for more details getting access and stay tuned for the upcoming GA announcement. Otherwise see the Intune documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) app wrapping tools** for more information.
 
 ##Additional Security Topics
-- [Secure and encrypt your Cordova app data at rest and over the wire](./cordova-security-data.md)
+- [Encrypt your local app data](./cordova-security-data.md)
+- [Learn about securely transmitting data](./cordova-security-xmit.md)
 - [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
 - [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
 - [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)

@@ -148,3 +148,10 @@ If you don't use a Visual Studio or Cordova base template or when you upgrade a 
 	Start with the most locked down security policy you can, and back away as needed. That way you'll ensure you're using the most secure practices you can from the start.
 
     > **Note:** To reiterate, **CSP support is only available on Android 4.4+ devices or Android 4.0+ when using Crosswalk.** See [improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md#crosswalk) for information adding Crosswalk to your project.    
+
+##Additional Security Topics
+- [Learn about Cordova platform and app security features](./cordova-security-platform.md)
+- [Encrypt your local app data](./cordova-security-data.md)
+- [Learn about securely transmitting data](./cordova-security-xmit.md)
+- [Authenticating users with Azure Mobile Apps or the Active Directory Authentication Library for Cordova](./cordova-security-auth.md)
+- [Detect, prevent, and quickly remediate security issues](./cordova-security-detect.md)
