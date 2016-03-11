@@ -57,8 +57,25 @@ iOS supports crypto.subtle with a webkit prefix and IE 11 and up also support we
 In general, this is your best starting point. If for some reason you cannot use Crosswalk or are looking for more holistic solutions, there are community plugins and other solutions that can help.  
 
 #### Example
-Here is a small code sample that demonstrates using Web Crypto to encrypt a string on Android, iOS, and Windows after adding the **[cordova-plugin-crosswalk-webview](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview)** plugin to your project and referencing **[webcrypto-shim.js](https://github.com/vibornoff/webcrypto-shim)** and **[promiz.js](https://github.com/Zolmeister/promiz)** in your HTML:
+Here is a small code sample that demonstrates using Web Crypto to encrypt a string on Android, iOS, and Windows after adding the **[cordova-plugin-crosswalk-webview](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview)** plugin to your project and referencing **[webcrypto-shim.js](https://github.com/vibornoff/webcrypto-shim)** and **[promiz.js](https://github.com/Zolmeister/promiz)** in your HTML.
 
+First, crypto.subtle.encrypt and decrypt uses ArrayBuffers rather than strings or other types, so for this example we'll take advantage of two useful functions from [Google Developers](https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String) for type conversion of as string.
+
+```javascript
+function stringToArrayBuffer(str) {
+    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+    var bufView = new Uint16Array(buf);
+    for (var i=0, strLen=str.length; i < strLen; i++) {
+        bufView[i] = str.charCodeAt(i);
+    }
+    return buf;
+};
+
+function arrayBufferToString(buf) {
+    return String.fromCharCode.apply(null, new Uint16Array(buf));
+};
+```
+Next we will generate an encryption key and then encrypt a string using crypto.subtle.encrypt.
 ```javascript
 var stringToEncrypt = "Hey! Encrypt me!";
 
@@ -77,24 +94,6 @@ crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
         console.log("Before: " + stringToEncrypt);
         console.log("After: " + arrayBufferToString(result));
     });
-
-
-// These two functions are from a great type conversion tip at 
-// https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
-
-function stringToArrayBuffer(str) {
-    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
-    var bufView = new Uint16Array(buf);
-    for (var i=0, strLen=str.length; i < strLen; i++) {
-        bufView[i] = str.charCodeAt(i);
-    }
-    return buf;
-};
-
-function arrayBufferToString(buf) {
-    return String.fromCharCode.apply(null, new Uint16Array(buf));
-};
-
 ```
 
 ###Use the Intune MAM to force encryption
@@ -170,6 +169,9 @@ Mobile Backend as a Service (MBaaS) solutions can help you get up and running qu
 
 The Azure Mobile Apps client taps into Azure App Service Auth on the server side which means you'll be able to quickly connect to authenticated, custom server [App Service "API Apps"](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) or other services that also use App Service Auth. You can see how to setup user authentication for service calls [in the App Service API apps documentation.](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-dotnet-user-principal-auth/) Cordova apps can call JSON and REST based services without client libraries can quite easily as we will demonstrate in the next section.
 
+![Azure Mobile Apps Easy Tables](media/cordova-security-data/auth-easy-tables.png)
+
+
 Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
 
 ```javascript
@@ -184,15 +186,21 @@ client.login("aad", {"access_token": tokenFromADAL})
 See the [the Cordova authentication article](./cordova-security-auth.md), [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), and [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) documentation for additional details
 
 #### Pass auth tokens when using REST APIs directly
-Even if you are not using Azure Mobile Apps, Cordova's JavaScript based approach makes calling JSON based REST services easy. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the ADAL Cordova plugin as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). Here's a simplified example:
+Cordova's JavaScript based approach makes calling JSON based REST services easy. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the ADAL Cordova plugin as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). 
+
+This same general approach can be applied when using the Azure Mobile Apps client when calling an Azure App Service API App as well.  The key is getting the access token, passing it along to the downstream service, and having the service validate it.
+
+![Call API App](media/cordova-security-data/auth-api-app.png)
+
+Here's a simplified code example that goes against the publicly available AD Graph API:
 
 ```javascript
-function get10UsersFromADGraph(adTenantId, accessTokenFromADAL, callback) {
+function get10UsersFromADGraph(adTenantId, adToken, callback) {
     var req = new XMLHttpRequest();
     req.open("GET", "https://graph.windows.net/" + adTenantId + "/users?api-version=2013-11-08&$top=10", true);
     
     // Pass in the ADAL token in the request 
-    req.setRequestHeader('Authorization', 'Bearer ' + accessTokenFromADAL);
+    req.setRequestHeader("Authorization", "Bearer " + adToken);
 
     req.onload = function(e) {
         if (e.target.status >= 200 && e.target.status < 300) {
