@@ -44,7 +44,10 @@ By default, simply adding a CSP declaration to an HTML page locks it down very t
 1. **Inline script** for JavaScript content, though extremely handy for testing and development, is one of the largest risks for attacks. When inline script is allowed, all it takes is one unescaped input pumped to innerHTML to allow a user to run any arbitrary JavaScript code. Note the inline script restriction also applies to **onload** and similar HTML attributes for the exact same reason. For example, imagine textInput in this code game from an input element in HTML:
     ```javascript
     // This is bad
-    textInput = "<div id='hack-otuput'></div><script>document.getElementById('hack-output').innerText = app.user.authtoken;</script>"
+    textInput = "<div id='hack-otuput'></div>\
+                 <script>\
+                   document.getElementById('hack-output').innerText = app.user.authtoken;\
+                 </script>"
     document.getElementById("output-div").innerHTML = textInput;
     ```
 

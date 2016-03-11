@@ -27,7 +27,7 @@ You can add it to your app as follows:
 
 The Azure Mobile Apps client taps into Azure App Service Auth on the server side which means you'll be able to quickly connect to authenticated, custom server [App Service "API Apps"](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) or other services that also use App Service Auth. You can lock down data or other services you have in Azure using the .NET or Node.js server SDKs.
 
-See the **[Azure Mobile Apps authentication documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)** and the article on [securing and encrypt app data at rest and over the wire](./cordova-security-data.md) for additional details on token passing.
+See the **[Azure Mobile Apps authentication documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)** and the article on **[securely transmitting data](./cordova-security-data.md)** for additional details on token passing.
 
 ##Active Directory Authentication Library for Cordova
 Active Directory (AD) provides an industry leading identity server both in the cloud and on-premises through Azure Active Directory (AAD) and Active Directory Federation Services (ADFS). You can securely authenticate, authorize, access information in AD, and take advantage of device level single sign on and multi-factor authentication (MFA) capabilities through the powerful Active Directory Authentication Library (ADAL) available for all major native and cross-platform mobile and server side technologies. 
@@ -47,9 +47,9 @@ Adding the plugin is easy.
    
 See the **[Active Directory Quick Start for Cordova](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/)** for additional details on setup. You can also read [this blog post](http://www.cloudidentity.com/blog/2015/04/06/adal-plugin-for-apache-cordova-deep-dive/) on some of the internals and the advantages it provides over other methods. 
 
-While the quick start uses Azure AD, the plugin also works with ADFS v3 and up by simply changing the authority and redirect URIs to the appropriate ones for your ADFS installation.
+While the quick start uses Azure AD, the plugin also works with **ADFS v3** and up by simply changing the authority and redirect URIs to the appropriate ones for your ADFS installation.
 
-The quick start also has code that demonstrates calling the [Azure AD Graph REST API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) directly using an AD token from the plugin. This approach can be reused across Azure services and O365 services. See the article on [securing and encrypting app data at rest and over the wire](./cordova-security-data.md) along with documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passing to downstream services.
+The quick start also has code that demonstrates calling the [Azure AD Graph REST API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) directly using an AD token from the plugin. This approach can be reused across Azure services and O365 services. See the article on [securely transmitting data](./cordova-security-data.md) along with documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passing to downstream services.
 
 Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client mentioned above for interacting with services where you have enabled Azure AD.
 
