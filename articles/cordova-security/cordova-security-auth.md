@@ -10,7 +10,7 @@ Security is a very broad topic that covers a number of different aspects of an a
 A critical task for application security is authenticating and authorizing users accessing your app and its associated local or remote data. In this article we'll touch on some options that can help get you get auth up and running.
 
 ##Azure App Service Auth and Azure Mobile Apps
-[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is a suite of services designed to help you build great web and mobile apps. Cordova can directly benefit from these same features and also has the added benefit of being JavaScript based and therefore can easily take advantage of the [JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) even when a client library is not directly available including [O365](http://dev.office.com/getting-started/office365apis) and other Azure services. [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) are mobile integrated client apps that take advantage of features within the broader Azure App Service along with some additional useful features and client libraries.
+[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is a suite of services designed to help you build great web and mobile apps. <!--Cordova can directly benefit from these same features and also has the added benefit of being JavaScript based and therefore can easily take advantage of the [JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) even when a client library is not directly available including [O365](http://dev.office.com/getting-started/office365apis) and other Azure services. --> [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) are mobile integrated client apps that take advantage of features within the broader Azure App Service along with some additional useful features and client libraries.
 
 A core first step in accessing all of these great services, however, is authorizing users both to access the app for the app to then access data in the cloud. Fortunately, the Cordova plugin for Azure Mobile Apps has an unified authentication interface that currently supports authenticating against Azure Active Directory, Facebook, Google, Twitter, and Microsoft accounts. The unified interface means that you're abstracted from downstream changes and can expect additional provider options and features in the future to streamline things even more. 
 
@@ -25,7 +25,7 @@ You can add it to your app as follows:
     cordova plugin add cordova-plugin-ms-azure-mobile-apps --save
     ```
 
-The Azure Mobile Apps client taps into Azure App Service Auth on the server side which means you'll be able to quickly connect to authenticated, custom server [App Service "API Apps"](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) or other services that also use App Service Auth. You can lock down data or other services you have in Azure using the .NET or Node.js server SDKs.
+<!--The Azure Mobile Apps client taps into Azure App Service Auth on the server side which means you'll be able to quickly connect to authenticated, custom server [App Service "API Apps"](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) or other services that also use App Service Auth. You can lock down data or other services you have in Azure using the .NET or Node.js server SDKs.-->
 
 See the **[Azure Mobile Apps authentication documentation](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)** and the article on **[securely transmitting data](./cordova-security-data.md)** for additional details on token passing.
 
@@ -51,7 +51,10 @@ While the quick start uses Azure AD, the plugin also works with **ADFS v3** and 
 
 The quick start also has code that demonstrates calling the [Azure AD Graph REST API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) directly using an AD token from the plugin. This approach can be reused across Azure services and O365 services. See the article on [securely transmitting data](./cordova-security-data.md) along with documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) for additional details on token passing to downstream services.
 
+###ADAL and Azure Mobile Apps or Azure App Service
 Note that if you would prefer to use the ADAL plugin to authenticate users in your app, you can still pass the token you get from ADAL into the Mobile Apps client mentioned above for interacting with services where you have enabled Azure AD.
+
+First, carefully follow all setup steps under **[(Optional) Configure a native client application](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-how-to-configure-active-directory-authentication/)** in the Azure App Service AD auth article. You can then login to Azure Mobile Apps using the auth token from ADAL as follows:
 
 ![Azure Mobile App Auth](media/cordova-security-auth/adal-and-mobile-apps.png)
 

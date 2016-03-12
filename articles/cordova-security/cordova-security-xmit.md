@@ -23,6 +23,8 @@ From there, you can then [add auth into Mobile App services](https://azure.micro
 
 Note that if you would prefer to use the [Active Directory Authentication Library (ADAL) plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) to authenticate users in your app with Azure Active Directory or Active Directory Federation Services (ADFS) v3 and up, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
 
+First, carefully follow all setup steps under **[(Optional) Configure a native client application](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-how-to-configure-active-directory-authentication/)** in the Azure App Service AD auth article. You can then login using the auth token from ADAL as follows:
+
 ```javascript
 var client = WindowsAzure.MobileServicesClient(appUrl);
 
@@ -30,6 +32,7 @@ client.login("aad", {"access_token": tokenFromADAL})
     .then(function () {
         // Do something with the client!
      }, handleError);
+
 ```
 
 See [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/), and [the Cordova authentication article](./cordova-security-auth.md) for additional details.
