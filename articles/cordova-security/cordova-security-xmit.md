@@ -35,12 +35,16 @@ client.login("aad", {"access_token": tokenFromADAL})
 See [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/), and [the Cordova authentication article](./cordova-security-auth.md) for additional details.
 
 #### Pass auth tokens when using REST APIs directly
+<!--
 The Azure Mobile Apps client taps into Azure App Service Auth on the server side which means you'll also be able to connect to authenticated, custom server [App Service "API Apps"](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) or other services that also use App Service Auth. You can see how to setup user authentication for service calls [in the App Service API Apps documentation.](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-dotnet-user-principal-auth/) 
+-->
+Cordova apps can call JSON and REST based services without client libraries can quite easily. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the [ADAL Cordova plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). 
 
-Cordova apps can call JSON and REST based services without client libraries can quite easily. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the [ADAL Cordova plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). This same general approach can be applied when using the Azure Mobile Apps client when calling an Azure App Service API App as well.  The key is getting the access token, passing it along to the downstream service, and having the service validate it.
+<!--
+This same general approach can be applied when using the Azure Mobile Apps client when calling an Azure App Service API App as well.  The key is getting the access token, passing it along to the downstream service, and having the service validate it.
 
 ![Call API App](media/cordova-security-data/auth-api-app.png)
-
+-->
 Here's a simplified code example that runs against the publicly available AD Graph REST API:
 
 ```javascript
@@ -68,7 +72,7 @@ function get10UsersFromADGraph(adTenantId, adToken, callback) {
 }
 ```
 
-This general approach can be reused for custom services and services across Azure and O365 services including your own [custom API Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/). See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) service documentation for additional details on token passing to downstream services. 
+This general approach can be reused for custom services and services across Azure and O365 services. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) service documentation for additional details on token passing to downstream services. 
 
 ###Certificate Pinning
 Another trick used in high security situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, official certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
