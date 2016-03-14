@@ -26,7 +26,7 @@ Note that if you would prefer to use the [Active Directory Authentication Librar
 First, carefully follow all setup steps under **[(Optional) Configure a native client application](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-how-to-configure-active-directory-authentication/)** in the Azure App Service AD auth article. You can then login using the auth token from ADAL as follows:
 
 ```javascript
-var client = WindowsAzure.MobileServicesClient(appUrl);
+var client = new WindowsAzure.MobileServicesClient(appUrl);
 
 client.login("aad", {"access_token": tokenFromADAL})
     .then(function () {
@@ -67,6 +67,7 @@ function get10UsersFromADGraph(adTenantId, adToken, callback) {
             console.error("Call failed: " + e.target.response);        
         }    
     };
+    
     req.onerror = function(e) {
         console.error("Call failed: " + e.error);
     };
@@ -76,6 +77,47 @@ function get10UsersFromADGraph(adTenantId, adToken, callback) {
 ```
 
 This general approach can be reused for custom services and services across Azure and O365 services. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) service documentation for additional details on token passing to downstream services. 
+
+Calling Azure App Service APIs directly is a bit different. In this case you actually need to set an X-ZUMO-AUTH header instead. Here is an example of calling the "/.auth/me" endpoint that can provides basic login information using a token from the Azure Mobile Apps client in the Cordova plugin:
+
+```javascript
+var client = new WindowsAzure.MobileServiceClient(appUrl);
+
+function callAuthMe(successCallback, failCallback) {
+        var req = new XMLHttpRequest();
+        req.open("GET", appUrl + "/.auth/me", true);
+        
+        // Here's the secret sauce: X-ZUMO-AUTH
+        req.setRequestHeader('X-ZUMO-AUTH', client.currentUser.mobileServiceAuthenticationToken);
+        
+        req.onload = function (e) {
+            if (e.target.status >= 200 && e.target.status < 300) {
+                successCallback(JSON.parse(e.target.response));
+                return;
+            }
+            failCallback('Data request failed. Status ' + e.target.status + ' ' + e.target.response);
+        };
+        
+        req.onerror = function (e) {
+            failCallback('Data request failed: ' + e.error);
+        }
+
+        req.send();
+}
+
+client.login("aad")
+    .then(function () { 
+        callAuthMe(function(result) {
+                // Log User ID from output
+                console.log(result[0]["user_id"]); 
+            }, 
+            function(msg) {
+                console.error(msg);
+            });
+    }, function (msg) {
+        console.error(msg);
+    });
+```
 
 ###Certificate Pinning
 Another trick used in high security situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, official certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.

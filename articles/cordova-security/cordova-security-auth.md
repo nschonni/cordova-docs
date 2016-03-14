@@ -59,7 +59,7 @@ Note that if you would prefer to use the ADAL plugin to authenticate users in yo
 First, carefully follow all setup steps under **[(Optional) Configure a native client application](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-how-to-configure-active-directory-authentication/)** in the Azure App Service AD auth article. You can then login to Azure Mobile Apps using the auth token from ADAL as follows:
 
 ```javascript
-var client = WindowsAzure.MobileServicesClient(appUrl);
+var client = new WindowsAzure.MobileServiceClient(appUrl);
 
 client.login("aad", {"access_token": tokenFromADAL})
     .then(function () {
