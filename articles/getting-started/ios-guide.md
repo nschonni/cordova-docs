@@ -440,7 +440,7 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     See [Start the remote agent on your Mac](#remoteAgent).
 
-2. If you want to debug your app, share the device support folder. You'll find it here: ```Macintosh HD/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport```.
+2. Share the device support folder. You'll find it here: ```Macintosh HD/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport```.
 
     For guidance, see [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
 
@@ -461,8 +461,6 @@ To do this, you'll need a provisioning profile that you create by using an Apple
     ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
 
 6. Add the path to the device support files that are located on your remote Mac.
-
-    >**Note**: Do this only if you want to debug your app. You don't have to do this if just want to run your app on the device without debugging it.
 
     ![Path to device files](media/ios-guide/local-debugging.png)
 
