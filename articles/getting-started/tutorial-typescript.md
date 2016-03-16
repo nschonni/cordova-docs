@@ -12,7 +12,9 @@ The Visual Studio Tools for Apache Cordova provide templates to help you get sta
 > **Note:** You need to know that for the current version of the Tools for Apache Cordova, you can only work with TypeScript files in the /scripts folder of a project. Ideally, you're free to arrange files into any folder. This is a known issue being worked on for a later update.
 
 ##<a name="getStarted"></a>How do I start a TypeScript application?
-Visual Studio provides a blank app template using TypeScript. To use it:
+Visual Studio provides a blank app template using TypeScript, or you can also use one of the [TypeScript Module samples](#samples) as your starting point.
+
+To use the Blank App TypeScript template.
 
 1. In Visual Studio, use the **File** > **New** > **Project** menu.
 2. Select the **Templates** > **TypeScript** > **Apache Cordova Apps** category and click on the **Blank App (Apache Cordova)** template.  
@@ -87,6 +89,184 @@ To customize the compiler settings for TypeScript in your projects:
 
 ##<a name="buildOutsideVS"></a>I need to build my project outside of Visual Studio, how do I do that?
 By default, Visual Studio is building TypeScript files for you using the MSBuild build system behind the scenes. If you want to build your project outside of Visual Studio (in a Terminal on Mac OS X, for example), then we recommend using a JavaScript task runner, such as [Gulp](http://www.gulpjs.com). To learn more, [see our Gulp tutorial](../tutorial-gulp/tutorial-gulp-readme.md).
+
+## Get started with TypeScript modules
+When you begin to work on a Cordova app with TypeScript, one of the first decisions to make is how to structure your app. For most apps, you will want to use modules as a way to organize your app components and gain benefits such as easier maintenance. TypeScript supports both *internal* and *external* modules. Internal modules (now called namespaces) are not used as much now that a lot of tools provide TypeScript support. We recommend using external modules, which are EcmaScript 6 compliant. For more info, see the [module section](http://www.typescriptlang.org/Handbook#modules) in the TypeScript Handbook.
+
+When you use external modules, you also need to use a module loader. AMD and CommonJs are two of the main specifications for module loaders (there are others, too, like UMD). To choose a module loader, consider these points:
+
+  * If you’re just trying to make the app work, try AMD first. It is generally easier to set up.
+
+  * If you want or need to use specific build tools, choose the module loader that has the tools you need.
+
+  * If you find performance issues with one of the module loaders, you might want to switch.
+
+With AMD, you can use RequireJS as your module loader. It provides asynchronous loading of modules, which in some apps can speed up your initial load time. AMD allows you to use the .tsconfig file for your compiler without configuring a task runner like Gulp (so setup may be easier).
+
+In a Cordova app that uses CommonJs, you also need a bundling tool like Browserify or Webpack. A bundling tool packages your source code in a single output JavaScript file that can be referenced from your HTML, which is a requirement. Browserify and Webpack make it possible to use CommonJs in a client-side browser-based scenario (like Cordova). We will provide you with an example using Browserify.
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
+<table>
+
+<tbody>
+    <tr>
+        <th><strong>Feature</strong></th>
+        <th><strong>AMD</strong></th>
+        <th><strong>CommonJs</strong></th>
+    </tr>
+    <tr>
+        <td>EcmaScript 6 compliant</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>As-needed asynchronous module loading</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Command line or task runner (e.g., Gulp) required</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Strong 3rd party tool support (minify, etc.)</td>
+        <td>Limited</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Supports 1:1 mapping of intput/output files</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+</tbody>
+</table>
+
+Here is a [good discussion](https://www.ag-grid.com/understanding-packaging-for-javascript-typescript-commonjs-and-everything-else/) of CommonJs and TypeScript. AMD is dismissed as a good option in the article, but AMD is appropriate for many Cordova apps.
+
+##<a name="samples"></a>Get the samples!
+
+The starter samples extend the [Greeter tutorial](http://www.typescriptlang.org/Tutorial) from the TypeScript handbook and include some basic plugin code that supports Geolocation. The two samples are complete Visual Studio projects.
+
+  * [CommonJs and Browserify sample](https://github.com/Mikejo5000/TS-CommonJs)
+  * [AMD and RequireJS sample](https://github.com/Mikejo5000/TS-AMD)
+
+##<a name="modules"></a>Create your modules!
+
+Whether you use CommonJs or AMD, you can organize your modules in the same way. To organize the modules, each module goes into its own TypeScript (.ts) file. In both CommonJs and AMD, use the `export=` statement to expose the class or interface to the rest of the app. The following code shows the Student module.
+
+    ```
+    class Student {
+        fullname: string;
+        constructor(public firstname: string, public middleinitial: string, public lastname: string) {
+            this.fullname = firstname + " " + middleinitial + " " + lastname;
+        }
+    }
+
+    export = Student;
+    ```
+The Student module typically resides in the project's Student.ts file.
+
+For any module that needs to use another module, use the `import` keyword include the following code at the beginning of the file.
+    ```
+    import Student = require('./Student');
+    ```
+
+Now, in the file that imports the module, you can call your module code.
+
+    ```
+    function createUser(loc: any) {
+        var lastName = "User " + current++;
+        let user = new Student("Jane", "M.", lastName, loc);
+        showGreeter(user);
+    }
+    ```
+
+    ##<a name="amd"></a>Set up your module loader using AMD and RequireJs
+
+    When using AMD for your module loader, you will want to use RequireJS for your module loader. You can use Visual Studio to compile the TypeScript. One advantage of using AMD and RequireJS is that you don't need to configure a Gulp task but can use Visual Studio to compile the TypeScript. With AMD, you need to make sure that your settings in the .tsconfig are all correct. Here is the .tsconfig file in the sample app.
+
+    {
+      "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "noImplicitAny": false,
+        "removeComments": false,
+        "sourceMap": true,
+        "inlineSources": true,
+        "noEmitOnError": true,
+        "outDir": "./www/scripts"
+      }
+    }
+
+    You must specify **amd** as the module loader. By specifying **outDir**, you can create multiple output .js files and sourceMaps that correspond to the original input files (one .js file per .ts file). See the TypeScript [compiler options](https://github.com/Microsoft/TypeScript/wiki/Compiler-Options) for more info.
+
+    To use RequireJS, you will need to reference RequireJS in your main HTML file and specify your main JavaScript entry file in the **data-main** attribute value.
+
+    ```
+    <script data-main="scripts/index.js"
+            type="text/javascript"
+            src="lib/requirejs/require.js"></script>
+    ```
+    This tells RequireJS what file to load first.
+
+    For more info, [try the sample](https://github.com/Mikejo5000/TS-AMD).
+
+##<a name="commonjs"></a>Set up your module loader using CommonJs and Browserify
+
+When using Browserify, you can make APIs calls with Gulp instead of running Browserify in the command line. The output will be a single combined (bundled) JavaScript file and a single combined sourceMap file. The sourceMap file will map output back to your original .ts file and make it possible for you to debug your source files (the .ts files) when you run the app. As an alternative to Browserify, you can use Webpack in your app but using Gulp with Webpack is generally a little more complicated to set up.
+
+Using Gulp, you also need to choose a method of compiling TypeScript in the Gulp file. Two common methods are [gulp-TypeScript](https://www.npmjs.com/package/gulp-typescript) and [tsify](https://www.npmjs.com/package/tsify), both npm packages. We are using tsify, which is often easier to use with Browserify and will also automatically call your .tsconfig file (see tsify docs for more specific behavior). Here is the main task in the Gulp file.
+
+    ```
+    gulp.task('default', function () {
+         // set up the browserify instance on a task basis
+        var b = browserify({
+            entries: './scripts/index.ts',
+            extensions: ['.ts'],
+            debug: true
+        });
+
+        return b.plugin(tsify, { noImplicitAny: true }).bundle()
+          .pipe(source('app.js'))
+          .pipe(buffer())
+          .pipe(sourcemaps.init({ loadMaps: true }))
+              // Add transformation tasks to the pipeline here.
+          .pipe(sourcemaps.write('./', { includeContent:false, sourceRoot:'../../' }))
+          .pipe(gulp.dest('./www/scripts/'));
+    });
+    ```
+
+In the preceding code, you pass your project's entry file (index.ts) to Browserify and then use tsify to compile the TypeScript and generate sourceMaps. You will use [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) to modify the sourcemaps after they are generated. The **sourceRoot** property points the sourceMaps back to your TypeScript files, which is required for debugging.
+
+Before you can run your app (by pressing F5), You need to run the Gulp task. Instead of running Gulp from the command line, you might want to use the Visual Studio Task Runner. To do this, choose **View**, **Other Windows**, **Task Runner Explorer**. If your Gulp task is set up correctly, you can run it from the Task Runner by right-clicking the task and choosing **Run**.
+
+![VS Task Runner](media/tutorial-typescript/ts-vs-task-runner.png)
+
+For more info, [try the sample](https://github.com/Mikejo5000/TS-CommonJs).
+
+###Troubleshooting? Let's fix it
+
+[Can't hit breakpoints in your .ts files](#breakpoints)
+
+##Troubleshooting
+
+Here are a few issues you may see when working on your own app.
+
+###<a name="breakpoints"></a>Can't hit breakpoints in your .ts files
+
+Most likely, this is caused by a problem in your sourceMaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps. If you are using Gulp, check the Gulp sample in this article to make sure that sourceMap-related properties are set correctly. Make sure that properties like **extensions**, **loadMaps** and **sourceRoot** are using the specified values.
+
+![SourceMaps](media/tutorial-typescript/ts-sourcemaps.png)
+
 
 ##<a name="learnMore"></a>Where can I learn more about using TypeScript with Cordova?
 Here are a few links to help you learn more about working with TypeScript:
