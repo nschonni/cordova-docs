@@ -113,11 +113,11 @@ In addition to the above base capabilities there are a number of community plugi
 <td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 support (no Windows 10 yet). MIT licensed.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 and 10 support. MIT licensed.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
 <ul>
 </td>
-<td align="left">Android, iOS, Windows 8.1 (-ext versions)</td>
+<td align="left">Android, iOS, Windows 8.1, 10 (-ext versions)</td>
 </tr>
 <tr>
 <td align="left">Encrypted Database</td>
