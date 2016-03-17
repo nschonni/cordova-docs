@@ -30,7 +30,7 @@ See the **[Azure Mobile Apps authentication documentation](https://azure.microso
 Note that you can also get basic information about the user logged in by making a REST call to the **/.auth/me** service endpoint. The [securely transmitting data](./cordova-security-xmit.md) article has a code sample.
 
 ##Active Directory Authentication Library for Cordova
-Active Directory (AD) provides an industry leading identity server both in the cloud and on-premises through Azure Active Directory (AAD) and Active Directory Federation Services (ADFS). You can securely authenticate, authorize, access information in AD, and take advantage of device level single sign on and multi-factor authentication (MFA) capabilities through the powerful Active Directory Authentication Library (ADAL) available for all major native and cross-platform mobile and server side technologies. 
+Active Directory (AD) provides an industry leading identity server both in the cloud and on-premises through Azure Active Directory (AAD) and Active Directory Federation Services (ADFS). You can securely authenticate, authorize, access information in AD, and take advantage of device level single sign on and multi-factor authentication (MFA) capabilities through the powerful Active Directory Authentication Library (ADAL) available for all major native and cross-platform mobile and server side technologies. **Note that the ADAL plugin is currently in preview.**
 
 For Cordova this functionality is provided via the ADAL plugin which can be used both with AAD and on-premises ADFS v3 and up. It user the Android, iOS, and .NET native libraries under the covers and therefore persists auth tokens in a secure cache that you can then query to pass to downstream services.
 
