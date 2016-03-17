@@ -24,47 +24,35 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
     When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
 
-2. To run a quick test of your setup, verify that you can run the default Blank App template.
-
-    * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
-
+    > **Note:** Run a quick test of your setup, verify that you can run the default Blank App template.  
+    * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".  
     * Choose **Windows-x86**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
 
-3. In Visual Studio, select **File**, **New**, then **Project**.
+2. Install the Ionic templates straight to your machine by downloading and clicking on the [VS Extension for Ionic](https://visualstudiogallery.msdn.microsoft.com/4e44ba8b-a4c8-4106-b70e-00d63241a54a). Or, do it in Visual Studio, by selecting **File**, **New**, then **Project**. In the New Project dialog box, select **Online**.
 
-4. In the New Project dialog box, select **Online**.
-
-5. In the search box, type **Ionic**.
+    In the search box, type **Ionic**.
 
     ![Getting the templates](media/tutorial-ionic/ionic-online-templates.png)
 
-6. Search results will show **Ionic Project Templates for Visual Studio**.
-
-    >**Note**: If you have a new installation of Visual Studio and the Ionic project templates are already installed, you can skip the next two steps.
-
-7. Type any name and choose **OK** to install them.
+    Type any name and choose **OK** to install them.
 
     When you are asked for permission to install the templates, give your permission.
 
-8. After Visual Studio creates the project, close and re-open Visual Studio.
-
-9. Choose **File**, **New**, then **Project**.
-
-10. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
+3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
 
     ![Choosing a template](media/tutorial-ionic/ionic-installed-templates.png)
-
-11. Choose one of the following starter templates for your new project:
+    
+    Choose one of the following starter templates for your new project:
 
     * Ionic Blank App
     * Ionic SideMenu Template
     * Ionic Tabs Template
 
-12. Choose **OK**.
+4. Choose **OK**.
 
     Visual Studio creates the Ionic project.
 
-13. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
+5. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
 
 ## Get your app running on Android <a name="configAndroid"></a>
 
