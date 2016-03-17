@@ -218,9 +218,9 @@ Then, see [Upload an app](https://support.google.com/googleplay/android-develope
 
 A distribution certificate identifies your team or organization.
 
-If your team already has a distribution certificate and provisioning profile, and you want to reuse that, here's a blog post that can help you do that: [How to share an iOS distribution certificate](http://www.ironpaper.com/webintel/articles/how-to-share-an-ios-distribution-certificate/). Then, skip straight to the Modify the settings of your app section.
+If your team already has one and you want to reuse it, see [How to share an iOS distribution certificate](http://www.ironpaper.com/webintel/articles/how-to-share-an-ios-distribution-certificate/). Then, skip straight to the [Modify the settings of your app](#modify-settings) section.
 
-If you don't already have a distribution certificate and provisioning profile, continue on with this section.  
+If you don't have a distribution certificate yet, continue on with this section and we'll help you set one up.  
 
 1. Start Xcode.
 
@@ -287,7 +287,7 @@ Need more detail? See [Creating provisioning profiles using Member Center](https
 
 5. Choose the **Done** button to close the account details page.
 
-### Step 4: Modify the settings of your app
+### <a id="modify-settings"></a>Step 4: Modify the settings of your app
 
 The general settings of your app appear in the **Common** page of the configuration designer.
 
