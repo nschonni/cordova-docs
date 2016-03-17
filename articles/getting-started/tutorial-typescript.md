@@ -150,14 +150,12 @@ In a Cordova app that uses CommonJs, you also need a bundling tool like Browseri
 </tbody>
 </table>
 
-Here is a [good discussion](https://www.ag-grid.com/understanding-packaging-for-javascript-typescript-commonjs-and-everything-else/) of CommonJs and TypeScript. AMD is dismissed as a good option in the article, but AMD is appropriate for many Cordova apps.
-
 ##<a name="samples"></a>Get the samples
 
 The starter samples extend the [Greeter tutorial](http://www.typescriptlang.org/Tutorial) from the TypeScript handbook and include some basic plugin code that supports Geolocation. The two samples are complete Visual Studio projects.
 
-  * [CommonJs and Browserify sample](https://github.com/Mikejo5000/TS-CommonJs)
-  * [AMD and RequireJS sample](https://github.com/Mikejo5000/TS-AMD)
+  * [AMD and RequireJS sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-amd)
+  * [CommonJs and Browserify sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-commonjs)
 
 ##<a name="modules"></a>Create your modules!
 
@@ -223,7 +221,7 @@ To use RequireJS, you will need to reference RequireJS in your main HTML file an
 
 This tells RequireJS what file to load first.
 
-For more info, [try the sample](https://github.com/Mikejo5000/TS-AMD).
+For more info, [try the sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-amd).
 
 ##<a name="commonjs"></a>Set up your module loader using CommonJs and Browserify
 
@@ -256,7 +254,7 @@ Before you can run your app (by pressing F5), You need to run the Gulp task. Ins
 
 ![VS Task Runner](media/tutorial-typescript/ts-vs-task-runner.png)
 
-For more info, [try the sample](https://github.com/Mikejo5000/TS-CommonJs).
+For more info, [try the sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-commonjs).
 
 ###Troubleshooting? Let's fix it
 
