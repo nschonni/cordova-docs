@@ -72,13 +72,6 @@ crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
     });
 ```
 
-##Consider Intune MAM features to force encryption
-[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application management](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and [mobile device management](https://en.wikipedia.org/wiki/Mobile_device_management) (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. 
-
-Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. The app wrapping tool that can be run on any Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK takes this a step farther adds in multi-tenet encryption that goes beyond OS level data protection features and ensures data separation when multiple users access the same device. See [Microsoft Intune documentation](https://technet.microsoft.com/en-us/library/mt631425.aspx) for a comparison of the features provided by the app wrapping tool and the App SDK.
-
-The app wrapping tool is generally available. While the Android and iOS native App SDKs are generally available, the Intune App SDK Cordova plugin that uses them is [currently in beta](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/). If you are interested in the beta plugin, see the **[announcement blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/)** for more details getting access and stay tuned for the upcoming GA announcement. Otherwise see the Intune documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) app wrapping tools** for more information.
-
 ##Consider community plugins
 In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits.
 
@@ -100,6 +93,18 @@ In addition to the above base capabilities there are a number of community plugi
 </tr>
 </thead><tbody>
 <tr>
+<td align="left">Secure Data Storage, Secure HTTP</td>
+<td align="left"><strong><a href="https://www.npmjs.com/package/com.intel.securitye">com.intel.security</a></strong></td>
+<td align="left"><p>This plugin provides a robust set of interfaces for secure storage and transmission of data. Specifically:</p>
+<ul>
+<li>It provides a functions to secure data in memory and then optionally persist the data in local storage.</li>
+<li>It provides a functions to securely transmit data via HTTP including support for certificate pinning.</li>
+</ul>
+<p>The plugin comes with <a href="https://software.intel.com/en-us/app-security-api/api">excellent documentation</a> and <a href="https://software.intel.com/en-us/node/604512">code snippets</a>.</p>
+</td>
+<td align="left">Android, iOS, Windows / Windows Phone 8.1, 10</td>
+</tr>
+<tr>
 <td align="left">Token / Secret Storage</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-plugin-secure-storage">cordova-plugin-secure-storage</a></strong></td>
 <td align="left"><p>The plugin allows your application to securely store secrets such as auth tokens or encryption keys in native secure key/token stores.</p>
@@ -113,11 +118,11 @@ In addition to the above base capabilities there are a number of community plugi
 <td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 8.1 and 10 support. MIT licensed.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 10 support. MIT licensed.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
 <ul>
 </td>
-<td align="left">Android, iOS, Windows 8.1, 10 (-ext versions)</td>
+<td align="left">Android, iOS, Windows 10 (cordova-sqlite-ext)</td>
 </tr>
 <tr>
 <td align="left">Encrypted Database</td>
@@ -131,12 +136,12 @@ In addition to the above base capabilities there are a number of community plugi
 
 1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URI needs to be used. The plugin will be added on next build.
     ```
-    <plugin name="cordova-sqlite-storage" spec="~0.8.2" />
+    <plugin name="cordova-sqlite-ext" spec="~0.8.4" />
     <plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
     ```
     ...or for Cordova < 5.1.1...
     ```
-    <vs:plugin name="cordova-sqlite-storage" version="0.8.2" />
+    <vs:plugin name="cordova-sqlite-ext" version="0.8.4" />
     <vs:plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
     ```
 
@@ -146,6 +151,13 @@ In addition to the above base capabilities there are a number of community plugi
     cordova plugin add cordova-sqlite-storage --save
     cordova plugin add https://github.com/litehelpers/Cordova-sqlcipher-adapter.git --save
     ```
+
+##Consider Intune MAM features to force encryption
+[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application management](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and [mobile device management](https://en.wikipedia.org/wiki/Mobile_device_management) (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. 
+
+Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. The app wrapping tool that can be run on any Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK takes this a step farther adds in multi-tenet encryption that goes beyond OS level data protection features and ensures data separation when multiple users access the same device. See [Microsoft Intune documentation](https://technet.microsoft.com/en-us/library/mt631425.aspx) for a comparison of the features provided by the app wrapping tool and the App SDK.
+
+The app wrapping tool is generally available. While the Android and iOS native App SDKs are generally available, the Intune App SDK Cordova plugin that uses them is [currently in beta](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/). If you are interested in the beta plugin, see the **[announcement blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/)** for more details getting access and stay tuned for the upcoming GA announcement. Otherwise see the Intune documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) app wrapping tools** for more information.
 
 ##Consider native Windows APIs for Windows
 One often missed feature that the Windows platform for Cordova has is the ability to call **any** JavaScript enabled [Windows API](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx) from your Cordova app **without a plugin**. Many plugins for the Windows platforms are simple JavaScript adapters to conform to the plugin interface spec. 
