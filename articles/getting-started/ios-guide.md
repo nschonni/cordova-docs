@@ -22,7 +22,7 @@ In this guide, we'll help you get everything setup right so that you can build, 
 
 Let's help you set things up.
 
-## First, install a few things onto your Mac
+## <a id="install"></a> First, install a few things onto your Mac
 
 1. Install version ```0.12.9``` of [Node.js](http://nodejs.org/).
 
@@ -45,6 +45,7 @@ Let's help you set things up.
     ```
      xcode-select -–install
     ```
+
     This installs the Xcode command-line tools.
 
 4. In the Terminal app, type this command.
@@ -103,7 +104,7 @@ You'll use those pieces of information in the next section.
 
 2. On the Visual Studio menu bar, choose **Tools**->**Options**.
 
-4. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **Remote Agent Configuration**.
+4. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
 
     ![Remote Agent Configuration Options](media/ios-guide/options-dialog.png)
 
@@ -123,7 +124,7 @@ You'll use those pieces of information in the next section.
 
 ### Troubleshooting: Let's fix it
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -151,7 +152,7 @@ You'll use those pieces of information in the next section.
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -417,7 +418,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [You've been told that no provisioning profiles were found](#no-provision)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -427,7 +428,9 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-### Connect the device to a Windows computer
+### <a id="local-deploy">Connect the device to a Windows computer
+
+You can attach an iOS device to your Windows computer, then set breakpoints in your app and debug it. As long as you can connect to your Mac, you don't have be anywhere near it. This makes it easier to build and debug iOS apps on a Windows computer and share a Mac with other developers on your team.
 
 To do this, you'll need a provisioning profile that you create by using an Apple Developer Account. If haven't yet done this, see [Option 1: Use an Apple Developer Account](#use-developer-account). That section of content also shows you how to install the provisioning profile to your device. That is also very important.
 
@@ -435,7 +438,11 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 1. Make sure that the remote agent is running.
 
-    See [Start the remote agent on your mac](#remoteAgent).
+    See [Start the remote agent on your Mac](#remoteAgent).
+
+2. If you want to debug your app, share the device support folder. You'll find it here: ```Macintosh HD/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport```.
+
+    For guidance, see [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
 
 #### On your Windows computer
 
@@ -447,21 +454,34 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     Apple iTunes automatically starts.
 
-3. In Visual Studio, open the project for your app.
+4. On the Visual Studio menu bar, choose **Tools**->**Options**.
 
-4. On the Standard toolbar, choose the **iOS** platform.
+5. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
+
+    ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
+
+6. Add the path to the device support files that are located on your remote Mac.
+
+    >**Note**: Do this only if you want to debug your app. You don't have to do this if just want to run your app on the device without debugging it.
+
+    ![Path to device files](media/ios-guide/local-debugging.png)
+
+7. Choose the **OK** button to close this dialog box.
+
+8. In Visual Studio, open the project for your app.
+
+9. On the Standard toolbar, choose the **iOS** platform.
 
     ![Platform selector](media/ios-guide/ios-platform.png)
 
-5. Choose **Local Device**.
+10. Choose **Local Device**.
 
     ![Target selector](media/ios-guide/local-device.png)
 
-6. Press the F5 key to start your app.
+11. Press the F5 key to start your app.
 
-    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, Apple iTunes starts and the iOS app is added to your library.
+    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, the app appears on your device.
 
-7. In Apple iTunes, install the app on the connected device.
 
 ## Stop the remote agent on your Mac
 
@@ -471,7 +491,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [You've been told that we were unable to find the app you're trying to debug](#safari)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -487,10 +507,12 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
+[You try to run your app on a device that is connected to your Windows computer but the project can't find it](#timeout)
+
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
-This can happen when Visual Studio has trouble finding your Mac on the network.
+This can happen when Visual Studio has trouble finding your Mac on the network or if host name or IP address of your Mac changed.
 
 On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
@@ -505,6 +527,22 @@ This image shows a preferred order of Wi-Fi networks.
 The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will use that network.
 
 The network that is used by your Windows Computer should appear first in this list. Otherwise, you'll experience these issues intermittently.
+
+If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed. When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
+
+Try this. Stop the remote agent on your Mac. Then, in a Terminal, run this command:
+
+```
+remotebuild certificates reset
+```
+
+Then, run this command:
+
+```
+remotebuild certificates generate
+```
+
+Start the remote agent and try connecting to it from Visual Studio again.
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
@@ -607,5 +645,13 @@ Try these things:
 * Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
 
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
+
+[Go back up](#errors)
+
+### <a id="timeout"></a>You try to run your app on a device that is connected to your Windows computer but the project can't find it
+
+It's possible that the **ios-webkit-debug-proxy.exe** and **idevicedebugserverproxy.exe** processes were started in a previous attempt to run this project.
+
+On your Windows computer, open the **Task Manager** and then choose the **Proceses** tab. If those processes appear in the list, right-click them, and then click **End Process**.
 
 [Go back up](#errors)

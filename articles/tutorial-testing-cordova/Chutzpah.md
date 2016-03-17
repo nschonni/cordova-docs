@@ -24,8 +24,8 @@ In this tutorial, you will install Chutzpah, learn how tests are organized, add 
 ----------
 ## Chutzpah Video Walkthrough
 
-After you download the file, follow the steps below or [watch the video walkthrough](https://microsoft.sharepoint.com/teams/dd_VSClient/_layouts/15/guestaccess.aspx?guestaccesstoken=UaC4Rjc0Z91MTQ%2fJWdgbJaamfcYZsD8jg4hxsNnDVhY%3d&docid=2_1a50c098dc6df4ce19e052fd988ddcdb3). In this video, we will take what you already know and show you how you can use Chutzpah in Visual Studio 2015 to help unit test your Apache Cordova apps.
-[![Chutzpah video walkthrough](media/chutzpah/chutzpah_video.png)](https://microsoft.sharepoint.com/teams/dd_VSClient/_layouts/15/guestaccess.aspx?guestaccesstoken=UaC4Rjc0Z91MTQ%2fJWdgbJaamfcYZsD8jg4hxsNnDVhY%3d&docid=2_1a50c098dc6df4ce19e052fd988ddcdb3)
+After you download the file, follow the steps below or [watch the video walkthrough](https://channel9.msdn.com/Series/Visual-Studio-Tools-for-Apache-Cordova/Getting-Started-With-Chutzpah-to-Test-Apache-Cordova-Apps-in-Visual-Studio-2015). In this video, we will take what you already know and show you how you can use Chutzpah in Visual Studio 2015 to help unit test your Apache Cordova apps.
+[![Chutzpah video walkthrough](media/chutzpah/chutzpah_video.png)](https://channel9.msdn.com/Series/Visual-Studio-Tools-for-Apache-Cordova/Getting-Started-With-Chutzpah-to-Test-Apache-Cordova-Apps-in-Visual-Studio-2015)
 ----------
 
 

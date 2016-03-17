@@ -24,8 +24,8 @@ Once you’ve downloaded and opened this project in Visual Studio, the folder st
 ----------
 ## Karma Video Walkthrough
 
-After you download the file, follow the steps below or [watch the video walkthrough](https://microsoft.sharepoint.com/teams/dd_VSClient/Shared%20Documents/_HEX%20-%20HTML%20Experiences/Presentations/Karma_Ajoy.mp4). In this short video, we will walk through unit testing a simple Apache Cordova application in Visual Studio 2015 using Karma and Jasmine. Along the way, we’ll cover how to work with some cool new features such as the Visual Studio Task Runner Explorer that make unit testing your apps inside Visual Studio really simple.
-[![Karma video walkthrough](media/karma/karma_video.png)](https://microsoft.sharepoint.com/teams/dd_VSClient/Shared%20Documents/_HEX%20-%20HTML%20Experiences/Presentations/Karma_Ajoy.mp4)
+After you download the file, follow the steps below or [watch the video walkthrough](https://channel9.msdn.com/Series/Visual-Studio-Tools-for-Apache-Cordova/Using-Karma-and-Jasmine-To-Test-Apache-Cordova-Apps-in-Visual-Studio-2015). In this short video, we will walk through unit testing a simple Apache Cordova application in Visual Studio 2015 using Karma and Jasmine. Along the way, we’ll cover how to work with some cool new features such as the Visual Studio Task Runner Explorer that make unit testing your apps inside Visual Studio really simple.
+[![Karma video walkthrough](media/karma/karma_video.png)](https://channel9.msdn.com/Series/Visual-Studio-Tools-for-Apache-Cordova/Using-Karma-and-Jasmine-To-Test-Apache-Cordova-Apps-in-Visual-Studio-2015)
 
 ----------
 

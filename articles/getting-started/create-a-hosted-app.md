@@ -11,10 +11,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="09/10/2015"
+   ms.date="12/19/2015"
    ms.author="mikejo"/>
 
-# Create a hosted app using Apache Cordova
+# Create a hosted web app using Apache Cordova
 
 Web developers can use Cordova to leverage existing web assets, get a web-based app uploaded to an app store, and get access to device features like the camera. In this topic, we want to show you a fast way to turn a Web site into a mobile app using Apache Cordova.
 
@@ -24,7 +24,7 @@ In general, when migrating a Web site, several approaches will work. Here are a 
 
     This can be a good option especially if your web site does *not* implement server-side technologies such as ASP.NET, PHP, and Ruby, which are not supported in the client-side code of a Cordova app. For this option, your front end code must be repackaged in a Cordova-friendly fashion (plain HTML5, CSS, and JavaScript, with JSON for communication with your back-end server) so that it can run in the Cordova client (the native WebView). The actual steps involved are pretty specific to each Web site, so we will not be looking at this option in this article. For more detailed info on these options, see [What's Next?](#next). For a more general tutorial, see the [Beginner's Guide](get-started-first-mobile-app.md).
 
-* Create a hosted app.
+* Create a hosted web app.
 
     For this scenario, you use a thin Cordova client (think of it as a web browser embedded in a native app) that automatically redirects to your Web site. For sites using ASP.NET and other server-side technologies, this is the fastest way to get up and running, and is a good way to get your app into one of the app stores quickly while learning Cordova. The full app experience will require an Internet connection, but you can also do a few things to handle offline scenarios. This approach will be much more effective if your Web site uses [responsive design](http://alistapart.com/article/responsive-web-design) techniques to adjust layout to match the device screen size.
 
@@ -74,7 +74,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 4. Before you run the app, first identify one or more emulators or devices for initial testing of the Hosted App sample based on your dev environment.
 
-    * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx), you can plan to test on the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
+    * If you are running Windows 10 on a machine that supports [Hyper-V](https://msdn.microsoft.com/en-us/library/mt228280.aspx) (no VM support), you can plan to test on the Visual Studio Emulator for Android. This is a fast, full-featured emulator. (Running on a VM is not supported.)
 
     * If you are running Windows 10, you can plan to test on the Windows Phone 10 emulator or your Windows 10 device. If your device has a webcam, you can use it later in the tutorial!
 
@@ -90,7 +90,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-select-android.png)
 
-    If you are running on Windows 10, choose **Windows - Any CPU** as the target, and then choose **Local Machine** from the device list on the right.
+    If you are running on Windows 10, choose **Windows - x64** or **Windows - x86** as the target, and then choose **Local Machine** from the device list on the right.
 
     If you are running initially on Ripple, choose **Android,** then **Ripple - Nexus (Galaxy)** from the device list. See the illustration below.
 
@@ -98,7 +98,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 7. Press F5 to start the app.
 
-     When the app loads, it displays a "Hello, your application is ready" message.
+     When the app loads, it displays a "Hello, your application is ready" message. (The first build always takes longer.)
 
     ![Run the default Blank App template](media/create-a-hosted-app/hosted-app-run-blank.png)
 
@@ -106,7 +106,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
 8. Press Shift + F5 to stop debugging.
 
-## Change the Cordova project to a hosted app
+## Change the Cordova project to a hosted web app
 
 1. In Solution Explorer, right-click config.xml in the CordovaHostedApp-Client project and choose **View Code**.
 
@@ -216,6 +216,16 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     ![Run the Hosted Web App](media/create-a-hosted-app/hosted-app-windows.png)
 
+    >**Note**: The complete sample has CSS code to make the splash page that you first see look really good. We will skip that for now.
+
+### Troubleshooting: Let's fix it
+
+[App hangs on "Verifying Connectivity" message](#errorVerifying)
+
+[App hangs on message saying that the URL is trying to launch another app](#errorUrl)
+
+[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
+
 ## Provide a mobile-specific page for the web site
 
 Now, you will update the web site to display a mobile-specific page if the site detects a Cordova app. In this app, you will add this code so that users running the Cordova hosted app can access device features such as the camera, while visitors using a browser will get the default home page.
@@ -320,7 +330,7 @@ Now, you will update the web site to display a mobile-specific page if the site 
 
     to index.css in the www/css folder.
 
-## Connect to the hosted app from your device.
+## Connect to the hosted web app from your device.
 
 To save time and steps, instead of republishing the ASP.NET project to a new Azure Web App URL, you will connect to a version of the project with the changes already in place. (If you want info on how to republish to a new URL, see the Appendix in this article.)
 
@@ -349,6 +359,10 @@ To save time and steps, instead of republishing the ASP.NET project to a new Azu
     > **Note**: On Ripple, the redirection is only partially supported. If you see popup, close the message to see the redirection page of the hosted app.
 
     Next, you want to fix up this page so that you can access the device camera and take a picture.
+
+### Troubleshooting: Let's fix it
+
+[CSS is not getting applied to the Splash screen that appears briefly](#splash)
 
 ## Add plugins to your project
 
@@ -506,6 +520,30 @@ You may want to investigate options to find an approach that works best for you.
 * **Explore other architectures that may be used for hosted apps**
 
     * The [Application Shell Architecture](https://medium.com/google-developers/instant-loading-web-apps-with-an-application-shell-architecture-7c0c2f10c73#.ogxsvl7wr) may be one way to enable good offline support and high performance in a hosted app.
+
+## Troubleshooting: Let's fix it
+
+If you run into errors getting the hosted web app running, check this section
+
+### App hangs on "Verifying Connectivity" message <a name="errorVerifying"></a>
+
+If you see the error shown below, you may be trying to target a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
+
+![App Hangs on error](media/create-a-hosted-app/hosted-app-win81-error.png)
+
+### App hangs on message saying that the URL is trying to launch another app <a name="errorUrl"></a>
+
+If you see the error shown below, you may be trying to target a version of Windows that is unsupported for the hosted apps sample. Open config.xml, then the **Windows** tab, then choose **Windows 10.0**. Run the app.
+
+### CSS is not getting applied to the Splash screen that appears briefly <a name="splash"></a>
+
+You can get the CSS to create a nice Splash screen from the [complete sample](https://github.com/ridomin/CdvaHWA). Copy the CSS code from [here](https://github.com/ridomin/CdvaHWA/blob/master/CordovaHostedApp/www/css/index.css) into your project's www/css folder.
+
+### <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
+
+The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
+
+If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
 ## Appendix: Publish the Web site
 
