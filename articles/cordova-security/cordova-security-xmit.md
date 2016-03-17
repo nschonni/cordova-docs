@@ -124,10 +124,12 @@ This general approach can be reused for services across Azure and O365 services 
 ###Certificate Pinning
 Another trick used in high security situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, official certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
 
-Cordova and most underlying native webviews unfortunately do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), there are two plugins that can help resolve this problem for you.
+Cordova and most underlying native webviews unfortunately do not generally support this out-of-box. You can technically approximate certificate pinning as described in the [Cordova Security Guide](https://cordova.apache.org/docs/en/6.0.0/guide/appdev/security/index.html), there are two plugins that can help resolve this problem for you. 
+
+In general, it is best to stick with the base XML HTTP Request implementation when making service calls but these plugin can be useful when you are in a particularly high security situation. Note that Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits. That said one is [maintained by Intel](https://software.intel.com/en-us/app-security-api) while the other has a [fork that been verified by Telerik](http://plugins.telerik.com/cordova/plugin/secure-http).
 
 ####com.intel.security
-One community plugin with certificate pinning support is **[com.intel.security](https://www.npmjs.com/package/com.intel.security)** which has excellent documetnation and a great **[quick start on certificate pinning](https://software.intel.com/en-us/node/604523)**. Adding the plugin is easy:
+One community plugin with certificate pinning support is **[com.intel.security](https://www.npmjs.com/package/com.intel.security)** which has excellent documentation and a great **[quick start on certificate pinning](https://software.intel.com/en-us/node/604523)**. Adding the plugin is easy:
 
 1. When using Visual Studio, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
 
@@ -139,12 +141,13 @@ One community plugin with certificate pinning support is **[com.intel.security](
     <vs:plugin name="com.intel.security" version="1.4.1" />
     ```
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
     ```
     cordova plugin add com.intel.security --save
     ```
 
 ####cordova-plugin-http
-Another is the **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among other features to **iOS and Android**. In general it is best to stick with the base XML HTTP Request implementation when making service calls but this plugin can be useful when you are in a particularly high security situation.
+Another is the **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among other features to **iOS and Android**. 
 
 Here's a quick start:
 
@@ -164,6 +167,7 @@ Here's a quick start:
         <vs:plugin name="cordova-plugin-http" version="1.0.2" />
         ```
     2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+    
         ```
         cordova plugin add cordova-plugin-http --save
         ```
