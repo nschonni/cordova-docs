@@ -218,6 +218,10 @@ Then, see [Upload an app](https://support.google.com/googleplay/android-develope
 
 A distribution certificate identifies your team or organization.
 
+If your team already has a distribution certificate and provisioning profile, and you want to reuse that, here's a blog post that can help you do that: [How to share an iOS distribution certificate](http://www.ironpaper.com/webintel/articles/how-to-share-an-ios-distribution-certificate/). Then, skip straight to the Modify the settings of your app section.
+
+If you don't already have a distribution certificate and provisioning profile, continue on with this section.  
+
 1. Start Xcode.
 
     If you haven't installed Xcode, see the [First, install a few things onto your Mac](./getting-started/ios-guide.md#use-developer-account) section of the [iOS setup guide]().
