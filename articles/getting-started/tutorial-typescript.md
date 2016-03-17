@@ -150,14 +150,14 @@ In a Cordova app that uses CommonJs, you also need a bundling tool like Browseri
 </tbody>
 </table>
 
-##<a name="samples"></a>Get the samples
+###<a name="samples"></a>Get the samples
 
 The starter samples extend the [Greeter tutorial](http://www.typescriptlang.org/Tutorial) from the TypeScript handbook and include some basic plugin code that supports Geolocation. The two samples are complete Visual Studio projects.
 
   * [AMD and RequireJS sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-amd)
   * [CommonJs and Browserify sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-commonjs)
 
-##<a name="modules"></a>Create your modules!
+###<a name="modules"></a>Create your modules!
 
 Whether you use CommonJs or AMD, you can organize your modules in the same way. To organize the modules, each module goes into its own TypeScript (.ts) file. In both CommonJs and AMD, use the `export=` statement to expose the class or interface to the rest of the app. The following code shows the Student module.
 
@@ -190,7 +190,7 @@ function createUser(loc: any) {
 }
 ```
 
-##<a name="amd"></a>Set up your module loader using AMD and RequireJs
+###<a name="amd"></a>Set up your module loader using AMD and RequireJs
 
 When using AMD for your module loader, you will want to use RequireJS for your module loader. You can use Visual Studio to compile the TypeScript. One advantage of using AMD and RequireJS is that you don't need to configure a Gulp task but can use Visual Studio to compile the TypeScript. With AMD, you need to make sure that your settings in the .tsconfig are all correct. Here is the .tsconfig file in the sample app.
 
@@ -223,7 +223,7 @@ This tells RequireJS what file to load first.
 
 For more info, [try the sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-amd).
 
-##<a name="commonjs"></a>Set up your module loader using CommonJs and Browserify
+###<a name="commonjs"></a>Set up your module loader using CommonJs and Browserify
 
 When using Browserify, you can make APIs calls with Gulp instead of running Browserify in the command line. The output will be a single combined (bundled) JavaScript file and a single combined sourceMap file. The sourceMap file will map output back to your original .ts file and make it possible for you to debug your source files (the .ts files) when you run the app. As an alternative to Browserify, you can use Webpack in your app but using Gulp with Webpack is generally a little more complicated to set up.
 
@@ -256,15 +256,11 @@ Before you can run your app (by pressing F5), You need to run the Gulp task. Ins
 
 For more info, [try the sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-commonjs).
 
-###Troubleshooting? Let's fix it
-
-[Can't hit breakpoints in your .ts files](#breakpoints)
-
-##Troubleshooting
+###Troubleshooting
 
 Here are a few issues you may see when working on your own app.
 
-###<a name="breakpoints"></a>Can't hit breakpoints in your .ts files
+####<a name="breakpoints"></a>Can't hit breakpoints in your .ts files
 
 Most likely, this is caused by a problem in your sourceMaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps. If you are using Gulp, check the Gulp sample in this article to make sure that sourceMap-related properties are set correctly. Make sure that properties like **extensions**, **loadMaps** and **sourceRoot** are using the specified values.
 
