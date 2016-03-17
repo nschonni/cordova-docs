@@ -21,6 +21,12 @@ From there, you can then [add auth into Mobile App services](https://azure.micro
 
 ![Azure Mobile Apps Easy Tables](media/cordova-security-data/auth-easy-tables.png)
 
+Azure Mobile Apps features can be added to any Azure Web or API app. As a result, you can quickly create a centralized backend that you use as a focal point for user authenticated calls to backend services.
+
+![Azure Web/API App](media/cordova-security-data/auth-api-app.png)
+
+See the next section for information on passing authorization tokens across to custom APIs.
+
 Note that if you would prefer to use the [Active Directory Authentication Library (ADAL) plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) to authenticate users in your app with Azure Active Directory or Active Directory Federation Services (ADFS) v3 and up, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
 
 First, carefully follow all setup steps under **[(Optional) Configure a native client application](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-how-to-configure-active-directory-authentication/)** in the Azure App Service AD auth article. You can then login using the auth token from ADAL as follows:
@@ -38,49 +44,9 @@ client.login("aad", {"access_token": tokenFromADAL})
 See [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/), and [the Cordova authentication article](./cordova-security-auth.md) for additional details.
 
 #### Pass auth tokens in request headers when using REST APIs directly
-<!--
-The Azure Mobile Apps client taps into Azure App Service Auth on the server side which means you'll also be able to connect to authenticated, custom server [App Service "API Apps"](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/) or other services that also use App Service Auth. You can see how to setup user authentication for service calls [in the App Service API Apps documentation.](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-dotnet-user-principal-auth/) 
--->
 Cordova apps can call JSON and REST based services without client libraries can quite easily thanks to JSON.parse(). When passing auth tokens in XHR calls to REST APIs, most implmentations use a request header rather than something like a query string that can show up in server logs.
 
-For example, the [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the [ADAL Cordova plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). 
-
-<!--
-This same general approach can be applied when using the Azure Mobile Apps client when calling an Azure App Service API App as well.  The key is getting the access token, passing it along to the downstream service, and having the service validate it.
-
-![Call API App](media/cordova-security-data/auth-api-app.png)
--->
-Here's a simplified code example that runs against the publicly available AD Graph REST API:
-
-```javascript
-function get10UsersFromADGraph(adTenantId, adToken, callback) {
-    var req = new XMLHttpRequest();
-    req.open("GET", "https://graph.windows.net/" + adTenantId + "/users?api-version=2013-11-08&$top=10", true);
-    
-    // Pass in the ADAL token in the request 
-    req.setRequestHeader("Authorization", "Bearer " + adToken);
-
-    req.onload = function(e) {
-        if (e.target.status >= 200 && e.target.status < 300) {
-            // Call callback function with resulting object from API
-            callback(JSON.parse(e.target.response));
-            return;
-        } else {
-            console.error("Call failed: " + e.target.response);        
-        }    
-    };
-    
-    req.onerror = function(e) {
-        console.error("Call failed: " + e.error);
-    };
-
-    req.send();
-}
-```
-
-This general approach can be reused for services across Azure and O365 services but there are variations from service to service. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) service documentation for additional details on token passing to downstream services. 
-
-As an example of a variation, calling (custom or built-in) REST APIs deployed with your Azure Mobile App in Azure App Service is a bit different. In this case you actually need to set an **X-ZUMO-AUTH** header instead of Authorization.
+For example, calling (custom or built-in) REST APIs deployed in Azure App Service behind Azure App Service Auth requires to you set a **X-ZUMO-AUTH** header with the appropriate authentication token.
 
 Here is an code sample of calling the "/.auth/me" endpoint that can provides basic login information using a token from the Azure Mobile Apps client in the Cordova plugin:
 
@@ -122,6 +88,38 @@ client.login("aad")
         console.error(msg);
     });
 ```
+
+Note that not all services expect auth tokens to be passed as a X-ZUMO-AUTH header value. The [Azure Active Directory Quick Start](https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-cordova/) has code that demonstrates calling the Azure AD Graph REST API directly using an AD token from the [ADAL Cordova plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) as the auth [bearer token](http://self-issued.info/docs/draft-ietf-oauth-v2-bearer-19.html). 
+
+Here's a simplified code example that runs against the publicly available AD Graph REST API:
+
+```javascript
+function get10UsersFromADGraph(adTenantId, adToken, callback) {
+    var req = new XMLHttpRequest();
+    req.open("GET", "https://graph.windows.net/" + adTenantId + "/users?api-version=2013-11-08&$top=10", true);
+    
+    // Pass in the ADAL token in the request 
+    req.setRequestHeader("Authorization", "Bearer " + adToken);
+
+    req.onload = function(e) {
+        if (e.target.status >= 200 && e.target.status < 300) {
+            // Call callback function with resulting object from API
+            callback(JSON.parse(e.target.response));
+            return;
+        } else {
+            console.error("Call failed: " + e.target.response);        
+        }    
+    };
+    
+    req.onerror = function(e) {
+        console.error("Call failed: " + e.error);
+    };
+
+    req.send();
+}
+```
+
+This general approach can be reused for services across Azure and O365 services but there are variations from service to service. See documentation on [Azure JSON based REST APIs](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) and [O365](http://dev.office.com/getting-started/office365apis) service documentation for additional details on token passing to downstream services. 
 
 ###Certificate Pinning
 Another trick used in high security situations is something called [certificate pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning). The idea here is you can significantly reduce the chances of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) by "pinning" the allowed public certificates accepted by your app when making the connection to highly trusted, official certificate authorities (like Verisign, Geotrust, GoDaddy) that you are actually using. The end result is that someone trying to execute a man in the middle attack would need a valid SSL certificate from that specific authority to trick your app into connecting to it.
