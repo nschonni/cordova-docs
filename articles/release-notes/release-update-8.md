@@ -12,7 +12,7 @@
      ms.date="03/08/2016"
      ms.author="rmpablos"/>
 
-#**Update 8 - Visual Studio Tools for Apache Cordova (pre-release)**
+#**Update 8 - Visual Studio Tools for Apache Cordova (Beta)**
 Update 8 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.60311.2 and will be included with Visual Studio Update 2.
 
 ## Setup Instructions
