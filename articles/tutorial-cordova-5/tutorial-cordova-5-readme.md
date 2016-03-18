@@ -2,7 +2,7 @@
   description="Adapting to changes in Apache Cordova 5.x and 6.x"
   services=""
   documentationCenter=""
-  authors="Chuxel" />
+  authors="clantz" />
 
 # Adapting to changes caused by Apache Cordova 5.x and 6.x
 The Tools for Apache Cordova RTM have been tested with both Cordova 4.3.1 and Cordova 5.1.1 with subsequent updates being tested against more recent versions of Cordova including 6.0.0. 
@@ -75,11 +75,12 @@ cordova plugin add cordova-plugin-camera@^1.2.0
 ...replacing the Cordova version and camera plugin Id with the appropriate one for your use case.
 
 ## Changes with the release of Cordova 5
+
 <a name="security"></a>
 ### Security Model Changes for Android and iOS
 One of the more confusing changes about Cordova 5 is that the updated version of the Android platform (also called Cordova Android 4.x) and iOS now follow a different, but more powerful security model designed to provide developers with the tools needed to prevent cross-site scripting attacks among other issues. A critical aspect of this security model is that **absolutely no network access of any kind is allowed without the installation of a Cordova plugin**.
 
-There are a whole host of new security features available and we **strongly recommend you read the [Introduction to Cordova 5 Security](./cordova-5-security.md) document** for a introduction on them. This article will focus on getting you up and running with the basics.
+There are a whole host of new security features available and we **strongly recommend you read the [whitelist and CSP guide](../security/cordova-security-whitelist.md)** for a introduction on them. This article will focus on getting you up and running with the basics.
 
 #### The New Whitelist Plugin
 The new [Cordova Whitelist plugin (cordova-plugin-whitelist)](http://go.microsoft.com/fwlink/?LinkID=617668) is the recommended base security plugin to use for managing network security access. Historically there was one **access** element in config.xml used to control all access to network resources.
@@ -95,7 +96,7 @@ Projects created using the Tools for Apache Cordova or Cordova CLI itself contai
 3. Disallows inline script (Meaning no &lt;script&gt; tags or "on" attributes on HTML elements) on recent versions of Android, iOS, or Windows via a W3C Content Security Policy (CSP) in index.html.
 4. Allows the "tel:", "sms:", "mailto:", and "geo:" intents.
 
-You'll want to start your project with roughly these same defaults and alter as needed. See below for how to add these defaults to your project and the [Introduction to Cordova 5 Security](./cordova-5-security.md) document for details on why these defaults are in place and how to change them.
+You'll want to start your project with roughly these same defaults and alter as needed. See below for how to add these defaults to your project and the [whitelist and CSP guide](../security/cordova-security-whitelist.md) for details on why these defaults are in place and how to change them.
 
 ####Configuring Security Settings from a VS Project
 When you upgrade a project to Cordova 5.0.0+, you will want to take the following steps if you want to mirror the base security policy listed above. You can then customize them as needed to meet your needs.
@@ -141,7 +142,7 @@ When you upgrade a project to Cordova 5.0.0+, you will want to take the followin
 
 		> Note: You don't have to add this tag to pages that are dynamically loaded by a JavaScript framework like AngluarJS or WinJS. Many times you just need to add it to index.html.
 
-	2. Customize the CSP policy to meet your needs. See [Introduction to Cordova 5 Security](./cordova-5-security.md) for details.
+	2. Customize the CSP policy to meet your needs. See [whitelist and CSP guide](../security/cordova-security-whitelist.md) for details.
 
 	3. You may wish to use the Crosswalk WebView plugin when targeting earlier versions of Android as CSP support was not introduced until Android 4.4. See [the section on Crosswalk later in this article](#crosswalk) for additional tips on using Crosswalk.
 
@@ -168,7 +169,7 @@ To use the Crosswalk WebView plugin from Visual Studio, follow these steps:
 
 The next time you build, your app will be running in the Crosswalk WebView. Note that the first build for Android in particular will take a bit given the plugin does some dynamic acquisition.
 
-####Tips on Using the Crosswalk
+####Tips on using Crosswalk
 1. If you run into a problem where the Visual Studio **debugger is not attaching** after adding the Crosswalk plugin, you may be encountering an issue with a recent version of Crosswalk.  Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. Simply add the following to config.xml by right-clicking on the in file in Visual Studio and selecting **View Code**:
 
 	```
@@ -248,8 +249,6 @@ Plugins.cordova.io now has two registry sections:
 
 - The landing page of [plugins.cordova.io](http://go.microsoft.com/fwlink/?LinkID=618599) **contains only npm sourced plugins** and these plugins only work with Cordova 5.0.0+.
 - Cordova versions less than 6.0.0 can use plugins in [the legacy registry](http://50.17.177.14/). **However,** note that 6.0.0 dropped this support.
-
-	![Npm Plugin Registry](media/tutorial-cordova-5-readme/cordova-5-9.png)
 
 Both sets of plugins can be used with Cordova 5.0.0+, so in the short term, you might need to search in both locations for plugins. Plugins that you find in npm are most likely to work without an issue with Cordova 5.0.0 and higher, and might work with earlier versions of Cordova. Npm will be the eventual source of truth, but things are still in a transition period.
 

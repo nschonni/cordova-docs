@@ -14,15 +14,189 @@
      ms.author="mikejo"/>
 
 # Get started with Ionic apps in Visual Studio
-[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 and the Ionic CLI to easily create and debug cross-platform apps.
+[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps.
 
->**Note**: For a video walkthrough that shows similar steps, see the [Video tutorial](http://go.microsoft.com/fwlink/p/?LinkID=534728).
+## Get the Ionic templates! <a name="getTemplates"></a>
 
-## Set up your machine for Ionic with VS <a name="getStarted"></a>
+You can install the Ionic starter templates in Visual Studio and use them to start building an app.
 
-To follow these steps, you must:
+1. If you haven't already, [install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
 
-1. [Install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
+    When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
+
+    > **Note:** Quickly verify that you can load and build the default Blank App template. In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank", and build it with F5.
+
+2. Install the Ionic templates.
+
+     > **Note:** Add it directly to Visual Studio by downloading and double-clicking on the [VS Extension for Ionic](https://visualstudiogallery.msdn.microsoft.com/4e44ba8b-a4c8-4106-b70e-00d63241a54a)
+     
+    Or, do it in Visual Studio, by selecting **File**, **New**, then **Project**. In the New Project dialog box, select **Online**. In the search box, type **Ionic**.
+
+    ![Getting the templates](media/tutorial-ionic/ionic-online-templates.png)
+
+    Type any name and choose **OK** to install them. When you are asked for permission to install the templates, give your permission.
+
+3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
+
+    ![Choosing a template](media/tutorial-ionic/ionic-installed-templates.png)
+    
+    Choose one of the following starter templates for your new project:
+
+    * Ionic Blank App
+    * Ionic SideMenu Template
+    * Ionic Tabs Template
+
+4. Choose **OK**.
+
+    Visual Studio creates the Ionic project.
+
+5. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
+
+## Get your app running on Android <a name="configAndroid"></a>
+
+1. Add the Android platform by **Android** as a debug target (Solution Platforms list), and then choosing **Build**, then **Build Solution**.
+
+2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Android Emulator (slow to load initially).
+
+    ![Run the app](media/tutorial-ionic/ionic-f5.png)
+
+    You can configure a Google Android emulator in [AVD Manager](../develop-apps/run-app-apache.md).
+
+    You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#keyboard).
+
+3. Press F5, and the app should load correctly.
+
+    ![App running in the emulator](media/tutorial-ionic/ionic-sidemenu.png)
+
+### Troubleshooting: Let's fix it
+
+[Keyboard or StatusBar plugin not found?](#keyboard)
+
+[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Other issues?](#other)
+
+## Get your app running on iOS <a name="configiOS"></a>
+
+  You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](ios-guide.md).
+
+  The Ionic starter templates should run correctly on iOS when the remotebuild agent is running on a Mac (or a service like MacInCloud), and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
+
+## Get your app running on Windows <a name="configWin10"></a>
+
+1. If it's not already installed, use the Visual Studio install program to install the **Universal Windows App Development Tools** (it should already be installed).
+
+2. Choose **Build Solution** from the **Build** menu.
+
+3. Open the configuration designer (config.xml) in Visual Studio, choose Windows, and in the **Windows Target Version**, choose  either **Windows 10.0** or **Windows 8.1**, and save changes.
+
+4. Choose **Windows-x64** or **Windows-x86** from the Solution Platforms list.
+
+5. Choose a Windows deployment target, such as **Local Machine** or **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+
+6. Press F5 to run your app.
+
+### Troubleshooting: Let's fix it
+
+[Get a message telling you to install a new app?](#partialpages)
+
+[Certificate error on Windows](#certificate)
+
+[Unhandled exception running on Windows?](#unhandled)
+
+[appxrecipe file missing](#appxrecipe)
+
+[Other issues?](#other)
+
+## Use TypeScript in an Ionic app <a name="useTypeScript"></a>
+
+You can use TypeScript in an Ionic app (even though the starter templates are not currently available in TypeScript). Take the following steps.
+
+1. First, [install the Ionic starter templates](#getTemplates) and create a project using one of them.
+
+    Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual Studio](#manualImport).
+
+3. Add a tsconfig.json file to the root of your project and paste the following content into the file.
+
+    ```
+    {
+      "compilerOptions": {
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "inlineSources": true,
+        "out": "www/js/appBundle.js",
+        "target": "es5"
+      },
+      "exclude": [
+        "node_modules"
+      ],
+      "files": [
+        "typings/app.ts",
+        "typings/tsd.d.ts"
+      ]
+    }
+    ```
+
+    Later, you can make modifications to this file as needed. For example, you may want to move controller.js and services.js from the www/js folder to the typings folder, and include those files in the compiler options for the file list (that is, add a "typings/controllers.ts" entry, and so on, under the `files` entry). You can use both TypeScript and JavaScript in the same file if you want to, and the TypeScript compiler will create the correct JavaScript output.
+
+4. In Visual Studio, move app.js from the www/js folder to the typings folder.
+
+5. Rename app.js to app.ts.
+
+    When you build later, the compiler will build app.ts and the output will be `www/js/appBundle.js`. The file will be unchanged by the compiler if you don't add any TypeScript code.
+
+6. In Visual Studio, open the project's package.json file and add a reference for tsd under `dependencies`.
+
+    ```
+    "tsd": "^0.6.5"
+    ```
+    Visual Studio will invoke npm to install tsd node packages to the project.
+
+    If you don't see this happening, first go to the command line and type `npm install tsd -g` to install tsd globally. Then add the tsd reference to package.json.
+
+7. In the command line, type this.
+
+    ```
+    tsd init
+    ```
+    This command installs tsd.json, the typings folder, and tsd.d.ts to the project.
+
+8. In the command line, run the following commands to install the correct set of d.ts files for the Ionic app.
+
+    ```
+    tsd install cordova --save
+    tsd install ionic --save
+    tsd install cordova-ionic --save
+    ```
+    The d.ts files will be added to the typings folder.
+
+9. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
+
+10. Choose a deployment target like **Android** or **Windows-x86** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
+
+    [Get your app running on Android](#configAndroid)
+
+    [Get your app running on iOS](#configiOS)
+
+    [Get your app running on  on Windows 10](#configWin10)
+
+    [Get your app running on Windows 8.1](#configWindows)
+
+11. Press F5 to run the app.
+
+    ![Run the app](media/tutorial-ionic/ionic-f5.png)
+
+## Manually import an Ionic project into Visual Studio <a name="manualImport"></a>
+
+If you have an existing Ionic project or want to run one of the other Ionic sample apps that aren't available in Visual Studio, you can manually import an Ionic project instead of using the Visual Studio Ionic templates.
+
+### Set up your machine for Ionic with VS <a name="getStarted"></a>
+
+1. If you haven't already, [install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
 
     When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
 
@@ -30,7 +204,7 @@ To follow these steps, you must:
 
     * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
 
-    * Choose **Windows-x86**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
+    * Choose **Windows-x86**, **Local Machine** (requires Windows 8.1 or Windows 10) and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
 
 3. [Install the Ionic CLI](http://ionicframework.com/docs/cli/install.html).
 
@@ -38,7 +212,7 @@ To follow these steps, you must:
     npm install -g ionic
     ```
 
-## Get the Ionic starter app templates <a name="getTemplates"></a>
+### Use the Ionic CLI to get the Ionic starter app templates <a name="getTemplates"></a>
 
 1. Make sure you installed the Ionic CLI, then open a command line.
 2. Go to the directory where you want to install the Ionic starter app templates, such as the Documents folder.
@@ -71,7 +245,7 @@ To follow these steps, you must:
 
 >**Note**: If you are trying to use a Visual Studio 2013 Ionic project in Visual Studio 2015, see this info on [migrating projects](migrate-to-vs2015.md) to Visual Studio 2015, which is strongly recommended.
 
-## Import the project into VS <a name="configTemplates"></a>
+### Import the project into VS <a name="configTemplates"></a>
 
 For each of the Ionic starter app templates that you installed and want to run, do this:
 
@@ -88,7 +262,7 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     Visual Studio adds a few new files to the project. Wait for Bower/NPM updates to the project to finish, if necessary.
 
-## Make a few general code changes
+### Make a few general code changes
 
 1. If app.js includes the following line of code
 
@@ -113,75 +287,21 @@ For each of the Ionic starter app templates that you installed and want to run, 
 
     This will fulfill Apache Cordova 5 [security requirements](../tutorial-cordova-5/cordova-5-security.md).
 
-## Get your app running on Android <a name="configAndroid"></a>
+12. Choose a deployment target like **Android** or **Windows-x86** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
 
-1. If you want to use the Ionic CLI to add the Android platform, use this command in the command line:
+    [Get your app running on Android](#configAndroid)
 
-    ```
-    ionic platform add android
-    ```
+    [Get your app running on iOS](#configiOS)
 
-    Or, you can add the platform by building in VS (choose **Build** > **Build Solution**).
+    [Get your app running on  on Windows 10](#configWin10)
 
-2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Emulator (slow to load initially).
+    [Get your app running on Windows 8.1](#configWindows)
 
-    ![Run the app](media/tutorial-ionic/ionic-f5.png)
+### Manually add code to support Windows 8 or 8.1 <a name="configWindows"></a>
 
-    You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#keyboard).
+If you used one of the Ionic starter templates provided by Visual Studio, you only need to [update config.xml](#configWin10), and then you can skip the steps described in this section.
 
-3. Press F5, and the app should load correctly.
-
-    ![App running in the emulator](media/tutorial-ionic/ionic-sidemenu.png)
-
-### Troubleshooting: Let's fix it
-
-[Keyboard or StatusBar plugin not found?](#keyboard)
-
-[TypeScript errors?](#typescript)
-
-[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
-
-[Error saying that a Content Security Policy is missing?](#csp)
-
-[Other issues?](#other)
-
-## Get your app running on iOS <a name="configiOS"></a>
-
-  You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](ios-guide.md).
-
-  The Ionic starter app should run correctly on iOS when the remotebuild agent is running on a Mac, and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
-
-## Get your app running on Windows 10 <a name="configWin10"></a>
-
-If your are running Visual Studio on a Windows 10 machine, you can target Windows 10. To target Windows 10 in your app, you need to:
-
-1. If it's not already installed, use the Visual Studio install program to install the **Universal Windows App Development Tools** (optional software).
-
-2. Choose **Build Solution** from the **Build** menu.
-
-3. Open the configuration designer (config.xml) in Visual Studio, choose Windows, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
-
-4. Choose **Windows-x64** or **Windows-x86** from the Solution Platforms list.
-
-5. Choose a Windows 10 deployment target, such as **Local Machine** or **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
-
-6. Press F5 to run your app.
-
-### Troubleshooting: Let's fix it
-
-[TypeScript errors?](#typescript)
-
-[Get a message telling you to install a new app?](#partialpages)
-
-[Certificate error on Windows](#certificate)
-
-[Unhandled exception running on Windows?](#unhandled)
-
-[appxrecipe file missing](#appxrecipe)
-
-[Other issues?](#other)
-
-## Get your app running on Windows 8 or 8.1 <a name="configWindows"></a>
+If you manually imported the Ionic project, you will need to make some changes to the project to support Windows 8.1.
 
 1. Open the folder for the Blank App project created in Visual Studio and copy the merges folder (and its contents) to your Ionic project. Copy the folder under the top level folder (for example, under ionicMySideMenu folder).
 
@@ -199,15 +319,15 @@ If your are running Visual Studio on a Windows 10 machine, you can target Window
 
     >**Note**: If you use the js folder instead of scripts, the folder and path will need to be updated in several other files.
 
-4. Select **Windows-Any CPU** or **Windows Phone (Universal)** as a debug target (Solution Platforms list).
+4. Select **Windows-x64**, **Windows-x86**, or **Windows Phone (Universal)** as a debug target (Solution Platforms list).
 
-  * For Windows, choose **Local Machine** as the deployment target (if you are running on Windows 8.1).
+    * For Windows, choose **Local Machine** as the deployment target (if you are running on Windows 8.1).
 
-  * For Windows Phone 8.1, choose one of the Emulator 8.1 options.
+    * For Windows Phone 8.1, choose one of the Emulator 8.1 options.
 
 5. Press F5 to start debugging.
 
->**Note**: If your machine hosting Visual Studio is also running Windows 8.1, you may need to [close DOM Explorer](#wwahost) before navigating pages in the app.
+    >**Note**: If your machine hosting Visual Studio is also running Windows 8.1, you may need to [close DOM Explorer](#wwahost) before navigating pages in the app.
 
 ### Troubleshooting: Let's fix it
 
@@ -222,97 +342,6 @@ If your are running Visual Studio on a Windows 10 machine, you can target Window
 [Unhandled exception running on Windows?](#unhandled)
 
 [Other issues?](#other)
-
-## Use TypeScript in an Ionic app <a name="useTypeScript"></a>
-
-If you want to use TypeScript with Ionic, do the following.
-
-1. First, use the Ionic CLI to [download one of the Ionic starter apps](#getTemplates).
-2. In the command line, go to the directory containing the project. For example, that directory might look like this.
-
-    ```
-    C:\\Users\<username>\Documents\ionicMySideMenuApp>
-    ```
-3. If you didn't already do it, type the following command in the command line.
-
-    ```
-    cordova plugins --save
-    ```
-    This will help make sure that your config.xml has the correct plugin versions when you import the project into Visual Studio.
-
-4. [import the Ionic project into Visual Studio](#configTemplates). You will want to use the **Import from Existing Project** option that was already described.
-
-5. Add a tsconfig.json file to the root of your project and paste the following content into the file.
-
-    ```
-    {
-      "compilerOptions": {
-        "noImplicitAny": false,
-        "noEmitOnError": true,
-        "removeComments": false,
-        "sourceMap": true,
-        "inlineSources": true,
-        "out": "www/js/appBundle.js",
-        "target": "es5"
-      },
-      "exclude": [
-        "node_modules"
-      ],
-      "files": [
-        "typings/app.ts",
-        "typings/tsd.d.ts"
-      ]
-    }
-    ```
-
-    Later, you can make modifications to this file as needed. For example, you may want to move controller.js and services.js from the www/js folder to the typings folder, and include those files in the compiler options for the file list (that is, add a "typings/controllers.ts" entry, and so on, under the `files` entry). You can use both TypeScript and JavaScript in the same file if you want to, and the TypeScript compiler will create the correct JavaScript output.
-
-6. In Visual Studio, move app.js from the www/js folder to the typings folder.
-
-7. Rename app.js to app.ts.
-
-    When you build later, the compiler will build app.ts and the output will be `www/js/appBundle.js`. The file will be unchanged by the compiler if you don't add any TypeScript code.
-
-8. In Visual Studio, open the project's package.json file and add a reference for tsd under `dependencies`.
-
-    ```
-    "tsd": "^0.6.5"
-    ```
-    Visual Studio will invoke npm to install tsd node packages to the project.
-
-    If you don't see this happening, first go to the command line and type `npm install tsd -g` to install tsd globally. Then add the tsd reference to package.json.
-
-9. In the command line, type this.
-
-    ```
-    tsd init
-    ```
-    This command installs tsd.json, the typings folder, and tsd.d.ts to the project.
-
-10. In the command line, run the following commands to install the correct set of d.ts files for the Ionic app.
-
-    ```
-    tsd install cordova --save
-    tsd install ionic --save
-    tsd install cordova-ionic --save
-    ```
-    The d.ts files will be added to the typings folder.
-
-11. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
-
-12. Choose a deployment target like **Android** or **Windows-x86** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
-
-    [Get your app running on Android](#configAndroid)
-
-    [Get your app running on iOS](#configiOS)
-
-    [Get your app running on  on Windows 10](#configWin10)
-
-    [Get your app running on Windows 8.1](#configWindows)
-
-13. Press F5 to run the app.
-
-    ![Run the app](media/tutorial-ionic/ionic-f5.png)
 
 ## What's Next?
 

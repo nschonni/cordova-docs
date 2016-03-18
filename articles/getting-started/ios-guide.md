@@ -124,7 +124,7 @@ You'll use those pieces of information in the next section.
 
 ### Troubleshooting: Let's fix it
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -152,7 +152,7 @@ You'll use those pieces of information in the next section.
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -418,7 +418,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [You've been told that no provisioning profiles were found](#no-provision)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -440,13 +440,21 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     See [Start the remote agent on your Mac](#remoteAgent).
 
-2. If you want to debug your app, share the device support folder. You'll find it here: ```Macintosh HD/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport```.
+2. Share the **Application** folder with Windows computers.
 
-    For guidance, see [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
+    See [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
 
 #### On your Windows computer
 
-1. Install [Apple iTunes](http://www.apple.com/itunes/).
+1. In a **File Explorer** window, log into the IP address of the mac.
+
+    ![log-into-mac-from-windows](media/ios-guide/log-into-mac-from-windows.png).
+
+    The first time you attempt to open files on your mac, you'll be prompted for a username and password. Enter the username and password of the account that you turned on Windows File Sharing for.
+
+    This establishes a file sharing connection between your Windows computer and your Mac.
+
+2. Install [Apple iTunes](http://www.apple.com/itunes/).
 
 2. Connect your device.
 
@@ -460,9 +468,9 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
 
-6. Add the path to the device support files that are located on your remote Mac.
+6. In the **iOS device support folder** field, add this path: ```\\<IPAddress>\Applications\Xcode.app\Contents\Developer\Platforms\iPhoneOS.platform\DeviceSupport``` where *IPAddress* is the IP Address of your Mac.
 
-    >**Note**: Do this only if you want to debug your app. You don't have to do this if just want to run your app on the device without debugging it.
+    The following image shows an example:
 
     ![Path to device files](media/ios-guide/local-debugging.png)
 
@@ -491,7 +499,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [You've been told that we were unable to find the app you're trying to debug](#safari)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -512,7 +520,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
-This can happen when Visual Studio has trouble finding your Mac on the network.
+This can happen when Visual Studio has trouble finding your Mac on the network or if host name or IP address of your Mac changed.
 
 On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
@@ -527,6 +535,40 @@ This image shows a preferred order of Wi-Fi networks.
 The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will use that network.
 
 The network that is used by your Windows Computer should appear first in this list. Otherwise, you'll experience these issues intermittently.
+
+If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed. When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
+
+Try this. Stop the remote agent on your Mac. Then, in a Terminal, run this command:
+
+```
+remotebuild certificates reset
+```
+
+Then, run this command:
+
+```
+remotebuild certificates generate
+```
+
+Start the remote agent.
+
+On your Windows computer, in the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
+
+![Remote Agent Configuration Options](media/ios-guide/options-dialog.png)
+
+Add the host name and port number to the appropriate fields in this dialog box.
+
+If you're using secure mode, set the **Secure mode** field to **True**, and then add the security pin.
+
+![Settings for secure mode](media/ios-guide/secure-mode.png)
+
+If you're not using secure mode, set the **Secure mode** field to **False**, and then leave the **Security PIN** field blank.
+
+![Settings for non-secure mode](media/ios-guide/non-secure-mode.png)
+
+Choose the **OK** button to close this dialog box.
+
+Visual Studio connects to the remote agent. If you don't receive any errors, you've successfully connected.
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
