@@ -440,13 +440,21 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     See [Start the remote agent on your Mac](#remoteAgent).
 
-2. Share the device support folder. You'll find it here: ```Macintosh HD/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport```.
+2. Share the **Application** folder with Windows computers.
 
-    For guidance, see [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
+    See [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
 
 #### On your Windows computer
 
-1. Install [Apple iTunes](http://www.apple.com/itunes/).
+1. In a **File Explorer** window, log into the IP address of the mac.
+
+   ![log-into-mac-from-windows](media/ios-guide/log-into-mac-from-windows.png).
+
+   The first time you attempt to open files on your mac, you'll be prompted for a username and password. Enter the username and password of the account that you turned on Windows File Sharing for.
+
+   This establishes a file sharing connection between your Windows computer and your Mac.
+
+2. Install [Apple iTunes](http://www.apple.com/itunes/).
 
 2. Connect your device.
 
@@ -460,7 +468,9 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
 
-6. Add the path to the device support files that are located on your remote Mac.
+6. In the **iOS device support folder** field, add this path: ```\\<IPAddress>\Applications\Xcode.app\Contents\Developer\Platforms\iPhoneOS.platform\DeviceSupport``` where *IPAddress* is the IP Address of your Mac.
+
+    The following image shows an example:
 
     ![Path to device files](media/ios-guide/local-debugging.png)
 
@@ -540,7 +550,25 @@ Then, run this command:
 remotebuild certificates generate
 ```
 
-Start the remote agent and try connecting to it from Visual Studio again.
+Start the remote agent.
+
+On your Windows computer, in the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
+
+![Remote Agent Configuration Options](media/ios-guide/options-dialog.png)
+
+Add the host name and port number to the appropriate fields in this dialog box.
+
+If you're using secure mode, set the **Secure mode** field to **True**, and then add the security pin.
+
+![Settings for secure mode](media/ios-guide/secure-mode.png)
+
+If you're not using secure mode, set the **Secure mode** field to **False**, and then leave the **Security PIN** field blank.
+
+![Settings for non-secure mode](media/ios-guide/non-secure-mode.png)
+
+Choose the **OK** button to close this dialog box.
+
+Visual Studio connects to the remote agent. If you don't receive any errors, you've successfully connected.
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
