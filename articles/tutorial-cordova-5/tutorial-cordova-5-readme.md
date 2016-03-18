@@ -1,19 +1,15 @@
-<properties pageTitle="Using Apache Cordova 5 & 6"
-  description="Using Apache Cordova 5 & 6"
+<properties pageTitle="Major Changes in Apache Cordova 5 & 6"
+  description="Adapting to changes in Apache Cordova 5.x and 6.x"
   services=""
   documentationCenter=""
-  authors="Chuxel" />
+  authors="clantz" />
 
-# Using Apache Cordova 5 & 6
-If the default blank template in Visual Studio 2015 does not default to 5.1.1, you should update Tools for Apache Cordova.
-
-If your a very early adopter, you might not see some of the improvements described in this document until after you update the tools. You will soon see a notification in the notification center (flag in the upper right) prompting you to update.
-
+# Adapting to changes caused by Apache Cordova 5.x and 6.x
 The Tools for Apache Cordova RTM have been tested with both Cordova 4.3.1 and Cordova 5.1.1 with subsequent updates being tested against more recent versions of Cordova including 6.0.0. 
 
-As the major version number increase implies, [Apache Cordova 5](http://cordova.apache.org/docs/en/5.1.1/index.html) is a departure from 3.x and 4.x versions of Cordova in a number of very important ways. There were a number of issues with Cordova 5.0.0 itself that kept us from recommending its use including an [Android security issue](http://go.microsoft.com/fwlink/?LinkID=617658).
+As the major version number increase implies, **[Apache Cordova 5](http://cordova.apache.org/docs/en/5.1.1/index.html)** is a departure from 3.x and 4.x versions of Cordova in a number of very important ways.  **Cordova 6.0.0** adds in support for **Android Marshmallow** which forced some changes to Cordova itself along with breaking changes in plugins. 
 
-**Cordova 6.0.0** adds in support for **Android Marshmallow** which forced some changes to Cordova itself along with breaking changes in plugins. The latest versions of a number of plugins now require Cordova 6.0.0 (Cordova Android 5.0.0+). **You should move your projects to Cordova 6.0.0** as soon as is feasible for plugin compatibility and Marshmallow support when targeting Android.
+The latest versions of a number of plugins now require Cordova 6.0.0 (Cordova Android 5.0.0+). **You should move your projects to Cordova 6.0.0** as soon as is feasible for plugin compatibility and Marshmallow support when targeting Android.
 
 You can update your project to use Cordova 5 or 6 by following these steps:
 
@@ -47,11 +43,18 @@ Understanding these differences can be important when reading blog posts or upda
 	- Cordova Windows 4.0.0
 	- Cordova WP8 3.8.1
 
-Other components are also versioned independently, but typically you will not be directly exposed to them. It is the release of Cordova Android 4.0.0 that triggered the major version increase for Cordova as a whole given it had a number of breaking changes. Windows 4.0.0 is also a major release that includes Windows 10 support but was designed to not have breaking changes when building for Windows or Windows Phone 8.1.
+Other components are also versioned independently, but typically you will not be directly exposed to them. It is the release of Cordova Android 4.0.0 that triggered the major version increase for Cordova as a whole given it had a number of breaking changes. Windows 4.0.0 is also a major release that includes Windows 10 support but was designed to not have breaking changes when building for Windows or Windows Phone 8.1.  
+
+Similarly the major version update in Cordova 6.0.0 was triggered by breaking changes with the release of Cordova Android 5.0.0 .
 
 Note that you can actually add different platform versions to your project for a given CLI version through the use of some XML elements or command line options for edge case scenarios. See the [May 26th, 2015 Android Cordova Platform Security Issue](../tips-and-workarounds/android/security-05-26-2015/tips-and-workarounds-android-security-05-26-2015-readme.md) article for a specific example of how this works.
 
-### Android Plugin Breaking Changes Caused by Cordova 6.0.0 / Cordova Android 5.0.0
+## Changes with the release of Cordova 6
+Cordova 6's main change was updates to the Android platform to support Android Marshmallow. While not as dramatic a change as Cordova 4 to 5, there are some impacts to both Cordova 5 and 6 users that you will want to know about.
+
+First, Cordova 6.0.0 no longer supports plugins from the legacy plugin repository. Most users should not notice a change here, but only plugins in the npm-based repository at [plugins.cordova.io](http://go.microsoft.com/fwlink/?LinkID=618599) will work with Cordova 6.0.0+. That said, in general, you likely do not want to use plugins that have not made the transition already given it means they are very old.
+
+### Plugin breaking changes caused by Cordova 6.0.0 / Cordova Android 5.0.0
 Android Marshmallow introduced new security features that have resulted in breaking changes to Cordova itself and by extension core plugins including:
 
 - cordova-plugin-camera
@@ -71,13 +74,15 @@ cordova plugin add cordova-plugin-camera@^1.2.0
 
 ...replacing the Cordova version and camera plugin Id with the appropriate one for your use case.
 
+## Changes with the release of Cordova 5
+
 <a name="security"></a>
-## Security Model Changes for Android and iOS
+### Security Model Changes for Android and iOS
 One of the more confusing changes about Cordova 5 is that the updated version of the Android platform (also called Cordova Android 4.x) and iOS now follow a different, but more powerful security model designed to provide developers with the tools needed to prevent cross-site scripting attacks among other issues. A critical aspect of this security model is that **absolutely no network access of any kind is allowed without the installation of a Cordova plugin**.
 
-There are a whole host of new security features available and we **strongly recommend you read the [Introduction to Cordova 5 Security](./cordova-5-security.md) document** for a introduction on them. This article will focus on getting you up and running with the basics.
+There are a whole host of new security features available and we **strongly recommend you read the [whitelist and CSP guide](../security/cordova-security-whitelist.md)** for a introduction on them. This article will focus on getting you up and running with the basics.
 
-### The New Whitelist Plugin
+#### The New Whitelist Plugin
 The new [Cordova Whitelist plugin (cordova-plugin-whitelist)](http://go.microsoft.com/fwlink/?LinkID=617668) is the recommended base security plugin to use for managing network security access. Historically there was one **access** element in config.xml used to control all access to network resources.
 
 The problem with this model is you may want to be able to make an XHR request to a service like Azure Mobile Services without actually allowing your app to navigate to an Azure web page in the same domain. The reason this is a concern is that this remote web page is then given access to all Cordova and plugin APIs. Further, for Android, the access element has been overloaded to control "intents" in the wake of a discovered [security issue in Cordova 3.5.0 and below](http://go.microsoft.com/fwlink/?LinkID=617669) which has led to a syntax that strayed away from the original [W3C Widget spec](http://go.microsoft.com/fwlink/?LinkID=617670) that config.xml's structure is based on. Some restructuring and improvements were therefore appropriate for the Cordova 5.0.0 release.
@@ -91,9 +96,9 @@ Projects created using the Tools for Apache Cordova or Cordova CLI itself contai
 3. Disallows inline script (Meaning no &lt;script&gt; tags or "on" attributes on HTML elements) on recent versions of Android, iOS, or Windows via a W3C Content Security Policy (CSP) in index.html.
 4. Allows the "tel:", "sms:", "mailto:", and "geo:" intents.
 
-You'll want to start your project with roughly these same defaults and alter as needed. See below for how to add these defaults to your project and the [Introduction to Cordova 5 Security](./cordova-5-security.md) document for details on why these defaults are in place and how to change them.
+You'll want to start your project with roughly these same defaults and alter as needed. See below for how to add these defaults to your project and the [whitelist and CSP guide](../security/cordova-security-whitelist.md) for details on why these defaults are in place and how to change them.
 
-###Configuring Security Settings from a VS Project
+####Configuring Security Settings from a VS Project
 When you upgrade a project to Cordova 5.0.0+, you will want to take the following steps if you want to mirror the base security policy listed above. You can then customize them as needed to meet your needs.
 
 1. Add the whitelist plugin to your project via config.xml:
@@ -137,12 +142,12 @@ When you upgrade a project to Cordova 5.0.0+, you will want to take the followin
 
 		> Note: You don't have to add this tag to pages that are dynamically loaded by a JavaScript framework like AngluarJS or WinJS. Many times you just need to add it to index.html.
 
-	2. Customize the CSP policy to meet your needs. See [Introduction to Cordova 5 Security](./cordova-5-security.md) for details.
+	2. Customize the CSP policy to meet your needs. See [whitelist and CSP guide](../security/cordova-security-whitelist.md) for details.
 
 	3. You may wish to use the Crosswalk WebView plugin when targeting earlier versions of Android as CSP support was not introduced until Android 4.4. See [the section on Crosswalk later in this article](#crosswalk) for additional tips on using Crosswalk.
 
 <a name="crosswalk"></a>
-##Pluggable WebViews and the Crosswalk WebView for Android
+###Pluggable WebViews and the Crosswalk WebView for Android
 An exciting new development in the Cordova Android platform in Cordova 5 is the support for what are called "pluggable WebViews." What this feature allows you to do is swap out the built in Android WebView with a completely different WebView implementation. This is a significant improvement as the Android browser and thus the WebView is locked at a specific version without the ability to update unless you update the version of the OS on the device. This has changed in the Android OS as of 5.0, but unlike iOS or Windows where devices can opt to upgrade and developers need only concern themselves with a few major versions of the browser, older Android devices are locked at a particular sub-revision of Android (and thus the browser) with no ability to upgrade the device in many cases. The end result has been a vast array of small differences between Android devices.
 
 [Crosswalk](http://go.microsoft.com/fwlink/?LinkID=617678) is a project that is designed to allow developers to embed a very recent and specific version of the Chromium WebView inside their Android app. The Crosswalk WebView can be embedded in apps running on Android 4.0 and up and brings with it the significant advantage of a consistent WebView implementation across all Android device versions it supports.
@@ -164,7 +169,7 @@ To use the Crosswalk WebView plugin from Visual Studio, follow these steps:
 
 The next time you build, your app will be running in the Crosswalk WebView. Note that the first build for Android in particular will take a bit given the plugin does some dynamic acquisition.
 
-###Tips on Using the Crosswalk
+####Tips on using Crosswalk
 1. If you run into a problem where the Visual Studio **debugger is not attaching** after adding the Crosswalk plugin, you may be encountering an issue with a recent version of Crosswalk.  Crosswalk version 15 is known to work well and you can force this version to be used with a simple preference. Simply add the following to config.xml by right-clicking on the in file in Visual Studio and selecting **View Code**:
 
 	```
@@ -185,7 +190,7 @@ The next time you build, your app will be running in the Crosswalk WebView. Note
 
 
 <a name="win10"></a>
-##Windows 10 Support
+###Windows 10 Support
 Historically, Windows and Windows Phone 8.1 have had a number of compatibility challenges with Cordova apps due to underlying platform differences around security rules. A [JavaScript compatibility](http://go.microsoft.com/fwlink/?LinkID=617680) framework was released to help alleviate some of these issues on Windows 8.1, but starting with **Cordova 5.1.1**, you can now build Windows 10 apps. In addition to supporting the new Windows Universal platform that allows a single code base and app package to be used across a number of different devices, Windows 10 also brings a number of significant improvements to Apache Cordova users.
 
 In particular:
@@ -216,13 +221,13 @@ You can follow these steps to use Cordova Windows 10 with Visual Studio:
 That's it! Cordova will switch from a Windows 8.1 project to a new Universal App project and take care of the rest! Just use the **Debug** dropdown list to deploy to a Windows 10 device, use your Windows 10 PC, or use a Windows 10 emulator.
 
 <a name="npm"></a>
-##Primary Cordova Plugin Repository is Now Npm
+###Primary Cordova Plugin Repository is Now Npm
 
 Another significant departure in Cordova 5 and the community as a whole is the migration of the primary source of Cordova plugins from the custom repository backed model that exists in Cordova 3.x and 4.x to the "Node Package Manager" (npm) repository. The plugins.cordova.io repository has seen a few service interruptions and given the web community's increased use of Node.js for client-side development, and Cordova's heavy use of npm for not only its command line interface but as a source for Cordova "platforms," the natural next step was to migrate plugins to npm as well. More details on this transition [can be found here.](http://go.microsoft.com/fwlink/?LinkID=617671).
 
 However, unfortunately this change is not transparent. For a few very specific reasons, this change can be a bit confusing, and we're working with the community to determine some ways to make the transition a bit more seamless going forward.
 
-###Plugin ID Changes
+####Plugin ID Changes
 A significant change to be aware of is that the IDs used to refer to many Cordova plugins have changed. This was done for two reasons. First, the different ID helps to re-enforce that older versions of Cordova will not get plugin updates. Cordova 3.x and 4.x simply do not support fetching plugins from npm. Rather than having an arbitrary version number where the updates stop, using a different ID makes this change over explicit. Second, the old reverse domain style for Cordova plugin IDs does not conform to community best practices for package names in npm.
 
 As a result, core plugins like Camera have changed from [org.apache.cordova.camera](http://go.microsoft.com/fwlink/?LinkID=617672) in version 0.3.6 of the plugin to [cordova-plugin-camera](http://go.microsoft.com/fwlink/?LinkID=617673) in versions 1.0.0 and higher.
@@ -239,25 +244,23 @@ The config.xml designer in Visual Studio will automatically use the new plugin I
 
 See [tips and workarounds](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md#plugin-npm) for additional details on adding npm versions of plugins to your project.
 
-###Cordova Plugin Registry
+####Cordova Plugin Registry
 Plugins.cordova.io now has two registry sections:
 
 - The landing page of [plugins.cordova.io](http://go.microsoft.com/fwlink/?LinkID=618599) **contains only npm sourced plugins** and these plugins only work with Cordova 5.0.0+.
 - Cordova versions less than 6.0.0 can use plugins in [the legacy registry](http://50.17.177.14/). **However,** note that 6.0.0 dropped this support.
 
-	![Npm Plugin Registry](media/tutorial-cordova-5-readme/cordova-5-9.png)
-
 Both sets of plugins can be used with Cordova 5.0.0+, so in the short term, you might need to search in both locations for plugins. Plugins that you find in npm are most likely to work without an issue with Cordova 5.0.0 and higher, and might work with earlier versions of Cordova. Npm will be the eventual source of truth, but things are still in a transition period.
 
 <a name="no-npm-3.x"></a>
 
-###Cordova 3.x and 4.x Don't Support Npm as a Plugin Source
+####Cordova 3.x and 4.x Don't Support Npm as a Plugin Source
 An early source of confusion can lead from the fact that Cordova 3.x and 4.x cannot use plugins sourced from npm. The Cordova CLI in these versions does not have the capability. A specific issue that can come up is that updates to plugins will now generally be going to npm **not** to the older plugin registry sourced method used by these earlier version of Cordova.
 
 Generally, if you need an updated plugin, update to Cordova 5.1.1 or later. See the [tips and workarounds](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md#plugin-npm) section if you must get an updated plugin for a project that uses an earlier version of Cordova for potential options.
 
 <a name="gradle"></a>
-##Gradle Build Instead of Ant for Android
+###Gradle Build Instead of Ant for Android
 On the surface, this seems like a fairly minor change, but we've continued to hear about unexpected issues in some 3rd party Cordova plugins because of this change, so it is worth a mention.
 
 Up until Cordova 5.0.0 (Cordova Android platform version 4.0.0), Cordova used [Apache Ant](http://go.microsoft.com/fwlink/?LinkID=617676) as the primary build system to build an Android version of an app. This has now changed to [Gradle](http://gradle.org/) as the default though developers can force an Ant build using the Cordova CLI as follows:
@@ -275,7 +278,7 @@ There are three major ways that switching to Gradle can affect your project:
 A good example of a plugin that requires Gradle is the [Crosswalk plugin](http://go.microsoft.com/fwlink/?LinkID=617677) that we will cover a bit later in this article. While at one point it also worked with Ant builds, it now gets errors if you are not building with Gradle. As a result, Visual Studio 2015 now uses Gradle to build Android in Cordova 5.0.0+ instead of Ant (2015 RC still used Ant). However, the end result is you could hit compatibility issues with lesser known 3rd party plugins particularly if you have not updated them.
 
 <a name="gradle-migrate"></a>
-###Migrating an Existing Project to Use Gradle
+####Migrating an Existing Project to Use Gradle
 Simply updating to Cordova 5.0.0+ will automatically cause Gradle to be used from that point forward. Because of the differences mentioned above you should take the following steps to adapt your project:
 
 1. If you've already added release signing information into ant.properties in your project, you'll need to place this information in a new file in your project. See the [Packaging & Publishing tutorial for details](./package-and-publish/tutorial-package-publish) for details.
@@ -298,8 +301,3 @@ Simply updating to Cordova 5.0.0+ will automatically cause Gradle to be used fro
 		... replacing the Cordova version and plugin name for those that apply to your situation. You can also specify a fully qualified Git URI or filesystem path in place of the plugin name.
 
 	2. If you're able to reproduce the problem, you might want to contact the plugin author and let them know about the it. Before doing so, be sure to check for existing open issues as more than likely there's already one on the plugin author's GitHub site that you can use to provide additional information. Mention that you encountered issues when using Tools for Apache Cordova but include the Cordova CLI repro for the plugin author's benefit. See the [tips and workarounds](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md#plugin-troubleshoot) section of our docs for additional troubleshooting tips.
-
-## More Information
-* [Learn about security features in Apache Cordova 5](./cordova-5-security.md)
-* [Read tutorials and learn about tips, tricks, and known issues](../cordova-docs-readme.md)
-* [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
