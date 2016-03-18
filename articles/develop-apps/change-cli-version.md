@@ -158,4 +158,4 @@ Before you change your project's CLI version. Plan to use a compatible version o
 
 ## Learn more about changes in Apache Cordova 5.x and 6.x
 
-Cordova 5 and Cordova 6 introduce changes such as a new security model, a new way to obtain plugins, and a new build system. You can read more about these changes and how they affect your project here: [Adapting to changes caused by Apache Cordova 5.x and 6.x](https://github.com/Chuxel/cordova-docs/blob/master/articles/tutorial-cordova-5/tutorial-cordova-5-readme.md).
+Cordova 5 and Cordova 6 introduce changes such as a new security model, a new way to obtain plugins, and a new build system. You can read more about these changes and how they affect your project here: [Adapting to changes caused by Apache Cordova 5.x and 6.x](https://github.com/Microsoft/cordova-docs/blob/master/articles/tutorial-cordova-5/tutorial-cordova-5-readme.md).
