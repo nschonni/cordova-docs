@@ -17,7 +17,7 @@ A second related recommendation is to authenticate and authorize all calls using
 #### Use Azure App Service to streamline service auth
 Mobile Backend as a Service (MBaaS) solutions can help you get up and running quickly with an authenticated service that can resolve the above challenges. [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) is specifically designed for this purpose and you can integrate with it easily using the [Azure Mobile Apps](https://azure.microsoft.com/en-us/services/app-service/mobile/) Cordova plugin. See [the Cordova authentication article](./cordova-security-auth.md) for information on adding the plugin to your app. 
 
-From there, you can then [add auth into Mobile App services](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/) to lock down access while still using the streamlined client library for features like Easy Tables.
+From there, you can then either simply enable Azure Authentication for the entire App Service endpoint via the Azure portal or [add auth into specific services or tables](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/) to lock down access while still using the streamlined client library for features like Easy Tables.
 
 ![Azure Mobile Apps Easy Tables](media/cordova-security-data/auth-easy-tables.png)
 
@@ -27,6 +27,7 @@ Azure Mobile Apps features can be added to any Azure Web or API app. As a result
 
 See the next section for information on passing authorization tokens across to custom APIs.
 
+<!--
 Note that if you would prefer to use the [Active Directory Authentication Library (ADAL) plugin](https://www.npmjs.com/package/cordova-plugin-ms-adal) to authenticate users in your app with Azure Active Directory or Active Directory Federation Services (ADFS) v3 and up, you can still pass the token you get from ADAL into the Mobile Apps client for interacting with the server.
 
 First, carefully follow all setup steps under **[(Optional) Configure a native client application](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-how-to-configure-active-directory-authentication/)** in the Azure App Service AD auth article. You can then login using the auth token from ADAL as follows:
@@ -40,7 +41,7 @@ client.login("aad", {"access_token": tokenFromADAL})
      }, handleError);
 
 ```
-
+-->
 See [Azure Mobile Apps](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/), [Azure App Service Auth](https://azure.microsoft.com/en-us/documentation/articles/app-service-api-authentication/), and [the Cordova authentication article](./cordova-security-auth.md) for additional details.
 
 #### Pass auth tokens in request headers when using REST APIs directly
@@ -94,7 +95,7 @@ Note that not all services expect auth tokens to be passed as a X-ZUMO-AUTH head
 Here's a simplified code example that runs against the publicly available AD Graph REST API:
 
 ```javascript
-function get10UsersFromADGraph(adTenantId, adToken, callback) {
+function get10UsersFromADGraph(adTenantId, adalToken, callback) {
     var req = new XMLHttpRequest();
     req.open("GET", "https://graph.windows.net/" + adTenantId + "/users?api-version=2013-11-08&$top=10", true);
     

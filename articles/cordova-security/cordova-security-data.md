@@ -102,7 +102,7 @@ In addition to the above base capabilities there are a number of community plugi
 </ul>
 <p>The plugin comes with <a href="https://software.intel.com/en-us/app-security-api/api">excellent documentation</a> and <a href="https://software.intel.com/en-us/node/604512">code snippets</a>.</p>
 </td>
-<td align="left">Android, iOS, Windows / Windows Phone 8.1, 10</td>
+<td align="left">Android, iOS, Windows 8.1, 10</td>
 </tr>
 <tr>
 <td align="left">Token / Secret Storage</td>
@@ -136,6 +136,7 @@ In addition to the above base capabilities there are a number of community plugi
 ### Adding the plugins
 
 1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URI needs to be used. The plugin will be added on next build.
+
     ```
     <plugin name="cordova-sqlite-ext" spec="~0.8.4" />
     <plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
