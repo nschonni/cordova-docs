@@ -12,7 +12,7 @@ For the most part you should apply the same [best practices to your code as you 
 Here are some recommendations that can help encrypt sensitive data in Cordova apps. 
 
 ##Encrypt data using Web Crypto via Crosswalk and a shim
-The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) has [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. 
+The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) had [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. 
 
 ### Crosswalk
 Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. 
@@ -114,23 +114,28 @@ In addition to the above base capabilities there are a number of community plugi
 </tr>
 <tr>
 <td align="left">Encrypted Data in a Database</td>
-<td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqllite-storage">cordova-sqlite-storage</a></strong> + <strong>Web Crypto</strong></td>
-<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with Web Crypto to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
+<td align="left"><strong><a href="https://github.com/litehelpers/cordova-sqllite-ext">cordova-sqlite-ext</a></strong></td>
+<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with **Web Crypto** or **com.intel.security** to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added Windows 10 support. MIT licensed.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the <strong>Git 
+<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added **Windows 10 support**. MIT licensed.</li>
+</ul>
+Other versions:
+<ul>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced, enterprise focused version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the Git URI: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  A **alpha** version of an enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to **encrypt all data stored in a local database**. You will need to install this version of the plugin using the Git URI: https://github.com/litehelpers/cordova-sqlcipher-adapter.git
 <ul>
 </td>
 <td align="left">Android, iOS, Windows 10 (cordova-sqlite-ext)</td>
 </tr>
+<!--
 <tr>
 <td align="left">Encrypted Database</td>
 <td align="left">[In Development]<br /><strong><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a></strong></td>
 <td align="left"<p>cordova-sqlcipher-adapter is a **release candidate** version of an enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to encrypt all data stored in a local database. You will need to install this version of the plugin using the <strong>Git URI</strong>: https://github.com/litehelpers/cordova-sqlcipher-adapter.git</p></td>
 <td align="left">Android, iOS</td>
 </tr>
+-->
 </tbody></table>
 
 ### Adding the plugins
