@@ -51,7 +51,9 @@ function arrayBufferToString(buf) {
     return String.fromCharCode.apply(null, new Uint16Array(buf));
 };
 ```
+
 Next we will generate an encryption key and then encrypt a string using crypto.subtle.encrypt.
+
 ```javascript
 var stringToEncrypt = "Hey! Encrypt me!";
 
@@ -115,18 +117,18 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Encrypted Data in a Database</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-sqlite-ext">cordova-sqlite-ext</a></strong></td>
-<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with **Web Crypto** or **com.intel.security** to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
+<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com.intel.security</strong> to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added **Windows 10 support**. MIT licensed.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added <strong>Windows 10 support</strong>. MIT licensed.</li>
 </ul>
 Other versions:
 <ul>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced, enterprise focused version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. You will need to install this version of the plugin using the Git URI: https://github.com/litehelpers/cordova-sqlite-enterprise-free.git</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  A **alpha** version of an enhanced adapter on top of the cordova-sqlite-storage plugin that uses SQLCipher to **encrypt all data stored in a local database**. You will need to install this version of the plugin using the Git URI: https://github.com/litehelpers/cordova-sqlcipher-adapter.git
+<li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced, enterprise focused version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. Install via its <a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free.git">Git URI</a>.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  An <strong>alpha</strong> version of the cordova-sqlite-storage plugin that uses SQLCipher to **encrypt all data**. Install via its <a href="https://github.com/litehelpers/cordova-sqlcipher-adapter.git">Git URI</a>.</li>
 <ul>
 </td>
-<td align="left">Android, iOS, Windows 10 (cordova-sqlite-ext)</td>
+<td align="left">Android, iOS, Windows 10</td>
 </tr>
 <!--
 <tr>
@@ -146,7 +148,9 @@ Other versions:
     <plugin name="cordova-sqlite-ext" spec="~0.8.4" />
     <plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
     ```
+
     ...or for Cordova < 5.1.1...
+
     ```
     <vs:plugin name="cordova-sqlite-ext" version="0.8.4" />
     <vs:plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />

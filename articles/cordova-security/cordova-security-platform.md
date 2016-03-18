@@ -44,6 +44,7 @@ You should only add this preference if you encounter issues as it disables usefu
 By default, simply adding a CSP declaration to an HTML page locks it down very tightly. By default, applying a CSP **disables both eval() and inline script** and only allows access to JavaScript and CSS files from the **same origin as the HTML page**. Typically for Cordova apps this means only **local content** and as a result, CDN hosted content typically cannot be referenced.  Breaking these down in terms of risk:
 
 1. **Inline script** for JavaScript content, though extremely handy for testing and development, is one of the largest risks for attacks. When inline script is allowed, all it takes is one unescaped input pumped to innerHTML to allow a user to run any arbitrary JavaScript code. Note the inline script restriction also applies to **onload** and similar HTML attributes for the exact same reason. For example, imagine textInput in this code game from an input element in HTML:
+
     ```javascript
     // This is bad
     textInput = "<div id='hack-otuput'></div>\
@@ -52,13 +53,15 @@ By default, simply adding a CSP declaration to an HTML page locks it down very t
                  </script>"
     document.getElementById("output-div").innerHTML = textInput;
     ```
-
+    
 2. Allowing **JavaScript and CSS content from different origins** poses the next largest risk. Disabling inline script reduces the chances of attack, but even with inline script disabled you can still add a script tag with a href to an external source. The same innerHTML mistake can then lead to a similar vulnerability. While this is obviously true for JavaScript, CSS also poses a risk because directives like expression() and url('javascript:...'). You can loosen this restriction by listing only very specific domains that you trust but exercise caution when doing so. Tweaking the previous example slightly we get:
+
     ```javascript
     // This is also bad
     textInput = "<div id='hack-otuput'></div><script src='http://iliketohackthings.com/mybadscript.js'></script>"
     document.getElementById("output-div").innerHTML = textInput;
     ```
+
 3. **eval()** along with related features like "new Function" also pose a risk but these are reduced if the inline and same origin restrictions are left in place. Further, eval is used by a number of JavaScript frameworks for optimization purposes so while this is the default it can become quite problematic if left in place. If your app and all associated frameworks do not make use of eval, you should disable it. Otherwise avoid using eval in your own code unless you really know exactly what you are doing.
 
 Note that none of these rules apply to images or other static content. 
@@ -72,7 +75,7 @@ The default CSP policy in Visual Studio and Cordova templates is a solid startin
                media-src *">
 ```
 
-See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitelist.md)** for additional details on configuring a CSP policy to meet your needs.
+See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitlist.md)** for additional details on configuring a CSP policy to meet your needs.
 
 ##Manage your whitelists
 When using Cordova 5+, you will need to install a whitelist plugin to enable access to external network resources on Android. iOS and Windows 10 also supports the features in the whitelist plugin but as of 6.0.0 they are provided by the iOS platform itself. Regardless, the new whitelist plugin that is pre-installed in new Cordova projects either created from the CLI or Visual Studio actually introduce three separate elements designed to enable more discrete control that was possible in the past.
@@ -95,7 +98,7 @@ This is a relatively safe starting point. To modify this list you can edit confi
 
 In general it is best to trim access down to only those URIs you actually need to use in your app and you will want to exercise great care when broadening access for your app to only include trusted sources.
 
-Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements. See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitelist.md)** for additional details.
+Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements. See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitlist.md)** for additional details.
 
 ##When in doubt, InAppBrowser
 If you must include content from an external source that you do not have complete and total control over, **use the InAppBrowser plugin** and host the content there. This plugin places content in a separate webview without access to Cordova interfaces and therefore significantly reduces the risk to your app and its data. It's easy to setup and replaces **window.open** with a secure implementation.
@@ -108,6 +111,7 @@ If you must include content from an external source that you do not have complet
     ```
 
 You can now open pages not in the allow-navigation whitelist in a sandboxed webview using the simple window.open command.
+
 ```javascript
 window.open("http://www.bing.com", "_self");
 ```
