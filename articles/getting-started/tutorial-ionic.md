@@ -34,9 +34,7 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
     ![Getting the templates](media/tutorial-ionic/ionic-online-templates.png)
 
-    Type any name and choose **OK** to install them.
-
-    When you are asked for permission to install the templates, give your permission.
+    Type any name and choose **OK** to install them. When you are asked for permission to install the templates, give your permission.
 
 3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
 
