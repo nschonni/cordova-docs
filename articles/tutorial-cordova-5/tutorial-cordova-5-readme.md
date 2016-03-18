@@ -80,7 +80,7 @@ cordova plugin add cordova-plugin-camera@^1.2.0
 ### Security Model Changes for Android and iOS
 One of the more confusing changes about Cordova 5 is that the updated version of the Android platform (also called Cordova Android 4.x) and iOS now follow a different, but more powerful security model designed to provide developers with the tools needed to prevent cross-site scripting attacks among other issues. A critical aspect of this security model is that **absolutely no network access of any kind is allowed without the installation of a Cordova plugin**.
 
-There are a whole host of new security features available and we **strongly recommend you read the [whitelist and CSP guide](../security/cordova-security-whitelist.md)** for a introduction on them. This article will focus on getting you up and running with the basics.
+There are a whole host of new security features available and we **strongly recommend you read the [whitelist and CSP guide](../security/cordova-security-whitlist.md)** for a introduction on them. This article will focus on getting you up and running with the basics.
 
 #### The New Whitelist Plugin
 The new [Cordova Whitelist plugin (cordova-plugin-whitelist)](http://go.microsoft.com/fwlink/?LinkID=617668) is the recommended base security plugin to use for managing network security access. Historically there was one **access** element in config.xml used to control all access to network resources.
@@ -96,7 +96,7 @@ Projects created using the Tools for Apache Cordova or Cordova CLI itself contai
 3. Disallows inline script (Meaning no &lt;script&gt; tags or "on" attributes on HTML elements) on recent versions of Android, iOS, or Windows via a W3C Content Security Policy (CSP) in index.html.
 4. Allows the "tel:", "sms:", "mailto:", and "geo:" intents.
 
-You'll want to start your project with roughly these same defaults and alter as needed. See below for how to add these defaults to your project and the [whitelist and CSP guide](../security/cordova-security-whitelist.md) for details on why these defaults are in place and how to change them.
+You'll want to start your project with roughly these same defaults and alter as needed. See below for how to add these defaults to your project and the [whitelist and CSP guide](../security/cordova-security-whitlist.md) for details on why these defaults are in place and how to change them.
 
 ####Configuring Security Settings from a VS Project
 When you upgrade a project to Cordova 5.0.0+, you will want to take the following steps if you want to mirror the base security policy listed above. You can then customize them as needed to meet your needs.
@@ -142,7 +142,7 @@ When you upgrade a project to Cordova 5.0.0+, you will want to take the followin
 
 		> Note: You don't have to add this tag to pages that are dynamically loaded by a JavaScript framework like AngluarJS or WinJS. Many times you just need to add it to index.html.
 
-	2. Customize the CSP policy to meet your needs. See [whitelist and CSP guide](../security/cordova-security-whitelist.md) for details.
+	2. Customize the CSP policy to meet your needs. See [whitelist and CSP guide](../security/cordova-security-whitlist.md) for details.
 
 	3. You may wish to use the Crosswalk WebView plugin when targeting earlier versions of Android as CSP support was not introduced until Android 4.4. See [the section on Crosswalk later in this article](#crosswalk) for additional tips on using Crosswalk.
 

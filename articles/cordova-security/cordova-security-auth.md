@@ -23,7 +23,9 @@ You can add it to your app as follows:
     ```
     <plugin name="cordova-plugin-ms-azure-mobile-apps" spec="~2.0.0-beta4" />
     ```   
+    
     ...or for Cordova < 5.1.1...    
+    
     ```
     <vs:plugin name="cordova-plugin-ms-azure-mobile-apps" version="~2.0.0-beta4" />
     ```
