@@ -448,11 +448,11 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
 1. In a **File Explorer** window, log into the IP address of the mac.
 
-   ![log-into-mac-from-windows](media/ios-guide/log-into-mac-from-windows.png).
+    ![log-into-mac-from-windows](media/ios-guide/log-into-mac-from-windows.png).
 
-   The first time you attempt to open files on your mac, you'll be prompted for a username and password. Enter the username and password of the account that you turned on Windows File Sharing for.
+    The first time you attempt to open files on your mac, you'll be prompted for a username and password. Enter the username and password of the account that you turned on Windows File Sharing for.
 
-   This establishes a file sharing connection between your Windows computer and your Mac.
+    This establishes a file sharing connection between your Windows computer and your Mac.
 
 2. Install [Apple iTunes](http://www.apple.com/itunes/).
 
