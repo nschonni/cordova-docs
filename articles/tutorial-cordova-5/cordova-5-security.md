@@ -6,4 +6,4 @@
 
 #This article has moved
 
-##See the [Cordova whitelist and Content Security Policy guide](../cordova-security/cordova-security-whitlist.md)
+##See the [Cordova whitelist and Content Security Policy guide](../cordova-security/cordova-security-whitlists.md)

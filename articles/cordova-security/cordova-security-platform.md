@@ -75,7 +75,7 @@ The default CSP policy in Visual Studio and Cordova templates is a solid startin
                media-src *">
 ```
 
-See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitlist.md)** for additional details on configuring a CSP policy to meet your needs.
+See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitlists.md)** for additional details on configuring a CSP policy to meet your needs.
 
 ##Manage your whitelists
 When using Cordova 5+, you will need to install a whitelist plugin to enable access to external network resources on Android. iOS and Windows 10 also supports the features in the whitelist plugin but as of 6.0.0 they are provided by the iOS platform itself. Regardless, the new whitelist plugin that is pre-installed in new Cordova projects either created from the CLI or Visual Studio actually introduce three separate elements designed to enable more discrete control that was possible in the past.
@@ -98,7 +98,7 @@ This is a relatively safe starting point. To modify this list you can edit confi
 
 In general it is best to trim access down to only those URIs you actually need to use in your app and you will want to exercise great care when broadening access for your app to only include trusted sources.
 
-Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements. See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitlist.md)** for additional details.
+Note that there are some nuances on how these whitelist work and both Windows Phone 8.0 and Windows / Windows Phone 8.1 do not support all of these elements. See the **[Cordova whitelist and Content Security Policy guide](./cordova-security-whitlists.md)** for additional details.
 
 ##When in doubt, InAppBrowser
 If you must include content from an external source that you do not have complete and total control over, **use the InAppBrowser plugin** and host the content there. This plugin places content in a separate webview without access to Cordova interfaces and therefore significantly reduces the risk to your app and its data. It's easy to setup and replaces **window.open** with a secure implementation.
