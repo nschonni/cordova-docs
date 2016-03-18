@@ -36,6 +36,7 @@ We’ve seen a number of issues come up with customers running our tools behind 
 The list of the most commonly used plugins, included on the config.xml designer, has been updated. Along with this update, the `com.microsoft.azure-mobile-services` plugin is replaced with the new `cordova-plugin-ms-azure-mobile-apps` plugin. 
 
 Here are the new plugins added to the config.xml designer:
+
 - `cordova-plugin-ms-azure-mobile-apps`
 - `cordova-plugin-hockeyapp`
 - `cordova-plugin-code-push`
