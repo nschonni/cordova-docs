@@ -9,7 +9,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="02/17/2016"
+     ms.date="03/17/2016"
      ms.author="normesta"/>
 
 # Package your Cordova app so that you can publish it to a store
@@ -20,7 +20,7 @@ Create a package for each platform that you want to target. Then you can publish
 
 **In this section:**
 
-* Modify the general settings of your app.
+* Modify the settings of your app.
 
 * Generate a private key.
 
@@ -28,7 +28,7 @@ Create a package for each platform that you want to target. Then you can publish
 
 * Create the package.
 
-### Step 1: Modify the general settings of your app
+### Step 1: Modify the settings of your app
 
 The general settings of your app appear in the **Common** page of the configuration designer.
 
@@ -44,7 +44,14 @@ The general settings of your app appear in the **Common** page of the configurat
 
     For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
 
-The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409).
+The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://cordova.apache.org/docs/en/latest/config_ref/index.html).
+
+Android-specific settings appear in the **Android** tab of the configuration designer.
+
+![configuration-settings-android-specific](media/tutorial-package-publish-readme/configuration-settings-android-specific.png)
+
+You can read about each option in the [preference](http://cordova.apache.org/docs/en/latest/config_ref/index.html#preference) section of the config.xml reference topic.
+
 
 ### Step 2: Generate a private key
 
@@ -203,13 +210,17 @@ Then, see [Upload an app](https://support.google.com/googleplay/android-develope
 
 * Download the distribution provisioning profile in Xcode.
 
-* Modify the general settings of your app.
+* Modify the settings of your app.
 
 * Create the package.
 
 ### Step 1: Request a distribution certificate
 
 A distribution certificate identifies your team or organization.
+
+If your team already has one and you want to reuse it, see [How to share an iOS distribution certificate](http://www.ironpaper.com/webintel/articles/how-to-share-an-ios-distribution-certificate/). Then, skip straight to the [Modify the settings of your app](#modify-settings) section.
+
+If you don't have a distribution certificate yet, continue on with this section and we'll help you set one up.  
 
 1. Start Xcode.
 
@@ -276,7 +287,7 @@ Need more detail? See [Creating provisioning profiles using Member Center](https
 
 5. Choose the **Done** button to close the account details page.
 
-### Step 4: Modify the general settings of your app
+### <a id="modify-settings"></a>Step 4: Modify the settings of your app
 
 The general settings of your app appear in the **Common** page of the configuration designer.
 
@@ -300,6 +311,11 @@ The general settings of your app appear in the **Common** page of the configurat
 
 The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://go.microsoft.com/fwlink/p/?LinkID=510632&clcid=0x409).
 
+iOS-specific settings appear in the **iOS** tab of the configuration designer.
+
+![configuration-settings-ios-specific](media/tutorial-package-publish-readme/configuration-settings-ios-specific.png)
+
+You can read about each option in the [preference](http://cordova.apache.org/docs/en/latest/config_ref/index.html#preference) section of the config.xml reference topic.
 
 ### Step 5: Create the package
 
@@ -331,13 +347,17 @@ Build your app to generate the package that you will submit to the store.
 
 ### Submit your app to the store
 
-See [Managing Your App in iTunes Connect](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/UsingiTunesConnect/UsingiTunesConnect.html#//apple_ref/doc/uid/TP40012582-CH22-SW7) on the Apple Developer website.
+1. Copy the .ipa file into a folder on your Mac.
 
-If your app isn't accepted by the store, review these articles by Apple:
+2. [Create an iTunes Connect Record for your app](https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/CreatingiTunesConnectRecord.html).
 
-* [Common App Rejections](https://developer.apple.com/app-store/review/rejections/)
+3. [Use the Application Loader to upload your .ipa file to iTunes](http://help.apple.com/itc/apploader/).
 
-* [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+   Apple reviews your app. If they don't accept it, you'll receive an email that explains the reason and what you can do to fix it. These articles describe common reasons why apps get rejected.
+
+   * [Common App Rejections](https://developer.apple.com/app-store/review/rejections/)
+
+   * [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
 
 ## Package the Windows version of your app
 
@@ -349,7 +369,7 @@ To learn more about Windows package and Windows device compatibility, see [OS ve
 
 **In this section:**
 
-* First, set some general properties.
+* Modify the settings of your app.
 
 * Make your app available to Windows Phones.
 
@@ -357,17 +377,37 @@ To learn more about Windows package and Windows device compatibility, see [OS ve
 
 * Install your app on a device or publish it to the store.
 
-### First, set some general properties
+### Modify the setting of your app
 
-In the **Windows** page of the configuration designer, provide the **Display Name**, the **Package Name**, and the **Version** number of your app.
+The general settings of your app appear in the **Common** page of the configuration designer.
 
-![Configuration Settings Windows Platform](media/tutorial-package-publish-readme/configuration-settings-windows.png)
+![Configuration Settings Windows Platform](media/tutorial-package-publish-readme/configuration-settings-android.png)
 
 * The **Display Name** is the name that appears in the app store.
 
 * The **Package Name** is a string that uniquely identifies your app.
 
     Choose a naming scheme that reduces the chance of a name conflict.
+
+* The **Domain Access** collection lists the domains that your app needs to access.
+
+    For example, the WeatherApp that appears in the previous image, obtains weather data from a service endpoint that has the domain ```https://query.yahooapis.com```.
+
+The purpose of most other settings clear from the title, but you can find more information about them here: [The config.xml File](http://cordova.apache.org/docs/en/latest/config_ref/index.html).
+
+Windows-specific settings appear in the **Windows** tab of the configuration designer.
+
+![configuration-settings-ios-specific](media/tutorial-package-publish-readme/configuration-settings-windows.png)
+
+You might have noticed that the this page shares three of the same field names as the **Common** page (**Display Name**, **Package Name**, and **Version**).
+
+In the **Create App Package Wizard** (which you'll use later) you might have to choose a different display name or package name because of Windows-specific naming requirements, the name has already been reserved by someone else, or if you want to associate your app with a name that you've previously reserved.
+
+In any of these cases, Visual Studio updates the **Display Name** and **Package Name** on the **Windows** page once you've completed the wizard. That way your other platform targets are not forced to use those names.
+
+The reason why this page has a **Version** field is because Windows uses a 4 digit version number instead of a 3 digit one. You can either modify this field directly or let Visual Studio set this field based on the version number that you choose in the **Create App Package Wizard**.
+
+We'll look at the **Windows Target Version** field in the next section.
 
 ### Make your app available to Windows Phones
 

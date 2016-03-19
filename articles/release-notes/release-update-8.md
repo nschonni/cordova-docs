@@ -12,12 +12,11 @@
      ms.date="03/08/2016"
      ms.author="rmpablos"/>
 
-#**Update 8 - Visual Studio Tools for Apache Cordova**
-Update 8 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.60311.2 and is included with Visual Studio Update 2.
+#**Update 8 - Visual Studio Tools for Apache Cordova (Beta)**
+Update 8 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.60311.2 and will be included with Visual Studio Update 2.
 
 ## Setup Instructions
-The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates,
-however from this update we are offering also a standalone installer that you can find here:
+The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates. For now, with the pre-release of this update we are also offering a standalone installer that you can find here:
 
 [Visual Studio Tools for Apache Cordova Update 8 Download](http://go.microsoft.com/fwlink/?LinkId=746890)
 
@@ -25,15 +24,19 @@ Please note that this installer will require you to have already installed a pre
 
 ## New Features:
 
-### NPM Sandboxing
-We have seen different problems related to the version of node that is installed on your machine to isolate from these issues we have decided to ship a known version of node, sandboxed with VS installation.
+![TACO Options Updated](media/release-update-8/npm-sandboxing-options.png)
+
+### Node Sandboxing
+We have seen version conflicts with NPM over time and to help isolate these issues we’re now shipping a known version of NPM, sandboxed with the VS installation. (This was also done for NPM in the previous Update 7 release)
 
 ### NPM Proxy
-If you are behind a proxy you will have npm related problems. Based on user feedback we are detecting if there is a proxy configured at system level, and we apply the same configuration to npm.
+We’ve seen a number of issues come up with customers running our tools behind a proxy. NPM proxy settings are often an issue and so now, if there is a proxy configured at the system level, we auto-apply that same configuration to NPM when we use it.
 
 ### Updated Plugins List
-Visual Studio offers a list of most common used plugins. We are replacing the `com.microsoft.azure-mobile-services` with the new `cordova-plugin-ms-azure-mobile-apps`. 
-We also added more popular plugins:
+The list of the most commonly used plugins, included on the config.xml designer, has been updated. Along with this update, the `com.microsoft.azure-mobile-services` plugin is replaced with the new `cordova-plugin-ms-azure-mobile-apps` plugin. 
+
+Here are the new plugins added to the config.xml designer:
+
 - `cordova-plugin-ms-azure-mobile-apps`
 - `cordova-plugin-hockeyapp`
 - `cordova-plugin-code-push`
@@ -41,9 +44,14 @@ We also added more popular plugins:
 - `phonegap-plugin-push`
 - `cordova-plugin-ms-azure-mobile-engagement`
 
-## Bugs fixed in this release
+## Bug Fixes
+This release fixes three bugs that will improve the performance of the build process:
 
-### Associate with store (Windows) crash Visual Studio
-There was a known issue that makes Visual Studio crash when users select the "associate to store" feature. We have fixed as part of Visual Studio Update 2.
+### Remote_ios.json gets corrupted when a lot of plugins are installed
+Some users reported problems executing remote builds for iOS, that was caused by an incomplete remote_ios.json file, that was affecting users with a lot of plugins. Now we have optimized the remote build configuration and  are no longer using this file.
 
- 
+### Building for Ripple does an extra cordova prepare
+We found that in some cases targeting Ripple during build will call Cordova prepare twice, increasing build time. This issue has been fixed in update 8.
+
+###  Deploying for Android emulator using Cordova 6.0.0 does a second build during deploy
+Again, in some cases, deploying to the Android emulator sometimes triggered a second build. We have fixed this issue in Update 8.
