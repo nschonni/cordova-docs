@@ -96,7 +96,7 @@ In addition to the above base capabilities there are a number of community plugi
 </thead><tbody>
 <tr>
 <td align="left">Secure Data Storage, Secure HTTP</td>
-<td align="left"><strong><a href="https://www.npmjs.com/package/com.intel.securitye">com.intel.security</a></strong></td>
+<td align="left"><strong><a href="https://www.npmjs.com/package/com.intel.security">com.intel.security</a></strong></td>
 <td align="left"><p>This plugin provides a robust set of interfaces for secure storage and transmission of data. Specifically:</p>
 <ul>
 <li>It provides a functions to secure data in memory and then optionally persist the data in local storage.</li>
