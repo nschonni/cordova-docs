@@ -22,6 +22,7 @@ C#, Objective-C, Java, and C++ code will normally be in plugins or the Cordova i
 When building an internal facing app, Mobile Device Management (MDM) and Mobile Application Management (MAM) solutions like **[Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/)** can detect Malware on Android and report jailbroken or rooted devices for iOS and Android. Intune's MAM capabilities can also be used stand alone and complement an existing MDM solution.
 
 See the following articles for additional information:
+
 - [Manage device compliance policies for Microsoft Intune](https://technet.microsoft.com/en-us/library/dn705843.aspx)
 - [Create and deploy mobile app management policies with Microsoft Intune](https://technet.microsoft.com/en-us/library/mt627829.aspx)
 - [Decide how to prepare apps for mobile application management with Microsoft Intune](https://technet.microsoft.com/en-us/library/mt631425.aspx). 

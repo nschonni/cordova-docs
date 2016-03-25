@@ -27,7 +27,7 @@ You can add it to your app as follows:
     ...or for Cordova < 5.1.1...    
     
     ```
-    <vs:plugin name="cordova-plugin-ms-azure-mobile-apps" version="~2.0.0-beta4" />
+    <vs:plugin name="cordova-plugin-ms-azure-mobile-apps" version="2.0.0-beta4" />
     ```
 
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
