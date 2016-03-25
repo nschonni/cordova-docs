@@ -520,7 +520,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
-This can happen when Visual Studio has trouble finding your Mac on the network, if host name or IP address of your Mac changed, or if your attempting to use the same PIN for multiple Windows computers. Let's look at each of these.
+This can happen when Visual Studio has trouble finding your Mac on the network or if host name or IP address of your Mac changed.
 
 **Possible issue 1: Windows has trouble finding your Mac on the network**
 
@@ -580,17 +580,6 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
-**Possible issue 3: You're using the same PIN on more than one Windows computer**
-
-More than one Windows computer can use the same remote build service, but each computer must have it's own PIN. To generate a new PIN, stop the remote build service, open a Terminal and then use this command.
-
-```
-remotebuild certificates generate
-
-```
-
-Then, in the Windows computer, add that PIN to the Visual Studio **Remote Agent Settings**.
-
 [Go back up](#errors)
 
 ### <a id="hostname"></a>Is the host name of your Mac not resolving?
@@ -609,7 +598,11 @@ If you've resolved this problem another way, please share it in a comment.
 
 ### <a id="securitypin"></a>Have you been told that your security PIN is invalid or has expired?
 
-This can happen the first time you set things up. When you first start the remote agent, your security PIN is good for only 10 minutes. then it expires. Just generate a new one.
+This can happen the first time you set things up because your security PIN is good for only 10 minutes. then it expires.
+
+This can also happen if your attempting to use the same PIN for multiple Windows computers. More than one Windows computer can use the same remote build service, but each computer must have it's own PIN.
+
+To generate a new PIN:
 
 1. First, stop the remote agent. On your Mac, open a Terminal app, and type CTRL+C to stop it.
 
