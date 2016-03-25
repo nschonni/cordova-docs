@@ -522,7 +522,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 This can happen when Visual Studio has trouble finding your Mac on the network, if host name or IP address of your Mac changed, or if your attempting to use the same PIN for multiple Windows computers. Let's look at each of these.
 
-#### Possible issue 1: Windows has trouble finding your Mac on the network
+**Possible issue 1: Windows has trouble finding your Mac on the network**
 
 On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
@@ -540,7 +540,7 @@ The network that is used by your Windows Computer should appear first in this li
 
 If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed.
 
-#### Possible issue 2: The host name or IP address of your Mac has changed
+**Possible issue 2: The host name or IP address of your Mac has changed**
 
 When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
 
@@ -580,9 +580,7 @@ Still not working? Reach out to us [here](http://stackoverflow.com/questions/tag
 
 If you've resolved this problem another way, please share it in a comment.
 
-[Go back up](#errors)
-
-#### Possible issue 3: You're using the same PIN on more than one Windows computer
+**Possible issue 3: You're using the same PIN on more than one Windows computer**
 
 More than one Windows computer can use the same remote build service, but each computer must have it's own PIN. To generate a new PIN, stop the remote build service, open a Terminal and then use this command.
 
@@ -592,6 +590,8 @@ remotebuild certificates generate
 ```
 
 Then, in the Windows computer, add that PIN to the Visual Studio **Remote Agent Settings**.
+
+[Go back up](#errors)
 
 ### <a id="hostname"></a>Is the host name of your Mac not resolving?
 
