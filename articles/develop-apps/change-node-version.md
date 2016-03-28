@@ -46,23 +46,25 @@ Unless you have a specific reason to use a newer versions of Node.js, use versio
 
 If you don't want to use version ```5.3.3``` or later of the Cordova CLI, install version ```0.12.x``` of Node.js. Then, you can use whatever version of the Cordova CLI that you want.
 
-1. In your browser, open the [Node.js](http://nodejs.org/) page and choose the **Other Downloads** link.
+1. If you have Node.js installed, open **Control Panel**->**All Control Panel Items**->**Programs and Features**->**Uninstall or change a program** and uninstall it.
+
+2. In your browser, open the [Node.js](http://nodejs.org/) page and choose the **Other Downloads** link.
 
     ![Other Downloads link](media/change-node-version/node-versions.png)
 
-2. In the **Downloads** page, choose the **All download options** link.
+3. In the **Downloads** page, choose the **All download options** link.
 
-3. Choose the ```../``` link.
+4. Choose the ```../``` link.
 
     ![Other versions link](media/change-node-version/other-versions-list.png)
 
-4. In the index of folders, open the folder for the most recent minor version of the the **v0.12.x**.
+5. In the index of folders, open the folder for the most recent minor version of the the **v0.12.x**.
 
     The following image shows that the most recent minor version is **v0.12.9**
 
     ![Other versions link](media/change-node-version/supported-version.png)
 
-5. Choose the right installer file.
+6. Choose the right installer file.
 
     * If you are installing this onto a Windows computer, run the file that has the ```.msi``` extension.
 
