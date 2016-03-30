@@ -13,12 +13,12 @@
      ms.author="rmpablos"/>
 
 #**Update 8 - Visual Studio Tools for Apache Cordova**
-Update 8 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.60311.2 and will be included with Visual Studio Update 2.
+Visual Studio TACO Update 8 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.60321.1 and is included with Visual Studio 2015 Update 2.
 
 ## Setup Instructions
-The most common way to get this update will be the Notification Icon in VS and the Tools & Extensions Updates. For now, with the pre-release of this update we are also offering a standalone installer that you can find here:
+This update is installed along with Visual Studio 2015 Update 2. You can also install it direction in Visual Studio 2015 Update 1 or greater:
 
-[Visual Studio Tools for Apache Cordova Update 8 Download](http://go.microsoft.com/fwlink/?LinkId=746890)
+[Visual Studio Tools for Apache Cordova Update 8 Download](http://go.microsoft.com/fwlink/?LinkId=761465)
 
 Please note that this installer will require you to have already installed a previously version of VS TACO.
 
@@ -27,10 +27,10 @@ Please note that this installer will require you to have already installed a pre
 ![TACO Options Updated](media/release-update-8/npm-sandboxing-options.png)
 
 ### Node Sandboxing
-We have seen version conflicts with NPM over time and to help isolate these issues we’re now shipping a known version of NPM, sandboxed with the VS installation. (This was also done for NPM in the previous Update 7 release)
+We have seen version conflicts with Node over time; to help isolate these issues we’re now shipping a known version of Node, sandboxed with the VS installation. (This was also done for NPM in the previous Update 7 release)
 
 ### NPM Proxy
-We’ve seen a number of issues come up with customers running our tools behind a proxy. NPM proxy settings are often an issue and so now, if there is a proxy configured at the system level, we auto-apply that same configuration to NPM when we use it.
+We’ve seen a number of issues come up with customers running our tools behind a network proxy. NPM proxy settings are often an issue and so now, if there is a proxy configured at the system level, we auto-apply that same configuration to NPM when we use it.
 
 ### Updated Plugins List
 The list of the most commonly used plugins, included on the config.xml designer, has been updated. Along with this update, the `com.microsoft.azure-mobile-services` plugin is replaced with the new `cordova-plugin-ms-azure-mobile-apps` plugin.
