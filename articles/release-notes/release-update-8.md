@@ -12,7 +12,7 @@
      ms.date="03/08/2016"
      ms.author="rmpablos"/>
 
-#**Update 8 - Visual Studio Tools for Apache Cordova (Beta)**
+#**Update 8 - Visual Studio Tools for Apache Cordova**
 Update 8 corresponds to Visual Studio Tools for Apache Cordova version number 14.0.60311.2 and will be included with Visual Studio Update 2.
 
 ## Setup Instructions
@@ -33,7 +33,7 @@ We have seen version conflicts with NPM over time and to help isolate these issu
 We’ve seen a number of issues come up with customers running our tools behind a proxy. NPM proxy settings are often an issue and so now, if there is a proxy configured at the system level, we auto-apply that same configuration to NPM when we use it.
 
 ### Updated Plugins List
-The list of the most commonly used plugins, included on the config.xml designer, has been updated. Along with this update, the `com.microsoft.azure-mobile-services` plugin is replaced with the new `cordova-plugin-ms-azure-mobile-apps` plugin. 
+The list of the most commonly used plugins, included on the config.xml designer, has been updated. Along with this update, the `com.microsoft.azure-mobile-services` plugin is replaced with the new `cordova-plugin-ms-azure-mobile-apps` plugin.
 
 Here are the new plugins added to the config.xml designer:
 
