@@ -44,7 +44,7 @@ If you're ready to go, let's start.
 
 ## <a id="tour-project"></a>Quick tour of the project
 
-There's a lot of files in your project so don't worry too much about understanding them all right away. You can peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
+There's a lot of files in your project. Don't worry too much about understanding them all right away.  Peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
 
 ### The configuration files of your project
 
@@ -452,7 +452,7 @@ Let's run the app, but this time let's use an emulator.
 
     ![Android Emulator](media/get-started-first-mobile-app/android-emulator.png)
 
-    > **Note:** According to your PC configuration some warnings or errors may appear, like firewall alerts or message indicating that the emulator must run in elevated mode. If you receive the following error, stop the Android Debug Bridge process (adb.exe):
+    > **Note:** According to your PC configuration some warnings or errors might appear, like firewall alerts or a message that indicating that the emulator must run in elevated mode. If you receive the following error, stop the Android Debug Bridge process (adb.exe):
 
     > ![Android Emulator Error](media/get-started-first-mobile-app/android-emulator-error.png)
 
