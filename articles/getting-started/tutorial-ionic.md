@@ -174,7 +174,7 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
     ```
     The d.ts files will be added to the typings folder.
 
-8. Open index.html and change the reference to app.js to appBundle.js.
+8. Open index.html and change the script reference from app.js to appBundle.js.
 
     This matches the .tsconfig settings that will bundle all your .ts files into a single JavaScript file named appBundle.js.
 
@@ -182,7 +182,7 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
 9. Rename app.js to app.ts.
 
-        When you build later, the compiler will build app.ts and the output will be `www/js/appBundle.js`. The file will be unchanged by the compiler if you don't add any TypeScript code.
+    When you build later, the compiler will build app.ts and the output will be `www/js/appBundle.js`. The file will be unchanged by the compiler if you don't add any TypeScript code.
 
 10. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
 
