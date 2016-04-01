@@ -20,7 +20,7 @@
 
 **BluetoothLE** (cordova-plugin-bluetoothle)
 
-   [[Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle)] &nbsp; [[Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices)]  &nbsp; [ [Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) ]
+   ( [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) ) &nbsp; ( [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )  &nbsp; ( [Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )
 
 Detect, connect, and interact with freeway monitors, cars, laptops, phones, TV set top-boxes and more. Notify users as they approach a restaurant that serves their favorite dish or a great promotion at a shop nearby.
 
@@ -30,7 +30,7 @@ Check out the [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoo
 
 [ [Go back up](#top) ]
 
-## Use a device's location to connect users with things around them
+## Geolocation: Connect users with things around them
 
 **Geolocation** (cordova-plugin-geolocation)
 
@@ -45,7 +45,7 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocati
 
 [ [Go back up](#top) ]
 
-## Show content in a browser within your app
+## InAppBrowser: Show web pages and videos within your app
 
 **InAppBrowser** (cordova-plugin-inappbrowser)
 
