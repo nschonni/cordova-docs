@@ -14,7 +14,7 @@
    ms.date="04/31/2016"
    ms.author="normesta"/>
 
-# <a id="top"></a>Directory of Plugins
+# <a id="top"></a>Plugin Cookbook
 
 ## Bluetooth LE : Discover and interact with devices
 
@@ -30,7 +30,7 @@ Check out the [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoo
 
 [ [Go back up](#top) ]
 
-## Use a device's location to connect users with things around them
+## Geolocation: Connect users with things around them
 
 **Geolocation** (cordova-plugin-geolocation)
 
@@ -45,7 +45,7 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocati
 
 [ [Go back up](#top) ]
 
-## Show content in a browser within your app
+## InAppBrowser: Show web pages and videos within your app
 
 **InAppBrowser** (cordova-plugin-inappbrowser)
 
