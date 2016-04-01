@@ -14,13 +14,14 @@
    ms.date="04/31/2016"
    ms.author="normesta"/>
 
-# <a id="top"></a>Do cool stuff with plugins
+# <a id="top"></a>Directory of Plugins
 
-## Discover and interact with Bluetooth LE devices
+## Bluetooth LE : Discover and interact with devices
 
-**BluetoothLE** (cordova-plugin-bluetoothle)
 
-( [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) )  ( [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) ) ( [ Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )
+
+
+   [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) &nbsp; &nbsp; [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) &nbsp; &nbsp; [ Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices)
 
 Detect, connect, and interact with freeway monitors, cars, laptops, phones, TV set top-boxes and more. Notify users as they approach a restaurant that serves their favorite dish or a great promotion at a shop nearby.
 
