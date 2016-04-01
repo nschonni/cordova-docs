@@ -118,6 +118,8 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
     Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual Studio](#manualImport).
 
+2. Add a folder named source to the root of the project.
+
 3. Add a tsconfig.json file to the root of your project and paste the following content into the file.
 
     ```
@@ -135,13 +137,13 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
         "node_modules"
       ],
       "files": [
-        "typings/app.ts",
+        "source/app.ts",
         "typings/tsd.d.ts"
       ]
     }
     ```
 
-    Later, you can make modifications to this file as needed. For example, if you want to use TypeScript code in services.js, you can move it from the www/js folder to the typings folder, and then include services.ts in the compiler options for the file list (that is, add a "typings/services.ts" entry, and so on, under the `files` entry). You can use both TypeScript and JavaScript in the same file if you want to, and the TypeScript compiler will create the correct JavaScript output.
+    Later, you can make modifications to this file as needed. For example, if you want to use TypeScript code in services.js, you can move it from the www/js folder to the source folder, and then include services.ts in the compiler options for the file list (that is, add a "source/services.ts" entry, and so on, under the `files` entry). You can use both TypeScript and JavaScript in the same file if you want to, and the TypeScript compiler will create the correct JavaScript output.
 
 4. In Visual Studio, open the project's package.json file and add a reference for tsd under `dependencies`.
 
@@ -178,7 +180,7 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
     This matches the .tsconfig settings that will bundle all your .ts files into a single JavaScript file named appBundle.js.
 
-8. In Visual Studio, move app.js from the www/js folder to the typings folder.
+8. In Visual Studio, move app.js from the www/js folder to the source folder.
 
 9. Rename app.js to app.ts.
 
