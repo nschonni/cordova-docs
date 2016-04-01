@@ -20,7 +20,7 @@
 
 **BluetoothLE** (cordova-plugin-bluetoothle)
 
-   ( [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) ) &nbsp; ( [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )  &nbsp; ( [Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )
+   [[Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle)] &nbsp; [[Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices)]  &nbsp; [ [Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) ]
 
 Detect, connect, and interact with freeway monitors, cars, laptops, phones, TV set top-boxes and more. Notify users as they approach a restaurant that serves their favorite dish or a great promotion at a shop nearby.
 
