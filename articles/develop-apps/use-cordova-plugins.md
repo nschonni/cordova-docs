@@ -14,7 +14,7 @@
    ms.date="04/31/2016"
    ms.author="normesta"/>
 
-# <a id="top"></a>Directory of Plugins
+# <a id="top"></a>Plugin Cookbook
 
 ## Bluetooth LE : Discover and interact with devices
 
