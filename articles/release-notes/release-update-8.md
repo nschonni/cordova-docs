@@ -41,7 +41,6 @@ Here are the new plugins added to the config.xml designer:
 - `cordova-plugin-hockeyapp`
 - `cordova-plugin-code-push`
 - `cordova-plugin-bluetoothle`
-- `phonegap-plugin-push`
 - `cordova-plugin-ms-azure-mobile-engagement`
 
 ## Bug Fixes
