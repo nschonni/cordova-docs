@@ -22,6 +22,14 @@ The most common way to get this update will be the Notification Icon in VS and t
 
 Please note that this installer will require you to have already installed a previously version of VS TACO.
 
+## TACO Update 8.1
+
+Update 8.1 includes a fix to a bug where building a Cordova project results in the error “ENOENT, no such file or directory '' ” in the Output window, and the error “module.js:338” in the Error window. The likely cause is that the current user’s username includes a space
+
+Our solution: In the file c:\users\<currentuser>\appdata\roaming\Microsoft\VisualStudio\MDA\vs-npm\2.14.9\etc\npmrc, we change the value of “prefix” to be c:\users\<currentuser>\appdata\roaming\npm, and save the file. Building should now work.
+
+If you have not updated to 8.1, you can manually make this change for your code to work. 
+
 ## New Features:
 
 ![TACO Options Updated](media/release-update-8/npm-sandboxing-options.png)
