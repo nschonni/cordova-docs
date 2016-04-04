@@ -85,6 +85,8 @@ Have a quick look at this table. It presents each action, its impact, and what y
     </tbody>
 </table>
 
+>**Note**: If you install a newer (or older) version of a plugin, and you receive build errors, the API of the plugin might have changed. If that happens, you might have to change your code to use the API of that plugin version.
+
 ## <a id="node-compat"></a>Step 3: Consider how this change will impact Node.js
 
 Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks. You installed it when you first setup the tools for Apache Cordova.
@@ -153,3 +155,7 @@ Before you change your project's CLI version. Plan to use a compatible version o
     The Node.js version appears.
 
     Make sure that you have a compatible version of node.js installed on your computer or Mac by reviewing the table above in [Step 3: Consider how this change will impact Node.js](#node-compat).
+
+## Learn more about changes in Apache Cordova 5.x and 6.x
+
+Cordova 5 and Cordova 6 introduce changes such as a new security model, a new way to obtain plugins, and a new build system. You can read more about these changes and how they affect your project here: [Adapting to changes caused by Apache Cordova 5.x and 6.x](https://github.com/Microsoft/cordova-docs/blob/master/articles/tutorial-cordova-5/tutorial-cordova-5-readme.md).

@@ -522,6 +522,8 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 This can happen when Visual Studio has trouble finding your Mac on the network or if host name or IP address of your Mac changed.
 
+**Possible issue 1: Windows has trouble finding your Mac on the network**
+
 On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
 If you don't receive any return messages in the **Command Prompt** window, your Mac and your Windows computer might be connected to different networks.
@@ -536,7 +538,11 @@ The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, 
 
 The network that is used by your Windows Computer should appear first in this list. Otherwise, you'll experience these issues intermittently.
 
-If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed. When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
+If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed.
+
+**Possible issue 2: The host name or IP address of your Mac has changed**
+
+When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
 
 Try this. Stop the remote agent on your Mac. Then, in a Terminal, run this command:
 
@@ -592,7 +598,11 @@ If you've resolved this problem another way, please share it in a comment.
 
 ### <a id="securitypin"></a>Have you been told that your security PIN is invalid or has expired?
 
-This can happen the first time you set things up. When you first start the remote agent, your security PIN is good for only 10 minutes. then it expires. Just generate a new one.
+This can happen the first time you set things up because your security PIN is good for only 10 minutes. then it expires.
+
+This can also happen if your attempting to use the same PIN for multiple Windows computers. More than one Windows computer can use the same remote build service, but each computer must have it's own PIN.
+
+To generate a new PIN:
 
 1. First, stop the remote agent. On your Mac, open a Terminal app, and type CTRL+C to stop it.
 

@@ -144,7 +144,7 @@ You can also find it in the ```taco.json``` file at the root of your project.
 
 #### If your Cordova CLI version is greater than 5.0, use these steps
 
-1. In **Solution Explorer**, expand the project folder, and then choose the **build.json** file.
+1. In **Solution Explorer**, expand the project folder, and then choose the **build.json** file. If that file is missing from your project, then add it.
 
     ![Android: Build assets](media/tutorial-package-publish-readme/android_assets_cordova5.png)
 

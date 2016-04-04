@@ -72,7 +72,7 @@ This table gives you the basic idea of how you might use each one.
   </th>
 </tr>
  <tr>
-   <td><strong>bowser.json</strong></td><td>This file manages the <a href="http://bower.io//">Bower</a> packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-using-bower/">here</a>.</td>
+   <td><strong>bower.json</strong></td><td>This file manages the <a href="http://bower.io//">Bower</a> packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-using-bower/">here</a>.</td>
  </tr>
  <tr>
    <td><strong>build.json</strong></td><td>This file contains parameters that Visual Studio uses to build a signed Android package. <br><br>We won't create one in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-package-publish-readme/">here</a>.</td>
@@ -178,7 +178,7 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 2. Add the **jQuery.Mobile** NuGet package to your solution.
 
-    ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery.png)
+    ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery-mobile.png)
 
      NuGet adds files to the **Scripts** folder of your project, but that's not really where we need them so we'll have to fix that.
 
