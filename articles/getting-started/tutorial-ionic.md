@@ -24,47 +24,33 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
     When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
 
-2. To run a quick test of your setup, verify that you can run the default Blank App template.
+    > **Note:** Quickly verify that you can load and build the default Blank App template. In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank", and build it with F5.
 
-    * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
+2. Install the Ionic templates.
 
-    * Choose **Windows-x86**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Other issues?](#other).  
+     > **Note:** Add it directly to Visual Studio by downloading and double-clicking on the [VS Extension for Ionic](https://visualstudiogallery.msdn.microsoft.com/4e44ba8b-a4c8-4106-b70e-00d63241a54a)
 
-3. In Visual Studio, select **File**, **New**, then **Project**.
-
-4. In the New Project dialog box, select **Online**.
-
-5. In the search box, type **Ionic**.
+    Or, do it in Visual Studio, by selecting **File**, **New**, then **Project**. In the New Project dialog box, select **Online**. In the search box, type **Ionic**.
 
     ![Getting the templates](media/tutorial-ionic/ionic-online-templates.png)
 
-6. Search results will show **Ionic Project Templates for Visual Studio**.
+    Type any name and choose **OK** to install them. When you are asked for permission to install the templates, give your permission.
 
-    >**Note**: If you have a new installation of Visual Studio and the Ionic project templates are already installed, you can skip the next two steps.
-
-7. Type any name and choose **OK** to install them.
-
-    When you are asked for permission to install the templates, give your permission.
-
-8. After Visual Studio creates the project, close and re-open Visual Studio.
-
-9. Choose **File**, **New**, then **Project**.
-
-10. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
+3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
 
     ![Choosing a template](media/tutorial-ionic/ionic-installed-templates.png)
 
-11. Choose one of the following starter templates for your new project:
+    Choose one of the following starter templates for your new project:
 
     * Ionic Blank App
     * Ionic SideMenu Template
     * Ionic Tabs Template
 
-12. Choose **OK**.
+4. Choose **OK**.
 
     Visual Studio creates the Ionic project.
 
-13. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
+5. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
 
 ## Get your app running on Android <a name="configAndroid"></a>
 
@@ -132,6 +118,8 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
     Alternatively, if you are manually importing the project, follow instructions in [Manually import an Ionic project into Visual Studio](#manualImport).
 
+2. Add a folder named source to the root of the project.
+
 3. Add a tsconfig.json file to the root of your project and paste the following content into the file.
 
     ```
@@ -149,21 +137,15 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
         "node_modules"
       ],
       "files": [
-        "typings/app.ts",
+        "source/app.ts",
         "typings/tsd.d.ts"
       ]
     }
     ```
 
-    Later, you can make modifications to this file as needed. For example, you may want to move controller.js and services.js from the www/js folder to the typings folder, and include those files in the compiler options for the file list (that is, add a "typings/controllers.ts" entry, and so on, under the `files` entry). You can use both TypeScript and JavaScript in the same file if you want to, and the TypeScript compiler will create the correct JavaScript output.
+    Later, you can make modifications to this file as needed. For example, if you want to use TypeScript code in services.js, you can move it from the www/js folder to the source folder, and then include services.ts in the compiler options for the file list (that is, add a "source/services.ts" entry, and so on, under the `files` entry). You can use both TypeScript and JavaScript in the same file if you want to, and the TypeScript compiler will create the correct JavaScript output.
 
-4. In Visual Studio, move app.js from the www/js folder to the typings folder.
-
-5. Rename app.js to app.ts.
-
-    When you build later, the compiler will build app.ts and the output will be `www/js/appBundle.js`. The file will be unchanged by the compiler if you don't add any TypeScript code.
-
-6. In Visual Studio, open the project's package.json file and add a reference for tsd under `dependencies`.
+4. In Visual Studio, open the project's package.json file and add a reference for tsd under `dependencies`.
 
     ```
     "tsd": "^0.6.5"
@@ -172,14 +154,20 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
     If you don't see this happening, first go to the command line and type `npm install tsd -g` to install tsd globally. Then add the tsd reference to package.json.
 
-7. In the command line, type this.
+5. Open a command line and switch to the folder containing your .jsproj file. For example, this might be something like the following.
+
+    ```
+    C:\Documents\Ionic_sidemenu\Ionic_sidemenu
+    ```
+
+6. In the command line, type this.
 
     ```
     tsd init
     ```
     This command installs tsd.json, the typings folder, and tsd.d.ts to the project.
 
-8. In the command line, run the following commands to install the correct set of d.ts files for the Ionic app.
+7. In the command line, run the following commands to install the correct set of d.ts files for the Ionic app.
 
     ```
     tsd install cordova --save
@@ -188,9 +176,19 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
     ```
     The d.ts files will be added to the typings folder.
 
-9. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
+8. Open index.html and change the script reference from app.js to appBundle.js.
 
-10. Choose a deployment target like **Android** or **Windows-x86** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
+    This matches the .tsconfig settings that will bundle all your .ts files into a single JavaScript file named appBundle.js.
+
+8. In Visual Studio, move app.js from the www/js folder to the source folder.
+
+9. Rename app.js to app.ts.
+
+    When you build later, the compiler will build app.ts and the output will be `www/js/appBundle.js`. The file will be unchanged by the compiler if you don't add any TypeScript code.
+
+10. When you want to use source control on github, update .gitignore to exclude typings and other VS temporary folders and files.
+
+11. Choose a deployment target like **Android** or **Windows-x86** and see the other sections in this article for possible configuration changes or code changes you might need to make to the app.
 
     [Get your app running on Android](#configAndroid)
 
@@ -200,7 +198,7 @@ You can use TypeScript in an Ionic app (even though the starter templates are no
 
     [Get your app running on Windows 8.1](#configWindows)
 
-11. Press F5 to run the app.
+12. Press F5 to run the app.
 
     ![Run the app](media/tutorial-ionic/ionic-f5.png)
 

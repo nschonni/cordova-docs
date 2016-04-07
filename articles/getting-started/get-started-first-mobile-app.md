@@ -44,7 +44,7 @@ If you're ready to go, let's start.
 
 ## <a id="tour-project"></a>Quick tour of the project
 
-There's a lot of files in your project so don't worry too much about understanding them all right away. You can peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
+There's a lot of files in your project. Don't worry too much about understanding them all right away.  Peruse this section to get a sense for what each one does. Over time, you'll naturally incorporate more of these files into your workflow.
 
 ### The configuration files of your project
 
@@ -72,7 +72,7 @@ This table gives you the basic idea of how you might use each one.
   </th>
 </tr>
  <tr>
-   <td><strong>bowser.json</strong></td><td>This file manages the <a href="http://bower.io//">Bower</a> packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-using-bower/">here</a>.</td>
+   <td><strong>bower.json</strong></td><td>This file manages the <a href="http://bower.io//">Bower</a> packages dependencies of your app. <br><br>Bower is a package manager. We won't use it in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-using-bower/">here</a>.</td>
  </tr>
  <tr>
    <td><strong>build.json</strong></td><td>This file contains parameters that Visual Studio uses to build a signed Android package. <br><br>We won't create one in this guide, but you can learn more about it <a href="https://taco.visualstudio.com/en-us/docs/tutorial-package-publish-readme/">here</a>.</td>
@@ -166,7 +166,7 @@ Apps can be as complicated or as simple as you want them to be. The goal of this
 
 First, you'll add the [JQuery](https://jquery.com/) and [JQuery Mobile](https://jquerymobile.com/) NuGet packages to your project.
 
-If you're not familiar with JQuery, it's a just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for.
+If you're not familiar with JQuery, it's just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for.
 
 JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. It'll give us a quick way to style the application without having to do custom CSS work.
 
@@ -178,7 +178,7 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 2. Add the **jQuery.Mobile** NuGet package to your solution.
 
-    ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery.png)
+    ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery-mobile.png)
 
      NuGet adds files to the **Scripts** folder of your project, but that's not really where we need them so we'll have to fix that.
 
@@ -220,7 +220,7 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 ### Design a page
 
-**index.html** is the first page that appears when users run your app. So we'll add our HTML to that file. Of course, this the default setting and you can change that at any time in the [configuration designer](#settings).
+**index.html** is the first page that appears when users run your app. So we'll add our HTML to that file. Of course, this is the default setting and you can change that at any time in the [configuration designer](#settings).
 
 1. Open the **index.css** file and replace its content with the following css rules:
 
@@ -452,7 +452,7 @@ Let's run the app, but this time let's use an emulator.
 
     ![Android Emulator](media/get-started-first-mobile-app/android-emulator.png)
 
-    > **Note:** According to your PC configuration some warnings or errors may appear, like firewall alerts or message indicating that the emulator must run in elevated mode. If you receive the following error, try killing the Android Debug Bridge process (adb.exe):
+    > **Note:** According to your PC configuration some warnings or errors might appear, like firewall alerts or a message that indicating that the emulator must run in elevated mode. If you receive the following error, stop the Android Debug Bridge process (adb.exe):
 
     > ![Android Emulator Error](media/get-started-first-mobile-app/android-emulator-error.png)
 
@@ -482,7 +482,7 @@ This console appears when your Cordova app starts. If it doesn't, it's easy enou
 
 You can use the `console.log` method to log messages and then view those messages in the console. You can also use the console to execute any JavaScript function while the application is running. [Learn more about the JavaScript Console](https://developers.google.com/web/tools/javascript/console/).
 
-### use the Document Object Model (DOM) Explorer
+### Use the Document Object Model (DOM) Explorer
 
 Use the DOM Explorer to find and fix layout issues in your pages. Examine the structure of your pages as they render and then tweak them while the app is running.
 
@@ -516,7 +516,7 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
     Let's add some code that consumes this plugin.
 
-3. In the **weather.js** file add the following code right after the 'getWeather' function:
+3. In the **weather.js** file add the following code right after the ```getWeather``` function:
 
 	 ```javascript
     ns.getLocation = function () {
@@ -727,7 +727,7 @@ see [Debugger Basics](https://msdn.microsoft.com/library/k0k771bt.aspx).
 
 **Explore the many JavaScript frameworks out there**
 
-Search online. They're everywhere! Here's a couple of them: [AngularJS](https://angularjs.org/), and [ionic](http://ionicframework.com/).
+Search online. They're everywhere! Here's a couple of them: [AngularJS](https://angularjs.org/), and [Ionic](http://ionicframework.com/).
 
 **Get a Mac and then run your app in an iOS emulator, or on an iOS device**
 
