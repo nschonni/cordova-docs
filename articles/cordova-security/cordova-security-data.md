@@ -96,7 +96,7 @@ In addition to the above base capabilities there are a number of community plugi
 </thead><tbody>
 <tr>
 <td align="left">Secure Data Storage, Secure HTTP</td>
-<td align="left"><strong><a href="https://www.npmjs.com/package/com.intel.security">com.intel.security</a></strong></td>
+<td align="left"><strong><a href="https://www.npmjs.com/package/com-intel-security-cordova-plugin">com-intel-security-cordova-plugin</a></strong></td>
 <td align="left"><p>This plugin provides a robust set of interfaces for secure storage and transmission of data. Specifically:</p>
 <ul>
 <li>It provides a functions to secure data in memory and then optionally persist the data in local storage.</li>
@@ -117,7 +117,7 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Encrypted Data in a Database</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-sqlite-ext">cordova-sqlite-ext</a></strong></td>
-<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com.intel.security</strong> to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
+<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com-intel-security-cordova-plugin</strong> to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added <strong>Windows 10 support</strong>. MIT licensed.</li>
