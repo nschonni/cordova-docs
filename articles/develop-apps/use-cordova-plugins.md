@@ -43,6 +43,11 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocati
 
 ![scan-for-devices](media/use-cordova-plugins/geolocation-sample.png)
 
+**Watch a short video** [![alt text][2]][1]
+
+  [1]: https://az754404.vo.msecnd.net/public/vscode_preview.mp4
+  [2]: media/use-cordova-plugins/videoPlayIcon.png (Watch a short video)
+
 [ [Go back up](#top) ]
 
 ## InAppBrowser: Show web pages and videos within your app
@@ -60,6 +65,9 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 
 ### Watch a short video
 
-<a href="https://az754404.vo.msecnd.net/public/vscode_preview.mp4"><img src="https://tacovs.blob.core.windows.net/vstaco-media/taco.visualstudio.com/en-us/documentation/articles/use-cordova-plugins/20160401100657/videoImage.png" alt="" hidefocus="true" /></a>
+[![alt text][2]][1]
+
+  [1]: https://az754404.vo.msecnd.net/public/vscode_preview.mp4
+  [2]: media/use-cordova-plugins/videoImage.png (Watch a short video)
 
 [ [Go back up](#top) ]
