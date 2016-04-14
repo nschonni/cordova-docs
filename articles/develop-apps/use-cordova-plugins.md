@@ -58,4 +58,8 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 
 ![scan-for-devices](media/use-cordova-plugins/inappbrowser-sample.png)
 
+### Watch a short video
+
+<a href="https://az754404.vo.msecnd.net/public/vscode_preview.mp4"><img src="https://tacovs.blob.core.windows.net/vstaco-media/taco.visualstudio.com/en-us/documentation/articles/use-cordova-plugins/20160401100657/videoImage.png" alt="" hidefocus="true" /></a>
+
 [ [Go back up](#top) ]
