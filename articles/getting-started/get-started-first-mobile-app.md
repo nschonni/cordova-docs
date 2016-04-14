@@ -313,7 +313,7 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
    ```javascript
 
-      $('#get-weather-btn').click(WeatherApp.getWeather);
+      $('#get-weather-btn').click(getWeatherWithZipCode);
 
   ```
 
@@ -457,7 +457,9 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     Add ```http://api.openweathermap.org``` just after ```https://ssl.gstatic.com``` in that line to give this page permission to get content from the Yahoo weather service and map service. When you're done, your CSP will look like this:
 
     ```html
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://api.openweathermap.org https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">           
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 
+    http://api.openweathermap.org https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 
+    'unsafe-inline'; media-src *">           
     ```
 
     > **Note:** Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. You can read more about it here: http://content-security-policy.com/
@@ -474,7 +476,7 @@ Let's run the app, but this time let's use an emulator.
 
     > ![Android Emulator Error](media/get-started-first-mobile-app/android-emulator-error.png)
 
-2. In the Android emulator, type a valid United States zip code into the edit box (for example: 98052), and then press the **Get Weather** button.
+2. In the Android emulator, type a valid United States zip code into the edit box (for example: 33101), and then press the **Get Weather** button.
 
     Weather data for that region appears in the controls.
 
