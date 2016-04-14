@@ -1,4 +1,4 @@
-<properties
+An<properties
    pageTitle="Get started with Visual Studio Tools for Apache Cordova | Cordova"
    description="Get started with Visual Studio Tools for Apache Cordova"
    services="na"
@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="02/28/2016"
+   ms.date="04/13/2016"
    ms.author="normesta"/>
 
 # Get started with Visual Studio Tools for Apache Cordova
@@ -199,10 +199,10 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
     <script src="scripts/jquery.mobile-x.x.x.min.js"></script>
     ```
 
-    Replace the ```x.x.x``` in these filenames with the versions that you've downloaded. For example, if you downloaded jQuery version ```2.2.1```, and jQuery mobile version ```1.4.5```, your references would look like this:
+    Replace the ```x.x.x``` in these filenames with the versions that you've downloaded. For example, if you downloaded jQuery version ```2.2.3```, and jQuery mobile version ```1.4.5```, your references would look like this:
 
     ```html
-    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/jquery-2.2.3.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
     ```
 
@@ -260,10 +260,12 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
         font-weight: bold;    
     }
     ```
-1. Open the **index.html** file and remove this line.
+1. Open the **index.html** file and remove this HTML. It's just a part of the default template that you run out of the box. We won't need it.
 
     ```html
-    <p>Hello, your application is ready!</p>
+    <div class="app">
+      <p id="deviceready" class="event">Connecting to Device</p>
+    </div>
     ```
 
 2. Add this HTML to the ```<body>``` of the page to give users a way to search for the weather and see the results.
@@ -288,7 +290,7 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
                 <li><span id="summary"><span id="temperature"></span> F <img src="" /></span></li>
                 <li>Wind: <span id="wind"></span> knots</li>
                 <li>Humidity: <span id="humidity"></span> %</li>
-                <li>Visibility: <span id="visibility"></span> miles</li>
+                <li>Visibility: <span id="visibility"></span></li>
                 <li>Sunrise: <span id="sunrise"></span></li>
                 <li>Sunset: <span id="sunset"></span></li>
             </ul>
@@ -309,11 +311,23 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 1. Open the [index.js](#tour-project) file and add the following line of code to the ```onDeviceReady``` function.
 
-    ```javascript
-    $('#get-weather-btn').click(WeatherApp.getWeather);
-	```
+   ```javascript
+
+      $('#get-weather-btn').click(WeatherApp.getWeather);
+
+  ```
 
     This code refers to the ID of the 'Get Weather' button on the HTML page and handles the `click` event by passing in the name of a function (_getWeather_).  You'll add that function shortly.
+
+2. While you're in this file, remove this code from the ```onDeviceReady``` function. It's just a part of the default template that you run out of the box. We won't need it.
+
+    ```javascript
+
+    var element = document.getElementById("deviceready");
+    element.innerHTML = 'Device Ready';
+    element.className += ' ready';
+
+    ```
 
 #### A quick look at index.js
 This is a good time to quickly look at the ```index.js``` file. This file loads when the user runs the app.  Why? Because the ```index.html``` page contains this reference to it:
@@ -342,6 +356,10 @@ function onDeviceReady() {
 
 So what exactly do we mean by *Cordova device APIs*? These are APIs that you'd use to interact with device capabilities such as the camera or accelerometer. If you want to run any code like this when the app first starts, make sure you add that code or call those functions from inside of this event handler. In fact, later on, we'll do just that.
 
+### Get a free API Key
+
+We'll use the [OpenWeatherMap](http://openweathermap.org/) API to get weather data. To use the free version of this service, get a key [here](https://home.openweathermap.org/).
+
 ### Add code to get the weather
 
 Now we'll add the *getWeather* function that we're using to handle button's ``click`` event. But first, let's add a JavaScript file for that function.
@@ -354,57 +372,58 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
 
 3. Name the file *weather.js*, and then choose the **Add** button.
 
-4. Open the **weather.js** file and add the following function.
+4. Open the **weather.js** file and add the following function. Replace ``Your_Key_Here`` with the key that you got from [OpenWeatherMap](https://home.openweathermap.org/).
 
-	```javascript       
-    var WeatherApp = {};
+	 ```javascript       
 
-    (function ($, ns, navigator) {
-        ns.getWeather = function () {
-            var zipcode = $('#zip-code-input').val();
+    var OpenWeatherAppKey = "Your_Key_Here";
 
-            // get weather using zip code
-            var queryString =
-                'https://query.yahooapis.com/v1/public/yql?q='
-                + 'select+*+from+weather.forecast+where+location='
-                + zipcode + '&format=json';
+    function getWeatherWithZipCode() {
 
-            $.getJSON(queryString, function (results) {
-                if (results.query.count > 0 && results.query.results.channel.wind) {
-                    $('#error-msg').hide();
-                    $('#weather-data').show();
+      var zipcode = $('#zip-code-input').val();
 
-                    var weather = results.query.results.channel;
-                    $('#title').text(weather.title);
+      var queryString =
+          'http://api.openweathermap.org/data/2.5/weather?zip='
+           + zipcode + ',us&appid=' + OpenWeatherAppKey + '&units=imperial';
 
-                    var wind = weather.wind;
-                    $('#temperature').text(wind.chill);
-                    $('#wind').text(wind.speed);
+      $.getJSON(queryString, function (results) {
 
-                    var atmosphere = weather.atmosphere;
-                    $('#humidity').text(atmosphere.humidity);
-                    $('#visibility').text(atmosphere.visibility);
+          showWeatherData(results);
 
-                    var astronomy = weather.astronomy;
-                    $('#sunrise').text(astronomy.sunrise);
-                    $('#sunset').text(astronomy.sunset);
+          }).fail(function (jqXHR) {
+              $('#error-msg').show();
+              $('#error-msg').text("Error retrieving data. " + jqXHR.statusText);
+          });
 
-                    $('#summary img').attr('src', $(weather.item.description)[0].src);
+          return false;
+    }
 
-                } else {
-                    $('#weather-data').hide();
-                    $('#error-msg').show();
-                    $('#error-msg').text("Error retrieving data. " + results.query.results.channel.item.title);
-                }
-            }).fail(function (jqXHR) {
-                $('#error-msg').show();
-                $('#error-msg').text("Error retrieving data. " + jqXHR.statusText);
-            });
+    function showWeatherData(results) {
 
-            return false;
-        }
+      if (results.weather.length) {
 
-    })($, WeatherApp, navigator);
+          $('#error-msg').hide();
+          $('#weather-data').show();
+
+          $('#title').text(results.name);
+          $('#temperature').text(results.main.temp);
+          $('#wind').text(results.wind.speed);
+          $('#humidity').text(results.main.humidity);
+          $('#visibility').text(results.weather[0].main);
+
+          var sunriseDate = new Date(results.sys.sunrise);
+          $('#sunrise').text(sunriseDate.toLocaleTimeString());
+
+          var sunsetDate = new Date(results.sys.sunrise);
+          $('#sunset').text(sunsetDate.toLocaleTimeString());
+
+      } else {
+          $('#weather-data').hide();
+          $('#error-msg').show();
+          $('#error-msg').text("Error retrieving data. ");
+      }
+    }
+
 	```
 
     This function gets a zip code from the input box, and uses a free service to get the weather for that zip code. The rest of this code uses JQuery syntax to populate controls on the page with data from the service.
@@ -428,18 +447,17 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     <script src="scripts/weather.js"></script>
 	```
 
-6. Add ```https://query.yahooapis.com```, ```http://gws2.maps.yahoo.com``` and ```http://l.yimg.com``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>```. Use it to declare approved origins of content that browsers should be allowed to load on your website. It looks like this:
+6. Add ```http://api.openweathermap.org``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>```. Use it to declare approved origins of content that browsers should be allowed to load on your website. It looks like this:
 
     ```html
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
     https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-    Add ```https://query.yahooapis.com```, ```http://gws2.maps.yahoo.com``` and ```http://l.yimg.com``` just after ```https://ssl.gstatic.com``` in that line to give this page permission to get content from the Yahoo weather service and map service. When you're done, your CSP will look like this:
+    Add ```http://api.openweathermap.org``` just after ```https://ssl.gstatic.com``` in that line to give this page permission to get content from the Yahoo weather service and map service. When you're done, your CSP will look like this:
 
     ```html
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
-    https://ssl.gstatic.com https://query.yahooapis.com http://gws2.maps.yahoo.com http://l.yimg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://api.openweathermap.org https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">           
     ```
 
     > **Note:** Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. You can read more about it here: http://content-security-policy.com/
@@ -516,72 +534,77 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
     Let's add some code that consumes this plugin.
 
-3. In the **weather.js** file add the following code right after the ```getWeather``` function:
+3. In the **weather.js** file add the following code right after the ```getWeather``` function
 
-	 ```javascript
-    ns.getLocation = function () {
-        navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, { enableHighAccuracy: true });
+4. Open the **weather.js** file and add the following function. Replace ``Your_Key_Here`` with the key that you got from [OpenWeatherMap](https://home.openweathermap.org/).
 
-        $('#error-msg').show();
-        $('#error-msg').text('Determining your current location ...');
+	 ```javascript       
 
-        $('#get-weather-btn').prop('disabled', true);
+    function getWeatherWithGeoLocation() {
+
+      navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError,
+        { enableHighAccuracy: true });
+
+      $('#error-msg').show();
+      $('#error-msg').text('Determining your current location ...');
+
+      $('#get-weather-btn').prop('disabled', true);
     }
+    function onGetLocationSuccess(position) {
 
-    var onGetLocationSuccess = function (position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
 
-        // get zip code by using latitude and longitude.
-        var queryString = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=en_US&offset=15&flags=&q='
-            + latitude + '%2c' + longitude + '&gflags=R&start=0&format=json';
+    var queryString =
+      'http://api.openweathermap.org/data/2.5/weather?lat='
+      + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=imperial';
 
-        $.getJSON(queryString, function (results) {
-            $('#error-msg').hide();
+    $('#get-weather-btn').prop('disabled', false);
 
-            if (results.Found > 0) {
-                // put the zip code into the input box for the user if we get a location
-                var zipCode = results.Result.uzip
-                $('#zip-code-input').val(zipCode);
-            }
-        }).fail(function () {
-            $('#error-msg').text('Error retrieving data.');
-        }).always(function () {
-            // always reset the UI even if we fail to get a ZIP code from the service.
-            $('#get-weather-btn').prop('disabled', false);
-        });
+    $.getJSON(queryString, function (results) {
+
+        showWeatherData(results);
+
+        }).fail(function (jqXHR) {
+            $('#error-msg').show();
+            $('#error-msg').text("Error retrieving data. " + jqXHR.statusText);
+    });
+
     }
+    function onGetLocationError(error) {
 
-    var onGetLocationError = function (error) {
-        $('#error-msg').text('Error getting location. Leaving zip code field blank');
-        $('#get-weather-btn').prop('disabled', false);
-    }
-    ```
+      $('#error-msg').text('Error getting location');
+      $('#get-weather-btn').prop('disabled', false);
+    }  
 
-    This code uses the device's geolocation capability to get the latitude and longitude of the device's location. It then uses the latitude and longitude to get a zip code for that location and then populate the input box of your app with that zip code.
+	```
+
+    This code uses the device's geolocation capability to get the latitude and longitude of the device's location. It then gets the weather for that location.
 
 4.  Open the **index.js** file, and add the following code to the `onDeviceReady` function.
 
-	```javascript  
-	WeatherApp.getLocation();
-	```
+```javascript
 
+	  getWeatherWithGeoLocation();
+
+```
     The ``onDeviceReady`` function should look like this.
 
-	```javascript
-	function onDeviceReady() {
+```javascript
+
+    function onDeviceReady() {
 		// Handle the Cordova pause and resume events
 		document.addEventListener( 'pause', onPause.bind( this ), false );
 		document.addEventListener('resume', onResume.bind(this), false);
 
-        $('#get-weather').click(WeatherApp.getWeather);
-        WeatherApp.getLocation();
+        $('#get-weather-btn').click(getWeatherWithZipCode);
+         getWeatherWithGeoLocation();
 	};
-	```
+```
 
 6. Run the app.
 
-    When your app starts, the label *Determining your current location ...* appears. After a brief period of time, the input box shows the zip code of your current location.
+    When your app starts, the label *Determining your current location ...* appears. After a brief period of time, the weather data for your location appears in the app.
 
     > **Note**: If you use the Apache Ripple emulator, you’ll have to configure it with your location.
 
