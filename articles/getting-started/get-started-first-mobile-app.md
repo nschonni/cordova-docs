@@ -311,11 +311,11 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 1. Open the [index.js](#tour-project) file and add the following line of code to the ```onDeviceReady``` function.
 
-   ```javascript
+    ```javascript
 
       $('#get-weather-btn').click(getWeatherWithZipCode);
 
-  ```
+    ```
 
     This code refers to the ID of the 'Get Weather' button on the HTML page and handles the `click` event by passing in the name of a function (_getWeather_).  You'll add that function shortly.
 
@@ -384,7 +384,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
 
       var queryString =
           'http://api.openweathermap.org/data/2.5/weather?zip='
-           + zipcode + ',us&appid=' + OpenWeatherAppKey + '&units=imperial';
+          + zipcode + ',us&appid=' + OpenWeatherAppKey + '&units=imperial';
 
       $.getJSON(queryString, function (results) {
 
@@ -542,7 +542,7 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
 	 ```javascript       
 
-    function getWeatherWithGeoLocation() {
+     function getWeatherWithGeoLocation() {
 
       navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError,
         { enableHighAccuracy: true });
@@ -559,7 +559,7 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
     var queryString =
       'http://api.openweathermap.org/data/2.5/weather?lat='
-      + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=imperial';
+        + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=imperial';
 
     $('#get-weather-btn').prop('disabled', false);
 
@@ -585,16 +585,16 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
 4.  Open the **index.js** file, and add the following code to the `onDeviceReady` function.
 
-```javascript
+    ```javascript
 
 	  getWeatherWithGeoLocation();
 
-```
+    ```
     The ``onDeviceReady`` function should look like this.
 
-```javascript
+    ```javascript
 
-    function onDeviceReady() {
+     function onDeviceReady() {
 		// Handle the Cordova pause and resume events
 		document.addEventListener( 'pause', onPause.bind( this ), false );
 		document.addEventListener('resume', onResume.bind(this), false);
@@ -602,7 +602,7 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
         $('#get-weather-btn').click(getWeatherWithZipCode);
          getWeatherWithGeoLocation();
 	};
-```
+     ```
 
 6. Run the app.
 
