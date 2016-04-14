@@ -1,4 +1,4 @@
-An<properties
+<properties
    pageTitle="Get started with Visual Studio Tools for Apache Cordova | Cordova"
    description="Get started with Visual Studio Tools for Apache Cordova"
    services="na"
