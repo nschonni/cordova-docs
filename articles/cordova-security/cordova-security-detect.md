@@ -47,7 +47,7 @@ Intune provides two solutions for enabling its MAM features for Android and iOS 
     cordova plugin add cordova-plugin-ms-intune-mam --save
     ```
 
-See [Intune's Cordova documentation]() for more information or if you would prefer to use the app wrapping tool, see Intune's documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx)** versions of the tools for more information.
+See **[Intune's Cordova documentation]()** for more information or if you would prefer to use the app wrapping tool, see Intune's documentation on the [Android](https://technet.microsoft.com/en-us/library/mt147413.aspx) and [iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) versions of the tools for more information.
 
 
 ##Threat detection
@@ -55,7 +55,7 @@ Even the most careful implementation can still have vulnerabilities so another a
 
 **[Azure Active Directory Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/)** is an extremely useful service that can help detect anomalous activity against user accounts. When combined with an authentication solution that supports Azure AD like Azure Mobile Apps or the ADAL Cordova plugin and passing the authentication token to any service calls you make for verification on the server side, you will be able to gain deep insights into potential brute force or compromised logins attacks.
 
-See [Azure Active Directory Identity Protection documentaiton](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/) along with the articles on [authenticating users](./cordova-security-auth.md) and [securing data at rest and over the wire](./cordova-security-data.md) for additional information.
+See [Azure Active Directory Identity Protection documentation](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection/) along with the articles on [authenticating users](./cordova-security-auth.md) and [securing data at rest and over the wire](./cordova-security-data.md) for additional information.
 
 For Azure based services, databases, and VMs, you can use **[Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/)** which builds on top of Azure's world class certifications and enables some powerful security features for your Virtual Machines and SQL databases including full support for auditing SQL servers, threat detection, transparent data encryption, and monitoring and notification about recommended updates.
 

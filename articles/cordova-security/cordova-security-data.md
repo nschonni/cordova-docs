@@ -16,7 +16,7 @@ The best starting point whenever you are tackling a problem related to security 
 
 Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) had [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. To resolve this problem we'll need to take advantage of something called "Crosswalk."
 
-> Note: If you would **prfer not to use Crosswalk** or find the Crypto API **too cumbersome**, there are some alternatives like Intel's excellent [com-intel-security-cordova-plugin](https://software.intel.com/en-us/app-security-api/api) Cordova plugin that are worth considering.
+> Note: If you would **prefer not to use Crosswalk** or find the Crypto API **too cumbersome**, there are some alternatives like Intel's excellent [com-intel-security-cordova-plugin](https://software.intel.com/en-us/app-security-api/api) Cordova plugin that are worth considering.
 
 
 ### Crosswalk
@@ -191,7 +191,7 @@ Intune provides two solutions for enabling its MAM features for Android and iOS 
     cordova plugin add cordova-plugin-ms-intune-mam --save
     ```
 
-See [Intune's Cordova documentation]() for more information or if you would prefer to use the app wrapping tool, see Intune's documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx)** versions of the tools for more information.
+See **[Intune's Cordova documentation]()** for more information or if you would prefer to use the app wrapping tool, see Intune's documentation on the [Android](https://technet.microsoft.com/en-us/library/mt147413.aspx) and [iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) versions of the tools for more information.
 
 ##Consider native Windows APIs for Windows
 One often missed feature that the Windows platform for Cordova has is the ability to call **any** JavaScript enabled [Windows API](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx) from your Cordova app **without a plugin**. Many plugins for the Windows platforms are simple JavaScript adapters to conform to the plugin interface spec. 
