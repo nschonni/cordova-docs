@@ -43,10 +43,10 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocati
 
 ![scan-for-devices](media/use-cordova-plugins/geolocation-sample.png)
 
-**Watch a short video** [![alt text][2]][1]
+**Watch a short video** [![alt text][4]][3]
 
-  [1]: https://az754404.vo.msecnd.net/public/vscode_preview.mp4
-  [2]: media/use-cordova-plugins/videoPlayIcon.png (Watch a short video)
+  [3]: https://az754404.vo.msecnd.net/public/vscode_preview.mp4
+  [4]: media/use-cordova-plugins/videoPlayIcon.png (Watch a short video)
 
 [ [Go back up](#top) ]
 
