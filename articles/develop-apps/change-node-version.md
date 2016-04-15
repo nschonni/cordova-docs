@@ -11,14 +11,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="12/15/2015"
+   ms.date="04/18/2016"
    ms.author="normesta"/>
 
 # Safely update Node.js (Visual Studio Tools for Apache Cordova)
 
-Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks.  
-
-New versions of Node.js can include bug fixes and other improvements, but before you install one, make sure that it's compatible with the version of Cordova Command Line Interface (CLI) that your project uses. This topic helps you do that.
+Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks. [Visual Studio Taco Update 8](https://taco.visualstudio.com/en-us/docs/release-update-8/) ensures that Cordova uses a compatible version of node.js. If you haven't installed the update, and you plan to install a new version of node.js onto your computer, make sure that it's compatible with the version of Cordova that your project uses. This topic helps you do that.
 
 ## Find out which version of Node.js is installed
 
@@ -32,6 +30,8 @@ If you're not sure which version of Node.js you've installed, do these things.
 
 ## Install a newer version of Node.js
 
+*Only important if you haven't installed Update 8*
+
 To use Node.js version ```4.x```, make sure that your project uses Cordova CLI version ```5.3.3``` or later.
 
 To use Node.js version ```5.x```, make sure that your project uses Cordova CLI version ```5.4.1``` or later.
@@ -43,6 +43,8 @@ No other combination of Node.js and the Cordova CLI has been tested.
 Unless you have a specific reason to use a newer versions of Node.js, use version ```0.12.x```  because it's compatible with all versions of the Cordova CLI.
 
 ## Install the most compatible version of Node.js (0.12.x)
+
+*Only important if you haven't installed Update 8*
 
 If you don't want to use version ```5.3.3``` or later of the Cordova CLI, install version ```0.12.x``` of Node.js. Then, you can use whatever version of the Cordova CLI that you want.
 
