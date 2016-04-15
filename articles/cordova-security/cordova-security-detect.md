@@ -27,7 +27,28 @@ See the following articles for additional information:
 - [Create and deploy mobile app management policies with Microsoft Intune](https://technet.microsoft.com/en-us/library/mt627829.aspx)
 - [Decide how to prepare apps for mobile application management with Microsoft Intune](https://technet.microsoft.com/en-us/library/mt631425.aspx). 
 
-Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. Both can be used on an Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The app wrapping tool is generally available. While the Android and iOS native App SDKs are generally available, the Intune App SDK Cordova plugin that uses them is [currently in beta](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/). If you are interested in the beta plugin, see the **[announcement blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/)** for more details getting access and stay tuned for the upcoming GA announcement. Otherwise see the Intune documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) app wrapping tools** for more information.
+Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. Both can be used on an Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK for Cordova is exposed via a Cordova plugin. Adding the plugin is easy. 
+
+1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
+
+    ```
+    <plugin name="cordova-plugin-ms-intune-mam" spec="~1.0.0" />
+    ```
+    
+    ...or for Cordova < 5.1.1...
+
+    ```
+    <vs:plugin name="cordova-plugin-ms-intune-mam" version="1.0.0" />
+    ```
+
+2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
+    ```
+    cordova plugin add cordova-plugin-ms-intune-mam --save
+    ```
+
+See [Intune's Cordova documentation]() for more information or if you would prefer to use the app wrapping tool, see Intune's documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx)** versions of the tools for more information.
+
 
 ##Threat detection
 Even the most careful implementation can still have vulnerabilities so another aspect of security is detecting problems. In addition to the features Intune provides, Microsoft has a number of additional products that can help out in this space.

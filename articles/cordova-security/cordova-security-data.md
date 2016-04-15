@@ -12,10 +12,15 @@ For the most part you should apply the same [best practices to your code as you 
 Here are some recommendations that can help encrypt sensitive data in Cordova apps. 
 
 ##Encrypt data using Web Crypto via Crosswalk and a shim
-The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. Web Crypto is a W3C standard that lets the browser itself encrypt data. Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) had [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. 
+The best starting point whenever you are tackling a problem related to security is to rely on browser features as they undergo significant testing and have abundant real-world use going for them. While the API is a bit cumbersome, Web Crypto is a W3C standard that lets the browser itself encrypt data that has growing native browser support. 
+
+Historically [crypto.subtle.encrypt and decrypt](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) had [varying levels of support](http://caniuse.com/#search=web%20crypto) in browsers with one in particular being the biggest problem for Cordova: Android. To resolve this problem we'll need to take advantage of something called "Crosswalk."
+
+> Note: If you would **prfer not to use Crosswalk** or find the Crypto API **too cumbersome**, there are some alternatives like Intel's excellent [com-intel-security-cordova-plugin](https://software.intel.com/en-us/app-security-api/api) Cordova plugin that are worth considering.
+
 
 ### Crosswalk
-Thankfully, the [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. 
+[Crosswalk](https://crosswalk-project.org/) is an open source project that allows you to use an updated version of the Chromium webview on Android devices. The [Crosswalk WebView Engine plugin](https://www.npmjs.com/package/cordova-plugin-crosswalk-webview) brings Android 4.0+ up to a recent version of Chromium including Web Crypto support. Adding it is the first step in enabling Web Crypto in your Cordova projects and the plugin is available in the config.xml designer's plugin tab.
 
 See the article on **[improving Android browser consistency and features with the Crosswalk WebView](../develop-apps/cordova-crosswalk.md)** for additional details on setup including some important information on **emulator config**. 
 
@@ -75,7 +80,7 @@ crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
 ```
 
 ##Consider community plugins
-In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits.
+In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits. However, Intel maintains one of these plugins and the plugin author of cordova-sqlite-ext/storage offers support contracts for those that are interested.
 
 <style>
     table, th, td {
@@ -117,7 +122,7 @@ In addition to the above base capabilities there are a number of community plugi
 <tr>
 <td align="left">Encrypted Data in a Database</td>
 <td align="left"><strong><a href="https://www.npmjs.com/package/cordova-sqlite-ext">cordova-sqlite-ext</a></strong></td>
-<td align="left"><p>The W3C WebSQL API is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com-intel-security-cordova-plugin</strong> to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
+<td align="left"><p>The [W3C WebSQL API](http://html5doctor.com/introducing-web-sql-databases/) is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com-intel-security-cordova-plugin</strong> to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added <strong>Windows 10 support</strong>. MIT licensed.</li>
@@ -166,7 +171,27 @@ Other versions:
 ##Consider Intune MAM features to force encryption
 [Microsoft Intune](https://www.microsoft.com/en-us/server-cloud/products/microsoft-intune/) is a [mobile application management](https://en.wikipedia.org/wiki/Mobile_application_management) (MAM) and [mobile device management](https://en.wikipedia.org/wiki/Mobile_device_management) (MDM) platform that supports Android, iOS, and Windows devices. Intune's MAM capabilities can be used without managing devices which means it can be used in combination with existing MDM solutions like Airwatch and Mobile Iron. Currently it is targeted at Active Directory authorized apps and thus is most applicable to enterprise focused scenarios. It provides the ability to enforce policies at the **app level** including encryption of all local data. It's therefore a low friction way to increase your security. 
 
-Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. Both can be used on an Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The app wrapping tool is generally available. While the Android and iOS native App SDKs are generally available, the Intune App SDK Cordova plugin that uses them is [currently in beta](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/). If you are interested in the beta plugin, see the **[announcement blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/11/18/announcing-the-intune-app-sdk/)** for more details getting access and stay tuned for the upcoming GA announcement. Otherwise see the Intune documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx) app wrapping tools** for more information.
+Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. Both can be used on an Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK for Cordova is exposed via a Cordova plugin.  Adding the plugin is easy. 
+
+1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
+
+    ```
+    <plugin name="cordova-plugin-ms-intune-mam" spec="~1.0.0" />
+    ```
+    
+    ...or for Cordova < 5.1.1...
+
+    ```
+    <vs:plugin name="cordova-plugin-ms-intune-mam" version="1.0.0" />
+    ```
+
+2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
+
+    ```
+    cordova plugin add cordova-plugin-ms-intune-mam --save
+    ```
+
+See [Intune's Cordova documentation]() for more information or if you would prefer to use the app wrapping tool, see Intune's documentation on the **[Android](https://technet.microsoft.com/en-us/library/mt147413.aspx)** and **[iOS](https://technet.microsoft.com/en-us/library/dn878028.aspx)** versions of the tools for more information.
 
 ##Consider native Windows APIs for Windows
 One often missed feature that the Windows platform for Cordova has is the ability to call **any** JavaScript enabled [Windows API](https://msdn.microsoft.com/en-us/library/windows/apps/br211377.aspx) from your Cordova app **without a plugin**. Many plugins for the Windows platforms are simple JavaScript adapters to conform to the plugin interface spec. 
