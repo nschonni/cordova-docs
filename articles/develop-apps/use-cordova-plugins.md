@@ -40,13 +40,7 @@ Help users find things near them such as Groupon deals, houses for sale, movies 
 
 Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation) for a cookbook of tasks. You'll get the weather, find your location on a map, see shops nearby, and look at pictures of things around you.
 
-
 ![scan-for-devices](media/use-cordova-plugins/geolocation-sample.png)
-
-**Watch a short video** [![alt text][4]][3]
-
-  [3]: https://az754404.vo.msecnd.net/public/vscode_preview.mp4
-  [4]: media/use-cordova-plugins/videoPlayIcon.png (Watch a short video)
 
 [ [Go back up](#top) ]
 
@@ -62,12 +56,5 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 
 
 ![scan-for-devices](media/use-cordova-plugins/inappbrowser-sample.png)
-
-### Watch a short video
-
-[![alt text][2]][1]
-
-  [1]: https://az754404.vo.msecnd.net/public/vscode_preview.mp4
-  [2]: media/use-cordova-plugins/videoImage.png (Watch a short video)
 
 [ [Go back up](#top) ]
