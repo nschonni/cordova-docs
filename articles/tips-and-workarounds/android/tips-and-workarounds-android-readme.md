@@ -48,6 +48,7 @@ Try these steps if you have trouble deploying to Android emulators or devices. I
 ##Unable to start debugging
 
 If you get a message in Visual Studio that says you can't start debugging your app, try these steps.
+
 1. Close all instances of Visual Studio.
 2. Open a command line and go to this folder C:\Users\username\%appdata%\Local\Microsoft\Phone Tools"
 3. Rename the CoreCon folder to any other name (CoreCon will get recreated later).
