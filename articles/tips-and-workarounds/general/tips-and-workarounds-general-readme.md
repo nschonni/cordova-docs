@@ -34,7 +34,7 @@ Try these steps if you have trouble deploying to emulators or devices.
     If the deployment fails only against some platforms, that will help isolate the issue.
     Here are some suggestions for testing against platforms:
     * Try running against Android and select **Ripple - Nexus (Galaxy)**.
-    * Try running against **Windows-x64** or **Windows-x86** and select **Local Machine**. (First, select the correct OS in config.xml, **Windows** tab.)
+    * Try running against **Windows-x64** or **Windows-x86** and select **Local Machine**. (First, select the current OS in config.xml, **Windows** tab.)
 6. Check your Visual Studio notifications to see if you need any updates to Visual Studio or to Visual Studio Tools for Apache Cordova. Install any updates.
 7. In Visual Studio, run the Dependency Checker by choosing **Tools**, **Options**, **Tools for Apache Cordova**, and selecting **Run Dependency Checker**. Investigate any resulting messages. If the Dependency Checker doesn't show any issues, try [clearing the cache](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac) from the same dialog box.
 8. After you build, check the Output and Error List tabs for information to help isolate the problem.
@@ -42,6 +42,7 @@ Try these steps if you have trouble deploying to emulators or devices.
 ##Unable to start debugging
 
 If you get a message in Visual Studio that says you can't start debugging your app, try these steps.
+
 1. Close all instances of Visual Studio.
 2. Open a command line and go to this folder C:\Users\username\%appdata%\Local\Microsoft\Phone Tools"
 3. Rename the CoreCon folder to any other name (CoreCon will get recreated later).
