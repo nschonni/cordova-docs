@@ -17,7 +17,7 @@ This document covers tips, tricks, and known workarounds for problems with the C
 > **Note**: If your problem is security related, please read [May 26th, 2015 Android Security Issue](../tutorial-cordova-5-readme/)
 
 <a name="deployment"></a>
-##Troubleshooting deployment issues
+##Troubleshooting Android deployment issues
 
 Try these steps if you have trouble deploying to Android emulators or devices. In some cases, you may see an error about a failure to install the APK on the device or a failure to run the Android Debug Bridge (ADB.exe).
 
@@ -28,7 +28,7 @@ Try these steps if you have trouble deploying to Android emulators or devices. I
     After you enable developer mode, go to *Developer options* on the device and enable Android debugging (USB Debugging).
     In USB settings, also make sure you are connecting as a *Media device*.
 2. If you are running on a device and the app is already installed, uninstall the app and try again.
-3. Remove the platforms folder from the project and try again (Alternatively, run `cordova platforms remove android` from the command line).
+3. Delete the platforms/android folder and the plugins folder from the project and try again (Alternatively, run `cordova platforms remove android` from the command line).
 4. Verify that the Android SDK can connect to your device or emulator. To do this, take these steps.
 
     * Start an emulator or connect a device.
@@ -43,17 +43,6 @@ Try these steps if you have trouble deploying to Android emulators or devices. I
 5. Make sure that you have the [required SDK components installed](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#ThirdParty).
 6. Check the Output and Error List tabs for information to help isolate the issue.
 7. If there appears to be a problem with the Android SDK, you may need to re-install it. Before re-installing, delete the /User/username/.android and the /User/username/.gradle folder to make sure you get a fresh copy of the SDK. After installing the SDK, try again.
-
-
-##Unable to start debugging
-
-If you get a message in Visual Studio that says you can't start debugging your app, try these steps.
-
-1. Close all instances of Visual Studio.
-2. Open a command line and go to this folder C:\Users\username\%appdata%\Local\Microsoft\Phone Tools"
-3. Rename the CoreCon folder to any other name (CoreCon will get recreated later).
-4. Restart Visual Studio and try again.
-
 
 <a name="couldnotcreatevm"></a>
 ##Could not create Java Virtual Machine error
