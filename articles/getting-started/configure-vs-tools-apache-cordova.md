@@ -286,7 +286,9 @@ If you see unexpected errors when trying to build the Blank App template after i
 
 3. Close and re-open your project.
 
-4. Choose **Build**, **Clean Solution**, and then rebuild your project.
+4. Choose **Build**, **Clean Solution**.
+
+5. Delete the platforms folder in the project (or the platforms/*platform* folder, like platforms/android) and then rebuild your project.
 
     >**Tip:**
 If you have no errors, you do not need to re-install vs-tac. If you still have the same error, then re-install vs-tac.
@@ -300,7 +302,13 @@ If you have no errors, you do not need to re-install vs-tac. If you still have t
         npm install -g <path-to-vs-tac>
 The default path to vs-tac is C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\ApacheCordovaTools\packages\vs-tac
 
-3. Re-open Visual Studio. 5. Open your project, choose Build, Clean Solution, and then rebuild your project. If this does not resolve the issue, see the [Known Issues](./known-issues/known-issues-general.md).
+3. Re-open Visual Studio.
+
+4. Open your project, choose **Build**, **Clean Solution**.
+
+5. Delete the platforms folder in the project and then rebuild your project.
+
+    If this does not resolve the issue, see the [Known Issues](./known-issues/known-issues-general.md).
 
 ##Configure tools to work with a proxy
 If you are using Visual Studio behind a proxy, such as a corporate firewall, you may need to configure proxy settings for the npm package manager and for git before you can use Visual Studio Tools for Apache Cordova.
