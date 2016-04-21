@@ -22,20 +22,20 @@ Try these steps if you have trouble deploying to emulators or devices.
 
 >**Note**: For more detailed instructions to troubleshoot Android deployment issues, see [Android](tips-and-workarounds-android-readme.md). For iOS, see the troubleshooting tips in the [iOS setup guide](../getting-started/ios-guide.md).
 
-1. If you are running on a device, make sure that your device is enabled for development. Instructions to do this are specific to each platform.
+1. If you are running on a device, make sure that your device is enabled for development. Instructions to do this are different for each platform.
     * For Android, see [Run your app on Android](../develop-apps/run-app-apache.md).
-    * For iOS, see [Run your app on iOS](../getting-started/ios-guide.md). (iOS devices need a provisioning profile.)
+    * For iOS, see [iOS guide](../getting-started/ios-guide.md). (iOS devices need a provisioning profile.)
     * For Windows, see [Run your app on Windows](../develop-apps/run-app-windows.md).
 2. If you are running on a device and the app is already installed, uninstall the app and try again.
-3. Delete the platforms folder from the project and try again (commands like `cordova platforms remove android` do the same thing).
-4. Create an empty project using the Blank App template (you can find it under **JavaScript**, **Apache Cordova Apps** when creating a new project) and see if you get the same error when you build.
+3. Delete the platforms/*platform* folder and the plugins folder from the project and try again (commands like `cordova platforms remove android` also remove the platform).
+4. Check your Visual Studio notifications to see if you need any updates to Visual Studio or to Visual Studio Tools for Apache Cordova. Install any updates.
+5. Create an empty project using the Blank App template (you can find it under **JavaScript**, **Apache Cordova Apps** when creating a new project) and see if you get the same error when you build.
     If the Blank App template runs fine, the issue may be specific to your project.
-5. Try to run your app against a different platform and see if that is successful.
-    If the deployment fails only against some platforms, that will help isolate the issue.
-    Here are some suggestions for testing against platforms:
+6. Try to run your app against a different platform and see if that is successful.
+    If the deployment fails only against some platforms, that will help isolate the issue. For example, if the problem is only on Android, see the [Android page](tips-and-workarounds-android-readme.md#deployment).
+    Here are a few suggested platforms for testing:
     * Try running against Android and select **Ripple - Nexus (Galaxy)**.
     * Try running against **Windows-x64** or **Windows-x86** and select **Local Machine**. (First, select the current OS in config.xml, **Windows** tab.)
-6. Check your Visual Studio notifications to see if you need any updates to Visual Studio or to Visual Studio Tools for Apache Cordova. Install any updates.
 7. In Visual Studio, run the Dependency Checker by choosing **Tools**, **Options**, **Tools for Apache Cordova**, and selecting **Run Dependency Checker**. Investigate any resulting messages. If the Dependency Checker doesn't show any issues, try [clearing the cache](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac) from the same dialog box.
 8. After you build, check the Output and Error List tabs for information to help isolate the problem.
 
