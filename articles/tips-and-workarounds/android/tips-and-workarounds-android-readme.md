@@ -17,9 +17,9 @@ This document covers tips, tricks, and known workarounds for problems with the C
 > **Note**: If your problem is security related, please read [May 26th, 2015 Android Security Issue](../tutorial-cordova-5-readme/)
 
 <a name="deployment"></a>
-##Troubleshooting Android deployment issues
+##Troubleshooting Android build and deployment issues
 
-Try these steps if you have trouble deploying to Android emulators or devices. In some cases, you may see an error about a failure to install the APK on the device or a failure to run the Android Debug Bridge (ADB.exe).
+Try these steps if you have trouble building and deploying to Android emulators or devices. In some cases, you may see an error about a failure to install the APK on the device or a failure to run the Android Debug Bridge (ADB.exe).
 
 >**Note**: For instructions to run for the first time on specific emulators or an Android device, see [Run your app on Android](../develop-apps/run-app-apache.md).
 
