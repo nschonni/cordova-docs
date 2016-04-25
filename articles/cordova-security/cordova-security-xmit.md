@@ -129,32 +129,32 @@ Cordova and most underlying native webviews unfortunately do not generally suppo
 
 In general, it is best to stick with the base XML HTTP Request implementation when making service calls but these plugin can be useful when you are in a particularly high security situation. Note that Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits. That said one is [maintained by Intel](https://software.intel.com/en-us/app-security-api) while the other has a [fork that been verified by Telerik](http://plugins.telerik.com/cordova/plugin/secure-http).
 
-###com.intel.security
-One community plugin with certificate pinning support is **[com.intel.security](https://www.npmjs.com/package/com.intel.security)** which has excellent documentation and a great **[quick start on certificate pinning](https://software.intel.com/en-us/node/604523)**. Adding the plugin is easy:
+###com-intel-security-cordova-plugin
+One community plugin with certificate pinning support is **[com-intel-security-cordova-plugin](https://www.npmjs.com/package/com-intel-security-cordova-plugin)** which has excellent documentation and a great **[quick start on certificate pinning](https://software.intel.com/en-us/node/604523)**. Adding the plugin is easy:
 
 1. When using Visual Studio, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
 
     ```
-    <plugin name="com.intel.security" spec="~1.4.1" />
+    <plugin name="com-intel-security-cordova-plugin" spec="~2.0.0" />
     ```
     
     ...or for Cordova < 5.1.1...
     
     ```
-    <vs:plugin name="com.intel.security" version="1.4.1" />
+    <vs:plugin name="com-intel-security-cordova-plugin" version="2.0.0" />
     ```
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
 
     ```
-    cordova plugin add com.intel.security --save
+    cordova plugin add com-intel-security-cordova-plugin --save
     ```
 
 ###cordova-plugin-http
-Another is the **[cordova-plugin-http](https://github.com/wymsee/cordova-HTTP)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among other features to **iOS and Android**. 
+Another is the **[cordova-plugin-http](https://www.npmjs.com/package/cordova-plugin-http)** community plugin is designed to provide an API compatible XML HTTP Request implementation that adds support for certificate pinning among other features to **iOS and Android**. 
 
 Here's a quick start:
 
-1. Get a DER formatted .cer file for the certificate you want to pin. See [cordova-plugin-http](https://github.com/wymsee/cordova-HTTP) docs for details. 
+1. Get a DER formatted .cer file for the certificate you want to pin. See [cordova-plugin-http](https://www.npmjs.com/package/cordova-plugin-http) docs for details. 
 
 2. Place the .cer file in **www/certificates** folder in your project.
 

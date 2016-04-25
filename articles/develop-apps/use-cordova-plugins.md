@@ -40,7 +40,6 @@ Help users find things near them such as Groupon deals, houses for sale, movies 
 
 Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation) for a cookbook of tasks. You'll get the weather, find your location on a map, see shops nearby, and look at pictures of things around you.
 
-
 ![scan-for-devices](media/use-cordova-plugins/geolocation-sample.png)
 
 [ [Go back up](#top) ]

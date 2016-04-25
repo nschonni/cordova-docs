@@ -39,7 +39,7 @@ Here’s how to run your app on the [Visual Studio Emulator for Android](https:/
 
 ### Troubleshooting? Let's fix it
 
-If you run into issues building for Android, see these [tips and workarounds](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md) and these [known issues](../known-issues/known-issues-android.md).
+If you run into issues building for Android, see these [tips and workarounds](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md). For issues specific to the Visual Studio Emulator for Android, see [the troubleshooting article](https://msdn.microsoft.com/en-us/library/mt228282.aspx).
 
 ## Configure a high-performance emulator <a name="HAXM"></a>
 
