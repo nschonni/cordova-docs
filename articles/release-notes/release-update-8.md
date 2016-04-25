@@ -32,6 +32,14 @@ If you have not updated to 8.1, you can manually make this change for your code 
 
 ## New Features:
 
+### Cordova Plugin Registry is now offline
+
+The Cordova Plugin Registry, or CPR, is now offline. This means projects targetting CLI versions before 5.0 will no longer be able to add core plugins through the config designer.
+
+This transition was [announced](http://cordova.apache.org/announcements/2015/04/21/plugins-release-and-move-to-npm.html) a long time ago - almost a year at this point - but was only just recently taken down.
+
+If you are running into this issue, the workarounds are to either [upgrade to a newer CLI version](http://taco.visualstudio.com/en-us/docs/change-cli-version/) or [add a plugin through the custom tab](http://taco.visualstudio.com/en-us/docs/manage-plugins/#Custom).
+
 ![TACO Options Updated](media/release-update-8/npm-sandboxing-options.png)
 
 ### Node Sandboxing
