@@ -384,7 +384,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 * [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1).
 
-## <a id="use-developer-account"></a>Option 3: Use your team's provisioning profile
+### <a id="#team-profile"></a>Option 3: Use your team's provisioning profile
 
 If your team shares a provisioning profile, all you have to do is register your device with the profile and then download and install that profile onto your device.
 
