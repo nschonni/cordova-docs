@@ -278,6 +278,8 @@ For more information about app provisioning and certificate signing identities, 
 
 If you see unexpected errors when trying to build the Blank App template after installing Visual Studio Tools for Apache Cordova, you can try clearing your cache and reinstalling the Cordova CLI pre-processor, vs-tac, on your PC. Typically, this is only necessary if you try to build a Cordova app and see the error Cannot find module *[modulename]*.
 
+>**Note**: For general help with build and deployment issues, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md). 
+
 ### To try the quick fix
 
 * Delete the platforms/*platform* folder for the platform you are targeting (like the platforms/android folder) and then rebuild your project. If you have no errors this time, you don't need to clear the cache.

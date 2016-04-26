@@ -39,7 +39,7 @@ Here’s how to run your app on the [Visual Studio Emulator for Android](https:/
 
 ### Troubleshooting? Let's fix it
 
-If you run into issues building for Android, see these [tips and workarounds](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md). For issues specific to the Visual Studio Emulator for Android, see [the troubleshooting article](https://msdn.microsoft.com/en-us/library/mt228282.aspx).
+If you have trouble deploying to Android emulators or devices, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
 
 ## Configure a high-performance emulator <a name="HAXM"></a>
 
@@ -150,7 +150,7 @@ Before you run your app on the Google Android emulator in Visual Studio, use the
 
 ### Troubleshooting? Let's fix it
 
-If you run into issues building for Android, see these [tips and workarounds](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md) and these [known issues](../known-issues/known-issues-android.md).
+If you have trouble deploying to Android emulators or devices, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
 
 ## Genymotion emulator
 
@@ -178,7 +178,7 @@ The [Genymotion emulator](http://www.genymotion.com/) is a popular alternative t
 
 ### Troubleshooting? Let's fix it
 
-If you run into issues building for Android, see these [tips and workarounds](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md) and these [known issues](../known-issues/known-issues-android.md).
+If you have trouble deploying to Android emulators or devices, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
 
 ## Android devices
 
