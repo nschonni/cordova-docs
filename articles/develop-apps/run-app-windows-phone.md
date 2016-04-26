@@ -54,6 +54,10 @@ Follow these instructions to run your app on the Windows Phone emulator. For add
 
 Follow these instructions to run your app on a Windows Phone device that is connected to your PC.
 
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Windows Phone, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
+
 ### To run your app on a device
 
 1. Connect your device to your PC hosting Visual Studio.
@@ -71,6 +75,10 @@ Follow these instructions to run your app on a Windows Phone device that is conn
 
 6.  Press F5 to start the app.
 	Visual Studio starts the app on the connected Windows Phone device.
+
+  ### Troubleshooting? Let's fix it
+
+  If you have trouble deploying to Windows Phone, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
 
 ![Download the tools](media/run-app-windows-phone/run-windows-phone-download-link.png) [Get the Visual Studio Tools for Apache Cordova](http://aka.ms/mchm38) or [learn more](https://www.visualstudio.com/cordova-vs.aspx)
 

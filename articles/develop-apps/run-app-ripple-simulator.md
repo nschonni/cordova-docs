@@ -52,6 +52,10 @@ Ripple avoids cross-domain limitations in the browser by using a proxy. Two prox
 
 >**Security Note**: If your app is transferring sensitive data (for example, Active Directory authentication tokens), we strongly recommend using the local proxy instead of the remote proxy.
 
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Ripple, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
+
 ### To change the proxy
 
 1.  In Chrome, while your app is running, choose the arrow button on the right, and then choose the **Settings** section.
