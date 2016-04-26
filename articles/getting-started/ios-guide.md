@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="12/08/2015"
+   ms.date="4/26/2015"
    ms.author="normesta"/>
 
 # Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project
@@ -167,6 +167,8 @@ You'll use those pieces of information in the next section.
 ## Create a provisioning profile
 
 You'll need a *provisioning profile* to run your app on a device. Create one by using an Apple Developer account. You can also create one with your free Apple ID but there are limitations. See [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
+
+If your team already has a provisioning profile, see [Option 3: Use your team's provisioning profile](#team-profile).
 
 ### <a id="use-developer-account"></a>Option 1: Use an Apple Developer account
 
@@ -381,6 +383,68 @@ Need more detail? See any of these articles on the Apple Developer website:
 * [Creating a team provisioning profile](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html#//apple_ref/doc/uid/TP40013839-CH33-SW4)
 
 * [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1).
+
+## <a id="use-developer-account"></a>Option 3: Use your team's provisioning profile
+
+If your team shares a provisioning profile, all you have to do is register your device with the profile and then download and install that profile onto your device.
+
+**Register the UDID of your device with the provisioning profile**
+
+*UDID* stands for Unique Device Identifier. It's a 40-character string that uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
+
+Send that information to the person on your team who manages the provisioning profile. For the purpose of this discussion, we'll call that person the *profile administrator*.
+
+If you have administrator access to the Apple Developer Account, you can register the device yourself. Here's the steps:
+
+
+1. On your Mac, open Safari, and log into the [Apple Developer Member Center](https://idmsa.apple.com/IDMSWebAuth/login?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&baseURL=https://developer.apple.com/&path=%2Faccount%2F&rv=1).
+
+2. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose the **Continue** button.
+
+3. In the **Review and register** page, choose the **Register** button.
+
+**Download the provisioning profile from the Apple Developer Member Center**
+
+After you've confirmed that your profile administrator has added the UDID of your device to the provisioning profile, log into your shared Apple Developer account, and in the Apple Developer Member Center, locate your shared provisioning profile and download it.
+
+**Download the provisioning profile in Xcode**
+
+1. Open Xcode.
+
+2. In the menu bar, choose **Xcode**->**Preferences**.
+
+3. In the **Accounts** page, choose the **View Details** button.
+
+4. In the account details page, choose the **Download** button next to your provisioning profile's signing identity.
+
+     ![Download button](media/ios-guide/download-profile.png)
+
+5. Choose the **Done** button to close the account details page.
+
+**Install the provisioning profile to your device**
+
+1. Connect your device to your Mac. Make sure that  your device is turned on.
+
+2. In the menu bar, choose **Window**->**Devices**.
+
+3. In the **Devices** pane, select your device.
+
+    ![xCode Devices](media/ios-guide/xcode-devices.png)
+
+4. At the bottom of the **Devices** pane, choose the settings icon, and then choose the **Show Provisioning Profiles**.
+
+    ![Provisioning Profiles on Device](media/ios-guide/choose-profiles.png)
+
+5. In the **Provisioning profiles installed on ..** dialog box, choose the **+** icon.
+
+    ![Add Provisioning Profile](media/ios-guide/add-profile.png)
+
+6. Navigate the location where you downloaded your provisioning profile, choose the file, and then choose the **Install** button.
+
+7. In the In the **Provisioning profiles installed on ..** dialog box, choose the **Done** button.
+
+    Proceed to the [Run your app on a device](#run-on-device) section.
+
 
 ## <a id="run-on-device"></a>Run your app on a device
 
