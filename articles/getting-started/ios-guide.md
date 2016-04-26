@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="12/08/2015"
+   ms.date="4/26/2015"
    ms.author="normesta"/>
 
 # Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project
@@ -168,7 +168,7 @@ You'll use those pieces of information in the next section.
 
 You'll need a *provisioning profile* to run your app on a device. Create one by using an Apple Developer account. You can also create one with your free Apple ID but there are limitations. See [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
 
-If you're team already has a provisioning profile, see [Option 3: Use your team's provisioning profile](#team-profile).
+If your team already has a provisioning profile, see [Option 3: Use your team's provisioning profile](#team-profile).
 
 ### <a id="use-developer-account"></a>Option 1: Use an Apple Developer account
 
@@ -386,7 +386,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 ## <a id="use-developer-account"></a>Option 3: Use your team's provisioning profile
 
-If you're team shares a provisioning profile, all you have to do is register your device with the profile and then download and install that profile onto your device.
+If your team shares a provisioning profile, all you have to do is register your device with the profile and then download and install that profile onto your device.
 
 **Register the UDID of your device with the provisioning profile**
 
