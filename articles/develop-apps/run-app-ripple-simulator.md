@@ -54,7 +54,7 @@ Ripple avoids cross-domain limitations in the browser by using a proxy. Two prox
 
 ### Troubleshooting? Let's fix it
 
-If you have trouble deploying to Ripple, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
+If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
 ### To change the proxy
 
