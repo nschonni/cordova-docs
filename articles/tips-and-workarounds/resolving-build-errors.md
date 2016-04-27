@@ -131,15 +131,3 @@ Check the Output, Error List, and JavaScript Console windows to see if you ran i
     * Closing DOM Explorer before navigating pages, or
 
     * Upgrading to Windows 10 on your dev machine (the platform issue is fixed in Windows 10).
-
-<a name="debugging"></a>
-##Unable to start debugging
-
-If you get a message in Visual Studio that says you can't start debugging your app, try these steps.
-
-1. Close all instances of Visual Studio.
-2. Open a command line and go to this folder
-
-    C:\Users\username\%appdata%\Local\Microsoft\Phone Tools
-3. Rename the CoreCon folder to any other name (CoreCon will get recreated when you rebuild).
-4. Restart Visual Studio and try again.

@@ -16,10 +16,38 @@
 This document covers tips, tricks, and known workarounds for problems with the Cordova Android platform.
 > **Note**: If your problem is security related, please read [May 26th, 2015 Android Security Issue](../tutorial-cordova-5-readme/)
 
-<a name="deployment"></a>
-##Troubleshooting Android build and deployment issues
+<a name="android"></a>
+##Resolve Android build and deployment errors
 
-If you have trouble deploying to Android emulators or devices, see [Resolving build errors](../resolving-build-errors.md#android).
+Try these steps if you have trouble building and deploying to Android emulators or devices. In some cases, you may see an error about a failure to install the APK on the device or a failure to run the Android Debug Bridge (ADB.exe).
+
+>**Note**: For instructions to run for the first time on specific emulators or an Android device, see [Run your app on Android](../develop-apps/run-app-apache.md).
+
+1. Before taking any other steps, try running your app against other platforms or emulators to make sure the issue is Android-specific.
+
+    For example, we suggest you test on Windows:
+    * Open the configuration designer (config.xml), the **Windows** tab, select your OS version, and then try running against **Windows-x64** or **Windows-x86** and select **Local Machine**.
+
+    If you see the same error on other platforms, the issue is likely not Android-specific, see [Resolve build and deployment errors](../general/tips-and-workarounds-general-readme.md) for more general help.
+
+2. If you are running on an Android device, make sure that **Developer Mode** is enabled on the device. Try the instructions [here](http://www.greenbot.com/article/2457986/how-to-enable-developer-options-on-your-android-phone-or-tablet.html) to enable developer mode.
+
+    After you enable developer mode, go to *Developer options* on the device and enable Android debugging (USB Debugging).
+    In USB settings, also make sure you are connecting as a *Media device*.
+2. If you are running on a device and the app is already installed, uninstall the app and try again.
+4. Verify that the Android SDK can connect to your device or emulator. To do this, take these steps.
+
+    * Start an emulator or connect a device.
+    * Open a command line and go to the folder where abd.exe is installed. For example, this might be C:\Program Files (x86)\Android\android-sdk\platform-tools\adb.exe
+    * Type the command `adb devices` and you should see a connected device.
+    ![See the connected devices](media/tips-and-workarounds-android-readme/adb-devices.png)
+
+    If you don't see the device, restart your device or emulator and use a different USB port. (Sometimes, front USB ports are low power ports. Avoid using a USB extension cable.) Recheck using `adb devices`.
+
+    For additional ADB commands, see [this article](http://www.androidcentral.com/android-201-10-basic-terminal-commands-you-should-know).
+
+5. Make sure that you have the [required SDK components installed](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#ThirdParty).
+6. If there appears to be a problem with the Android SDK, you may need to re-install it. Before re-installing, delete the /User/username/.android and the /User/username/.gradle folder to make sure you get a fresh copy of the SDK. After [installing the SDK](http://go.microsoft.com/fwlink/?LinkID=396873), try again.
 
 <a name="couldnotcreatevm"></a>
 ##Could not create Java Virtual Machine error
