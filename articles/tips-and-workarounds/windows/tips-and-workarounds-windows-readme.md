@@ -27,7 +27,14 @@ Try these steps if you have trouble building and deploying to Windows or Windows
 
     If you see the same error on other platforms, the issue is likely not Windows-specific, see [Resolve build and deployment errors](../general/tips-and-workarounds-general-readme.md) for more general help.
 
-2. Check the Output, Error List, and JavaScript Console windows to see if you ran into one of the most common error messages on Windows (see the following questions and issues).
+2. Open the configuration designer (config.xml), Windows tab, and make sure you select the OS that your are currently trying to target (Windows 8.1 or Windows 10).
+
+3. Running on a device? Make sure that your device is enabled for development. Instructions to do this are different for each platform.
+        * For Windows Phone, see [this article](../../develop-apps/run-app-windows-phone.md). For Windows 10, Visual Studio will prompt you to enable the device.
+
+4. If you are running on a device and the app is already installed, uninstall the app and try again.
+
+5. Check the Output, Error List, and JavaScript Console windows to see if you ran into one of the most common error messages on Windows (see the following questions and issues).
 
 * appxrecipe file missing?
 

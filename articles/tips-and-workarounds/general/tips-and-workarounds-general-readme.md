@@ -25,6 +25,7 @@ Try these steps.
     When building for the first time, Visual Studio downloads and installs Cordova dependencies. The first build can take considerably longer than normal to complete.
 
     Similarly, when you first start an emulator, the emulator may take considerable time to load (leave the emulator open between app restarts to avoid this issue).
+
 2. Check your Visual Studio notifications (upper right) to see if you need any updates to Visual Studio or to Visual Studio Tools for Apache Cordova. Install any updates and retry.
 
     ![Visual Studio notifications](media/tips-and-workarounds-general-readme/vs-notifications.png)
@@ -44,11 +45,11 @@ Try these steps if you have trouble deploying to emulators or devices.
 1. Running on a device? Make sure that your device is enabled for development. Instructions to do this are different for each platform.
     * For Android, see [Android](../android/tips-and-workarounds-android-readme.md). For iOS, see [iOS guide](../../getting-started/ios-guide.md). (iOS devices need a provisioning profile.) For Windows Phone, see [this article](../../develop-apps/run-app-windows-phone.md). For Windows 10, Visual Studio will prompt you to enable the device.
 2. If you are running on a device and the app is already installed, uninstall the app and try again.
-4. Delete the project's platforms/*platform* folder (such as platforms/android) and the plugins folder from the project and try again (commands like `cordova platforms remove android` also remove the platform).
+4. Delete the project's platforms/*platform* folder (such as platforms/android) and the plugins folder from the project and try again (navigating to the root of your project folder in a command window and typing the command  `cordova platforms remove android` also removes the platform).
 
     ![The platforms and plugins folders](media/tips-and-workarounds-general-readme/platforms-folder.png)
 
-    If the issue only occurs with a particular plugin, you may have an incompatibility with the plugin or the plugin version. See other sections in this article.
+    If the issue only occurs with a particular plugin, you may have an incompatibility with the plugin or between your Cordova version and the plugin version. See other sections in this article and see [Change the CLI version](../develop-apps/change-cli-version.md).
 
 3. If you haven't done it already, [check your update notifications and run the dependency checker](#firsttime).
 4. If you are not using a new blank project already, create an empty project using the Blank App template (you can find it under **JavaScript**, **Apache Cordova Apps** when creating a new project) and see if you get the same error when you build.
