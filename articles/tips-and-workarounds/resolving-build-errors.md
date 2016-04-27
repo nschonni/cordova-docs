@@ -45,7 +45,9 @@ Try these steps if you have trouble deploying to emulators or devices.
 1. Running on a device? Make sure that your device is enabled for development. Instructions to do this are different for each platform.
     * For Android, see [Android](#android). For iOS, see [iOS guide](../getting-started/ios-guide.md). (iOS devices need a provisioning profile.) For Windows Phone, see [this article](../develop-apps/run-app-windows-phone.md). For Windows 10, Visual Studio will prompt you to enable the device.
 2. If you are running on a device and the app is already installed, uninstall the app and try again.
-4. Delete the project's platforms/*platform* folder and the plugins folder from the project and try again (commands like `cordova platforms remove android` also remove the platform).
+4. Delete the project's platforms/*platform* folder (such as platforms/android) and the plugins folder from the project and try again (commands like `cordova platforms remove android` also remove the platform).
+
+    ![The platforms and plugins folders](media/resolving-build-errors/platforms-folder.png)
 
     If the issue only occurs with a particular plugin, you may have an incompatibility with the plugin or the plugin version. See these [tips](general/tips-and-workarounds-general-readme.md).
 
