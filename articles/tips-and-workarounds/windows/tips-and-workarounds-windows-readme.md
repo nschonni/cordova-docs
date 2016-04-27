@@ -36,6 +36,8 @@ Try these steps if you have trouble building and deploying to Windows or Windows
 
 5. Check the Output, Error List, and JavaScript Console windows to see if you ran into one of the most common error messages on Windows (see the following questions and issues).
 
+Here are some of the more common issues that you might see on Windows.
+
 * appxrecipe file missing?
 
     If you see this error when targeting Windows 10, make sure you set **Windows 10.0** as the target in the Windows tab of the configuration designer (config.xml). Then rebuild the project.
