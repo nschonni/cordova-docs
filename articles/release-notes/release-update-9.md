@@ -29,7 +29,7 @@ Or wait until you  receive a notification in Visual Studio.
 We're happy to finally have this functionality in the IDE. We added a new option in the custom tab of the config designer 
 that allows you to add a plugin by plugin id.
 
-![Add Plugin By ID](media/release-update-9//add-plugin-by-id.png)
+![Add Plugin By ID](media/release-update-9/add-plugin-by-id.png)
 
 ### New start page
 We've updated our start page to make it more actionable and useful for devs getting started with our tools.
