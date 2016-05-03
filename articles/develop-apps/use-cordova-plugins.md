@@ -18,9 +18,9 @@
 
 ## Bluetooth LE : Discover and interact with devices
 
-**BluetoothLE** &nbsp; &nbsp; &nbsp; &nbsp;  ( [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) ) &nbsp; ( [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )
-
-<button onclick="window.location='http://www.example.com';">Visit Page Now</button>
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-bluetoothle';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices';">Quick Guide</button>
+<br />
 
 Detect, connect, and interact with freeway monitors, cars, laptops, phones, TV set top-boxes and more. Notify users as they approach a restaurant that serves their favorite dish or a great promotion at a shop nearby.
 
@@ -34,7 +34,9 @@ Check out the [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoo
 
 ## Geolocation: Connect users with things around them
 
-**Geolocation** &nbsp; &nbsp; &nbsp; &nbsp; ( [Readme](https://www.npmjs.com/package/cordova-plugin-geolocation) ) &nbsp; ( [Quick Guide](https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation) )
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation';">Quick Guide</button>
+<br />
 
 Help users find things near them such as Groupon deals, houses for sale, movies playing, sports and entertainment events and more.
 
@@ -44,9 +46,13 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocati
 
 [ [Go back up](#top) ]
 
+<hr />
+
 ## InAppBrowser: Show web pages and videos within your app
 
-**InAppBrowser** &nbsp; &nbsp; &nbsp; &nbsp; ( [Readme](https://www.npmjs.com/package/cordova-plugin-inappbrowser) ) &nbsp; ( [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrowser/blob/master/README.md#sample-show-help-pages-with-an-inappbrowser) )
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-inappbrowser';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://github.com/normesta/cordova-plugin-inappbrowser/blob/master/README.md#sample-show-help-pages-with-an-inappbrowser';">Quick Guide</button>
+<br />
 
 Show helpful articles, videos, and web resources inside of your app. Users view documents without leaving your app.    
 
@@ -56,3 +62,5 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 ![scan-for-devices](media/use-cordova-plugins/inappbrowser-sample.png)
 
 [ [Go back up](#top) ]
+
+<hr />
