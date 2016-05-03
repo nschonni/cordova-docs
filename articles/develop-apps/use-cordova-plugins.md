@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Need title | Cordova"
-   description="Need title"
+   pageTitle="Visual Studio Core Plugins | Cordova"
+   description="Visual Studio Plugins"
    services="na"
    documentationCenter=""
    authors="normesta"
@@ -11,16 +11,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="04/31/2016"
+   ms.date="05/03/2016"
    ms.author="normesta"/>
 
-# <a id="top"></a>Plugin Cookbook
+# <a id="top"></a>Visual Studio Core Plugins
 
 ## Bluetooth LE : Discover and interact with devices
 
-**BluetoothLE** (cordova-plugin-bluetoothle)
-
-   ( [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) ) &nbsp; ( [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )  &nbsp; ( [Sample](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )
+**BluetoothLE** &nbsp; &nbsp; &nbsp; &nbsp;  ( [Readme](https://www.npmjs.com/package/cordova-plugin-bluetoothle) ) &nbsp; ( [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoothle#sample-discover-and-interact-with-bluetooth-le-devices) )
 
 Detect, connect, and interact with freeway monitors, cars, laptops, phones, TV set top-boxes and more. Notify users as they approach a restaurant that serves their favorite dish or a great promotion at a shop nearby.
 
@@ -32,9 +30,7 @@ Check out the [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoo
 
 ## Geolocation: Connect users with things around them
 
-**Geolocation** (cordova-plugin-geolocation)
-
-( [Readme](https://www.npmjs.com/package/cordova-plugin-geolocation) )  ( [Quick Guide](https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation) ) ( [ Sample](https://github.com/normesta/cordova-samples/tree/master/cordova-plugin-geolocation) )
+**Geolocation** &nbsp; &nbsp; &nbsp; &nbsp; ( [Readme](https://www.npmjs.com/package/cordova-plugin-geolocation) ) &nbsp; ( [Quick Guide](https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation) )
 
 Help users find things near them such as Groupon deals, houses for sale, movies playing, sports and entertainment events and more.
 
@@ -46,9 +42,7 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-geolocati
 
 ## InAppBrowser: Show web pages and videos within your app
 
-**InAppBrowser** (cordova-plugin-inappbrowser)
-
-( [Readme](https://www.npmjs.com/package/cordova-plugin-inappbrowser) )  ( [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrowser/blob/master/README.md#sample-show-help-pages-with-an-inappbrowser) ) ( [ Sample](https://github.com/normesta/cordova-samples/tree/master/cordova-plugin-inappbrowser) )
+**InAppBrowser** &nbsp; &nbsp; &nbsp; &nbsp; ( [Readme](https://www.npmjs.com/package/cordova-plugin-inappbrowser) ) &nbsp; ( [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrowser/blob/master/README.md#sample-show-help-pages-with-an-inappbrowser) )
 
 Show helpful articles, videos, and web resources inside of your app. Users view documents without leaving your app.    
 
