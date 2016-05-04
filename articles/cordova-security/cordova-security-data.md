@@ -130,7 +130,7 @@ In addition to the above base capabilities there are a number of community plugi
 Other versions:
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced, enterprise focused version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. Install via its <a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free.git">Git URI</a>.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  An <strong>alpha</strong> version of the cordova-sqlite-storage plugin that uses SQLCipher to **encrypt all data**. Install via its <a href="https://github.com/litehelpers/cordova-sqlcipher-adapter.git">Git URI</a>.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  An <strong>alpha</strong> version of the cordova-sqlite-storage plugin that uses SQLCipher to <strong>encrypt all data</strong>. Install via its <a href="https://github.com/litehelpers/cordova-sqlcipher-adapter.git">Git URI</a>.</li>
 <ul>
 </td>
 <td align="left">Android, iOS, Windows/Windows Phone 8.1, Windows 10</td>
