@@ -26,8 +26,7 @@ Or wait until you  receive a notification in Visual Studio.
 
 ### Add plugin by ID  
 
-This release, we added a new option in the custom tab of the config designer 
-that allows you to add a plugin by plugin id. Plugin ids are the package names of each plugin as listed on npm 
+This release, we added a new option in the custom tab of the config designer that allows you to add a plugin by plugin id. Plugin ids are the npm package name of each plugin (e.g. [cordova-plugin-device](https://www.npmjs.com/package/cordova-plugin-device)).
 
 ![Add Plugin By ID](media/release-update-9/add-plugin-by-id.png)
 
