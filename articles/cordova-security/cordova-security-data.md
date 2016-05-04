@@ -80,7 +80,7 @@ crypto.subtle.generateKey(cryptoSubtleAlgo, true, ["encrypt", "decrypt"])
 ```
 
 ##Consider community plugins
-In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits. However, Intel maintains one of these plugins and the plugin author of cordova-sqlite-ext/storage offers support contracts for those that are interested.
+In addition to the above base capabilities there are a number of community plugins that can be used to encrypt data locally. Microsoft does not directly support these plugins, so security focused organizations should be sure to run a static and or dynamic code analysis tool on the resulting project code (including these plugins) during any planned security audits. However, Intel maintains one of these plugins and the plugin author of cordova-sqlite-storage offers support contracts for those that are interested.
 
 <style>
     table, th, td {
@@ -109,7 +109,7 @@ In addition to the above base capabilities there are a number of community plugi
 </ul>
 <p>The plugin comes with <a href="https://software.intel.com/en-us/app-security-api/api">excellent documentation</a> and <a href="https://software.intel.com/en-us/node/604512">code snippets</a>.</p>
 </td>
-<td align="left">Android, iOS, Windows 8.1, 10</td>
+<td align="left">Android, iOS, Windows/Windows Phone 8.1, 10</td>
 </tr>
 <tr>
 <td align="left">Token / Secret Storage</td>
@@ -121,19 +121,19 @@ In addition to the above base capabilities there are a number of community plugi
 </tr>
 <tr>
 <td align="left">Encrypted Data in a Database</td>
-<td align="left"><strong><a href="https://www.npmjs.com/package/cordova-sqlite-ext">cordova-sqlite-ext</a></strong></td>
-<td align="left"><p>The [W3C WebSQL API](http://html5doctor.com/introducing-web-sql-databases/) is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com-intel-security-cordova-plugin</strong> to store encrypted values in a database. However, WebSQL is limited to 50mb on iOS. There are a set of plugins that use the same API to store data in a SQLite database without storage limits among other features. The edition of this plugin you select will depend on your needs: </p>
+<td align="left"><strong><a href="https://www.npmjs.com/package/cordova-sqlite-storage">cordova-sqlite-storage</a></strong></td>
+<td align="left"><p>The <strong><a href="http://html5doctor.com/introducing-web-sql-databases/">W3C WebSQL API</a></strong> is available on iOS and Android for storing data and can be combined with <strong>Web Crypto</strong> or <strong>com-intel-security-cordova-plugin</strong> to store encrypted values in a database. You can find a number of <a href="http://html5doctor.com/introducing-web-sql-databases/">tutorials</a> on WebSQL on the web.</p>
+<p>However, WebSQL is limited to 50mb on iOS and the API is technically deprecated so it may not be available in future versions of device browsers. However, there are a set of plugins that use the same API to store data in your own <a href="http://sqlite.org/">SQLite</a> database without storage limits and add other features. The edition of this plugin you select will depend on your needs: </p>
 <ul>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android and iOS support. MIT licensed.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlite-ext">cordova-sqlite-ext</a> - SQLite plugin with added <strong>Windows 10 support</strong>. MIT licensed.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlite-storage">cordova-sqlite-storage</a> - Base version of the SQLite storage plugin with Android, iOS, and as of 1.4.0 both Windows/Windows Phone 8.1 and Windows 10 support. MIT licensed.</li>
 </ul>
 Other versions:
 <ul>
 <li><a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free">cordova-sqlite-evfree</a> - An enhanced, enterprise focused version of the SQLite plugin targeted at enterprises with additional features. GPL v3 or commercial licensed. Install via its <a href="https://github.com/litehelpers/cordova-sqlite-enterprise-free.git">Git URI</a>.</li>
-<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  An <strong>alpha</strong> version of the cordova-sqlite-storage plugin that uses SQLCipher to **encrypt all data**. Install via its <a href="https://github.com/litehelpers/cordova-sqlcipher-adapter.git">Git URI</a>.</li>
+<li><a href="https://github.com/litehelpers/cordova-sqlcipher-adapter">cordova-sqlcipher-adapter</a> -  An <strong>alpha</strong> version of the cordova-sqlite-storage plugin that uses SQLCipher to <strong>encrypt all data</strong>. Install via its <a href="https://github.com/litehelpers/cordova-sqlcipher-adapter.git">Git URI</a>.</li>
 <ul>
 </td>
-<td align="left">Android, iOS, Windows 10</td>
+<td align="left">Android, iOS, Windows/Windows Phone 8.1, Windows 10</td>
 </tr>
 <!--
 <tr>
@@ -147,17 +147,19 @@ Other versions:
 
 ### Adding the plugins
 
-1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URI needs to be used. The plugin will be added on next build.
+1. In Visual Studio, when using Tools for Apache Cordova **Update 9 and up**, double click config.xml to go into config.xml designer, click on the **Plugins** tab, then **Custom**, select **ID** as the method to retrieve the plugin, and enter the plugin ID above (ex: cordova-plugin-secure-storage). 
+
+    For earlier versions of Tools for Apache Cordova, right click on config.xml, select View Code, and then add one of the following depending on whether or not a Git URI needs to be used. The plugin will be added on next build.
 
     ```
-    <plugin name="cordova-sqlite-ext" spec="~0.8.4" />
+    <plugin name="cordova-sqlite-storage" spec="~1.4.0" />
     <plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
     ```
 
     ...or for Cordova < 5.1.1...
 
     ```
-    <vs:plugin name="cordova-sqlite-ext" version="0.8.4" />
+    <vs:plugin name="cordova-sqlite-storage" version="1.4.0" />
     <vs:plugin name="io.litehelpers.cordova.sqlcipher" src="https://github.com/litehelpers/Cordova-sqlcipher-adapter.git" version="0.1.4-rc" />
     ```
 
@@ -173,7 +175,9 @@ Other versions:
 
 Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. Both can be used on an Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK for Cordova is exposed via a Cordova plugin.  Adding the plugin is easy. 
 
-1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
+1. In Visual Studio, when using Tools for Apache Cordova **Update 9 and up**, double click config.xml to go into config.xml designer, click on the **Plugins** tab, then **Custom**, select **ID** as the method to retrieve the plugin, and enter **cordova-plugin-ms-intune-mam**. 
+
+    For earlier versions of Tools for Apache Cordova, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
 
     ```
     <plugin name="cordova-plugin-ms-intune-mam" spec="~1.0.0" />
