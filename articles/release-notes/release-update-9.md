@@ -26,8 +26,8 @@ Or wait until you  receive a notification in Visual Studio.
 
 ### Add plugin by ID  
 
-We're happy to finally have this functionality in the IDE. We added a new option in the custom tab of the config designer 
-that allows you to add a plugin by plugin id.
+This release, we added a new option in the custom tab of the config designer 
+that allows you to add a plugin by plugin id. Plugin ids are the package names of each plugin as listed on npm 
 
 ![Add Plugin By ID](media/release-update-9/add-plugin-by-id.png)
 
