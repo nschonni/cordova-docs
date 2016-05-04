@@ -18,17 +18,7 @@ A core first step in accessing all of these great services, however, is authoriz
 
 You can add it to your app as follows:
 
-1. Visual Studio Tools for Apache Cordova Update 8 and up, simply click "Add" on the **Azure Mobile Apps** plugin in the **config.xml designer.**  For earlier versions, add the following to config.xml by right-clicking config.xml and selecting View Code and executing a build:
-
-    ```
-    <plugin name="cordova-plugin-ms-azure-mobile-apps" spec="~2.0.0-beta4" />
-    ```   
-    
-    ...or for Cordova < 5.1.1...    
-    
-    ```
-    <vs:plugin name="cordova-plugin-ms-azure-mobile-apps" version="2.0.0-beta4" />
-    ```
+1. Visual Studio Tools for Apache Cordova **Update 8 and up,** simply click "Add" on the **Azure Mobile Apps** plugin in the **config.xml designer.**  
 
 2. When using the command line or Visual Studio Code, you can add the plugin using the Cordova CLI as follows:
 

@@ -137,7 +137,9 @@ See the **[Cordova Windows 10 platform documentation](http://cordova.apache.org/
 
 Intune provides two solutions for enabling its MAM features for Android and iOS devices: an app wrapping tool and an app SDK. Both can be used on an Android or iOS app to light up certain capabilities like limiting cut-copy-paste while the app is running, forcing a PIN, or forcing encryption. The Intune App SDK for Cordova is exposed via a Cordova plugin.  Adding the plugin is easy. 
 
-1. In Visual Studio, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
+1. In Visual Studio, when using Tools for Apache Cordova **Update 9 and up**, double click config.xml to go into config.xml designer, click on the **Plugins** tab, then **Custom**, select **ID** as the method to retrieve the plugin, and enter **cordova-plugin-ms-intune-mam**. 
+
+    For earlier versions of Tools for Apache Cordova, right click on config.xml, select View Code, and then add one of the following. The plugin will be added on next build.
 
     ```
     <plugin name="cordova-plugin-ms-intune-mam" spec="~1.0.0" />
