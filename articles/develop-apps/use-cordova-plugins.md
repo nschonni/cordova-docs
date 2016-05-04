@@ -64,3 +64,51 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 [ [Go back up](#top) ]
 
 <hr />
+
+## Camera: Use the device's Camera or FilePicker in your app
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-camera';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://github.com/apache/cordova-plugin-camera#sample';">Quick Guide</button>
+<br />
+
+Take pictures, select files on the device, get thumbnails, display the pictures or images in your app.
+
+Check out the [Quick Guide](https://github.com/apache/cordova-plugin-camera#sample) to learn how use the Camera app and FilePicker.
+
+![scan-for-devices](media/use-cordova-plugins/camera-sample.png)
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Files: Create and manipulate files and directories on your device
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-file';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://github.com/apache/cordova-plugin-file#sample';">Quick Guide</button>
+<br />
+
+Create, read, write to, and display files on your device. Create directories. Work with different file types such as text files and binary files.
+
+Check out the [Quick Guide](https://github.com/apache/cordova-plugin-file#sample) to learn how to work with files on your device.
+
+![scan-for-devices](media/use-cordova-plugins/file-sample.png)
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## File Transfer: Upload and download files to and from your device
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-file-transfer';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://github.com/apache/cordova-plugin-file-transfer#sample';">Quick Guide</button>
+<br />
+
+Upload and download different file types such as text files and binary files, read the files, and display image files.
+
+Check out the [Quick Guide](https://github.com/apache/cordova-plugin-file-transfer#sample) to learn how to upload and download files.
+
+![scan-for-devices](media/use-cordova-plugins/file-transfer-sample.png)
+
+[ [Go back up](#top) ]
+
+<hr />
