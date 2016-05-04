@@ -13,6 +13,9 @@
      ms.author="kirupac"/>
 
 #**Known Issues - Plugins Installation**
+
+> **Important**: We no longer maintain this article but if you’re stuck, ask us a question on [Stack using the tag ‘visual-studio-cordova'](http://stackoverflow.com/questions/tagged/visual-studio-cordova). Also, subscribe to our [developer blog](http://microsoft.github.io/vstacoblog/). We regularly post issues and workarounds.
+
 This article covers known issues related to Visual Studio Tools for Apache Cordova and installing plugins.
 
 

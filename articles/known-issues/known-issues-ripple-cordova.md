@@ -13,6 +13,9 @@
      ms.author="kirupac"/>
 
 #**Known Issues - Apache Cordova and Apache Ripple**
+
+> **Important**: We no longer maintain this article but if you’re stuck, ask us a question on [Stack using the tag ‘visual-studio-cordova'](http://stackoverflow.com/questions/tagged/visual-studio-cordova). Also, subscribe to our [developer blog](http://microsoft.github.io/vstacoblog/). We regularly post issues and workarounds.
+
 This article covers general [known issues](../cordova-docs-readme.md#knownissues) related to Apache Cordova or Ripple. See [Cordova 5.x.x known issues](known-issues-cordova5.md) for details on Cordova and Ripple related issues that are specific to Cordova 5.0.0 and up.
 
 ##**Build not executing when using Cordova with Node.js 5.0.0+ and Cordova 5.3.3 and below**
