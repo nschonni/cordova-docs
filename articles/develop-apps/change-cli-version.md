@@ -16,8 +16,6 @@
 
 # Change the CLI version of your Visual Studio Tools for Apache Cordova project
 
->NOTE: This article applies to Visual Studio 2015 Tools for Apache Cordova **Update 5**
-
 You can update your project to use new versions of the Cordova Command-Line Interface (CLI).  New versions often include bug fixes and other improvements. However, they can also cause problems for plugins and the version of Node.js that you have installed on your computer or Mac.
 
 This topic helps you decide whether to update the CLI version and how to do it safely.
@@ -89,9 +87,11 @@ Have a quick look at this table. It presents each action, its impact, and what y
 
 ## <a id="node-compat"></a>Step 3: Consider how this change will impact Node.js
 
-Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks. You installed it when you first setup the tools for Apache Cordova.
+Cordova uses [Node.js](http://nodejs.org/) to perform automation tasks. You installed it when you first setup the tools for Apache Cordova. [Visual Studio Taco Update 8](https://taco.visualstudio.com/en-us/docs/release-update-8/) ensures that Cordova uses a compatible version of node.js.
 
-Before you change your project's CLI version. Plan to use a compatible version of Node.js. This table shows what versions you'll need. You'll still encounter the occasional bug, but by using these combinations, you'll receive the fewest numbers of them.
+If you haven't installed the update, and you plan to change your project's CLI version, make sure that you use a compatible version of Node.js. This table shows what versions you'll need. You'll still encounter the occasional bug, but by using these combinations, you'll receive the fewest numbers of them.
+
+*This is only important if you have not installed Update 8.*
 
 <table>
     <thead>

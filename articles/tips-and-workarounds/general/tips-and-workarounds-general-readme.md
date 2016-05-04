@@ -15,6 +15,39 @@
 #General Cordova tips and workarounds
 This document covers tips, tricks, and known workarounds for general issues with Cordova or Tools for Apache Cordova.
 
+<a name="deployment"></a>
+##Troubleshooting build and deployment issues
+
+Try these steps if you have trouble deploying to emulators or devices.
+
+>**Note**: For more detailed instructions to troubleshoot Android deployment issues, see [Android](tips-and-workarounds-android-readme.md). For iOS, see the troubleshooting tips in the [iOS setup guide](../getting-started/ios-guide.md).
+
+1. If you are running on a device, make sure that your device is enabled for development. Instructions to do this are different for each platform.
+    * For Android, see [Run your app on Android](../develop-apps/run-app-apache.md).
+    * For iOS, see [iOS guide](../getting-started/ios-guide.md). (iOS devices need a provisioning profile.)
+    * For Windows, see [Run your app on Windows](../develop-apps/run-app-windows.md).
+2. If you are running on a device and the app is already installed, uninstall the app and try again.
+3. Delete the platforms/*platform* folder and the plugins folder from the project and try again (commands like `cordova platforms remove android` also remove the platform).
+4. Check your Visual Studio notifications to see if you need any updates to Visual Studio or to Visual Studio Tools for Apache Cordova. Install any updates.
+5. Create an empty project using the Blank App template (you can find it under **JavaScript**, **Apache Cordova Apps** when creating a new project) and see if you get the same error when you build.
+    If the Blank App template runs fine, the issue may be specific to your project.
+6. Try to run your app against a different platform and see if that is successful.
+    If the deployment fails only against some platforms, that will help isolate the issue. For example, if the problem is only on Android, see the [Android page](tips-and-workarounds-android-readme.md#deployment).
+    Here are a few suggested platforms for testing:
+    * Try running against Android and select **Ripple - Nexus (Galaxy)**.
+    * Try running against **Windows-x64** or **Windows-x86** and select **Local Machine**. (First, select the current OS in config.xml, **Windows** tab.)
+7. In Visual Studio, run the Dependency Checker by choosing **Tools**, **Options**, **Tools for Apache Cordova**, and selecting **Run Dependency Checker**. Investigate any resulting messages. If the Dependency Checker doesn't show any issues, try [clearing the cache](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac) from the same dialog box.
+8. After you build, check the Output and Error List tabs for information to help isolate the problem.
+
+##Unable to start debugging
+
+If you get a message in Visual Studio that says you can't start debugging your app, try these steps.
+
+1. Close all instances of Visual Studio.
+2. Open a command line and go to this folder C:\Users\username\%appdata%\Local\Microsoft\Phone Tools"
+3. Rename the CoreCon folder to any other name (CoreCon will get recreated later).
+4. Restart Visual Studio and try again.
+
 <a name="missingexclude"></a>
 ##Building a Cordova project from source control results in a successful build, but with Cordova plugin APIs not returning results when the app is run
 Due to a bug in the VS templates in VS 2015 RC, four json files that can cause issues if they are added to source control, are missing from the default source code exclusion list:
@@ -202,8 +235,8 @@ Adding a Cordova plugin by using the Cordova CLI 5.0.0+ when your project is usi
 
 2. From Visual Studio:
 
-	1. Add **all of the plugins** that the "npm install" command shown above placed in the "node_modules" folder. 
-	
+	1. Add **all of the plugins** that the "npm install" command shown above placed in the "node_modules" folder.
+
         In the example above, both cordova-plugin-camera and cordova-plugin-file should be installed.
 
 		1. Go to the **Custom** tab in the config.xml designer
