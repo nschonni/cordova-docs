@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="12/08/2015"
+   ms.date="4/26/2015"
    ms.author="normesta"/>
 
 # Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project
@@ -22,7 +22,7 @@ In this guide, we'll help you get everything setup right so that you can build, 
 
 Let's help you set things up.
 
-## First, install a few things onto your Mac
+## <a id="install"></a> First, install a few things onto your Mac
 
 1. Install version ```0.12.9``` of [Node.js](http://nodejs.org/).
 
@@ -45,6 +45,7 @@ Let's help you set things up.
     ```
      xcode-select -–install
     ```
+
     This installs the Xcode command-line tools.
 
 4. In the Terminal app, type this command.
@@ -103,7 +104,7 @@ You'll use those pieces of information in the next section.
 
 2. On the Visual Studio menu bar, choose **Tools**->**Options**.
 
-4. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **Remote Agent Configuration**.
+4. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
 
     ![Remote Agent Configuration Options](media/ios-guide/options-dialog.png)
 
@@ -123,7 +124,7 @@ You'll use those pieces of information in the next section.
 
 ### Troubleshooting: Let's fix it
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -151,7 +152,7 @@ You'll use those pieces of information in the next section.
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -166,6 +167,8 @@ You'll use those pieces of information in the next section.
 ## Create a provisioning profile
 
 You'll need a *provisioning profile* to run your app on a device. Create one by using an Apple Developer account. You can also create one with your free Apple ID but there are limitations. See [Supported Capabilities](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SupportedCapabilities/SupportedCapabilities.html#//apple_ref/doc/uid/TP40012582-CH38-SW1).
+
+If your team already has a provisioning profile, see [Option 3: Use your team's provisioning profile](#team-profile).
 
 ### <a id="use-developer-account"></a>Option 1: Use an Apple Developer account
 
@@ -381,6 +384,68 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 * [Starting your app on the device](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/LaunchingYourApponDevices/LaunchingYourApponDevices.html#//apple_ref/doc/uid/TP40013839-CH34-SW1).
 
+### <a id="#team-profile"></a>Option 3: Use your team's provisioning profile
+
+If your team shares a provisioning profile, all you have to do is register your device with the profile and then download and install that profile onto your device.
+
+**Register the UDID of your device with the provisioning profile**
+
+*UDID* stands for Unique Device Identifier. It's a 40-character string that uniquely identifies your device. You can find it by using Xcode or ITunes. See [Locating Device ID's](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW11).
+
+Send that information to the person on your team who manages the provisioning profile. For the purpose of this discussion, we'll call that person the *profile administrator*.
+
+If you have administrator access to the Apple Developer Account, you can register the device yourself. Here's the steps:
+
+
+1. On your Mac, open Safari, and log into the [Apple Developer Member Center](https://idmsa.apple.com/IDMSWebAuth/login?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&baseURL=https://developer.apple.com/&path=%2Faccount%2F&rv=1).
+
+2. In the [Registering a New Device or Multiple Devices](https://developer.apple.com/account/ios/device/deviceCreate.action) page, provide the name and *UDID* of the device, and then choose the **Continue** button.
+
+3. In the **Review and register** page, choose the **Register** button.
+
+**Download the provisioning profile from the Apple Developer Member Center**
+
+After you've confirmed that your profile administrator has added the UDID of your device to the provisioning profile, log into your shared Apple Developer account, and in the Apple Developer Member Center, locate your shared provisioning profile and download it.
+
+**Download the provisioning profile in Xcode**
+
+1. Open Xcode.
+
+2. In the menu bar, choose **Xcode**->**Preferences**.
+
+3. In the **Accounts** page, choose the **View Details** button.
+
+4. In the account details page, choose the **Download** button next to your provisioning profile's signing identity.
+
+     ![Download button](media/ios-guide/download-profile.png)
+
+5. Choose the **Done** button to close the account details page.
+
+**Install the provisioning profile to your device**
+
+1. Connect your device to your Mac. Make sure that  your device is turned on.
+
+2. In the menu bar, choose **Window**->**Devices**.
+
+3. In the **Devices** pane, select your device.
+
+    ![xCode Devices](media/ios-guide/xcode-devices.png)
+
+4. At the bottom of the **Devices** pane, choose the settings icon, and then choose the **Show Provisioning Profiles**.
+
+    ![Provisioning Profiles on Device](media/ios-guide/choose-profiles.png)
+
+5. In the **Provisioning profiles installed on ..** dialog box, choose the **+** icon.
+
+    ![Add Provisioning Profile](media/ios-guide/add-profile.png)
+
+6. Navigate the location where you downloaded your provisioning profile, choose the file, and then choose the **Install** button.
+
+7. In the In the **Provisioning profiles installed on ..** dialog box, choose the **Done** button.
+
+    Proceed to the [Run your app on a device](#run-on-device) section.
+
+
 ## <a id="run-on-device"></a>Run your app on a device
 
 ### Connect the device to a Mac
@@ -417,7 +482,7 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [You've been told that no provisioning profiles were found](#no-provision)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -427,19 +492,35 @@ Need more detail? See any of these articles on the Apple Developer website:
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
-### Connect the device to a Windows computer
+### <a id="local-deploy">Connect the device to a Windows computer
+
+You can attach an iOS device to your Windows computer, then set breakpoints in your app and debug it. As long as you can connect to your Mac, you don't have be anywhere near it. This makes it easier to build and debug iOS apps on a Windows computer and share a Mac with other developers on your team.
 
 To do this, you'll need a provisioning profile that you create by using an Apple Developer Account. If haven't yet done this, see [Option 1: Use an Apple Developer Account](#use-developer-account). That section of content also shows you how to install the provisioning profile to your device. That is also very important.
+
+> **Note:** To deploy to a device from Windows you will first need to tell Visual Studio where it can find the **iOS device support folder**. We have verified that using a local copy of the files will technically work but we recommend using a file share to ensure you’re always on the latest bits. As a result, we'll go through how to set this up using the file share method.
 
 #### On your Mac
 
 1. Make sure that the remote agent is running.
 
-    See [Start the remote agent on your mac](#remoteAgent).
+    See [Start the remote agent on your Mac](#remoteAgent).
+
+2. Share the **Application** folder with Windows computers.
+
+    See [Set up a Mac to share files with Windows users](https://support.apple.com/kb/PH18707).
 
 #### On your Windows computer
 
-1. Install [Apple iTunes](http://www.apple.com/itunes/).
+1. In a **File Explorer** window, log into the IP address of the mac.
+
+    ![log-into-mac-from-windows](media/ios-guide/log-into-mac-from-windows.png).
+
+    The first time you attempt to open files on your mac, you'll be prompted for a username and password. Enter the username and password of the account that you turned on Windows File Sharing for.
+
+    This establishes a file sharing connection between your Windows computer and your Mac.
+
+2. Install [Apple iTunes](http://www.apple.com/itunes/).
 
 2. Connect your device.
 
@@ -447,21 +528,34 @@ To do this, you'll need a provisioning profile that you create by using an Apple
 
     Apple iTunes automatically starts.
 
-3. In Visual Studio, open the project for your app.
+4. On the Visual Studio menu bar, choose **Tools**->**Options**.
 
-4. On the Standard toolbar, choose the **iOS** platform.
+5. In the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
+
+    ![iOS configuration dialog box](media/ios-guide/options-dialog.png)
+
+6. In the **iOS device support folder** field, add this path: ```\\<IPAddress>\Applications\Xcode.app\Contents\Developer\Platforms\iPhoneOS.platform\DeviceSupport``` where *IPAddress* is the IP Address of your Mac.
+
+    The following image shows an example:
+
+    ![Path to device files](media/ios-guide/local-debugging.png)
+
+7. Choose the **OK** button to close this dialog box.
+
+8. In Visual Studio, open the project for your app.
+
+9. On the Standard toolbar, choose the **iOS** platform.
 
     ![Platform selector](media/ios-guide/ios-platform.png)
 
-5. Choose **Local Device**.
+10. Choose **Local Device**.
 
     ![Target selector](media/ios-guide/local-device.png)
 
-6. Press the F5 key to start your app.
+11. Press the F5 key to start your app.
 
-    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, Apple iTunes starts and the iOS app is added to your library.
+    Visual Studio builds your app by connecting to the remote agent on your mac. When the build is complete, the app appears on your device.
 
-7. In Apple iTunes, install the app on the connected device.
 
 ## Stop the remote agent on your Mac
 
@@ -471,7 +565,7 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [You've been told that we were unable to find the app you're trying to debug](#safari)
 
-[Did you receive an error that relates to your certificate?](#certificates)
+[Did you receive an error that relates to your certificate?](#certificate)
 
 [Is the host name of your Mac not resolving?](#hostname)
 
@@ -487,10 +581,14 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
 
+[You try to run your app on a device that is connected to your Windows computer but the project can't find it](#timeout)
+
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
-This can happen when Visual Studio has trouble finding your Mac on the network.
+This can happen when Visual Studio has trouble finding your Mac on the network or if host name or IP address of your Mac changed.
+
+**Possible issue 1: Windows has trouble finding your Mac on the network**
 
 On your Windows computer, open a **Command Prompt**, and *ping* the IP address of your Mac. For example, if the IP address of your Mac is 10.83.51.174, you'd type ```ping 10.83.51.174```.
 
@@ -505,6 +603,44 @@ This image shows a preferred order of Wi-Fi networks.
 The **MSFTCORP** Wi-Fi network appears first. When this Mac wakes from a sleep, it will use that network.
 
 The network that is used by your Windows Computer should appear first in this list. Otherwise, you'll experience these issues intermittently.
+
+If this doesn't resolve your issue, it's possible that the host name or IP address of your Mac changed.
+
+**Possible issue 2: The host name or IP address of your Mac has changed**
+
+When you first started the remote agent, a certificate was generated. That certificate paired Visual Studio to your Mac's IP address or host name. If the IP address or host name changes, your certificate  becomes invalid.
+
+Try this. Stop the remote agent on your Mac. Then, in a Terminal, run this command:
+
+```
+remotebuild certificates reset
+```
+
+Then, run this command:
+
+```
+remotebuild certificates generate
+```
+
+Start the remote agent.
+
+On your Windows computer, in the **Options** dialog box, open **Tools for Apache Cordova**, and then choose **iOS Configuration**.
+
+![Remote Agent Configuration Options](media/ios-guide/options-dialog.png)
+
+Add the host name and port number to the appropriate fields in this dialog box.
+
+If you're using secure mode, set the **Secure mode** field to **True**, and then add the security pin.
+
+![Settings for secure mode](media/ios-guide/secure-mode.png)
+
+If you're not using secure mode, set the **Secure mode** field to **False**, and then leave the **Security PIN** field blank.
+
+![Settings for non-secure mode](media/ios-guide/non-secure-mode.png)
+
+Choose the **OK** button to close this dialog box.
+
+Visual Studio connects to the remote agent. If you don't receive any errors, you've successfully connected.
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
@@ -528,7 +664,11 @@ If you've resolved this problem another way, please share it in a comment.
 
 ### <a id="securitypin"></a>Have you been told that your security PIN is invalid or has expired?
 
-This can happen the first time you set things up. When you first start the remote agent, your security PIN is good for only 10 minutes. then it expires. Just generate a new one.
+This can happen the first time you set things up because your security PIN is good for only 10 minutes. then it expires.
+
+This can also happen if your attempting to use the same PIN for multiple Windows computers. More than one Windows computer can use the same remote build service, but each computer must have it's own PIN.
+
+To generate a new PIN:
 
 1. First, stop the remote agent. On your Mac, open a Terminal app, and type CTRL+C to stop it.
 
@@ -607,5 +747,13 @@ Try these things:
 * Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
 
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
+
+[Go back up](#errors)
+
+### <a id="timeout"></a>You try to run your app on a device that is connected to your Windows computer but the project can't find it
+
+It's possible that the **ios-webkit-debug-proxy.exe** and **idevicedebugserverproxy.exe** processes were started in a previous attempt to run this project.
+
+On your Windows computer, open the **Task Manager** and then choose the **Proceses** tab. If those processes appear in the list, right-click them, and then click **End Process**.
 
 [Go back up](#errors)

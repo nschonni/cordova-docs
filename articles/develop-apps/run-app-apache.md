@@ -17,8 +17,6 @@
 
 There are many options for running your apps built using Visual Studio Tools for Apache Cordova on Android. From Visual Studio, you can run and debug Android apps on the emulators and devices including the [Apache Ripple simulator](run-app-ripple-simulator.md) (discussed in a separate article) and the Visual Studio Emulator for Android.
 
-If you run into errors building for Android, see these [tips and workarounds](https://github.com/Microsoft/cordova-docs/tree/master/tips-and-workarounds/android).
-
 ## Visual Studio Emulator for Android
 
 Here’s how to run your app on the [Visual Studio Emulator for Android](https://www.visualstudio.com/msft-android-emulator-vs.aspx). For system requirements, see [System Requirements for the Visual Studio Emulator for Android](https://msdn.microsoft.com/en-us/library/mt228280.aspx).
@@ -31,20 +29,29 @@ Here’s how to run your app on the [Visual Studio Emulator for Android](https:/
 
     >**Important**: The emulator is not supported in a virtualized environment.
 
-2. With your app open in Visual Studio, choose **Android** from the Solution Platforms list. If you don’t see this list, choose Solution Platforms from the Add/Remove Buttons list to display it. 9. Choose one of the emulators, such as **VS Emulator 5” KitKat (4.4) XHDPI Phone**. 11. Press F5 to start the app. Visual Studio starts the emulator and runs the app.
+2. With your app open in Visual Studio, choose **Android** from the Solution Platforms list.
 
+    If you don’t see this list, choose Solution Platforms from the Add/Remove Buttons list to display it.
+
+3. Choose one of the emulators, such as **VS Emulator 5” KitKat (4.4) XHDPI Phone**.
+
+4. Press F5 to start the app. Visual Studio starts the emulator and runs the app.
+
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
 ## Configure a high-performance emulator <a name="HAXM"></a>
 
-If you have a PC with an Intel processor, you can improve the performance of the Android and Genymotion emulators. To configure a high-performance emulator:
+If you have a PC with an Intel processor, you can improve the performance of the Google Android and Genymotion emulators. To configure a high-performance emulator:
 
 1. Disable Hyper-V. You can do this from Control Panel or from a command line, as described in the following procedures.
 
     >**Caution**: Disabling Hyper-V will prevent you from using the Visual Studio Emulator for Android and the Windows Phone emulator. However, you can still deploy to a Windows Phone device while Hyper-V is disabled.
 
-2. (Android emulator only) Install the high-performance Intel Hardware Accelerated Execution Manager (HAXM) driver, if it isn’t already installed. (More information about the [HAXM driver](https://software.intel.com/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-windows))
+2. (Google Android emulator only) Install the high-performance Intel Hardware Accelerated Execution Manager (HAXM) driver, if it isn’t already installed. (More information about the [HAXM driver](https://software.intel.com/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-windows))
 
-3. Configure the Android emulator to use hardware acceleration.
+3. Configure the Google Android emulator to use hardware acceleration.
 
 ### To disable Hyper-V in Control Panel
 
@@ -83,11 +90,11 @@ If you have a PC with an Intel processor, you can improve the performance of the
 
     If you’re using the Genymotion emulator, you can skip this procedure. For more information, see Genymotion emulator.
 
-### To install the high-performance HAXM driver (Android emulator only)
+### To install the high-performance HAXM driver (Google Android emulator only)
 
-1. After disabling Hyper-V and rebooting, open the [Android SDK Manager](http://developer.android.com/tools/help/sdk-manager.html). To do this from a command line, go to the location of the SDK and type android. On Windows, the Android SDK Manager.exe is installed in the following location: C:\Program Files (x86)\Android\android-sdk.
+1. After disabling Hyper-V and rebooting, open the [Android SDK Manager](http://developer.android.com/tools/help/sdk-manager.html). To do this from a command line, go to the location of the SDK and type android. On Windows, the Android SDK Manager.exe is installed in the following location: C:\Program Files (x86)\Android\android-sdk or C:\Users\yourusername\AppData\Local\Android\android-sdk.
 
-2. In the Android SDK Manager, look under **Extras for the Intel x86 Emulator Accelerator (HAXM Installer)**. If the status column shows that it isn’t installed, select its check box, and then choose **Install Packages**.
+2. In the Android SDK Manager, look under the **Extras** folder for the **Intel x86 Emulator Accelerator (HAXM Installer)**. If the status column shows that it isn’t installed, select its check box, and then choose **Install Packages**.
 
     ![Installing the HAXM driver](media/run-app-apache/IC741799.png)
 
@@ -97,13 +104,13 @@ If you have a PC with an Intel processor, you can improve the performance of the
    Now you can configure an emulator to use the driver. When you create or edit an emulator, you must use an Intel CPU and select the Use Host GPU option. For more information, see the next section.
 
 
-## Android emulator
+## Google Android Emulator
 
-Before you run your app on the Android emulator in Visual Studio, use the Android Virtual Device (AVD) Manager to create an emulator configuration, and then start the emulator from the AVD Manager. The following steps show how to do this. For more information, see the [AVD Manager documentation](http://developer.android.com/tools/devices/managing-avds.html).
+Before you run your app on the Google Android emulator in Visual Studio, use the Android Virtual Device (AVD) Manager to create an emulator configuration, and then start the emulator from the AVD Manager. The following steps show how to do this. For more information, see the [AVD Manager documentation](http://developer.android.com/tools/devices/managing-avds.html).
 
 ### To create an instance of the emulator
 
-1. Open the AVD Manager. To do this from a command line, go the location of the SDK and type android avd. On Windows, the AVD Manager.exe is installed in the following location: C:\Program Files (x86)\Android\android-sdk.
+1. Open the AVD Manager. To do this from a command line, go the location of the SDK and type `android avd`. On Windows, the AVD Manager.exe is installed by default in the following location: C:\Program Files (x86)\Android\android-sdk.
 
 2. In the AVD Manager, choose **Create**.
 
@@ -127,7 +134,7 @@ Before you run your app on the Android emulator in Visual Studio, use the Androi
 
 1. With your app open in Visual Studio, choose **Android** from the Solution Platforms list. (If you don’t see this option, first choose **Solution Platforms** from the **Add/Remove Buttons** list.)
 
-2. In the device list, choose **Android Emulator**.
+2. In the device list, choose **Google Android Emulator**.
 
     ![Deploying to the Android emulator](media/run-app-apache/IC740450.png)
 
@@ -139,18 +146,21 @@ Before you run your app on the Android emulator in Visual Studio, use the Androi
 
     Visual Studio deploys the app to the Android emulator that is currently running. If no emulator is running, Visual Studio starts the last emulator that was created using the AVD Manager, and then deploys the app.
 
-  If you want to debug your app against Android versions 4.1.2-4.3, see the information about the jsHybugger plugin in the article [Debug Your App Built with Visual Studio Tools for Apache Cordova](https://msdn.microsoft.com/en-us/library/dn757061.aspx).
+  If you want to debug your app against Android versions 4.1.2-4.3, see the information about the jsHybugger plugin in the article [Debug Your App Built with Visual Studio Tools for Apache Cordova](../debug-and-test/debug-using-visual.md).
+
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
 ## Genymotion emulator
 
-The [Genymotion emulator](http://www.genymotion.com/) is a popular alternative to the Android emulator that is included with the Android SDK. Here are a few tips for getting started with the emulator:
+The [Genymotion emulator](http://www.genymotion.com/) is a popular alternative to the Android emulator that is included with the Android SDK. Follow Genymotion's instructions to install the emulator. Here are a few tips for getting started with the emulator:
 
 * If you have trouble starting the emulator from a remote connection, try starting it locally, and then reconnect remotely if needed. The emulator requires OpenGL for rendering, and this may result in a conflict when starting the emulator.
 
 * You need a video card and video card drivers that support OpenGL. You may receive messages that indicate this. (If you connect to your PC remotely, you may also see this message. Try again after connecting locally.)
 
 * You may receive a message to check your VirtualBox network configuration when you try to start the emulator. Follow the link and instructions to modify or remove the **Host-only Network Adapter** from VirtualBox. (VirtualBox is included with the installation of the emulator.)\
-
 
 * For high-performance emulation using Genymotion, disable Hyper-V before starting the emulator, as described earlier in [Configure a high-performance emulator](#HAXM). Android developer tools see Genymotion as a physical device. When you use Visual Studio to run the app, you instruct Visual Studio to deploy to an Android device.
 
@@ -165,6 +175,10 @@ The [Genymotion emulator](http://www.genymotion.com/) is a popular alternative t
     ![Deploying to an Android device](media/run-app-apache/IC740309.png)
 
 4. Press F5 to start the app, or Shift+F5 to start the app without debugging.
+
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
 ## Android devices
 

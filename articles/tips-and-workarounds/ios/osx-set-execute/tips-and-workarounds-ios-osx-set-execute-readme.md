@@ -31,7 +31,7 @@ To resolve this problem you have two options:
 1.  Don't check in or copy the contents of the **platforms** folders. This is by far the path of least resistance.
 
 2.  If you absolutely must check in the contents of the platforms folder from Windows, you can craft a simple script to set the execute bits on these files and include it as a part of your build process.
-	1. Download the hook-execute-bit-fix.js file and drop it in a **hooks** folder in your project root.
+	1. Download [hook-execute-bit-fix.js](https://github.com/Microsoft/cordova-docs/tree/master/articles/tips-and-workarounds/ios/osx-set-execute) and drop it in a **hooks** folder in your project root.
 
 	2. Update config.xml with the following (using right-click->**View Code**):
 
@@ -45,4 +45,3 @@ To resolve this problem you have two options:
 
 	3. Next time you build, run, and add a plugin, the problem should be resolved.
 
-You could also opt to encapsulate this functionality inside a Cordova plugin by placing the same XML elements above in plugin.xml.  Finally, there is also a simple set-execute.sh script from the command line that can be used instead.

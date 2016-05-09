@@ -17,9 +17,9 @@
 
 The Apache Ripple simulator runs as a web app inside the Google Chrome browser. In Cordova, it can be used to simulate your app on a number of iOS and Android devices, and it provides basic support for core Cordova plugins like Geolocation and Device Orientation.
 
-The Ripple simulator helps you quickly start validating how your apps looks and feels on iOS and Android, because both platforms use a browser with a similar code base. The Ripple simulator is particularly useful for validating layout and CSS code. For higher fidelity emulation that’s specific to a platform, use the [Android](run-app-apache.md) or [iOS](run-app-ios.md) emulators or an actual device.
+The Ripple simulator helps you quickly start validating how your app looks and feels on iOS and Android, because both platforms use a browser with a similar code base. The Ripple simulator is particularly useful for validating layout and CSS code. For higher fidelity emulation that’s specific to a platform, use the [Android](run-app-apache.md) or [iOS](run-app-ios.md) emulators or an actual device.
 
->**Caution**: Ripple doesn’t provide a complete simulation of Cordova APIs or native device capabilities. It also doesn’t simulate specific browser versions for a particular platform. You can achieve this by testing on actual devices or emulators.
+>**Caution**: Ripple doesn’t provide a complete simulation of Cordova APIs or native device capabilities (plugins). It also doesn’t simulate specific browser versions for a particular platform. You can achieve this by testing on actual devices or emulators.
 
 Here are a few things to keep in mind when testing layout using Ripple.
 
@@ -51,6 +51,10 @@ The following procedure shows you how to run your app on the simulator and attac
 Ripple avoids cross-domain limitations in the browser by using a proxy. Two proxies are available: a remote proxy and a local proxy. The remote proxy is cloud-hosted.
 
 >**Security Note**: If your app is transferring sensitive data (for example, Active Directory authentication tokens), we strongly recommend using the local proxy instead of the remote proxy.
+
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
 ### To change the proxy
 

@@ -30,7 +30,7 @@ To copy the resources over to the `www` folder, we could simpy write a hook in o
     module.exports = function (context) {
       var shell = context.requireCordovaModule('shelljs');
       var src = path.join(context.opts.projectRoot, 'Scripts');
-      var dest = path.join(context.opts.projectRoot, 'www/lib')
+      var dest = path.join(context.opts.projectRoot, 'www/lib');
       shell.cp('-fr', src, dest);
     };
 

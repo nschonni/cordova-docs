@@ -21,7 +21,7 @@ There are a small number of Cordova plugins that contain "custom framework" file
 
 To install it:
 
-1. Download [this hook-symlink-fix.js](../tips-and-workarounds/ios/hook-symlink-fix.js) file and drop it a **hooks** folder in your project root.
+1. Download [hook-symlink-fix.js](https://github.com/Microsoft/cordova-docs/tree/master/articles/tips-and-workarounds/ios/ios-plugin-symlink-fix) and drop it a **hooks** folder in your project root.
 2. Update config.xml with the following (using right-click->**View Code**):
 
   ```
@@ -29,8 +29,6 @@ To install it:
   ```
 
 3. Run a "Clean" operation in Visual Studio or remove the iOS platform, and then re-add it if you are using the command line.
-
-Alternatively you can install the [Visual Studio Tools for Apache Cordova CLI Support Plugin](http://go.microsoft.com/fwlink/?LinkID=533753) which encapsulates this functionality.
 
 ## Permission Issues (EACCES Errors)
 <a name="npm-cache"></a>
@@ -45,7 +43,7 @@ sudo chown -R `whoami` ~/.npm
 
 ### Permission errors when building or executing a cordova command (plugin add) on OSX after checking in or copying the "platforms" folder from Windows
 
-If you are seeing errors that are originating from files in your project's "platforms" folder when building either Android or iOS on OSX, the root cause may be that you checked in shell scripts under the "platforms/android/cordova", "platforms/ios/cordova", "platforms/windows/cordova", or "platforms/wp8/cordova" folders from Windows. 
+If you are seeing errors that are originating from files in your project's "platforms" folder when building either Android or iOS on OSX, the root cause may be that you checked in shell scripts under the "platforms/android/cordova", "platforms/ios/cordova", "platforms/windows/cordova", or "platforms/wp8/cordova" folders from Windows.
 
 This is because the NTFS file system has no concept of an "execute bit" that is required to run these from OSX. (The contents of the platforms folder is generally not intended for check-in, and by default, they are excluded from Cordova projects in Visual Studio as a result.)
 
@@ -62,7 +60,7 @@ To resolve this problem you have two options:
 1.  Don't check in or copy the contents of the **platforms** folder. This is by far the path of least resistance.
 
 2.  If you absolutely must check in the contents of the **platforms** folder from Windows, you can craft a simple script to set the execute bits on these files and include it as a part of your build process.
-	1. Download [this hook-execute-bit-fix.js file](osx-set-execute) and drop it in a **hooks** folder in your project root.
+	1. Download [hook-execute-bit-fix.js](https://github.com/Microsoft/cordova-docs/tree/master/articles/tips-and-workarounds/ios/osx-set-execute) and drop it in a **hooks** folder in your project root.
 
 	2. Update config.xml with the following (using right-click->**View Code**):
 

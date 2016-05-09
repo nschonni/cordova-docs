@@ -5,6 +5,9 @@
   authors="kirupa" />
 
 #**General Known Issues**
+
+> **Important**: We no longer maintain this article but if you’re stuck, ask us a question on [Stack using the tag ‘visual-studio-cordova'](http://stackoverflow.com/questions/tagged/visual-studio-cordova). Also, subscribe to our [developer blog](http://microsoft.github.io/vstacoblog/). We regularly post issues and workarounds.
+
 This article covers general known issues related to Visual Studio Tools for Apache Cordova. For version-specific issues, see:
 
 - [Known issues for Visual Studio 2015](known-issues-vs2015.md)
@@ -16,7 +19,7 @@ If you use Cordova 5.3.3 or below with Node.js 5.0.0, you will see a build that 
 
 Cordova 5.3.3 and below does not support Node.js 5.0.0 or above. Either use Node.js 4.1.2 with Cordova 5.3.3 or Node.js 0.12.x with Cordova < 5.3.3. A planned update to Cordova (version > 5.3.3) will support Node.js 5.0.0+.
 
-See [Safely update Node.js](./develop-apps/change-node-version.md) and [Change the CLI version of your Visual Studio Tools for Apache Cordova project](#change-cli-version.md)
+See [Safely update Node.js](./develop-apps/change-node-version.md) and [Change the CLI version of your Visual Studio Tools for Apache Cordova project](./develop-apps/change-cli-version.md)
 
 ##**Build hangs or does not execute when building for iOS with Cordova < 5.3.3 and Node.js 4.0.0+**
 
@@ -30,7 +33,7 @@ See [Safely update Node.js](./develop-apps/change-node-version.md) and [Change t
 
 The “Solution Platform” dropdown might not appear in the toolbar when upgrading Visual Studio 2013 from a previous version to Update 4. You can add using the “Standard Toolbar Options” drop-down as described in [Microsoft Support article 2954109](http://support.microsoft.com/kb/2954109).
 
-##**Building a Cordova project from source control results in Cordova plugin APIs not returning results**
+##**Building a Cordova project from source control results in Cordova plugin APIs not returning Results**
 
 The following four json files can cause this to occur if added to source control.
 
