@@ -38,8 +38,7 @@ function consolidateUserRecord(userID) {
         email: normE.alias + "@contoso.com",
         title: normE.title,
         workPhone: normE.phone,
-        homePhone: normP.phone
-        
+        homePhone: normP.phone        
     }
 
     var timestamp = dateTimePlugin.now();                   // Calls a platform API
