@@ -278,15 +278,23 @@ For more information about app provisioning and certificate signing identities, 
 
 If you see unexpected errors when trying to build the Blank App template after installing Visual Studio Tools for Apache Cordova, you can try clearing your cache and reinstalling the Cordova CLI pre-processor, vs-tac, on your PC. Typically, this is only necessary if you try to build a Cordova app and see the error Cannot find module *[modulename]*.
 
+>**Note**: For general help with build and deployment issues, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md). 
+
+### To try the quick fix
+
+* Delete the platforms/*platform* folder for the platform you are targeting (like the platforms/android folder) and then rebuild your project. If you have no errors this time, you don't need to clear the cache.
+
 ### To clear the cache
 
 1. Choose **Tools**, **Options**, **Tools for Apache Cordova**, and then choose **Cordova Tools**.
 
-2. Choose Clear Cordova Cache.
+2. Choose **Clear Cordova Cache**.
 
 3. Close and re-open your project.
 
-4. Choose **Build**, **Clean Solution**, and then rebuild your project.
+4. Choose **Build**, **Clean Solution**.
+
+5. Delete the platforms/*platform* folder, like platforms/android, and then rebuild your project.
 
     >**Tip:**
 If you have no errors, you do not need to re-install vs-tac. If you still have the same error, then re-install vs-tac.
@@ -300,7 +308,13 @@ If you have no errors, you do not need to re-install vs-tac. If you still have t
         npm install -g <path-to-vs-tac>
 The default path to vs-tac is C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\ApacheCordovaTools\packages\vs-tac
 
-3. Re-open Visual Studio. 5. Open your project, choose Build, Clean Solution, and then rebuild your project. If this does not resolve the issue, see the [Known Issues](./known-issues/known-issues-general.md).
+3. Re-open Visual Studio.
+
+4. Open your project, choose **Build**, **Clean Solution**.
+
+5. Delete the platforms/*platform* folder, like platforms/android, and then rebuild your project.
+
+    If this does not resolve the issue, see the [Known Issues](./known-issues/known-issues-general.md).
 
 ##Configure tools to work with a proxy
 If you are using Visual Studio behind a proxy, such as a corporate firewall, you may need to configure proxy settings for the npm package manager and for git before you can use Visual Studio Tools for Apache Cordova.

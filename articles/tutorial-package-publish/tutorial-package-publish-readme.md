@@ -172,15 +172,15 @@ You can also find it in the ```taco.json``` file at the root of your project.
 
     ![Platform selector](media/tutorial-package-publish-readme/android-platform.png)
 
-2. Choose one of the Android emulators.
+2. Choose the **Release** build configuration.
+
+    ![Release Build Configuration](media/tutorial-package-publish-readme/release-configuration-android.png)
+
+3. Choose one of the Android emulators.
 
     ![Target selector](media/tutorial-package-publish-readme/android-emulator.png).
 
     >**Important**: Don't choose any of the Ripple simulators. Choose only an Android emulator or the Device.
-
-3. Choose the **Release** build configuration.
-
-    ![Release Build Configuration](media/tutorial-package-publish-readme/release-configuration-android.png)
 
 4. On the **Build** menu, choose **Build Solution**.
 

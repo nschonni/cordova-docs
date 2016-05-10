@@ -53,6 +53,10 @@ If you have configured your Mac as described in the article [iOS Setup Guide](..
 
 If you have configured the **remote build** agent on your Mac as described in the article [iOS Setup Guide](../getting-started/ios-guide.md), you can build and run your app on an iOS device that is connected to your Mac or PC.
 
+### Troubleshooting? Let's fix it
+
+See the troubleshooting tips in the [iOS Guide](../getting-started/ios-guide.md)
+
 ### To run your app on an iOS device <a name="iOSDevice"></a>
 
 1.  If you are running your app on a device that is connected to your Windows PC, make sure that you have installed iTunes on the PC.

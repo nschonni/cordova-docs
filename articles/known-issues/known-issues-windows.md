@@ -13,6 +13,9 @@
      ms.author="kirupac"/>
 
 #**Known Issues - Windows**
+
+> **Important**: We no longer maintain this article but if you’re stuck, ask us a question on [Stack using the tag ‘visual-studio-cordova'](http://stackoverflow.com/questions/tagged/visual-studio-cordova). Also, subscribe to our [developer blog](http://microsoft.github.io/vstacoblog/). We regularly post issues and workarounds.
+
 This article covers known issues related to Visual Studio Tools for Apache Cordova 2015 when building or deploying to a Windows 8.0, 8.1, Windows Phone 8.1 or any Windows 10 device or emulator.
 
 ##**Windows 10 version options and emulators do not appear after installing Windows 10 Tools in Visual Studio 2015 RC or RTM and selecting Cordova 5.1.1 or later**
