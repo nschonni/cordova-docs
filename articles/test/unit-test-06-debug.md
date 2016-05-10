@@ -77,7 +77,6 @@ In this case, if we can confirm that the JSON we get as input will never have su
 
 ```javascript
 var json = '{"nm": "Maria", "pid": 2111858}';
-
 ```
 
 If you run into curious situations like this, then congratulations! You’ve likely discovered a small variation between runtimes! In such rare cases you’ll need to take a good look at any subtle issues in your code, of course, and a good strategy is to write a couple more nearly identical test with more slight variations on input values. This will help you spot the exact cause of the divergent behaviors.

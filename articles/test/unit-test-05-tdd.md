@@ -311,7 +311,11 @@ Handling negative and large ```PersonalIdentifier``` values is easy enough with 
 
             id = data.PersonalIdentifier;
             break;
-and truncating long strings is just a small change to the string case for Name: 
+```
+
+and truncating long strings is just a small change to the string case for Name:
+
+```javascript 
         case 'string':
             name = data.Name.substring(0, 255);
             break;
