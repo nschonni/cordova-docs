@@ -25,7 +25,7 @@ After hitting the first breakpoint in the truncation test, we can right-click on
  
 ![Idenfitying the bug in the debugger](media/debug/03-debug-identify-bug.png)
 
-Ah, now we see the problem! Our unit test dereferences ```norm.Name``` instead of ```norm.name``` (lowercase n on name), which is why the failure report said that the Actual value—the first argument to the ```equal``` check—was undefined. It’s a simple mistake, but one that could be confusing if we didn’t carefully examine the failure report and check the code in the debugger.
+Ah, now we see the problem! Our unit test dereferences ```norm.Name``` instead of ```norm.name``` (lowercase n on name), which is why the failure report said that the Actual value given to the ```expect``` assertion was ```undefined```. It’s a simple mistake, but one that could be confusing if we didn’t carefully examine the failure report and check the code in the debugger.
 
 Stopping the debugger, changing the two instances of ```norm.Name``` to ```norm.name```, saving ```normalize_tests.js```, and rerunning the test, we find that it now passes.
 
@@ -36,41 +36,48 @@ Stopping the debugger, changing the two instances of ```norm.Name``` to ```norm.
 Having fixed the bugs in the truncation test, only one failed test remains: “defaults with unknown fields, similar properties.” What’s confusing here is that the test itself is almost identical to the test before it:
 
 ```javascript
-test('defaults with unknown fields, differing by case', function () {
+it('defaults with unknown fields, differing by case', function () {
     var json = '{"name": "Maria", "personalIdentifier": 2111858}';
     var norm = normalizeData(json);
-    equal(norm.name, "default"); //Default
-    equal(norm.id, 0); //Default
+    expect(norm.name).toEqual("default"); //Default
+    expect(norm.id).toEqual(0); //Default
 });
 
-test('defaults with unknown fields, similar properties', function () {
+it('defaults with unknown fields, similar properties', function () {
     var json = '{"nm": "Maria", "pid": 02111858}';
     var norm = normalizeData(json);
-    equal(norm.name, "default"); //Default
-    equal(norm.id, 0); //Default
+    expect(norm.name).toEqual("default"); //Default
+    expect(norm.id).toEqual(0); //Default
 });
 ```
 
-Something strange is happening, so we go into the debugger with this test. But lo and behold—the test passes! This is also indicated in the browser during the debugging session:
+Something strange is happening, so we go into the debugger with this test. But lo and behold—the test passes! And at the same time, the browser window that opens up during debugging shows a new failure: 
 
-![Browser indicating that tests pass in the debugger](media/debug/04-debug-browser-report.png)
+![Browser indicating that tests pass in the debugger](media/debug/04b-debug-browser-report.png)
  
-What, exactly, is going on? Why is the original (non-debug) failure report talking about nulls?
+What, exactly, is going on? Why this new failure? And why does the one failure report outside the debugger mention a null?
 
 ![Odd failure report about a null object](media/debug/05-debug-odd-failure.png)
 
 The answer is that just like the runtime used for unit testing will likely be different than the one used by the mobile platform to run the final app, you might also be using a different runtime during debugging. In this case, running unit tests outside the debugger uses PhantomJS, whereas the browser (Internet Explorer in this case) is used when debugging. 
 
-Turns out the two runtimes differ in their implementation of ```JSON.parse``` where a leading zero on an integer value is concerned:
+Turns out the two runtimes differ in their implementation of ```JSON.parse``` where a leading zero on an integer value is concerned. These two tests are the ones that use such leading zeros:
 
 ```javascript
 var json = '{"nm": "Maria", "pid": 02111858}';
+
+var json = '{"Name": "Maria", "PersonalIdentifier": 002111858}';
 ```
 
-Internet Explorer’s implementation of ```JSON.parse``` is OK with this, and treats the value as an integer. The implementation in PhantomJS, on the other hand, throws an exception, which is why ```normalizeData``` returned ```null```. When we remove that leading zero in the string, the test passes in both environments.
+Internet Explorer’s implementation of ```JSON.parse``` is OK with these, and treats the value as an integer. The implementation in PhantomJS, on the other hand, throws an exception, which is why ```normalizeData``` returned ```null```. 
+
+What we've also revealed here is an inconsistency between the two tests themselves. In the first case, we expected an object with default values to come back. In the second we expected the JSON to be rejected entirely. The ```normalizeData``` method can't work both ways, so we have to make them consistent.
+
+In this case, if we can confirm that the JSON we get as input will never have such leading zeros at all, we can remove the second tests as unnecessary, and then correct the first as below, in which case it passes in both environments:
 
 ```javascript
 var json = '{"nm": "Maria", "pid": 2111858}';
+
 ```
 
 If you run into curious situations like this, then congratulations! You’ve likely discovered a small variation between runtimes! In such rare cases you’ll need to take a good look at any subtle issues in your code, of course, and a good strategy is to write a couple more nearly identical test with more slight variations on input values. This will help you spot the exact cause of the divergent behaviors.

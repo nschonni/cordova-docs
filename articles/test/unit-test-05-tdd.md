@@ -81,8 +81,11 @@ And then add variations on the data types by using a integers, strings, objects,
 
 ```json
 '{"Name": "Maria", "PersonalIdentifier": "2111858"}'
+'{"Name": "Maria", "PersonalIdentifier": "AA2111858"}'
 '{"Name": "Maria", "PersonalIdentifier": -1}'
 '{"Name": "Maria", "PersonalIdentifier": 123456789123456789123456789123456789}'
+'{"Name": "Maria", "PersonalIdentifier": 9999999999}'
+'{"Name": "Maria", "PersonalIdentifier": 10000000000}'
 '{"Name": <long generated string>, "PersonalIdentifier": 2111858}'
 '{"Name": 12345, "PersonalIdentifier": 2111858}'
 '{"Name": {"First": "Maria"}, "PersonalIdentifier": 2111858}'
@@ -93,10 +96,11 @@ And then add variations on the data types by using a integers, strings, objects,
 '{"Name": ["Maria"], "PersonalIdentifier": [2111858]}'
 ```
 
-Finally, we’ll throw in a string with leading zeros for the identifier:
+Finally, we’ll throw in a string and an integer with leading zeros for the identifier:
 
 ```json
 '{"Name": "Maria", "PersonalIdentifier": "002111858"}'
+'{"Name": "Maria", "PersonalIdentifier": 002111858}'
 ```
 
 Once you get going on thinking through the variations, it’s quite easy to identify many possibilities. For example, once you identify that one test case should use an object instead of a string as the data type for ```Name```, then you know that you also need a similar variation for ```PersonalIdentifier```, and then a variation with an object in both properties. And having identified using objects in the JSON, you’ll easily identify testing arrays. This happens naturally because you’re thinking only about data at this point, and not bothering your mind with details about how you’d check for these cases in code.
@@ -105,39 +109,39 @@ In writing this example, in fact, I probably spent a total of 15 minutes thinkin
 
 ##Converting inputs cases to tests
 
-Having identified the inputs, we next map each case to expected outputs in the form of a test, and give each test a name at the same time. Using a simple template that we can paste into ```normalize_tests.js``` for each of the twenty-six tests cases, we can then copy-paste the inputs into the tests and add tests for the expected outputs.
+Having identified the inputs, we next map each case to expected outputs in the form of a test, and give each test a name at the same time. Using a simple template that we can paste into ```normalize_tests.js``` for each of the thirty tests cases, we can then copy-paste the inputs into the tests and add tests for the expected outputs.
 
-Here are some of the tests:
+Here are some of the tests (using Jasmine for the framework, so all of these would be inside a ```describe``` method):
 
 ```javascript
-test('accepts golden path data', function () {
+it("accepts golden path data", function () {
     var json = '{"Name": "Maria", "PersonalIdentifier": 2111858}';
     var norm = normalizeData(json);
-    equal(norm.name, "Maria");
-    equal(norm.id, 2111858);
+    expect(norm.name).toEqual("Maria");
+    expect(norm.id).toEqual(2111858);
 });
 
-test('rejects non-JSON string', function () {
+it('rejects non-JSON string', function () {
     var json = 'blahblahblah';
     var norm = normalizeData(json);
-    equal(norm, null);
+    expect(norm).toEqual(null);
 });
 
-test('accepts PersonalIdentifier only, name defaults', function () {
+it('accepts PersonalIdentifier only, name defaults', function () {
     var json = '{"PersonalIdentifier": 2111858}';
     var norm = normalizeData(json);
-    equal(norm.name, "default"); //Default
-    equal(norm.id, 2111858); 
+    expect(norm.name).toEqual("default"); //Default
+    expect(norm.id).toEqual(2111858);
 });
 
-test('ignores extra fields', function () {
+it('ignores extra fields', function () {
     var json = '{"Name": "Maria", "PersonalIdentifier": 2111858, "Other1": 123, "Other2": "foobar"}';
     var norm = normalizeData(json);
-    equal(norm.name, "Maria");
-    equal(norm.id, 2111858); 
+    expect(norm.name).toEqual("Maria");
+    expect(norm.id).toEqual(2111858);
 });
 
-test('truncates excessively long Name', function () {
+it('truncates excessively long Name', function () {
     //Create a string longer than 255 characters
     var name = "";
     for (var i = 0; i < 30; i++) {
@@ -146,33 +150,35 @@ test('truncates excessively long Name', function () {
 
     var json = '{"Name": "' + name + '", "PersonalIdentifier": 2111858}';
     var norm = normalizeData(json);
-    equal(norm.Name, name.substring(0, 255));
-    equal(norm.Name.length, 255);
-    equal(norm.id, 2111858);
+    expect(norm.Name).toEqual(name.substring(0, 255));
+    expect(norm.Name.length).toEqual(255);
+    expect(norm.id).toEqual(2111858);
 });
 
-test('rejects object Name and PersonalIdentifier', function () {
+it('rejects object Name and PersonalIdentifier', function () {
     var json = '{"Name": {"First": "Maria"}, "PersonalIdentifier": {"id": 2111858}}';
     var norm = normalizeData(json);
-    equal(norm, null);
+    expect(norm).toEqual(null);
 });
 ```
 
 Note that the names are what appear in UI like Test Explorer, so they should always identify what’s being testing and the basic nature of the test (e.g. “reject” or “accept”).
 
-You’ll also discover in this process that groups of tests that follow a similar pattern. A number of the tests for ```normalizeData``` expect a ```null``` return and thus contain an ```equal(norm, null);``` check. Another group expects a valid object and uses two equal calls to check both expected properties. Having written one test for any given group, it’s easy to just make copies of that test and change the name, the input, and the expected outputs. As a result, each test might take only 10-20 seconds to create from your list of inputs; writing all the tests for this example took about 15 minutes. This demonstrates that even through you’ll typically write many tests for any given function, the process doesn’t need to take a lot of time.
+You’ll also discover in this process that groups of tests follow a similar pattern. A number of the tests for ```normalizeData``` expect a ```null``` return and thus contain an ```equal(norm, null);``` check. Another group expects a valid object and uses two assertions to check both expected properties. Having written one test for any given group, it’s easy to just make copies of that test and change the name, the input, and the expected outputs. As a result, each test might take only 10-20 seconds to create from your list of inputs; writing all the tests for this example took about 15 minutes. This demonstrates that even through you’ll typically write many tests for any given function, the process doesn’t need to take a lot of time.
 
 By the way, one of the unit tests show above is buggy. Do you see which one? We’ll encounter this later on in Debugging unit tests.
 
 ##Running the tests against an empty unit
 
-Having written out all the tests, we can now run them against a still-empty normalizeData function and see the results in Test Explorer:
+Having written out all the tests, we can now run them against a still-empty ```normalizeData``` function and see the results in Test Explorer:
 
 ![First test results with an empty function](media/tdd/01-testblock1.png)
  
-It’s quite interesting that so many tests pass without any code in ```normalizeData``` at all! But this is merely because an empty function returns ```null``` and that’s what’s expected by every “reject” tests. As we start adding code, many of those tests will fail until we’ve written code to handle those cases properly. In the end, we need *all* tests to pass before we can call our implementation good.
+As expected, all the tests fail because there's no code in ```normalizeData``` that could possibly pass a test. Our job now is to add code to pass at least one test at a time, until we get to the point where *all* tests pass. Then we can call the implementation good. 
 
 Notice also how Test Explorer shows the names you assigned to each individual test. This output shows exactly why you want to keep each test specific according to its description, because as failed tests appear in this list you can quickly and easily identify the exact inputs that are causing the unit code to fail.
+
+>**Note**: With the runtime we're using here, an empty function returns ```undefined``` by default. Other runtimes might instead return ```null``` by default in which case a number of our tests will initially pass. However, as we add code to ```normalizeData``` those tests would eventually fail until we had the correct implementation for those specific cases.
 
 ##Adding code to the unit to handle test cases
 
@@ -188,7 +194,7 @@ function normalizeData(jsonIn) {
 }
 ```
 
-If we re-run all the tests, we’ll now find that only four pass, because the function no longer returns null for bad inputs:
+If we re-run all the tests, we’ll now find that five passs:
 
 ![Test results with golden path implementation](media/tdd/02-testblock2b.png)
  
@@ -224,7 +230,7 @@ function normalizeData(jsonIn) {
 
 ![Test results with first improved implementation](media/tdd/03-testblock3.png)
 
-At the top of failed list now are five tests that for defaults when the JSON is valid but incomplete. Our next step is to assign defaults to the ```name``` and ```id``` variables and modify them based on the data types in object returned from ```JSON.parse```. We’ll check for ```undefined``` properties in the process and return ```null``` in those cases, which should pick up a most of the “rejects” tests:
+Near the top of failed list now are five tests that for defaults when the JSON is valid but incomplete. Our next step is to assign defaults to the ```name``` and ```id``` variables and modify them based on the data types in object returned from ```JSON.parse```. We’ll check for ```undefined``` properties in the process and return ```null``` in those cases, which should pick up a most of the “rejects” tests:
 
 ```javascript
 function normalizeData(jsonIn) {
@@ -265,7 +271,12 @@ function normalizeData(jsonIn) {
             break;
 
         case 'string':
-            id = 0 + data.PersonalIdentifier;
+            id = Number(data.PersonalIdentifier);
+
+            if (isNaN(id)) {
+                return null;
+            }
+
             break;
 
         case 'number':
@@ -310,7 +321,7 @@ But wait a minute, the test for truncating a long Name is still failing:
  
 ![Test for truncating a long name fails after attempting to handle that case](media/tdd/05-testblock5b.png)
 
-Why is that? Select the test and the pane below the list will show the reason:
+Why is that? Click on that test in the list and the bottom pane of Test Explorer shows the reason:
 
 ![Detailed failure report for a test](media/tdd/05-testblock5c.png)
 
