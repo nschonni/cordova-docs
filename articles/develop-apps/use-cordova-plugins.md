@@ -30,12 +30,12 @@ Check out the [Quick Guide](https://www.npmjs.com/package/cordova-plugin-bluetoo
 
 [ [Go back up](#top) ]
 
-<hr />
+<hr style="height:2px;" />
 
 ## Geolocation: Connect users with things around them
 
-<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
-<button class="plugin-button-guide" onclick="window.location='https://github.com/normesta/cordova-plugin-geolocation/blob/master/README.md#sample-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation';">Quick Guide</button>
+<button class="plugin-button-readme" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html#sample:-get-the-weather-find-stores-and-see-photos-of-things-nearby-with-geolocation';">Quick Guide</button>
 <br />
 
 Help users find things near them such as Groupon deals, houses for sale, movies playing, sports and entertainment events and more.
@@ -65,15 +65,15 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 
 <hr />
 
-## Camera: Use the device's Camera or FilePicker in your app
+## Camera: Use the device's Camera or file picker in your app
 
-<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-camera';">Readme</button>
-<button class="plugin-button-guide" onclick="window.location='https://github.com/apache/cordova-plugin-camera#sample';">Quick Guide</button>
+<button class="plugin-button-readme" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-camera/index.html';">Readme</button>
+<button class="plugin-button-guide" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-camera/index.html#sample:-take-pictures-select-pictures-from-the-picture-library-and-get-thumbnails-';">Quick Guide</button>
 <br />
 
-Take pictures, select files on the device, get thumbnails, display the pictures or images in your app.
+Take pictures, allow the user to choose a file on the device, get thumbnails, and display the pictures or images in your app.
 
-Check out the [Quick Guide](https://github.com/apache/cordova-plugin-camera#sample) to learn how use the Camera app and FilePicker.
+Check out the [Quick Guide](https://github.com/apache/cordova-plugin-camera#sample) to learn how use the Camera app and file picker.
 
 ![scan-for-devices](media/use-cordova-plugins/camera-sample.png)
 
@@ -81,7 +81,7 @@ Check out the [Quick Guide](https://github.com/apache/cordova-plugin-camera#samp
 
 <hr />
 
-## Files: Create and manipulate files and directories on your device
+## File: Create and manipulate files and directories on your device
 
 <button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-file';">Readme</button>
 <button class="plugin-button-guide" onclick="window.location='https://github.com/apache/cordova-plugin-file#sample';">Quick Guide</button>
@@ -108,6 +108,66 @@ Upload and download different file types such as text files and binary files, re
 Check out the [Quick Guide](https://github.com/apache/cordova-plugin-file-transfer#sample) to learn how to upload and download files.
 
 ![scan-for-devices](media/use-cordova-plugins/file-transfer-sample.png)
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Vibration: Make the users phone vibrate
+
+<button class="plugin-button-readme" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-vibration/index.html';">Readme</button>
+<br />
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Battery status: Monitor the available power of a device
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
+<br />
+
+Handle events that are raised when the user battery charge percentage changes or when they plug or unplug their phone from a power outlet.
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Dialogs: Notify users or prompt them to make a decision
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
+<br />
+
+Show dialog boxes that give users information or ask them to make a decision.
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Console: Get reliable console output
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
+<br />
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Device: Get information about the user's device
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
+<br />
+
+Get the model, platform, uuid, version, manufacturer, and serial number of the user's device.
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Whitelist: Restrict your app's access to external domains
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-geolocation';">Readme</button>
+<br />
 
 [ [Go back up](#top) ]
 

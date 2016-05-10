@@ -13,10 +13,13 @@
      ms.author="kirupac"/>
 
 #**Known Issues - iOS**
+
+> **Important**: We no longer maintain this article but if you’re stuck, ask us a question on [Stack using the tag ‘visual-studio-cordova'](http://stackoverflow.com/questions/tagged/visual-studio-cordova). Also, subscribe to our [developer blog](http://microsoft.github.io/vstacoblog/). We regularly post issues and workarounds.
+
 This article covers known issues related to Visual Studio Tools for Apache Cordova 2015 when building or deploying to iOS devices or simulators.
 
 ----------
-##**ITMS-90474, ITMS-90475, and/or ITMS-90339 errors when submitting to the Apple App Store** 
+##**ITMS-90474, ITMS-90475, and/or ITMS-90339 errors when submitting to the Apple App Store**
 When attempting to submit a Cordova app to the App Store created using Xcode 7 with Cordova 5.3.3 and below, you may encounter three errors: ITMS-90474, ITMS-90475, and ITMS-90339. These errors have to do with changes in store acceptance criteria by Apple.  There are two steps to resolve them.
 
 For ITMS-90474 and ITMS-90475, a Cordova community member has published a "cordova-plugin-ipad-multitasking" plugin with a fix.
@@ -25,7 +28,7 @@ http://npmjs.com/package/cordova-plugin-ipad-multitasking
 
 Install this plugin to resolve ITMS-90474, ITMS-90475 in Cordova 5.3.3 and below. Future versions of Cordova will solve this problem.
 
-To resolve ITMS-90339 with Cordova 5.3.3 and below you will need to do the following: 
+To resolve ITMS-90339 with Cordova 5.3.3 and below you will need to do the following:
 
 1.	Grab the build.xcconfig from [the 3.9.x branch of the cordova-ios repo](https://raw.githubusercontent.com/apache/cordova-ios/3.9.x/bin/templates/scripts/cordova/build.xcconfig) and place this under res/native/ios/cordova
 2.	Now remove this line:
@@ -36,7 +39,7 @@ CODE_SIGN_RESOURCE_RULES_PATH = $(SDKROOT)/ResourceRules.plist
 
 Note that you will want to remove this custom build.xcconfig file if you upgrade to the version with the full patch that is forthcoming.  This change will cause problems on future versions of Cordova (specifically cordova-ios 4.0.0 and up).
 
-##**"You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE)" error in Output Window when building with Xcode 7 and certain Cordova plugins** 
+##**"You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE)" error in Output Window when building with Xcode 7 and certain Cordova plugins**
 This is a [minor incompatibility](https://issues.apache.org/jira/browse/CB-9721) with Cordova 5.3.3 below and Xcode 7.  Workaround:
 
 1. Grab the build.xcconfig from [the 3.9.x branch of the cordova-ios repo](https://raw.githubusercontent.com/apache/cordova-ios/3.9.x/bin/templates/scripts/cordova/build.xcconfig) and place this under res/native/ios/cordova
@@ -162,5 +165,5 @@ If a plugin is added to your project, built for iOS, and then removed from the p
 Sometimes, you would see following output in the Visual Studio error pane:
 
     Http 404: Unable to launch app
-     
+
  In some cases, this *may* occur if the app id in the widget element of config.xml (e.g. io.cordova.helloworld) has any non-ascii characters in it, or contains the substring '.app'. This is a known imitation of the iOS platform. To resolve this issue, you should modify the application id not to contain .app in the value or have ascii characters as the app id.
