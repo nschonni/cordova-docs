@@ -33,7 +33,7 @@ A unit testing environment consists of the three components: the runtime, a test
 
 </tr>
 </table>
-
+<p>&nbsp;</p>
 
 With these components in place, it’s now a matter of invoking the test runner at appropriate times and viewing the reports. This can be done manually or as part of an automated build process, and the test runner might be invoked through the command line or through integration with the Visual Studio IDE.
 
