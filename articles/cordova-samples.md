@@ -22,7 +22,7 @@ To open a non-VS Cordova project inside VS, go to 'File > New Project > Add proj
 
 ![Add project from existing code](media/cordova-samples/existing_code.png)
 
-## Samples we made
+## Samples We Made
 
 ### Angular JS To-Do List
 
@@ -32,7 +32,7 @@ The [Angular JS To-Do List sample](https://github.com/Microsoft/cordova-samples/
 
 We have written [a guide to walk you through building the sample](http://taco.visualstudio.com/en-us/docs/create-to-do-list-app/). Feel free to download the [sample off Github](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs) and play around. 
 
-## Examples we like
+## Examples We Like
 
 ### Star Track by Phonegap
 
@@ -41,3 +41,7 @@ We have written [a guide to walk you through building the sample](http://taco.vi
 Star Track is a Cordova app that allows you to search for songs (tracks), preview a list, and star the tracks in your results. It's built using Framework 7, a jQuery-like JavaScript library. It was created by the Phonegap team and [announced on their developer blog April 2016](http://phonegap.com/blog/2016/04/21/introducing-star-track-by-phonegap/).
 
 Play around with their [sample on Github](https://github.com/phonegap/phonegap-app-star-track).
+
+## Suggest Your Own
+
+Working on something cool, or want to recommend a good find? [Let us know.](mailto:vstacodocs@microsoft.com) 
