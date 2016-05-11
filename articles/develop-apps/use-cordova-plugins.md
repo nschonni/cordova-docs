@@ -68,7 +68,7 @@ Check out the [Quick Guide](https://github.com/normesta/cordova-plugin-inappbrow
 ## Camera: Use the device's Camera or file picker in your app
 
 <button class="plugin-button-readme" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-camera/index.html';">Readme</button>
-<button class="plugin-button-guide" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-camera/index.html#sample:-take-pictures-select-pictures-from-the-picture-library-and-get-thumbnails-';">Quick Guide</button>
+<button class="plugin-button-guide" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-camera/index.html#sample">Quick Guide</button>
 <br />
 
 Take pictures, allow the user to choose a file on the device, get thumbnails, and display the pictures or images in your app.
@@ -108,6 +108,15 @@ Upload and download different file types such as text files and binary files, re
 Check out the [Quick Guide](https://github.com/apache/cordova-plugin-file-transfer#sample) to learn how to upload and download files.
 
 ![scan-for-devices](media/use-cordova-plugins/file-transfer-sample.png)
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## Network Information: Respond to network status changes
+
+<button class="plugin-button-readme" onclick="window.location='https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-network-information/index.html';">Readme</button>
+<br />
 
 [ [Go back up](#top) ]
 
