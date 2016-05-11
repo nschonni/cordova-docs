@@ -115,53 +115,6 @@ At times, the custom plugins in the Cordova registry might not meet all your app
 
 If you need to extend your app using a custom plugin, check the plugin registry first and use code that others have already written. If an existing plugin is close to what you need, download it, make improvements, and then submit those changes to the original author. This is a great way of giving back to the Cordova community and making it easier for others to solve similar problems. Install the custom plugin using the configuration designer. When the plugin.xml file is next to the www folder in the project folder tree, the required JavaScript files from the plugin’s www folder will be loaded automatically at runtime. You do not need to reference these files from an HTML file. You can also set breakpoints within these code files if needed. The build process also compiles any platform-specific files in the src folder.
 
-## <a id="List"></a>List of plugins available in the configuration designer
-
-The following plugins are available using the Config Designer:
-
-* **Accelerometer / Device Motion** ([org.apache.cordova.device-motion](http://plugins.cordova.io/#/package/org.apache.cordova.device-motion)) Provides access to a motion sensor that detects changes in movement relative to the device’s orientation.
-
-* **Azure Mobile Services Client** ([com.msopentech.azure-mobile-services](http://plugins.cordova.io/#/package/com.msopentech.azure-mobile-services)) Adds the appropriate Azure Mobile Services client library to your app for each platform, and enables your app to synchronize content with an Azure Mobile Services instance.
-
-* **Battery Status** (Android, iOS, Windows Phone 8) ([org.apache.cordova.battery-status](http://plugins.cordova.io/#/package/org.apache.cordova.battery-status)) Enables your app to handle an event that is raised when the charge that is available in the battery increases or decreases by at least 1 percent, or when the device is connected or disconnected from a power outlet.
-
-* **Camera** ([org.apache.cordova.camera](http://plugins.cordova.io/#/package/org.apache.cordova.camera)) Enables your app to take pictures by using the default camera application of the device.
-
-* **Compass** ([org.apache.cordova.device-orientation](http://plugins.cordova.io/#/package/org.apache.cordova.device-orientation)) Provides access to a sensor that detects the direction or heading of the device based on which way the device is pointed.
-
-* **Connection** ([org.apache.cordova.network-information](http://plugins.cordova.io/#/package/org.apache.cordova.network-information)) Enables your app to determine the network connection state of the device, and the types of networks the device is connected to.
-
-* **Console** ([org.apache.cordova.console](https://github.com/apache/cordova-plugin-console/blob/master/doc/index.md)) Provides a different implementation of console.log (for use as a workaround to console.log issues).
-
-* **Contacts** ([org.apache.cordova.contacts](http://plugins.cordova.io/#/package/org.apache.cordova.contacts)) Provides access to the device’s Contacts database. Your app can find, add, or remove contacts.
-
-* **Device** ([org.apache.cordova.device](http://plugins.cordova.io/#/package/org.apache.cordova.device)) Provides access to information about the hardware and software of the device. For example, this could be the model number or platform of the device.
-
-* **Dialogs / Notifications** ([org.apache.cordova.dialogs](http://plugins.cordova.io/#/package/org.apache.cordova.dialogs)) Enables your app to display dialog boxes.
-
-* **File System** ([org.apache.cordova.file](http://plugins.cordova.io/#/package/org.apache.cordova.file)) Enables your app to read, write, and navigate through the file system of the device.
-
-* **File Transfer** ([org.apache.cordova.file-transfer](http://plugins.cordova.io/#/package/org.apache.cordova.file-transfer)) Enables your app to upload or download files to and from a server.
-
-* **Geolocation** ([org.apache.cordova.geolocation](http://plugins.cordova.io/#/package/org.apache.cordova.geolocation)) Provides information about the device’s location, such as latitude and longitude.
-
-* **Globalization** ([org.apache.cordova.globalization](http://plugins.cordova.io/#/package/org.apache.cordova.globalization)) Enables your app to obtain information about the user’s locale and time zone, and then perform operations that are specific to that locale and time zone.
-
-* **InAppBrowser** ([org.apache.cordova.inappbrowser](http://plugins.cordova.io/#/package/org.apache.cordova.inappbrowser)) Enables your app to host a web browser, and then perform actions in response to browser-related events such as inserting CSS into the browser window when a page loads.
-
-    >**Note:**
-    Currently, attaching the debugger to iOS apps that use the InAppBrowser plugin is not supported. The Azure Mobile Services plugin uses the InAppBrowser plugin and is affected by this limitation.
-
-* **Media** (org.apache.cordova.media) Enables your app to play and record audio files by using the device’s default application.
-
-* **Media Capture** (org.apache.cordova.media-capture) Provides access to the device’s audio, image, and video capture capabilities.
-
-* **Splashscreen** (org.apache.cordova.splashscreen) Enables your app to show and hide its splash screen.
-
-* **Vibration** (org.apache.cordova.vibration) Enables your app to vibrate the device.
-
-* **WebSQL Polyfill** (Windows, Windows Phone 8) (com.msopentech.websql) Enables WebSQL on all platforms by adding WebSQL functionality to your app on Windows and Windows Phone 8.
-
 ![Download the tools](media/configure-app/IC795792.png) [Get the Visual Studio Tools for Apache Cordova](http://aka.ms/mchm38) or [learn more](https://www.visualstudio.com/cordova-vs.aspx)
 
 ## See Also
