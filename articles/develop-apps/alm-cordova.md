@@ -51,9 +51,9 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>
                     <strong>
                       <span>
-                        <a href="https://msdn.microsoft.com/en-us/library/dd286619.aspx">Track work using Visual Studio Team Services or Team Foundation Server</a>
+                        <a href="https://msdn.microsoft.com/library/dd286619.aspx">Agile tools</a>
                       </span>
-                    </strong> (using TFS or Visual Studio Team Services, including Team Explorer Everywhere)</p>
+                    </strong> (using Visual Studio Team Services or TFS, including Team Explorer Everywhere)</p>
                 </td>
                 <td>
                   <p>Manage backlogs and sprints</p>
@@ -102,7 +102,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>
                     <strong>
                       <span>
-                        <a href="https://msdn.microsoft.com/en-us/library/57b85fsc.aspx">Analyze and model your architecture</a>
+                        <a href="https://msdn.microsoft.com/library/57b85fsc.aspx">Analyze and model your architecture</a>
                       </span>
                     </strong>
                   </p>
@@ -114,7 +114,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>No</p>
                 </td>
                 <td rowspan="8">
-                  <p>Most design features rely on .NET and languages like C# and do not work with HTML, CSS, and JavaScript. See <span><a href="https://msdn.microsoft.com/en-us/library/ff183189.aspx#modelingdiagramstools">Modeling Diagram Tools</a></span> for what aspects are related to code.</p>
+                  <p>Most design features rely on .NET and languages like C# and do not work with HTML, CSS, and JavaScript. See <span><a href="https://msdn.microsoft.com/library/ff183189.aspx#modelingdiagramstools">Modeling Diagram Tools</a></span> for what aspects are related to code.</p>
                 </td>
               </tr>
               <tr>
@@ -181,7 +181,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/ms181237.aspx">Use Team Foundation Version Control</a>
+                      <a href="https://msdn.microsoft.com/library/ms181237.aspx">Use Team Foundation Version Control</a>
                     </span>
                   </p>
                 </td>
@@ -198,7 +198,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/hh850437.aspx">Use Visual Studio with Git</a>
+                      <a href="https://msdn.microsoft.com/library/hh850437.aspx">Getting started with Git in Team Services</a>
                     </span>
                   </p>
                 </td>
@@ -226,7 +226,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/dn269218.aspx">Find code changes and other history with CodeLens</a>
+                      <a href="https://msdn.microsoft.com/library/dn269218.aspx">Find code changes and other history with CodeLens</a>
                     </span>
                   </p>
                 </td>
@@ -241,7 +241,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/jj739835.aspx">Use code maps to debug your applications</a>
+                      <a href="https://msdn.microsoft.com/library/jj739835.aspx">Use code maps to debug your applications</a>
                     </span>
                   </p>
                 </td>
@@ -257,7 +257,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>
                     <strong>
                       <span>
-                        <a href="https://msdn.microsoft.com/en-us/library/ms181709.aspx">Build the application</a>
+                        <a href="https://msdn.microsoft.com/library/ms181709.aspx">Build the application</a>
                       </span>
                     </strong>
                   </p>
@@ -299,7 +299,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>Yes</p>
                 </td>
                 <td>
-                  <p>See <a href="http://go.microsoft.com/fwlink/?LinkID=691186">Using Tools for Apache Cordova Apps with VS Team Services and TFS 2015</a>. Also see <a href="http://listofsoftwareontfshostedbuildserver.azurewebsites.net/">Software on the Hosted Build Server</a> for the list of software installed on the hosted controller.</p>
+                  <p>See <a href="http://go.microsoft.com/fwlink/?LinkID=691186">Using Tools for Apache Cordova Apps with VS Team Services and TFS 2015</a>.</p>
                 </td>
               </tr>
               <tr>
@@ -349,7 +349,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>
                     <strong>
                       <span>
-                        <a href="https://msdn.microsoft.com/en-us/library/ms182409.aspx">Testing the application</a>
+                        <a href="https://msdn.microsoft.com/library/ms182409.aspx">Testing the application</a>
                       </span>
                     </strong>
                   </p>
@@ -413,24 +413,14 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>Yes, with third-party frameworks</p>
                 </td>
                 <td>
-                  <p>Recommendations are:</p>
-                  <ol>
-                    <li>
-                      <p>
-                        <a href="https://github.com/mmanela/chutzpah">Chutzpah test runner</a>: works well with Visual Studio Test Explorer and unit test frameworks such as QUnit, Jasmine, Mocha, CoffeeScript, and TypeScript. Runs test through PhantomJS allowing you to easily run tests during the development cycle.</p>
-                    </li>
-                    <li>
-                      <p>
-                        <a href="http://karma-runner.github.io">Karma test runner</a>: supports running tests within most environments (emulators, remote devices, browsers, etc.) and therefore provides a more comprehensive test runner than Chutzpah. Integration with Visual Studio can be accomplished with the <a href="https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708">Task Runner Explorer extension</a> and Gulp/Grunt.</p>
-                    </li>
-                  </ol>
+                  <p>See <a href="../test/unit-test-01-primer.md">Author and run tests</a>.</p>                  
                 </td>
               </tr>
               <tr>
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/dd286726.aspx">Use UI Automation To Test Your Code</a>
+                      <a href="https://msdn.microsoft.com/library/dd286726.aspx">Use UI Automation To Test Your Code</a>
                     </span>
                   </p>
                 </td>
@@ -452,7 +442,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/dd264939.aspx">Analyzing Managed Code Quality by Using Code Analysis</a>
+                      <a href="https://msdn.microsoft.com/library/dd264939.aspx">Analyzing Managed Code Quality by Using Code Analysis</a>
                     </span>
                   </p>
                 </td>
@@ -467,7 +457,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/hh205279.aspx">Finding Duplicate Code by using Code Clone Detection</a>
+                      <a href="https://msdn.microsoft.com/library/hh205279.aspx">Finding Duplicate Code by using Code Clone Detection</a>
                     </span>
                   </p>
                 </td>
@@ -479,7 +469,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/bb385910.aspx">Measuring Complexity and Maintainability of Managed Code</a>
+                      <a href="https://msdn.microsoft.com/library/bb385910.aspx">Measuring Complexity and Maintainability of Managed Code</a>
                     </span>
                   </p>
                 </td>
@@ -491,7 +481,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                 <td>
                   <p>
                     <span>
-                      <a href="https://msdn.microsoft.com/en-us/library/z9z62c29.aspx">Using Profiling Tools</a>
+                      <a href="https://msdn.microsoft.com/library/z9z62c29.aspx">Using Profiling Tools</a>
                     </span> (includes CPU Usage, Energy Consumption, GPU Usage, HTML UI Responsiveness, and JavaScript Memory, and Memory Usage)</p>
                 </td>
                 <td>
@@ -507,7 +497,7 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>
                     <strong>
                       <span>
-                        <a href="https://msdn.microsoft.com/en-us/library/dn217874.aspx">Automate deployments with Release Management</a>
+                        <a href="https://msdn.microsoft.com/library/dn217874.aspx">Automate deployments with Release Management</a>
                       </span>
                     </strong>
                   </p>
@@ -542,28 +532,28 @@ The table below identifies which Visual Studio ALM features you can expect to wo
                   <p>Upload to app store</p>
                 </td>
                 <td>
-                  <p>n/a</p>
+                  <p>Partial</p>
                 </td>
                 <td>
-                  <p>Store submissions always involve manual processes that are unique to each marketplace. See <a href="../package-and-publish/package-app-built-with-visual-studio.md">Package and Publish your Cordova Applications</a></p>
+                  <p>See <a href="../tutorial-package-publish/tutorial-package-publish-readme.md">Package your Cordova app</a>. Also note that extensions are available that can automate this process for some app stores. See <a href="https://marketplace.visualstudio.com/VSTS">Extensions for Visual Studio Team Services</a>, especially the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vsclient.google-play">extension for Google Play</a>.</p>
                 </td>
               </tr>
               <tr>
                 <td>
                   <p>
                     <strong>
-                      <a href="http://azure.microsoft.com/en-us/documentation/articles/app-insights-get-started/">Monitor with Application Insights</a>
+                      <a href="https://www.hockeyapp.net/features/">Monitor with HockeyApp</a>
                     </strong>
                   </p>
                 </td>
                 <td>
-                  <p>Logging using SDKs (analysis happens on the Azure portal)</p>
+                  <p>Crash analytics, telemetry, and beta distribution</p>
                 </td>
                 <td>
                   <p>Yes</p>
                 </td>
                 <td>
-                  <p>Use the client-side web app script with one change; for details, see <a href="http://azure.microsoft.com/en-us/documentation/articles/app-insights-platforms/#cordova">App Insights Platforms</a> (Azure documentation).</p>
+                  <p></p>
                 </td>
               </tr>
             </tbody></table>
