@@ -6,6 +6,9 @@
 
 
 #Using the Chutzpah test runner with a Cordova App project
+
+> The sample for this and the next topic is [chutzpah-jasmine-vs](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/chutzpah-jasmine-VS) in the cordova-samples repository on GitHub. 
+ 
 For this section you’ll need to have the Visual Studio Tools for Apache Cordova installed. If necessary, restart Visual Studio’s installer, press **Modify**, check the box for **Cross-Platform Mobile Development > HTML/JavaScript (Apache Cordova)**, and press **Update**.
 
 Now create a new project and pull in the unit and unit test code from the [Basic Testing topic](unit-test-03-basic-testing.md):

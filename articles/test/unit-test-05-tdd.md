@@ -5,6 +5,9 @@
   authors="Kraig Brockschmidt" />
 
 #Improving the unit tests: an introduction to test-driven development
+
+> The full sample for this topic is [chutzpah-jasmine-vs](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/chutzpah-jasmine-VS) in the cordova-samples repository on GitHub.
+ 
 The previous topics in this section verified the mechanics of identifying and running a single test. It should be obvious, however, that the ```normalizeData``` function and the one test we’ve written are woefully inadequate:
 
 - ```normalizeData``` will fail if we give it bad JSON (such that ```JSON.parse``` fails) or any number of variations that don’t contain both ```Name``` and ```PersonalIdentifier``` properties (such that dereferencing either property fails).
@@ -111,7 +114,7 @@ In writing this example, in fact, I probably spent a total of 15 minutes thinkin
 
 Having identified the inputs, we next map each case to expected outputs in the form of a test, and give each test a name at the same time. Using a simple template that we can paste into ```normalize_tests.js``` for each of the thirty tests cases, we can then copy-paste the inputs into the tests and add tests for the expected outputs.
 
-Here are some of the tests (using Jasmine for the framework, so all of these would be inside a ```describe``` method):
+Some of the tests are below (using Jasmine for the framework, so all of these would be inside a ```describe``` method). For the full suite, see the [chutzpah-jasmine-vs](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/chutzpah-jasmine-VS) sample on GitHub.
 
 ```javascript
 it("accepts golden path data", function () {
