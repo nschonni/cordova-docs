@@ -16,6 +16,8 @@
 # Get started with Ionic apps in Visual Studio
 [Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps.
 
+> If you want to use Ionic 2 (still in beta) check out [this blog post](https://blogs.msdn.microsoft.com/rido/2016/05/11/ionic2-and-visual-studio/)
+
 ## Get the Ionic templates! <a name="getTemplates"></a>
 
 You can install the Ionic starter templates in Visual Studio and use them to start building an app.
