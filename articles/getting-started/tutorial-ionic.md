@@ -361,7 +361,7 @@ If you manually imported the Ionic project, you will need to make some changes t
 
 Watch a video showing how to find and run the Ionic templates.
 
-<a href="https://www.youtube.com/watch?v=sFcADT59sqQ" title="Get started with Ionic video">![Watch the Ionic video](media/tutorial-ionic/video-ionic.png)
+<a href="https://www.youtube.com/watch?v=sFcADT59sqQ" title="Get started with Ionic">![Get started with Ionic](media/tutorial-ionic/video-ionic.png)
 
 ## What's Next?
 
