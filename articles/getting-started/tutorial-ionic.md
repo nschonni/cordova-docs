@@ -357,6 +357,12 @@ If you manually imported the Ionic project, you will need to make some changes t
 
 [Other issues?](#other)
 
+## Video
+
+Watch a video showing how to find and run the Ionic templates.
+
+<a href="https://www.youtube.com/watch?v=sFcADT59sqQ" title="Get started with Ionic video">![Watch the Ionic video](media/tutorial-ionic/video-ionic.png)
+
 ## What's Next?
 
 You can use Visual Studio's build and [debug tools](../debug-and-test/debug-using-visual-studio.md), use the configuration manager to easily [add device plugins](../develop-apps/manage-plugins.md) to your app to get up and running quick. To learn more about Ionic, see the Ionic framework docs.
