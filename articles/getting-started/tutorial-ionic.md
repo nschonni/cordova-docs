@@ -13,10 +13,14 @@
      ms.date="12/01/2015"
      ms.author="mikejo"/>
 
-# Get started with Ionic apps in Visual Studio
+# Get started with Ionic apps in Visual Studio <a name="video"></a>
 [Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps.
 
 > If you want to use Ionic 2 (still in beta) check out [this blog post](https://blogs.msdn.microsoft.com/rido/2016/05/11/ionic2-and-visual-studio/)
+
+Watch a video showing how to find and run the Ionic templates.
+
+<a href="https://www.youtube.com/watch?v=sFcADT59sqQ" title="Get started with Ionic">![Get started with Ionic](media/tutorial-ionic/video-ionic.png)
 
 ## Get the Ionic templates! <a name="getTemplates"></a>
 
@@ -356,12 +360,6 @@ If you manually imported the Ionic project, you will need to make some changes t
 [Unhandled exception running on Windows?](#unhandled)
 
 [Other issues?](#other)
-
-## Video
-
-Watch a video showing how to find and run the Ionic templates.
-
-<a href="https://www.youtube.com/watch?v=sFcADT59sqQ" title="Get started with Ionic video">![Watch the Ionic video](media/tutorial-ionic/video-ionic.png)
 
 ## What's Next?
 
