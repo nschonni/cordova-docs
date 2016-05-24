@@ -20,7 +20,7 @@
 
 Watch a video showing how to find and run the Ionic templates.
 
-<a href="https://www.youtube.com/watch?v=ZxN55UHD_pY" title="Get started with Ionic">![Get started with Ionic](media/tutorial-ionic/video-ionic.png)
+<a href="https://www.youtube.com/watch?v=ZxN55UHD_pY" class="video" title="Get started with Ionic">![Get started with Ionic](media/tutorial-ionic/video-ionic.png)
 
 ## Get the Ionic templates! <a name="getTemplates"></a>
 
