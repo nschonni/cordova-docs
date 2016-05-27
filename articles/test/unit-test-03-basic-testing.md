@@ -8,6 +8,8 @@
 
 Following on the [Primer](unit-test-01-primer.md) and [Unit testing environments](unit-test-02-environments.md), Let’s now follow a piece of code and an associated unit test through the process. For this exercise, create a folder with two subfolders, ```js``` and ```test```, where we’ll save the files involved.
 
+> The sample code for this topic is [karma-jasmine-cli](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/karma-jasmine-cli) and [karma-jasmine-gulp-VS](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/karma-jasmine-gulp-VS) in the cordova-samples repository on GitHub. There is also a simple variant using QUnit, [karma-qunit-cli](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/karma-qunit-cli).
+
 ##The unit
 First, the unit is a simple function to convert a piece of JSON with one set of properties into an object with different properties. Save this code to ```js/normalize.js```:
 
@@ -66,7 +68,6 @@ Notice how this individual unit test is **specific**: it calls the unit under te
 
 Although it will seem tedious to keep every test isolated—which means you might have dozens of unit tests for one code unit!—it saves you time in the end. If you attempt to combine a bunch of cases into a single unit test, and that test fails, you’ll not immediately know which specific case failed. You’d then have to step through *every* case of that test in the debugger, and, finding that process to be too tedious and time-consuming, you’ll end up breaking out every  case into its own individual unit test anyway. It’s best, then, to just write specific unit tests from the get-go that each handle one and only one test case. As we’ll see later on, thinking through test cases and then turning those into actual unit tests need not take a long time, so don’t let the idea that writing a bunch of tests for one unit will be tedious and time-consuming.
 
-
 ##The test runner
 With the unit and unit test in hand, we now need a test runner that knows how to execute Jasmine tests and report results. For this first exercise, we’ll run tests on the command line using Karma, which you’ll need to install along with Jasmine as follows:
 
@@ -104,6 +105,8 @@ With the unit and unit test in hand, we now need a test runner that knows how to
 	3.	For the browser, select whichever you have installed. Note that browser names in the configuration file are case-sensitive, for example ```Chrome```, ```IE```, or ```Firefox```, whereas in their related npm package names they're lower case.
 	4.	Accept the defaults for everything else. 
 
+Again, see [karma-jasmine-cli](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/karma-jasmine-cli) for the full sample code including a configuration file.
+
 ##Running the tests from the command line
 Now you can run the tests from the command line:
 
@@ -118,6 +121,8 @@ You’ll see the browser—a suitable JavaScript runtime—launch to run the tes
 ##Command-line test runners in Visual Studio
 
 At this point we have all the mechanics in place to run Jasmine unit tests with the Karma test runner from the command line. The ```karma``` command above can be easily run from within a longer build process defined with task runners like Grunt and gulp, including a build process for a Cordova app. See [Automate tasks for your Cordova project using gulp](tutorial-gulp-readme.md) for details. Here, we'll just walk through how to integrate a Karma test run with Visual Studio using gulp. 
+
+The Visual Studio that contains the code for this section can be found on [karma-jasmine-gulp-VS](https://github.com/Microsoft/cordova-samples/tree/master/unit-testing/karma-jasmine-gulp-VS).
 
 >**Note**: If you'd prefer instead to use a test runner like Chutzpah that integrates with the Visual Studio Test Explorer, feel free to skip this section and continue with [Use Chutzpah in Visual Studio](unit-test-04-chutzpah.md).
 
