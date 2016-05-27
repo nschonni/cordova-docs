@@ -6,7 +6,7 @@
    documentationCenter=""
    authors="sureshja"
    tags=""/>
-<tags
+<tags ms.technology="cordova" s.product="Visual Studio 2015"
    ms.service="na"
    ms.devlang="javascript"
    ms.topic="article"
