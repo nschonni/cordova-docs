@@ -3,7 +3,7 @@
   services=""
   documentationCenter=""
   authors="rido-min" />
-  <tags ms.technology="cordova" s.product="Visual Studio 2015"
+  <tags ms.technology="cordova" ms.product="Visual Studio 2015"
      ms.service="na"
      ms.devlang="javascript"
      ms.topic="article"
@@ -37,7 +37,7 @@ Moreover, when plugins are added without updating the config.xml file, VS now re
 
 ### A "global" Cordova version
 
-To address product breaks because of mismatches in NodeJS versioning, we created a global installed version of Cordova, which includes proper Node versioning. 
+To addresms.product breaks because of mismatches in NodeJS versioning, we created a global installed version of Cordova, which includes proper Node versioning. 
 
 ![Global Cordova Version](media/release-update-5/global-cdva-version.png)
 
