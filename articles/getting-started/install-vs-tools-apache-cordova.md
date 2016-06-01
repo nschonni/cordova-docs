@@ -36,13 +36,13 @@ If you've already installed Visual Studio, just modify it to include the tools.
 
 1.	Open **Control Panel** -> **Programs and Features**, choose the **Visual Studio 2015** item, and then choose the **Change** button.
 
-    ![Modify Visual Studio Setup](media/get-started-first-mobile-app/modify-setup-2.png)
+    ![Modify Visual Studio Setup](media/install-vs-tools-apache-cordova/modify-setup-2.png)
 
 2.	In the setup wizard for Visual Studio, choose the **Modify** button.
 
 3. In the list of optional features to install, select the **HTML/JavaScript (Apache Cordova)** checkbox, choose the **Next** button, and then choose the **Update** button.
 
-    ![Choose Apache Corodova components](media/get-started-first-mobile-app/modify-setup.png)
+    ![Choose Apache Corodova components](media/install-vs-tools-apache-cordova/modify-setup.png)
 
     Visual Studio installs all of the third-party components that you need to build your app. To see a list of these components or exclude any of them, see this [section](#choose). For most folks, this isn't necessary.
 
