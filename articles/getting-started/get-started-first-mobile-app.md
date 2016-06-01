@@ -123,6 +123,8 @@ This folder contains icons, splash screens, signing certificates and any other p
     ![Ripple Emulator](media/get-started-first-mobile-app/ripple-start.png)
 
     Your app opens in Apache Ripple and it looks like this because we haven't added any code yet.
+    
+    > **NOTE:** There will already be some errors on the JavaScript console, such as failure to load favicon.ico, ripple.js and ajax-loader.gif. But these are not neccessary to continue developing in Ripple. 
 
     ![Ripple Emulator](media/get-started-first-mobile-app/blank-app.png)
 
@@ -640,7 +642,7 @@ This is where the **merges** folder becomes useful. We touched on that folder ea
 
 6. Run your app in the Apache Ripple Simulator.
 
-    The app now has the title **Android Weather** because the **index.js** file in the **android** folder replaces the **index.js** file in the **www** folder for the Android version of your app.
+    The app now has the title **Android Weather** because the **weather.js** file in the **android** folder replaces the **weather.js** file in the **www** folder for the Android version of your app.
 
     ![Tailor the behavior](media/get-started-first-mobile-app/tailor-js.png)
 
