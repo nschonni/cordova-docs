@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="[github name]"
    tags=""/>
-<tags ms.technology="cordova" ms.product="Visual Studio 2015"
+<tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
    ms.devlang="javascript"
    ms.topic="article"
