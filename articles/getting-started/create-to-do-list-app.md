@@ -20,7 +20,7 @@ In this tutorial, you’ll learn how to create a task list sample app using Angu
 >**Note**:
 For an overview of tasks required to build a Cordova app, see [Create Your First App Using Visual Studio Tools for Apache Cordova](create-first-app-using-vs-tools-apache-cordova.md).
 
-The todo list sample app is available for multiple frameworks, and can be downloaded here:
+The complete todo list sample app can be downloaded here:
 
 * [AngularJS sample](http://go.microsoft.com/fwlink/p/?LinkID=398516)
 
@@ -33,13 +33,17 @@ Before you can create a new project, make sure that you’ve met all system requ
 If want to skip right to the complete sample and run it, get it by downloading the Cordova samples [here](https://github.com/Microsoft/cordova-samples/). Get the samples by choosing the **Clone or download** button on this page.
 
 A few things to know before you run the app:
+
 * By default, the sample will use HTML5 Web storage (local storage) for todo list items.
 * To store todo list items on Azure (optional), you need to [set up a SQL database](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/) using the Azure portal. When you have set up the Azure database, update the AngularJS ToDo List app:
+
     1. In azureStorage.js, include the Azure Mobile Apps URL where instructed by code comments.
     2.  In index.html, update the following URL in the Content-Security-Policy `<meta>` element to match your Mobile Apps URL: http://youraddress.azurewebsites.net
+
 * To use Bing maps (optional), [get a Bing Maps key](https://msdn.microsoft.com/library/ff428642.aspx) and include it where instructed in maps.js.
 
 To run the complete sample:
+
 1. If you downloaded the .zip file (instead of cloning), make sure you unzip the files.
 2. Open the project file (.sln file) in Visual Studio.
 3. At the top of Visual Studio, select a platform like **Android** and a target device like **Ripple - Nexus (Galaxy)**.
@@ -80,10 +84,15 @@ When you first run the app, some of the attributes in the preceding code won’t
 ```html
 <div class="templateWrapper" ng-repeat="toDoItem in toDoCtrl.todos">
   <div class="templateContainer">
-    <input class="templateTitle" ng-class="{crossedOut: toDoItem.done}" type="text" td-text-change="toDoCtrl.changeToDoText(toDoItem)" ng-model="toDoItem.text" />
+    <input class="templateTitle" ng-class="{crossedOut: toDoItem.done}"
+      type="text" td-text-change="toDoCtrl.changeToDoText(toDoItem)"
+      ng-model="toDoItem.text" />
     <h3 class="templateAddress">{{toDoItem.address}}</h3>
-    <button class="templateLeft templateToggle" ng-class="{'checked': toDoItem.done, 'unchecked': !toDoItem.done}" ng-mousedown="toDoCtrl.toggleToDoDone(toDoItem)"></button>
-    <button class="templateLeft templateRemove" ng-click="toDoCtrl.removeToDo(toDoItem, $index)"></button>
+    <button class="templateLeft templateToggle"
+      ng-class="{'checked': toDoItem.done, 'unchecked': !toDoItem.done}"
+      ng-mousedown="toDoCtrl.toggleToDoDone(toDoItem)"></button>
+    <button class="templateLeft templateRemove"
+      ng-click="toDoCtrl.removeToDo(toDoItem, $index)"></button>
   </div>
   <div class="templateBorder"></div>
 </div>
