@@ -64,7 +64,7 @@ If you see any unexpected errors when trying to run the app, see these [troubles
 
 ## <a id="Create"></a>Create the AngularJS ToDoList app from scratch with a new project
 
-Create a new Cordova project in Visual Studio by following the steps described in [Create Your First App Using Visual Studio Tools for Apache Cordova](create-first-app-using-vs-tools-apache-cordova.md). Alternatively, start with a new blank app by choosing **File**, **New**, and then **Project** in Visual Studio. In the **New Project** dialog box, choose **Installed**, **Templates**, **JavaScript**, **Apache Cordova Apps**, and then choose the **Blank App** template.
+Create a new Cordova project in Visual Studio by choosing **File**, **New**, and then **Project** in Visual Studio. In the **New Project** dialog box, choose **Installed**, **Templates**, **JavaScript**, **Apache Cordova Apps**, and then choose the **Blank App** template.
 
 ## <a id="UI"></a>Create the UI
 
@@ -107,13 +107,17 @@ element (templateContainer) and its child elements to the DOM for each stored to
 Now, we will add the complete markup for index.html.
 
 ### Add markup for the list
+
 * Open index.html, and replace the `<head>` and `<body>` element with the following code.
 
 ```html
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://offlinedata-cordova.azurewebsites.net http://dev.virtualearth.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+	<meta name="viewport" content="width=device-width,
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:
+    gap: http://offlinedata-cordova.azurewebsites.net http://dev.virtualearth.net https://ssl.gstatic.com
+    'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 	<title>CordovaToDoApp_AngularJS</title>
 
 	<link href="css/index.css" rel="stylesheet" />
@@ -122,16 +126,21 @@ Now, we will add the complete markup for index.html.
 	<section id="todoapp" ng-controller="ToDoCtrl as toDoCtrl">
 		<header id="header">
 			<div id="headerBand"></div>
-			<input id="new-todo" placeholder="What needs to be done?" td-text-change="toDoCtrl.addToDo()" ng-model="toDoCtrl.newToDoText" autofocus>
+			<input id="new-todo" placeholder="What needs to be done?"
+        td-text-change="toDoCtrl.addToDo()" ng-model="toDoCtrl.newToDoText" autofocus>
 		</header>
 		<section id="main">
 			<div id="todo-list">
 				<div class="templateWrapper" ng-repeat="toDoItem in toDoCtrl.todos">
 					<div class="templateContainer">
-						<input class="templateTitle" ng-class="{crossedOut: toDoItem.done}" type="text" td-text-change="toDoCtrl.changeToDoText(toDoItem)" ng-model="toDoItem.text" />
+						<input class="templateTitle" ng-class="{crossedOut: toDoItem.done}"
+              type="text" td-text-change="toDoCtrl.changeToDoText(toDoItem)" ng-model="toDoItem.text" />
 						<h3 class="templateAddress">{{toDoItem.address}}</h3>
-						<button class="templateLeft templateToggle" ng-class="{'checked': toDoItem.done, 'unchecked': !toDoItem.done}" ng-mousedown="toDoCtrl.toggleToDoDone(toDoItem)"></button>
-						<button class="templateLeft templateRemove" ng-click="toDoCtrl.removeToDo(toDoItem, $index)"></button>
+						<button class="templateLeft templateToggle"
+              ng-class="{'checked': toDoItem.done, 'unchecked': !toDoItem.done}"
+              ng-mousedown="toDoCtrl.toggleToDoDone(toDoItem)"></button>
+						<button class="templateLeft templateRemove"
+              ng-click="toDoCtrl.removeToDo(toDoItem, $index)"></button>
 					</div>
 					<div class="templateBorder"></div>
 				</div>
@@ -162,22 +171,22 @@ Now, we will add the complete markup for index.html.
 
 * In the css folder, open index.css, and add CSS style information for HTML elements and templates. It is a long section of code, so [get the current CSS code](https://github.com/Microsoft/cordova-samples/blob/master/todo-angularjs/AngularJSTodoApp/www/css/index.css) from the complete sample and paste it into index.css.
 
-You can take a look at the empty todo list in one of the emulators to verify that everything looks correct. In this step, you’ll run the AngularJSToDo list app on either Windows or on the Apache Ripple simulator, which have minimal setup requirements (although Ripple requires Chrome). If you prefer to test your app on another target, see the following topics: [Run your app on Android](../develop-apps/run-app-apache.md), [Run your app on iOS](../develop-apps/run-app-ios.md), and [Run your app on Windows Phone](../develop-apps/run-app-windows-phone.md).
+You can take a look at the empty todo list in one of the emulators to verify that everything looks correct. In this step, you’ll run the AngularJSToDo list app on either Windows or on the Apache Ripple simulator, which have minimal setup requirements (although Ripple requires Chrome). If you prefer to test your app on another target, see the following topics: [Run your app on Android](../develop-apps/run-app-apache.md), [iOS Setup Guide](setup-guide.md), and [Run your app on Windows Phone](../develop-apps/run-app-windows-phone.md).
 
 ### To build and run the app
 
 1. Open fetch.json and add the following entry if it's missing (you might need to add a comma before this code to get valid JSON).
 
-```javascript
-"cordova-plugin-compat": {
-    "source": {
-        "type": "registry",
-        "id": "cordova-plugin-compat"
+    ```javascript
+    "cordova-plugin-compat": {
+      "source": {
+      "type": "registry",
+      "id": "cordova-plugin-compat"
     },
-    "is_top_level": false,
-    "variables": {}
-}
-```
+      "is_top_level": false,
+      "variables": {}
+    }
+    ```
 
 2. Choose **Windows-x64**, **Windows-x86**, or **Android** from the Solution Platforms list.
 
@@ -203,7 +212,7 @@ Now that you’ve verified your setup, you can create the AngularJSToDo app. The
 
 ### To add AngularJS to your project
 
-1. From the [AngularJS website](https://angularjs.org/), choose **Download**. In the **Download AngularJS** dialog box, make sure that the minified 1.2.x version of AngularJS is selected (this is the current version we tested), and then choose **Download** to save the angular.min.js script to your computer.
+1. From the [AngularJS website](https://angularjs.org/), choose **Download**. In the **Download AngularJS** dialog box, make sure that the minified 1.2.x version of AngularJS is selected (more recent versions should work, but this is the current version we tested), and then choose **Download** to save the angular.min.js script to your computer.
 
 2. In the **Download AngularJS** dialog box, choose **Browse additional modules**, and download angular-resource.min.js.
 
@@ -775,7 +784,7 @@ The complete sample includes additional code to store and retrieve todo list ite
 
 3. Copy MobileServices.Web.js from the plugins/cordova-plugin-ms-azure-mobile-apps/www folder to the www/scripts folder (same location as index.js).
 
-    By manually including the Azure service code in your app, you can load this code early (before the deviceReady function is activated).
+    By manually including the Azure service code in your app, you can run this code early (before the Cordova deviceReady event handler gets called).
 
 4. Use the configuration designer to remove the Azure plugin.
 
@@ -790,17 +799,17 @@ The complete sample includes additional code to store and retrieve todo list ite
 
 5. Update the Cordova references in index.html to include a reference to MobileServices.Web.js. Put the script reference after the cordova.js reference, like this.
 
-```html
-<!-- Cordova reference, this is added to your app when it's built. -->
-<script src="cordova.js"></script>
-<script src="scripts/platformOverrides.js"></script>
+    ```html
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
 
-<!--azure mobile services script-->
-<script src='scripts/MobileServices.Web.js'></script>
+    <!--azure mobile services script-->
+    <script src='scripts/MobileServices.Web.js'></script>
 
-<!-- Initialize all the modules -->
-<script src="scripts/index.js"></script>
-```
+    <!-- Initialize all the modules -->
+    <script src="scripts/index.js"></script>
+    ```
 
 5. In storage.js, uncomment the following lines of code to allow use of Azure as the storage service.
 
