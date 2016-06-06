@@ -28,9 +28,17 @@ To open a non-VS Cordova project inside VS, go to 'File > New Project > Add proj
 
 ![ToDoList in Angular](media/cordova-samples/angulartodo.png)
 
-The [Angular JS To-Do List sample](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs) is your standard todo list app--so you can add tasks, check them off, and remove them. It features data persistence (both through local storage and through Azure Mobile Services) and optionally consumes the Bing Maps service.
+The [Angular JS To-Do List sample](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs) is your standard todo list app--so you can add tasks, check them off, and remove them. It features data persistence (both through local storage and through the Azure Mobile Apps plugin) and optionally consumes the Bing Maps service.
 
-We have written [a guide to walk you through building the sample](http://taco.visualstudio.com/en-us/docs/create-to-do-list-app/). Feel free to download the [sample off Github](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs) and play around. 
+We have also written [a guide to walk you through building the sample](http://taco.visualstudio.com/en-us/docs/create-to-do-list-app/). Feel free to download the [sample off Github](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs) and play around. 
+
+### Cordova Plugins Sampler
+
+![Cordova Plugins Sampler](media/cordova-samples/plugin-sample.png)
+
+The [Cordova Plugins Sampler](https://github.com/ryanjsalva/cordova-simulate-tests) is authored by Cordova expert and longtime Visual Studio engineer Ryan Salva ([@ryansalva](https://twitter.com/ryanjsalva)). Sample this supreme sampling of samples and learn how to use plugins from Battery to Camera to Contacts and more. 
+
+Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsalva/cordova-simulate-tests) and play around. 
 
 ## Examples We Like
 
