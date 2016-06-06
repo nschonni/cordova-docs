@@ -38,7 +38,7 @@ We have also written [a guide to walk you through building the sample](http://ta
 
 The [Cordova Plugins Sampler](https://github.com/ryanjsalva/cordova-simulate-tests) is authored by Cordova expert and longtime Visual Studio engineer Ryan Salva ([@ryansalva](https://twitter.com/ryanjsalva)). Sample this supreme sampling of samples and learn how to use plugins from Battery to Camera to Contacts and more. 
 
-Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsalva/cordova-simulate-tests) and play around. 
+Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsalva/cordova-simulate-tests) and play around. Open this project by following the instructions [here]](#how-to-open-a-cordova-project-in-vs/).
 
 ## Examples We Like
 
@@ -46,9 +46,9 @@ Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsal
 
 ![Star Track by Phonegap](media/cordova-samples/startrack.png)
 
-Star Track is a Cordova app that allows you to search for songs (tracks), preview a list, and star the tracks in your results. It's built using Framework 7, a jQuery-like JavaScript library. It was created by the Phonegap team and [announced on their developer blog April 2016](http://phonegap.com/blog/2016/04/21/introducing-star-track-by-phonegap/).
+Star Track is a Cordova app that allows you to search for songs (tracks), preview a list, and star the tracks in your results. It's built using Framework 7, a jQuery-like JavaScript library. It was created by the Phonegap team and [announced on their developer blog April 2016](http://phonegap.com/blog/2016/04/21/introducing-star-track-by-phonegap/). 
 
-Play around with their [sample on Github](https://github.com/phonegap/phonegap-app-star-track).
+Play around with their [sample on Github](https://github.com/phonegap/phonegap-app-star-track). Open this project by following the instructions [here]](#how-to-open-a-cordova-project-in-vs/).
 
 ## Suggest Your Own
 
