@@ -22,7 +22,7 @@ To open a non-VS Cordova project inside VS, go to 'File > New Project > Add proj
 
 ![Add project from existing code](media/cordova-samples/existing_code.png)
 
-Or, skip the hassle and VS-ify your project from this handy npm package created by TACO engineer Ricardo Minguez Pablos, [Open Cordova Project in Existing Folder](https://www.npmjs.com/package/ocpief). 
+Or, skip the hassle and VS-ify your project from this handy npm package created by TACO engineer Ricardo Minguez Pablos, [Open Cordova Project in Existing Folder](https://www.npmjs.com/package/ocpief). Just install it via npm, and in ```ocpief``` into the command prompt at the root of your Cordova folder. 
 
 ## Samples We Made
 
