@@ -22,6 +22,8 @@ To open a non-VS Cordova project inside VS, go to 'File > New Project > Add proj
 
 ![Add project from existing code](media/cordova-samples/existing_code.png)
 
+Or, skip the hassle and VS-ify your project from this handy npm package created by TACO engineer Ricardo Minguez Pablos, [Open Cordova Project in Existing Folder](https://www.npmjs.com/package/ocpief). 
+
 ## Samples We Made
 
 ### Angular JS To-Do List
@@ -38,7 +40,7 @@ We have also written [a guide to walk you through building the sample](http://ta
 
 The [Cordova Plugins Sampler](https://github.com/ryanjsalva/cordova-simulate-tests) is authored by Cordova expert and longtime Visual Studio engineer Ryan Salva ([@ryansalva](https://twitter.com/ryanjsalva)). Sample this supreme sampling of plugin samples and learn how to use plugins from Battery to Camera to Contacts and more. 
 
-Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsalva/cordova-simulate-tests) and play around. Open this project by following the instructions [here]](#how-to-open-a-cordova-project-in-vs/).
+Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsalva/cordova-simulate-tests) and play around. Open this project by following the instructions [here](#how-to-open-a-cordova-project-in-vs/).
 
 ## Examples We Like
 
