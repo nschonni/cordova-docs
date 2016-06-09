@@ -520,9 +520,9 @@ You can find some of the more commonly used plug-ins in the **Core** page of the
 
 ![Configuration Designer](media/get-started-first-mobile-app/core-plugins.png)
 
-Use the **Custom** page to add plugins that are not one of the [core plugins](../develop-apps/use-cordova-plugins.md). These could be standard Cordova plugins available on npm (Cordova 5.x or greater), or plugins that you or a colleague create for some specific purpose and then save to your local drive or to a GitHub repository.  [This document](../develop-apps/manage-plugins.md/#Custom) explains how to add a custom plugin.
+Use the **Custom** page to add plugins that are not one of the [core plugins](../develop-apps/use-cordova-plugins.md). These could be standard Cordova plugins available on npm (Cordova 5.x or greater), or plugins that you or a colleague create for some specific purpose and then save to your local drive or to a GitHub repository.  [This document](../develop-apps/manage-plugins.md#Custom) explains how to add a custom plugin.
 
-If you need to use a specific version of a plugin, you can add a plugin by editing the config.xml file directly. You can find guidance about how to do that  [here](../develop-apps/manage-plugins.md/#AddOther).
+If you need to use a specific version of a plugin, you can add a plugin by editing the config.xml file directly. You can find guidance about how to do that  [here](../develop-apps/manage-plugins.md#AddOther).
 
 Let's add a plug-in that gives us access to the device's geolocation system. That way, we can get the weather of a user's current location.
 
@@ -742,7 +742,7 @@ Here are a few ideas about what you can explore next on your journey to build mo
 
 search for available Cordova plugins on npm (Cordova 5.x or greater). The naming convention for these plugins is cordova-plugin-pluginname or phonegap-plugin-pluginname.
 
-> **Tip:** If find a plugin that doesn't appear in the **Plugins** tab of configuration designer, you can still use it. [Learn more](../develop-apps/manage-plugins.md##Custom).
+> **Tip:** If find a plugin that doesn't appear in the **Plugins** tab of configuration designer, you can still use it. [Learn more](../develop-apps/manage-plugins.md#Custom).
 
 **Try using Bower to add a package to your project**
 
