@@ -21,17 +21,18 @@ You can install the Onsen UI starter templates in Visual Studio and use them to 
 
 1. If you haven't already, [install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
 
-   When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under **Cross-Platform Mobile Development**.
+    When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under **Cross-Platform Mobile Development**.
 
-   **Note**: Quickly verify that you can load and build the default Blank App template. In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank", and build it with F5.
+    >**Note**: Quickly verify that you can load and build the default Blank App template. In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank", and build it with F5. If you have any trouble, see these [troubleshooting steps](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
 
 2. Install the Onsen UI templates.
 
-   Visit [VS Extension for Onsen UI](https://visualstudiogallery.msdn.microsoft.com/8968a18d-cc94-4ebf-8183-ed0e1f6247f3) in Visual Studio Gallery, and add it directly to Visual Studio by downloading and double-clicking on the downloaded file.
+    Visit [VS Extension for Onsen UI](https://visualstudiogallery.msdn.microsoft.com/8968a18d-cc94-4ebf-8183-ed0e1f6247f3) in Visual Studio Gallery, and add it directly to Visual Studio by downloading and double-clicking on the downloaded file.
 
-   ![Onsen UI Extenstions and Updates](media/tutorial-onsen/image06.png)
+    ![Onsen UI Extenstions and Updates](media/tutorial-onsen/image06.png)
 
-   Or, do it in Visual Studio, by selecting **Tools**, **Extensions** and **Updates**. In the **Extensions and Updates** dialog box, select **Online**. In the search box, type **Onsen UI**.
+    Or, do it in Visual Studio, by selecting **Tools**, **Extensions** and **Updates**. In the **Extensions and Updates** dialog box, select **Online**. In the search box, type **Onsen UI**.
+
 3. Choose **Download** to download and install them. When you are asked for permission to install the templates, give your permission.
 
 4. Choose **Restart** to restart Visual Studio. Now, choose **File**, **New**, then **Project**. When you choose **Installed**, then **Templates**, the new starter templates will show up under both **JavaScript**, **Apache Cordova Apps** and **TypeScript**, **Apache Cordova Apps**.
@@ -39,6 +40,7 @@ You can install the Onsen UI starter templates in Visual Studio and use them to 
    ![Onsen UI New Project](media/tutorial-onsen/image01.png)
 
 5. Choose one of the following starter templates for your new project:
+
    * Onsen UI Blank
    * Onsen UI Master-Details
    * Onsen UI Sliding Menu
@@ -47,20 +49,20 @@ You can install the Onsen UI starter templates in Visual Studio and use them to 
 
 6. Choose **OK**.
 
-7. Visual Studio creates the Onsen UI project.
+    Visual Studio creates the Onsen UI project.
 
 ## Get your app running on Android
 1. Add the Android platform by Android as a debug target (Solution Platforms list), and then choose Build, then Build Solution.
 
 2. Choose Android as a debug target (Solution Platforms list), and to get the app running choose a target such as the **Ripple - Nexus S** (running in a simulator environment), the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the **Google Android Emulator** (slow to load initially).
 
-   ![Onsen UI Android Debug Target](media/tutorial-onsen/image05.png)
+    ![Onsen UI Android Debug Target](media/tutorial-onsen/image05.png)
 
-   You can configure a Google Android emulator in [AVD Manager](http://taco.visualstudio.com/en-us/docs/run-app-apache/).
+    You can configure a Google Android emulator in [AVD Manager](http://taco.visualstudio.com/en-us/docs/run-app-apache/).
 
 3. Press F5, and the app should load correctly.
 
-   ![Onsen UI Android App](media/tutorial-onsen/image00.png)
+    ![Onsen UI Android App](media/tutorial-onsen/image00.png)
 
 ## Get your app running on iOS
 You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](http://taco.visualstudio.com/en-us/docs/ios-guide/).
@@ -78,7 +80,7 @@ The Onsen UI starter templates should run correctly on iOS when the remotebuild 
 
 5. Press F5 to run your app.
 
-![Onsen UI on Windows](media/tutorial-onsen/image04.png)
+    ![Onsen UI on Windows](media/tutorial-onsen/image04.png)
 
 ## Use TypeScript in an Onsen UI app
 You can use TypeScript in an Onsen UI app.
@@ -96,9 +98,9 @@ You can use TypeScript in an Onsen UI app.
 
 4. Visual Studio creates the Onsen UI project.
 
-TypeScript source codes are located in **scripts** folder, with the extension of **.ts**. TypeScript codes will be compiled and saved as **appBundle.js** under **www/scripts** folder. You can modify the compiler options by changing **tsconfig.json** file.
+    TypeScript source codes are located in **scripts** folder, with the extension of **.ts**. TypeScript codes will be compiled and saved as **appBundle.js** under **www/scripts** folder. You can modify the compiler options by changing **tsconfig.json** file.
 
-![Onsen UI TypeScript](media/tutorial-onsen/image02.png)
+    ![Onsen UI TypeScript](media/tutorial-onsen/image02.png)
 
 ## What's Next?
 You can use Visual Studio's build and [debug tools](http://taco.visualstudio.com/en-us/docs/debug-using-visual-studio/), use the configuration manager to easily [add device plugins](http://taco.visualstudio.com/en-us/docs/manage-plugins/) to your app to get up and running quick. To learn more about Onsen UI, see the [Onsen UI framework docs](https://onsen.io/docs.html).
