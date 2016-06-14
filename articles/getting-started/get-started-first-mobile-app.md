@@ -413,10 +413,10 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
           $('#humidity').text(results.main.humidity);
           $('#visibility').text(results.weather[0].main);
 
-          var sunriseDate = new Date(results.sys.sunrise);
+          var sunriseDate = new Date(results.sys.sunrise * 1000);
           $('#sunrise').text(sunriseDate.toLocaleTimeString());
 
-          var sunsetDate = new Date(results.sys.sunrise);
+          var sunsetDate = new Date(results.sys.sunset * 1000);
           $('#sunset').text(sunsetDate.toLocaleTimeString());
 
       } else {
