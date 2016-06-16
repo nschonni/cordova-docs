@@ -47,13 +47,13 @@ You can install the Onsen UI starter templates in Visual Studio and use them to 
 
     Or, do it in Visual Studio, by selecting **Tools**, **Extensions** and **Updates**. In the **Extensions and Updates** dialog box, select **Online**. In the search box, type **Onsen UI**.
 
-    ![Onsen UI Extenstions and Updates](/image06.png)
+    ![Onsen UI Extenstions and Updates](media/tutorial-onsen/image06.png)
 
 3. Choose **Download** to download and install them. When you are asked for permission to install the templates, give your permission.
 
 4. Choose **Restart** to restart Visual Studio. Now, choose **File**, **New**, then **Project**. When you choose **Installed**, then **Templates**, the new starter templates will show up under both **JavaScript**, **Monaca** and **TypeScript**, **Monaca**.
 
-    ![Onsen UI New Project](/image01.png)
+    ![Onsen UI New Project](media/tutorial-onsen/image01.png)
 
 5. Choose one of the following starter templates for your new project:
 
@@ -71,20 +71,20 @@ You can install the Onsen UI starter templates in Visual Studio and use them to 
 
 2. Choose Android as a debug target (Solution Platforms list), and to get the app running choose a target such as the **Device**, **Ripple - Nexus S** (running in a simulator environment), the **VS Emulator** (Hyper-V required) or the **Google Android Emulator** (slow to load initially).
 
-    ![Onsen UI Android Debug Target](/image05.png)
+    ![Onsen UI Android Debug Target](media/tutorial-onsen/image05.png)
 
     You can configure a Google Android emulator in [AVD Manager](http://taco.visualstudio.com/en-us/docs/run-app-apache/).
 
 3. Press F5, and the app should load correctly.
 
-    ![Onsen UI Android App](/image00.png)
+    ![Onsen UI Android App](media/tutorial-onsen/image00.png)
 
 ## Get your app running on iOS
 You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](http://taco.visualstudio.com/en-us/docs/ios-guide/).
 
 The Onsen UI starter templates run correctly on iOS when the remotebuild agent is running on a Mac (or using an extension like [Monaca for Visual Studio 2015](https://visualstudiogallery.msdn.microsoft.com/21a7a495-5a24-4eab-a519-2f6e6d176049)), and when Visual Studio is configured to connect to it). Please note that the complete steps are outside the scope here.
 
-![Onsen UI iOS App](/image08.png)
+![Onsen UI iOS App](media/tutorial-onsen/image08.png)
 
 ## Get your app running on Windows
 
@@ -98,7 +98,7 @@ The Onsen UI starter templates run correctly on iOS when the remotebuild agent i
 
 5. Press F5 to run your app.
 
-    ![Onsen UI on Windows](/image04.png)
+    ![Onsen UI on Windows](media/tutorial-onsen/image04.png)
 
 You can debug your Onsen UI app direct on the Windows 10 device.
 
@@ -129,13 +129,13 @@ You can use TypeScript in an Onsen UI app.
 
 TypeScript source codes are located in **scripts** folder, with the extension of **.ts**. TypeScript codes will be compiled and saved as **appBundle.js** under **www/scripts** folder. You can modify the compiler options by changing **tsconfig.json** file.
 
-![Onsen UI TypeScript](/image02.png)
+![Onsen UI TypeScript](media/tutorial-onsen/image02.png)
 
 ## What's Next?
 
-You can use Visual Studio's build and [debug tools](http://taco.visualstudio.com/en-us/docs/debug-using-visual-studio/), use the configuration manager to easily [add device plugins](http://taco.visualstudio.com/en-us/docs/manage-plugins/) to your app to get up and running quick. To learn more about Onsen UI, see the [Onsen UI framework docs](https://onsen.io/v2/docs/js.html).
+You can use Visual Studio's build and [debug tools](../debug-and-test/debug-using-visual-studio.md), use the configuration manager to easily [add device plugins](../develop-apps/manage-plugins.md) to your app to get up and running quick. To learn more about Onsen UI, see the [Onsen UI framework docs](https://onsen.io/v2/docs/js.html).
 
-![Onsen UI Plugins](/image03.png)
+![Onsen UI Plugins](media/tutorial-onsen/image03.png)
 
 ## Troubleshooting: Let's fix it
 
@@ -147,13 +147,13 @@ Onsen UI templates are intended to run on Windows 10 machines. Please upgrade yo
 
 ### Unhandled exception running on Windows?
 
-Windows apps are more strict about the security when running as a HTML5 apps. Onsen UI includes the sim to support compatibility, but you cannot use **document.write()** or access to **innerHTML**. Please read [an article that describes HTML, CSS, and JavaScript features and differences](https://msdn.microsoft.com/en-us/library/windows/apps/hh465380.aspx) for more details.
+Windows apps are more strict about the security when running as a HTML5 apps. Onsen UI includes the shim to support compatibility, but you cannot use **document.write()** or access to **innerHTML**. Please read [an article that describes HTML, CSS, and JavaScript features and differences](https://msdn.microsoft.com/en-us/library/windows/apps/hh465380.aspx) for more details.
 
 ### appxrecipe file missing
 
 If you see this error when targeting Windows 10, make sure you set Windows 10.0 as the target in the Windows tab of the configuration designer (config.xml). Then rebuild the project.
 
-![Windows Target Version](/image09.png)
+![Windows Target Version](media/tutorial-onsen/image09.png)
 
 ### Error saying that the Content Security Policy is missing?
 
@@ -167,7 +167,7 @@ Visual Studio will use the Cordova Whitelist plugin by default, so you need to u
 
 Make sure your credentials are up to date. Check for any notifications or warning icons in the upper right of Visual Studio.
 
-![Onsen UI Certificate Error](/image07.png)
+![Onsen UI Certificate Error](media/tutorial-onsen/image07.png)
 
 You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow instructions.
 
