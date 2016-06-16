@@ -13,26 +13,14 @@
      ms.author="mikejo"/>
 
 # Get started with Onsen UI apps in Visual Studio
-In this article:
 
-* Get the Onsen UI templates!
-* Get your app running on Android
-* Get your app running on iOS
-* Get your app running on Windows
-* Use TypeScript in an Onsen UI app
-* Manually import an Onsen UI project into Visual Studio
-* What's Next?
-* Troubleshooting: Let's fix it
-* Comments
+Onsen UI is a front-end UI framework for developing cross-platform mobile apps using PhoneGap & Apache Cordova.
 
-
-Onsen UI is a front-end UI framework for developing beautiful cross-platform mobile apps using PhoneGap & Cordova.
-
-[Onsen UI 2.0](https://onsen.io/v2/) was released and supporting React, Angular 1 & 2 and Web Components Altogether. With more than 100 components you can easily create beautiful HTML5 hybrid mobile apps with Material and Flat design.
+[Onsen UI 2.0](https://onsen.io/v2/) was released and supporting React, Angular 1 & 2 and Web Components Altogether. With more than 100 components you can easily create great-looking HTML5 hybrid mobile apps with Material and Flat design.
 
 Onsen UI is fully independent of frameworks - You can easily plug our components into any project, regardless of JavaScript framework. Getting started with [Onsen UI 2.0](https://onsen.io/v2/docs/js.html).
 
-## Get the Onsen UI templates!
+## Get the Onsen UI templates
 You can install the Onsen UI starter templates in Visual Studio and use them to start building an app.
 
 1. If you haven't already, [install Visual Studio 2015](https://www.visualstudio.com/).
