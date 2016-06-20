@@ -13,7 +13,10 @@
    ms.workload="na"
    ms.date="09/10/2015"
    ms.author="normesta"/>
-# Add connected services to your Apache Cordova app
+# Add connected services to your Apache Cordova app - DEPRECATED
+
+
+> **NOTE:** Azure Mobile Services is deprecated. Documentation on the new service, Azure Mobile Apps, can be found [here](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/).
 
 
 The Visual Studio Services Manager for connected services lets you integrate Microsoft services like Azure Mobile Services, Office 365, and other services into your app built with Visual Studio Tools for Apache Cordova. The manager makes it easy to add services without leaving Visual Studio.
