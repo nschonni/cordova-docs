@@ -50,7 +50,7 @@ Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsal
 
 Star Track is a Cordova app that allows you to search for songs (tracks), preview a list, and star the tracks in your results. It's built using Framework 7, a jQuery-like JavaScript library. It was created by the Phonegap team and [announced on their developer blog April 2016](http://phonegap.com/blog/2016/04/21/introducing-star-track-by-phonegap/). 
 
-Play around with their [sample on Github](https://github.com/phonegap/phonegap-app-star-track). Open this project by following the instructions [here]](#how-to-open-a-cordova-project-in-vs/).
+Play around with their [sample on Github](https://github.com/phonegap/phonegap-app-star-track). Open this project by following the instructions [here](#how-to-open-a-cordova-project-in-vs/).
 
 ## Suggest Your Own
 
