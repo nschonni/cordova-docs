@@ -16,9 +16,9 @@
 
 Onsen UI is a front-end UI framework for developing cross-platform mobile apps using PhoneGap & Apache Cordova.
 
-[Onsen UI 2.0](https://onsen.io/v2/) was released and supporting React, Angular 1 & 2 and Web Components Altogether. With more than 100 components you can easily create great-looking HTML5 hybrid mobile apps with Material and Flat design.
+[Onsen UI 2.0](https://onsen.io/v2/) was released and supports React, Angular 1 & 2, and Web Components all together. With more than 100 components, you can easily create great-looking HTML5 hybrid mobile apps with Material and Flat design.
 
-Onsen UI is fully independent of frameworks - You can easily plug our components into any project, regardless of JavaScript framework. Getting started with [Onsen UI 2.0](https://onsen.io/v2/docs/js.html).
+Onsen UI is fully independent of frameworks - you can easily plug these components into any project, regardless of JavaScript framework. For more info, see  [Onsen UI 2.0](https://onsen.io/v2/docs/js.html).
 
 ## Get the Onsen UI templates
 You can install the Onsen UI starter templates in Visual Studio and use them to start building an app.
@@ -55,7 +55,7 @@ You can install the Onsen UI starter templates in Visual Studio and use them to 
 7. Visual Studio creates the Onsen UI project.
 
 ## Get your app running on Android
-1. Add the Android platform by Android as a debug target (Solution Platforms list), and then choose Build, then Build Solution.
+1. Add the Android platform as a debug target (Solution Platforms list), and then choose **Build**, then **Build Solution**.
 
 2. Choose Android as a debug target (Solution Platforms list), and to get the app running choose a target such as the **Device**, **Ripple - Nexus S** (running in a simulator environment), the **VS Emulator** (Hyper-V required) or the **Google Android Emulator** (slow to load initially).
 
