@@ -15,6 +15,17 @@
 #General Cordova tips and workarounds
 This document covers tips, tricks, and known workarounds for general issues with Cordova or Tools for Apache Cordova.
 
+<a name="connection"></a>
+##App not connecting to the internet or failing to retrieve data or resources
+
+A Cordova app has two distinct layers of securirty. At the client-side application level, the Content Security Policy meta tag and the Whitelist plugin rules set in config.xml prevent other sites from injecting unwanted resources into your app. Errors due to a restrictive CSP usually prompt you to adjust the CSP and whiltelist rules. Learn how to set these rules in the [following guide](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/). 
+
+The second layer is at the backend level. Web services implement Cross-Origin Resource Sharing to restrict the content that you can pull from that domain. Since all Cordova apps pull data from an external server (through RESTful API calls), you may see errors such as ```Error 500``` or like this: ```XMLHttpRequest cannot load [external connection string]. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin [App URL] is therefore not allowed access. The response had HTTP status code 400.```
+
+If your app is attempting to pull data from an [Azure Mobile Apps backend](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/), Azure has a custom interface to manage exceptions to their default CORS policy.
+
+![CORS](media/tips-and-workarounds-general-readme/cors.png)
+
 <a name="firsttime"></a>
 ##Resolve build and deployment errors when you build for the first time
 
@@ -107,21 +118,6 @@ To fix this:
 - Leave plugins/fetch.json.
 
 For **existing local copies**, you can either fetch a fresh copy from source control or delete the above files along with the entire contents of the "platforms" folder in the filesystem (which is not visible by default in the Solution Explorer) to resolve the issue.
-
-<a name="general"></a>
-##App not connecting to the internet or failure to retrieve data
-
-A Cordova app has two disticnt layers of securirty. At the client-side application level, the [Content Security Policy meta tag and the Whitelist plugin rules set in config.xml](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/) prevent other sites from injecting unwanted resources into your app. Errors due to a restrictive CSP usually prompt you to adjust the CSP and whiltelist rules, which you can in the [aforementioned guide](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/). 
-
-The second layer is at the backend level. Web services implement Cross-Origin Resource Sharing to restrict the content that you can pull from that domain. Since all Cordova apps pull data from an external server (through RESTful API calls), you may see errors such as ```Error 500``` or the one below: 
-
-```
-XMLHttpRequest cannot load [external connection string]. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin [App URL] is therefore not allowed access. The response had HTTP status code 400.
-```
-
-If your app is attempting to pull data from an [Azure Mobile Apps backend](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/), Azure has a custom interface to manage exceptions to their default CORS policy.
-
-![CORS](media/tips-and-workarounds-general-readme/cors.png)
 
 <a name="cordovaproxy"></a>
 
