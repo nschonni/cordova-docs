@@ -61,7 +61,7 @@ See [Azure Active Directory Identity Protection documentation](https://azure.mic
 
 For Azure based services, databases, and VMs, you can use **[Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/)** which builds on top of Azure's world class certifications and enables some powerful security features for your Virtual Machines and SQL databases including full support for auditing SQL servers, threat detection, transparent data encryption, and monitoring and notification about recommended updates.
 
-**[Microsoft Advanced Threat Analytics](https://www.microsoft.com/en-us/server-cloud/products/advanced-threat-analytics/)** is an on-premises product that provides an intelligent and adapting mechanism for [detecting potential threats across services and servers in a datacenter](https://technet.microsoft.com/en-us/library/dn707706.aspx). This is particularly useful in the mobile context when your app needs to access services housed within a corporate datacenter rather than Azure. 
+**[Microsoft Advanced Threat Analytics](https://www.microsoft.com/en-us/server-cloud/products/advanced-threat-analytics/)** is an on-premisems.product that provides an intelligent and adapting mechanism for [detecting potential threats across services and servers in a datacenter](https://technet.microsoft.com/en-us/library/dn707706.aspx). This is particularly useful in the mobile context when your app needs to access services housed within a corporate datacenter rather than Azure. 
 
 ##Additional Security Topics
 - [Learn about Cordova platform and app security features](./cordova-security-platform.md)

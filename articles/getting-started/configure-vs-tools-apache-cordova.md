@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="normesta"
    tags=""/>
-<tags
+<tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
    ms.devlang="javascript"
    ms.topic="article"
@@ -47,9 +47,9 @@ If you choose not to install one or more dependencies with the extension, you ca
 
 You can install the dependencies in any order, except for Java. You must install and configure Java before you install the Android SDK. Read the following information and use these links to install dependencies manually.
 
-* [Joyent Node.js](http://go.microsoft.com/fwlink/?LinkID=396867)
+* [Joyent Node.js](http://nodejs.org)
 
-    We recommend installing the x86 version of Node.js.
+    We recommend installing the x86 version of Node.js. Before installing this software, read about [safely installing Node.js](../develop-apps/change-node-version.md).
 
 * [Google Chrome](https://www.google.com/intl/en/chrome/browser/index.html)
 
@@ -278,7 +278,7 @@ For more information about app provisioning and certificate signing identities, 
 
 If you see unexpected errors when trying to build the Blank App template after installing Visual Studio Tools for Apache Cordova, you can try clearing your cache and reinstalling the Cordova CLI pre-processor, vs-tac, on your PC. Typically, this is only necessary if you try to build a Cordova app and see the error Cannot find module *[modulename]*.
 
->**Note**: For general help with build and deployment issues, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md). 
+>**Note**: For general help with build and deployment issues, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
 
 ### To try the quick fix
 

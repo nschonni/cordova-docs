@@ -3,7 +3,7 @@
   services=""
   documentationCenter=""
   authors="kirupa" />
-  <tags
+  <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
      ms.service="na"
      ms.devlang="javascript"
      ms.topic="article"
@@ -14,6 +14,17 @@
 
 #General Cordova tips and workarounds
 This document covers tips, tricks, and known workarounds for general issues with Cordova or Tools for Apache Cordova.
+
+<a name="connection"></a>
+##App not connecting to the internet or failing to retrieve data or resources
+
+A Cordova app has two distinct layers of securirty. At the client-side application level, the Content Security Policy meta tag and the Whitelist plugin rules set in config.xml prevent other sites from injecting unwanted resources into your app. Errors due to a restrictive CSP usually prompt you to adjust the CSP and whiltelist rules. Learn how to set these rules in the [following guide](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/). 
+
+The second layer is at the backend level. Web services implement Cross-Origin Resource Sharing to restrict the content that you can pull from that domain. Since all Cordova apps pull data from an external server (through RESTful API calls), you may see errors such as ```Error 500``` or like this: ```XMLHttpRequest cannot load [external connection string]. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin [App URL] is therefore not allowed access. The response had HTTP status code 400.```
+
+If your app is attempting to pull data from an [Azure Mobile Apps backend](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/), Azure has a custom interface to manage exceptions to their default CORS policy.
+
+![CORS](media/tips-and-workarounds-general-readme/cors.png)
 
 <a name="firsttime"></a>
 ##Resolve build and deployment errors when you build for the first time
@@ -62,13 +73,13 @@ Try these steps if you have trouble deploying to emulators or devices.
 
     If the issue is only on the Android platform, see [Android](../android/tips-and-workarounds-android-readme.md). If the issue is only on iOS, see the troubleshooting tips in the [iOS setup guide](../../getting-started/ios-guide.md). If the issue is only on Windows, see [Windows](../windows/tips-and-workarounds-windows-readme.md).
 
-6. If you see a message that you are unable to start debugging, see [this workaround](#debugging).
+6. If you see a message that you are unable to start debugging or if no emulators or devices are visible as debug targets, see [this workaround](#debugging).
 7. Try [clearing the cache](../getting-started/configure-vs-tools-apache-cordova.md#vstac) from **Tools**, **Options**, **Tools for Apache Cordova** and re-installing vs-tac.
 
 <a name="debugging"></a>
 ##Unable to start debugging
 
-If you get a message in Visual Studio that says you can't start debugging your app, try these steps.
+If you get a message in Visual Studio that says you can't start debugging your app, try these steps. Also, try these steps if no emulators or devices are listed in the debug target dropdown list.
 
 1. Close all instances of Visual Studio.
 2. Open this folder:

@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="Mikejo5000"
    tags=""/>
-<tags
+<tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
    ms.devlang="javascript"
    ms.topic="article"
@@ -193,16 +193,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     By adding the web site URL to the default CSP (https://cordovahostedweb-starter.azurewebsites.net in this example), you specify that it is a trusted domain, and content from this site will be allowed in your hosted app.
 
-5. Add additional `<meta>` elements that we are borrowing from another Cordova template.
-
-    ```
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    ```
-    These elements provide viewport attributes to manage the screen display, and a few other platform attributes to improve the user experience for mobile devices that connect to the site.
-
-6. Press F5 to start the app.
+5. Press F5 to start the app.
 
     When the emulator starts, you will see the hosted app load!
 
@@ -210,7 +201,7 @@ The starter solution includes an ASP.NET MVC site (the CordovaHostedWeb project)
 
     If everything looks good, you already have your hosted app working! Congratulations on a great start! However, you need to do a few more things to enable support for device plugins.
 
-8. Before moving on, if you can run the app on other emulators at this stage, try that, too.
+6. Before moving on, if you can run the app on other emulators at this stage, try that, too.
 
     Here is what the app looks like running on Windows 10.
 
@@ -524,6 +515,14 @@ You may want to investigate options to find an approach that works best for you.
 ## Troubleshooting: Let's fix it
 
 If you run into errors getting the hosted web app running, check this section
+
+### App shows an alert with message text "gap_init:2"
+
+If you are trying to run the app on Ripple, Ripple will show this message because it does not support the Camera plugin. Also, make sure you added the Camera plugin to the client app (open the configuration designer for config.xml to do this).
+
+### App fails to open the redirect page or the hosted web app
+
+If there is an error connecting to any of the hosted pages, try to open the Web site in a browser. If the site is unavailable, follow instructions in the Appendix to publish the Web site to your own URL.
 
 ### App hangs on "Verifying Connectivity" message <a name="errorVerifying"></a>
 

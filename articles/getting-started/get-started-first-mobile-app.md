@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="normesta"
    tags=""/>
-<tags
+<tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
    ms.devlang="javascript"
    ms.topic="article"
@@ -123,6 +123,8 @@ This folder contains icons, splash screens, signing certificates and any other p
     ![Ripple Emulator](media/get-started-first-mobile-app/ripple-start.png)
 
     Your app opens in Apache Ripple and it looks like this because we haven't added any code yet.
+
+    > **NOTE:** There will already be some errors on the JavaScript console, such as failure to load favicon.ico, ripple.js and ajax-loader.gif. But these are not neccessary to continue developing in Ripple.
 
     ![Ripple Emulator](media/get-started-first-mobile-app/blank-app.png)
 
@@ -411,10 +413,10 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
           $('#humidity').text(results.main.humidity);
           $('#visibility').text(results.weather[0].main);
 
-          var sunriseDate = new Date(results.sys.sunrise);
+          var sunriseDate = new Date(results.sys.sunrise * 1000);
           $('#sunrise').text(sunriseDate.toLocaleTimeString());
 
-          var sunsetDate = new Date(results.sys.sunrise);
+          var sunsetDate = new Date(results.sys.sunset * 1000);
           $('#sunset').text(sunsetDate.toLocaleTimeString());
 
       } else {
@@ -457,8 +459,8 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     Add ```http://api.openweathermap.org``` just after ```https://ssl.gstatic.com``` in that line to give this page permission to get content from the Yahoo weather service and map service. When you're done, your CSP will look like this:
 
     ```html
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 
-    http://api.openweathermap.org https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
+    http://api.openweathermap.org https://ssl.gstatic.com 'unsafe-eval'; style-src 'self'
     'unsafe-inline'; media-src *">           
     ```
 
@@ -518,9 +520,9 @@ You can find some of the more commonly used plug-ins in the **Core** page of the
 
 ![Configuration Designer](media/get-started-first-mobile-app/core-plugins.png)
 
-[Cordova plugins registry](http://cordova.apache.org/plugins/) offers hundreds of other plugins. To add them, you'll have to edit the config.xml file directly. You can find guidance about how to do that  [here](/articles/develop-apps/manage-plugins.md/#AddOther).
+Use the **Custom** page to add plugins that are not one of the [core plugins](../develop-apps/use-cordova-plugins.md). These could be standard Cordova plugins available on npm (Cordova 5.x or greater), or plugins that you or a colleague create for some specific purpose and then save to your local drive or to a GitHub repository.  [This document](../develop-apps/manage-plugins.md#Custom) explains how to add a custom plugin.
 
-Use the **Custom** page to add plugins that don't appear in the [Cordova plugins registry](http://cordova.apache.org/plugins/). These could be plugins that you or a colleague create for some specific purpose and then save to your local drive or to a GitHub repository.  [This document](/articles/develop-apps/manage-plugins.md/#Custom) explains how to add a custom plugin.
+If you need to use a specific version of a plugin, you can add a plugin by editing the config.xml file directly. You can find guidance about how to do that  [here](../develop-apps/manage-plugins.md#AddOther).
 
 Let's add a plug-in that gives us access to the device's geolocation system. That way, we can get the weather of a user's current location.
 
@@ -640,7 +642,7 @@ This is where the **merges** folder becomes useful. We touched on that folder ea
 
 6. Run your app in the Apache Ripple Simulator.
 
-    The app now has the title **Android Weather** because the **index.js** file in the **android** folder replaces the **index.js** file in the **www** folder for the Android version of your app.
+    The app now has the title **Android Weather** because the **weather.js** file in the **android** folder replaces the **weather.js** file in the **www** folder for the Android version of your app.
 
     ![Tailor the behavior](media/get-started-first-mobile-app/tailor-js.png)
 
@@ -736,11 +738,28 @@ Congratulations on building your first cross-platform mobile app. Although this 
 
 Here are a few ideas about what you can explore next on your journey to build mobile apps with HTML and JavaScript and Visual Studio.
 
-**Explore the plug-in registry**
+**Connect to Existing Data**
 
-see [Search Cordova Plugins](http://cordova.apache.org/plugins/).
+Want to pull in data from sites like [StackExchange](https://api.stackexchange.com/) or [Github](https://developer.github.com/v3/)? How about your own database? 
 
-> **Tip:** If find a plugin that doesn't appear in the **Plugins** tab of configuration designer, you can still use it. [Learn more](./develop-apps/manage-plugins.md##AddOther).
+Just like any browser, your Cordova app supports HTTP requests and Ajax calls. However, Cordova adds additional security to filter which scripts, CSS files, map files and data files can be pulled into your app.
+
+* The [Cordova Whitelist Plugin](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/) (which is automatically added into every project) controls which URLs the WebView itself can be navigated to, can open, or can make network requests from when loading the app. 
+* A Content Security Policy contained in a tag on index.html <meta http-equiv="Content-Security-Policy" ... /> controls which network requests (images, XHRs, etc) are allowed to be made after your app has loaded, via webview directly.
+
+Additionally, your server--or servers that you pull from--may have additional security that restricts your app from being able to pull resources into your app.
+
+* Cross-origin resource sharing (CORS) policies regulates which resources (e.g. fonts, JavaScript, etc.) from a web page can be requested from another domain outside the domain from which the resource originated. So, often times when your app is pulling data, fonts, images, and scripts from another web service, you need to make it in the form of a CORS request. [See more information](~/en-us/docs/tips-and-workarounds-general-readme/#connection).
+
+**Easy backend set up with Azure**
+
+Get straight to building by hooking your app up to Azure. Azure offers a Mobile App service that utilizes Easy Tables to get your app connected to a SQL database with only a couple lines of javascript. [This helpful guide](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/) takes you through the process of creating a mobile app backend, and ends with the option of creating a quickstart Cordova app, or adding connections to an existing app. 
+
+**Explore available Cordova plugins**
+
+search for available Cordova plugins on npm (Cordova 5.x or greater). The naming convention for these plugins is cordova-plugin-pluginname or phonegap-plugin-pluginname.
+
+> **Tip:** If find a plugin that doesn't appear in the **Plugins** tab of configuration designer, you can still use it. [Learn more](../develop-apps/manage-plugins.md#Custom).
 
 **Try using Bower to add a package to your project**
 

@@ -3,7 +3,7 @@
   services=""
   documentationCenter=""
   authors="Jordan" />
-  <tags
+  <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
      ms.service="na"
      ms.devlang="javascript"
      ms.topic="article"
