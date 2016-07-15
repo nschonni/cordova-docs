@@ -47,55 +47,20 @@ For documentation that shows similar steps, see the [Getting Started Tutorial](h
 
 ##Task 2: Update your Cordova app and your Mobile App backend code
 
-The Azure connected services sample uses an Azure Easy table to store todolist items. To use the sample, update your Cordova sample app:
+The Azure connected services sample uses an Azure Easy table to store todolist items.
+
+To use the sample, update your Cordova app in Visual Studio:
 
 * Include your Azure Mobile App connected service URL where directed in index.js.
 * Include the same URL in the CSP `<meta>` element in index.html.
 
-The client app uses push notification templates to register devices for push notification service. This allows you to use platform-agnostic backend code in your Azure Mobile App. To begin the tasks to support push notifications in Azure, first add the backend code to the todoitem.js file in your Azure Easy table (go to **Settings** > **Easy tables** > **TodoItem** > **Edit Script**). For a Node.js backend, use this code.
+If you are using the Azure connected services sample, you can skip the steps in [Modify your Cordova app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#add-push-to-app)
 
-```javascript
-var azureMobileApps = require('azure-mobile-apps'),
-promises = require('azure-mobile-apps/src/utilities/promises'),
-logger = require('azure-mobile-apps/src/logger');
+The client app uses push notification templates to register devices for push notification service. This allows you to use platform-agnostic backend code in your Azure Mobile App.
 
-var table = azureMobileApps.table();
+In Azure, update your server project:
 
-table.insert(function (context) {
-// For more information about the Notification Hubs JavaScript SDK,
-// see http://aka.ms/nodejshubs
-logger.info('Running TodoItem.insert');
-
-// Define the template payload.
-var payload = '{"messageParam": "' + context.item.text + '" }';  
-
-// Execute the insert.  The insert returns the results as a Promise,
-// Do the push as a post-execute action within the promise flow.
-return context.execute()
-    .then(function (results) {
-        // Only do the push if configured
-        if (context.push) {
-            // Send a template notification.
-            context.push.send(null, payload, function (error) {
-                if (error) {
-                    logger.error('Error while sending push notification: ', error);
-                } else {
-                    logger.info('Push notification sent successfully!');
-                }
-            });
-        }
-        // Don't forget to return the results from the context.execute()
-        return results;
-    })
-    .catch(function (error) {
-        logger.error('Error while running context.execute: ', error);
-    });
-});
-
-module.exports = table;  
-```
-
-To use a .NET backend code, follow steps in the [Update the server project](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-push/#update-the-server-project-to-send-push-notifications) section of this Xamarin article.
+* Follow steps in [Update the server project](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#update-the-server-project-to-send-push-notifications)
 
 To use push notifications in the sample, follow the other tasks in this article to create an Azure notification hub and to configure platform-specific notification services (GCM, APNS, and WNS) for the devices that you are targeting.
 
@@ -121,11 +86,15 @@ If you want to send push notifications to iOS devices, you must configure APNS a
 
 <a href="https://www.youtube.com/watch?v=VzJxTcpUXCY" class="video" title="Configure APNS">![Configure APNS](media/add-azure-mobile-app/thmb-apns-push-notifs.png)
 
+To follow the same steps in the tutorial, see [Register the app for push notifications on your Apple Developer portal](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-on-ios).
+
 ##Task 6: (Optional) Configure Windows Notification Service (WNS)
 
 If you want to send push notifications to Windows devices, you must configure WNS and add the WNS credentials to your notification hub. Follow steps in this video.
 
 <a href="https://www.youtube.com/watch?v=9pc4GglHNsY" class="video" title="Configure WNS">![Configure WNS](media/add-azure-mobile-app/thmb-wns-push-notifs.png)
+
+To follow the same steps in the tutorial, see [Register your app for push notifications with WNS](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-on-windows).
 
 ##Task 7: Get ready to run your app!
 
@@ -135,37 +104,19 @@ Watch this video to make sure your app is ready to handle push notifications:
 
 To test push notifications in your Android app:
 
-Follow the steps in [Test push notifications in your Android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-push/#optional-configure-and-run-the-android-project).
-
->**Note**: If you need to run on the Google Android Emulator instead of a device (a device is recommended), see [Test push notifications in your app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-android-get-started-push/#test).
+Follow the steps in [Test push notifications in your Android app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-the-app-on-android).
 
 To test push notifications in your iOS app:
 
-1. Go through the steps in the [iOS Setup Guide](http://taco.visualstudio.com/en-us/docs/ios-guide/) to install and run the remotebuild agent.
+1. If you haven't already, go through the steps in the [iOS Setup Guide](http://taco.visualstudio.com/en-us/docs/ios-guide/) to install and run the remotebuild agent.
 
     Make sure you can build the app for iOS. The steps in the setup guide are required to build for iOS from Visual Studio. If you do not have a Mac, you can build for iOS using the remotebuild agent on a service like MacInCloud. For more info, see [Run your iOS app in the cloud](http://taco.visualstudio.com/en-us/docs/build_ios_cloud/).
 
-2. In Visual Studio, make sure that **iOS** is selected as the deployment target, and then choose **Device** to run on your connected iOS device.
-
-	You can run on an iOS device connected to your PC using iTunes. The iOS Simulator does not support push notifications.
-
-3. Press the **Run** button or **F5** in Visual Studio to build the project and start the app in an iOS device, then click **OK** to accept push notifications.
-
-	>**Note**: You must explicitly accept push notifications from your app. This request only occurs the first time that the app runs.
-
-4. In the app, type a task, and then click the plus (+) icon.
-
-5. Verify that a notification is received, then click OK to dismiss the notification.
+2. Follow the steps in [Test push notifications in your iOS app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-on-ios)
 
 To test push notifications in your Windows App:
 
-1. In Visual Studio, make sure that a Windows platform is selected as the deployment target, such as **Windows-x64** or **Windows-x86**. To run the app on a Windows 10 PC hosting Visual Studio, choose **Local Machine**.
-
-2. Press the Run button to build the project and start the app.
-
-3. In the app, type a name for a new todoitem, and then click the plus (+) icon to add it.
-
-4. Verify that a notification is received when the item is added.
+Follow the steps in [Test push notifications in your Windows app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-on-windows)
 
 ##Task 8: Add authentication
 
