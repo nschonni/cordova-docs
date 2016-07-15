@@ -30,8 +30,8 @@ The tasks in this article show you how to create an Azure Mobile App that uses a
 
 ##Prerequisites: Get the Azure connected services client app
 
-To get the sample used in this Azure connected services tutorial, go here:
-https://github.com/Microsoft/cordova-samples/tree/master/azure-connected-services
+To get the sample, find the
+[Azure connected services sample](https://github.com/Microsoft/cordova-samples/tree/master/azure-connected-services) on GitHub.
 
 Download the sample and open it in Visual Studio.
 
