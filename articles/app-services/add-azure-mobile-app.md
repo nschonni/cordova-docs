@@ -120,7 +120,11 @@ Follow the steps in [Test push notifications in your Windows app](https://azure.
 
 ##Task 8: Add authentication
 
-To add authentication to your app, see the article, [How to: Authenticate users](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)
+Watch this video to add authentication to the Azure connected services sample. The video shows adding authentication with Twitter, but steps are similar for other services as well.
+
+<a href="https://www.youtube.com/watch?v=PTrxocL2lQg" class="video" title="Add authentication to your app">![Add authentication to your app](media/add-azure-mobile-app/thmb-authentication.png)</a>
+
+To follow similar steps in the tutorial, see [How to: Authenticate users](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)
 
 ##Troubleshooting: Let's fix it
 
