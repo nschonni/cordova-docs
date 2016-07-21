@@ -64,6 +64,7 @@ Physical devices Android, iOS
 Yes, Java and Python only.	
 </td>
 <td>
+nbsp;
 </td>
 </tr>
 </tbody>
