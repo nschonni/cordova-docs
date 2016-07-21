@@ -244,6 +244,15 @@ Now that we understand the mechanics of writing a single UI test, we’re ready 
 
 For this it’s helpful to do a side-by-side comparison with unit testing:
 
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
 <table>
 <thead>
 <tr>
@@ -328,6 +337,15 @@ When you have multiple tests in the same file (that is, in the same test group),
 
 This is where “hooks” in the test frameworks come into play, which are specially-named functions in which you can supply any code you want to execute at certain times:
 
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
 <table>
 <thead>
 <tr>

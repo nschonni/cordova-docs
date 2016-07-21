@@ -21,6 +21,15 @@ First make sure the Android SDK for API level 19 is installed, because it’s th
 
 Then check that you have the necessary environment variables set as described in the following table.
 
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
 <table>
 <thead>
 <tr>
@@ -35,10 +44,10 @@ Then check that you have the necessary environment variables set as described in
 <td>ANDROID_HOME</td><td>Set to the same location as ANDROID_SDK_HOME. This variable is typically not set by installers.</td>
 </tr>
 <tr>
-<td>JAVA_HOME</td><td>Must point to the Java JDK location, such as *C:\Program Files (x86)\Java\jdk1.7.0_55*.</td>
+<td>JAVA_HOME</td><td>Must point to the Java JDK location, such as <em>C:\Program Files (x86)\Java\jdk1.7.0_55</em>.</td>
 </tr>
 <tr>
-<td>PATH</td><td>Must include *%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;*</td>
+<td>PATH</td><td>Must include <em>%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;</em></td>
 </tr>
 <tbody>
 </table>
