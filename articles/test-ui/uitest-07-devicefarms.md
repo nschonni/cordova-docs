@@ -1,3 +1,9 @@
+<properties pageTitle="Testing on device farms"
+  description="Testing on device farms"
+  services=""
+  documentationCenter=""
+  authors="Kraig Brockschmidt" />
+
 # Testing on device farms
 
 As a mobile developer, you’re probably already acutely aware of the need to test your app on many different devices. Although you can work with a few emulator configurations and physical devices directly, getting broad coverage of many device variations gets very cumbersome and expensive.
