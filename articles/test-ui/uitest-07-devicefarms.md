@@ -33,7 +33,7 @@ Xamarin Test Cloud
 Physical devices; Android, iOS, Windows
 </td>
 <td>
-In progress. Tests for Cordova apps are presently written using Calabash and Ruby. 
+In progress. Tests for Cordova apps are presently written using Calabash and Ruby.
 </td>
 <td>
 Works for any app written with any toolset (that is, not limited to Xamarin apps).
@@ -47,7 +47,7 @@ Amazon AWS Device Farm
 Physical devices; Android, iOS
 </td>
 <td>
-Yes, Java and Python only. 
+Yes, Java and Python only.
 </td>
 <td>
 Offers a pay-as-you-go per-minute plan.
@@ -61,10 +61,10 @@ TestDroid
 Physical devices Android, iOS
 </td>
 <td>
-Yes, Java and Python only.	
+Yes, Java and Python only.
 </td>
 <td>
-&nbsp;
+N/A
 </td>
 </tr>
 </tbody>
@@ -73,7 +73,7 @@ Yes, Java and Python only.
 Sauce Labs generally has the best support for Appium across the board (Sauce Labs is a backer of Appium), including the ability to specify your Sauce Labs username and access key directly in the Appium configuration alongside your desired platform and device values. For example, here is a configuration object for running tests on an Android Emulator on Sauce Labs:
 
 	var config = {};
-	
+
 	config.android19Hybrid = {
 	    automationName: 'Appium',
 	    appiumVersion: '1.3',
@@ -84,8 +84,8 @@ Sauce Labs generally has the best support for Appium across the board (Sauce Lab
 	    deviceName: 'Android Emulator',
 	    app: "sauce-storage:weather-android-debug.apk",
 	    newCommandTimeout: timeouts.appium,
-	}; 
-	
+	};
+
 	var appDriver = yiewd.remote({
 	    hostname: 'ondemand.saucelabs.com',
 	    port: 80,
