@@ -19,13 +19,17 @@ Visual Studio brings a seamless and common tooling experience for developing Cor
 
 This article matches the steps of the Cordova [Video tutorial](http://go.microsoft.com/fwlink/p/?LinkID=534729) on debugging. The steps match video content that follows the introduction of the tools and features (approximately four minutes from the start).  If you want steps to debug for a particular platform, see [Debugging features by platform](#Debugging features by platform).
 
+### Fix build and deployment errors
+
+See these [troubleshooting tips](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
+
 ### Use the diagnostic tools
 
 To use Visual Studio to debug your Cordova apps, you must:
 
 1.  [Install Visual Studio 2015](http://go.microsoft.com/fwlink/p/?LinkId=397606) with Visual Studio Tools for Apache Cordova.
 
-2.  If you want to follow the steps in this tutorial, download the [AngularJS ToDoList sample](http://go.microsoft.com/fwlink/?LinkID=398516), unzip it, and open the solution (.sln file) in Visual Studio.
+2.  If you want to follow the steps in this tutorial, download the [AngularJS ToDoList sample](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs), unzip it, and open the solution (.sln file) in Visual Studio.
 
     You don't need the AngularJS sample to debug, of course, but we are using it in the first example.
 
@@ -120,7 +124,7 @@ $scope.addToDo = function () {
 
 ## Debugging features by platform
 
-Visual Studio debugger and diagnostic capabilities and their plaform-specific differences, are shown in the following table.
+Visual Studio debugger and diagnostic capabilities and their platform-specific differences, are shown in the following table.
 
 <style>
     table, th, td {
