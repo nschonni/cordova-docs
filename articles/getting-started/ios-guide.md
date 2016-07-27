@@ -158,6 +158,8 @@ You'll use those pieces of information in the next section.
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
+[Did you receive an error indicating that the port is already in use?](#PORT)
+
 [Did you receive an error that like this one: - Command failed with exit code ENOENT?](#ENOENT)
 
 [Did you receive any other type of build error](#cli)
@@ -488,6 +490,8 @@ After you've confirmed that your profile administrator has added the UDID of you
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
+[Did you receive an error indicating that the port is already in use?](#PORT)
+
 [Did you receive any other type of build error](#cli)
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
@@ -572,6 +576,8 @@ In the Terminal app on your Mac, press Ctrl+C.
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
+
+[Did you receive an error indicating that the port is already in use?](#PORT)
 
 [You've been told that no provisioning profiles were found](#no-provision)
 
@@ -705,6 +711,24 @@ Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
 If you've resolved this problem another way, please share it in a comment.
+
+[Go back up](#errors)
+
+### <a id="PORT"></a>Did you receive an error indicating that the port is already in use?
+
+Most likely, an instance of remotebuild is already running. Stop the remotebuild agent by typing Ctrl+C in the Terminal App window, and then restart it.
+
+Alternatively, start the remotebuild agent on a different port. (Try using port 3000 first before switching to another port.)
+
+1. Run this command in the Terminal App on your Mac to start the agent.
+
+    ```
+    remotebuild --port <portnumber>
+    ```
+
+2. Update the port number in Visual Studio (**Tools** > **Options** > **Tools for Apache Cordova** > **iOS Configuration**).
+
+3. Run your app again.
 
 [Go back up](#errors)
 

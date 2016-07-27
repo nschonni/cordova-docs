@@ -130,7 +130,7 @@ To follow similar steps in the tutorial, see [How to: Authenticate users](https:
 
 * Platform notification service (PNS) credentials won't validate in Azure notification hub?
 
-    At present, detailed error information is not provided. Check to make sure that any credentials you previously entered for another PNS (GCM, APNS, or WNS) are still valid.
+    At present, detailed error information is not provided. Azure validates credentials for all platform notification services (PNS) that you you've configured (GCM, APNS, WNS), so check to make sure that all PNS credentials are still valid.
 
     If you need more detailed error messages, you can log in through the Azure Classic portal to enter your PNS credentials.
 
