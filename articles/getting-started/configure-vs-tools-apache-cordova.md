@@ -35,12 +35,10 @@ You can download Visual Studio from the [Microsoft Download Center](http://go.mi
 
     * [Verify the remote agent configuration](#IosVerify)
 
-* If you see unexpected errors when trying to build the Blank App template, see [Re-install vs-tac](#vstac).
+* If you see unexpected errors when trying to build the Blank App template, see [Re-install the Cordova CLI pre-processor](#vstac).
 
     >**Caution:**
   If you are migrating a project from an earlier version of Visual Studio, see this [migration information](https://github.com/Microsoft/cordova-docs/blob/master/known-issues/known-issues-vs2015.md#known-issues—visual-studio-2015) (github).
-
-* For other issues not listed here, see the [Known Issues](./known-issues/known-issues-general.md).
 
 ##<a name="ThirdParty"></a>Install dependencies manually
 If you choose not to install one or more dependencies with the extension, you can install them later manually.
@@ -274,11 +272,11 @@ This command will fail if the agent is not running in a second window, or if the
 
 For more information about app provisioning and certificate signing identities, see [Package Your App Built with Visual Studio Tools for Apache Cordova](./package-and-publish/package-app-built-with-visual-studio.md).
 
-##<a name="vstac"></a>Reinstall vs-tac
+##<a name="vstac"></a>Reinstall the Cordova CLI pre-processor (vs-tac)
 
 If you see unexpected errors when trying to build the Blank App template after installing Visual Studio Tools for Apache Cordova, you can try clearing your cache and reinstalling the Cordova CLI pre-processor, vs-tac, on your PC. Typically, this is only necessary if you try to build a Cordova app and see the error Cannot find module *[modulename]*.
 
->**Note**: For general help with build and deployment issues, see [Resolving build errors](../tips-and-workarounds/resolving-build-errors.md).
+>**Note**: If you do not see the module error, go through steps in [Resolving build errors](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md) before re-installing vs-tac.
 
 ### To try the quick fix
 
@@ -294,7 +292,7 @@ If you see unexpected errors when trying to build the Blank App template after i
 
 4. Choose **Build**, **Clean Solution**.
 
-5. Delete the platforms/*platform* folder, like platforms/android, and then rebuild your project.
+5. Delete the platforms/*platform* folder, like platforms/android.
 
     >**Tip:**
 If you have no errors, you do not need to re-install vs-tac. If you still have the same error, then re-install vs-tac.
