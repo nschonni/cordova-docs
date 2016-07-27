@@ -70,7 +70,7 @@ If you want to add support for push notifications to your Azure Mobile App, foll
 
 <a href="https://www.youtube.com/watch?v=ERLF0o60-04" class="video" title="Create an Azure Notification Hub">![Create an Azure Notification Hub](media/add-azure-mobile-app/thmb-azure-notif-hub.png)</a>
 
-To follow the same steps in the tutorial, see [Create a notification hub](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-push/#create-hub).
+To follow the same steps in the tutorial, see [Create a notification hub](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#create-hub).
 
 ##Task 4: (Optional) Configure Google Cloud Messaging (GCM)
 
@@ -78,7 +78,7 @@ If you want to send push notifications to Android devices, you must configure GC
 
 <a href="https://www.youtube.com/watch?v=OSDKh_5R6vo" class="video" title="Configure GCM">![Configure GCM](media/add-azure-mobile-app/thmb-gcm-push-notifs.png)</a>
 
-To follow the same steps in the tutorial, see [Enable Google Cloud Messaging](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-push/#optional-configure-and-run-the-android-project).
+To follow the same steps in the tutorial, see [Enable Google Cloud Messaging](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-the-app-on-android).
 
 ##Task 5: (Optional) Configure Apple Push Notification Service (APNS)
 
