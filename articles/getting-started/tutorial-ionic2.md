@@ -58,7 +58,7 @@ You can install the Ionic 2 starter templates in Visual Studio and use them to s
 
     ![Task Runner](media/tutorial-ionic2/ionic2-task-runner.png)
 
-    The Task Runner executes your project’s Gulp tasks, which include taking the html, sass, and typescript files in your app folder and moving them to the www folder. The tasks must re-run whenever you make changes to your .ts files.
+    The Task Runner executes your project’s Gulp tasks, which include taking the html, sass, and typescript files in your app folder and moving them to the www folder. The tasks must re-run whenever you make changes to your .ts files. (TypeScript compilation happens through Gulp and has been disabled from MSBUILD in this project.)
 
     When the Task Runner is open, these tasks should run automatically when you build. You can also run them manually by right-clicking on a task and choosing **Run**.
 
@@ -244,6 +244,16 @@ You may need to re-enter your credentials. If the notifications indicate that yo
 The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
 
 If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
+
+### <a name="breakpoints"></a> Can't hit breakpoints in your .ts files
+
+There is a known issue debugging Ionic 2 in VSCode. Otherwise, this indicates a problem with your sourcemaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps.
+
+![SourceMaps](media/tutorial-ionic2/ts-sourcemaps.png)
+
+### <a name="release"></a> Release builds include sourcemaps
+
+The Gulp task will always generate the sourcemaps.
 
 ### <a id="other"></a> Other issues?
 
