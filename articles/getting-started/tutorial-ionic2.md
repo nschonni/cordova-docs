@@ -32,7 +32,7 @@ You can install the Ionic 2 starter templates in Visual Studio and use them to s
 
     Type any name and choose **OK** to install them. When you are asked for permission to install the templates, give your permission.
 
-3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
+3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **TypeScript**, **Apache Cordova Apps**
 
     ![Choosing a template](media/tutorial-ionic2/ionic2-create-project.png)
 
@@ -48,41 +48,41 @@ You can install the Ionic 2 starter templates in Visual Studio and use them to s
 
 5. Wait until all npm packages have been restored.
 
-    This process will take some minutes depending on your machine and your internet connection speed.
+    >**Note** This process will take some minutes depending on your machine and your internet connection speed.
 
     In the Dependencies node you should see a `Restoring Packages..` message. If you don't, right-click the **Dependencies** node and click **Restore Packages**.
+
+    >**Note** Due to a bug, your dependencies under the node folder may show up as "not installed" after they have been restored. You will know restoration is finished when the typings folder has been added.
 
 6.  If it does not open on its own, open the Visual Studio Task Runner Explorer by choosing **View** > **Other Windows** > **Task Runner Explorer** or by using Ctrl+Alt+Bkspce shortcut keys.
 
     ![Task Runner](media/tutorial-ionic2/ionic2-task-runner.png)
 
-    The Task Runner lets you run Gulp tasks, which the project will use to run Sass and to compile TypeScript code in your www output folder. The tasks must re-run whenever you make changes to your .ts files.
+    The Task Runner executes your project’s Gulp tasks, which include taking the html, sass, and typescript files in your app folder and moving them to the www folder. The tasks must re-run whenever you make changes to your .ts files. (TypeScript compilation happens through Gulp and has been disabled from MSBUILD in this project.)
 
     When the Task Runner is open, these tasks should run automatically when you build. You can also run them manually by right-clicking on a task and choosing **Run**.
-
-8. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
 
 ## Get your app running on Android <a name="configAndroid"></a>
 
 1. Add the Android platform by **Android** as a debug target (Solution Platforms list), and then choosing **Build**, then **Build Solution**.
 
-2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Android Emulator (slow to load initially).
+2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5.1" Lollipop (5.1.1) XXHDPI Phone** (Hyper-V required) or the Google Android Emulator (slow to load initially).
 
     ![Run the app](media/tutorial-ionic/ionic-f5.png)
 
     You can configure a Google Android emulator in [AVD Manager](../develop-apps/run-app-apache.md).
 
-    You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#keyboard).
-
 3. Press F5, and the app should load correctly.
 
     ![App running in the emulator](media/tutorial-ionic2/ionic2-android.png)
 
-3. If you are running on Ripple, try out the live reload feature.
+3. Add live reload when running on Ripple.
 
     In the Task Runner under Bindings, right-click the **build** task, and choose **Remove**. Then, right-click the **watch** task in the left pane and choose **Run**.
 
-    Now, when you make changes to your HTML and CSS source files, they will be automatically updated in the running app (Ripple only) without a restart.
+    Now, when you make changes to your HTML and CSS source files, they will be automatically updated in the running app without a restart (Ripple only).
+
+    ![Watch task running](media/tutorial-ionic2/ionic2-watch-task.png)
 
 ### Troubleshooting: Let's fix it
 
@@ -244,6 +244,16 @@ You may need to re-enter your credentials. If the notifications indicate that yo
 The VS Emulator for Android requires Hyper-V and is not supported when running on a VM. For more info, see [this information](https://msdn.microsoft.com/en-us/library/mt228282.aspx#NoStart2).
 
 If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
+
+### <a name="breakpoints"></a> Can't hit breakpoints in your .ts files
+
+There is a known issue debugging Ionic 2 in VSCode. Otherwise, this indicates a problem with your sourcemaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps.
+
+![SourceMaps](media/tutorial-ionic2/ts-sourcemaps.png)
+
+### <a name="release"></a> Release builds include sourcemaps
+
+The Gulp task will always generate the sourcemaps.
 
 ### <a id="other"></a> Other issues?
 
