@@ -1,6 +1,6 @@
 
-<properties pageTitle="Getting started with Ionic 2 in Visual Studio"
-  description="This is an article on getting started with Ionic 2 in Visual Studio"
+<properties pageTitle="Getting started with Ionic apps in Visual Studio"
+  description="This is an article on ionic tutorial"
   services=""
   documentationCenter=""
   authors="mikejo5000" />
@@ -10,216 +10,234 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="01/08/16"
+     ms.date="12/01/2015"
      ms.author="mikejo"/>
 
-# Get started with Ionic 2 in Visual Studio
-[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 and the Ionic CLI to easily create and debug cross-platform apps.
+# Get started with Ionic 2 apps in Visual Studio <a name="video"></a>
+[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps.
 
->**Caution**: Ionic 2 is an alpha release and the Ionic 2 CLI is beta. We do not recommend that you use Ionic 2 for production apps, but we are including this article to help developers test Ionic 2 in Visual Studio.
+## Get the Ionic 2 templates <a name="getTemplates"></a>
 
-## Set up your machine for Ionic with VS <a name="getStarted"></a>
+You can install the Ionic 2 starter templates in Visual Studio and use them to start building an app.
 
-To follow these steps, you must:
-
-1. [Install the Ionic 2 CLI](http://ionicframework.com/docs/v2/getting-started/installation/).
-
-    ```
-    npm install -g ionic@beta
-    ```
-
-    The installation may take a few minutes, so make sure you allow it to finish.
-
-2. [Install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
+1. If you haven't already, [install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
 
     When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
 
-3. To run a quick test of your setup, verify that you can run the default Blank App template.
+    > **Note:** Quickly verify that you can load and build the default Blank App template. In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank", and build it with F5. If you have any issues, see these [troubleshooting steps](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
 
-    * In Visual Studio, choose **File**, **New**, **Project**, **JavaScript**, **Apache Cordova Apps**, **Blank App** and name the new project "blank".
+2. Install the Ionic template in Visual Studio by selecting **File**, **New**, then **Project**. In the New Project dialog box, select **Online**. In the search box, type **Ionic**.
 
-    * Choose **Android**, **Ripple - Nexus (Galaxy)** (Chrome required) and press F5 to run the app (make sure the default blank app loads correctly). If any issues occur, use the error information and any links provided to resolve issues. Also, see the Troubleshooting tips in this article and in [Configure the Tools](configure-vs-tools-apache-cordova.md).
+    ![Getting the templates](media/tutorial-ionic2/ionic2-get-templates.png)
+
+    Type any name and choose **OK** to install them. When you are asked for permission to install the templates, give your permission.
+
+3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
+
+    ![Choosing a template](media/tutorial-ionic2/ionic2-create-project.png)
+
+    Choose one of the following starter templates for your new project:
+
+    * Ionic 2 Blank App
+    * Ionic 2 SideMenu Template
+    * Ionic 2 Tabs Template
+
+4. Choose **OK**.
+
+    Visual Studio creates the Ionic project.
+
+5. Wait until all npm packages have been restored.
+
+    This process will take some minutes depending on your machine and your internet connection speed.
+
+    In the Dependencies node you should see a `Restoring Packages..` message. If you don't, right-click the **Dependencies** node and click **Restore Packages**.
+
+6.  If it does not open on its own, open the Visual Studio Task Runner Explorer by choosing **View** > **Other Windows** > **Task Runner Explorer** or by using Ctrl+Alt+Bkspce shortcut keys.
+
+    ![Task Runner](media/tutorial-ionic2/ionic2-task-runner.png)
+
+    The Task Runner lets you run Gulp tasks, which the project will use to run Sass and to compile TypeScript code in your www output folder. The tasks must re-run whenever you make changes to your .ts files.
+
+    When the Task Runner is open, these tasks should run automatically when you build. You can also run them manually by right-clicking on a task and choosing **Run**.
+
+8. Add [IntelliSense for Ionic](https://visualstudiogallery.msdn.microsoft.com/d6279fba-bcff-4857-906d-29faa8a99448/) to your project.
+
+## Get your app running on Android <a name="configAndroid"></a>
+
+1. Add the Android platform by **Android** as a debug target (Solution Platforms list), and then choosing **Build**, then **Build Solution**.
+
+2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as the **VS Emulator 5" KitKat (4.4)** (Hyper-V required) or the Google Android Emulator (slow to load initially).
+
+    ![Run the app](media/tutorial-ionic/ionic-f5.png)
+
+    You can configure a Google Android emulator in [AVD Manager](../develop-apps/run-app-apache.md).
+
+    You can also run on Ripple simulator instead, but you will need to use the workaround described [later in this article](#keyboard).
+
+3. Press F5, and the app should load correctly.
+
+    ![App running in the emulator](media/tutorial-ionic2/ionic2-android.png)
+
+3. If you are running on Ripple, try out the live reload feature.
+
+    In the Task Runner under Bindings, right-click the **build** task, and choose **Remove**. Then, right-click the **watch** task in the left pane and choose **Run**.
+
+    Now, when you make changes to your HTML and CSS source files, they will be automatically updated in the running app (Ripple only) without a restart.
 
 ### Troubleshooting: Let's fix it
 
-[Errors running the Blank App in Visual Studio?](#other)
+[You see an error that says Promise is not defined?](#node)
 
-## Get the Ionic 2 tutorial template <a name="getTemplates"></a>
+[Some node modules won't restore?](#node_modules)
 
-1. Make sure you installed the Ionic 2 CLI, then open a command line.
-2. Go to the directory where you want to install the Ionic starter app, such as a folder in the Documents folder.
+[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
+
+[Error saying that a Content Security Policy is missing?](#csp)
+
+[Other issues?](#other)
+
+## Get your app running on iOS <a name="configiOS"></a>
+
+  You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](ios-guide.md).
+
+  The Ionic starter templates should run correctly on iOS when the remotebuild agent is running on a Mac (or a service like MacInCloud), and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
+
+## Get your app running on Windows <a name="configWin10"></a>
+
+1. If it's not already installed, use the Visual Studio install program to install the **Universal Windows App Development Tools** (it should already be installed).
+
+2. Choose **Build Solution** from the **Build** menu.
+
+3. Open the configuration designer (config.xml) in Visual Studio, choose Windows, and in the **Windows Target Version**, choose  either **Windows 10.0** or **Windows 8.1**, and save changes.
+
+4. Choose **Windows-x64** or **Windows-x86** from the Solution Platforms list.
+
+5. Choose a Windows deployment target, such as **Local Machine** or **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
+
+6. Press F5 to run your app.
+
+    ![App running in the emulator](media/tutorial-ionic2/ionic2-windows-x86.png)
+
+### Troubleshooting: Let's fix it
+
+[You see an error that says Promise is not defined?](#node)
+
+[Some node modules won't restore?](#node_modules)
+
+[Get a message telling you to install a new app?](#partialpages)
+
+[Certificate error on Windows](#certificate)
+
+[Unhandled exception running on Windows?](#unhandled)
+
+[appxrecipe file missing](#appxrecipe)
+
+[Other issues?](#other)
+
+## What's Next?
+
+You can use Visual Studio's build and [debug tools](../debug-and-test/debug-using-visual-studio.md), use the configuration manager to easily [add device plugins](../develop-apps/manage-plugins.md) to your app to get up and running quick. To learn more about Ionic, see the Ionic framework docs.
+
+![Add plugins](media/tutorial-ionic/ionic-add-plugin.png)
+
+## Troubleshooting: Let's fix it
+
+A few errors are fairly common in the starter templates when debugging in Visual Studio.
+
+### You see an error that says Promise is not defined? <a id="node"></a>
+
+Your installed version of Node.js may not support Promises. To fix this, you need the current Visual Studio 2015 update (Update 3 or later) and Microsoft ASP.NET and Web Tools installed. Check for any notifications or warning icons in the upper right of Visual Studio and install these components, if instructed.
+
+![Update your credentials](media/tutorial-ionic/ionic-windows-credentials.png)
+
+If you are unable to install the Web Tools:
+
+1. [download them here](https://visualstudiogallery.msdn.microsoft.com/c94a02e9-f2e9-4bad-a952-a63a967e3935).
+
+2. Run the following command from the folder containing the download:
 
     ```
-    C:\\Users\<username>\Documents\myIonic2App>
+    DotNetCore.1.0.0-VS2015Tools.Preview2.exe SKIP_VSU_CHECK=1
     ```
+3. Create a new Ionic 2 project from the templates that you downloaded previously.
 
-3. In the command line, type
+### Some node modules won't restore? <a id="node_modules"></a>
 
-    ```
-    ionic start myIonic2App --v2
-    ```
+If you can't restore some of the Node.js modules, such as ionic-angular, make sure that you have installed the Update 3 or later of Visual Studio and Microsoft ASP.NET and Web Tools (for more instructions, see the [previous issue](#node)).
 
-    or, for the TypeScript version:
-
-    ```
-    ionic start myIonic2App --v2 --ts
-    ```    
-
-    Either command will install Ionic 2 and the required npm modules, including the Angular 2 module (there is no need to install this separately).
-
-    Ionic creates the project in your current folder. Most of the Ionic 1 templates such as sidemenu and tabs are not available yet for Ionic 2, but if you need to use one you could read about [migrating](http://ionicframework.com/docs/v2/getting-started/migration/) Ionic 1 apps.
-
-    >**Note** You can run these commands to get the tutorial app instead: `ionic start myIonic2App tutorial --v2` or `ionic start myIonic2App tutorial --v2 --ts`. However, the tutorial app currently throws a runtime error when navigating pages.
-
-4. In the command line, switch to the new directory that Ionic created for the app.
-
-5. In the command line, type
+If that doesn't resolve the issue, open a command line and go to the project folder, then run this command:
 
     ```
-    ionic serve
+    npm install
     ```
-
-    This runs the app in your browser. You may be prompted to select an address, like localhost, before the app loads. You can use the browser for testing, but you will want to run on an emulator or device before long! Keep reading...
-
-6. In the command line, type
-
+    and then this command:
     ```
-    ionic run android
+    npm rebuild node-sass
     ```
+Then create a new Ionic 2 project from the templates you downloaded previously.
 
-    This will install the required Android platform dependencies for Ionic 2 apps. (If you already have an Android emulator running, the app should also load on the emulator at this point. But otherwise, we will try to run on the emulator later.)
+### <a id="wwahost"></a>WWAHost runtime error?
 
-    You can run the same command for iOS (`ionic run ios`), but to work in Visual Studio on Windows you will need to also [install the remote agent](ios-guide.md). We are not covering those tasks here.
+When debugging on a Windows 8.1 dev machine, you may get a WWAHost runtime error when navigating between pages in Ionic apps. You can work around this by:
 
-## Import the project into VS <a name="configTemplates"></a>
+* Closing DOM Explorer before navigating pages, or
 
-For the Ionic 2 tutorial app, do this:
+* Upgrading to Windows 10 on your dev machine (the platform issue is fixed in Windows 10).
 
-1. In Visual Studio, choose **File**, **New**, **Project From Existing Code**.
+### <a id="partialpages"></a>Get a message telling you to install a new app?
 
-2. In the wizard, choose **Apache Cordova** as the project type that you'd like to create, and then choose **Next**.
+When you are using the AngularJS routing module (Ionic templates use this module) on Windows, you may need to include a call to `aHrefSanitizationWhitelist`. This will correct errors that occur when loading partial pages.
 
-    ![Create a project from existing code](media/tutorial-ionic2/ionic-create-wizard.png)
+If you see the dialog box shown here, you have likely run into this issue.
 
-3. For the **Project file location**, browse to the root folder of the Ionic tutorial project and select it.
+![partial pages don't load](media/tutorial-ionic/ionic-error-partial-pages.png)
 
-    ![Select the source project](media/tutorial-ionic2/ionic-create-specify-root.png)
+Typically, you include the code fix in app.js or wherever you are calling your module configuration code (inside `angular.module.config`):
 
-4. Type a name for your new project and select **Finish**.
+```
+$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|ms-appx-web|x-wmapp0):/);
 
-    Visual Studio adds a few new files to the project. Wait for Bower/NPM updates to the project to finish, if necessary.
+$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|ms-appx|ms-appx-web|x-wmapp0):|data:image\//);
+```
+If you use the preceding code, then add a reference to $compileProvider in the following line of code.
 
-## Get your app running on Android from Visual Studio
+```
+.config(function ($stateProvider, $urlRouterProvider) {
+  ```
 
-1. Open index.html and include the following `<meta>` element.
+so that it looks like this:
+
+```
+.config(function ($compileProvider, $stateProvider, $urlRouterProvider) {
+  ```
+
+### <a id="unhandled"></a>Unhandled exception running on Windows?
+
+If you see the following unhandled exception when targeting Win/WinPhone 8.1, follow the [earlier steps](#configWindows) to call platformOverrides.js to fix this issue.
+
+![unhandled exception](media/tutorial-ionic/ionic-unhandled-exception.png)
+
+If you see the same error when targeting Windows 10, make sure you set **Windows 10.0** as the target in the Windows tab of the configuration designer.
+
+### appxrecipe file missing <a id="appxrecipe"></a>
+
+If you see this error when targeting Windows 10, make sure you set **Windows 10.0** as the target in the Windows tab of the configuration designer (config.xml). Then delete the platforms\windows folder and rebuild the project.
+
+### <a id="csp"></a> Error saying that the Content Security Policy is missing?
+
+Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following `<meta>` element:
 
     ```
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-    This Content-Security-Policy will satisfy Cordova 5 security requirements.
+### <a id="certificate"></a> Certificate error on Windows?
 
-2. Open the tsconfig.json file and change the target from the default value of "ES5" to "es6".
+Make sure your credentials are up to date. Check for any notifications or warning icons in the upper right of Visual Studio.
 
-    Currently, targeting es6 and Android 5.1 provides the best experience for the Ionic 2 template apps.
+![Update your credentials](media/tutorial-ionic/ionic-windows-credentials.png)
 
-2. Choose **Android** as a debug target (Solution Platforms list), and to get the app running choose a target such as Ripple (Chrome required) or the **VS Emulator 5.1" Lollipop (5.1.1) XXHDPI Phone** (Hyper-V required).
-
-    ![Run the app](media/tutorial-ionic2/ionic-f5.png)
-
-    If you do not have Hyper-V, you can choose the Google emulator (not very fast), set up the GenyMotion emulator, or use a device. For more info, see [this article](../develop-apps/run-app-apache.md).
-
-2. Press F5, and the app should load correctly.
-
-    ![App running in the emulator](media/tutorial-ionic2/ionic2-android-lollipop.png)
-
-### Troubleshooting: Let's fix it
-
-[See a blank screen when you run the app?](#blank)
-
-[Don't see any Android 5.1 emulators in Visual Studio?](#missingEmu)
-
-[Visual Studio Emulator for Android won't run?](#vsAndroidEmu)
-
-[App is not working right on Android 4.4?](#android44)
-
-[Want to target ES6?](#es6)
-
-[Error saying that a Content Security Policy is missing?](#csp)
-
-[Other issues?](#other)
-
-## Get your app running on iOS from Visual Studio <a name="configiOS"></a>
-
-  You can run initially on the Ripple Emulator after selecting iOS as a debug target, but for detailed info on setting up the remotebuild agent for iOS, see [this topic](ios-guide.md).
-
-  The Ionic 2 tutorial app should run correctly on iOS when the remotebuild agent is running on a Mac, and when Visual Studio is configured to connect to it. (The complete steps are outside the scope here.)
-
-## Get your app running on Windows 10 from Visual Studio
-
-1. In the command line, type
-
-    ```
-    ionic run windows
-    ```
-
-    This installs required platform dependencies for Windows 10.
-
-2. In Visual Studio, right-click config.xml and choose **View Designer** to open the configuration designer.
-
-3. In the configuration designer (config.xml), choose **Windows**, and in the **Windows Target Version**, choose  **Windows 10.0**, and save changes.
-
-4. Choose a **Windows-Any CPU** as a platform, and a Windows 10 deployment target such as **Window **Mobile Emulator 10.0.xxxxx.0 WVGA 4 inch 1GB**.
-
-5. Press F5 to run your app.
-
-## Troubleshooting: Let's fix it
-
-[See a blank screen when you run the app?](#blank)
-
-[Certificate error on Windows?](#certificate)
-
-[Error saying that a Content Security Policy is missing?](#csp)
-
-[Other issues?](#other)
-
-## Developing your Ionic 2 app
-
-When you run the ionic serve command, the CLI uses ionic.config.js to copy files from the app folder to www/build. If you want to avoid re-running ionic serve each time you build the app from Visual Studio, we currently recommend that you change the "build" folder reference in ionic.config.js to "temp" or some other name. This way you can run the app from Visual Studio after making changes in the www/build folder. You may later need to migrate these changes back to the app folder. We are working on a fix for this issue.
-
-### <a id="blank"></a>See a blank screen when you run the app?
-
-If you get a blank screen, you may also see a ERR_FILE_NOT_FOUND error in the Output window. If you see this issue, try these steps:
-
-1. Run an emulator from Visual Studio and leave it running (VS Emulator for Android or Google emulator).
-
-2. Press Shift + F5 to stop debugging.
-
-3. Open a command line, go to the directory where you installed the tutorial app, and type this:
-
-    ```
-    ionic run android
-    ```
-
-    or
-
-    ```
-    ionic run windows
-    ```  
-
-4. Press F5 to retry running your app.
-
-### <a id="missingEmu"></a> Don't see any Android 5.1 emulators in Visual Studio?
-
-The current version of the Ionic 2 tutorial app works best on Android 5.1 and later versions. If you installed the Visual Studio Emulator for Android, but don't see any 5.1 emulators, follow these steps.
-
-1. Choose **Tools**, **Visual Studio Emulator for Android**.
-
-    ![Configuring the VS Android Emulator](media/tutorial-ionic2/ionic2-android-emu-tools.png)
-
-2. If you see a message to install emulator updates, install them.
-
-3. If you don't have any device profiles for Android 5.1 installed, use the Device Profiles page to install the updates.
+You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow instructions.
 
 ### <a id="vsAndroidEmu"></a> Visual Studio Emulator for Android won't run?
 
@@ -227,37 +245,9 @@ The VS Emulator for Android requires Hyper-V and is not supported when running o
 
 If you have previously run the VS Emulator for Android successfully but now the emulator won't run, try deleting the emulator VM instance in Hyper-V Manager. For more info, see [Troubleshooting] (https://msdn.microsoft.com/en-us/library/mt228282).
 
-### <a id="android44"></a> App is not working right on Android 4.4?
-
-The current version of the Ionic 2 tutorial app works best on Android 5.1 and later versions. You can try to include the Crosswalk plugin using the configuration designer, which may provide better support for Android 4.4.
-
-1. Open config.xml, choose the Plugins tab.
-
-2. Choose the Crosswalk Webview and choose **Add**.
-
-### <a id="csp"></a> Error saying that the Content Security Policy is missing?
-
-Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following <meta> element:
-
-    ```
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    ```
-
-### <a id="es6"></a> App behavior doesn't look right on Android 5.1?
-
-Ionic 2 supports ES6 but the app targets ES5 by default. You can change the default target to ES6 by opening the tsconfig.json file and changing the target attribute to "es6" (the current default value is "ES5").
-
-### <a id="certificate"></a> Certificate error on Windows?
-
-Make sure your credentials are up to date. Check for any notifications or warning icons in the upper right of Visual Studio.
-
-![Update your credentials](media/tutorial-ionic2/ionic-windows-credentials.png)
-
-You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow instructions.
-
 ### <a id="other"></a> Other issues?
 
-If you have errors running the Blank App template (rather than just the Ionic 2 tutorial template), try these steps.
+If you have errors running the Blank App template (rather than just the Ionic starter apps), try these steps.
 
 1. In Visual Studio, go to **Tools**, **Options**, **Tools for Apache Cordova** and run the Dependency Checker.
 
@@ -265,4 +255,4 @@ If you have errors running the Blank App template (rather than just the Ionic 2 
 
 2. If you see an error message in the Output window in Visual Studio, use any links provided to try to resolve the issue.
 
-3. If that doesn't resolve issues, follow instructions to [clear the Cordova cache](http://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#vstac). Otherwise, see [Known Issues](http://taco.visualstudio.com/en-us/docs/known-issues-general/) or post questions on [StackOverflow](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
+3. If that doesn't resolve issues, see these [troubleshooting tips](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md). or post questions on [StackOverflow](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
