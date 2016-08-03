@@ -248,6 +248,20 @@ You can attach the Visual Studio debugger to the Android emulator or to an Andro
 
 If you’re using an Android version between 2.3.3 and 4.3, you can install the jsHybugger plugin to enable Android diagnostics (DOM Explorer, console, and debugging). This plugin instruments your code locally to enable remote debugging on Android devices and emulators, and supports Android 2.3.3 and later versions.
 
+### <a name="attacheDbgRipple"></a>To attach the debugger to Ripple
+
+If the debugger is not attaching to Ripple when you press F5, you can attach the debugger after your app loads.
+
+1. Select Ripple as your target and start the app by pressing F5 and wait for the app to load.
+
+2. Choose **Debug** > **Attach to Process**, and then choose the chrome.exe process with a title of `localhost:<Ripple port number>`.
+
+    ![Attach the debugger to Ripple](media/debug-using-visual-studio/debug-attach-to-process.png)
+
+3. Refresh Chrome.
+
+    You should now hit breakpoints and be able to use the JavaScript Console and the DOM Explorer.
+
 ### <a name="DbgAndroid"></a>To debug on Android 4.4
 
 1.  With your project open in Visual Studio, choose **Android** from the **Solution Platforms** list, and choose one of the Android deployment targets.
