@@ -120,7 +120,7 @@ Follow the steps in [Test push notifications in your Windows app](https://azure.
 
 ##Task 8: Add authentication
 
-Watch this video to add authentication to the Azure connected services sample. The video shows adding authentication with Twitter, but steps are similar for other services as well.
+Watch this video to add authentication to the Azure connected services sample. The video shows adding authentication with Twitter, but the steps are similar for other services as well.
 
 <a href="https://www.youtube.com/watch?v=PTrxocL2lQg" class="video" title="Add authentication to your app">![Add authentication to your app](media/add-azure-mobile-app/thmb-authentication.png)</a>
 
