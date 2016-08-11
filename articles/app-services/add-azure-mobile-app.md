@@ -14,7 +14,7 @@
    ms.date="08/11/2016"
    ms.author="mikejo5000"/>
 
-#Add Azure App Service Mobile App
+#Add Azure data storage, offline sync, and push notifications
 
 ##Overview
 
