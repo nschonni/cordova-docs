@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="01/26/2016"
+   ms.date="08/11/2016"
    ms.author="mikejo5000"/>
 
 #Add Azure App Service Mobile App
@@ -23,10 +23,10 @@ Azure App Service is a cloud app service that integrates everything you need to 
 apps for any platform or device.
 
 With the [Mobile Apps](https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/) feature of Azure App Service,
-it’s easy to rapidly build engaging Cordova apps. Azure mobile apps helps you to easily authenticate users, access the cloud data and send
-push notifications. You can create a no code backend in minutes and extend it to add custom logic C# or Node.js as you would like.
+it’s easy to rapidly build engaging Cordova apps. Azure mobile apps helps you to easily authenticate users, access the cloud data, add offline sync capabilities, and send
+push notifications. You can create a no-code backend in minutes and extend it to add custom logic C# or Node.js as you would like.
 
-The tasks in this article show you how to create an Azure Mobile App that uses an Azure Easy table for data storage and supports push notifications for Android, iOS, and Windows.
+The tasks in this article show you how to create an Azure Mobile App that uses an Azure Easy table for data storage, offline data sync, authentication, and supports push notifications for Android, iOS, and Windows.
 
 ##Prerequisites: Get the Azure connected services client app
 
@@ -43,7 +43,7 @@ On the Azure portal, create an Azure Mobile App backend. Follow steps in this vi
 
 For documentation that shows similar steps, see the [Getting Started Tutorial](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/). You can skip the section on downloading the client app.
 
->**Note**: You can follow steps described in the [Getting Started Tutorial](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/) to download the Azure sample, but if you use the getting started sample instead of the Azure connected services sample, you must take extra steps to add required plugins, to add push notification code, and to update the Cordova version in your app.
+>**Note**: You can follow steps described in the [Getting Started Tutorial](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started/) to download the Azure sample, but if you use the getting started sample instead of the Azure connected services sample, you must take extra steps to add required plugins, to add offline sync and push notification code, and to update the Cordova version in your app.
 
 ##Task 2: Update your Cordova app and your Mobile App backend code
 
@@ -54,15 +54,23 @@ To use the sample, update your Cordova app in Visual Studio:
 * Include your Azure Mobile App connected service URL where directed in index.js.
 * Include the same URL in the CSP `<meta>` element in index.html.
 
-If you are using the Azure connected services sample, you can skip the steps in [Modify your Cordova app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#add-push-to-app)
+To use offline sync:
 
-The client app uses push notification templates to register devices for push notification service. This allows you to use platform-agnostic backend code in your Azure Mobile App.
+* Out of the box, the app will sync with the Azure table when the app loads. For more information on the offline sync feature provided by the Azure Mobile App plugin, see this [README](https://github.com/Azure/azure-mobile-apps-js-client#offline-data-sync-preview). To disable offline sync, follow instructions in the code comments in index.js.
 
-In Azure, update your server project:
+To use push notifications:
 
-* Follow steps in [Update the server project](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#update-the-server-project-to-send-push-notifications)
+* In Azure, update your server project by following steps in [Update the server project](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#update-the-server-project-to-send-push-notifications).
 
-To use push notifications in the sample, follow the other tasks in this article to create an Azure notification hub and to configure platform-specific notification services (GCM, APNS, and WNS) for the devices that you are targeting.
+    The client app uses push notification templates to register devices for push notification service. This allows you to use platform-agnostic backend code in your Azure Mobile App.
+
+    If you are using the Azure connected services sample, you can skip the steps in [Modify your Cordova app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#add-push-to-app)
+
+* To use push notifications, follow the other tasks in this article to create an Azure notification hub and to configure platform-specific notification services (GCM, APNS, and WNS) for the devices that you are targeting.
+
+To use authentication:
+
+* If you are not using push, comment out the call to the `registerForPushNotifications()` function in index.js and then skip to [Task 8: Add authentication](#authentication).
 
 ##Task 3: Create an Azure push notification hub
 
@@ -87,6 +95,8 @@ If you want to send push notifications to iOS devices, you must configure APNS a
 <a href="https://www.youtube.com/watch?v=VzJxTcpUXCY" class="video" title="Configure APNS">![Configure APNS](media/add-azure-mobile-app/thmb-apns-push-notifs.png)</a>
 
 To follow the same steps in the tutorial, see [Register the app for push notifications on your Apple Developer portal](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-on-ios).
+
+>**Note**: The PhoneGap push plugin requires XCode 7.
 
 ##Task 6: (Optional) Configure Windows Notification Service (WNS)
 
@@ -118,13 +128,15 @@ To test push notifications in your Windows App:
 
 Follow the steps in [Test push notifications in your Windows app](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-push/#optional-configure-and-run-on-windows)
 
-##Task 8: Add authentication
+##Task 8: Add authentication <a id="authentication"></a>
 
 Watch this video to add authentication to the Azure connected services sample. The video shows adding authentication with Twitter, but the steps are similar for other services as well.
 
 <a href="https://www.youtube.com/watch?v=PTrxocL2lQg" class="video" title="Add authentication to your app">![Add authentication to your app](media/add-azure-mobile-app/thmb-authentication.png)</a>
 
 To follow similar steps in the tutorial, see [How to: Authenticate users](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-users/)
+
+Select a device target and press F5 to run your app with authentication.
 
 ##Troubleshooting: Let's fix it
 
@@ -139,6 +151,10 @@ To follow similar steps in the tutorial, see [How to: Authenticate users](https:
     Use the Server Explorer in Visual Studio to [make sure your device is getting registered](https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-fixer/#self-diagnose-tips) with push notification services.
 
     In Azure, open **Settings** > **Diagnostic logs**, and enable application logging, web server logging (file system), and detailed error messages. Then, while sending push notifications, view your Log stream (**Tools** > **Log stream**).
+
+* The app throws errors only when targeting iOS.
+
+    Make sure you are running XCode 7.
 
 * Can't get push notifications to work on Windows Phone 8.1.
 
