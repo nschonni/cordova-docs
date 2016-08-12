@@ -70,7 +70,7 @@ To use push notifications:
 
 To use authentication:
 
-* If you are not using push, comment out the call to the `registerForPushNotifications()` function in index.js and then skip to [Task 8: Add authentication](#authentication).
+* If you are not using push, comment out the call to the `registerForPushNotifications` function in index.js and then skip to [Task 8: Add authentication](#authentication).
 
 ##Task 3: Create an Azure push notification hub
 
