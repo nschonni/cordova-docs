@@ -42,6 +42,8 @@ You can install the Ionic starter templates in Visual Studio and use them to sta
 
     Type any name and choose **OK** to install them. When you are asked for permission to install the templates, give your permission.
 
+    >**Note**: You can follow the same steps to install the AzureIonic To-Do List Sample App.
+
 3. Close and re-open Visual Studio. Again, choose **File**, **New**, then **Project**. Now, when you choose **Installed**, then **Templates**, the new starter templates will show up under **JavaScript**, **Apache Cordova Apps**
 
     ![Choosing a template](media/tutorial-ionic/ionic-installed-templates.png)

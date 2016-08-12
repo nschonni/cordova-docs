@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Migrate a Visual Studio 2013 project to Visual Studio 2015 | Cordova"
+   pageTitle="Migrate a Cordova project to Visual Studio 2015 | Cordova"
    description="description"
    services="na"
    documentationCenter=""
@@ -14,11 +14,37 @@
    ms.date="09/10/2015"
    ms.author="mikejo"/>
 
-# Migrate a Visual Studio 2013 project to Visual Studio 2015
+# Migrate a Cordova project to Visual Studio 2015
 
-The project structure in Visual Studio 2015 mirrors the project structure of Apache Cordova apps that you create using the Cordova command-line interface (CLI). This allows you to use any third-party tools or CLIs in Visual Studio that are compatible with Cordova, such as Gulp and the Ionic CLI. If you have a project created in Visual Studio 2013, we recommend migrating to Visual Studio 2015. Some extra steps are required to migrate a Visual Studio 2013 project to Visual Studio 2015.
+The project structure in Visual Studio 2015 mirrors the project structure of Apache Cordova apps that you create using the Cordova command-line interface (CLI). This allows you to use any third-party tools or CLIs in Visual Studio that are compatible with Cordova, such as Gulp and the Ionic CLI. If you have a Cordova project that was not created in Visual Studio 2015 (such as a project created in Visual Studio 2013) we recommend migrating to Visual Studio 2015. You can import the project into Visual Studio 2015 (recommended), or you can manually migrate a Visual Studio 2013 project to Visual Studio 2015.
 
-## Create a blank project in Visual Studio 2015
+## Import the project into Visual Studio
+
+For a Cordova project created without Visual Studio 2015, take the following steps.
+
+1. Make a backup of your existing project (obligatory first step :))
+
+2. In Visual Studio 2015, choose **File**, **New**, **Project From Existing Code**.
+
+3. In the wizard, choose **Apache Cordova** as the project type that you'd like to create, and then choose **Next**.
+
+    ![Create a project from existing code](media/migrate-to-vs2015/create-wizard.png)
+
+    >**Note**: If you don't see **Apache Cordova** as an option, you need to install Visual Studio Tools for Apache Cordova.
+
+4. For the **Project file location**, browse to the root folder of the Cordova project and select it.
+
+    ![Select the source project](media/migrate-to-vs2015/create-specify-root.png)
+
+5. Type a name for your new project and select **Finish**.
+
+    Visual Studio adds a few new files to the project. Wait for Bower/NPM updates to the project to finish, if necessary.
+
+## Manually migrate a Visually Studio 2013 project to Visual Studio 2015
+
+If you want to manually migrate the old project, take the following steps.
+
+### Create a blank project in Visual Studio 2015
 
 1. If you haven't already, [Install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794) with Visual Studio Tools for Apache Cordova.
 
@@ -31,7 +57,7 @@ The project structure in Visual Studio 2015 mirrors the project structure of Apa
 
      * Choose **Windows**, **Local Machine** and press F5 to run the app (make sure the app loads correctly). If any issues occur, see [Configure the Tools] (configure-vs-tools-apache-cordova.md) or [Read up on additional known issues](./known-issues/known-issues-general.md).
 
-## Update your existing project
+### Update your existing project
 1. Make a backup of your existing project (obligatory first step :))
 
 2. In Windows, open the folder where you created the Blank App project (which you named "blank" in the previous steps).
@@ -66,7 +92,7 @@ The project structure in Visual Studio 2015 mirrors the project structure of Apa
 
   > **Note** If you have errors, you may need to update file references to reflect the new folder structure.
 
-## Update Configl.xml
+### Update Configl.xml
 
 Next, you need to make sure that your icons and splash screens are picked up correctly in the updated project.
 
