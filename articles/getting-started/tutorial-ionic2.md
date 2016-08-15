@@ -1,6 +1,6 @@
 
-<properties pageTitle="Getting started with Ionic apps in Visual Studio"
-  description="This is an article on ionic tutorial"
+<properties pageTitle="Getting started with Ionic 2 apps in Visual Studio"
+  description="This is an article on ionic 2 tutorial"
   services=""
   documentationCenter=""
   authors="mikejo5000" />
@@ -10,11 +10,11 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="12/01/2015"
+     ms.date="08/03/2016"
      ms.author="mikejo"/>
 
 # Get started with Ionic 2 apps in Visual Studio <a name="video"></a>
-[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps.
+[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps. 
 
 ## Get the Ionic 2 templates <a name="getTemplates"></a>
 

@@ -9,12 +9,12 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="12/01/2015"
+     ms.date="06/15/2016"
      ms.author="mikejo"/>
 
 # Get started with Onsen UI apps in Visual Studio
 
-Onsen UI is a front-end UI framework for developing cross-platform mobile apps using Apache Cordova and PhoneGap.
+Onsen UI is a front-end UI framework for developing cross-platform mobile apps using Apache Cordova and PhoneGap. 
 
 [Onsen UI 2.0](https://onsen.io/v2/) was released and supports React, Angular 1 and 2, and Web Components together within your Cordova app. With more than 100 components, you can easily create great-looking HTML5 hybrid mobile apps with Material and Flat design.
 
