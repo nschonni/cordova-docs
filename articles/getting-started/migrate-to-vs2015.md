@@ -11,12 +11,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="09/10/2015"
+   ms.date="08/03/2016"
    ms.author="mikejo"/>
 
 # Migrate a Cordova project to Visual Studio 2015
 
-The project structure in Visual Studio 2015 mirrors the project structure of Apache Cordova apps that you create using the Cordova command-line interface (CLI). This allows you to use any third-party tools or CLIs in Visual Studio that are compatible with Cordova, such as Gulp and the Ionic CLI. If you have a Cordova project that was not created in Visual Studio 2015 (such as a project created in Visual Studio 2013) we recommend migrating to Visual Studio 2015. You can import the project into Visual Studio 2015 (recommended), or you can manually migrate a Visual Studio 2013 project to Visual Studio 2015.
+The project structure in Visual Studio 2015 mirrors the project structure of Apache Cordova apps that you create using the Cordova command-line interface (CLI). This allows you to use any third-party tools or CLIs in Visual Studio that are compatible with Cordova, such as Gulp and the Ionic CLI. If you have a Cordova project that was not created in Visual Studio 2015 (such as a project created in Visual Studio 2013) we recommend migrating to Visual Studio 2015. You can import the project into Visual Studio 2015 (recommended), or you can manually migrate a Visual Studio 2013 project to Visual Studio 2015. 
 
 ## Import the project into Visual Studio
 

@@ -9,16 +9,16 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="09/10/2015"
+     ms.date="05/15/2016"
      ms.author="kirupac"/>
 
 #General Cordova tips and workarounds
-This document covers tips, tricks, and known workarounds for general issues with Cordova or Tools for Apache Cordova.
+This document covers tips, tricks, and known workarounds for general issues with Cordova or Tools for Apache Cordova. 
 
 <a name="connection"></a>
 ##App not connecting to the internet or failing to retrieve data or resources
 
-A Cordova app has two distinct layers of securirty. At the client-side application level, the Content Security Policy meta tag and the Whitelist plugin rules set in config.xml prevent other sites from injecting unwanted resources into your app. Errors due to a restrictive CSP usually prompt you to adjust the CSP and whiltelist rules. Learn how to set these rules in the [following guide](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/). 
+A Cordova app has two distinct layers of securirty. At the client-side application level, the Content Security Policy meta tag and the Whitelist plugin rules set in config.xml prevent other sites from injecting unwanted resources into your app. Errors due to a restrictive CSP usually prompt you to adjust the CSP and whiltelist rules. Learn how to set these rules in the [following guide](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/).
 
 The second layer is at the backend level. Web services implement Cross-Origin Resource Sharing to restrict the content that you can pull from that domain. Since all Cordova apps pull data from an external server (through RESTful API calls), you may see errors such as ```Error 500``` or like this: ```XMLHttpRequest cannot load [external connection string]. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin [App URL] is therefore not allowed access. The response had HTTP status code 400.```
 

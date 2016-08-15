@@ -9,11 +9,11 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="09/10/2015"
+     ms.date="05/15/2016"
      ms.author="kirupac"/>
 
 #Android tips and workarounds
-This document covers tips, tricks, and known workarounds for problems with the Cordova Android platform.
+This document covers tips, tricks, and known workarounds for problems with the Cordova Android platform. 
 > **Note**: If your problem is security related, please read [May 26th, 2015 Android Security Issue](../tutorial-cordova-5-readme/)
 
 <a name="android"></a>

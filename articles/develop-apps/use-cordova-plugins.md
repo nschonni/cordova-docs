@@ -11,14 +11,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="05/03/2016"
+   ms.date="08/04/2016"
    ms.author="normesta"/>
 
 # <a id="top"></a>Visual Studio Core Plugins
 
 ## Bonus: Try them all!
 
-The [Cordova Plugins Sampler](https://github.com/ryanjsalva/cordova-simulate-tests) is authored by Cordova expert and longtime Visual Studio engineer Ryan Salva ([@ryansalva](https://twitter.com/ryanjsalva)). Sample this supreme sampling of plugin samples and learn how to use plugins from Battery to Camera to Contacts and more.
+The [Cordova Plugins Sampler](https://github.com/ryanjsalva/cordova-simulate-tests) is authored by Cordova expert and longtime Visual Studio engineer Ryan Salva ([@ryansalva](https://twitter.com/ryanjsalva)). Sample this supreme sampling of plugin samples and learn how to use plugins from Battery to Camera to Contacts and more. 
 
 Feel free to download the [sample off Ryan's Github](https://github.com/ryanjsalva/cordova-simulate-tests) and play around. To open this project inside VS, go to 'File > New Project > Add project from existing code', and follow the import wizard.
 
