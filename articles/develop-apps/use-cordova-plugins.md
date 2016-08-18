@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="05/03/2016"
+   ms.date="08/04/2016"
    ms.author="normesta"/>
 
 # <a id="top"></a>Visual Studio Core Plugins
@@ -116,6 +116,17 @@ Upload and download different file types such as text files and binary files, re
 Check out the [Quick Guide](https://github.com/apache/cordova-plugin-file-transfer#sample) to learn how to upload and download files.
 
 ![scan-for-devices](media/use-cordova-plugins/file-transfer-sample.png)
+
+[ [Go back up](#top) ]
+
+<hr />
+
+## SQLite Storage: Use offline data storage
+
+<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-sqlite-storage';">Readme</button>
+<br />
+<button class="plugin-button-guide" onclick="window.location='https://github.com/litehelpers/Cordova-sqlite-storage#sample';">Quick Guide</button>
+<br />
 
 [ [Go back up](#top) ]
 
@@ -323,15 +334,6 @@ Use the Crosswalk WebView instead of the system WebView, get some new capabiliti
 <br />
 
 Push updated HTML, CSS, JavaScript, and resource files to your published Cordova apps.
-
-[ [Go back up](#top) ]
-
-<hr />
-
-## WebSQL plugin: Use WebSQL with the Csharp-Sqlite library.
-
-<button class="plugin-button-readme" onclick="window.location='https://www.npmjs.com/package/cordova-plugin-websql';">Readme</button>
-<br />
 
 [ [Go back up](#top) ]
 

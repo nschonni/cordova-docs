@@ -11,13 +11,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="09/10/2015"
+   ms.date="07/25/2016"
    ms.author="clantz"/>
 # Debug your app built with Visual Studio Tools for Apache Cordova
 
 Visual Studio brings a seamless and common tooling experience for developing Cordova apps across app types and device platforms. When developing Apache Cordova apps, you can use diagnostic tools such as the Visual Studio debugger, the DOM Explorer, and the JavaScript Console to fix problems in your apps. For platform-specific differences in the debugger experience, see [Debugging features by platform](#Debugging features by platform).
 
-This article matches the steps of the Cordova [Video tutorial](http://go.microsoft.com/fwlink/p/?LinkID=534729) on debugging. The steps match video content that follows the introduction of the tools and features (approximately four minutes from the start).  If you want steps to debug for a particular platform, see [Debugging features by platform](#Debugging features by platform).
+This article matches the steps of the Cordova [Video tutorial](http://go.microsoft.com/fwlink/p/?LinkID=534729) on debugging. The steps match video content that follows the introduction of the tools and features (approximately four minutes from the start).  If you want steps to debug for a particular platform, see [Debugging features by platform](#Debugging features by platform). 
+
+### Fix build and deployment errors
+
+See these [troubleshooting tips](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
 
 ### Use the diagnostic tools
 
@@ -25,7 +29,7 @@ To use Visual Studio to debug your Cordova apps, you must:
 
 1.  [Install Visual Studio 2015](http://go.microsoft.com/fwlink/p/?LinkId=397606) with Visual Studio Tools for Apache Cordova.
 
-2.  If you want to follow the steps in this tutorial, download the [AngularJS ToDoList sample](http://go.microsoft.com/fwlink/?LinkID=398516), unzip it, and open the solution (.sln file) in Visual Studio.
+2.  If you want to follow the steps in this tutorial, download the [AngularJS ToDoList sample](https://github.com/Microsoft/cordova-samples/tree/master/todo-angularjs), unzip it, and open the solution (.sln file) in Visual Studio.
 
     You don't need the AngularJS sample to debug, of course, but we are using it in the first example.
 
@@ -120,7 +124,7 @@ $scope.addToDo = function () {
 
 ## Debugging features by platform
 
-Visual Studio debugger and diagnostic capabilities and their plaform-specific differences, are shown in the following table.
+Visual Studio debugger and diagnostic capabilities and their platform-specific differences, are shown in the following table.
 
 <style>
     table, th, td {
@@ -243,6 +247,20 @@ The DOM Explorer enables debugging of HTML and CSS. Features available in the **
 You can attach the Visual Studio debugger to the Android emulator or to an Android device to debug your app on Android 4.4.
 
 If you’re using an Android version between 2.3.3 and 4.3, you can install the jsHybugger plugin to enable Android diagnostics (DOM Explorer, console, and debugging). This plugin instruments your code locally to enable remote debugging on Android devices and emulators, and supports Android 2.3.3 and later versions.
+
+### <a name="attacheDbgRipple"></a>To attach the debugger to Ripple
+
+If the debugger is not attaching to Ripple when you press F5, you can attach the debugger after your app loads.
+
+1. Select Ripple as your target and start the app by pressing F5 and wait for the app to load.
+
+2. Choose **Debug** > **Attach to Process**, and then choose the chrome.exe process with a title of `localhost:<Ripple port number>`.
+
+    ![Attach the debugger to Ripple](media/debug-using-visual-studio/debug-attach-to-process.png)
+
+3. Refresh Chrome.
+
+    You should now hit breakpoints and be able to use the JavaScript Console and the DOM Explorer.
 
 ### <a name="DbgAndroid"></a>To debug on Android 4.4
 

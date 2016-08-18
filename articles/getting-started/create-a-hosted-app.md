@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="12/19/2015"
+   ms.date="06/23/2016"
    ms.author="mikejo"/>
 
 # Create a hosted web app using Apache Cordova

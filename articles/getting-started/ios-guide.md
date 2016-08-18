@@ -11,12 +11,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="4/26/2015"
+   ms.date="7/25/2015"
    ms.author="normesta"/>
 
 # Setup guide: Target iOS mobile devices in a Visual Studio Tools for Apache Cordova project
 
-If you want to build an iOS version of your app, you'll need a Mac to do it. Currently, there is no way to build an iOS app without one. You can use a physical Mac or a cloud-hosted one. Just make sure that it's running Mac OS X Mavericks or later.
+If you want to build an iOS version of your app, you'll need a Mac to do it. Currently, there is no way to build an iOS app without one. You can use a physical Mac or a cloud-hosted one. Just make sure that it's running Mac OS X Mavericks or later. 
 
 In this guide, we'll help you get everything setup right so that you can build, run, and debug your app. We'll stop a few times to check and see if everything is working as expected. If something isn't behaving, we'll propose a few ideas that have worked for others.
 
@@ -157,6 +157,8 @@ You'll use those pieces of information in the next section.
 [Is the host name of your Mac not resolving?](#hostname)
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
+
+[Did you receive an error indicating that the port is already in use?](#PORT)
 
 [Did you receive an error that like this one: - Command failed with exit code ENOENT?](#ENOENT)
 
@@ -488,6 +490,8 @@ After you've confirmed that your profile administrator has added the UDID of you
 
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
+[Did you receive an error indicating that the port is already in use?](#PORT)
+
 [Did you receive any other type of build error](#cli)
 
 [Are you experiencing a symptom that does not appear in this list?](#stack)
@@ -572,6 +576,8 @@ In the Terminal app on your Mac, press Ctrl+C.
 [Have you been told that your security PIN invalid or has expired?](#securitypin)
 
 [Did you receive an error that tells you that a tool requires Xcode?](#install-xcode)
+
+[Did you receive an error indicating that the port is already in use?](#PORT)
 
 [You've been told that no provisioning profiles were found](#no-provision)
 
@@ -705,6 +711,24 @@ Make sure that [Xcode](https://developer.apple.com/xcode/download/) is installed
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
 If you've resolved this problem another way, please share it in a comment.
+
+[Go back up](#errors)
+
+### <a id="PORT"></a>Did you receive an error indicating that the port is already in use?
+
+Most likely, an instance of remotebuild is already running. Stop the remotebuild agent by typing Ctrl+C in the Terminal App window, and then restart it.
+
+Alternatively, start the remotebuild agent on a different port. (Try using port 3000 first before switching to another port.)
+
+1. Run this command in the Terminal App on your Mac to start the agent.
+
+    ```
+    remotebuild --port <portnumber>
+    ```
+
+2. Update the port number in Visual Studio (**Tools** > **Options** > **Tools for Apache Cordova** > **iOS Configuration**).
+
+3. Run your app again.
 
 [Go back up](#errors)
 

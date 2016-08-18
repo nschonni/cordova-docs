@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="09/10/2015"
+   ms.date="05/05/2016"
    ms.author="mikejo"/>
 # Run your Apache Cordova app on iOS
 
