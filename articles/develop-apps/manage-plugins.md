@@ -44,7 +44,7 @@ You can add a core Cordova plugin by using Visual Studio. When you build your so
 
 2. In the configuration designer, choose the **Plugins** tab, and then choose the **Custom** page.
 
-3. Specify either **Local** or **Git** as the source, and then provide the location by browsing or specifying a Git repository.
+3. Specify **Plugin ID**, **Local** or **Git** as the source, and then provide the location by entering the npm package name (the id), browsing to a local folder, or specifying a Git repository (ex. [https://github.com/cordova-sms/cordova-sms-plugin](https://github.com/cordova-sms/cordova-sms-plugin)).
 
     ![Cordova_Plugin_Custom](media/manage-plugins/IC795805.png)
 
