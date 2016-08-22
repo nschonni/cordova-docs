@@ -13,7 +13,7 @@
      ms.author="kirupac"/>
 
 #Android tips and workarounds
-This document covers tips, tricks, and known workarounds for problems with the Cordova Android platform. 
+This document covers tips, tricks, and known workarounds for problems with the Cordova Android platform.
 > **Note**: If your problem is security related, please read [May 26th, 2015 Android Security Issue](../tutorial-cordova-5-readme/)
 
 <a name="android"></a>
@@ -48,6 +48,34 @@ Try these steps if you have trouble building and deploying to Android emulators 
 
 5. Make sure that you have the [required SDK components installed](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#ThirdParty).
 6. If there appears to be a problem with the Android SDK, you may need to re-install it. Before re-installing, delete the /User/username/.android and the /User/username/.gradle folder to make sure you get a fresh copy of the SDK. After [installing the SDK](http://go.microsoft.com/fwlink/?LinkID=396873), try again.
+
+<a name="haxm"></a>
+##Resolve issues with the HAXM driver
+
+Conflicts with other virtualization technology such as Hyper-V, Avast, and Windows 10 Device Guard may prevent the HAXM driver from installing or working correctly.
+
+The issue can appear as an HAXM installation error or as an error indicating that you need to enable VT-x in the BIOS.
+
+To fix the issue:
+
+1. Disable Hyper-V (go to Control Panel > Programs, look under Programs and Features, and click **Turn Windows features on or off**).
+
+    If Hyper-V is enabled, disable it, reboot, and retry HAXM.
+2. Enable VT-x in the BIOS.
+
+    If VT-x is disabled, enable it, reboot, and retry HAXM.
+3. Check whether you have some antivirus software (like Avast) or other software using hardware-assisted virtualization and disable or uninstall the software. Reboot and retry HAXM.
+
+    For Avast, first try to disable it by going to Avast settings and deselecting (unchecking) these options:
+      * **Enable hardware-assisted virtualization**
+      * **Enable avast self-defense module**
+
+    Then reboot and try again.
+4. If HAXM is not working at this point, try the following steps in order:
+    * Reboot and disable VT-x in the BIOS.
+    * Reboot and enable VT-x in the BIOS.
+    * Uninstall HAXM and re-install it.
+
 
 <a name="couldnotcreatevm"></a>
 ##Could not create Java Virtual Machine error
