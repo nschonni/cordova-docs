@@ -9,8 +9,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="05/15/2016"
-     ms.author="kirupac"/>
+     ms.date="08/21/2016"
+     ms.author="mikejo"/>
 
 #Android tips and workarounds
 This document covers tips, tricks, and known workarounds for problems with the Cordova Android platform.
@@ -52,9 +52,9 @@ Try these steps if you have trouble building and deploying to Android emulators 
 <a name="haxm"></a>
 ##Resolve issues with the HAXM driver
 
-Conflicts with other virtualization technology such as Hyper-V, Avast, and Windows 10 Device Guard may prevent the HAXM driver from installing or working correctly.
+The HAXM driver is used to improve the performance of the Google Android Emulator. Conflicts with other technology that uses virtualization, such as Hyper-V, Avast, and Windows 10 Device Guard may prevent the HAXM driver from installing or working correctly. If you want to install the HAXM driver, see [this article](http://taco.visualstudio.com/en-us/docs/run-app-apache/#HAXM).
 
-The issue can appear as an HAXM installation error or as an error indicating that you need to enable VT-x in the BIOS.
+The issue may appear as an HAXM installation error or as an error indicating that you need to enable VT-x in the BIOS.
 
 To fix the issue:
 

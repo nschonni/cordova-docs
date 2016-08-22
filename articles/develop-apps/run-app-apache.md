@@ -11,11 +11,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="06/23/2016"
+   ms.date="08/21/2016"
    ms.author="mikejo"/>
 # Run your Apache Cordova app on Android
 
-There are many options for running your apps built using Visual Studio Tools for Apache Cordova on Android. From Visual Studio, you can run and debug Android apps on the emulators and devices including the [Apache Ripple simulator](run-app-ripple-simulator.md) (discussed in a separate article) and the Visual Studio Emulator for Android. 
+There are many options for running your apps built using Visual Studio Tools for Apache Cordova on Android. From Visual Studio, you can run and debug Android apps on the emulators and devices including the [Apache Ripple simulator](run-app-ripple-simulator.md) (discussed in a separate article) and the Visual Studio Emulator for Android.
 
 ## Visual Studio Emulator for Android
 
@@ -41,9 +41,57 @@ Here’s how to run your app on the [Visual Studio Emulator for Android](https:/
 
 If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
-## Configure a high-performance emulator <a name="HAXM"></a>
+## Google Android Emulator
 
-If you have a PC with an Intel processor, you can improve the performance of the Google Android and Genymotion emulators. To configure a high-performance emulator:
+Before you run your app on the Google Android emulator in Visual Studio, use the Android Virtual Device (AVD) Manager to create an emulator configuration, and then start the emulator from the AVD Manager. The following steps show how to do this. For more information, see the [AVD Manager documentation](http://developer.android.com/tools/devices/managing-avds.html).
+
+### To create an instance of the emulator
+
+1. Open the AVD Manager. To do this from a command line, go the location of the SDK and type `android avd`. On Windows, the AVD Manager.exe is installed by default in the following location: C:\Program Files (x86)\Android\android-sdk.
+
+2. In the AVD Manager, choose **Create**.
+
+    ![Creating an Android emulator](media/run-app-apache/IC741800.png)
+
+3. Configure the properties for the new emulator. The required properties are **AVD Name**, **Device**, **Target**, **CPU/ABI**, and **Skin**. **Target** represents an installed version of the Android SDK version (API set). Set this property to a value such as API Level 22.
+
+    >**Tip**: You may need to install more Android images using the Android SDK Manager.
+
+    ![Creating an Android emulator](media/run-app-apache/create-new-virtual-device.png)
+
+    If you already installed the high-performance HAXM driver described in the [next section](#HAXM) and chose an Intel CPU, select the **Use Host GPU** check box in Emulation Options.
+
+    >**Important**: To use the high-performance emulator, you must also choose an Intel processor in the CPU/ABI section of the AVD dialog box.
+
+3. Choose **OK** to close the configuration dialog box, and then choose **OK** again in the dialog box that shows all the emulator settings.
+
+4. In the AVD Manager, select the new emulator, and then choose **Start**.
+
+### To run the app on the emulator
+
+1. With your app open in Visual Studio, choose **Android** from the Solution Platforms list. (If you don’t see this option, first choose **Solution Platforms** from the **Add/Remove Buttons** list.)
+
+2. In the device list, choose **Google Android Emulator**.
+
+    ![Deploying to the Android emulator](media/run-app-apache/IC740450.png)
+
+3. Press F5 to start the app, or Shift+F5 to start the app without debugging.
+
+    Android 4.4 is required to attach the debugger. Otherwise, the app will run without debugging.
+
+    >**Tip**: If you get an error that indicates you need to install a new version of the Android SDK, use the Android SDK Manager to install it. On Windows, you can open SDK Manager by typing the following command on a command line: android sdk.
+
+    Visual Studio deploys the app to the Android emulator that is currently running. If no emulator is running, Visual Studio starts the last emulator that was created using the AVD Manager, and then deploys the app.
+
+  If you want to debug your app against Android versions 4.1.2-4.3, see the information about the jsHybugger plugin in the article [Debug Your App Built with Visual Studio Tools for Apache Cordova](../debug-and-test/debug-using-visual.md).
+
+### Troubleshooting? Let's fix it
+
+If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
+
+### Configure a high-performance emulator <a name="HAXM"></a>
+
+If you have a PC with an Intel processor, you can improve the performance of the Google Android emulator. To configure a high-performance emulator:
 
 1. Disable Hyper-V. You can do this from Control Panel or from a command line, as described in the following procedures.
 
@@ -103,54 +151,7 @@ If you have a PC with an Intel processor, you can improve the performance of the
     >**Tip**: If the “intel” portion of the path isn’t present, the driver was not installed.
    Now you can configure an emulator to use the driver. When you create or edit an emulator, you must use an Intel CPU and select the Use Host GPU option. For more information, see the next section.
 
-
-## Google Android Emulator
-
-Before you run your app on the Google Android emulator in Visual Studio, use the Android Virtual Device (AVD) Manager to create an emulator configuration, and then start the emulator from the AVD Manager. The following steps show how to do this. For more information, see the [AVD Manager documentation](http://developer.android.com/tools/devices/managing-avds.html).
-
-### To create an instance of the emulator
-
-1. Open the AVD Manager. To do this from a command line, go the location of the SDK and type `android avd`. On Windows, the AVD Manager.exe is installed by default in the following location: C:\Program Files (x86)\Android\android-sdk.
-
-2. In the AVD Manager, choose **Create**.
-
-    ![Creating an Android emulator](media/run-app-apache/IC741800.png)
-
-3. Configure the properties for the new emulator. The required properties are **AVD Name**, **Device**, **Target**, **CPU/ABI**, and **Skin**. **Target** represents an installed version of the Android SDK version (API set). Set this property to a value such as API Level 22.
-
-    >**Tip**: You may need to install more Android images using the Android SDK Manager.
-
-    ![Creating an Android emulator](media/run-app-apache/create-new-virtual-device.png)
-
-    If you installed the high-performance HAXM driver in the [previous section](#HAXM) and chose an Intel CPU, select the **Use Host GPU** check box in Emulation Options.
-
-    >**Important**: To use the high-performance emulator, you must also choose an Intel processor in the CPU/ABI section of the AVD dialog box.
-
-3. Choose **OK** to close the configuration dialog box, and then choose **OK** again in the dialog box that shows all the emulator settings.
-
-4. In the AVD Manager, select the new emulator, and then choose **Start**.
-
-### To run the app on the emulator
-
-1. With your app open in Visual Studio, choose **Android** from the Solution Platforms list. (If you don’t see this option, first choose **Solution Platforms** from the **Add/Remove Buttons** list.)
-
-2. In the device list, choose **Google Android Emulator**.
-
-    ![Deploying to the Android emulator](media/run-app-apache/IC740450.png)
-
-3. Press F5 to start the app, or Shift+F5 to start the app without debugging.
-
-    Android 4.4 is required to attach the debugger. Otherwise, the app will run without debugging.
-
-    >**Tip**: If you get an error that indicates you need to install a new version of the Android SDK, use the Android SDK Manager to install it. On Windows, you can open SDK Manager by typing the following command on a command line: android sdk.
-
-    Visual Studio deploys the app to the Android emulator that is currently running. If no emulator is running, Visual Studio starts the last emulator that was created using the AVD Manager, and then deploys the app.
-
-  If you want to debug your app against Android versions 4.1.2-4.3, see the information about the jsHybugger plugin in the article [Debug Your App Built with Visual Studio Tools for Apache Cordova](../debug-and-test/debug-using-visual.md).
-
-### Troubleshooting? Let's fix it
-
-If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
+4. If you have errors installing or using the HAXM driver, see [Resolving issues with the HAXM driver](http://taco.visualstudio.com/en-us/docs/tips-and-workarounds-android-readme/).
 
 ## Genymotion emulator
 
