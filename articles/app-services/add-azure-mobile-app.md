@@ -11,7 +11,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="08/21/2016"
    ms.author="mikejo5000"/>
 
 #Add Azure data storage, offline sync, and push notifications
@@ -52,11 +52,17 @@ The Azure connected services sample uses an Azure Easy table to store todolist i
 To use the sample, update your Cordova app in Visual Studio:
 
 * Include your Azure Mobile App connected service URL where directed in index.js.
+    ```javascript
+    client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
+    ```
 * Include the same URL in the CSP `<meta>` element in index.html.
+    ```html
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net; style-src 'self'; media-src *">
+    ```
 
 To use offline sync:
 
-* Out of the box, the app will sync with the Azure table when the app loads. For more information on the offline sync feature provided by the Azure Mobile App plugin, see this [README](https://github.com/Azure/azure-mobile-apps-js-client#offline-data-sync-preview). To disable offline sync, follow instructions in the code comments in index.js.
+* Out of the box, the app will use offline sync for CRUD operations and sync with the Azure table when the app loads. For more information on the offline sync feature provided by the Azure Mobile App plugin, see the [Azure offline sync article](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-cordova-get-started-offline-data/) and the [README](https://github.com/Azure/azure-mobile-apps-js-client#offline-data-sync-preview) for the Azure Mobile Apps plugin. If you want to disable offline sync, follow instructions in the code comments in index.js.
 
 To use push notifications:
 
