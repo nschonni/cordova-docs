@@ -52,29 +52,36 @@ Try these steps if you have trouble building and deploying to Android emulators 
 <a name="haxm"></a>
 ##Resolve issues with the HAXM driver
 
-The HAXM driver is used to improve the performance of the Google Android Emulator. Conflicts with other technology that uses virtualization, such as Hyper-V, Avast, and Windows 10 Device Guard may prevent the HAXM driver from installing or working correctly. If you want to install the HAXM driver, see [this article](http://taco.visualstudio.com/en-us/docs/run-app-apache/#HAXM).
+The HAXM driver is used to improve the performance of the Google Android Emulator. Conflicts with other technology that uses virtualization, such as Hyper-V, Avast, and Windows 10 Device Guard may prevent the HAXM driver from installing or working correctly. You cannot run the HAXM driver on a virtual machine. If you want to install the HAXM driver, see [this article](http://taco.visualstudio.com/en-us/docs/run-app-apache/#HAXM).
 
 The issue may appear as an HAXM installation error or as an error indicating that you need to enable VT-x in the BIOS.
 
 To fix the issue:
 
-1. Disable Hyper-V (go to Control Panel > Programs, look under Programs and Features, and click **Turn Windows features on or off**).
+1. Disable Hyper-V.
+
+    We recommend disabling Hyper-V from the command line, especially if you are using Hyper-V for other software. The following command line command disables Hyper-V:
+
+    `bcdedit /set hypervisorlaunchtype off`
+
+    To enable it, use `bcdedit /set hypervisorlaunchtype auto`
+
+    If you prefer to disable Hyper-V from the Control Panel, go to Programs, look under Programs and Features, and click **Turn Windows features on or off**.
 
     If Hyper-V is enabled, disable it, reboot, and retry HAXM.
-2. Enable VT-x in the BIOS.
+2. Enable VT-x and SLAT in the BIOS (in the BIOS, the name may be **Virtualization Technology** or something similar)
 
-    If VT-x is disabled, enable it, reboot, and retry HAXM.
+    If VT-x is disabled, enable it, reboot, and retry HAXM. For help to identify whether VT-x is enabled on your machine, use the [processor identification utility](http://www.intel.com/content/www/us/en/support/processors/processor-utilities-and-programs/intel-processor-identification-utility.html).
+
 3. Check whether you have some antivirus software (like Avast) or other software using hardware-assisted virtualization and disable or uninstall the software. Reboot and retry HAXM.
 
     For Avast, first try to disable it by going to Avast settings and deselecting (unchecking) these options:
       * **Enable hardware-assisted virtualization**
       * **Enable avast self-defense module**
 
+    For Windows 10 Device Guard, you can try to install the driver on a non-domain joined machine instead. HAXM is not compatible with Device Guard.
+
     Then reboot and try again.
-4. If HAXM is not working at this point, try the following steps in order:
-    * Reboot and disable VT-x in the BIOS.
-    * Reboot and enable VT-x in the BIOS.
-    * Uninstall HAXM and re-install it.
 
 
 <a name="couldnotcreatevm"></a>
