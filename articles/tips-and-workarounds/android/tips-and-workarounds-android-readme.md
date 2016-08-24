@@ -47,6 +47,9 @@ Try these steps if you have trouble building and deploying to Android emulators 
     For additional ADB commands, see [this article](http://www.androidcentral.com/android-201-10-basic-terminal-commands-you-should-know).
 
 5. Make sure that you have the [required SDK components installed](https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#ThirdParty).
+
+    Run the SDK Manager as an Administrator if you are having trouble installing components.
+
 6. If there appears to be a problem with the Android SDK, you may need to re-install it. Before re-installing, delete the /User/username/.android and the /User/username/.gradle folder to make sure you get a fresh copy of the SDK. After [installing the SDK](http://go.microsoft.com/fwlink/?LinkID=396873), try again.
 
 <a name="haxm"></a>
@@ -73,6 +76,8 @@ To fix the issue:
 
     If VT-x is disabled, enable it, reboot, and retry HAXM. For help to identify whether VT-x is enabled on your machine, use the [processor identification utility](http://www.intel.com/content/www/us/en/support/processors/processor-utilities-and-programs/intel-processor-identification-utility.html).
 
+    >**Note**: If the processor utility is incorrectly reporting that VT-x is not supported, see the final step in this section.
+
 3. Check whether you have some antivirus software (like Avast) or other software using hardware-assisted virtualization and disable or uninstall the software. Reboot and retry HAXM.
 
     For Avast, first try to disable it by going to Avast settings and deselecting (unchecking) these options:
@@ -82,6 +87,17 @@ To fix the issue:
     For Windows 10 Device Guard, you can try to install the driver on a non-domain joined machine instead. HAXM is not compatible with Device Guard.
 
     Then reboot and try again.
+
+4. If the preceding steps don't work, try the following in order:
+
+    * Disable VT-x in the BIOS and boot the machine.
+    * Reboot and enable VT-x in the BIOS.
+    * Uninstall the HAXM driver (you can do this using the intelhaxm-android.exe in /android-sdk/extras/intel/Hardware Accelerated Execution Manager).
+    * Re-install the HAXM driver and try again.
+
+    These steps are most likely to work if the processor utility is incorrectly reporting that VT-x is not supported. This can happen after switching between Hyper-V and HAXM.
+
+
 
 
 <a name="couldnotcreatevm"></a>
