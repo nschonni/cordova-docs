@@ -55,7 +55,7 @@ Before you run your app on the Google Android emulator in Visual Studio, use the
 
 3. Configure the properties for the new emulator. The required properties are **AVD Name**, **Device**, **Target**, **CPU/ABI**, and **Skin**. **Target** represents an installed version of the Android SDK version (API set). Set this property to a value such as API Level 22.
 
-    >**Tip**: You may need to install more Android images using the Android SDK Manager.
+    >**Tip**: You may need to install more Android images using the Android SDK Manager. If you have trouble installing components, run the SDK Manager as an Administrator.
 
     ![Creating an Android emulator](media/run-app-apache/create-new-virtual-device.png)
 
@@ -89,7 +89,7 @@ Before you run your app on the Google Android emulator in Visual Studio, use the
 
 If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
-### Configure a high-performance emulator <a name="HAXM"></a>
+### Configure a high-performance Google x86 emulator <a name="HAXM"></a>
 
 If you have a PC with an Intel processor, you can improve the performance of the Google Android emulator. To configure a high-performance emulator:
 
@@ -146,10 +146,10 @@ If you have a PC with an Intel processor, you can improve the performance of the
 
     ![Installing the HAXM driver](media/run-app-apache/IC741799.png)
 
-3. Install the driver by going to sdk-path\extras\intel\Hardware_Accelerated_Execution_Manager and running **intelhaxm.exe**.
+3. Install the driver by going to sdk-path\extras\intel\Hardware_Accelerated_Execution_Manager and running **intelhaxm-android.exe**.
 
-    >**Tip**: If the “intel” portion of the path isn’t present, the driver was not installed.
-   Now you can configure an emulator to use the driver. When you create or edit an emulator, you must use an Intel CPU and select the Use Host GPU option. For more information, see the next section.
+    >**Tip**: If the “intel” portion of the path isn’t present, the driver was not downloaded.
+   Now you can configure an emulator to use the driver. When you create or edit an emulator, you must use an Intel CPU and select the Use Host GPU option. For more information, see the preceding section.
 
 4. If you have errors installing or using the HAXM driver, see [Resolving issues with the HAXM driver](http://taco.visualstudio.com/en-us/docs/tips-and-workarounds-android-readme/).
 
