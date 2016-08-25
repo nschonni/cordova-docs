@@ -67,7 +67,7 @@ To fix the issue:
 
     `bcdedit /set hypervisorlaunchtype off`
 
-    To enable it, use `bcdedit /set hypervisorlaunchtype auto`
+    >**Note**: To enable it later, use `bcdedit /set hypervisorlaunchtype auto`
 
     If you prefer to disable Hyper-V from the Control Panel, go to Programs, look under Programs and Features, and click **Turn Windows features on or off**.
 
@@ -84,16 +84,24 @@ To fix the issue:
       * **Enable hardware-assisted virtualization**
       * **Enable avast self-defense module**
 
-    For Windows 10 Device Guard, you can try to install the driver on a non-domain joined machine instead. HAXM is not compatible with Device Guard.
-
     Then reboot and try again.
 
-4. If the preceding steps don't work, try the following in order:
+4. For Windows 10, check to see if Device Guard is running by starting the System Information app (type **System info** in search).
 
-    * Disable VT-x in the BIOS and boot the machine.
+    ![See if Device Guard is running](media/tips-and-workarounds-android-readme/device-guard.png)
+
+    HAXM is not compatible with Device Guard. If DeviceGuard is enabled, then you are running on a domain-joined machine and DeviceGuard has been configured by the owning organization. We recommend you try to use a non-domain machine with HAXM instead.
+
+5. If the preceding steps don't work, try the following in order:
+
+    * Uncheck Hyper-V platform components from the Control Panel. Reboot.
+    * Disable VT-x in the BIOS, save, and boot.
     * Reboot and enable VT-x in the BIOS.
+
+        >Important: If Device Guard was running it will show a status of **Enabled but not running.** (Corporate policy may force re-enabling Device Guard later.)
     * Uninstall the HAXM driver (you can do this using the intelhaxm-android.exe in /android-sdk/extras/intel/Hardware Accelerated Execution Manager).
-    * Re-install the HAXM driver and try again.
+    * Check Android SDK Manager to see if there is an updated version of the HAXM driver. If there is, download it.
+    * Re-install the HAXM driver using intelhaxm-android.exe, and try again.
 
     These steps are most likely to work if the processor utility is incorrectly reporting that VT-x is not supported. This can happen after switching between Hyper-V and HAXM.
 
