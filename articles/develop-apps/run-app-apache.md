@@ -41,7 +41,7 @@ Here’s how to run your app on the [Visual Studio Emulator for Android](https:/
 
 If you have trouble deploying to Android emulators or devices, see [Resolve Android build and deployment errors](../tips-and-workarounds/android/tips-and-workarounds-android-readme.md).
 
-## Google Android Emulator
+## Google Android Emulator <a name="google"></a>
 
 Before you run your app on the Google Android emulator in Visual Studio, use the Android Virtual Device (AVD) Manager to create an emulator configuration, and then start the emulator from the AVD Manager. The following steps show how to do this. For more information, see the [AVD Manager documentation](http://developer.android.com/tools/devices/managing-avds.html).
 
@@ -59,7 +59,7 @@ Before you run your app on the Google Android emulator in Visual Studio, use the
 
     ![Creating an Android emulator](media/run-app-apache/create-new-virtual-device.png)
 
-    If you already installed the high-performance HAXM driver described in the [next section](#HAXM) and chose an Intel CPU, select the **Use Host GPU** check box in Emulation Options.
+    If you already installed the high-performance HAXM driver described in the [next section](#HAXM) and chose an Intel CPU, select the **Use Host GPU** check box in Emulation Options (not shown for ARM).
 
     >**Important**: To use the high-performance emulator, you must also choose an Intel processor in the CPU/ABI section of the AVD dialog box.
 
@@ -97,7 +97,7 @@ If you have a PC with an Intel processor, you can improve the performance of the
 
     >**Caution**: Disabling Hyper-V will prevent you from using the Visual Studio Emulator for Android and the Windows Phone emulator. However, you can still deploy to a Windows Phone device while Hyper-V is disabled.
 
-2. (Google Android emulator only) Install the high-performance Intel Hardware Accelerated Execution Manager (HAXM) driver, if it isn’t already installed. (More information about the [HAXM driver](https://software.intel.com/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-windows))
+2. Install the high-performance Intel Hardware Accelerated Execution Manager (HAXM) driver, if it isn’t already installed. (More information about the [HAXM driver](https://software.intel.com/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-windows))
 
 3. Configure the Google Android emulator to use hardware acceleration.
 
@@ -146,12 +146,17 @@ If you have a PC with an Intel processor, you can improve the performance of the
 
     ![Installing the HAXM driver](media/run-app-apache/IC741799.png)
 
+    This downloads the HAXM driver.
+
 3. Install the driver by going to sdk-path\extras\intel\Hardware_Accelerated_Execution_Manager and running **intelhaxm-android.exe**.
 
     >**Tip**: If the “intel” portion of the path isn’t present, the driver was not downloaded.
-   Now you can configure an emulator to use the driver. When you create or edit an emulator, you must use an Intel CPU and select the Use Host GPU option. For more information, see the preceding section.
 
-4. If you have errors installing or using the HAXM driver, see [Resolving issues with the HAXM driver](http://taco.visualstudio.com/en-us/docs/tips-and-workarounds-android-readme/).
+   Now you can configure an emulator to use the driver. When you create or edit an emulator, you must use an Intel CPU and select the **Use Host GPU** option. For more information, see the [preceding section](#google).
+
+### Troubleshooting? Let's fix it
+
+If you have errors installing or using the HAXM driver, see [Resolving issues with the HAXM driver](http://taco.visualstudio.com/en-us/docs/tips-and-workarounds-android-readme/).
 
 ## Genymotion emulator
 
