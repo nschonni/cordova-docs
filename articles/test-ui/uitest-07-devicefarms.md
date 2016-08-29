@@ -28,7 +28,7 @@ Name	Devices/Platforms	Appium Support	Notes
 <tbody>
 <tr>
 <td>
-Sauce Labs
+<a href="https://saucelabs.com/">Sauce Labs</a>
 </td>
 <td>
 Emulators, physical devices; Android, iOS
@@ -42,7 +42,7 @@ All pricing plans offer unlimited manual testing.
 </tr>
 <tr>
 <td>
-Xamarin Test Cloud
+<a href="https://www.xamarin.com/test-cloud">Xamarin Test Cloud</a>
 </td>
 <td>
 Physical devices; Android, iOS, Windows
@@ -56,7 +56,7 @@ Works for any app written with any toolset (that is, not limited to Xamarin apps
 </tr>
 <tr>
 <td>
-Amazon AWS Device Farm
+<a href="https://aws.amazon.com/device-farm/">Amazon AWS Device Farm</a>
 </td>
 <td>
 Physical devices; Android, iOS
@@ -70,7 +70,7 @@ Offers a pay-as-you-go per-minute plan.
 </tr>
 <tr>
 <td>
-TestDroid
+<a href="http://testdroid.com/">TestDroid</a>
 </td>
 <td>
 Physical devices Android, iOS

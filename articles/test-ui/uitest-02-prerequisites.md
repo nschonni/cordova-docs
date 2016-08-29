@@ -21,6 +21,15 @@ First make sure the Android SDK for API level 19 is installed, because it’s th
 
 Then check that you have the necessary environment variables set as described in the following table.
 
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+    }
+</style>
 <table>
 <thead>
 <tr>
@@ -35,10 +44,10 @@ Then check that you have the necessary environment variables set as described in
 <td>ANDROID_HOME</td><td>Set to the same location as ANDROID_SDK_HOME. This variable is typically not set by installers.</td>
 </tr>
 <tr>
-<td>JAVA_HOME</td><td>Must point to the Java JDK location, such as *C:\Program Files (x86)\Java\jdk1.7.0_55*.</td>
+<td>JAVA_HOME</td><td>Must point to the Java JDK location, such as <em>C:\Program Files (x86)\Java\jdk1.7.0_55</em>.</td>
 </tr>
 <tr>
-<td>PATH</td><td>Must include *%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;*</td>
+<td>PATH</td><td>Must include <em>%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;</em></td>
 </tr>
 <tbody>
 </table>
@@ -63,7 +72,7 @@ To learn how to write and run UI tests for Apache Cordova apps, we need an app t
 
 2.	Open weather-app/WeatherApp.sln in Visual Studio.
 
-3.	To run the app you’ll need a free API key from [http://openweathermap.org/](http://openweathermap.org/). Specific instructions for this can be found on [Getting Started with Visual Studio Tools for Apache Cordova](http://taco.visualstudio.com/en-us/docs/get-started-first-mobile-app/), which is the walkthrough for building the app.
+3.	To run the app you’ll need a free API key from [http://openweathermap.org/](http://openweathermap.org/). Specific instructions for this can be found on [Getting Started with Visual Studio Tools for Apache Cordova](http://taco.visualstudio.com/docs/get-started-first-mobile-app/), which is the walkthrough for building the app.
 
 4. Open weather.js and paste your API key as the value for the *OpenWeatherAppKey* variable.
 
@@ -73,7 +82,7 @@ To learn how to write and run UI tests for Apache Cordova apps, we need an app t
 
 ![Sample Weather App for Android](media/prereqs/01-weather-app.png)
 
-> **Note**: if you're using Visual Studio in a virtual machine and cannot run the Visual Studio Emulator for Android, Appium will also work with the Google Android Emulator or any other Android Emulator. See [https://taco.visualstudio.com/en-us/docs/run-app-apache/](https://taco.visualstudio.com/en-us/docs/run-app-apache/) for information on other emulators. As we'll see, Appium always connects to the first device that's returned from the *abd devices* command; where there is anything specific you might need to adjust, though, we'll point that out.
+> **Note**: if you're using Visual Studio in a virtual machine and cannot run the Visual Studio Emulator for Android, Appium will also work with the Google Android Emulator or any other Android Emulator. See [https://taco.visualstudio.com/docs/run-app-apache/](https://taco.visualstudio.com/docs/run-app-apache/) for information on other emulators. As we'll see, Appium always connects to the first device that's returned from the *abd devices* command; where there is anything specific you might need to adjust, though, we'll point that out.
 
 
 ##Verify WebDriver operation
