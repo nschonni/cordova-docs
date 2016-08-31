@@ -61,33 +61,31 @@ The issue may appear as an HAXM installation error or as an error indicating tha
 
 To fix the issue:
 
-1. Disable Hyper-V.
+1. For Windows 10 only, check to see if Device Guard is running by starting the System Information app (type **System info** in search).
 
-    We recommend disabling Hyper-V from the command line, especially if you are using Hyper-V for other software. The following command line command disables Hyper-V:
+      ![See if Device Guard is running](media/tips-and-workarounds-android-readme/device-guard.png)
 
-    `bcdedit /set hypervisorlaunchtype off`
+      HAXM is not compatible with Device Guard. If DeviceGuard is enabled, then you may be running on a domain-joined machine and DeviceGuard has been configured by the owning organization. We recommend you try to use a non-domain machine with HAXM instead.
 
-    >**Note**: To enable it later, use `bcdedit /set hypervisorlaunchtype auto`
+      If you need to disable Device Guard, see [this article](https://technet.microsoft.com/en-us/itpro/windows/keep-secure/credential-guard#remove-credential-guard).
 
-    If you prefer to disable Hyper-V from the Control Panel, go to Programs, look under Programs and Features, and click **Turn Windows features on or off**. Uncheck Hyper-V platform components.
+2. Disable Hyper-V.
 
-    If Hyper-V is enabled, disable it, reboot, and retry HAXM.
+    If Hyper-V is enabled, disable it, reboot, and retry HAXM. You can disable Hyper-V from the Control Panel. To do this, go to Programs, look under Programs and Features, and click **Turn Windows features on or off**. Uncheck **Hyper-V Hypervisor**.
 
-2. Enable VT-x and SLAT in the BIOS (in the BIOS, the name may be **Virtualization Technology** or something similar)
+    Or, use the following Powershell cmdlet to disable Hyper-V.
+
+    ```
+    Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Hypervisor
+    ```
+
+3. Enable VT-x and SLAT in the BIOS (in the BIOS, the name may be **Virtualization Technology** or something similar)
 
     If VT-x is disabled, enable it, reboot, and retry HAXM. For help to identify whether VT-x is enabled on your machine, use the [processor identification utility](http://www.intel.com/content/www/us/en/support/processors/processor-utilities-and-programs/intel-processor-identification-utility.html).
 
-    >**Note**: If the processor utility is incorrectly reporting that VT-x is not supported, see the final step in this section.
+    >**Note**: The processor utility may mistakenly report that VT-x is not supported after switching between Hyper-V and HAXM.
 
-4. For Windows 10 only, check to see if Device Guard is running by starting the System Information app (type **System info** in search).
-
-    ![See if Device Guard is running](media/tips-and-workarounds-android-readme/device-guard.png)
-
-    HAXM is not compatible with Device Guard. If DeviceGuard is enabled, then you are running on a domain-joined machine and DeviceGuard has been configured by the owning organization. We recommend you try to use a non-domain machine with HAXM instead.
-
-    If you need to disable Device Guard, see [this article](https://technet.microsoft.com/en-us/itpro/windows/keep-secure/credential-guard#remove-credential-guard).
-
-3. Check whether you have some antivirus software (like Avast) or other software using hardware-assisted virtualization and disable or uninstall the software. Reboot and retry HAXM.
+4. Check whether you have some antivirus software (like Avast) or other software using hardware-assisted virtualization and disable or uninstall the software. Reboot and retry HAXM.
 
     For Avast, first try to disable it by going to Avast settings and deselecting (unchecking) these options:
       * **Enable hardware-assisted virtualization**
