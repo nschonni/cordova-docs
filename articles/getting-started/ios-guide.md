@@ -585,10 +585,11 @@ In the Terminal app on your Mac, press Ctrl+C.
 
 [Did you receive an error that like this one: - Command failed with exit code ENOENT?](#ENOENT)
 
-[Are you experiencing a symptom that does not appear in this list?](#stack)
-
 [You try to run your app on a device that is connected to your Windows computer but the project can't find it](#timeout)
 
+[You try to build an app for iOS 10 using XCode 8, but builds are failing](#xcode8)
+
+[Are you experiencing a symptom that does not appear in this list?](#stack)
 
 ### <a id="certificate"></a>Did you receive an error that relates to your certificate?
 
@@ -730,6 +731,7 @@ Alternatively, start the remotebuild agent on a different port. (Try using port 
 
 3. Run your app again.
 
+
 [Go back up](#errors)
 
 ### <a id="ENOENT"></a>Did you receive an error that like this one: - Command failed with exit code ENOENT?
@@ -762,6 +764,61 @@ If you've resolved this problem another way, please share it in a comment.
 
 [Go back up](#errors)
 
+### <a id="timeout"></a>You try to run your app on a device that is connected to your Windows computer but the project can't find it
+
+It's possible that the **ios-webkit-debug-proxy.exe** and **idevicedebugserverproxy.exe** processes were started in a previous attempt to run this project.
+
+On your Windows computer, open the **Task Manager** and then choose the **Proceses** tab. If those processes appear in the list, right-click them, and then click **End Process**.
+
+[Go back up](#errors)
+
+### <a id="xcode8"></a>You try to build an app for iOS 10 using XCode 8, but builds are failing.
+
+This is a known issue with Apache Cordova 6.3.1 and for the Visual Studio tools we've been working on a fix for this. To work around the issue for now, you'll need to perform the following steps:
+
++ Add a `developmentTeam` property to the `ios` build settings in your project's `build.json` file (an example is shown below).
++ Set the `build.json` file's `codeSignIdentity` property to the static value `iPhone Developer`.
++ Setup a `before_compile` hook in your project to copy the `developmentTeam` property into the project's `platforms/ios/cordova/build.xcconfig` file.  
+
+The project's `build.json` file should look something like the following:
+
+```{
+  "ios": {
+    "debug": {
+      "developmentTeam": "DEVELOPMENT_TEAM_NAME"
+    },
+    "release": {
+      "developmentTeam": "DEVELOPMENT_TEAM_NAME",
+      "codeSignIdentity": "iPhone Developer"
+    }
+  }
+}```
+
+To simplify the process, [Darryl Pogue](https://dpogue.ca/articles/cordova-xcode8.html) published a [sample hook](https://gist.github.com/dpogue/186b6c1827363c48d644b0d59e91bc28) that makes the required changes to the project's `build.xconfig` file based on the `build.json` example shown above. To use this hook, copy the sample `xcode8.js` file to your project's `hooks` folder, and then modify the project's `config.xml` to execute it before the compilation step using the following code:
+
+```<platform name="ios">
+  <hook type="before_compile" src="hooks/xcode8.js" />
+</platform>```
+
+#### Creating a Distribution Build
+
+At this point, the Cordova build process works, and you can run, test and debug your app. Unfortunately, the app isn't being signed with the correct development certificate needed for distribution. In order to sign them with a distribution certificate, you'll need to create an archive of the app by following the instructions found in: [Uploading Your App to iTunes Connect](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/UploadingYourApptoiTunesConnect/UploadingYourApptoiTunesConnect.html).
+
+#### If you can't run or debug an iOS 10 app
+
+Developers building Cordova applications for iOS 10 may encounter the following errors:
+
+```
+Http 404: Error mounting developer disk image
+Http 500: No devices found to debug. Please ensure that a device is connected and awake and retry.
+```
+
+This is caused by the Mac development environment needing an update to several modules. To fix the issue, on Mac OS, open a terminal window and issue the following command:
+
+`brew update && brew upgrade libimobiledevice --HEAD && brew upgrade ios-webkit-debug-proxy ideviceinstaller`
+
+[Go back up](#errors)
+
 ### <a id="stack"></a>Are you experiencing a symptom that does not appear in this list?
 
 Try these things:
@@ -774,10 +831,4 @@ Try these things:
 
 [Go back up](#errors)
 
-### <a id="timeout"></a>You try to run your app on a device that is connected to your Windows computer but the project can't find it
 
-It's possible that the **ios-webkit-debug-proxy.exe** and **idevicedebugserverproxy.exe** processes were started in a previous attempt to run this project.
-
-On your Windows computer, open the **Task Manager** and then choose the **Proceses** tab. If those processes appear in the list, right-click them, and then click **End Process**.
-
-[Go back up](#errors)
