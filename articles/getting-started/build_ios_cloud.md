@@ -75,7 +75,7 @@ With one exception, you can use the same process to configure Visual Studio for 
 
    ```
    remotebuild certificates reset --hostname=your_hostname
-   remotebuild certificates generate
+   remotebuild certificates generate   
    ```
  
    Or
@@ -83,6 +83,7 @@ With one exception, you can use the same process to configure Visual Studio for 
    ```
    remotebuild saveconfig --hostname=your_hostname
    remotebuild certificates reset
+   remotebuild certificates generate
    ````
 
     > **Note** If you are running an older version of the agent, the preceding command is not supported. Make sure that you [update](install-vs-tools-apache-cordova.md#update) the remotebuild agent.
