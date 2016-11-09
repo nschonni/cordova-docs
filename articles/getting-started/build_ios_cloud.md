@@ -71,12 +71,20 @@ With one exception, you can use the same process to configure Visual Studio for 
 
     and verify that the host name has been substituted with the host name you use to connect to MacInCloud. Any command line option can be specified this way in the config file, so you can also use this method to modify other settings such as the port used. Type remotebuild help to see a complete list of commands. Save the file if you make changes.
 
-5. After you verify the configuration, type the following command in the Terminal App on your Mac, substituting the host name for the one you use to connect to MacInCloud. .
+5. After you verify the configuration, type the following command in the Terminal App on your Mac, substituting the MacInCloud host name for `your_hostname` in the command:
 
-    ```
-    remotebuild certificates reset
-    remotebuild certificates generate
-    ```
+   ```
+   remotebuild certificates reset --hostname=your_hostname
+   remotebuild certificates generate   
+   ```
+ 
+   Or
+
+   ```
+   remotebuild saveconfig --hostname=your_hostname
+   remotebuild certificates reset
+   remotebuild certificates generate
+   ````
 
     > **Note** If you are running an older version of the agent, the preceding command is not supported. Make sure that you [update](install-vs-tools-apache-cordova.md#update) the remotebuild agent.
 
