@@ -756,7 +756,7 @@ For steps, see the [Option 2: Use your free Apple ID](#apple-id) section of this
 
 ### <a id="cli"</a>Did you receive any other type of build error
 
-Put CLI compat description here with link to relevant topic.
+Under the covers, Visual Studio Tools for Apache Cordova uses the Cordova SDK to manage interactions with mobile device SDKs and other tools. Therefore, when you see build errors that aren't covered elsewhere in this guide, chances are that the errors are coming from external tools used by Visual Studio. When this happens, general purpose Cordova best practices, tips and tricks apply. Refer to the [Apache Cordova documentation](http://cordova.apache.org/docs/en/latest/) or existing [Apache Cordova](http://stackoverflow.com/questions/tagged/cordova) or [Visual Studio Tolls for Apache Cordova](http://stackoverflow.com/questions/tagged/visual-studio-cordova) questions on Stack Overflow for help from other people who have solved similar issues.  
 
 Still not working? Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova).
 
