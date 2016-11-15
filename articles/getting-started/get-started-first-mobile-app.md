@@ -783,4 +783,4 @@ see [Connect a cloud service](../develop-apps/add-connected-services.md).
 
 **Take a look at TypeScript - it's fully supported in your project**
 
-see [Use TypeScript](../develop-apps/tutorial-typescript.md).
+see [Use TypeScript](tutorial-typescript.md).
