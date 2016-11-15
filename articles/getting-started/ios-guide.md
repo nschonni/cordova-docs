@@ -825,9 +825,9 @@ This is caused by the Mac development environment needing an update to several m
 
 Try these things:
 
-* Review [iOS and OSX Tips and Workarounds](./tips-and-workarounds/ios/tips-and-workarounds-ios-readme.md).
+* Review [iOS and OSX Tips and Workarounds](../tips-and-workarounds/ios/tips-and-workarounds-ios-readme.md).
 
-* Review [Known issues: iOS](./known-isuses/known-issues-ios.md).
+* Review [Known issues: iOS](../known-issues/known-issues-ios.md).
 
 * Reach out to us [here](http://stackoverflow.com/questions/tagged/visual-studio-cordova) or start a discussion at the bottom of this topic.
 
