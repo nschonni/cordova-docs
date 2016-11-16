@@ -15,6 +15,8 @@
    ms.author="normesta"/>
 # Install Visual Studio Tools for Apache Cordova
 
+Are you using the Visual Studio 2017 RC release? If so, check out the [updated version of this article](../getting-started-2017/vs-taco-2017-install.md).
+
 Use the Visual Studio Tools for Apache Cordova to build apps that run on iOS, Android, and Windows devices.
 
 To use these tools, choose the Apache Cordova feature when you install Visual Studio. If you've installed Visual Studio already, you can always add the feature later.
