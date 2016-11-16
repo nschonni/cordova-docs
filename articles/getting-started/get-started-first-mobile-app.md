@@ -16,6 +16,8 @@
 
 # Get started with Visual Studio Tools for Apache Cordova
 
+Are you using the Visual Studio 2017 RC release? If so, check out the [updated version of this article](../getting-started-2017/vs-taco-2017-first-app.md).
+
 You can use Visual Studio Tools for Apache Cordova to build apps that run on iOS, Android, and Windows devices and share nearly 100% of your code ([learn more](https://www.visualstudio.com/explore/cordova-vs)).
 
 In this guide, we'll give you a tour of what you can do with these tools. Along the way, you'll build a basic app that looks like this.
