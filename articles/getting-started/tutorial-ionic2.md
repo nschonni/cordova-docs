@@ -167,13 +167,14 @@ If you can't restore some of the Node.js modules, such as ionic-angular, make su
 
 If that doesn't resolve the issue, open a command line and go to the project folder, then run this command:
 
-    ```
-    npm install
-    ```
-    and then this command:
-    ```
-    npm rebuild node-sass
-    ```
+```
+npm install
+```
+and then this command:
+
+```
+npm rebuild node-sass
+```
 Then create a new Ionic 2 project from the templates you downloaded previously.
 
 ### <a id="wwahost"></a>WWAHost runtime error?
@@ -203,13 +204,13 @@ If you use the preceding code, then add a reference to $compileProvider in the f
 
 ```
 .config(function ($stateProvider, $urlRouterProvider) {
-  ```
+```
 
 so that it looks like this:
 
 ```
 .config(function ($compileProvider, $stateProvider, $urlRouterProvider) {
-  ```
+```
 
 ### <a id="unhandled"></a>Unhandled exception running on Windows?
 
@@ -227,9 +228,9 @@ If you see this error when targeting Windows 10, make sure you set **Windows 10.
 
 Visual Studio will use the Cordova Whitelist plugin by default, so you need to update index.html in the Cordova app with the following `<meta>` element:
 
-    ```
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    ```
+```
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+```
 
 ### <a id="certificate"></a> Certificate error on Windows?
 
