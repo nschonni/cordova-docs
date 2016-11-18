@@ -22,6 +22,30 @@ The Cordova project structure in Visual Studio 2017 mirrors the project structur
 
 If you have a Cordova project created with an earlier version of Visual Studio (such as a project created in Visual Studio 2015), when you open the project for the first time in Visual Studio 2017, Visual Studio will automatically migrate the project for you; it will happen so fast you'll hardly notice it. Unfortunately, after the migration, you will **not be able to open the migrated project** in older versions of Visual Studio. For that reason, be sure to **backup your Cordova application project** before opening the project in Visual Studio 2017.
 
+Once the migration is complete, you'll need to clean up some legacy configuration settings from the original project:
+
+1.	In the target platform list, select **Configuration Manager...**.
+
+	![Select the source project](media/vs-taco-2017-migration/figure-01.png)
+
+2.	In the **Configuration Manager** dialog, select the **Active solution platform** drop-down, then choose **<Edit...>**.
+	
+	![Select the source project](media/vs-taco-2017-migration/figure-02.png)
+
+3.	Finally, in the **Edit Solution Platforms** dialog, remove the following legacy **Windows** options that appear in the list:
+
+	+ Windows Phone (Universal)
+	+ Windows Phone 8
+	+ Windows-AnyCPU 
+	
+	To do this, for each target, select the item in the list, then click the **Remove** button.
+	
+	![Select the source project](media/vs-taco-2017-migration/figure-03.png)
+
+4.	Click the **Close** button (twice) when finished.
+	
+## Selecting a Cordova Toolset for the Migrated Project
+
 In previous versions of Visual Studio Tools for Apache Cordova, Visual Studio used the project's `taco.json` to define the target Cordova SDK version for the project. In Visual Studio 2017, the target Cordova SDK version is maintained in the project's `config.xml` file's **Toolset** setting. 
 
 The Apache Cordova development toolchain consists of a variety of tools, the Cordova CLI, NodeJS, Node Package Manager (npm), and the mobile platform native SDKs. In order to simplify management of Visual Studio's Cordova development environment, Visual Studio Tools for Apache Cordova packages the required tool versions for each Cordova platform version into Toolsets. See [Visual Studio Tools for Apache Cordova: Toolsets](vs-taco-2017-toolsets.md) for more information.
@@ -30,11 +54,11 @@ To avoid creating an incompatibility between Visual Studio's default Cordova too
 
 In the following example, the project was recently migrated and is therefore set to use the system's global Cordova SDK.
 
-![Select the source project](media/vs-taco-2017-migration/figure-01.png)
+![Select the source project](media/vs-taco-2017-migration/figure-04.png)
 
 Click the drop-down arrow on the **Toolset Name** field and select one of the installed toolsets as shown in the following figure. 
 
-![Select the source project](media/vs-taco-2017-migration/figure-02.png)
+![Select the source project](media/vs-taco-2017-migration/figure-05.png)
 
 Press **Ctrl**-**S** to save your changes, then close the configuration editor and you're ready to go.
 
@@ -42,9 +66,16 @@ Press **Ctrl**-**S** to save your changes, then close the configuration editor a
 
 If you try to launch the migrated application in Visual Studio, and receive the following error: 
 
-~~~
-MSBUILD : cordova-build error : C:\path_to_visual_studio\Common7\IDE\Extensions\ApacheCordovaTools\vstacwrapper.js:25
-MSBUILD : cordova-build error : Adding the Cordova platform failed
-~~~
+```
+Path to Node.js executable could not be determined. Please check that Node.js has been installed.
+```
 
-This indicates that the Visual Studio Tools for Apache Cordova cannot locate the Cordova SDK. Open the project's `config.xml` file and make sure that the Toolset setting points to a valid option for the system's current Cordova SDK configuration.
+This means that the migrated project is configured to use a globally installed Cordova SDK, but NodeJS and Cordova are not installed on the system. Either switch to an installed Toolset, or install [NodeJS](http://nodejs.org) and [Apache Cordova](http://cordova.apache.org/docs/en/latest/guide/cli/index.html) then try again.
+
+If you receive the following error:
+
+```
+Building using global Cordova version but Cordova is not installed globally.  Install Cordova globally or choose a toolset in the config.xml editor.
+```
+
+This indicates that the Visual Studio Tools for Apache Cordova cannot locate the Cordova SDK. Either switch to an installed Toolset, or install [Apache Cordova](http://cordova.apache.org/docs/en/latest/guide/cli/index.html) then try again.
