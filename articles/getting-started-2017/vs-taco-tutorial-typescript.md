@@ -16,11 +16,13 @@
 
 # Using TypeScript in a Cordova project
 
-[**TypeScript**](http://www.typescriptlang.org) is an open source programming language created and maintained by Microsoft. It uses a superset of the JavaScript languages, and adds features JavaScript doesn't have, like classes, modules, and interfaces. TypeScript editing capabilities are built in to Visual Studio, and Visual Studio Tools for Apache Cordova includes special templates you can use to create Cordova applications using TypeScript. During the build process, Visual Studio automatically compiles your application's TypeScript code into JavaScript before packaging the application's files into the Apache Cordova native application container. In this guide, you'll learn how to use TypeScript for your Apache Cordova applications using Visual Studio Tools for Apache Cordova (TACO). 
+[**TypeScript**](http://www.typescriptlang.org) is an open source programming language created and maintained by Microsoft. TypeScript offers support for the latest and evolving JavaScript features, including those from ECMAScript 2015 like classes and modules. It also supports future language proposals, like async functions and decorators, to help build robust components. These features are available at development time for high-confidence app development, but are compiled into simple JavaScript that targets current mobile devices and browsers.
+
+TypeScript editing capabilities are built in to Visual Studio, and Visual Studio Tools for Apache Cordova includes special templates you can use to create Cordova applications using TypeScript. During the build process, Visual Studio automatically compiles your application's TypeScript code into JavaScript before packaging the application's files into the Apache Cordova native application container. In this guide, you'll learn how to use TypeScript for your Apache Cordova applications using Visual Studio Tools for Apache Cordova (TACO). 
 
 ##<a name="getStarted"></a>Creating a Cordova TypeScript Application Project
 
-Visual Studio provides a Cordova application template using TypeScript; if you'd prefer to start with a complete project, take a look at the [TypeScript Module samples](#samples). To create a new Cordova application using TACO TypeScript template, complete the following steps:
+Visual Studio provides a Cordova application template using TypeScript; if you'd prefer to start with a complete project, take a look at the [TypeScript Module samples](#samples). To create a new Cordova application using the TACO TypeScript template, complete the following steps:
 
 1.	Open **Visual Studio**, then open the **File** menu, select **New**, then **Project**.
 2.	Expand the list of **Installed** templates, then expand **Templates** and **TypeScript**, and finally select the **Mobile Apps** category. In the list of templates, select the **Blank App (Apache Cordova)** template.  
@@ -56,7 +58,7 @@ The `script` tag loads RequireJS and uses the tag's `data-main` attribute to tel
 
 The project's `www\lib` folder stores the RequireJS JavaScript library used by the application and is added automatically by Visual Studio.
 
-If you look in the project's `www\scripts` folder, you won't find any JavaScript files. That's because the default project doesn't come with any. Instead, there's a `scripts` folder hanging off the root of the project folder structure, and all of the project's TypeScript files goes there. During the build process, Visual Studio compiles the TypeScript files into JavaScript and places the resulting JavaScript files in `www/scripts`.
+If you look in the project's `www\scripts` folder, you won't find any JavaScript files. That's because the default project doesn't come with any. Instead, there's a `scripts` folder hanging off the root of the project folder structure, and all of the project's TypeScript files go there. During the build process, Visual Studio compiles the TypeScript files into JavaScript and places the resulting JavaScript files in `www/scripts`.
 
 Looking in the project's `scripts` folder, you should see the following folder and files:
 
@@ -115,13 +117,13 @@ function onResume(): void {
 
 ```
 
-When you build this project, to run the application in the browser, an emulator, simulator or physical device, the project's TypeScript source code is compiled into a JavaScript and JavaScript Map files  in the `www\scripts` folder. The project's `application.ts` and `startup.ts` files are compiled into corresponding `application.ts` and `startup.js` files. To facilitate JavaScript debugging, JavaScript Source Map files `application.js.map` and `startup.js.map` are created during compilation as well.
+When you build this project, to run the application in the browser, an emulator, simulator or physical device, the project's TypeScript source code is compiled into a JavaScript and JavaScript Source Map files  in the `www\scripts` folder. The project's `application.ts` and `startup.ts` files are compiled into corresponding `application.js` and `startup.js` files. To facilitate JavaScript debugging, JavaScript Source Map files `application.js.map` and `startup.js.map` are created during compilation as well.
 
 ![TypeScript Project Solution Explorer](media/vs-taco-tutorial-typescript/figure-03.png)
 
 All of the files in the project's `www` folder are included in the Cordova application, so now the application has everything it needs to run.
 
-The last file unique to a TypeScript project is `tsconfig.json`, it's the configuration file used to customize the TypeScript compiler. [Learn more about tsconfig.json](https://github.com/microsoft/typescript/wiki/tsconfig.json) on the TypeScript project site. The file defines settings that controls how and what the TypeScript does when you build your app. By default, the compiler outputs JavaScript files to `www\scripts` and targets ECMAScript 5 (`target:"es5"`). Change the values in this file to change compiler behavior. 
+The last file unique to a TypeScript project is `tsconfig.json`, it's the configuration file used to customize the TypeScript compiler. [Learn more about tsconfig.json](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html) on the TypeScript project site. The file configures how the TypeScript compiler will work when you build your app. By default, the compiler outputs JavaScript files to `www\scripts` and targets ECMAScript 5 (`target:"es5"`). Change the values in this file to change compiler behavior. 
 
 ```json
 {
@@ -142,7 +144,7 @@ The last file unique to a TypeScript project is `tsconfig.json`, it's the config
 
 ##<a name="addToExisting"></a>Adding TypeScript to an Existing JavaScript Application
 
-TypeScript files can be added to any Cordova project using the TypeScript item template. Right-click on your project's `scripts` folder, then select **Add** > **New JavaScript File**. In the list of templates, select **TypeScript File**, give the file a name, and then click the **Add** button to create the file.
+TypeScript files can be added to any Cordova project using the TypeScript item template. Right-click on your project's `scripts` folder, then select **Add** -> **New JavaScript File**. In the list of templates, select **TypeScript File**, give the file a name, and then click the **Add** button to create the file.
 
 ![TypeScript Project Solution Explorer](media/vs-taco-tutorial-typescript/figure-04.png)
 
@@ -152,20 +154,6 @@ The starter samples extend the [Greeter tutorial](http://www.typescriptlang.org/
 
   * [AMD and RequireJS sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-amd)
   * [CommonJs and Browserify sample](https://github.com/Microsoft/cordova-samples/tree/master/typescript-commonjs)
-
-```
-I'm not sure the following section is needed:
-```
-
-##Troubleshooting
-
-By default, Visual Studio manages the TypeScript application build process, compiling your app's TypeScript into JavaScript. If you're using an external build tool like [grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/), you may encounter issues where you can't hit breakpoints in your app's `.ts` files. This is most likely caused by a problem in your app's sourceMap files. When running your app, look for the `.ts` files under **Script Documents** in Solution Explorer. They should look similar to the figure below, with the `.ts` files as children under the app's `.js` files.
-
-![SourceMaps](media/vs-taco-tutorial-typescript/figure-05.png)
-
-Right-click on one of the `.ts` files and choose **Properties** to view the current path used by the sourceMaps. 
-
-If you are using Gulp, check out the [Gulp tutorial](http://taco.visualstudio.com/en-us/docs/tutorial-gulp-readme/) for instructions on how to setup the project. Make sure that properties like `extensions`, `loadMaps`, and `sourceRoot` in your Gulp configuration are using the right values.
 
 ##<a name="learnMore"></a>Learn More About Using TypeScript with Cordova
 
