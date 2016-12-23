@@ -89,13 +89,13 @@ To manage Ionic 2 applications using Visual Studio, you will need to install the
 
 ## Enabling Live Reload in Ripple
 
-Ionic uses Node Package Manager ([npm](https://www.npmjs.com)) scripts to compile your application's TypeScript and SASS files into JavaScript and CSS, then copies the output into the project's `www` folder. By default, Visual Studio uses the `devBuild` command in the project's `package.json` to build the project. Visual Studio executes this script every time you launch the Ionic application. 
+Ionic uses Node Package Manager ([npm](https://www.npmjs.com)) scripts to compile your application's TypeScript and SASS files into JavaScript and CSS, then copies the output into the project's `www` folder. By default, Visual Studio uses the `ionic:build` command in the project's `package.json` to build the project. Visual Studio executes this script every time you launch the Ionic application. 
 					
 While developing your app using the Ripple emulator, you may want to setup your project to live reload changes into the browser as you work on your files. To do this:
 
 1.	Open the **Task Runner Explorer**: In Visual Studio, open the **View** menu, select **Other Windows** then Task Runner Explorer. You can also use the keyboard shortcut: **Ctrl** + **Alt** + **Backspace**.
 
-2.	Right click the watch task and choose the **Bindings** -> **Project Open** menu to setup the watch task to run when you load your project.
+2.	Right click the ionic:build task and choose the **Bindings** -> **Project Open** menu to setup the watch task to run when you load your project.
 
 3.	Run your Ionic app in the Ripple browser.
 
