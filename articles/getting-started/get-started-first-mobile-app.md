@@ -3,7 +3,7 @@
    description="Get started with Visual Studio Tools for Apache Cordova"
    services="na"
    documentationCenter=""
-   authors="normesta"
+   authors="normesta, johnwargo"
    tags=""/>
 <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
@@ -18,27 +18,24 @@
 
 Are you using the Visual Studio 2017 RC release? If so, check out the [updated version of this article](../getting-started-2017/vs-taco-2017-first-app.md).
 
-You can use Visual Studio Tools for Apache Cordova to build apps that run on iOS, Android, and Windows devices and share nearly 100% of your code ([learn more](https://www.visualstudio.com/explore/cordova-vs)).
+Use Visual Studio Tools for Apache Cordova to build mobile apps using web technologies (HTML, CSS, JavaScript) that run on Android, iOS, and Windows devices. Since Cordova apps are built using web application code, you'll be able to share the majority of your code across device platforms; [learn more](https://www.visualstudio.com/explore/cordova-vs).
 
-In this guide, we'll give you a tour of what you can do with these tools. Along the way, you'll build a basic app that looks like this.
+In this guide, we'll show how to build, test and debug a Cordova application using the Visual Studio Tools for Apache Cordova. Along the way, you'll build a simple mobile weather app that looks like this:
 
 ![Weather app](media/get-started-first-mobile-app/weather-app-overview.png)
 
-You can find the complete sample [here](https://github.com/Microsoft/cordova-samples/tree/master/weather-app).
+The application displays current weather conditions based on the current device location plus enables users to search for weather conditions using a US postal (zip) code. You can find the application's source code [here](https://github.com/Microsoft/cordova-samples/tree/master/weather-app).
 
-It's not much, but when you're done, this process won't seem so mysterious. In fact, it's fun and relatively simple. Where you take things from there is up to you and your imagination.
-
-Before we begin, make sure that you have the tools installed. See [install Visual Studio Tools for Apache Cordova](install-vs-tools-apache-cordova.md).
-
-If you're ready to go, let's start.
+> **Note:** Before we begin, make sure you have completed the [Visual Studio Tools for Apache Cordova Installation](install-vs-tools-apache-cordova.md).
 
 ## <a id="get-started"></a>First, create a project
 
-1.	In Visual Studio, create a new **Blank App** project and name it *WeatherApp* (*You can find it under **JavaScript**->**Apache Cordova Apps** in the **New Project** dialog box*).
+1.	Open Visual Studio and create a new project by opening the **File** menu, select **New** then **Project**; you can also use the key combination: **Ctrl**+**Shift**+**N**.
+2.	In the **New Project** dialog, open the list of installed templates, and expand the **JavaScript** option. In the list of templates that appears, select **Blank App (Apache Cordova)** as shown in the figure:
 
     ![Project template locations](media/get-started-first-mobile-app/blank-project-template.png)
 
-    > **Note:** If you like TypeScript, there's a template for that under **TypeScript**->**Apache Cordova Apps**.
+    > **Note:** If you like coding in TypeScript, there's a template for that under **TypeScript**->**Apache Cordova Apps**.
 
     After you create the project, your solution should resemble the following:
 
@@ -65,7 +62,7 @@ This table gives you the basic idea of how you might use each one.
     }
 </style>
 <table>
-<tbody><tr>
+<tr>
   <th>
     <p><strong>File</strong></p>
   </th>
@@ -83,38 +80,48 @@ This table gives you the basic idea of how you might use each one.
    <td><strong>config.xml</strong></td><td>Contains the settings of your app. <br><br>We'll change these settings later in this guide.</td>
  </tr>
  <tr>
-   <td><strong>taco.json</strong></td><td>Defines which version of the <a href="https://cordova.apache.org/docs/en/4.0.0/guide/cli/">Cordova CLI</a> Visual Studio uses to build the project.</td>
+   <td><strong>package.json</strong></td><td>Contains settings used by the node package manager (npm) to install dependencies for the app.</td>
  </tr>
-
+ <tr>
+   <td><strong>taco.json</strong></td><td>Defines which version of the <a href="https://cordova.apache.org/docs/en/4.0.0/guide/cli/">Cordova CLI</a> that Visual Studio uses to build the project.</td>
+ </tr>
 </table>
 
 ### The folders of your project
 
 #### www
 
-This folder contains the HTML, JavaScript, style sheets, and images that you want to use in your app.
+The project's `www` folder contains the web application content files for the Cordova application, so most of your development will occur inside this folder.  Here you'll find the web application content that is packaged into a native mobile application by the Cordova SDK. The HTML, JavaScript, and CSS files in this folder will render in the Cordova app the same way they will in a mobile browser, so be sure to optimize the content for the smaller and more limited smartphones and tablets. 
 
 ![www folder](media/get-started-first-mobile-app/www.png)
 
-It already contains some files, so this app can be run right out of the box. You can modify these files or add more as you build your app.
+The folder's `index.html` file is the main entry point for the web application, it's loaded by default when the Cordova application launches. The folder contains several subfolders that follow a typical web application folder structure:
+
++ `css` - Stores the web application's Cascading Style Sheet (CSS) files. The `index.css` shown in the folder is the standard .css file included with the default Cordova application template. 
++ `images` - Stores any image files used by the web application. The `cordova.png` file shown in the folder is the Cordova logo that displays in the center of the application screen in the default Cordova application template.
++ `scripts` - Stores JavaScript files used by the web application. The project's `index.js` file contains the bootstrap code that initializes the Cordova application; it registers callback functions for the Cordova `deviceReady` event. The `platformOverrides.js` file works in conjunction with similar files located in the `merges` folder to enable developers to deliver different code per target platform. See [merges Folder](#merges) for additional information.
+
+Cordova developers do most of their work in these folders, creating and updating web application content designed for mobile devices. The application content contained herein is packaged into a native mobile application by Visual Studio for deployment to mobile devices using the Cordova and device platform SDKs.
 
 #### merges
 
-This folder contains the HTML, JavaScript, and style sheet files that apply to **specific platforms**.
+Apache Cordova uses the `merges` folder to provide developers with the ability to deliver different content based on the target mobile platform. As you can see from the figure, there's a subfolder for each target mobile platform (Android, iOS and Windows). Any content in these folders will be copied to the native application project during the Cordova pre-build process (prepare), adding to or replacing content in the web application folder as needed.
 
 ![merges folder](media/get-started-first-mobile-app/merges.png)
 
-When you build your app, all files and folders in the merges/_platform_ are copied into the final folder structure, overwriting any files with the same names in the root project.
+For example, any content in the `merges\android` folder is copied to the Android project's web application folder after the base web application is copied. Content in the `merges\ios` folder is copied into the iOS project's web application folder. Finally, content in the `merges\windows` folder is copied to the Windows project's web application folder after the base web application is copied.
 
-For example, the ```scripts/platformOverrides.js``` file is replaced by the ```merges/android/scripts/platformoverrides.js``` file on Android. This is how you can incorporate platform-specific code.
+To help deliver a consistent web application experience in Cordova apps, the default project created by Visual Studio Tools for Apache Cordova includes `platformOverrides.js` files for Android (in `merges\android\scripts\platformOverrides.js`) and Windows (in `merges\windows\scripts\platformOverrides.js`) along with a platform-specific JavaScript library. On Android, it adds a polyfill for `bind()` on older Android devices, and on Windows it adds Microsoft's safeHTML polyfill library. The `merges\ios` folder doesn't include a `platformOverrides.js` file, so there's no platform-specific override, iOS applications get the generic version of the file located in `www\scripts\platformOverriders.js`.
 
-![root files](media/get-started-first-mobile-app/platform-overrides.png)
+![root files](media/get-started-first-mobile-app/platform-overrides.png) 
 
-Use this same approach to merge CSS, images and anything else.
+For additional information on how merges works, see [Using merges to Customize Each Platform](https://cordova.apache.org/docs/en/latest/guide/cli/#using-merges-to-customize-each-platform) in the Cordova documentation.
+
+Use this same approach to merge CSS files, images and any other files in your application.
 
 #### res
 
-This folder contains icons, splash screens, signing certificates and any other platform-specific files.
+Apache Cordova uses the contents of the `res` folder to store non-web application resources used by a native mobile application such as [application icons](https://cordova.apache.org/docs/en/latest/config_ref/images.html), [splash screen](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/index.html) images, signing certificates, etc.
 
 ![res folder](media/get-started-first-mobile-app/res-folder.png)
 
@@ -124,7 +131,7 @@ This folder contains icons, splash screens, signing certificates and any other p
 
     ![Ripple Emulator](media/get-started-first-mobile-app/ripple-start.png)
 
-    Your app opens in Apache Ripple and it looks like this because we haven't added any code yet.
+    Visual Studio will build the application, then open a browser window running the application in the Apache Ripple simulator. New projects use the default Cordova template, so, since we've not added any code to the application, it will simply display the Cordova logo and a notification that the device is ready.
 
     > **NOTE:** There will already be some errors on the JavaScript console, such as failure to load favicon.ico, ripple.js and ajax-loader.gif. But these are not neccessary to continue developing in Ripple.
 
@@ -134,7 +141,7 @@ This folder contains icons, splash screens, signing certificates and any other p
 
     ![Change Device Orientation](media/get-started-first-mobile-app/change-device-orientation.png)
 
-2. Stop the app. You'll find the button to stop it in the Standard Toolbar.
+2. Stop the app; use the square Stop button in the Standard Toolbar.
 
     ![Stop Debugging button](media/get-started-first-mobile-app/stop-debugger.png)
 
@@ -148,17 +155,17 @@ This folder contains icons, splash screens, signing certificates and any other p
 
     ![Emulators](media/get-started-first-mobile-app/emulators.png)
 
-    Run your app in any of these emulators if you want, but don't use any of the iOS emulators yet because you need a Mac to use them, and setting up the connection between Visual Studio and the Mac is a little advanced for this guide.
+    Run your app in any of these emulators if you want, but don't use any of the iOS emulators yet because you'll need a Macintosh system to use them, and setting up the connection between Visual Studio and the Mac is beyond the scope of this guide.
 
     If you want to run your app on iOS, you can use the Ripple simulators. After you complete this guide, see [This article](ios-guide.md) for guidance on how to run your app in an iOS emulator or device.
 
 ## <a id="settings"></a>Find app settings
 
-To give your app a name, increment the version number, and control other aspects of your app's behavior, modify the global configuration file, **config.xml**.
+To give your app a name, increment the version number, and control other aspects of your app's behavior, modify the global configuration file, `config.xml`.
 
 You can modify it by using a designer, so you don't need to edit the XML directly unless you want to.
 
-To open the designer, double click the **config.xml** file in your project.
+To open the designer, double click the `config.xml` file in your project.
 
 ![Configuration Designer](media/get-started-first-mobile-app/settings.png)
 
@@ -168,17 +175,17 @@ Apps can be as complicated or as simple as you want them to be. The goal of this
 
 ### Add packages
 
-First, you'll add the [JQuery](https://jquery.com/) and [JQuery Mobile](https://jquerymobile.com/) NuGet packages to your project.
+The application uses the [**jQuery**](https://jquery.com/) and [**jQuery Mobile**](https://jquerymobile.com/) libraries to help craft the app's UI and simplify the code. jQuery is a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling its events. jQuery Mobile is a touch-optimized HTML5 UI framework, built on jQuery, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. Together, they give us a quick way to style the application without having to do custom CSS work.
 
-If you're not familiar with JQuery, it's just a JavaScript library that makes certain tasks easier such as changing the properties of a control or handling it's events, and that's exactly what we'll use it for.
+Let's add the JQuery and JQuery Mobile NuGet packages to the project. 
 
-JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices. It'll give us a quick way to style the application without having to do custom CSS work.
-
+> **Note:** Before starting the following steps, point your browser of choice to [the jQuery Mobile download site](http://jquerymobile.com/download/) to note which version of the jQuery library is compatible with the current shipping release of jQuery Mobile. At the time of this writing, jQuery Mobile version 1.4.5 is compatible with jQuery version 1.8 through 1.11, and version 2.1. In the steps that follow, be sure you install compatible versions of both frameworks. The NuGet Package Manager should deploy compatible versions of dependent libraries, but it's best to make sure first.
+ 
 1. Choose **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**, and add the **jQuery** NuGet package to your solution.
 
     ![JQuery Package](media/get-started-first-mobile-app/nuget-jquery.png)
 
-    >**Note**: Because versions constantly change, the next few images will use ```x.x.x``` in place of version numbers.
+    >**Note**: Because versions constantly change, the next few images will use `x.x.x` in place of version numbers.
 
 2. Add the **jQuery.Mobile** NuGet package to your solution.
 
@@ -186,13 +193,13 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
      NuGet adds files to the **Scripts** folder of your project, but that's not really where we need them so we'll have to fix that.
 
-3. Drag those files to **scripts** subfolder of your **www** folder
+3. Drag the newly installed script files from the project's `Scripts` folder to the `www\scripts` folder.
 
     ![Drag Files](media/get-started-first-mobile-app/drag-files-to-scripts.png)
 
-    Now they're in the correct location. But we still have a little work to do here. Nuget also adds CSS files to the **Content** folder so we'll have to fix that too.
+    Now they're in the correct location. But we still have a little work to do here. Nuget also adds CSS files to the `Content` folder so we'll have to fix that too.
 
-4. Drag the CSS files to **css** subfolder of your **www** folder.
+4. Drag all of the `.css` files and the `images` folder from the project's `Content` folder to `www\css` folder.
 
     ![Drag Files](media/get-started-first-mobile-app/drag-files-to-css.png)    
 
@@ -203,20 +210,20 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
     <script src="scripts/jquery.mobile-x.x.x.min.js"></script>
     ```
 
-    Replace the ```x.x.x``` in these filenames with the versions that you've downloaded. For example, if you downloaded jQuery version ```2.2.3```, and jQuery mobile version ```1.4.5```, your references would look like this:
+    Replace the `x.x.x` in these filenames with the versions that you've downloaded. For example, if you downloaded jQuery version `2.2.3`, and jQuery mobile version `1.4.5`, your references would look like this:
 
     ```html
-    <script src="scripts/jquery-2.2.3.min.js"></script>
+    <script src="scripts/jquery-2.1.0.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
     ```
 
-4.  Add this style reference to the `<head>` tag of your [index.html](#tour-project) file, above the existing **index.css** reference:
+4.  Add this style reference to the `<head>` tag of your [`index.html`](#tour-project) file, above the existing `index.css` reference:
 
     ```html
     <link rel="stylesheet" href="css/jquery.mobile-x.x.x.min.css" />
     ```
 
-    As you did in the previous example, replace ```x.x.x.``` with the version of JQuery mobile that you downloaded. If you downloaded jQuery mobile version ```1.4.5```, your reference would look like this:
+    As you did in the previous example, replace `x.x.x.` with the version of JQuery mobile that you downloaded. If you downloaded jQuery mobile version `1.4.5`, your reference would look like this:
 
     ```html
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
@@ -224,9 +231,9 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 ### Design a page
 
-**index.html** is the first page that appears when users run your app. So we'll add our HTML to that file. Of course, this is the default setting and you can change that at any time in the [configuration designer](#settings).
+The project's `index.html` is the first page that appears when users run your app. So we'll add our HTML to that file. Of course, this is the default setting and you can change that at any time in the [configuration designer](#settings).
 
-1. Open the **index.css** file and replace its content with the following css rules:
+1. Open the `www\css\index.css` file and replace its content with the following css rules:
 
     ```css
     .not-displayed {
@@ -264,15 +271,19 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
         font-weight: bold;    
     }
     ```
-1. Open the **index.html** file and remove this HTML. It's just a part of the default template that you run out of the box. We won't need it.
+1. Open the `www\index.html` file and remove this HTML. It's just a part of the default template that you run out of the box. We won't need it.
 
     ```html
-    <div class="app">
-      <p id="deviceready" class="event">Connecting to Device</p>
+ 	<div class="app">
+      <h1>Apache Cordova</h1>
+      <div id="deviceready" class="blink">
+         <p class="event listening">Connecting to Device</p>
+         <p class="event received">Device is Ready</p>
+      </div>
     </div>
     ```
 
-2. Add this HTML to the ```<body>``` of the page to give users a way to search for the weather and see the results.
+2. Add this HTML to the `<body>` of the page to give users a way to search for the weather and see the results.
 
     ```html
     <div data-role="page" id="weather-page">
@@ -313,7 +324,7 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
 ### Handle a button event
 
-1. Open the [index.js](#tour-project) file and add the following line of code to the ```onDeviceReady``` function.
+1. Open the project's `www\scripts\index.js` file and replace the code in the `onDeviceReady` function with the following code:
 
     ```javascript
 
@@ -321,26 +332,17 @@ JQuery Mobile is a touch-optimized HTML5 UI framework, built on JQuery core, des
 
     ```
 
-    This code refers to the ID of the 'Get Weather' button on the HTML page and handles the `click` event by passing in the name of a function (_getWeather_).  You'll add that function shortly.
-
-2. While you're in this file, remove this code from the ```onDeviceReady``` function. It's just a part of the default template that you run out of the box. We won't need it.
-
-    ```javascript
-
-    var element = document.getElementById("deviceready");
-    element.innerHTML = 'Device Ready';
-    element.className += ' ready';
-
-    ```
+    This code refers to the ID of the 'Get Weather' button on the HTML page and handles the `click` event by passing in the name of a function (getWeatherWithZipCode).  You'll add that function shortly.
 
 #### A quick look at index.js
-This is a good time to quickly look at the ```index.js``` file. This file loads when the user runs the app.  Why? Because the ```index.html``` page contains this reference to it:
+
+This is a good time to quickly look at the `index.js` file. This file loads when the user runs the app.  Why? Because the `index.html` page contains this reference to it:
 
 ```javascript       
 <script src="scripts/index.js"></script>
 ```
 
-You'll notice a few things about the ```index.js``` file. First, all the code in that file is enclosed within an *anonymous self-invoking function* (or _Immediately Invoked Function Expression_, or _[IIFE](https://developer.mozilla.org/docs/Glossary/IIFE)_). This is a fancy way of saying that this function executes automatically when the file loads.
+You'll notice a few things about the `index.js` file. First, all the code in that file is enclosed within an *anonymous self-invoking function* (or _Immediately Invoked Function Expression_, or _[IIFE](https://developer.mozilla.org/docs/Glossary/IIFE)_). This is a fancy way of saying that this function executes automatically when the file loads.
 
 ```javascript      
 (function () {
@@ -366,17 +368,19 @@ We'll use the [OpenWeatherMap](http://openweathermap.org/) API to get weather da
 
 ### Add code to get the weather
 
-Now we'll add the *getWeather* function that we're using to handle button's ``click`` event. But first, let's add a JavaScript file for that function.
+Now we'll add the `getWeather` function that we're using to handle button's `click` event. But first, let's add a JavaScript file for that function.
 
-1. In **Solution Explorer**, find the **scripts** sub-folder in your **www** folder.
+1. In **Solution Explorer**, locate the `www\scripts` folder.
 
     ![Scripts Folder](media/get-started-first-mobile-app/scripts.png)
 
-2. Right-click the **scripts** folder, and then choose **Add** -> **New JavaScript file**.
+2. Right-click the `scripts` folder, and then choose **Add** -> **New JavaScript file**.
 
-3. Name the file *weather.js*, and then choose the **Add** button.
+3. Name the file `weather.js`, and then choose the **Add** button.
 
-4. Open the **weather.js** file and add the following function. Replace ``Your_Key_Here`` with the key that you got from [OpenWeatherMap](https://home.openweathermap.org/).
+	![Scripts Folder](media/get-started-first-mobile-app/add-weather-js-file.png)
+
+4. Open the `www\scripts\weather.js` file and add the following function. Replace `Your_Key_Here` with the key that you got from [OpenWeatherMap](https://home.openweathermap.org/).
 
 	 ```javascript       
 
@@ -434,7 +438,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
 
     Now we're still missing a step. We have to refer to this new JavaScript file in our HTML page so let's do that now.
 
-5. Open the **index.html** page, and add this reference to the ```<body>``` of the page (at the bottom of the body section, where the other JavaScript references are located).
+5. Open the `www\index.html` file, and add this reference to the `<body>` of the page (at the bottom of the body section, where the other JavaScript references are located).
 
 	```html   
     <script src="scripts/weather.js"></script>
@@ -451,14 +455,14 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     <script src="scripts/weather.js"></script>
 	```
 
-6. Add ```http://api.openweathermap.org``` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the ```<head>```. Use it to declare approved origins of content that browsers should be allowed to load on your website. It looks like this:
+6. Add `http://api.openweathermap.org` to the page's Content Security Policy (CSP). The CSP is just a line of HTML that is located inside of the `<head>`. Use it to declare approved origins of content that browsers should be allowed to load on your website. It looks like this:
 
     ```html
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
     https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
-    Add ```http://api.openweathermap.org``` just after ```https://ssl.gstatic.com``` in that line to give this page permission to get content from the Yahoo weather service and map service. When you're done, your CSP will look like this:
+    Add `http://api.openweathermap.org` just after `https://ssl.gstatic.com` in that line to give this page permission to get content from the weather service and map service. When you're done, your CSP will look like this:
 
     ```html
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:
@@ -466,7 +470,7 @@ Now we'll add the *getWeather* function that we're using to handle button's ``cl
     'unsafe-inline'; media-src *">           
     ```
 
-    > **Note:** Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. You can read more about it here: http://content-security-policy.com/
+    > **Note:** The Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context. You can read more about it [here](http://content-security-policy.com/).
 
 ## Run your app in an Emulator
 
@@ -518,67 +522,54 @@ To open the DOM Explorer, choose **Debug** -> **Windows** -> **DOM Explorer** wh
 
 Most likely you'll want your app to do more than just show web pages on a mobile device. You might want your app to store files, receive push notifications, or capture images by using the device's camera. This is where a **plugin** becomes handy. Apache Cordova uses plugins to provide access to native device capabilities that aren’t available to simple web apps.
 
-You can find some of the more commonly used plug-ins in the **Core** page of the app's [configuration designer](#settings).
+You can find some of the more commonly used plugins in the **Core** page of the app's [configuration designer](#settings).
 
 ![Configuration Designer](media/get-started-first-mobile-app/core-plugins.png)
 
 Use the **Custom** page to add plugins that are not one of the [core plugins](../develop-apps/use-cordova-plugins.md). These could be standard Cordova plugins available on npm (Cordova 5.x or greater), or plugins that you or a colleague create for some specific purpose and then save to your local drive or to a GitHub repository.  [This document](../develop-apps/manage-plugins.md#Custom) explains how to add a custom plugin.
 
-If you need to use a specific version of a plugin, you can add a plugin by editing the config.xml file directly. You can find guidance about how to do that  [here](../develop-apps/manage-plugins.md#AddOther).
+If you need to use a specific version of a plugin, you can add a plugin by editing the `config.xml` file directly. You can find guidance about how to do that  [here](../develop-apps/manage-plugins.md#AddOther).
 
-Let's add a plug-in that gives us access to the device's geolocation system. That way, we can get the weather of a user's current location.
+Let's add a plugin that gives us access to the device's geolocation system. That way, we can get the weather of a user's current location.
 
-1. Open the [configuration designer](#settings), and choose the **Plugins** tab.
+1. In solution Explorer, double-click on the `config.xml` file to open the [configuration designer](#settings), and then choose the **Plugins** tab.
 
 2. Choose the **Geolocation** plugin, and then choose the **Add** button.
 
     ![Geolocation plugin](media/get-started-first-mobile-app/add-geolocation.png)
 
-    This adds the plug-in to your project but you still have to know how to consume it in your app. To do that, open the **Readme.md** file. You'll find it in the **plugins** folder as shown in this image.
+    This adds the plugin to your project but you still have to know how to consume it in your app. To do that, open the `README.md` file. You'll find it in the `plugins\plugin-cordova-geolocation` folder as shown in the following image.
 
-    ![Readme File](media/get-started-first-mobile-app/plug-in-readme.png)
+    ![Readme File](media/get-started-first-mobile-app/plugin-readme.png)
 
     Let's add some code that consumes this plugin.
 
-3. In the **weather.js** file add the following code right after the ```getWeather``` function
-
-4. Open the **weather.js** file and add the following function. Replace ``Your_Key_Here`` with the key that you got from [OpenWeatherMap](https://home.openweathermap.org/).
+3. In the `www\scripts\weather.js` file add the following code right after the `showWeatherData` function
 
 	 ```javascript       
-
      function getWeatherWithGeoLocation() {
-
-      navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError,
-        { enableHighAccuracy: true });
-
+       navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, { enableHighAccuracy: true });
       $('#error-msg').show();
       $('#error-msg').text('Determining your current location ...');
-
       $('#get-weather-btn').prop('disabled', true);
     }
+
     function onGetLocationSuccess(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
 
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    var queryString =
-      'http://api.openweathermap.org/data/2.5/weather?lat='
+      var queryString = 'http://api.openweathermap.org/data/2.5/weather?lat='
         + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=imperial';
-
-    $('#get-weather-btn').prop('disabled', false);
-
-    $.getJSON(queryString, function (results) {
-
+      $('#get-weather-btn').prop('disabled', false);
+      $.getJSON(queryString, function (results) {
         showWeatherData(results);
-
-        }).fail(function (jqXHR) {
-            $('#error-msg').show();
-            $('#error-msg').text("Error retrieving data. " + jqXHR.statusText);
-    });
-
+      }).fail(function (jqXHR) {
+         $('#error-msg').show();
+         $('#error-msg').text("Error retrieving data. " + jqXHR.statusText);
+      });
     }
-    function onGetLocationError(error) {
 
+    function onGetLocationError(error) {
       $('#error-msg').text('Error getting location');
       $('#get-weather-btn').prop('disabled', false);
     }  
@@ -587,30 +578,24 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
     This code uses the device's geolocation capability to get the latitude and longitude of the device's location. It then gets the weather for that location.
 
-4.  Open the **index.js** file, and add the following code to the `onDeviceReady` function.
+4.  Open the project's `www\scripts\index.js` file, and add the following code to the `onDeviceReady` function.
 
     ```javascript
 
 	  getWeatherWithGeoLocation();
 
     ```
-    The ``onDeviceReady`` function should look like this.
+    When you're done, the ``onDeviceReady`` function should look like this:
 
     ```javascript
 
-     function onDeviceReady() {
-		// Handle the Cordova pause and resume events
-		document.addEventListener( 'pause', onPause.bind( this ), false );
-		document.addEventListener('resume', onResume.bind(this), false);
-
-        $('#get-weather-btn').click(getWeatherWithZipCode);
-         getWeatherWithGeoLocation();
+     function onDeviceReady() {	       
+       $('#get-weather-btn').click(getWeatherWithZipCode);
+       getWeatherWithGeoLocation();
 	};
      ```
 
-6. Run the app.
-
-    When your app starts, the label *Determining your current location ...* appears. After a brief period of time, the weather data for your location appears in the app.
+6. Run the app. When the app starts, the label *Determining your current location ...* appears. After a brief period of time, the weather data for your location appears in the app.
 
     > **Note**: If you use the Apache Ripple emulator, you’ll have to configure it with your location.
 
@@ -620,23 +605,23 @@ Let's add a plug-in that gives us access to the device's geolocation system. Tha
 
 The code that you used to get the device's location works pretty well across all platforms, but what if it didn't? What if you had to write extra code to get the location of an iOS device?
 
-This is where the **merges** folder becomes useful. We touched on that folder earlier in this article. Now let's try a few basic things.
+This is where the `merges` folder becomes useful. We touched on that folder earlier in this article. Now let's try a few basic things.
 
 ### Tailor the behavior of your app
 
-1. In **Solution Explorer**, expand the **www** folder, and then the **scripts** folder.
+1. In **Solution Explorer**, expand the project's `www` folder, and then the `scripts` folder.
 
-2. Right-click the **weather.js** file, and choose **Copy**.
+2. Right-click the `weather.js` file, and choose **Copy**.
 
-3. In **Solution Explorer**, expand the **android** sub-folder in your **merges** folder.
+3. In **Solution Explorer**, expand the `merges\android` folder.
 
-4. Right-click the **scripts** folder, and then choose **paste**.
+4. Right-click the `merges\android\scripts` folder, and then choose **paste**.
 
-    You now have a copy of the **weather.js** in the **android** folder.
+    You now have a copy of the `weather.js` file in the `merges\android` folder.
 
     ![Platform-Specific Javascript File](media/get-started-first-mobile-app/android-js-file.png)
 
-5. In the **weather.js** file (located in the **merges/android/scripts** folder), add the following code to the ``getLocation`` method.
+5. In the `merges\android\scripts\weather.js` file, add the following code to the `getWeatherWithGeoLocation` method.
 
 	```javascript
     $('#app-title').text("Android Weather");
@@ -644,31 +629,31 @@ This is where the **merges** folder becomes useful. We touched on that folder ea
 
 6. Run your app in the Apache Ripple Simulator.
 
-    The app now has the title **Android Weather** because the **weather.js** file in the **android** folder replaces the **weather.js** file in the **www** folder for the Android version of your app.
+    The app now has the title **Android Weather** because `merges\android\scripts\weather.js` file replaces `www\scripts\weather.js` file for the Android version of your app.
 
     ![Tailor the behavior](media/get-started-first-mobile-app/tailor-js.png)
 
-    Making a copy of a file this large to change one line of code is an extreme example, but you can begin to imagine the possibilities, and you can always refactor your code in ways that leverage the **merges** folder more efficiently.
+    Making a copy of a file this large to change one line of code is an extreme example, but you can begin to imagine the possibilities, and you can always refactor your code in ways that leverage the `merges` folder more efficiently.
 
-    The readme file of each plug-in will tell you what sort of device-specific code you'll have to write.
+    The readme file of each plugin will tell you what sort of device-specific code you'll have to write.
 
 ### Tailor the appearance of your app
 
 In some cases, you'll have to tweak the layout of your pages so that they appear correctly for one type of device or another.
 
-1. Return to the **android** sub-folder in your **merges** folder.
+1. In **Solution Explorer** return to the `merges\android` folder .
 
-2. Right-click the **android** folder, choose **Add** -> **New Folder**, and name the folder **css**.
+2. Right-click the `android` folder, choose **Add** -> **New Folder**, and name the folder `css`.
 
-3. Right-click the **css** folder, and then choose **Add** -> **New CSS file**.
+3. Right-click on the new `css` folder, and then choose **Add** -> **New CSS file**.
 
-4. Name the file *index.css*, and then choose the **Add** button.
+4. Name the file `index.css`, and then choose the **Add** button.
 
-    You now have a file named **index.css** in both the **android** folder and the **www** folder.
+    You now have a file named `index.css` in both the `\merges\android\css` folder and the `www\css` folders.
 
     ![Platform-Specific style sheet File](media/get-started-first-mobile-app/android-css-file.png)
 
-5. Replace the contents of the new **index.css** file with the following code.
+5. Replace the contents of the new `\merges\android\css\index.css` file with the following code.
 
 	```css
     .not-displayed {
@@ -714,7 +699,7 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
     }
 	```
 
-    Note that the styles defined are identical to the **www** version of the _index.css_ file, with the exception of these element:
+    Note that the styles defined in this new CSS file are identical to the `www\css\index.css`, with the exception of these element:
 
     ````css
     .ui-bar-inherit.ui-header.header {
@@ -725,11 +710,11 @@ In some cases, you'll have to tweak the layout of your pages so that they appear
     }
     ````
 
-    This is a simple example of what you can do by using the **merge** folder. A more effective approach would be to use a separate css file for platform-specific styles.
+    This is a simple example of what you can do by using the `merges` folder. A more effective approach would be to use a separate CSS file for platform-specific styles.
 
 6. Run your app in the Apache Ripple Simulator.
 
-    The app header has a blue background because the **index.css** file in the **android** folder replaces the **index.css** file in the **www** folder for the Android version of your app.
+    The app header has a blue background because `merges\android\css\index.css` replaced `www\css\index.css` in the Android version of the app.
 
     ![Tailor the appearance](media/get-started-first-mobile-app/tailor-css.png)
 
