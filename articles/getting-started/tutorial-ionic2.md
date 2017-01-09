@@ -33,7 +33,7 @@ To manage Ionic 2 applications using Visual Studio, you will need to install the
 
     > **Note:** Verify that you can create and run the default **Cordova Blank App**. In Visual Studio, open the **File** menu, select **New**, then **Project**. In the new project dialog, expand the **JavaScript** templates section, select **Apache Cordova Apps** then pick the **Blank App (Apache Cordova)** template. Give the new project a name and location then click the **OK** button. Press **F5** to build and run the new project in the **Ripple Emulator**. The Chrome browser should open and render the app's content. If you have any issues running the application, see these [troubleshooting steps](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
 
-2.	Install the Ionic template in Visual Studio by selecting the **Tools** menu, then **Extensions and Updates...**. In the Extensions and Updates dialog box, select **Online**. In the search box located in the upper-right corner of the dialog, type **Ionic2**. Select the Microsoft Ionic templates in the list. Click the **Download** button to initiate the installation process.
+2.	Install the Ionic template in Visual Studio by selecting the **Tools** menu, then **Extensions and Updates...**. In the Extensions and Updates dialog box, select **Online**. In the search box located in the upper-right corner of the dialog, type **Ionic 2**. Select the **Ionic 2 RC Templates** option in the list. Click the **Download** button to initiate the installation process.
 	
 	![Getting the templates](media/tutorial-ionic2/figure-01.png)
 
@@ -41,7 +41,7 @@ To manage Ionic 2 applications using Visual Studio, you will need to install the
 
 	![Installing the templates](media/tutorial-ionic2/figure-02.png)
    
-3.	The Ionic templates will not appear in Visual Studio until it's restarted. Close, then re-open Visual Studio.
+3.	The Ionic templates may not appear in Visual Studio until it's restarted. Close, then re-open Visual Studio.
 
 ## Creating an Ionic Project in Visual Studio
 
