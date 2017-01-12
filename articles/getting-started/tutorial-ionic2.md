@@ -9,7 +9,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
-     ms.date="08/03/2016"
+     ms.date="01/10/2017"
      ms.author="johnwargo"/>
 
 # Get started with Ionic 2 apps in Visual Studio <a name="video"></a>
