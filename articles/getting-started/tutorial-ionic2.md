@@ -938,7 +938,7 @@ Did you close, then restart Visual Studio? After the installation, the templates
 
 The installed version of Node.js may not support Promises. To fix this, you must install the latest Visual Studio 2015 update (Update 3 or later) and Microsoft ASP.NET and Web Tools. Check for any notifications or warning icons in the upper-right corner of the Visual Studio IDE and install these components, if instructed.
 
-![Update your credentials](media/tutorial-ionic2/figure-11.png)
+![Update your credentials](media/tutorial-ionic2/figure-17.png)
 
 If you are unable to install the Web Tools:
 
@@ -984,7 +984,7 @@ When you are using the AngularJS routing module (Ionic templates use this module
 
 If you see the dialog box shown here, you have likely run into this issue.
 
-![partial pages don't load](media/tutorial-ionic2/figure-12.png) 
+![partial pages don't load](media/tutorial-ionic2/figure-18.png) 
 
 Typically, you include the code fix in app.js or wherever you are calling your module configuration code (inside `angular.module.config`):
 
@@ -1010,7 +1010,7 @@ so that it looks like this:
 
 If you see the following unhandled exception when targeting Win/WinPhone 8.1, follow the [earlier steps](#configWindows) to call platformOverrides.js to fix this issue.
 
-![unhandled exception](media/tutorial-ionic2/figure-13.png)
+![unhandled exception](media/tutorial-ionic2/figure-19.png)
 
 If you see the same error when targeting Windows 10, make sure you set **Windows 10.0** as the target in the Windows tab of the configuration designer.
 
@@ -1030,7 +1030,7 @@ Cordova projects automatically add the Whitelist plugin to every project, so you
 
 Make sure your user credentials in Visual Studio are up to date. Check for any notifications or warning icons in the upper-right corner of the Visual Studio IDE:
 
-![Update your credentials](media/tutorial-ionic2/figure-11.png)
+![Update your credentials](media/tutorial-ionic2/figure-17.png)
 
 You may need to re-enter your credentials. If the notifications indicate that you need to update Cordova tooling, please click on the notifications and follow the provided instructions.
 
@@ -1044,4 +1044,4 @@ If you have previously run the VS Emulator for Android successfully but now the 
 
 There is a known issue debugging Ionic 2 in VSCode. Otherwise, this indicates a problem with your sourcemaps. When running your app, look for your .ts files under **Script Documents** in Solution Explorer. They should look similar to the illustration below. You can right-click on the .ts file and choose Properties to view the current path used by the sourceMaps.
 
-![SourceMaps](media/tutorial-ionic2/figure-14.png)
+![SourceMaps](media/tutorial-ionic2/figure-20.png)
