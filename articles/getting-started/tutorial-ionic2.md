@@ -762,7 +762,7 @@ When you tap on a forecast item, nothing happens. That's because we need a page 
 	ionic g page WeatherDetail
 	```
 
-	This command adds a new page to the application.  In Solution Manager under `src\pages` you should see a new set of `weather-detail` folders containing multiple files: `weather-detail.ts`, `weather-detail.html, and `weather-detail.scss`. 
+	This command adds a new page to the application.  In Solution Manager under `src\pages` you should see a new set of `weather-detail` folders containing multiple files: `weather-detail.ts`, `weather-detail.html`, and `weather-detail.scss`. 
 
 2.	As when you added a new provider to the application, when you add a new page, you need to update the app's configuration to use it. Open the project's `src\app\app.module.ts` file, and add the following `import` statement to the top of the file:
 
@@ -852,7 +852,7 @@ When you tap on a forecast item, nothing happens. That's because we need a page 
 
 	Notice that there's no real code in the page, that's because the HTML template takes care of rendering the data and Ionic takes care of page navigation automatically. The three important changes are:
 
-	+ The addition of a NavParams component to the page, it's responsible for passing data between pages. 
+	+ The addition of a `NavParams` component to the page, it's responsible for passing data between pages. 
 
 	+ The addition of a `forecast` variable:
 
@@ -896,8 +896,10 @@ When you tap on a forecast item, nothing happens. That's because we need a page 
 
 When you run the application now, you should be able to open the forecast by tapping on one of the forecast periods in the list:
 
-![Weather App Forecast page](media/tutorial-ionic2/figure-15.png)
+![Weather App Forecast page](media/tutorial-ionic2/figure-16.png)
 
+Page navigation is handled by Ionic and Angular, they take care of adding the back arrow in the left corner of the toolbar and closing the page when it's tapped. 
+ 
 That's it! You've completed the Ionic Weather App. 
 
 ## Troubleshooting: Let's fix it
