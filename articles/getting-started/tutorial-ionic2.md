@@ -14,13 +14,13 @@
 
 # Get started with Ionic 2 apps in Visual Studio <a name="video"></a>
 
-[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using Cordova. The Ionic Framework gives Cordova applications a native look and feel, and automatically adjusts that look across platforms. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps. The [*Get started with Visual Studio Tools for Apache Cordova*](get-started-first-mobile-app.md) guide showed how to create a simple Weather app using jQuery and jQuery Mobile. In this article, you'll learn how to configure a Visual Studio 2015 development environment for Ionic 2, and create the Ionic 2 version of the TACO Weather App shown below:  
+[Ionic](http://www.ionicframework.com) is a popular front-end JavaScript framework for developing cross-platform mobile apps using [Apache Cordova](http://cordova.io). The Ionic Framework gives Cordova applications a native look and feel, and automatically adjusts that look across platforms. You can use Visual Studio 2015 to easily create and debug cross-platform Ionic apps. The [Get started with Visual Studio Tools for Apache Cordova](get-started-first-mobile-app.md) guide showed how to create a simple Weather app using jQuery and jQuery Mobile. In this article, you'll learn how to configure a Visual Studio 2015 development environment for Ionic 2, and create the Ionic 2 version of the Weather App as shown below:  
 
 ![Finished Weather application](media/tutorial-ionic2/figure-01.png)
 
 ## Requirements
 
-To manage Ionic 2 applications using Visual Studio, you will need to install the following:
+To manage, code, run and debug Ionic 2 applications using Visual Studio, you must install the following:
 
 + [Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794)
 + [Visual Studio Tools For Apache Cordova](http://taco.visualstudio.com/en-us/docs/install-vs-tools-apache-cordova/)
@@ -31,25 +31,25 @@ To manage Ionic 2 applications using Visual Studio, you will need to install the
 
 1. If you haven't already, [install Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkID=533794).
 
-    Under the covers, Ionic apps are Apache Cordova apps, you'll need a functional Cordova development environment before you can use with Ionic. When you install Visual Studio, make sure you include the optional components, **HTML/JavaScript (Apache Cordova)** under Cross-Platform Mobile Development.
+    Under the covers, Ionic apps are Apache Cordova apps, you'll need a functional Cordova development environment before you can use with Ionic. 
 
-    > **Note:** Verify that you can create and run the default **Cordova Blank App**. In Visual Studio, open the **File** menu, select **New**, then **Project**. In the new project dialog, expand the **JavaScript** templates section, select **Apache Cordova Apps** then pick the **Blank App (Apache Cordova)** template. Give the new project a name and location then click the **OK** button. Press **F5** to build and run the new project in the **Ripple Emulator**. The Chrome browser should open and render the app's content. If you have any issues running the application, see these [troubleshooting steps](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
+	Verify that you can create and run the default **Cordova Blank App**. In Visual Studio, open the **File** menu, select **New**, then **Project**. In the new project dialog, expand the **JavaScript** templates section, select **Apache Cordova Apps** then pick the **Blank App (Apache Cordova)** template. Give the new project a name and location then click the **OK** button. Press **F5** to build and run the new project in the **Ripple Emulator**. The Chrome browser should open and render the app's content. If you have any issues running the application, see these [troubleshooting steps](../tips-and-workarounds/general/tips-and-workarounds-general-readme.md).
 
-2.	Install the Ionic template in Visual Studio by selecting the **Tools** menu, then **Extensions and Updates...**. In the Extensions and Updates dialog box, select **Online**. In the search box located in the upper-right corner of the dialog, type **Ionic 2**. Select the **Ionic 2 RC Templates** option in the list. Click the **Download** button to initiate the installation process.
+2.	Install the Ionic template in Visual Studio by selecting the **Tools** menu, then **Extensions and Updates...**. In the Extensions and Updates dialog box, select **Online**. In the search box located in the upper-right corner of the dialog, type **Ionic 2**. Select the **Ionic 2 RC Templates** option in the list. Click the **Download** button to start the installation.
 	
 	![Getting the templates](media/tutorial-ionic2/figure-02.png)
 
-	The template files will download, then Visual Studio will automatically start the installation process. When prompted, click the **Install** button to begin the installation.
+	The template files will download, then Visual Studio will automatically launch the installation process. When prompted, click the **Install** button to begin the installation.
 
 	![Installing the templates](media/tutorial-ionic2/figure-03.png)
    
-> **Note:** The Ionic templates may not appear in Visual Studio until it's restarted. Close, then re-open Visual Studio.
+> **Note:** The Ionic templates may not appear in Visual Studio until it's restarted. Close, then re-open Visual Studio before continuing.
 
 ## Creating an Ionic Project in Visual Studio
 
 1.	Create a new Ionic project. Open the **File** menu, select **New**, then **Project**. In the new project dialog, expand the **TypeScript** templates section, and then select **Apache Cordova Apps**. Ionic offers three default app styles: **Blank**, **Sidemenu**, and **Tabs**; this is a simple project, so select the Blank template. 
 
-	Give the new project a **Name** and **Location**, and then click the **OK** button. This app will later become our Weather App project, so you should probably just call it **Weather App** or **Weather App Ionic 2** to save time.
+	Give the new project a **Name** and **Location**, and then click the **OK** button. This app will later become our Weather App project, so you should probably call it **Weather App** or **Weather App Ionic 2** to save time.
 
 	![New Project dialog](media/tutorial-ionic2/figure-04.png)
 
@@ -63,21 +63,21 @@ To manage Ionic 2 applications using Visual Studio, you will need to install the
 	+ TypeScript 2.0.6 editor
 	+ Microsoft ASP.NET and Web Tools Preview 2
 	
-	The requirements may change as updates are made to the templates. To install the extensions, open the **Tools** menu, and select **Extensions and Updates**. Use search to locate and install the required extensions.
+	The requirements may change as updates are made to the templates. To install the required extensions, open the **Tools** menu, and select **Extensions and Updates**. Use search to locate and install the required extensions.
 
-3.	Ionic is a heavy framework, it requires a lot of tools and libraries to operate. Once Visual Studio creates the new project, it kicks off a process to download and install the required components using npm. Wait a few minutes as Ionic's npm packages are installed.
+3.	Ionic is a heavy framework, it requires a lot of tools and libraries to operate. Once Visual Studio creates the new project, it kicks off a process to download and install the required components using the Node Package Manager (npm). Wait a few minutes as Ionic's npm packages are installed.
 
     > **Note** This process will take several minutes depending on your system and internet connection speeds.
 
-    To check progress, open **Solution Explorer** and look for the **Dependencies** node. You should see **Restoring...**, if you don't, right-click on the Dependencies node and click **Restore Packages**.
+    To check progress, open **Solution Explorer** and look for the **Dependencies** node. You should see **Restoring...**, if you don't, right-click on the Dependencies node in Solution Manager then select **Restore Packages**.
 
 	![Dependencies node](media/tutorial-ionic2/figure-06.png)
 
     > **Note:** After Visual Studio finishes installing dependencies, the Dependencies node may show **not installed**. This is a known issue; the Ionic project will be OK at this point.
-    > 
+     
     > ![Dependencies node](media/tutorial-ionic2/figure-07.png)
 
-	You can monitor the installation process through Visual Studio's Output window. Open the **View** menu, then select **Output** or use the keyboard shortcut **Ctrl-W** + **O**:
+	You can monitor the package installation process through Visual Studio's Output window. Open the **View** menu, then select **Output** or use the keyboard shortcut **Ctrl-W** + **O**:
     
 	![Task Runner](media/tutorial-ionic2/figure-08.png)
 
@@ -85,7 +85,7 @@ To manage Ionic 2 applications using Visual Studio, you will need to install the
 	
 	![Ionic application running on Android](media/tutorial-ionic2/figure-09.png)   
 
-## THIS DOES NOT WORK FOR ME - IS IS EVEN NECESSARY? Enabling Live Reload in Ripple
+## Enabling Live Reload in Ripple
 
 Ionic uses Node Package Manager ([npm](https://www.npmjs.com)) scripts to compile your application's TypeScript and SASS files into JavaScript and CSS, then copies the output into the project's `www` folder. By default, Visual Studio uses the `ionic:build` command in the project's `package.json` to build the project. Visual Studio executes this script every time you launch the Ionic application. 
 					
@@ -103,27 +103,27 @@ After following the above steps, you'll now be able to make edits to the files i
 
 ## Creating the Weather App
 
-Now, lets do something with this app. We'll take the blank application project and turn it into the Weather App shown earlier. In the following sections, you'll start by adding a **Current Conditions** page, then wire in a **Search Box**, finally adding an area to display **Forecast** data. Lets get started.
+Now, lets do something with this app you created. You'll take the blank application project and turn it into the Weather App shown earlier. In the following sections, you'll start by adding a **Current Conditions** page, then wire in a **Search Box**, and finally add an area to display **Forecast** data. Lets get started.
 
-The app we're creating uses the free [OpenWeatherMap](http://openweathermap.org/) service to retrieve weather conditions for a location. Before you can use the service, you must setup an account and request an API key for their Current Conditions API. Point your browser to [OpenWeatherMap](https://home.openweathermap.org/) and setup an account. Once you have a valid login, go to the service's [API page](http://openweathermap.org/api) and subscribe to the **Current Weather data** service, and then generate an API key.
+The app uses the free [OpenWeatherMap](http://openweathermap.org/) service to retrieve weather conditions for a location. Before you can use the service, you must setup an account and request an API key for their Current Conditions API. Point your browser to [OpenWeatherMap](https://home.openweathermap.org/) and setup an account. Once you have a valid login, go to the service's [API page](http://openweathermap.org/api) and subscribe to the **Current Weather data** service, and then generate an API key.
 
-> **Note:** Make note of the API key as you'll need it later in the app's JavaScript code. 
+> **Note:** Make note of the API key as you'll need it later in the app's TypeScript code. 
 
 ### Configuring the Application Project
 
-1.	Start by setting some configuration options for the application. In Visual Studio Solution Explorer, double-click the project's `config.xml` file. You'll see a custom editor similar to the one shown in the following figure:
+1.	Start by setting some configuration options for the application. In Visual Studio Solution Explorer, double-click the project's `config.xml` file. Visual Studio will open a custom editor similar to the one shown in the following figure:
 
 	![Modifying the application's config.xml file](media/tutorial-ionic2/figure-11.png)
 
-	At a minimum, set the project's **Display Name** and **Package Name** values; you may want to update the **Author** and **Description** fields as well.
+	At a minimum, set the project's **Display Name** and **Package Name** values; you may want to update the **Author** and **Description** fields as well. 
 
-2.	By default, the application displays weather data based on the device's current location, so we'll need to use the [Cordova Geolocation](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/) plugin to add that capability to our application. You could use the browser's built-in geolocation capabilities, but Cordova and Ionic both provide special capabilities that make things a little easier.
+2.	By default, the application displays weather data based on the device's current location, so we'll need to use the [Cordova Geolocation](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/) plugin to add that capability to our application. You could use the browser's built-in geolocation capabilities, but Cordova and Ionic both provide special capabilities that make using geolocation in an Ionic app a little easier.
 	 
 	Switch to the editor's **Plugins** tab  and select the **Geolocation** plugin in the list. Click the **Add** button to add the plugin to the project.
 
 	![Adding the Cordova Geolocation plugin](media/tutorial-ionic2/figure-12.png)
  
-	Save your changes and close the `config.xml` file.
+	Press the keyboard's **Ctrl**-**S** key to save your changes, then close the editor file.
 
 3.	Open the project's `src\index.html` file and change the application's Title. This isn't a required step, but if you're later testing the app in the browser, the app title will be correct.
 
@@ -135,7 +135,7 @@ The app we're creating uses the free [OpenWeatherMap](http://openweathermap.org/
 
 Visual Studio and TACO deliver a robust development and debugging environment for Ionic 2 applications. However, there are a couple of Ionic application management tasks that require the use of the Ionic CLI.
 
-1.	If you haven't already, install the Node JavaScript runtime from [nodejs.org](https://nodejs.org/). You'll want to grab the latest LTS version. 
+1.	If you haven't already, install the Node JavaScript runtime from [nodejs.org](https://nodejs.org/). You'll want the latest LTS version. 
 
 2.	Next, install Apache Cordova and the Ionic CLI by opening a terminal window and executing the following command:
 
@@ -143,11 +143,13 @@ Visual Studio and TACO deliver a robust development and debugging environment fo
 	npm install -g cordova ionic
 	```
 
+	Validate that the installation worked by executing `cordova` and, separately, `ionic` in the terminal window. You should see help pages display; if you receive error messages, you'll have some additional work to do.
+ 
 ### Generating a Weather Provider
 
 Now, lets start working on the application's code. By convention, Ionic applications segregate data sources from other types of application code using a special **Providers** component type. Since the weather data is coming from an external source, and we don't want the application code to call the service directly, we'll make a **Weather** provider and put all of the application's weather access code there.
 
-1.	Open a terminal window and navigate to the project's Ionic project folder. In the examples shown earlier, the folder is `c:\dev\WeatherAppIonic2\WeatherAppIonic2`. The nested folders were created because the option to **Create directory for solution** was selected when the project was created.
+1.	Open a terminal window and navigate to the project's Ionic project folder. In the examples shown earlier, the folder is `c:\dev\WeatherAppIonic2\WeatherAppIonic2`. The nested folders were created because the option to **Create directory for solution** was selected when creating the project.
 
 	When the terminal window is pointing to the right folder, execute the following command:
 
@@ -155,9 +157,9 @@ Now, lets start working on the application's code. By convention, Ionic applicat
 	ionic g provider Weather
 	```
 
-	The Ionic CLI will create a new folder in the project: `src\providers\weather`
+	The Ionic CLI will create a new folder in the project: `src\providers\weather` and populate the folder with a file called `weather.ts`.
  
-2.	Now that you have a Weather provider, you have to tell Ionic about it. Open the project's `src\app\app.module.ts` file and add the following line to the imports section at the top of the file:
+2.	Now that you have the `Weather` provider, you have to tell Ionic about it. Open the project's `src\app\app.module.ts` file and add the following line to the imports section at the top of the file:
 
 	```typescript
 	import { Weather } from '../providers/weather';
@@ -169,11 +171,13 @@ Now, lets start working on the application's code. By convention, Ionic applicat
 	providers: [Weather, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 	``` 
 
+	Save your changes before continuing.
+
 ### Coding the Weather Provider
 
 In this section, we'll add code the Weather Provider to connect with the external weather API and deliver data to the application. 
 
-1.	Open the newly created `src\providers\weather.ts` file, and modify the `@angular/http` import at the top of the file so it looks like the following:
+1.	Open the newly created `src\providers\weather\weather.ts` file, and modify the `@angular/http` import at the top of the file so it looks like the following:
 
 	```typescript
 	import { Http, Response } from '@angular/http';
@@ -181,7 +185,7 @@ In this section, we'll add code the Weather Provider to connect with the externa
 	
 	The **HTTP** component is loaded by default in any provider, what you're doing here is adding the **Response** component we'll use in the provider's code later.
 
-2.	Still at the top of the file, add an import that loads the toPromise module: 
+2.	Still at the top of the file, add an import that loads the `toPromise` module: 
 
 	```typescript
 	import 'rxjs/add/operator/toPromise';
@@ -257,7 +261,7 @@ In this section, we'll add code the Weather Provider to connect with the externa
 	}
 	```
 
-	On start up, the application passes the current location (longitude and latitude) to the `getCurrent` function. When searching for a location using a US Zip Code, the Zip Code is passed instead. `getCurrent` calls the appropriate API to get the current weather data, but uses `makeDataURL` to format the request URL correctly depending on whether it has a location or a Zip Code.
+	On start up, the application passes the current location (longitude and latitude) to the `getCurrent` function. When searching for a location using a US Zip Code, the Zip Code is passed instead. `getCurrent` calls the appropriate API to get the current weather data, but uses `makeDataURL` to format the request URL correctly depending on whether it has a location or a Zip Code value.
 
 	The `extractData` function formats the data returned by the API call as JSON. This code could easily be included directly into the `getCurrent` method, but as you'll see later, this code is used more than once by the application, so it made sense to make it a separate function. 
 
@@ -303,8 +307,7 @@ In this section, we'll add code the Weather Provider to connect with the externa
 
 	The header contains a toolbar displaying the application title and a refresh button the user can tap to refresh the weather data displayed on the page.
 	
-	The `ion-content` tag defines the part of the content that comprises the dynamic content of the page. In this example, it displays an `ion-list` of items; basically a listview. In this case, it renders the contents of the `c_items` array as a list using an Angular directive: `*ngFor="let c_item of c_items"` which loops through each element in the array. As the code loops, it assigns each array element to `c_item`, then the template code that follows displays the `name` and `value` properties of the `c_item` object. You'll see how the `c_items` array is populated soon.    
-	 
+	The `ion-content` tag defines the part of the content that comprises the dynamic content of the page. In this example, it displays an `<ion-list>` of items; basically a listview. In this case, it renders the contents of the `c_items` array as a list using an Angular directive: `*ngFor="let c_item of c_items"` which loops through each element in the array. As the code loops, it assigns each array element to `c_item`, then the template code that follows displays the `name` and `value` properties of the `c_item` object. You'll see how the `c_items` array is populated soon.    
 
 2.	Open the project's `src\pages\home\home.ts` file. At the top of the file, add imports for the Geolocation plugin and the Weather provider:
 
@@ -321,10 +324,10 @@ In this section, we'll add code the Weather Provider to connect with the externa
 
 	This loads some additional components used by the page's code:
 
-	+ `AlertController` manages the display of alert dialogs
-	+ `LoadingController` manages the display of a loading spinner
-	+ `NavController` manages navigation between pages
-	+ `Platform` provides platform-related utilities
+	+ `AlertController` manages the display of alert dialogs.
+	+ `LoadingController` manages the display of a loading spinner.
+	+ `NavController` manages navigation between pages.
+	+ `Platform` provides platform-related utilities.
 
 4.	Inside the `HomePage` class, add the following variable declarations:
 
@@ -359,7 +362,7 @@ In this section, we'll add code the Weather Provider to connect with the externa
 	}
 	```
 
-6.	Now, add the following code to the body of the HomePage class:
+6.	Add the following code to the body of the `HomePage` class:
 
 	```typescript
 	ionViewDidLoad() {
@@ -481,7 +484,7 @@ In this section, we'll add code the Weather Provider to connect with the externa
 	+ `ionViewDidLoad` - Handles an event that fires when the page completes loading. In this case, the function calls the `getLocalWeather` function to start the process of getting weather data for the device's current location. It uses capabilities of the **Platform** component to make sure it doesn't do anything until it's certain that the native application container and the Ionic framework have completed initialization.
 	+ `refreshPage` - Executes when the application user taps the **Refresh** button in the toolbar. Here, it refreshes the current weather data on the page. This function gets more responsibilities later. 
 	+ `getLocalWeather` - Determines the device's current location (using the Cordova Geolocation plugin), then calls `showCurrent` to get the current weather data.
-	+ `showCurrent` - Displays the loading indicator, then calls the Weather provider to get weather data for the specified location (either a geolocation, or later, a Zip Code).
+	+ `showCurrent` - Displays the loading indicator, then calls the Weather provider to get weather data for the specified location (either a geolocation, or, later, a Zip Code).
 	+ `formatWeatherData` - The results the application gets from the Weather API differ depending on whether the application asks for current conditions or the forecast. We're not asking for forecast data (yet) but, but will later. This function builds a weather data object from the results and has special code that builds the appropriate object based on whether it's current conditions or a forecast.  
 	+ `showAlert` - Displays an error dialog if anything breaks.
 
@@ -543,15 +546,15 @@ It's useful to have weather data for the current location, but what if you're tr
 	}
 	```
 
-	This function responds to the user tapping the **Find Weather** button and creates a location object then calls `showCurrent` to retrieve weather data for the specified Zip Code. The `Keyboard.close()` code uses the **Ionic Keyboard plugin** to hide the keyboard before initiating the search. If the code didn't do this, it's possible that the keyboard would stay open as the page updates with the new weather data.
+	This function responds to the user tapping the **Find Weather** button and creates a location object then calls `showCurrent` to retrieve weather data for the specified Zip Code. The `Keyboard.close()` code uses the **Ionic Keyboard plugin** to hide the keyboard before initiating the search. If the code didn't do this, it's possible that the keyboard would stay open, blocking part of the page, as the page updates with the new weather data.
 
-When you run the application, you should now see a search field at the top of the page. Enter a US Zip Code and tap the Find Weather button to get weather data for the specified location.   
+When you run the application, you should now see a search field at the top of the page. Enter a US Zip Code and tap the button to get weather data for the specified location.   
 
 ![Weather App: Current Weather conditions](media/tutorial-ionic2/figure-14.png)
 
 ### Adding a Weather Forecast Page
 
-The weather API the app uses has an API for retrieving forecast data, so lets display that in the application as well. You can add another page to the app, then use a menu or another navigation method to switch between views, but the search field complicates that approach. Instead, we'll use an [Ionic Segment](https://ionicframework.com/docs/v2/api/components/segment/Segment/) component to split the existing page into two parts: one for the current conditions, and another for the forecast.
+The weather API the app uses has an API for retrieving forecast data, so lets display that in the application as well. You can add another page to the app, then use a menu or another navigation method to switch between views, but the search field complicates that approach. Instead, we'll use an [Ionic Segment](https://ionicframework.com/docs/v2/api/components/segment/Segment/) component to split the existing page into two parts: one for current conditions, and another for the forecast.
 
 1.	Start by updating the Weather provider to support getting the forecast from the weather service. Open the project's `src\providers\weather.ts` file and add the following code to the `Weather` class.
 
@@ -565,7 +568,7 @@ The weather API the app uses has an API for retrieving forecast data, so lets di
 	}
 	```
 
-	To get the forecast, all the provider has to do is replace the word `weather` with `forecast` in the API URL, otherwise the code is exactly the same.
+	To get the forecast, all the provider has to do is replace `weather` with `forecast` in the API URL, otherwise the code is exactly the same.
 
 2.	Next, open the project's `src\pages\home\home.html` file. Remove the current `<ion-list>` implementation:
 
@@ -656,7 +659,6 @@ The weather API the app uses has an API for retrieving forecast data, so lets di
 	refreshPage() {
 	  //Which page are we looking at now?
 	  if (this.displayMode === this.currentMode) {
-	    //Then load that page...
 	    this.showCurrent();
   	  } else {
 	    this.showForecast();
@@ -748,7 +750,7 @@ At this point, if you run the application, you should see the following:
 
 ![Finished Weather application](media/tutorial-ionic2/figure-01.png)
 
-When you tap on the forecast tab, you should see the list of forecast periods as shown in the following figure:
+Tap the forecast tab, and you'll see the list of forecast periods shown in the following figure:
 
 ![Finished Weather application](media/tutorial-ionic2/figure-15.png)
 
@@ -762,9 +764,9 @@ When you tap on a forecast item, nothing happens. That's because we need a page 
 	ionic g page WeatherDetail
 	```
 
-	This command adds a new page to the application.  In Solution Manager under `src\pages` you should see a new set of `weather-detail` folders containing multiple files: `weather-detail.ts`, `weather-detail.html`, and `weather-detail.scss`. 
+	This command generates a new page in the application.  In Solution Manager under `src\pages` you should see a new set of `weather-detail` folders containing multiple files: `weather-detail.ts`, `weather-detail.html`, and `weather-detail.scss`. 
 
-2.	As when you added a new provider to the application, when you add a new page, you need to update the app's configuration to use it. Open the project's `src\app\app.module.ts` file, and add the following `import` statement to the top of the file:
+2.	As when you added a provider to the application, when you add a page, you need to update the app's configuration to use it. Open the project's `src\app\app.module.ts` file, and add the following `import` statement to the top of the file:
 
 	```typescript
 	import { WeatherDetailPage } from '../pages/weather-detail/weather-detail';
