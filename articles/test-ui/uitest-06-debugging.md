@@ -2,7 +2,7 @@
   description="Debugging UI tests"
   services=""
   documentationCenter=""
-  authors="Kraig Brockschmidt, johnwargo" 
+  authors="Kraig Brockschmidt, johnwargo" /> 
 <tags 
   ms.technology="cordova" 
   ms.prod="visual-studio-dev14" 
@@ -13,7 +13,7 @@
   ms.workload="na" 
   ms.date="01/14/2017" 
   ms.author="johnwargo"/>
-
+ 
 # Debugging UI tests
 
 Because the UI tests we’ve seen are written in code, the tests themselves might contain errors that could lead to false test results. Debugging a UI test within the context of [Appium](http://appium.io/) can be a bit tricky, however, because we’ve just been running those tests from the command line. Fortunately, there are several options for diagnosing what’s happening in a test.
