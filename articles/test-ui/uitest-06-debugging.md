@@ -11,7 +11,7 @@
   ms.topic="article" 
   ms.tgt_pltfrm="mobile-multiple" 
   ms.workload="na" 
-  ms.date="01/14/2017" 
+  ms.date="01/24/2017" 
   ms.author="johnwargo"/>
  
 # Debugging UI tests
