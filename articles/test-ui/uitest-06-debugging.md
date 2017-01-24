@@ -3,14 +3,7 @@
   services=""
   documentationCenter=""
   authors="Kraig Brockschmidt, johnwargo" 
-  <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
-     ms.service="na"
-     ms.devlang="javascript"
-     ms.topic="article"
-     ms.tgt_pltfrm="mobile-multiple"
-     ms.workload="na"
-     ms.date="01/14/2017"
-     ms.author="johnwargo"/>
+  <tags ms.service="na" ms.devlang="javascript" ms.topic="article" ms.tgt_pltfrm="mobile-multiple" ms.workload="na" ms.date="01/14/2017" ms.author="johnwargo"/>
 
 # Debugging UI tests
 
