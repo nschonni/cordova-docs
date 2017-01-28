@@ -92,25 +92,31 @@ When you installed TACO, you had an option to install the Google Android Emulato
 
 ![Visual Studio Installation](media/vs-taco-run-android/figure-06.png)
 
-If you did not enable the highlighted options, close Visual Studio, launch the **Visual Studio Installer** and modify the installation to include these options.
+If you did not enable the highlighted options, close Visual Studio, launch the **Visual Studio Installer** and modify the installation to include these options. You can tell whether the emulators are installed or not by opening Visual Studio's Standard toolbar execution target list, if you see **Install Android build tools...** in the list, instead of some Android emulators, then you need to complete the installation. 
+
+![Visual Studio: Install Android Emulators](media/vs-taco-run-android/figure-07.png)
+
+Select the installation option in the drop-down, then click the button (shown below) to begin the installation.
+
+![Visual Studio: Install Android Emulators](media/vs-taco-run-android/figure-08.png)
 
 Android emulators are defined using the Android Virtual Device (AVD) Manager, you can learn how to create and manage Android virtual devices [here](https://developer.android.com/studio/run/managing-avds.html). The Visual Studio TACO installation process creates several virtual devices for you automatically during installation; you can confirm this using the Android SDK's **AVD Manager** application:
 
-![Android Virtual Device (AVD) Manager](media/vs-taco-run-android/figure-07.png)
+![Android Virtual Device (AVD) Manager](media/vs-taco-run-android/figure-09.png)
 
 As you can see, Visual Studio creates two phone and two tablet emulator configurations. The difference is in the processor architecture selected for the emulator. The **Intel emulators** launch fairly quickly and perform better than the **ARM emulators**. Unfortunately, the Intel emulators require a specific hardware configuration that we'll discuss in a minute. For that reason, you'll see these emulators represented in Visual Studio through the following menu:
 
-![Visual Studio Standard Toolbar](media/vs-taco-run-android/figure-08.png)
+![Visual Studio Standard Toolbar](media/vs-taco-run-android/figure-10.png)
 
 When you select one of these emulator options, Visual Studio will launch the right emulator configuration based on your system's hardware configuration. If your system supports the Intel emulators, those emulators will be used by default. If not, Visual Studio will automatically fallback to using the ARM emulators instead.
 
 You can configure Visual Studio's behavior here. In Visual Studio, select **Tools** -> **Options**. Expand the **Tools for Apache Cordova** option and select **Android Emulator**. The **detection** option will be selected by default, to disable detection and use the ARM emulators by default every time, select the **No detection** option.
 
-![Visual Studio Options](media/vs-taco-run-android/figure-09.png)
+![Visual Studio Options](media/vs-taco-run-android/figure-11.png)
 
 To run your Apache Cordova application on an Android Emulator: in the Visual Studio **Standard** toolbar, set the release type to **Debug**, the target OS to **Android**, and the execution target to one of the **Google Emulator** options as shown in the following figure. Click the **Google Emulator** button, or press **F5** to build and launch the application, and then begin a debugging session with the application.
 
-![Visual Studio Standard Toolbar](media/vs-taco-run-android/figure-10.png)
+![Visual Studio Standard Toolbar](media/vs-taco-run-android/figure-12.png)
 
 ### <a id="intel-configuration"></a> Configuring Your System to Use the Intel Emulators
 
@@ -126,7 +132,7 @@ The Intel emulators are incompatible with Microsoft's Hyper-V technology, so to 
 
 2. Clear the check box for Hyper-V.
 
-    ![Disabling Hyper-V](media/vs-taco-run-android/figure-11.png)
+    ![Disabling Hyper-V](media/vs-taco-run-android/figure-13.png)
 
 3. Reboot your PC. 
 
