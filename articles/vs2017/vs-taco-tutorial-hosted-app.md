@@ -34,16 +34,18 @@ Here is a quick look at the architecture of a hosted app showing the server on t
 
 ![Hosted app architecture](media/vs-taco-tutorial-hosted-app/figure-01.png)
 
-> **Note**: In this tutorial, you'll work with an existing web application as you create the client-side Cordova application. To simplify logistics as you work through the exercises, the target web application (there are two versions) are hosted on the Microsoft Azure cloud service. You'll be able to interact with the web application from the Cordova application without the extra burden of publishing your changes to the cloud. When you're done, you'll have a local copy of the same environment you used in the cloud that you can deploy to your own Azure account later.
+In this tutorial, you'll work with an existing web application as you create the client-side Cordova application. You'll start by publishing the web application to the Microsoft Azure App Service, then you'll build the Cordova application that interacts with it. 
 
 ## Requirements
 
 To complete this tutorial, you will need to install the following software components:
 
-+ Visual Studio 2017
-+ Visual Studio Tools for Apache Cordova (installed via the Visual Studio installer)
-+ Visual Studio Web Development workload (installed via the Visual Studio installer)
++	Visual Studio 2017
++	Visual Studio Tools for Apache Cordova (installed via the Visual Studio installer)
++	Visual Studio Web Development workload (installed via the Visual Studio installer)
 
+You'll also need an active subscription on the [Microsoft Azure App Service](https://azure.microsoft.com/en-us/services/app-service/).
+ 
 ## Create the Web Application
 
 1.	Download the starter ASP.NET solution that you will use to create the hosted app. The solution is part of the **Cordova-Samples** repository located at [https://github.com/Microsoft/cordova-samples](https://github.com/Microsoft/cordova-samples). You can download the repository by clicking on the **Clone or download** button shown in the figure: 
@@ -72,37 +74,69 @@ To complete this tutorial, you will need to install the following software compo
 
 	![Visual Studio Solution Explorer](media/vs-taco-tutorial-hosted-app/figure-05.png)
 
+## Publish the Web Site to the Microsoft Azure App Service
+
+Now that you have a functional web application, lets publish it to the Microsoft Azure App Service. This will allow you to test your hosted app on any mobile device during this tutorial.
+
+1.	In Visual Studio, open the **Build** menu, then select **Build Solution**.
+
+2.	In Solution Explorer, right-click the ASP.NET project (CordovaHostedWeb) and choose **Publish**.
+
+3.	In the **Publish** dialog, select **Microsoft Azure App Service**.
+
+    ![Publish Web App](media/vs-taco-tutorial-hosted-app/figure-06.png)
+
+4.	In the **Create App Service** window, populate the dialog with the appropriate settings for your application. Give your app a **Web App Name**, select or create your **Subscription**, **Resource Group** and **App Service Plan** as needed. When you're done, click the **Create** button to create the cloud app.
+
+    ![Select a Publish Target](media/vs-taco-tutorial-hosted-app/figure-07.png)
+	    
+	> **Note**: Visual Studio will generate a unique value for the **Web App Name** field, you'll want to change this value to something more easily remembered, or at least something relevant to the application. This value must be unique across all web apps hosted by the Microsoft Azure App Service, so you will have to think carefully of the name you pick. Add your company name or your name to the app name to help ensure uniqueness. 
+    
+5.	In the **Publish** dialog that appears, you will need to change the **Site URL** from an `http://` to an `https://` connection. This is required for iOS support for the application; which you won't be using test right now, but may be useful later. 
+
+	![Select a Publish Target](media/vs-taco-tutorial-hosted-app/figure-08.png)
+
+	To make this change, click the **Settings** link to the right of the **Site URL**. In the dialog that appears, look for the **Destination URL** field, and change the `http://` to `https://`, then click the **Validate Connection** button to make sure your change worked. Click the **Save** button to save your changes and return to the **Publish** page.
+
+	![Changing the Site URL](media/vs-taco-tutorial-hosted-app/figure-09.png)
+
+6.	Back in the Visual Studio Publish page, copy the **Destination URL** to the clipboard and file it away somewhere; you'll need it again soon. Click the **Publish** button to publish the application to the Microsoft Azure App Service.
+    
+	When the publish process completes, Visual Studio will open the default browser and connect to the published web site. You should see a page similar to the one shown in the following figure:
+
+	![Visual Studio Solution Explorer](media/vs-taco-tutorial-hosted-app/figure-05.png)
+
 ## Add a Cordova Project to the Solution
 
-Now that you have the web application project opened and you've verified that it works, its time to add the Cordova project to the solution. 
+Now that you have the web application project opened, published, and you've verified that it works, its time to add the Cordova project to the solution. 
 
 1.	In the Visual Studio Solution Explorer, right-click on the solution and select **Add** -> **New Project**. (Make sure you right-click the solution and not the `CordovaHostedWeb` project!)
 
-	![Add a Cordova Project](media/vs-taco-tutorial-hosted-app/figure-06.png)
+	![Add a Cordova Project](media/vs-taco-tutorial-hosted-app/figure-10.png)
     
 2.	In the **Add New Project** dialog, expand the **JavaScript** option, select **Mobile Apps**, select **Blank App (Apache Cordova)**.
 
-    ![Find the Blank App Template](media/vs-taco-tutorial-hosted-app/figure-07.png)
+    ![Find the Blank App Template](media/vs-taco-tutorial-hosted-app/figure-11.png)
 
-	Give the new project a name, then click the **OK** button. For this example, we named the project: `CordovaHostedApp-Client`.
+	For this tutorial, name the project: `CordovaHostedApp`, then click the **OK** button to create the project. 
 
     Visual Studio will create the Cordova project, add it to the solution, then display it in Solution Explorer:
 
-    ![Visual Studio Solution Explorer](media/vs-taco-tutorial-hosted-app/figure-08.png)
+    ![Visual Studio Solution Explorer](media/vs-taco-tutorial-hosted-app/figure-12.png)
 
-3.	In Solution Explorer, right-click the new Cordova project and choose **Set as Startup Project**.
+3.	In Solution Explorer, right-click the new Cordova project and choose **Set as StartUp Project**.
 
 4.	Lets see the new app in action. In the Visual Studio Standard Toolbar, select the target platform (Android, iOS, Windows), then select an execution target. For now, lets just run the application in the browser, select one of the **Simulate in Browser** options:  
 
-	![Visual Studio Standard Toolbar](media/vs-taco-tutorial-hosted-app/figure-09.png)
+	![Visual Studio Standard Toolbar](media/vs-taco-tutorial-hosted-app/figure-13.png)
 
 5.	Press **F5** to start the app. Visual Studio will build the application and deploy it to a Chrome browser window:
 
-    ![Visual Studio Simulate in Browser](media/vs-taco-tutorial-hosted-app/figure-10.png) 
+    ![Visual Studio Simulate in Browser](media/vs-taco-tutorial-hosted-app/figure-14.png) 
 
     At this point, all you're seeing is the default Cordova application template; a simple page displaying the Cordova logo and an indicator that the Cordova client application is ready. Soon, we'll add code to pull application content from the web application running on a server.
 
-6.	Press **Shift** + **F5** to stop debugging.
+6.	Press **Shift** + **F5**, or click Visual Studio's **Stop Debugging** button (![Stop Debugging button](media/vs-taco-tutorial-hosted-app/red-square.png)) to stop debugging.
 
 ## Update the Cordova Project
 
@@ -113,12 +147,12 @@ In this section, you'll update the Cordova application so it pulls its content f
 2.	Add the following entry after the first set of `<allow-intent.../>` tags (before the `<platform>` sections).
 
     ```xml
-    <allow-navigation href="https://cordovahostedweb-starter.azurewebsites.net" />
+    <allow-navigation href="https://YOUR-HOSTED-WEB-APP-URL" />
     ```
 
     This entry instructs the Cordova project's Whitelist plugin to allow the application's WebView to navigate to the hosted site.
 
-    > **Note**: When you publish the web application later, make sure the domain name you use in `<allow-navigation>` matches the hosted domain URL.
+    > **Note**: Make sure you replace the `YOUR-HOSTED-WEB-APP-URL` in the entry with the web application endpoint you copied earlier when you published the web application.
 
 3.	In Solution Explorer, double-click on the Cordova project's `www\scripts\index.js` file to open it for editing, remove all the code in the file, and replace it with the following:
 
@@ -135,7 +169,7 @@ In this section, you'll update the Cordova application so it pulls its content f
             app.receivedEvent('deviceready');
 
             // Here, we redirect to the web site.
-            var targetUrl = "https://cordovahostedweb-starter.azurewebsites.net/";
+            var targetUrl = "https://YOUR-HOSTED-WEB-APP-URL/";
             var bkpLink = document.getElementById("bkpLink");
             bkpLink.setAttribute("href", targetUrl);
             bkpLink.text = targetUrl;
@@ -156,7 +190,9 @@ In this section, you'll update the Cordova application so it pulls its content f
 
     app.initialize();
     ```
-    
+
+	> **Note**: Make sure you replace `YOUR-HOSTED-WEB-APP-URL` in the code with your web application endpoint. 
+	    
 	This code sets an event listener for the Cordova [`deviceReady`](https://cordova.apache.org/docs/en/latest/cordova/events/events.html) event. This event fires when the Cordova container finishes initializing and all of the installed plugins are available.  On the event, the code sets the URL of the native WebView window (using `window.location.replace`) to point to our remote web application. This causes the application to pull content from that site and render it in the Cordova application's main page (the WebView). 
 
     We also removed the [`pause` and `resume`](https://cordova.apache.org/docs/en/latest/cordova/events/events.html) event handlers. We will add this code later to the CordovaHostedWeb project so the event handler code executes in the remote web application, not the local Cordova application code.
@@ -165,7 +201,7 @@ In this section, you'll update the Cordova application so it pulls its content f
 
     ```HTML
     Verifying connectivity..
-    <a id="bkpLink" href="https://cordovahostedweb-starter.azurewebsites.net">cordovahostedweb.azurewebsites.net</a>
+    <a id="bkpLink" href="https://YOUR-HOSTED-WEB-APP-URL">YOUR-HOSTED-WEB-APP-URL</a>
 
     <div class="app">
         <h1>Apache Cordova</h1>
@@ -178,21 +214,25 @@ In this section, you'll update the Cordova application so it pulls its content f
     <script type="text/javascript" src="scripts/index.js"></script>
     ```
 
+	> **Note**: Make sure you replace `YOUR-HOSTED-WEB-APP-URL` in the code with your web application endpoint.
+	
     The most important thing here is that you create the anchor link that is used in the redirect script you created in the previous step.
 
 5.	In the project's `www\index.html` file's `<head>` section, replace the existing [Content-Security-Policy](http://taco.visualstudio.com/docs/cordova-5-security/#the-w3c-content-security-policy-csp) (CSP) `<meta>` element with the following:
 
     ```HTML
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb-starter.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://YOUR-HOSTED-WEB-APP-URL https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     ```
 
     By adding the remote web app URL to the CSP (`https://cordovahostedweb-starter.azurewebsites.net` in this example), you specify that it is a trusted domain, and content from this site will be allowed in your hosted app.
+
+	> **Note**: Make sure you replace `YOUR-HOSTED-WEB-APP-URL` in the code with your web application endpoint.
 
 6.	[Optional] If you want to fix up the styling in the client page that appears before the hosted app loads, copy the completed project's `www\css\index.css` file to the Cordova project's `www\css\index.css` file, replacing the existing file.
 	
 7.	Press **F5** to launch the app in the browser. When the page loads, the default Cordova app page will appear, but at the top you'll see the text **Verifying connectivity..** followed by the remote server URL. Once the app connects to the remote server and requests the page, the Cordova app's content disappears, replaced by the remote web application:  
 		 
-    ![Run the Hosted Web App](media/vs-taco-tutorial-hosted-app/figure-11.png)
+    ![Run the Hosted Web App](media/vs-taco-tutorial-hosted-app/figure-15.png)
 
     If everything looks good, you have your hosted app working! Congratulations! However, you still need to do a few more things to enable support for Cordova plugins in the hosted web application.
 
@@ -209,38 +249,12 @@ In order for the web app to leverage the Cordova container's native capabilities
 1.	In Visual Studio, double-click on the Cordova project's `www\scripts\index.js` file and update the code's `targetUrl` variable declaration to look like the following:
     
     ``` JavaScript
-    var targetUrl = "https://cordovahostedweb-redirect.azurewebsites.net/cordova/setPlatformCookie?platform=" + cordova.platformId;
+    var targetUrl = "https://YOUR-HOSTED-WEB-APP-URL/cordova/setPlatformCookie?platform=" + cordova.platformId;
     ```
 
     Now, when the Cordova app loads the remote web content, the app executes the `setPlatformCookie` function to tell the web server that a Cordova app is requesting the content. The URL also passes in the the platform identifier (`cordova.platformId`), you'll use this later for redirection.
-
-    > **Note**: To reduce the number of steps in the tutorial, we’re using a different URL: `https://cordovahostedweb-redirect.azurewebsites.net`; be sure you repalce the whole URL.
-
-2.	In Solution Explorer, right-click on the Cordova project's `config.xml` file and select **View Code** to open the file in the XML editor. Update the existing `<allow-navigation>` element to with the new endpoint URL. Change it from:
-
-	```xml
-    <allow-navigation href="https://cordovahostedweb-starter.azurewebsites.net" />
-    ```
-
-	to:
-
-	```xml
-	<allow-navigation href="https://cordovahostedweb-redirect.azurewebsites.net/" />
-	```
     
-3.	In Solution Explorer, double-click on the Cordova project's `www\index.html` file; update the CSP `<meta>` element to use the new endpoint URL. Change it from:
-
-	```HTML
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb-starter.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    ```
-
-	to:
-
-	```HTML
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb-redirect.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    ```
-    
-4.	In the CordovaHostedWeb (ASP.NET) project, right-click the Controllers folder and choose **Add** -> **Existing item**, use Windows Explorer go to the `Controllers` folder, and then add the existing file called `cordovaController.cs` to the project. This file contains the following code:
+2.	In the CordovaHostedWeb (ASP.NET) project, right-click the Controllers folder and choose **Add** -> **Existing item**, use Windows Explorer go to the `Controllers` folder, and then add the existing file called `cordovaController.cs` to the project. This file contains the following code:
 
     ```
     using System;
@@ -318,9 +332,13 @@ In order for the web app to leverage the Cordova container's native capabilities
 
     Finally, this page also loads the `app.js` script. You will use this file later to add the server-side Camera plugin code. This code calls native code that runs on the device.
 
-6.	Run the updated application by pressing the **F5** key. If you run the web app in the browser, you'll see the same page you saw earlier. Then you run the Cordova application on a device or in an emulator or simulator, you'll see a different page, the one shown in the following figure:
+6.	Build the web application: In Solution Manager, right-click on the `CordovaHostedWeb` project and select **Build**.
 
-	![Run the Hosted Web App](media/vs-taco-tutorial-hosted-app/figure-12.png) 
+7.	Publish the web application: In Solution Manager, right-click on the `CordovaHostedWeb` project and select **Publish**. In the dialog that appears, click the **Publish** button.  
+
+8.	Run the updated application by pressing the **F5** key. If you run the web app in the browser, you'll see the same page you saw earlier. Then you run the Cordova application on a device or in an emulator or simulator, you'll see a different page, the one shown in the following figure:
+
+	![Run the Hosted Web App](media/vs-taco-tutorial-hosted-app/figure-16.png) 
 
 ## Add Camera Functionality to the Cordova App
 
@@ -330,25 +348,29 @@ Cordova plugins give Cordova applications access to device-side capabilities suc
 
 2.	Scroll through the list of available plugins, then select the **Camera** plugin, then click the **Add** button.
 
-    ![Add the Camera plugin](media/vs-taco-tutorial-hosted-app/figure-13.png)
+    ![Add the Camera plugin](media/vs-taco-tutorial-hosted-app/figure-17.png)
 
     Visual Studio adds the selected plugin to the Cordova project.
 
-**NEED TO UPDATE THIS, once I figure it out!!!**
+3.	For the web application to run plugin code, the platform's `cordova.js` as well as any of the plugin's JavaScript code must be copied from the CordovaHostedApp-Client project's platforms folders (`android` and `ios`) to platform-specific folders in the CordovaHostedWeb project's `cordovadist` folder.
 
-For the web application to run plugin code, the platform's `cordova.js` as well as any of the plugin's JavaScript code must be copied from the CordovaHostedApp-Client project's platforms folders (`android` and `ios`) to platform-specific folders in the CordovaHostedWeb project's `codrovadist` folder. To save steps in this tutorial, we already copied the plugin files over for you.
+	![Plugin files in the ASP.NET project](media/vs-taco-tutorial-hosted-app/figure-18.png)
 
-![Plugin files in the ASP.NET project](media/vs-taco-tutorial-hosted-app/figure-14.png)
+	You can find these files in the \platforms folder after building your CordovaHostedApp project for a particular platform like Android. For example, the Android files are in \platforms\android\assets\www. 
 
-You can find these files in the \platforms folder after building your CordovaHostedApp-Client project for a particular platform like Android. For example, the Android files are in \platforms\android\assets\www.
+	The CordovaHostedWeb project uses `ImportCordovaAssets.proj` to automatically copy these files from the CordovaHostedApp project into the CordovaHostedWeb project. To import the Cordova files into the web application project, from the Windows Start menu, open the **Developer Command Prompt for VS 2017** application. Change to the web application project folder, and execute the following command:
 
-The CordovaHostedWeb project uses ImportCordovaAssets.proj to automatically copy these files from the CordovaHostedApp-Client project into the CordovaHostedWeb project. You can use the .proj file in your own hosted app, but we won't be looking at it now.  
+	```
+	msbuild ImportCordovaAssets.proj 
+	```
 
-**NEED TO UPDATE THIS, once I figure it out!!!**
+	Visual Studio will copy the Cordova source files to the web application project's `cordovadist` folder:
+
+	![Plugin files in the ASP.NET project](media/vs-taco-tutorial-hosted-app/figure-19.png)
 
 ## Configure the Web site to run the Camera plugin code
 
-The starter ASP.NET project (CordovHostedWeb) already has the Camera plugin code included. Now, you can add some code to actually use the Camera capabilities on the device. You will add plugin code to app.ts in the CordovaHostedWeb project.
+The starter ASP.NET project (CordovHostedWeb) already has the Camera plugin code included. Now, you can add some code to actually use the Camera capabilities on the device. You will add plugin code to `app.ts` in the CordovaHostedWeb project.
 
 1.	In the CordovaHostedWeb project, open `Views\Cordova\Index.cshtml`.
 
@@ -381,6 +403,7 @@ The starter ASP.NET project (CordovHostedWeb) already has the Camera plugin code
             alert("Camera API not supported");
             return;
         }
+
         var options = {
             quality: 20,
             destinationType: Camera.DestinationType.DATA_URL,
@@ -409,43 +432,19 @@ The starter ASP.NET project (CordovHostedWeb) already has the Camera plugin code
 
     >**Note**: the project's `app.ts` file will compile into `app.js` during the build process.
 
-## Connect to the hosted app with the working Camera code from your device
+5.	Build the web application: In Solution Manager, right-click on the `CordovaHostedWeb` project and select **Build**.
 
-To save time and steps, instead of republishing the CordovaHostedWeb project to a new Azure Web App URL, you will connect to the final version of the project with Camera support already in place. For information on how to republish to a new URL, see the [Appendix](#appendix).
+6.	Publish the web application: In Solution Manager, right-click on the `CordovaHostedWeb` project and select **Publish**. In the dialog that appears, click the **Publish** button.  
 
-1.	In Solution Explorer, open the Cordova project (`CordovaHostedApp-Client`), right-click on the project's `config.xml` file, and then select **View Code** to open the file in the XML editor. You can also double-click on the file to open the custom editor, then press **F7** to switch editors. Update the existing `<allow-navigation>` element to the new endpoint URL:
+7.	Now it's time to test the Cordova application. Press **F5** to run the app in the selected target. 
 
-	```xml
-	<allow-navigation href="https://cordovahostedweb.azurewebsites.net/" />
-	```
- 
-2.	In solution Explorer, double-click on the Cordova project's `www\scripts\index.js` file and update the code's `targetUrl` variable declaration to look like the following:
-    
-    ``` JavaScript
-    var targetUrl = "https://cordovahostedweb.azurewebsites.net/cordova/setPlatformCookie?platform=" + cordova.platformId;
-    ```    
-    
-3.	In Solution Explorer, double-click on the Cordova project's `www\index.html` file; update the CSP `<meta>` element to use the new endpoint URL:
+8.	When the app loads, tap the **Take Picture >>** button.
 
-	```HTML
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    ```
-    
-4.	In the CordovaHostedWeb project, open `Views/Cordova/index.cshtml`, the update the CSP `<meta>` element with the new URL:
+    ![Take Picture button](media/vs-taco-tutorial-hosted-app/figure-20.png)
 
-	```HTML
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://cordovahostedweb.azurewebsites.net https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-	```
+    The device's default Camera application loads and presents an interface for taking a picture to return to the app. After you take a picture, the Camera app prompts you to use the selected picture (by tapping on the checkmark in the following figure) or retake the photo (by tapping the curved arrow button in the figure):
 
-5.	Now it's time to test the Cordova application. Press **F5** to run the app in the selected target. 
-
-7.	When the app loads, tap the **Take Picture >>** button.
-
-    ![Take Picture button](media/vs-taco-tutorial-hosted-app/figure-15.png)
-
-    The device's default Camera application loads and presents an interface for taking a picture to return to the app.
-
-    ![Running the Camera app](media/vs-taco-tutorial-hosted-app/figure-16.png)
+    ![Running the Camera app](media/vs-taco-tutorial-hosted-app/figure-21.png) 
     
     Congratulations! You are now running native code in a web app loaded from a remote server.
 
@@ -496,37 +495,3 @@ If you see the error shown below, you may be trying to target a version of Windo
 ### <a name="errorUrl"></a> The App Hangs on a Message Saying That the URL is Trying to Launch Another App 
 
 You may be trying to target a version of Windows that is unsupported for the hosted apps sample. Open the project's `config.xml` file, then the **Windows** tab, then choose **Windows 10.0**. Try running the app again.
-
-## <a name="appendix"></a> Appendix: Publish the Web Site
-
-This section includes information on how to republish the CordovaHostedWeb ASP.NET project instead of using the existing Azure Web App URLs used in the tutorial. You don't need these steps unless you want to connect to your own implementation of the CordovaHostedWeb project.
-
-1.	In Visual Studio, open the **Build** menu, then select **Build Solution**.
-
-2.	In Solution Explorer, right-click the ASP.NET project (CordovaHostedWeb) and choose **Publish**.
-
-    ![Publish Web App](media/vs-taco-tutorial-hosted-app/figure-18.png)
-
-3.	In the Publish dialog, select **Microsoft Azure App Service**.
-
-    ![Select a Publish Target](media/vs-taco-tutorial-hosted-app/figure-19.png)
-
-    Visual Studio opens the Azure App Service settings page. Select a valid **Subscription** and click the **New** button to create a new hosted web app.
-
-	![Select a Publish Target](media/vs-taco-tutorial-hosted-app/figure-20.png)
-    
-4.	Click **New**. The **Create App Service** dialog opens. Populate the form with the appropriate values for your application. Visual Studio will generate a unique value for the **Web App Name** field, you'll want to change this value to something more easily remembered, or at least something relevant to the application. 
-    
-    ![Azure Web App Settings](media/vs-taco-tutorial-hosted-app/figure-21.png)
-
-    Click the **Create** button to create the app in the Azure App Service cloud.
-    
-5. In the Publish Web dialog box, change the URL from `http://` to `https://`. This change to SSL is for iOS support (which you won't test right now).
-
-4. In the Publish Web dialog box, copy the **Destination URL** to the clipboard, and then choose **Publish**.
-
-    ![Publish the App](media/vs-taco-tutorial-hosted-app/figure-22.png)
-
-    To connect to the republished site from your cient app, you will first need to update the CordovaHostedApp-Client project with the copied URL. See earlier tasks to do this. 
-
-	You will also need to updated the CSP `<meta>` element in the CordovaHostedWeb project with the new URL and republish.
