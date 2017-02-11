@@ -206,7 +206,7 @@ The basic flow for building a Cordova app is simple on the surface:
 3.  Build the project using the `cordova build` CLI command:
 
 	```
-    cordova build android --release
+   	cordova build android --release
 	```
 
 	or
@@ -249,9 +249,9 @@ Installing and using the correct version of the Cordova CLI at the project level
 
 	```
     	{
-    		"devDependencies": {
-    			"cordova": "6.0.0"
-	    	}
+    	  "devDependencies": {
+    	    "cordova": "6.0.0"
+	  }
 	}
 	```
 
