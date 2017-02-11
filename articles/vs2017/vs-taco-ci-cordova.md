@@ -248,10 +248,10 @@ Installing and using the correct version of the Cordova CLI at the project level
 2.	Add the following JSON to the file where `6.0.0` is the version of the Cordova CLI you intend to use:
 
 	```
-    	{
-    		"devDependencies": {
-    			"cordova": "6.0.0"
-	    	}
+    {
+    	"devDependencies": {
+    		"cordova": "6.0.0"
+	    }
 	}
 	```
 
