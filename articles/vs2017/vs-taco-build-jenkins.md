@@ -174,14 +174,8 @@ Next you will need to set the following environment variables if they have not a
 <tr>
 <td align="left"><strong>JAVA_HOME</strong></td>
 <td align="left">Android</td>
-<td align="left">Location of Java</td>
-<td align="left">C:\Program Files (x86)\Java\jdk1.8.x</td>
-</tr>
-<tr>
-<td align="left"><strong>ANT_HOME</strong></td>
-<td align="left">Android when building using Ant (not Gradle)</td>
-<td align="left">Location of Ant</td>
-<td align="left">C:\Program Files (x86)\Microsoft Visual Studio 15.0\Apps\apache-ant-1.9.3</td>
+<td align="left">Location of Java SDK</td>
+<td align="left">C:\Program Files (x86)\Java\jdk1.8.x <br />(whichever version of the SDK is installed on the system)</td>
 </tr>
 <tr>
 <td align="left"><strong>GRADLE_USER_HOME</strong></td>
