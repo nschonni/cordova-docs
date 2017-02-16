@@ -177,7 +177,7 @@ Now, lets start working on the application's code. By convention, Ionic applicat
 
 In this section, we'll add code the Weather Provider to connect with the external weather API and deliver data to the application. 
 
-1.	Open the newly created `src\providers\weather\weather.ts` file, and modify the `@angular/http` import at the top of the file so it looks like the following:
+1.	Open the newly created `src\providers\weather.ts` file, and modify the `@angular/http` import at the top of the file so it looks like the following:
 
 	```typescript
 	import { Http, Response } from '@angular/http';
