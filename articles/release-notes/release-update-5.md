@@ -52,7 +52,7 @@ Visual Studio tracks the modified date of each file to incorporate changes made 
 In cases when you want to integrate cordova projects with existing solutions and build systems based on msbuild, we have reviewed the MSBuild properties and set default values. So know you can build cordova project from command line without the need to specify additional properties. This will help to build cordova solutions using TFS 2013 or any other build system.
 
 ###iOS build updates
-We added support for iOS 6s simulator, and improved the incremental build feature. (You might need to update your [remotebuild tools](http://taco.tools) to get the latest ios-sym version that support iOS 6s.)
+Support was added for the iOS 6s simulator, and the incremental build feature was improved.
 
 ##Bugs Solved
 
