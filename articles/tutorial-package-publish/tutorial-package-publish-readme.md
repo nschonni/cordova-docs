@@ -2,7 +2,7 @@
   description="Helps you create a iOS, Android, and Windows package for a store"
   services=""
   documentationCenter=""
-  authors="normesta" />
+  author="jmatthiesen" />
   <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
      ms.service="na"
      ms.devlang="javascript"
@@ -10,7 +10,7 @@
      ms.tgt_pltfrm="mobile-multiple"
      ms.workload="na"
      ms.date="03/17/2016"
-     ms.author="normesta"/>
+     ms.author="jomatthi"/>
 
 # Package your Cordova app so that you can publish it to a store
 

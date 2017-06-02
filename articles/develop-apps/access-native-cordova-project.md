@@ -3,7 +3,7 @@
    description="description"
    services="na"
    documentationCenter=""
-   authors="normesta"
+   author="jmatthiesen"
    tags=""/>
 <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
@@ -12,7 +12,7 @@
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
    ms.date="09/10/2015"
-   ms.author="normesta"/>
+   ms.author="jomatthi"/>
 # Access a native Cordova project
 
 When you create an app by using Visual Studio Tools for Apache Cordova, Visual Studio calls the Apache Cordova Command Line Interface (CLI) to build your app for the specified device or emulator. The resulting packages can be accessed from the bin folder in the Visual Studio project directory.

@@ -3,7 +3,7 @@
    description="description"
    services="na"
    documentationCenter=""
-   authors="normesta"
+   author="jmatthiesen"
    tags=""/>
 <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
@@ -12,7 +12,7 @@
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
    ms.date="09/10/2015"
-   ms.author="normesta"/>
+   ms.author="jomatthi"/>
 # Install Visual Studio Tools for Apache Cordova
 
 Are you using the Visual Studio 2017 RC release? If so, check out the [updated version of this article](../getting-started-2017/vs-taco-2017-install.md).

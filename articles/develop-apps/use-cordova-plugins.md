@@ -3,7 +3,7 @@
    description="Visual Studio Plugins"
    services="na"
    documentationCenter=""
-   authors="normesta"
+   author="jmatthiesen"
    tags=""/>
 <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"
@@ -12,7 +12,7 @@
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="na"
    ms.date="08/04/2016"
-   ms.author="normesta"/>
+   ms.author="jomatthi"/>
 
 # <a id="top"></a>Visual Studio Core Plugins
 
