@@ -3,7 +3,7 @@
    description="Change the CLI version of your Visual Studio Tools for Apache Cordova project"
    services="na"
    documentationCenter=""
-   author="jmatthiesen"
+   authors="jmatthiesen"
    tags=""/>
 <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"

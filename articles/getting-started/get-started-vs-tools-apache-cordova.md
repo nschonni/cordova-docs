@@ -3,7 +3,7 @@
    description="description"
    services="na"
    documentationCenter=""
-   author="jmatthiesen"
+   authors="jmatthiesen"
    tags=""/>
 <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
    ms.service="na"

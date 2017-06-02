@@ -2,7 +2,7 @@
   description="Helps you create a iOS, Android, and Windows package for a store"
   services=""
   documentationCenter=""
-  author="jmatthiesen" />
+  authors="jmatthiesen" />
   <tags ms.technology="cordova" ms.prod="visual-studio-dev14"
      ms.service="na"
      ms.devlang="javascript"

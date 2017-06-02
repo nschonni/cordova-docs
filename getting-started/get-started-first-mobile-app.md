@@ -3,7 +3,7 @@
    description="Get started with Visual Studio Tools for Apache Cordova"
    services="na"
    documentationCenter=""
-   author="jmatthiesen"
+   authors="jmatthiesen"
    tags=""/>
 <tags
    ms.service="na"
