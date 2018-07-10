@@ -1,26 +1,8 @@
-<properties pageTitle="Visual Studio Tools for Apache Cordova"
-  description="Visual Studio Tools for Apache Cordova"
-  services="" 
-  documentationCenter=""
-  authors="bursteg" />
+# [Visual Studio Tools for Apache Cordova new docs repo](https://github.com/MicrosoftDocs/CordovaDocs/)
 
-# Visual Studio Tools for Apache Cordova
-This repository contains a set of documents and tutorials for the **Visual Studio 2015** release of **[Tools for Apache Cordova](http://aka.ms/cordova).** The official site for Visual Studio 2015 documentation is hosted on **[taco.visualstudio.com](http://taco.visualstudio.com)**, and any content changes in the current repository will be updated there as well.
+_This GitHub repository is no longer in use - please visit the updated documentation at [github.com/MicrosoftDocs/CordovaDocs](https://github.com/MicrosoftDocs/CordovaDocs/)._
 
-## We aren't in it alone. 
-
-We are but one part of the larger Cordova community, and that commitment to the community comes through the products we build and the documentation we upkeep. We invite you to be part of our [community](http://taco.visualstudio.com). 
-
-Try building your [first cross-platform mobile app](http://taco.visualstudio.com/en-us/docs/get-started-first-mobile-app/) in Visual Studio, give back to the next set of new users in [StackOverflow](http://stackoverflow.com/questions/tagged/visual-studio-cordova), [contribute to our documentation](http://taco.visualstudio.com/en-us/docs/cordova-docs-contributing/), and share the Cordova glory! 
-
-> **Note**: This documentation does not apply to Visual Studio 2013 CTPs.**
-
-## More Information
-* [Download samples from our Cordova Samples repository](http://github.com/Microsoft/cordova-samples)
-* [Follow us on Twitter](https://twitter.com/VSCordovaTools)
-* [Ask for help on StackOverflow](http://stackoverflow.com/questions/tagged/visual-studio-cordova)
-* [Email us your questions](mailto:/vscordovatools@microsoft.com)
-
+This repo contains documentation relevant to Visual Studio 2015 only.
 
 ## Terms of Use
 By downloading and running this project, you agree to the license terms of the third party application software, Microsoft products, and components to be installed.
