@@ -1,16 +1,20 @@
-# [Visual Studio Tools for Apache Cordova new docs repo](https://github.com/MicrosoftDocs/CordovaDocs/)
+# ARCHIVED CONTENT
 
-_This GitHub repository is no longer in use - please visit the updated documentation at [github.com/MicrosoftDocs/CordovaDocs](https://github.com/MicrosoftDocs/CordovaDocs/)._
+## Visual Studio Tools for Apache Cordova has a [NEW docs repo](https://github.com/MicrosoftDocs/CordovaDocs/)
+
+_This GitHub repository is NO LONGER IN USE - please visit the updated documentation at [github.com/MicrosoftDocs/CordovaDocs](https://github.com/MicrosoftDocs/CordovaDocs/)._
 
 This repo contains documentation relevant to Visual Studio 2015 only.
 
 ## Terms of Use
+
 By downloading and running this project, you agree to the license terms of the third party application software, Microsoft products, and components to be installed.
 
 The third party software and products are provided to you by third parties. You are responsible for reading and accepting the relevant license terms for all software that will be installed. Microsoft grants you no rights to third party software.
 
 
 ## License
+
 Unless otherwise mentioned, the code samples are released under the MIT license.
 
 ```
