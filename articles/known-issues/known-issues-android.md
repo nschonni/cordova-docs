@@ -92,7 +92,7 @@ If you already had the Android SDK installed, you may also need to update and in
 
 ##**Deployment failure to Android emulator or device when switching to or from a "Release" build**
 
-If you encounter a failed deployment to an Andorid device or emulator with the error "**Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]**" in the Output Window, simply delete the existing app on the device or emulator and redeploy. Debug builds will use a debug certificate while Release builds will use your configured certificate. This error is simply letting you know that the certificate of the app installed on the device is different than the one you are attempting to install. In non-development (app store) scenarios, this can be indicator of a corrupted or otherwise modified app not safe to install on the device.
+If you encounter a failed deployment to an Android device or emulator with the error "**Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]**" in the Output Window, simply delete the existing app on the device or emulator and redeploy. Debug builds will use a debug certificate while Release builds will use your configured certificate. This error is simply letting you know that the certificate of the app installed on the device is different than the one you are attempting to install. In non-development (app store) scenarios, this can be indicator of a corrupted or otherwise modified app not safe to install on the device.
 
 ##**Unicode Characters in Path or App Name**
 
